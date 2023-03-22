@@ -336,8 +336,8 @@ section#PatientStories_patient_stories__oSemC,
   .rec-carousel-item {
     @media screen and (min-width: 992px) {
       &:not(:last-child) {
-        ._name__steps_container__hk08j {
-          ._name__step__4lBQo {
+        ._slug__steps_container__6ZGdJ {
+          ._slug__step__Kzywh {
             span {
               &::after {
                 position: absolute;
@@ -376,9 +376,10 @@ section#PatientStories_patient_stories__oSemC,
 
   .rec-carousel-item {
     &:not(:last-child) {
-      ._name__steps_container__hk08j {
-        ._name__step__4lBQo {
+      ._slug__steps_container__6ZGdJ {
+        ._slug__step__Kzywh {
           span {
+            position: relative;
             &::after {
               position: absolute;
               content: "";
