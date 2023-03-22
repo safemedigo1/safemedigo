@@ -134,7 +134,7 @@ export default function BlogPage({ page, blogs }) {
           </Container>
         </section>
 
-        {/* Tag Component */}
+        {/* Tags Component */}
         <Tags />
       </div>
 
