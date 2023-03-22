@@ -73,10 +73,11 @@ section#hero {
       }
 
       .more {
-        margin-right: 30px;
-
         @media screen and (min-width: 992px) {
           margin-bottom: 36px;
+        }
+        @media screen and (min-width: 450px) {
+          margin-right: 30px;
         }
 
         a {
