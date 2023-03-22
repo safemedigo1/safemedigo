@@ -82,7 +82,7 @@ const Hero = () => {
             </div>
 
 
-            <Box sx={{ display: 'flex', alignItems: { xs: 'center', sm: 'center', md: 'center', lg: 'flex-start' }, justifyContent: 'space-between', flexDirection: { xs: 'row', sm: 'row', md: 'row', lg: 'column' } }}>
+            <Box sx={{ display: 'flex', alignItems: { xs: 'center', sm: 'center', md: 'center', lg: 'flex-start' }, justifyContent: { xs: 'flex-start', sm: 'flex-start', md: 'space-between', lg: 'space-between' }, flexDirection: { xs: 'row', sm: 'row', md: 'row', lg: 'column' } }}>
 
               <div className={styles.more}>
                 <Link href='/'>
@@ -127,6 +127,9 @@ const Hero = () => {
                       </div>
 
                       <div className={styles.tite}>
+                        <div className={styles.link}>
+                          <Link href='/'>Knee Replacement</Link>
+                        </div>
                         <Typography variant="h6"> {card.title}</Typography>
 
                         <div className={styles.rating}>
@@ -134,9 +137,7 @@ const Hero = () => {
                           <span className={styles.reviews_num}>90 Reviews</span>
                         </div>
 
-                        <div className={styles.link}>
-                          <Link href='/'>Knee Replacement</Link>
-                        </div>
+
                       </div>
 
 

@@ -13,6 +13,9 @@ const Search = () => {
     { width: 1, itemsToShow: 1 },
     { width: 300, itemsToShow: 2.4 },
     { width: 400, itemsToShow: 3 },
+    { width: 500, itemsToShow: 4 },
+    { width: 800, itemsToShow: 4 },
+    { width: 900, itemsToShow: 5.4 },
   ])
 
   const tags = [

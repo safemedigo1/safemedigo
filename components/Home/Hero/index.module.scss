@@ -13,13 +13,18 @@ section#hero {
     padding-top: 48px;
     padding-bottom: 213px;
 
-    @media screen and (max-width: 992px) {
+    // @media screen and (max-width: 992px) {
+    //   flex-direction: column;
+    //   padding-top: 40px;
+    // }
+
+    @media screen and (max-width: 750px) {
       flex-direction: column;
       padding-top: 40px;
     }
 
     .text_container {
-      @media screen and (max-width: 992px) {
+      @media screen and (max-width: 750px) {
         width: 100%;
       }
       .title {
@@ -68,6 +73,8 @@ section#hero {
       }
 
       .more {
+        margin-right: 30px;
+
         @media screen and (min-width: 992px) {
           margin-bottom: 36px;
         }
@@ -76,7 +83,7 @@ section#hero {
           display: flex;
           align-items: center;
           svg {
-            margin-right: 13.56px;
+            margin-right: 10px;
             color: var(--sec-cyan-color);
             font-size: 35px;
           }
@@ -105,6 +112,7 @@ section#hero {
           display: flex;
           align-items: center;
         }
+
         .get_started_btn {
           margin-right: 34px;
           @media screen and (max-width: 992px) {
@@ -158,9 +166,8 @@ section#hero {
     .slider_container {
       width: 465px;
       position: relative;
-      // overflow-y: visible;
-      // overflow-x: visible;
-      @media screen and (max-width: 992px) {
+
+      @media screen and (max-width: 750px) {
         position: absolute;
         bottom: -131px;
         left: 50%;
@@ -176,16 +183,16 @@ section#hero {
         border-radius: 8px;
         padding: 24px;
         margin: 0 15px;
-
+        height: 281px;
         // @media screen and (max-wdidth: 992px) {
         //   height: 119.5px;
         // }
 
-        @media screen and (min-width: 992px) {
+        @media screen and (min-width: 750px) {
           height: 274.71px;
         }
 
-        @media screen and (max-width: 992px) {
+        @media screen and (max-width: 750px) {
           width: 333px;
           padding-bottom: 19px;
           padding-right: 15px;
@@ -209,13 +216,13 @@ section#hero {
           }
 
           .img_container {
-            width: 95px;
-            height: 95px;
+            width: 80px;
+            height: 80px;
             margin-right: 20px;
 
             @media screen and (max-width: 992px) {
               margin-right: 10px;
-              height: 92px;
+              height: 80px;
             }
 
             img {
@@ -226,6 +233,8 @@ section#hero {
           }
 
           .tite {
+            margin-top: 9px;
+
             h6 {
               font-size: 18px;
               font-family: var(--quickstand-font);
@@ -238,7 +247,6 @@ section#hero {
             }
 
             .rating {
-              margin-top: 9px;
               display: flex;
               align-items: center;
 
@@ -293,7 +301,7 @@ section#hero {
             white-space: pre-wrap;
             -webkit-line-clamp: 5;
 
-            @media screen and (max-width: 992px) {
+            @media screen and (max-width: 750px) {
               font-size: 15px;
               -webkit-line-clamp: 2;
               -webkit-line-clamp: 2;
