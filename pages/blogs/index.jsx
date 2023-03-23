@@ -26,9 +26,6 @@ export default function Blogs({ blogCategory, blogs }) {
   const [category, setCategory] = useState('All');
   const [categoryId, setCategoryId] = useState();
 
-  const [pagesCount, setPagesCount] = useState();
-
-  const [filteredData, setFilteredData] = useState(null);
 
 
   const handleFilter = (event) => {
@@ -127,11 +124,6 @@ export default function Blogs({ blogCategory, blogs }) {
               </Select>
             </FormControl>
           </div>
-          {allCategories.map((item) => (
-            <h1>
-              {item.categeryName}
-            </h1>
-          ))}
         </Container>
       </div>
 

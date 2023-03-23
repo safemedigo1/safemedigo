@@ -12,13 +12,13 @@ import Link from "next/link";
 import Head from "next/head";
 import { useState } from "react";
 
-export default function BlogPage({ page, blogs }) {
+export default function BlogPage({ blogs }) {
   const router = useRouter();
-  const [pageNumber, setPageNumber] = useState(router.query.page)
+  const [currentPage, setCurrentPage] = useState()
 
   const handleChangePage = (event, newPage) => {
     router.push(`/blogs/page/${newPage}`);
-
+    setCurrentPage(newPage)
     if (newPage === 1) {
       router.push(`/blogs/`);
     }
@@ -27,8 +27,6 @@ export default function BlogPage({ page, blogs }) {
 
   };
 
-  console.log(page
-    , "NEW PAGE NUssssssssssssssssssssssM")
 
   const count = blogs.count / 6;
   const newCount = Math.floor(count);
@@ -125,6 +123,7 @@ export default function BlogPage({ page, blogs }) {
             }} className="pagination">
               <Pagination
                 count={newCount}
+                page={currentPage}
                 onChange={handleChangePage}
                 size="large"
               />
@@ -132,7 +131,6 @@ export default function BlogPage({ page, blogs }) {
             </Box>
           </Container>
         </section>
-
         {/* Tags Component */}
         <Tags />
       </div>
