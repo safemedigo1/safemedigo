@@ -10,7 +10,7 @@ const WhyTurkey = () => {
     , why_turcky_img } = imgs;
   return (
     <section id={styles.why_turky}>
-      <Container sx={{ maxWidth: '1239px' }} maxWidth={false}>
+      <Container sx={{ maxWidth: '1239px', }} maxWidth={false}>
 
         <div className={styles.section_container}>
 

@@ -1,4 +1,6 @@
-import imgs from "../../assets/constants/imgs";
+import React from 'react'
+
+import imgs from "../../../assets/constants/imgs";
 import Link from "next/link";
 import Head from "next/head";
 import styles from "./index.module.scss";
@@ -10,18 +12,14 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { Tags } from './../../components/';
+import { Tags } from '../../../components';
 
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
 import { useContext, useEffect, useState } from "react";
 import { appContext } from "@/context/store";
 
-
-
-
-
-export default function Blogs({ page, blogs }) {
+export default function Slug({ query, blogs }) {
   const [allBlogs, setAllBlogs] = useState(blogs.data)
   const [allCategories, setAllCategories] = useState([])
   const [category, setCategory] = useState('All');
@@ -89,7 +87,6 @@ export default function Blogs({ page, blogs }) {
 
 
 
-
   const router = useRouter();
   const handleChangePage = (event, newPage) => {
     router.push(`/blogs/page/${newPage}`);
@@ -130,15 +127,15 @@ export default function Blogs({ page, blogs }) {
 
                 }}
               >
-                <MenuItem value="All" >
-                  All
-                </MenuItem>
+                <MenuItem value="All" href='/blogs' >All</MenuItem>
 
                 {allCategories.map((item) => (
+                  <Link style={{ color: 'black' }} href={`/category/${item.categeryName.split(' ').join('-').trim()}`}>
+                    <MenuItem value={item.categeryName}>
+                      {item.categeryName}
 
-                  <MenuItem value={item.categeryName}>
-                    {item.categeryName}
-                  </MenuItem>
+                    </MenuItem>
+                  </Link>
                 ))}
 
               </Select>
@@ -265,7 +262,10 @@ export default function Blogs({ page, blogs }) {
   );
 };
 
-export async function getServerSideProps() {
+
+export async function getServerSideProps(context) {
+  // console.log()
+
   const res = await fetch("http://safemedigoapi-001-site1.gtempurl.com/api/v1/Blog/GetAllBlogWithPage", {
     method: 'POST',
     headers: {
@@ -283,6 +283,8 @@ export async function getServerSideProps() {
   return {
     props: {
       blogs: data
+      ,
+      query: context.params.slug
     }
   }
 }

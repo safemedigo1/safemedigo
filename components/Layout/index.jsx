@@ -5,7 +5,6 @@ import PageHeader from '../PageHeader/';
 import { useRouter } from "next/router";
 
 export default function Layout({ children }) {
-
   // Get routes to make dynamic data
   const router = useRouter();
   const { pathname } = router;
@@ -15,9 +14,9 @@ export default function Layout({ children }) {
       {pathname !== '/search' ?
         <>
           <Navbar />
-          <PageHeader />
+          {/*     <PageHeader /> */}
           <main>{children}</main>
-          <Footer />
+          {/* <Footer /> */}
         </> : <>
           <main>
             {children}

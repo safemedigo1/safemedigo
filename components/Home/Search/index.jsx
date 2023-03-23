@@ -27,6 +27,8 @@ const Search = () => {
     { tag: "Tag name" },
     { tag: "Tag name" },
   ];
+
+
   return (
     <div id={styles.search}>
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
@@ -59,7 +61,6 @@ const Search = () => {
 
       </Container>
       <div className={styles.tags_slider}>
-
         <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
           <div className={styles.title}>
             <Typography variant='h3'>Popular</Typography>

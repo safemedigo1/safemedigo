@@ -13,8 +13,9 @@ const PatientStories = () => {
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },
-    { width: 400, pagination: false, itemsToShow: 1.1, itemsToScroll: 1, showArrows: false },
-    { width: 800, pagination: false, itemsToShow: 2.5, itemsToScroll: 1, transitionMs: 1000 },
+    { width: 400, pagination: true, itemsToShow: 1.1, itemsToScroll: 1, showArrows: false },
+    { width: 800, pagination: true, itemsToShow: 2.5, itemsToScroll: 1, transitionMs: 1000, showArrows: false },
+    { width: 900, pagination: false, itemsToShow: 2.5, itemsToScroll: 1, transitionMs: 1000 },
 
   ])
 

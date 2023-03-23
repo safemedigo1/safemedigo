@@ -28,8 +28,6 @@ const Safty = () => {
 
           <div className={styles.content}>
 
-
-
             <div className={styles.text_container}>
               <div className={styles.right_side}>
                 <Typography>

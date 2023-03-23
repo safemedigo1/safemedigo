@@ -80,6 +80,10 @@ section#hero {
           margin-right: 30px;
         }
 
+        @media screen and (max-width: 857px) {
+          margin-right: 10px;
+        }
+
         a {
           display: flex;
           align-items: center;
@@ -116,7 +120,7 @@ section#hero {
 
         .get_started_btn {
           margin-right: 34px;
-          @media screen and (max-width: 992px) {
+          @media screen and (max-width: 1200px) {
             display: none;
           }
           a {

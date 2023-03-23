@@ -125,7 +125,6 @@ export default function BlogPage({ page, blogs }) {
             }} className="pagination">
               <Pagination
                 count={newCount}
-                page={page}
                 onChange={handleChangePage}
                 size="large"
               />

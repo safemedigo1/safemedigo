@@ -1,18 +1,13 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
-export let appContext = createContext();
+export const appContext = createContext();
 
-export default function CounterContextProvider(props) {
-  const [count, setCount] = useState(0);
+export const ContextProvider = ({ children }) => {
+  const [myState, setMyState] = useState(20034);
 
   return (
-    <appContext.Provider
-      value={{
-        count,
-        setCount,
-      }}
-    >
-      {props.children}
+    <appContext.Provider value={[myState, setMyState]}>
+      {children}
     </appContext.Provider>
   );
-}
+};

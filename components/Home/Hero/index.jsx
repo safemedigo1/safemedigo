@@ -82,7 +82,7 @@ const Hero = () => {
             </div>
 
 
-            <Box sx={{ display: 'flex', alignItems: { xs: 'center', sm: 'center', md: 'center', lg: 'flex-start' }, justifyContent: { xs: 'flex-start', sm: 'flex-start', md: 'space-between', lg: 'space-between' }, flexDirection: { xs: 'row', sm: 'row', md: 'row', lg: 'column' } }}>
+            <Box sx={{ display: 'flex', alignItems: { xs: 'center', sm: 'center', md: 'center', lg: 'flex-start' }, justifyContent: { xs: 'flex-start', sm: 'flex-start', md: 'space-between', lg: 'space-between' }, flexDirection: { xs: 'row', sm: 'column', md: 'row', lg: 'column' } }}>
 
               <div className={styles.more}>
                 <Link href='/'>

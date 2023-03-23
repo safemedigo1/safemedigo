@@ -20,6 +20,7 @@
     align-items: flex-start;
     padding-top: 56px;
     justify-content: space-between;
+    position: "relative";
 
     @media screen and (max-width: 992px) {
       flex-direction: column-reverse;
@@ -30,6 +31,10 @@
       width: 557px;
 
       @media screen and (max-width: 992px) {
+        width: 40%;
+      }
+
+      @media screen and (max-width: 750px) {
         width: 100%;
       }
 
@@ -192,14 +197,22 @@
 
     .img_sec_container {
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 0px;
+      right: 0px;
       width: 722px;
       height: 100%;
 
       @media screen and (max-width: 992px) {
+        width: 55%;
+        top: 29px;
+        right: 20px;
+      }
+
+      @media screen and (max-width: 750px) {
         width: 100%;
-        position: relative;
+        position: relative !important;
+        top: 0;
+        right: 0;
       }
 
       img {
