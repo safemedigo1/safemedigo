@@ -14,9 +14,9 @@ export default function Layout({ children }) {
       {pathname !== '/search' ?
         <>
           <Navbar />
-          {/*     <PageHeader /> */}
+          <PageHeader />
           <main>{children}</main>
-          {/* <Footer /> */}
+          <Footer />
         </> : <>
           <main>
             {children}

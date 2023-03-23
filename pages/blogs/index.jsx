@@ -14,16 +14,15 @@ import { Tags } from './../../components/';
 
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
-import { useContext, useEffect, useState } from "react";
-import { appContext } from "@/context/store";
+import { useEffect, useState } from "react";
 
 
 
 
 
-export default function Blogs({ page, blogs }) {
+export default function Blogs({ blogCategory, blogs }) {
   const [allBlogs, setAllBlogs] = useState(blogs.data)
-  const [allCategories, setAllCategories] = useState([])
+  const [allCategories, setAllCategories] = useState(blogCategory)
   const [category, setCategory] = useState('All');
   const [categoryId, setCategoryId] = useState();
 
@@ -32,28 +31,13 @@ export default function Blogs({ page, blogs }) {
   const [filteredData, setFilteredData] = useState(null);
 
 
-
   const handleFilter = (event) => {
     setCategory(event.target.value);
   };
 
 
   // Get All Categories
-  const getBlogsCatigories = async () => {
-    const res = await fetch("http://safemedigoapi-001-site1.gtempurl.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "lang": 'en',
-      })
-    })
-    const data = await res.json()
-    setAllCategories(data);
 
-  }
 
   const getAllBlogsByCategoryId = async () => {
     const res = await fetch("http://safemedigoapi-001-site1.gtempurl.com/api/v1/Blog/GetAllBlogWithPage", {
@@ -74,7 +58,6 @@ export default function Blogs({ page, blogs }) {
 
   }
 
-  getBlogsCatigories();
 
   useEffect(() => {
 
@@ -285,9 +268,25 @@ export async function getServerSideProps() {
   })
   const data = await res.json()
 
+
+
+
+
+  const res1 = await fetch("http://safemedigoapi-001-site1.gtempurl.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": 'en',
+    })
+  })
+  const data2 = await res1.json()
   return {
     props: {
-      blogs: data
+      blogs: data,
+      blogCategory: data2
     }
   }
 }
