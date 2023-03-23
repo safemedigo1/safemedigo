@@ -135,15 +135,20 @@ export default function Blogs({ page, blogs }) {
                 </MenuItem>
 
                 {allCategories.map((item) => (
-
                   <MenuItem value={item.categeryName}>
                     {item.categeryName}
                   </MenuItem>
                 ))}
 
+
               </Select>
             </FormControl>
           </div>
+          {allCategories.map((item) => (
+            <h1>
+              {item.categeryName}
+            </h1>
+          ))}
         </Container>
       </div>
 
