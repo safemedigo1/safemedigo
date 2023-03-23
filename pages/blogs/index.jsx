@@ -74,9 +74,9 @@ export default function Blogs({ page, blogs }) {
 
   }
 
+  getBlogsCatigories();
 
   useEffect(() => {
-    getBlogsCatigories();
 
     if (category !== 'All') {
       const filtered = allCategories.find((item) => item.categeryName === category);
