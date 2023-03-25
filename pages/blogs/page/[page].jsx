@@ -147,15 +147,15 @@ export default function BlogPage({ blogs }) {
 export async function getServerSideProps(context) {
   console.log(context.query.page, "COntext Over hereee")
 
-  const res = await fetch("http://safemedigoapi-001-site1.gtempurl.com/api/v1/Blog/GetAllBlogWithPage", {
+  const res = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogWithPage", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "lang": 'ar',
-      "blogCategoryId": 0,
+      "lang": 'en',
+      "blogCategoryId": 1,
       "currentPage": context.query.page
     })
   })
