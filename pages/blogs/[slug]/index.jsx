@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "next/link";
-import imgs from "../../assets/constants/imgs";
-import { Tags } from "../../components";
-import styles from "./[title].module.scss";
+import imgs from "../../../assets/constants/imgs";
+import { Tags } from "../../../components";
+import styles from "./index.module.scss";
 import { Container, Typography, Rating, Box } from "@mui/material";
 import { BsLink45Deg, BsTwitter } from 'react-icons/bs';
 import { FaFacebookSquare } from 'react-icons/fa';

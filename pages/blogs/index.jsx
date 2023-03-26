@@ -2,7 +2,7 @@ import imgs from "../../assets/constants/imgs";
 import Link from "next/link";
 import Head from "next/head";
 import styles from "./index.module.scss";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 
@@ -14,61 +14,25 @@ import { Tags } from './../../components/';
 
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import { useState } from "react";
 
 
 
 
 
 export default function Blogs({ blogCategory, blogs, products, currentPage, totalPages }) {
-  const [allBlogs, setAllBlogs] = useState(blogs.data)
-  const [allCategories, setAllCategories] = useState(blogCategory)
   const [category, setCategory] = useState('All');
-  const [categoryId, setCategoryId] = useState();
 
 
 
   const router = useRouter();
 
-  const handleFilter = (event) => {
-    setCategory(event.target.value);
-  };
 
-
-  // Get All Categories
-
-
-  // const getAllBlogsByCategoryId = async () => {
-  //   const res = await fetch("http://safemedigoapi-001-site1.gtempurl.com/api/v1/Blog/GetAllBlogWithPage", {
-  //     method: 'POST',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       "lang": 'en',
-  //       "blogCategoryId": categoryId,
-  //       "currentPage": 1
-  //     })
-  //   })
-  //   const data = await res.json()
-  //   setAllBlogs(data.data)
-
-  // }
+  const { author, post1 } = imgs
 
 
 
-  // useEffect(() => {
 
-  //   if (category !== 'All') {
-  //     const filtered = allCategories.find((item) => item.categeryName === category);
-  //     setCategoryId(filtered.id)
-  //     getAllBlogsByCategoryId();
-  //   } else {
-  //     setAllBlogs(blogs.data)
-  //   }
-  // }, [category])
 
 
 
@@ -76,21 +40,19 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
 
   const handleFilterChanges = (event, value) => {
     router.push(`/blogs?category=${value.props.value}`)
-    setTimeout(() => window.location.reload(), 2000);
-    console.log(value)
+    // setTimeout(() => window.location.reload(), 2000);
+    setCategory(value.props.children)
   }
 
 
   const handleMyChangePage = (event, value) => {
     router.push(`/blogs?page=${value}`)
 
-    setTimeout(() => window.location.reload(), 1000);
+    // setTimeout(() => window.location.reload(), 1000);
 
   }
 
-  const itemId = (item) => {
-    console.log(item)
-  }
+
   return (
     <>
       <Head>
@@ -103,7 +65,7 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
           <div className={styles.filter}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-autowidth-label">
-                Articles
+                Blogs
               </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
@@ -119,12 +81,12 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
 
                 }}
               >
-                <MenuItem value="All" >
+                {/* <MenuItem value="All" >
                   All
-                </MenuItem>
+                </MenuItem> */}
 
                 {blogCategory.map((item) => (
-                  <MenuItem value={item.slug} onClick={itemId(item)}>
+                  <MenuItem value={item.slug} >
                     {item.categeryName}
                   </MenuItem>
                 ))}
@@ -144,13 +106,12 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
             </div>
             <div className={styles.boxes_container}>
               {
-                // category === 'All' ?
                 blogs?.data.map((post, idx) => (
                   <>
                     <Link href={`/blogs/${post.slug}`} className={styles.box} key={idx}>
                       <div className={styles.img_container}>
                         <img
-                          src={post.image}
+                          src={post1.src}
                           alt="Picture of the author"
                           width="width: 344px"
                         />
@@ -165,22 +126,22 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
 
                       <div className={styles.author_container}>
                         <div className={styles.img_container}>
-                          <img src={post.image} alt="" />
-                          {/* {console.log()} */}
+                          <img src={author.src} alt="" />
                         </div>
-
                         <div className={styles.author_data}>
                           <div className={styles.user_name}>
-                            {post.authorName}
+                            Majd eldeen
                           </div>
-                          <div className={styles.user_job}>{post.authorJob}</div>
+                          <div className={styles.user_job}>CEO</div>
                         </div>
                       </div>
 
                       <div className={styles.btns_container}>
                         <div className={styles.trans_btn}>
                           {post.tags.map((tag) => (
-                            <button>{tag.tagName}</button>
+                            <>
+                              <button>{tag.tagName}</button>
+                            </>
                           ))}
                         </div>
 
@@ -188,51 +149,6 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
                     </Link>
                   </>
                 ))
-
-
-                // : filteredData !== null &&
-                // filteredData?.data?.map((post, idx) => (
-                //   <>
-                //     <Link href={`/blogs/${post.title.split(' ').join('-')}`} className={styles.box} key={idx}>
-                //       <div className={styles.img_container}>
-                //         <img
-                //           src={post.image}
-                //           alt="Picture of the author"
-                //           width="width: 344px"
-                //         />
-                //       </div>
-                //       <div className={styles.box_title}>
-                //         <Typography variant="h5">{post.title}</Typography>
-                //       </div>
-
-                //       <div className={styles.desc}>
-                //         <p>{post.briefContent}</p>
-                //       </div>
-
-                //       <div className={styles.author_container}>
-                //         <div className={styles.img_container}>
-                //           <img src={post.authorImg} alt="" />
-                //         </div>
-
-                //         <div className={styles.author_data}>
-                //           <div className={styles.user_name}>
-                //             {post.authorName}
-                //           </div>
-                //           <div className={styles.user_job}>{post.authorJob}</div>
-                //         </div>
-                //       </div>
-
-                //       <div className={styles.btns_container}>
-                //         <div className={styles.trans_btn}>
-                //           <button>Tag Name</button>
-                //         </div>
-
-                //       </div>
-                //     </Link>
-                //   </>
-                // ))
-
-
               }
             </div>
 
@@ -282,8 +198,6 @@ export async function getServerSideProps({ query }) {
 
   const myCategoryId = data2.filter((c) => c.slug === query.category)
 
-  console.log(query.category)
-  console.log(myCategoryId[0].id, 'ss')
 
   const res = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogWithPage", {
     method: 'POST',
@@ -293,7 +207,7 @@ export async function getServerSideProps({ query }) {
     },
     body: JSON.stringify({
       "lang": 'en',
-      "blogCategoryId": myCategoryId[0].id || '1',
+      "blogCategoryId": myCategoryId[0]?.id || '0',
       "currentPage": page,
     })
   })
