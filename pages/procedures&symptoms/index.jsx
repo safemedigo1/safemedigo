@@ -20,15 +20,21 @@ const ProceduresSymptoms = () => {
 
 
   const [breakPoints] = useState([
-    { width: 1, pagination: true, showArrows: false, itemsToShow: 1.7, itemPosition: consts.START, width: 'fit-content', itemsToScroll: 1 },
-    { width: 550, pagination: true, showArrows: false, itemsToShow: 1.9, itemPosition: consts.START, width: 'fit-content', itemsToScroll: 1 },
-    { width: 850, pagination: true, showArrows: false, itemsToShow: 3, itemPosition: consts.START, width: 'fit-content', itemsToScroll: 1 },
+    { width: 1, pagination: true, showArrows: false, itemsToShow: 1.7, itemPosition: consts.START, itemsToScroll: 1 },
+    { width: 400, pagination: true, showArrows: false, itemsToShow: 1.7, itemPosition: consts.START, itemsToScroll: 1 },
+    { width: 600, pagination: true, showArrows: false, itemsToShow: 2.5, itemPosition: consts.START, itemsToScroll: 1 },
+    { width: 800, pagination: true, showArrows: false, itemsToShow: 3, itemPosition: consts.START, itemsToScroll: 1 },
     { width: 1150, pagination: false, itemsToShow: 4.1, itemsToScroll: 4, },
     { width: 1450, pagination: false, itemsToShow: 4.1, itemsToScroll: 4, },
     { width: 1750, pagination: false, itemsToShow: 4.1, itemsToScroll: 4, },
 
 
+
+
+
   ])
+
+
 
 
   const { Dermatology, Dermatology_1, Knee, } = imgs;
@@ -132,7 +138,7 @@ const ProceduresSymptoms = () => {
             <div className={styles.slider_container}>
               <Carousel enableSwipe={true} breakPoints={breakPoints}
                 transitionMs={1000}
-                onResize={currentBreakPoint => console.log(currentBreakPoint)}
+                onResize={currentBreakPoint => console.log(currentBreakPoint, "HEERRRREEs")}
                 renderArrow={myArrow}
               >
 
