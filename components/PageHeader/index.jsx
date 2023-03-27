@@ -91,7 +91,7 @@ const PageHeader = () => {
                     </>
                   }
 
-                  {pathname.includes('/blogs/hair') &&
+                  {pathname.includes('/blogs/') &&
                     <Typography variant='h4' >
                       I Was Suffuring From Gas Issues For 3 Years! (Blog Title)
                     </Typography>
@@ -102,7 +102,7 @@ const PageHeader = () => {
 
 
 
-                {pathname.includes('/blogs/hair') &&
+                {pathname.includes('/blogs/') &&
 
                   <Box display='flex' className={styles.review_by}>
                     <div className={styles.author_img}>

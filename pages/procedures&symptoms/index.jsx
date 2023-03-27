@@ -138,7 +138,6 @@ const ProceduresSymptoms = () => {
             <div className={styles.slider_container}>
               <Carousel enableSwipe={true} breakPoints={breakPoints}
                 transitionMs={1000}
-                onResize={currentBreakPoint => console.log(currentBreakPoint, "HEERRRREEs")}
                 renderArrow={myArrow}
               >
 

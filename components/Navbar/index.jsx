@@ -440,7 +440,7 @@ const Navbar = (props) => {
             {pathname === ('/blogs') | pathname.includes('/blogs/page') ?
               <h2>Home / All Blogs</h2> : <></>
             }
-            {pathname.includes('/blogs/hair') &&
+            {pathname.includes('/blogs/') &&
               <h2>Home / Blog / I Was Suffuring From Gas Issues For 3 Years!</h2>
             }
 
