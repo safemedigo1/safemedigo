@@ -15,18 +15,6 @@ import axios from "axios";
 
 export default function BolgDetails({ post }) {
   const [breakPoints] = useState([
-    // { width: 1, itemsToShow: 1, },
-    // // { width: 1, itemsToShow: 2, pagination: false },
-    // { width: 337, itemsToShow: 1, },
-
-    // { width: 450, itemsToShow: 2, },
-    // { width: 550, itemsToShow: 3, },
-    // { width: 850, itemsToShow: 3, },
-    // { width: 1150, itemsToShow: 3, },
-    // { width: 1450, itemsToShow: 5 },
-    // { width: 1750, itemsToShow: 6 },
-
-
     { width: 1, pagination: false, showArrows: false, itemsToShow: 1.2, },
     { width: 400, pagination: false, showArrows: false, itemsToShow: 1.5 },
     { width: 600, pagination: false, itemsToShow: 3.2, showArrows: false },
