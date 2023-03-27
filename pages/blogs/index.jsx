@@ -95,8 +95,7 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
         </Container>
       </div>
 
-      <div
-        className={styles.sections_container}>
+      <div className={styles.sections_container}>
         <section id={styles.blogs_sec}>
           <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.title}>
@@ -108,7 +107,13 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
               {
                 blogs?.data.map((post, idx) => (
                   <>
-                    <Link href={`/blogs/${post.slug}`} className={styles.box} key={idx}>
+                    <motion.a
+
+                      animate={{ opacity: 1 }}
+                      initial={{ opacity: 0 }}
+
+                      transition={{ duration: 1, }}
+                      href={`/blogs/${post.slug}`} className={styles.box} key={idx}>
                       <div className={styles.img_container}>
                         <img
                           src={post1.src}
@@ -146,7 +151,7 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
                         </div>
 
                       </div>
-                    </Link>
+                    </motion.a>
                   </>
                 ))
               }
