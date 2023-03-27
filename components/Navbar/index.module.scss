@@ -533,8 +533,12 @@
   padding-bottom: 19px;
   margin-top: 16px;
 
+  @media screen and (max-width: 450px) {
+    margin-top: 13px !important;
+  }
+
   @media screen and (max-width: 992px) {
-    margin-top: 13px;
+    margin-top: 0px;
   }
 
   h2 {

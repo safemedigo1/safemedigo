@@ -126,11 +126,12 @@ const Hero = () => {
                         <img src={card.img} alt="" />
                       </div>
 
-                      <div className={styles.tite}>
+                      <div className={styles.title}>
+                        <Typography variant="h6">{card.title}</Typography>
+
                         <div className={styles.link}>
                           <Link href='/'>Knee Replacement</Link>
                         </div>
-                        <Typography variant="h6"> {card.title}</Typography>
 
                         <div className={styles.rating}>
                           <Rating name="size-small" defaultValue={4} size="small" />
@@ -139,8 +140,6 @@ const Hero = () => {
 
 
                       </div>
-
-
                     </div>
 
 

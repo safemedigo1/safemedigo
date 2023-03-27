@@ -15,6 +15,7 @@ import { Tags } from './../../components/';
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 
 
@@ -46,10 +47,10 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
 
 
   const handleMyChangePage = (event, value) => {
+    event.preventDefault();
     router.push(`/blogs?page=${value}`)
 
     // setTimeout(() => window.location.reload(), 1000);
-
   }
 
 
@@ -64,14 +65,12 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.filter}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-autowidth-label">
-                Blogs
-              </InputLabel>
+              <InputLabel id="demo-simple-select-autowidth-label">Blogs</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 IconComponent={ExpandMoreOutlinedIcon}
-                label="Articles"
+                label="Blogs"
                 onChange={handleFilterChanges}
                 style={{
                   backgroundColor: "#E7EDEC",
@@ -81,9 +80,7 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
 
                 }}
               >
-                {/* <MenuItem value="All" >
-                  All
-                </MenuItem> */}
+
 
                 {blogCategory.map((item) => (
                   <MenuItem value={item.slug} >
@@ -98,13 +95,16 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
         </Container>
       </div>
 
-      <div className={styles.sections_container}>
+      <div
+        className={styles.sections_container}>
         <section id={styles.blogs_sec}>
           <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.title}>
               <Typography variant="h6">{category}</Typography>
             </div>
-            <div className={styles.boxes_container}>
+            <div
+
+              className={styles.boxes_container}>
               {
                 blogs?.data.map((post, idx) => (
                   <>
@@ -157,8 +157,7 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
               '& ul > li> button:not(.Mui-selected)': { color: '#004747', fontWeight: 'bold', fontSize: '14px' },
               '& ul > li> .Mui-selected': { backgroundColor: '#004747', color: '#ffffff', fontWeight: 'bold', fontSize: '18px' }
             }} className="pagination">
-              <Pagination count={totalPages} page={currentPage} key={router.query.page} onChange={handleMyChangePage
-              } />
+              <Pagination count={totalPages} page={currentPage} onChange={handleMyChangePage} />
 
             </Box>
           </Container>

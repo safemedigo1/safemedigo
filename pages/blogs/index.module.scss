@@ -73,12 +73,14 @@
       @media screen and (max-width: 1100px) {
         justify-content: space-around;
       }
+      @media screen and (max-width: 992px) {
+        justify-content: space-between;
+      }
       @media screen and (max-width: 750px) {
-        align-items: flex-start;
-        justify-content: center;
       }
       @media screen and (max-width: 450px) {
         justify-content: flex-start;
+        align-items: flex-start;
       }
 
       .box {
@@ -86,14 +88,14 @@
         width: 344px;
         border-radius: 5px;
         box-shadow: 0px 3px 9px #00000029;
-        min-height: 550px;
+        height: 518px;
         background-color: var(--main-white-color);
         display: flex;
         flex-direction: column;
         padding-bottom: 5px;
 
         @media screen and (max-width: 992px) {
-          width: 316px;
+          width: 300px;
           // height: 590px;
         }
 
@@ -139,6 +141,7 @@
 
           overflow: hidden;
           display: -webkit-box;
+          height: 100px;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 4;
           white-space: pre-wrap;
@@ -204,6 +207,7 @@
           width: 100%;
           padding-right: 22px;
           padding-left: 15px;
+          margin-bottom: 16px;
 
           .trans_btn,
           .turk_btn {
@@ -211,8 +215,11 @@
               margin-top: 31px;
             }
             button {
-              width: 122px;
-              height: 40px;
+              // width: 122px;
+              // height: 40px;
+
+              padding: 10px 18px 10px;
+
               background-color: var(--light-green-color);
               border: 2px solid var(--main-green-color);
               border-radius: 22px;
@@ -226,6 +233,9 @@
               cursor: pointer;
               margin-top: 10px;
               margin-left: 10px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
 
               &:hover {
                 border: 2px solid var(--main-green-color);

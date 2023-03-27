@@ -237,7 +237,7 @@ section#hero {
             }
           }
 
-          .tite {
+          .title {
             margin-top: 9px;
 
             h6 {
@@ -246,6 +246,7 @@ section#hero {
               font-weight: var(--font-bold);
 
               color: var(--main-dark-color);
+              line-height: 0;
               @media screen and (max-width: 992px) {
                 font-size: 16px;
               }
@@ -254,7 +255,6 @@ section#hero {
             .rating {
               display: flex;
               align-items: center;
-
               .reviews_num {
                 margin-left: 10px;
                 color: var(--main-dark-color);
@@ -271,7 +271,7 @@ section#hero {
             }
 
             .link {
-              margin-top: 8px;
+              margin-top: 16px;
               a {
                 color: var(--sec-cyan-color);
                 text-decoration: underline;
