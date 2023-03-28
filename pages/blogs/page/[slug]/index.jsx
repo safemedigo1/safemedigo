@@ -91,7 +91,7 @@ export default function BlogPage({ blogCategory, blogs, products, currentPage, t
             <div className={styles.boxes_container}>
               {blogs.data.map((post, idx) => (
                 <>
-                  <Link href={`/blogs/${post.title.split(' ').join('-')}`} className={styles.box} key={idx}>
+                  <Link href={`/blogs/${post.slug}/${post.id}`} className={styles.box} key={idx}>
                     <div className={styles.img_container}>
                       <img
                         src={post.image}

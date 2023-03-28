@@ -440,7 +440,7 @@ const Navbar = (props) => {
             {pathname === ('/blogs') | pathname === ('/blogs/page/[slug]') | pathname === ('/category/[slug]/page/[id]') ?
               <h2>Home / All Blogs</h2> : <></>
             }
-            {pathname === ('/blogs/[slug]') &&
+            {pathname === ('/blogs/[slug]/[id]') &&
               <h2>Home / Blog / I Was Suffuring From Gas Issues For 3 Years!</h2>
             }
 

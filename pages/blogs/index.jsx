@@ -103,7 +103,6 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
               <Typography variant="h6">{category}</Typography>
             </div>
             <div
-
               className={styles.boxes_container}>
               {
                 blogs?.data.map((post, idx) => (
@@ -113,7 +112,7 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
                       initial={{ opacity: 0 }}
 
                       transition={{ duration: 1, }}
-                      href={`/blogs/${post.slug}`} className={styles.box} key={idx}>
+                      href={`/blogs/${post.slug}/${post.id}`} className={styles.box} key={idx}>
                       <div className={styles.img_container}>
                         <img
                           src={post.image}
