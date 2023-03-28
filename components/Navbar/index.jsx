@@ -437,10 +437,10 @@ const Navbar = (props) => {
       {pathname !== '/' &&
         <nav id={styles.sec_nav}>
           <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-            {pathname === ('/blogs') | pathname.includes('/blogs/page') ?
+            {pathname === ('/blogs') | pathname === ('/blogs/page/[slug]') | pathname === ('/category/[slug]/page/[id]') ?
               <h2>Home / All Blogs</h2> : <></>
             }
-            {pathname.includes('/blogs/') &&
+            {pathname === ('/blogs/[slug]') &&
               <h2>Home / Blog / I Was Suffuring From Gas Issues For 3 Years!</h2>
             }
 

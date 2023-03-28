@@ -34,7 +34,7 @@ const PageHeader = () => {
                     <Typography variant='h4'>Home</Typography>
                   }
 
-                  {pathname.includes('/blogs/') &&
+                  {pathname === ('/blogs/[slug]') &&
                     <Typography variant='h4' >
                       acibadem Hospital (blog category)
                     </Typography>
@@ -43,7 +43,7 @@ const PageHeader = () => {
                 </div>
 
                 <div className={styles.title}>
-                  {pathname === ('/blogs') | pathname.includes('/blogs/page') ?
+                  {pathname === ('/blogs') | pathname === ('/blogs/page/[slug]') | pathname === ('/category/[slug]/page/[id]') ?
                     <>
                       <Typography variant='h4' >
                         Safemedigo Blogs
@@ -91,7 +91,7 @@ const PageHeader = () => {
                     </>
                   }
 
-                  {pathname.includes('/blogs/') &&
+                  {pathname === ('/blogs/[slug]') &&
                     <Typography variant='h4' >
                       I Was Suffuring From Gas Issues For 3 Years! (Blog Title)
                     </Typography>
@@ -102,7 +102,7 @@ const PageHeader = () => {
 
 
 
-                {pathname.includes('/blogs/') &&
+                {pathname === ('/blogs/[slug]') &&
 
                   <Box display='flex' className={styles.review_by}>
                     <div className={styles.author_img}>
