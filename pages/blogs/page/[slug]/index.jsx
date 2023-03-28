@@ -31,7 +31,8 @@ export default function BlogPage({ blogCategory, blogs, products, currentPage, t
     router.push(`/category/${value.props.value}/page/1`);
 
     // setTimeout(() => window.location.reload(), 2000);
-    setCategory(value.props.value)
+    setCategory(value.props.value
+    )
 
 
 

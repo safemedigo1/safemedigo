@@ -1,4 +1,4 @@
-import styles from '../../index.module.scss';
+import styles from '../../../../blogs/index.module.scss';
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
 import { Box, Container, Typography } from "@mui/material";
@@ -30,9 +30,6 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
     router.push(`/category/${value.props.value}/page/${currentPage}`);
     // setTimeout(() => window.location.reload(), 2000);
     setCategory(value.props.value)
-    console.log(value.props.value)
-    console.log(categorySlug)
-
   }
 
   return (
@@ -46,7 +43,7 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 IconComponent={ExpandMoreOutlinedIcon}
-                label="Blogs"
+                label={`${categorySlug}`}
                 onChange={handleFilterChanges}
                 style={{
                   backgroundColor: "#E7EDEC",
