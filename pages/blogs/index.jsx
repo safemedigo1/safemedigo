@@ -48,14 +48,14 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
 
   const handleMyChangePage = (event, value) => {
     event.preventDefault();
-    // router.push(`/blogs?page=${value}`)
+    router.push(`/blogs?page=${value}`)
 
     // setTimeout(() => window.location.reload(), 1000);
 
-    const category = router.query.category || "All";
-    router.push(`/category/${category}/page/${value}`);
+    // const category = router.query.category || "All";
+    // router.push(`/category/${category}/page/${value}`);
 
-    console.log(category)
+    // console.log(category)
 
   }
 
