@@ -48,9 +48,15 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
 
   const handleMyChangePage = (event, value) => {
     event.preventDefault();
-    router.push(`/blogs?page=${value}`)
+    // router.push(`/blogs?page=${value}`)
 
     // setTimeout(() => window.location.reload(), 1000);
+
+    const category = router.query.category || "All";
+    router.push(`/category/${category}/page/${value}`);
+
+    console.log(category)
+
   }
 
 
@@ -107,8 +113,8 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
               {
                 blogs?.data.map((post, idx) => (
                   <>
+                    {console.log(post)}
                     <motion.a
-
                       animate={{ opacity: 1 }}
                       initial={{ opacity: 0 }}
 
@@ -116,7 +122,7 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
                       href={`/blogs/${post.slug}`} className={styles.box} key={idx}>
                       <div className={styles.img_container}>
                         <img
-                          src={post1.src}
+                          src={post.image}
                           alt="Picture of the author"
                           width="width: 344px"
                         />
@@ -131,13 +137,14 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
 
                       <div className={styles.author_container}>
                         <div className={styles.img_container}>
-                          <img src={author.src} alt="" />
+                          <img src={post.publisherImage
+                          } alt="" />
                         </div>
                         <div className={styles.author_data}>
                           <div className={styles.user_name}>
-                            Majd eldeen
+                            {post.publisherName}
                           </div>
-                          <div className={styles.user_job}>CEO</div>
+                          <div className={styles.user_job}>{post.jobTitle}</div>
                         </div>
                       </div>
 
@@ -172,10 +179,6 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
         {/* Tag Component */}
         <Tags />
       </div>
-
-
-
-
     </>
   );
 };
