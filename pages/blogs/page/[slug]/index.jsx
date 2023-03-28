@@ -1,66 +1,49 @@
-import imgs from "../../assets/constants/imgs";
-import Link from "next/link";
-import Head from "next/head";
-import styles from "./index.module.scss";
+import styles from '../../index.module.scss';
+import { useRouter } from "next/router";
+import Pagination from "@mui/material/Pagination";
 import { Box, Container, Typography } from "@mui/material";
-
-import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
-
+import { Tags } from "@/components";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { Tags } from './../../components/';
-
-import { useRouter } from "next/router";
-import Pagination from "@mui/material/Pagination";
+import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
+import Link from "next/link";
+import Head from "next/head";
 import { useState } from "react";
-import { motion } from "framer-motion";
 
-
-
-
-
-export default function Blogs({ blogCategory, blogs, products, currentPage, totalPages }) {
-  const [category, setCategory] = useState('All');
-
-
-
+export default function BlogPage({ blogCategory, blogs, products, currentPage, totalPages }) {
   const router = useRouter();
-
-
-  const { author, post1 } = imgs
-
-
-  const handleFilterChanges = (event, value) => {
-    router.push(`/category/${value.props.value}/page/1`);
-    // setTimeout(() => window.location.reload(), 2000);
-    setCategory(value.props.children)
-  }
+  const [category, setCategory] = useState('All');
 
 
   const handleMyChangePage = (event, value) => {
     event.preventDefault();
-    // router.push(`/blogs?page=${value}`)
     console.log(value, "VALUEEEE")
-    // setTimeout(() => window.location.reload(), 1000);
+    if (value === 1) {
+      router.push(`/blogs/`);
+    }
 
-    // const category = router.query.category || "All";
-    // router.push(`/category/${category}/page/${value}`);
     router.push(`/blogs/page/${value}`)
+  }
 
-    // console.log(category)
+  const handleFilterChanges = (event, value) => {
+    router.push(`/category/${value.props.value}/page/1`);
+
+    // setTimeout(() => window.location.reload(), 2000);
+    setCategory(value.props.value)
+
 
 
   }
 
 
+  const count = blogs.count / 6;
+  const newCount = Math.floor(count);
   return (
-    <>
-      <Head>
-        <title>Blogs</title>
-        <meta name="blogs" content="blogs for doctors" />
-      </Head>
+    <div>
+
+
 
       <div id={styles.tags_filter}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -96,68 +79,56 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
         </Container>
       </div>
 
+
       <div className={styles.sections_container}>
         <section id={styles.blogs_sec}>
           <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.title}>
-              <Typography variant="h6">{category}</Typography>
+              <Typography variant="h6">Most Recent Posts</Typography>
             </div>
-            <div
 
-              className={styles.boxes_container}>
-              {
-                blogs?.data.map((post, idx) => (
-                  <>
-                    <motion.a
-                      animate={{ opacity: 1 }}
-                      initial={{ opacity: 0 }}
+            <div className={styles.boxes_container}>
+              {blogs.data.map((post, idx) => (
+                <>
+                  <Link href={`/blogs/${post.title.split(' ').join('-')}`} className={styles.box} key={idx}>
+                    <div className={styles.img_container}>
+                      <img
+                        src={post.image}
+                        alt="Picture of the author"
+                        width="width: 344px"
+                      />
+                    </div>
+                    <div className={styles.box_title}>
+                      <Typography variant="h5">{post.title}</Typography>
+                    </div>
 
-                      transition={{ duration: 1, }}
-                      href={`/blogs/${post.slug}`} className={styles.box} key={idx}>
+                    <div className={styles.desc}>
+                      <p>{post.briefContent}</p>
+                    </div>
+
+                    <div className={styles.author_container}>
                       <div className={styles.img_container}>
-                        <img
-                          src={post.image}
-                          alt="Picture of the author"
-                          width="width: 344px"
-                        />
-                      </div>
-                      <div className={styles.box_title}>
-                        <Typography variant="h5">{post.title}</Typography>
+                        <img src={post.authorImg} alt="" />
                       </div>
 
-                      <div className={styles.desc}>
-                        <p>{post.briefContent}</p>
-                      </div>
-
-                      <div className={styles.author_container}>
-                        <div className={styles.img_container}>
-                          <img src={post.publisherImage
-                          } alt="" />
+                      <div className={styles.author_data}>
+                        <div className={styles.user_name}>
+                          {post.authorName}
                         </div>
-                        <div className={styles.author_data}>
-                          <div className={styles.user_name}>
-                            {post.publisherName}
-                          </div>
-                          <div className={styles.user_job}>{post.jobTitle}</div>
-                        </div>
+                        <div className={styles.user_job}>{post.authorJob}</div>
+                      </div>
+                    </div>
+
+                    <div className={styles.btns_container}>
+                      <div className={styles.trans_btn}>
+                        <button>Tag Name</button>
                       </div>
 
-                      <div className={styles.btns_container}>
-                        <div className={styles.trans_btn}>
-                          {post.tags.map((tag) => (
-                            <>
-                              <button>{tag.tagName}</button>
-                            </>
-                          ))}
-                        </div>
-
-                      </div>
-                    </motion.a>
-                  </>
-                ))
-              }
+                    </div>
+                  </Link>
+                </>
+              ))}
             </div>
-
             <Box sx={{
               display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: "center", marginTop: '50px',
               '& ul > li> button:not(.Mui-selected)': { color: '#004747', fontWeight: 'bold', fontSize: '14px' },
@@ -168,21 +139,28 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
             </Box>
           </Container>
         </section>
-
-
-        {/* Tag Component */}
+        {/* Tags Component */}
         <Tags />
       </div>
-    </>
+
+
+
+
+
+
+    </div>
   );
-};
+}
 
 export async function getServerSideProps({ query }) {
-
-  const page = query.page || '1'; // If no page is specified, default to page 1
+  console.log(query, "MYQYERY")
+  const page = query.slug || '1'; // If no page is specified, default to page 1
   const limit = 6; // Number of products to display per page
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
+  console.log(query, "MYQYERY")
+
+
 
 
   const res1 = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
@@ -219,9 +197,7 @@ export async function getServerSideProps({ query }) {
   const totalPages = Math.ceil(totalProducts / limit);
 
 
-
-
-
+  console.log(page, 'CURRENT PAGEEE')
   return {
     props: {
       blogs: data,

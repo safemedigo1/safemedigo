@@ -1,6 +1,6 @@
+import styles from '../../index.module.scss';
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
-import styles from '../index.module.scss';
 import { Box, Container, Typography } from "@mui/material";
 import { Tags } from "@/components";
 import InputLabel from "@mui/material/InputLabel";
@@ -11,54 +11,56 @@ import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import Link from "next/link";
 import Head from "next/head";
 import { useState } from "react";
+const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages }) => {
+  const [category, setCategory] = useState('All');
 
-export default function BlogPage({ blogs }) {
   const router = useRouter();
-  const [currentPage, setCurrentPage] = useState()
 
-  const handleChangePage = (event, newPage) => {
-    router.push(`/blogs/page/${newPage}`);
-    setCurrentPage(newPage)
-    if (newPage === 1) {
+  const handleMyChangePage = (event, value) => {
+    event.preventDefault();
+    console.log(value, "VALUEEEE")
+    if (value === 1) {
       router.push(`/blogs/`);
     }
 
-    console.log(newPage, "NEW PAGE NUM")
+    router.push(`/blogs/page/${value}`)
+  }
 
-  };
+  const handleFilterChanges = (event, value) => {
+    router.push(`/category/${value.props.value}/page/${currentPage}`);
+    // setTimeout(() => window.location.reload(), 2000);
+    setCategory(value.props.value)
+    console.log(value.props.value)
+    console.log(categorySlug)
 
+  }
 
-  const count = blogs.count / 6;
-  const newCount = Math.floor(count);
   return (
     <div>
-
-
-
       <div id={styles.tags_filter}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-
-
           <div className={styles.filter}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-autowidth-label">
-                Articles
-              </InputLabel>
+              <InputLabel id="demo-simple-select-autowidth-label">Blogs</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 IconComponent={ExpandMoreOutlinedIcon}
-                label="Articles"
+                label="Blogs"
+                onChange={handleFilterChanges}
                 style={{
                   backgroundColor: "#E7EDEC",
                   color: "#000000",
                   fontSize: "18px",
                   fontWeight: "bold",
+
                 }}
               >
-                <MenuItem value="Acibadem">Acibadem Articles</MenuItem>
-                <MenuItem value="Acibadem">Acibadem Articles</MenuItem>
-                <MenuItem value="Acibadem">Acibadem Articles</MenuItem>
+                {blogCategory.map((item) => (
+                  <MenuItem value={item.slug} >
+                    {item.categeryName}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
           </div>
@@ -70,7 +72,7 @@ export default function BlogPage({ blogs }) {
         <section id={styles.blogs_sec}>
           <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.title}>
-              <Typography variant="h6">Most Recent Posts</Typography>
+              <Typography variant="h6">{category}</Typography>
             </div>
 
             <div className={styles.boxes_container}>
@@ -119,14 +121,8 @@ export default function BlogPage({ blogs }) {
               display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: "center", marginTop: '50px',
               '& ul > li> button:not(.Mui-selected)': { color: '#004747', fontWeight: 'bold', fontSize: '14px' },
               '& ul > li> .Mui-selected': { backgroundColor: '#004747', color: '#ffffff', fontWeight: 'bold', fontSize: '18px' }
-
             }} className="pagination">
-              <Pagination
-                count={newCount}
-                page={currentPage}
-                onChange={handleChangePage}
-                size="large"
-              />
+              <Pagination count={totalPages} page={currentPage} onChange={handleMyChangePage} />
 
             </Box>
           </Container>
@@ -134,18 +130,34 @@ export default function BlogPage({ blogs }) {
         {/* Tags Component */}
         <Tags />
       </div>
-
-
-
-
-
-
     </div>
-  );
+  )
 }
 
-export async function getServerSideProps(context) {
-  console.log(context.query.page, "COntext Over hereee")
+export default PageNumber
+
+export async function getServerSideProps({ query }) {
+  const categorySlug = query.slug
+  const page = query.id; // If no page is specified, default to page 1
+  const limit = 6; // Number of products to display per page
+  const startIndex = (page - 1) * limit;
+  const endIndex = startIndex + limit;
+
+
+
+  const res1 = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": 'en',
+    })
+  })
+  const data2 = await res1.json()
+
+  const myCategoryId = data2.filter((c) => c.slug === query.slug)
 
   const res = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogWithPage", {
     method: 'POST',
@@ -155,15 +167,29 @@ export async function getServerSideProps(context) {
     },
     body: JSON.stringify({
       "lang": 'en',
-      "blogCategoryId": 1,
-      "currentPage": context.query.page
+      "blogCategoryId": myCategoryId[0]?.id || '0',
+      "currentPage": page,
     })
   })
   const data = await res.json()
 
+
+  const products = data.data;
+  const totalProducts = data.count;
+  const totalPages = Math.ceil(totalProducts / limit);
+
+
   return {
     props: {
-      blogs: data
+      blogs: data,
+      blogCategory: data2,
+      products: products.slice(startIndex, endIndex),
+      currentPage: parseInt(page),
+      totalPages,
+      categorySlug
     }
   }
 }
+
+
+

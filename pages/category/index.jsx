@@ -1,12 +1,9 @@
 import React from 'react'
-import { useRouter } from "next/router";
 
-const category = () => {
-  const router = useRouter();
-
-
-
-  router.push(`/blogs`)
+const Category = () => {
+  return (
+    <h1>Category</h1>
+  )
 }
 
-export default category
+export default Category

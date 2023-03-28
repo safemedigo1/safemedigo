@@ -395,7 +395,6 @@ export default function BolgDetails({ post }) {
 
 */
 }
-
 // export async function getStaticPaths() {
 //   const res = await fetch(`https://safemedigo.vercel.app/api/blogs`);
 //   const data = await res.json();
@@ -411,3 +410,4 @@ export default function BolgDetails({ post }) {
 //     fallback: false,
 //   };
 // }
+
