@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "next/link";
 import imgs from "../../../../assets/constants/imgs";
-import { PageHeader, Tags } from "../../../../components";
+import { PageHeader, SecNavbar, Tags } from "../../../../components";
 import styles from "./../index.module.scss";
 import { Container, Typography, Rating, Box } from "@mui/material";
 import { BsLink45Deg, BsTwitter } from 'react-icons/bs';
@@ -22,7 +22,6 @@ export default function BolgDetailsID({ blog }) {
     { width: 1000, pagination: false, itemsToShow: 3.1 },
   ])
 
-  console.log(blog)
 
 
   const { art_vid, preparing, Result, Extraction, blog_detail, openingChannel, Transplanting, author, post3, blog_bg } = imgs;
@@ -37,10 +36,11 @@ export default function BolgDetailsID({ blog }) {
 
 
 
-
+  console.log(blog.content)
 
   return (
     <>
+      <SecNavbar blog={blog} />
       <PageHeader blog={blog} />
       <Box
         sx={{

@@ -92,7 +92,7 @@ const PageHeader = ({ blog }) => {
 
                   {pathname === ('/blogs/[slug]/[id]') &&
                     <Typography variant='h4' >
-                      {blog?.title}
+                      {blog?.title} (Blog Title)
                     </Typography>
                   }
                 </div>
