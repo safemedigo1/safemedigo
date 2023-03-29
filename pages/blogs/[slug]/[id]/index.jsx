@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "next/link";
 import imgs from "../../../../assets/constants/imgs";
-import { Tags } from "../../../../components";
+import { PageHeader, Tags } from "../../../../components";
 import styles from "./../index.module.scss";
 import { Container, Typography, Rating, Box } from "@mui/material";
 import { BsLink45Deg, BsTwitter } from 'react-icons/bs';
@@ -41,6 +41,7 @@ export default function BolgDetailsID({ blog }) {
 
   return (
     <>
+      <PageHeader blog={blog} />
       <Box
         sx={{
           display: {
@@ -173,7 +174,6 @@ export default function BolgDetailsID({ blog }) {
             </div>
             <div className={styles.boxes_container}>
               <Carousel breakPoints={breakPoints}
-                onResize={currentBreakPoint => console.log(currentBreakPoint, "HEERRRREEs")}
                 transitionMs={1000}
                 showArrows={false}
                 pagination={false}

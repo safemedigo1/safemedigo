@@ -1,7 +1,6 @@
 
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-import PageHeader from '../PageHeader/';
 import { useRouter } from "next/router";
 
 export default function Layout({ children }) {
@@ -14,7 +13,6 @@ export default function Layout({ children }) {
       {pathname !== '/search' ?
         <>
           <Navbar />
-          <PageHeader />
           <main>{children}</main>
           <Footer />
         </> : <>

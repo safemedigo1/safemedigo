@@ -6,6 +6,7 @@ import Link from 'next/link';
 import styles from './index.module.scss';
 import imgs from "../../../assets/constants/imgs";
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
+import { PageHeader } from '@/components';
 
 const TreatmentName = ({ blogs }) => {
   console.log(blogs)
@@ -215,6 +216,8 @@ const TreatmentName = ({ blogs }) => {
 
   return (
     <>
+      <PageHeader />
+
       <header id={styles.treatment}>
         <nav>
 
@@ -1238,24 +1241,24 @@ const TreatmentName = ({ blogs }) => {
 export default TreatmentName
 
 
-export async function getServerSideProps(context) {
-  const res = await fetch("http://safemedigoapi-001-site1.gtempurl.com/api/v1/Blog/GetAllBlogWithPage", {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      "lang": 'ar',
-      "blogCategoryId": 0,
-      "currentPage": 2
-    })
-  })
-  const data = await res.json()
+// export async function getServerSideProps(context) {
+//   const res = await fetch("http://safemedigoapi-001-site1.gtempurl.com/api/v1/Blog/GetAllBlogWithPage", {
+//     method: 'POST',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//       "lang": 'ar',
+//       "blogCategoryId": 0,
+//       "currentPage": 2
+//     })
+//   })
+//   const data = await res.json()
 
-  return {
-    props: {
-      blogs: data
-    }
-  }
-}
+//   return {
+//     props: {
+//       blogs: data
+//     }
+//   }
+// }

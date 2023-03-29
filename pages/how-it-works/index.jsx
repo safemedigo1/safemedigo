@@ -39,6 +39,7 @@ const HowItWorks = () => {
 
   return (
     <>
+      <PageHeader />
 
       <section id={styles.how_it_works}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>

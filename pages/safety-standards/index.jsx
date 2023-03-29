@@ -54,6 +54,7 @@ const SafetyStandards = () => {
 
   return (
     <>
+      <PageHeader />
 
       <section id={styles.safetyStandards}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>

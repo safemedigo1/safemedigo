@@ -2,7 +2,7 @@ import styles from '../../../../blogs/index.module.scss';
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
 import { Box, Container, Typography } from "@mui/material";
-import { Tags } from "@/components";
+import { PageHeader, Tags } from "@/components";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -34,6 +34,8 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
 
   return (
     <div>
+      <PageHeader />
+
       <div id={styles.tags_filter}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.filter}>

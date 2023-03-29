@@ -10,7 +10,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { Tags } from './../../components/';
+import { PageHeader, Tags } from './../../components/';
 
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
@@ -57,6 +57,8 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
 
   return (
     <>
+      <PageHeader />
+
       <Head>
         <title>Blogs</title>
         <meta name="blogs" content="blogs for doctors" />

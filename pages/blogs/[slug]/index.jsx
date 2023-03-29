@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "next/link";
 import imgs from "../../../assets/constants/imgs";
-import { Tags } from "../../../components";
+import { PageHeader, Tags } from "../../../components";
 import styles from "./index.module.scss";
 import { Container, Typography, Rating, Box } from "@mui/material";
 import { BsLink45Deg, BsTwitter } from 'react-icons/bs';
@@ -42,6 +42,7 @@ export default function BolgDetails({ post }) {
 
   return (
     <>
+      <PageHeader />
 
       <Box
         sx={{

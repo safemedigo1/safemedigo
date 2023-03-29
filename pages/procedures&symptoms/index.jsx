@@ -9,6 +9,7 @@ import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { PageHeader } from '@/components';
 
 const ProceduresSymptoms = () => {
   const [result, setResult] = useState(null)
@@ -97,6 +98,8 @@ const ProceduresSymptoms = () => {
 
   return (
     <>
+      <PageHeader />
+
       <MostPopular />
 
       <section id={styles.medical_department}>

@@ -1,6 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
-import Navbar from "../components/Navbar/index";
 import {
   ContactDetails,
   Help,
@@ -8,7 +6,6 @@ import {
   MostPopular,
   PatientStories,
   Safty,
-  Search,
   TreatmentCategory,
   WhySafemedigo,
   WhyTurkey
@@ -25,12 +22,7 @@ export default function Home() {
           name="viewport"
           content="width=device-width, initial-scale=1 viewport-fit=cover"
         />
-
-
         <link rel="icon" href="/favicon.ico" />
-
-
-
       </Head>
 
       {/* Home Page Sections  */}

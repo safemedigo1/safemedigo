@@ -14,7 +14,6 @@ export default function App({ Component, pageProps }) {
           <CssBaseline />
           <Layout>
             <Head>
-              <title>Your title</title>
               <meta name="description" content="Your description" />
               <link rel="icon" href="/favicon.ico" />
             </Head>

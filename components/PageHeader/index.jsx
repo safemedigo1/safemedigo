@@ -4,10 +4,9 @@ import imgs from "../../assets/constants/imgs";
 import { Container, Typography, Box } from "@mui/material";
 import { useRouter } from "next/router";
 
-const PageHeader = () => {
+const PageHeader = ({ blog }) => {
   const router = useRouter();
   const { pathname } = router;
-
   const { design, designMobile, author } = imgs;
   return (
 
@@ -93,10 +92,9 @@ const PageHeader = () => {
 
                   {pathname === ('/blogs/[slug]/[id]') &&
                     <Typography variant='h4' >
-                      I Was Suffuring From Gas Issues For 3 Years! (Blog Title)
+                      {blog?.title}
                     </Typography>
                   }
-
                 </div>
 
 
@@ -109,7 +107,7 @@ const PageHeader = () => {
                       <img src={author.src} alt="" />
                     </div>
                     <div className={styles.info}>
-                      <p>Andrew Mackay, Medical Content Writer</p>
+                      <p>{blog?.publisher}, Medical Content Writer</p>
                       <p className={styles.date}> Posted Apr 28, 2021,</p>
                     </div>
                   </Box>

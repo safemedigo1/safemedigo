@@ -62,6 +62,7 @@ const AboutUs = () => {
 
   return (
     <>
+      <PageHeader />
 
       <section id={styles.about_us}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>

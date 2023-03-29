@@ -2,7 +2,7 @@ import styles from '../../index.module.scss';
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
 import { Box, Container, Typography } from "@mui/material";
-import { Tags } from "@/components";
+import { PageHeader, Tags } from "@/components";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -43,9 +43,7 @@ export default function BlogPage({ blogCategory, blogs, products, currentPage, t
   const newCount = Math.floor(count);
   return (
     <div>
-
-
-
+      <PageHeader />
       <div id={styles.tags_filter}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.filter}>
@@ -79,8 +77,6 @@ export default function BlogPage({ blogCategory, blogs, products, currentPage, t
           </div>
         </Container>
       </div>
-
-
       <div className={styles.sections_container}>
         <section id={styles.blogs_sec}>
           <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
