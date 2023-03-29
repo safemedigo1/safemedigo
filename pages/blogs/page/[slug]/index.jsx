@@ -11,6 +11,7 @@ import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import Link from "next/link";
 import Head from "next/head";
 import { useState } from "react";
+import SecNavbar from '@/components/Navbar/SecNavbar';
 
 export default function BlogPage({ blogCategory, blogs, products, currentPage, totalPages }) {
   const router = useRouter();
@@ -42,7 +43,8 @@ export default function BlogPage({ blogCategory, blogs, products, currentPage, t
   const count = blogs.count / 6;
   const newCount = Math.floor(count);
   return (
-    <div>
+    <>
+      <SecNavbar />
       <PageHeader />
       <div id={styles.tags_filter}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -145,7 +147,7 @@ export default function BlogPage({ blogCategory, blogs, products, currentPage, t
 
 
 
-    </div>
+    </>
   );
 }
 

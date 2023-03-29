@@ -6,7 +6,7 @@ import Link from 'next/link';
 import styles from './index.module.scss';
 import imgs from "../../../assets/constants/imgs";
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
-import { PageHeader } from '@/components';
+import { PageHeader, SecNavbar } from '@/components';
 
 const TreatmentName = ({ blogs }) => {
   console.log(blogs)
@@ -216,6 +216,8 @@ const TreatmentName = ({ blogs }) => {
 
   return (
     <>
+      <SecNavbar />
+
       <PageHeader />
 
       <header id={styles.treatment}>

@@ -16,6 +16,7 @@ import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import SecNavbar from "@/components/Navbar/SecNavbar";
 
 
 
@@ -57,6 +58,7 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
 
   return (
     <>
+      <SecNavbar />
       <PageHeader />
 
       <Head>

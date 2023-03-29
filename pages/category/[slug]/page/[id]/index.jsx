@@ -11,8 +11,9 @@ import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import Link from "next/link";
 import Head from "next/head";
 import { useState } from "react";
+import SecNavbar from '@/components/Navbar/SecNavbar';
 const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages }) => {
-  const [category, setCategory] = useState('All');
+  const [category, setCategory] = useState(categorySlug);
 
   const router = useRouter();
 
@@ -34,13 +35,14 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
 
   return (
     <div>
+      <SecNavbar categorySlug={categorySlug} currentPage={currentPage} />
       <PageHeader />
 
       <div id={styles.tags_filter}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.filter}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-autowidth-label">Blogs</InputLabel>
+              <InputLabel id="demo-simple-select-autowidth-label">{categorySlug}</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -141,7 +143,6 @@ export async function getServerSideProps({ query }) {
   const limit = 6; // Number of products to display per page
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
-
 
 
   const res1 = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {

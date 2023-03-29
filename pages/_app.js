@@ -5,6 +5,13 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Head from "next/head";
 import Script from "next/script";
 import { Layout } from "../components";
+import "nprogress/nprogress.css";
+import Router from "next/router";
+import nProgress from "nprogress";
+import "../styles/nprogress.css";
+Router.events.on("routeChangeStart", nProgress.start);
+Router.events.on("routeChangeError", nProgress.done);
+Router.events.on("routeChangeComplete", nProgress.done);
 
 export default function App({ Component, pageProps }) {
   return (
@@ -26,7 +33,6 @@ export default function App({ Component, pageProps }) {
         })(window,document,'script','dataLayer','GTM-K26NKMK');
       `}
             </Script>
-
             <Component {...pageProps} />
           </Layout>
         </NoSsr>

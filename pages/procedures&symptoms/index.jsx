@@ -9,7 +9,7 @@ import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { PageHeader } from '@/components';
+import { PageHeader, SecNavbar } from '@/components';
 
 const ProceduresSymptoms = () => {
   const [result, setResult] = useState(null)
@@ -98,6 +98,7 @@ const ProceduresSymptoms = () => {
 
   return (
     <>
+      <SecNavbar />
       <PageHeader />
 
       <MostPopular />

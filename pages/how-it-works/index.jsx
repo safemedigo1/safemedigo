@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Typography, Box } from "@mui/material";
-import { PageHeader } from '@/components';
+import { PageHeader, SecNavbar } from '@/components';
 import { ContactDetails } from '@/components/Home';
 import imgs from "../../assets/constants/imgs";
 import { motion } from "framer-motion";
@@ -39,6 +39,7 @@ const HowItWorks = () => {
 
   return (
     <>
+      <SecNavbar />
       <PageHeader />
 
       <section id={styles.how_it_works}>

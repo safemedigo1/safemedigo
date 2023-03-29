@@ -434,37 +434,7 @@ const Navbar = (props) => {
 
 
 
-      {pathname !== '/' &&
-        <nav id={styles.sec_nav}>
-          <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-            {pathname === ('/blogs') | pathname === ('/blogs/page/[slug]') | pathname === ('/category/[slug]/page/[id]') ?
-              <h2>Home / All Blogs</h2> : <></>
-            }
-            {pathname === ('/blogs/[slug]/[id]') &&
-              <h2>Home / Blog / I Was Suffuring From Gas Issues For 3 Years!</h2>
-            }
 
-            {pathname === '/how-it-works' &&
-              <h2>Home / How It Works</h2>
-            }
-
-            {pathname === '/about-us' &&
-              <h2>Home / About Us</h2>
-            }
-
-            {pathname === '/safety-standards' &&
-              <h2>Home / Safety Standards</h2>
-            }
-
-            {pathname === '/procedures&symptoms' &&
-              <h2>Home / Procedures & Symptoms</h2>
-            }
-            {pathname.includes('/procedures&symptoms/') &&
-              <h2>Home / Hair Transplantation</h2>
-            }
-          </Container>
-        </nav>
-      }
     </>
   );
 };

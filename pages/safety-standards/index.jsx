@@ -1,4 +1,4 @@
-import { PageHeader } from '@/components'
+import { PageHeader, SecNavbar } from '@/components'
 import React from 'react'
 import imgs from "../../assets/constants/imgs";
 import styles from "./index.module.scss";
@@ -54,8 +54,9 @@ const SafetyStandards = () => {
 
   return (
     <>
-      <PageHeader />
+      <SecNavbar />
 
+      <PageHeader />
       <section id={styles.safetyStandards}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.boxes_container}>

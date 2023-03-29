@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Typography } from "@mui/material";
-import { PageHeader } from '@/components';
+import { PageHeader, SecNavbar } from '@/components';
 import { ContactDetails, Help, WhySafemedigo } from '@/components/Home';
 import imgs from "../../assets/constants/imgs";
 import styles from "./index.module.scss";
@@ -62,6 +62,7 @@ const AboutUs = () => {
 
   return (
     <>
+      <SecNavbar />
       <PageHeader />
 
       <section id={styles.about_us}>
