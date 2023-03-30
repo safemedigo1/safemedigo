@@ -43,14 +43,12 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
   const handleMyChangePage = (event, value) => {
     event.preventDefault();
     // router.push(`/blogs?page=${value}`)
-    console.log(value, "VALUEEEE")
     // setTimeout(() => window.location.reload(), 1000);
 
     // const category = router.query.category || "All";
     // router.push(`/category/${category}/page/${value}`);
     router.push(`/blogs/page/${value}`)
 
-    // console.log(category)
 
 
   }
@@ -120,7 +118,7 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
                       <div className={styles.img_container}>
                         <img
                           src={post.image}
-                          alt="Picture of the author"
+                          alt={post.title}
                           width="width: 344px"
                         />
                       </div>
@@ -134,8 +132,10 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
 
                       <div className={styles.author_container}>
                         <div className={styles.img_container}>
-                          <img src={post.publisherImage
-                          } alt="" />
+                          <img src={post?.publisherImage} alt={post.publisherName} />
+
+
+
                         </div>
                         <div className={styles.author_data}>
                           <div className={styles.user_name}>
