@@ -87,13 +87,18 @@ export default function BlogPage({ blogCategory, blogs, products, currentPage, t
             </div>
 
             <div className={styles.boxes_container}>
-              {blogs.data.map((post, idx) => (
+              {blogs?.data.map((post, idx) => (
                 <>
-                  <Link href={`/blogs/${post.slug}/${post.id}`} className={styles.box} key={idx}>
+                  <motion.a
+                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0 }}
+
+                    transition={{ duration: 1, }}
+                    href={`/blogs/${post.slug}`} className={styles.box} key={idx}>
                     <div className={styles.img_container}>
                       <img
                         src={post.image}
-                        alt="Picture of the author"
+                        alt={post.title}
                         width="width: 344px"
                       />
                     </div>
@@ -107,24 +112,32 @@ export default function BlogPage({ blogCategory, blogs, products, currentPage, t
 
                     <div className={styles.author_container}>
                       <div className={styles.img_container}>
-                        <img src={post.authorImg} alt="" />
-                      </div>
+                        <img src={post?.publisherImage} alt={post.publisherName} />
 
+
+
+                      </div>
                       <div className={styles.author_data}>
                         <div className={styles.user_name}>
-                          {post.authorName}
+                          {post.publisherName}
                         </div>
-                        <div className={styles.user_job}>{post.authorJob}</div>
+                        <div className={styles.user_job}>{post.jobTitle}</div>
                       </div>
                     </div>
 
                     <div className={styles.btns_container}>
                       <div className={styles.trans_btn}>
-                        <button>Tag Name</button>
+                        {post.tags.map((tag) => (
+                          <>
+                            <Link href={`/tags/${tag.slug}`}>
+                              <button>{tag.tagName}</button>
+                            </Link>
+                          </>
+                        ))}
                       </div>
 
                     </div>
-                  </Link>
+                  </motion.a>
                 </>
               ))}
             </div>

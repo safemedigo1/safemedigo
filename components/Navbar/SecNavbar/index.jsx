@@ -4,7 +4,7 @@ import styles from '../index.module.scss'
 import { useRouter } from "next/router";
 import Link from 'next/link';
 
-const SecNavbar = ({ categorySlug, currentPage, blog }) => {
+const SecNavbar = ({ categorySlug, currentPage, blog, tag }) => {
   const router = useRouter();
   const { pathname } = router;
   console.log(categorySlug)
@@ -12,7 +12,7 @@ const SecNavbar = ({ categorySlug, currentPage, blog }) => {
     <>
       <nav id={styles.sec_nav}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-          {/* {pathname === ('/blogs/[slug]/[id]') &&
+          {/* {pathname === ('/blogs/[slug]') &&
             <h2>Home / Blog / I Was Suffuring From Gas Issues For 3 Years!</h2>
           }
 
@@ -79,12 +79,16 @@ const SecNavbar = ({ categorySlug, currentPage, blog }) => {
             </>
           }
 
-          {pathname === ('/blogs/[slug]/[id]') &&
+          {pathname === ('/blogs/[slug]') &&
             <>
               <Link href='/'> Home </Link> <Link href='/blogs' > /Blogs</Link>  <Link href='#' className={styles.active}> /{blog.title}</Link>
             </>
           }
-          {console.log(blog)}
+          {pathname === ('/tags/[slug]') &&
+            <>
+              <Link href='/'> Home </Link> <Link href='/blogs' > /Blogs</Link>  <Link href='#' className={styles.active}> /{tag}</Link>
+            </>
+          }
         </Container>
       </nav>
     </>

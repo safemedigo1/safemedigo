@@ -33,16 +33,16 @@ const PageHeader = ({ blog }) => {
                     <Typography variant='h4'>Home</Typography>
                   }
 
-                  {pathname === ('/blogs/[slug]/[id]') &&
+                  {pathname === ('/blogs/[slug]') &&
                     <Typography variant='h4' >
-                      acibadem Hospital (blog category)
+                      {blog.categoryName} (blog category)
                     </Typography>
                   }
 
                 </div>
 
                 <div className={styles.title}>
-                  {pathname === ('/blogs') | pathname === ('/blogs/page/[slug]') | pathname === ('/category/[slug]/page/[id]') ?
+                  {pathname === ('/blogs') | pathname === ('/blogs/page/[slug]') | pathname === ('/category/[slug]/page/[id]') | pathname === ('/tags/[slug]') ?
                     <>
                       <Typography variant='h4' >
                         Safemedigo Blogs
@@ -90,7 +90,7 @@ const PageHeader = ({ blog }) => {
                     </>
                   }
 
-                  {pathname === ('/blogs/[slug]/[id]') &&
+                  {pathname === ('/blogs/[slug]') &&
                     <Typography variant='h4' >
                       {blog?.title} (Blog Title)
                     </Typography>
@@ -100,15 +100,15 @@ const PageHeader = ({ blog }) => {
 
 
 
-                {pathname === ('/blogs/[slug]/[id]') &&
+                {pathname === ('/blogs/[slug]') &&
 
                   <Box display='flex' className={styles.review_by}>
                     <div className={styles.author_img}>
                       <img src={author.src} alt="" />
                     </div>
                     <div className={styles.info}>
-                      <p>{blog?.publisher}, Medical Content Writer</p>
-                      <p className={styles.date}> Posted Apr 28, 2021,</p>
+                      <p>{blog?.publisher}, {blog.jobTitle}</p>
+                      <p className={styles.date}> Posted {blog.date}</p>
                     </div>
                   </Box>
                 }

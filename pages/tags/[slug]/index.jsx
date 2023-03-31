@@ -1,57 +1,20 @@
-import imgs from "../../assets/constants/imgs";
-import Link from "next/link";
-import Head from "next/head";
-import styles from "./index.module.scss";
-import { Box, Container, Typography } from "@mui/material";
-
-import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
-
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import { PageHeader, Tags } from './../../components/';
-
-import { useRouter } from "next/router";
-import Pagination from "@mui/material/Pagination";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import SecNavbar from "@/components/Navbar/SecNavbar";
-
-
-
-
-
-export default function Blogs({ blogCategory, blogs, products, currentPage, totalPages }) {
-  const [category, setCategory] = useState('All');
-
-
-  const router = useRouter();
-
-
-  console.log(blogs.data)
-
-  const handleFilterChanges = (event, value) => {
-    router.push(`/category/${value.props.value}/page/1`);
-    // setTimeout(() => window.location.reload(), 2000);
-    setCategory(value.props.children)
-  }
-
-
+import { PageHeader, SecNavbar, Tags } from '@/components'
+import { Box, Pagination, Typography } from '@mui/material'
+import { Container } from '@mui/system'
+import { motion } from 'framer-motion'
+import Head from 'next/head'
+import React from 'react'
+import styles from '../../blogs/index.module.scss'
+const TagsBlog = ({ blogCategory, blogs, products, currentPage, totalPages }) => {
   const handleMyChangePage = (event, value) => {
     event.preventDefault();
-    // router.push(`/blogs?page=${value}`)
-    // setTimeout(() => window.location.reload(), 1000);
-
-    // const category = router.query.category || "All";
-    // router.push(`/category/${category}/page/${value}`);
-    router.push(`/blogs/page/${value}`)
+    router.push(`/tags/page/${value}`)
   }
 
-
   return (
-    <>
-      <SecNavbar />
+    <div>
+
+      <SecNavbar tag={blogs.data[0].tags[0].tagName} />
       <PageHeader />
 
       <Head>
@@ -59,45 +22,11 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
         <meta name="blogs" content="blogs for doctors" />
       </Head>
 
-      <div id={styles.tags_filter}>
-        <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-          <div className={styles.filter}>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-autowidth-label">Blogs</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                IconComponent={ExpandMoreOutlinedIcon}
-                label="Blogs"
-                onChange={handleFilterChanges}
-                style={{
-                  backgroundColor: "#E7EDEC",
-                  color: "#000000",
-                  fontSize: "18px",
-                  fontWeight: "bold",
-
-                }}
-              >
-
-
-                {blogCategory.map((item) => (
-                  <MenuItem value={item.slug} >
-                    {item.categeryName}
-                  </MenuItem>
-                ))}
-
-
-              </Select>
-            </FormControl>
-          </div>
-        </Container>
-      </div>
-
       <div className={styles.sections_container}>
         <section id={styles.blogs_sec}>
-          <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+          <Container sx={{ maxWidth: "1239px", marginTop: '40px' }} maxWidth={false}>
             <div className={styles.title}>
-              <Typography variant="h6">{category}</Typography>
+              <Typography variant="h6">{blogs.data[0].tags[0].tagName}</Typography>
             </div>
             <div
               className={styles.boxes_container}>
@@ -116,6 +45,9 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
                           alt={post.title}
                           width="width: 344px"
                         />
+                        {console.log(post)}
+
+
                       </div>
                       <div className={styles.box_title}>
                         <Typography variant="h5">{post.title}</Typography>
@@ -128,8 +60,6 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
                       <div className={styles.author_container}>
                         <div className={styles.img_container}>
                           <img src={post?.publisherImage} alt={post.publisherName} />
-
-
 
                         </div>
                         <div className={styles.author_data}>
@@ -144,9 +74,7 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
                         <div className={styles.trans_btn}>
                           {post.tags.map((tag) => (
                             <>
-                              <Link href={`/tags/${tag.slug}`}>
-                                <button>{tag.tagName}</button>
-                              </Link>
+                              <button>{tag.tagName}</button>
                             </>
                           ))}
                         </div>
@@ -169,12 +97,17 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
           </Container>
         </section>
 
+
         {/* Tag Component */}
         <Tags />
       </div>
-    </>
-  );
-};
+
+    </div>
+  )
+}
+
+export default TagsBlog
+
 
 export async function getServerSideProps({ query }) {
 
@@ -184,7 +117,10 @@ export async function getServerSideProps({ query }) {
   const endIndex = startIndex + limit;
 
 
-  const res1 = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
+
+
+
+  const res = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogWithPageByTagName", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -192,21 +128,7 @@ export async function getServerSideProps({ query }) {
     },
     body: JSON.stringify({
       "lang": 'en',
-    })
-  })
-  const data2 = await res1.json()
-
-  const myCategoryId = data2.filter((c) => c.slug === query.category)
-
-  const res = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogWithPage", {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      "lang": 'en',
-      "blogCategoryId": myCategoryId[0]?.id || '0',
+      "tagSlug": query.slug,
       "currentPage": page,
     })
   })
@@ -224,12 +146,9 @@ export async function getServerSideProps({ query }) {
   return {
     props: {
       blogs: data,
-      blogCategory: data2,
       products: products.slice(startIndex, endIndex),
       currentPage: parseInt(page),
       totalPages,
-
     }
   }
 }
-

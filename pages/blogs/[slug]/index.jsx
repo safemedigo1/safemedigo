@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "next/link";
-import imgs from "../../../../assets/constants/imgs";
-import { PageHeader, SecNavbar, Tags } from "../../../../components";
-import styles from "./../index.module.scss";
+import imgs from "../../../assets/constants/imgs";
+import { PageHeader, SecNavbar, Tags } from "../../../components";
+import styles from "./index.module.scss";
 import { Container, Typography, Rating, Box } from "@mui/material";
 import { BsLink45Deg, BsTwitter } from 'react-icons/bs';
 import { FaFacebookSquare } from 'react-icons/fa';
@@ -13,6 +13,9 @@ import Carousel from 'react-elastic-carousel'
 
 
 export default function BolgDetailsID({ blog }) {
+  function createMarkup() {
+    return { __html: blog.content };
+  }
   const [breakPoints] = useState([
     { width: 1, pagination: false, showArrows: false, itemsToShow: 1.2, },
     { width: 400, pagination: false, showArrows: false, itemsToShow: 1.5 },
@@ -36,7 +39,7 @@ export default function BolgDetailsID({ blog }) {
 
 
 
-  console.log(blog.content)
+  console.log(blog)
 
   return (
     <>
@@ -87,49 +90,31 @@ export default function BolgDetailsID({ blog }) {
         <div id={styles.blog_details}>
 
           <div className={styles.headline}>
-
-            <div className={styles.headline_inner}>
-              <div className={styles.img_container}>
-                <img src={blog_detail.src} alt="Blog Name" />
-              </div>
-              <div className={styles.title}>
-                <Typography variant="h2">Headline</Typography>
-                <Typography >
-                  Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed
-                  Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna
-                  Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et
-                  Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea
-                  Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum
-                  Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed
-                  Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna
-                  Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et
-                  Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea
-                  Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum{" "}
-                </Typography>
-              </div>
-            </div>
+            <article className={styles.headline_inner}>
+              <div dangerouslySetInnerHTML={createMarkup()} />
+            </article>
 
             <div className={styles.blog_treatment_box}>
               <div className={styles.box}>
                 <div className={styles.img_container}>
-                  <img src={post3.src} alt="" />
+                  <img src={blog.treatment.image} alt={blog.treatment.name} />
                 </div>
 
                 <div className={styles.text_container}>
 
                   <div className={styles.treatment_title}>
-                    <Typography variant="h5">Treatment Name</Typography>
+                    <Typography variant="h5">{blog.treatment.name}</Typography>
                   </div>
                   <div className={styles.price}>
-                    <p>Cost Start From <span>1200 	&euro;</span></p>
+                    <p>Cost Start From <span>{blog.treatment.cost} &euro;</span></p>
                   </div>
                   <div className={styles.starts}>
-                    <Rating name="size-medium" defaultValue={4} />
-                    <span className={styles.reviews_num}>90 Reviews</span>
+                    <Rating name="size-medium" defaultValue={blog.treatment.rate} />
+                    <span className={styles.reviews_num}>{blog.treatment.reviewCount} Reviews</span>
                   </div>
                   <div className={styles.desc}>
                     <Typography >
-                      Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd
+                      {blog.treatment.description}
                     </Typography>
                   </div>
 
@@ -144,7 +129,7 @@ export default function BolgDetailsID({ blog }) {
             </div>
           </div>
 
-          <article>
+          {/* <article>
             <div className={styles.title}>
               <Typography variant="h2">Article Subline</Typography>
             </div>
@@ -195,10 +180,9 @@ export default function BolgDetailsID({ blog }) {
 
               </Carousel>
             </div>
+          </article> */}
 
-          </article>
-
-          <div className={styles.highlight}>
+          {/* <div className={styles.highlight}>
             <div className={styles.title}>
               <Typography variant='h2'>
                 Highlighted Text
@@ -210,7 +194,7 @@ export default function BolgDetailsID({ blog }) {
 
             </div>
 
-          </div>
+          </div> */}
 
 
           <div className={styles.share}>
@@ -234,7 +218,7 @@ export default function BolgDetailsID({ blog }) {
 
 
         <div id={styles.related_tags}>
-          <Tags />
+          <Tags blog={blog} />
         </div>
 
         <div id={styles.cards_container}>
@@ -256,17 +240,11 @@ export default function BolgDetailsID({ blog }) {
                     <div className={styles.name}>
                       <span>Sammer Mt,</span>
                     </div>
-
-
-
                   </div>
                   <div className={styles.comment}>
-
                     <Typography>
                       Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Nam Viverra Euismod Odio,
                     </Typography>
-
-
                     <div className={styles.date}>
                       Dec 6, 2017 - 18:55
                     </div>
@@ -299,6 +277,7 @@ export default function BolgDetailsID({ blog }) {
                 <div className={styles.load_more_btn}>
                   <button>Load More</button>
                 </div>
+
               </div>
             </div>
 
@@ -349,23 +328,19 @@ export default function BolgDetailsID({ blog }) {
 }
 
 export async function getServerSideProps({ query }) {
-
-  const res = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetBlogUiDataById", {
+  console.log(query)
+  const res = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetBlogUiDataBySlug", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "id": query.id,
+      "slug": query.slug,
       "lang": "en"
     })
   })
   const data = await res.json()
-
-
-
-
 
 
   return {
