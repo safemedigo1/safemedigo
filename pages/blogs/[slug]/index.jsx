@@ -67,21 +67,21 @@ export default function BolgDetailsID({ blog }) {
 
           <div className={styles.writer_info}>
             <div className={styles.writer_img}>
-              <img src={author.src} alt="" />
+              <img src={blog.publisherImage} alt={blog.publisher} />
             </div>
 
             <div className={styles.name}>
               <a href="#">
-                writer name
+                {blog.publisher}
 
               </a>
-              - medical content writer
+              - {blog.jobTitle}
             </div>
 
 
           </div>
           <div className={styles.date}>
-            November 4, 2020
+            {blog.date}
           </div>
         </Container>
       </Box>
