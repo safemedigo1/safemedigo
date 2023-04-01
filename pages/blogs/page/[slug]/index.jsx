@@ -13,7 +13,7 @@ import Head from "next/head";
 import { useState } from "react";
 import SecNavbar from '@/components/Navbar/SecNavbar';
 
-export default function BlogPage({ blogCategory, blogs, products, currentPage, totalPages }) {
+export default function BlogPage({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages }) {
   const router = useRouter();
   const [category, setCategory] = useState('All');
 
@@ -152,7 +152,7 @@ export default function BlogPage({ blogCategory, blogs, products, currentPage, t
           </Container>
         </section>
         {/* Tags Component */}
-        <Tags />
+        <Tags allBlogsTagsData={allBlogsTagsData} />
       </div>
 
 
@@ -208,8 +208,19 @@ export async function getServerSideProps({ query }) {
   const totalProducts = data.count;
   const totalPages = Math.ceil(totalProducts / limit);
 
+  const allBlogTagsRes = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogsTags", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": 'en',
+    })
+  })
 
-  console.log(page, 'CURRENT PAGEEE')
+  const allBlogsTagsData = await allBlogTagsRes.json()
+
   return {
     props: {
       blogs: data,
@@ -217,6 +228,7 @@ export async function getServerSideProps({ query }) {
       products: products.slice(startIndex, endIndex),
       currentPage: parseInt(page),
       totalPages,
+      allBlogsTagsData
 
     }
   }

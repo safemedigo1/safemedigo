@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import Head from 'next/head'
 import React from 'react'
 import styles from '../../blogs/index.module.scss'
-const TagsBlog = ({ blogCategory, blogs, products, currentPage, totalPages }) => {
+const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages }) => {
   const handleMyChangePage = (event, value) => {
     event.preventDefault();
     router.push(`/tags/page/${value}`)
@@ -99,7 +99,7 @@ const TagsBlog = ({ blogCategory, blogs, products, currentPage, totalPages }) =>
 
 
         {/* Tag Component */}
-        <Tags />
+        <Tags allBlogsTagsData={allBlogsTagsData} />
       </div>
 
     </div>
@@ -140,7 +140,18 @@ export async function getServerSideProps({ query }) {
   const totalPages = Math.ceil(totalProducts / limit);
 
 
+  const allBlogTagsRes = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogsTags", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": 'en',
+    })
+  })
 
+  const allBlogsTagsData = await allBlogTagsRes.json()
 
 
   return {
@@ -149,6 +160,7 @@ export async function getServerSideProps({ query }) {
       products: products.slice(startIndex, endIndex),
       currentPage: parseInt(page),
       totalPages,
+      allBlogsTagsData
     }
   }
 }

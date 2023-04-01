@@ -29,17 +29,9 @@ export default function BolgDetailsID({ blog }) {
 
   const { art_vid, preparing, Result, Extraction, blog_detail, openingChannel, Transplanting, author, post3, blog_bg } = imgs;
 
-  const cards = [
-    { title: 'Preparing', img: preparing.src, id: '1' },
-    { title: 'Extraction', img: Extraction.src, id: '2' },
-    { title: 'Opening Channels', img: openingChannel.src, id: '3' },
-    { title: 'Transplanting', img: Transplanting.src, id: '4' },
-    { title: 'Results', img: Result.src, id: '5' },
-  ]
 
 
 
-  console.log(blog)
 
   return (
     <>
@@ -94,39 +86,42 @@ export default function BolgDetailsID({ blog }) {
               <div dangerouslySetInnerHTML={createMarkup()} />
             </article>
 
-            <div className={styles.blog_treatment_box}>
-              <div className={styles.box}>
-                <div className={styles.img_container}>
-                  <img src={blog.treatment.image} alt={blog.treatment.name} />
+            {blog.treatment !== null &&
+              <div className={styles.blog_treatment_box}>
+                <div className={styles.box}>
+                  <div className={styles.img_container}>
+                    <img src={blog.treatment.image} alt={blog.treatment.name} />
+                  </div>
+
+                  <div className={styles.text_container}>
+
+                    <div className={styles.treatment_title}>
+                      <Typography variant="h5">{blog.treatment.name}</Typography>
+                    </div>
+                    <div className={styles.price}>
+                      <p>Cost Start From <span>{blog.treatment.cost} &euro;</span></p>
+                    </div>
+                    <div className={styles.starts}>
+                      <Rating name="size-medium" defaultValue={blog.treatment.rate} />
+                      <span className={styles.reviews_num}>{blog.treatment.reviewCount} Reviews</span>
+                    </div>
+                    <div className={styles.desc}>
+                      <Typography >
+                        {blog.treatment.description}
+                      </Typography>
+                    </div>
+
+                    <div className={styles.more_btn}>
+                      <a href='/'>
+                        <button>More</button>
+                      </a>
+                    </div>
+                  </div>
+
                 </div>
-
-                <div className={styles.text_container}>
-
-                  <div className={styles.treatment_title}>
-                    <Typography variant="h5">{blog.treatment.name}</Typography>
-                  </div>
-                  <div className={styles.price}>
-                    <p>Cost Start From <span>{blog.treatment.cost} &euro;</span></p>
-                  </div>
-                  <div className={styles.starts}>
-                    <Rating name="size-medium" defaultValue={blog.treatment.rate} />
-                    <span className={styles.reviews_num}>{blog.treatment.reviewCount} Reviews</span>
-                  </div>
-                  <div className={styles.desc}>
-                    <Typography >
-                      {blog.treatment.description}
-                    </Typography>
-                  </div>
-
-                  <div className={styles.more_btn}>
-                    <a href='/'>
-                      <button>More</button>
-                    </a>
-                  </div>
-                </div>
-
               </div>
-            </div>
+            }
+
           </div>
 
           {/* <article>

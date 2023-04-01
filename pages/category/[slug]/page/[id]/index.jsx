@@ -13,7 +13,7 @@ import Head from "next/head";
 import { useState } from "react";
 import SecNavbar from '@/components/Navbar/SecNavbar';
 import { motion } from 'framer-motion';
-const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages }) => {
+const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages, allBlogsTagsData }) => {
   const [category, setCategory] = useState(categorySlug);
 
   const router = useRouter();
@@ -145,7 +145,7 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
               </Container>
             </section>
             {/* Tags Component */}
-            <Tags />
+            <Tags allBlogsTagsData={allBlogsTagsData} />
           </div>
         </>
         :
@@ -203,6 +203,18 @@ export async function getServerSideProps({ query }) {
   const totalPages = Math.ceil(totalProducts / limit);
 
 
+  const allBlogTagsRes = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogsTags", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": 'en',
+    })
+  })
+
+  const allBlogsTagsData = await allBlogTagsRes.json()
   return {
     props: {
       blogs: data,
@@ -210,7 +222,8 @@ export async function getServerSideProps({ query }) {
       products: products.slice(startIndex, endIndex),
       currentPage: parseInt(page),
       totalPages,
-      categorySlug
+      categorySlug,
+      allBlogsTagsData
     }
   }
 }

@@ -22,14 +22,12 @@ import SecNavbar from "@/components/Navbar/SecNavbar";
 
 
 
-export default function Blogs({ blogCategory, blogs, products, currentPage, totalPages }) {
+export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages }) {
   const [category, setCategory] = useState('All');
-
+  console.log(allBlogsTagsData, "TAGS")
 
   const router = useRouter();
 
-
-  console.log(blogs.data)
 
   const handleFilterChanges = (event, value) => {
     router.push(`/category/${value.props.value}/page/1`);
@@ -170,7 +168,7 @@ export default function Blogs({ blogCategory, blogs, products, currentPage, tota
         </section>
 
         {/* Tag Component */}
-        <Tags />
+        <Tags allBlogsTagsData={allBlogsTagsData} />
       </div>
     </>
   );
@@ -220,7 +218,18 @@ export async function getServerSideProps({ query }) {
 
 
 
+  const allBlogTagsRes = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogsTags", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": 'en',
+    })
+  })
 
+  const allBlogsTagsData = await allBlogTagsRes.json()
   return {
     props: {
       blogs: data,
@@ -228,7 +237,7 @@ export async function getServerSideProps({ query }) {
       products: products.slice(startIndex, endIndex),
       currentPage: parseInt(page),
       totalPages,
-
+      allBlogsTagsData
     }
   }
 }

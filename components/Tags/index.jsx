@@ -2,7 +2,7 @@ import { Container, Typography } from "@mui/material";
 import Link from 'next/link';
 import React from 'react'
 import styles from './index.module.scss'
-const Tags = ({ blog }) => {
+const Tags = ({ blog, allBlogsTagsData }) => {
   const tags = [
     { tag: "All" },
     { tag: "Tag name" },
@@ -29,7 +29,7 @@ const Tags = ({ blog }) => {
         <div className={styles.tags_container}>
 
 
-          {blog?.tags.map((tag, idx) => (
+          {allBlogsTagsData?.map((tag, idx) => (
             <>
               <div className={styles.tag} key={idx}>
                 <Link href={`/tags/${tag.slug}`}>
