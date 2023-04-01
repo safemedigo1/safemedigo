@@ -47,13 +47,13 @@ export default function BolgDetailsID({ blog }) {
         }}
         id={styles.signle_blog_header}>
         <div className={styles.img_container}>
-          <img src={blog_bg.src} alt="" />
+          <img src={blog.image} alt={blog.title} />
         </div>
 
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.title}>
             <Typography variant="h1">
-              I Was Suffuring From Gas Issues For 3 Years! (Blog Title)
+              {blog.title} (Blog Title)
             </Typography>
           </div>
 
@@ -72,6 +72,22 @@ export default function BolgDetailsID({ blog }) {
 
 
           </div>
+
+          <Box sx={{ marginTop: '20px' }} className={styles.writer_info}>
+            <div className={styles.writer_img}>
+              <img src={blog.reviewerImage} alt={blog.reviewer} />
+            </div>
+
+            <div className={styles.name}>
+              <a href="#">
+                {blog.reviewer}
+              </a>
+              - {blog.reviewerJobTitle}
+            </div>
+
+
+          </Box>
+
           <div className={styles.date}>
             {blog.date}
           </div>
@@ -206,11 +222,6 @@ export default function BolgDetailsID({ blog }) {
             <hr />
           </div>
         </div>
-
-
-
-
-
 
         <div id={styles.related_tags}>
           <Tags blog={blog} />
