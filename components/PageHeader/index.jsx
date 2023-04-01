@@ -101,16 +101,26 @@ const PageHeader = ({ blog }) => {
 
 
                 {pathname === ('/blogs/[slug]') &&
+                  <>
+                    <Box display='flex' className={styles.review_by}>
+                      <div className={styles.author_img}>
+                        <img src={blog.publisherImage} alt="" />
+                      </div>
+                      <div className={styles.info}>
+                        <p>{blog?.publisher}, {blog.jobTitle}</p>
+                      </div>
+                    </Box>
 
-                  <Box display='flex' className={styles.review_by}>
-                    <div className={styles.author_img}>
-                      <img src={author.src} alt="" />
-                    </div>
-                    <div className={styles.info}>
-                      <p>{blog?.publisher}, {blog.jobTitle}</p>
-                      <p className={styles.date}> Posted {blog.date}</p>
-                    </div>
-                  </Box>
+                    <Box sx={{ display: 'flex', marginTop: '20px' }} className={styles.review_by}>
+                      <div className={styles.author_img}>
+                        <img src={blog.reviewerImage} alt="" />
+                      </div>
+                      <div className={styles.info}>
+                        <p>{blog?.reviewer}, {blog.reviewerJobTitle}</p>
+                        <p className={styles.date}> Posted {blog.date}</p>
+                      </div>
+                    </Box>
+                  </>
                 }
 
               </div>
