@@ -157,6 +157,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
                           </div>
 
                         </div>
+
                       </Link>
 
                     </motion.div>
