@@ -9,6 +9,7 @@ import { FaFacebookSquare } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 import { GoPlus } from 'react-icons/go'
 import Carousel from 'react-elastic-carousel'
+import Image from 'next/image'
 
 
 
@@ -47,7 +48,7 @@ export default function BolgDetailsID({ blog }) {
         }}
         id={styles.signle_blog_header}>
         <div className={styles.img_container}>
-          <img src={blog.image} alt={blog.title} />
+          <Image width={50} height={4} src={blog.image} alt={blog.title} />
         </div>
 
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -59,7 +60,7 @@ export default function BolgDetailsID({ blog }) {
 
           <div className={styles.writer_info}>
             <div className={styles.writer_img}>
-              <img src={blog.publisherImage} alt={blog.publisher} />
+              <Image width={50} height={4} src={blog.publisherImage} alt={blog.publisher} />
             </div>
 
             <div className={styles.name}>
@@ -75,7 +76,7 @@ export default function BolgDetailsID({ blog }) {
 
           <Box sx={{ marginTop: '20px' }} className={styles.writer_info}>
             <div className={styles.writer_img}>
-              <img src={blog.reviewerImage} alt={blog.reviewer} />
+              <Image width={50} height={4} src={blog.reviewerImage} alt={blog.reviewer} />
             </div>
 
             <div className={styles.name}>
@@ -106,7 +107,7 @@ export default function BolgDetailsID({ blog }) {
               <div className={styles.blog_treatment_box}>
                 <div className={styles.box}>
                   <div className={styles.img_container}>
-                    <img src={blog.treatment.image} alt={blog.treatment.name} />
+                    <Image width={50} height={4} src={blog.treatment.image} alt={blog.treatment.name} />
                   </div>
 
                   <div className={styles.text_container}>
@@ -173,7 +174,7 @@ export default function BolgDetailsID({ blog }) {
                 <div className={styles.user_comment}>
                   <div className={styles.user_data}>
                     <div className={styles.img_container}>
-                      <img src={author.src} alt="" />
+                      <Image width={50} height={4} src={author.src} alt="" />
                     </div>
                     <div className={styles.name}>
                       <span>Sammer Mt,</span>
@@ -192,7 +193,7 @@ export default function BolgDetailsID({ blog }) {
                 <div className={styles.admin_comment}>
                   <div className={styles.admin_data}>
                     <div className={styles.img_container}>
-                      <img src={author.src} alt="" />
+                      <Image width={50} height={4} src={author.src} alt="" />
                     </div>
                     <div className={styles.name}>
                       <span>Admin</span>

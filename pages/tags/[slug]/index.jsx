@@ -5,6 +5,8 @@ import { motion } from 'framer-motion'
 import Head from 'next/head'
 import React from 'react'
 import styles from '../../blogs/index.module.scss'
+import Image from 'next/image'
+
 const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages }) => {
   const handleMyChangePage = (event, value) => {
     event.preventDefault();
@@ -40,10 +42,11 @@ const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPag
                       transition={{ duration: 1, }}
                       href={`/blogs/${post.slug}`} className={styles.box} key={idx}>
                       <div className={styles.img_container}>
-                        <img
+                        <Image
                           src={post.image}
                           alt={post.title}
-                          width="width: 344px"
+                          width={344}
+                          height={500}
                         />
                         {console.log(post)}
 
@@ -59,7 +62,8 @@ const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPag
 
                       <div className={styles.author_container}>
                         <div className={styles.img_container}>
-                          <img src={post?.publisherImage} alt={post.publisherName} />
+                          <Image width={344}
+                            height={500} src={post?.publisherImage} alt={post.publisherName} />
 
                         </div>
                         <div className={styles.author_data}>

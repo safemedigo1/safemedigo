@@ -18,13 +18,13 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import SecNavbar from "@/components/Navbar/SecNavbar";
 
+import Image from 'next/image'
 
 
 
 
 export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages }) {
   const [category, setCategory] = useState('All');
-  console.log(allBlogsTagsData, "TAGS")
 
   const router = useRouter();
 
@@ -109,10 +109,11 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
                       transition={{ duration: 1, }}
                       href={`/blogs/${post.slug}`} className={styles.box} key={idx}>
                       <div className={styles.img_container}>
-                        <img
+                        <Image
                           src={post.image}
                           alt={post.title}
-                          width="width: 344px"
+                          width={344}
+                          height={500}
                         />
                       </div>
                       <div className={styles.box_title}>
@@ -125,7 +126,10 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
 
                       <div className={styles.author_container}>
                         <div className={styles.img_container}>
-                          <img src={post?.publisherImage} alt={post.publisherName} />
+                          <Image
+                            width={344}
+                            height={500}
+                            src={post?.publisherImage} alt={post.publisherName} />
 
 
 

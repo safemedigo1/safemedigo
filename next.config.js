@@ -12,7 +12,8 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    unoptimized: true,
+    //   unoptimized: true,
+    domains: ["safemedigocpv2-001-site1.atempurl.com"],
   },
 
   typescript: {
