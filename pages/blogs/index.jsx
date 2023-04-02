@@ -17,7 +17,7 @@ import Pagination from "@mui/material/Pagination";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import SecNavbar from "@/components/Navbar/SecNavbar";
-
+import axios from 'axios';
 import Image from 'next/image'
 
 
@@ -200,19 +200,17 @@ export async function getServerSideProps({ query }) {
 
   const myCategoryId = data2.filter((c) => c.slug === query.category)
 
-  const res = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogWithPage", {
-    method: 'POST',
+  const getBlogWithPageRes = await axios.post("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogWithPage", {
+    "lang": 'en',
+    "blogCategoryId": myCategoryId?.[0]?.id || '0',
+    "currentPage": page || 1
+  }, {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      "lang": 'en',
-      "blogCategoryId": myCategoryId[0]?.id || '0',
-      "currentPage": page,
-    })
-  })
-  const data = await res.json()
+    }
+  });
+  const data = await getBlogWithPageRes.data;
 
 
   const products = data.data;
@@ -234,6 +232,12 @@ export async function getServerSideProps({ query }) {
   })
 
   const allBlogsTagsData = await allBlogTagsRes.json()
+
+
+
+
+
+
   return {
     props: {
       blogs: data,

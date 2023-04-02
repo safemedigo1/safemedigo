@@ -10,6 +10,7 @@ import { HiOutlineMail } from 'react-icons/hi';
 import { GoPlus } from 'react-icons/go'
 import Carousel from 'react-elastic-carousel'
 import Image from 'next/image'
+import { useRouter } from "next/router";
 
 
 
@@ -31,6 +32,37 @@ export default function BolgDetailsID({ blog }) {
   const { author, } = imgs;
 
 
+  const router = useRouter();
+
+  function shareToFacebook() {
+    const url = router.asPath;
+    const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=www.safemedigo.com/${url}`;
+    window.open(shareUrl, '_blank');
+  }
+
+  function shareToTwitter() {
+    const url = router.asPath;
+    const shareUrl = `https://twitter.com/intent/tweet?url=www.safemedigo.com/${url}`;
+
+    window.open(shareUrl, '_blank');
+  }
+
+
+  function shareToEmail() {
+    const url = router.asPath;
+    const shareUrl = `mailto:?body=www.safemedigo.com/${url}`;
+
+    window.location.href = shareUrl;
+  }
+
+
+  function shareToLink() {
+    const url = router.asPath;
+
+    navigator.clipboard.writeText(`www.safemedigo.com/${url}`)
+      .then(() => alert('Link copied to clipboard!'))
+      .catch(error => console.error(error));
+  }
 
 
 
@@ -147,10 +179,10 @@ export default function BolgDetailsID({ blog }) {
               Share it.
             </Typography>
             <div className={styles.icons_container}>
-              <BsTwitter />
-              <FaFacebookSquare />
-              <HiOutlineMail />
-              <BsLink45Deg />
+              <BsTwitter onClick={shareToTwitter} />
+              <FaFacebookSquare onClick={shareToFacebook} />
+              <HiOutlineMail onClick={shareToEmail} />
+              <BsLink45Deg onClick={shareToLink} />
             </div>
             <hr />
           </div>
