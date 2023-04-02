@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import imgs from "../../../assets/constants/imgs";
 import { PageHeader, SecNavbar, Tags } from "../../../components";
 import styles from "./index.module.scss";
@@ -9,17 +9,18 @@ import { HiOutlineMail } from 'react-icons/hi';
 import { GoPlus } from 'react-icons/go'
 import Image from 'next/image'
 import { useRouter } from "next/router";
+import axios from "axios";
 
 
 
 export default function BolgDetailsID({ blog, allBlogsTagsData }) {
+  const [commentsDetails, setCommentsDetails] = useState()
   function createMarkup() {
     return { __html: blog.content };
   }
 
 
   const { author, } = imgs;
-  console.log(blog)
 
   const router = useRouter();
 
@@ -47,13 +48,40 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
   function shareToLink() {
     const url = router.asPath;
-
     navigator.clipboard.writeText(`www.safemedigo.com/${url}`)
       .then(() => alert('Link copied to clipboard!'))
       .catch(error => console.error(error));
   }
 
+  useEffect(() => {
+    getAllCommentByPage()
+    console.log(commentsDetails, 'HERE')
 
+  }, [])
+
+  // Blog Comments API's
+  const getAllCommentByPage = async () => {
+    const getBlogComments = await axios.post("http://safemedigoapi2-001-site1.atempurl.com/api/v1/BlogComment/GetAllBlogCommentByPage", {
+      "currentPage": 1,
+      "blogId": 37
+    }, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+
+    setCommentsDetails(getBlogComments.data)
+  }
+
+  const handleReplay = async () => {
+    const getBlogComments = await axios.post("http://safemedigoapi2-001-site1.atempurl.com/api/v1/BlogComment/AddReplay", {
+      "id": 2,
+      "replay": "Test Replay"
+    },);
+
+    getBlogComments()
+  }
 
 
   return (
@@ -194,9 +222,9 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                 </Typography>
                 <hr />
               </div>
-              <div className={styles.card_body}>
 
-                <div className={styles.user_comment}>
+              <div className={styles.card_body}>
+                {/* <div className={styles.user_comment}>
                   <div className={styles.user_data}>
                     <div className={styles.img_container}>
                       <Image width={50} height={4} src={author.src} alt="" />
@@ -213,9 +241,58 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                       Dec 6, 2017 - 18:55
                     </div>
                   </div>
-                </div>
+                </div> */}
+                {commentsDetails !== undefined ?
+                  commentsDetails?.map((comment, idx) => (
+                    <>
+                      <div className={styles.user_comment} key={idx}>
+                        <div className={styles.user_data}>
+                          <div className={styles.img_container}>
+                            <Image width={50} height={4} src={author.src} alt="" />
+                          </div>
+                          <div className={styles.name}>
+                            <span>user,</span>
+                          </div>
+                        </div>
+                        <div className={styles.comment}>
+                          <Typography>
+                            {comment.comment}
+                          </Typography>
+                          <div className={styles.date}>
+                            {comment.createdDate}
+                          </div>
+                        </div>
+                        <div className="replay">
+                          <button onClick={handleReplay}>REPLAY</button>
+                        </div>
+                      </div>
 
-                <div className={styles.admin_comment}>
+                      <div className={styles.admin_comment}>
+                        <div className={styles.admin_data}>
+                          <div className={styles.img_container}>
+                            <Image width={50} height={4} src={author.src} alt="" />
+                          </div>
+                          <div className={styles.name}>
+                            <span>reply user comment</span>
+                          </div>
+                        </div>
+
+                        <div className={styles.comment}>
+                          <Typography>
+                            {comment.reply}
+                          </Typography>
+
+                          <div className={styles.date}>
+                            {comment.replyDate}
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  ))
+
+                  : <h1>No Comments</h1>}
+
+                {/* <div className={styles.admin_comment}>
                   <div className={styles.admin_data}>
                     <div className={styles.img_container}>
                       <Image width={50} height={4} src={author.src} alt="" />
@@ -236,7 +313,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                       Dec 6, 2017 - 18:55
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div className={styles.load_more_btn}>
                   <button>Load More</button>
