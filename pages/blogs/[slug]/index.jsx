@@ -27,7 +27,7 @@ export default function BolgDetailsID({ blog }) {
 
 
 
-  const { art_vid, preparing, Result, Extraction, blog_detail, openingChannel, Transplanting, author, post3, blog_bg } = imgs;
+  const { author, } = imgs;
 
 
 
@@ -139,74 +139,6 @@ export default function BolgDetailsID({ blog }) {
             }
 
           </div>
-
-          {/* <article>
-            <div className={styles.title}>
-              <Typography variant="h2">Article Subline</Typography>
-            </div>
-
-            <div className={styles.article_container}>
-              <div className={styles.video_container}>
-                <img src={art_vid.src} alt="" />
-              </div>
-
-              <div className={styles.text_container}>
-                <Typography >
-                  Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed
-                  Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna
-                  Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et
-                  Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No
-                  Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem
-                  Ipsum Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr,
-                  Sed Diam Nonumy
-                </Typography>
-
-                <div className={styles.links}>
-                  <a href="#">Go To Treatment Page Link</a>
-                  <a href="#">Doctor Category</a>
-                </div>
-              </div>
-
-            </div>
-            <div className={styles.boxes_container}>
-              <Carousel breakPoints={breakPoints}
-                transitionMs={1000}
-                showArrows={false}
-                pagination={false}
-                itemsToScroll={1}
-              >
-                {cards.map((card, index) => (
-                  <>
-                    <div className={styles.box} key={index}>
-                      <div className={styles.box_title}>
-                        <Typography variant="h6">{card.id} {card.title}</Typography>
-                      </div>
-                      <div className={styles.img_container}>
-                        <img src={card.img} alt="" />
-                      </div>
-                    </div>
-
-                  </>
-                ))}
-
-              </Carousel>
-            </div>
-          </article> */}
-
-          {/* <div className={styles.highlight}>
-            <div className={styles.title}>
-              <Typography variant='h2'>
-                Highlighted Text
-              </Typography>
-              <Typography >
-                Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum
-              </Typography>
-
-
-            </div>
-
-          </div> */}
-
 
           <div className={styles.share}>
             <Typography>
