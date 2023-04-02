@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "next/link";
+import React, { useState } from "react";
 import imgs from "../../../assets/constants/imgs";
 import { PageHeader, SecNavbar, Tags } from "../../../components";
 import styles from "./index.module.scss";
@@ -8,7 +7,6 @@ import { BsLink45Deg, BsTwitter } from 'react-icons/bs';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 import { GoPlus } from 'react-icons/go'
-import Carousel from 'react-elastic-carousel'
 import Image from 'next/image'
 import { useRouter } from "next/router";
 
@@ -18,15 +16,6 @@ export default function BolgDetailsID({ blog }) {
   function createMarkup() {
     return { __html: blog.content };
   }
-  const [breakPoints] = useState([
-    { width: 1, pagination: false, showArrows: false, itemsToShow: 1.2, },
-    { width: 400, pagination: false, showArrows: false, itemsToShow: 1.5 },
-    { width: 600, pagination: false, itemsToShow: 3.2, showArrows: false },
-    { width: 800, pagination: false, itemsToShow: 3.1, showArrows: false },
-    { width: 900, pagination: false, itemsToShow: 3 },
-    { width: 1000, pagination: false, itemsToShow: 3.1 },
-  ])
-
 
 
   const { author, } = imgs;
@@ -65,7 +54,7 @@ export default function BolgDetailsID({ blog }) {
   }
 
 
-
+  console.log(blog)
   return (
     <>
       <SecNavbar blog={blog} />
@@ -299,7 +288,6 @@ export default function BolgDetailsID({ blog }) {
 }
 
 export async function getServerSideProps({ query }) {
-  console.log(query)
   const res = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetBlogUiDataBySlug", {
     method: 'POST',
     headers: {

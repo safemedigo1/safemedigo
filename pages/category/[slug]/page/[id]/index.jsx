@@ -13,6 +13,8 @@ import Head from "next/head";
 import { useState } from "react";
 import SecNavbar from '@/components/Navbar/SecNavbar';
 import { motion } from 'framer-motion';
+import Image from 'next/image'
+
 const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages, allBlogsTagsData }) => {
   const [category, setCategory] = useState(categorySlug);
 
@@ -89,11 +91,13 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
                         transition={{ duration: 1, }}
                         href={`/blogs/${post.slug}`} className={styles.box} key={idx}>
                         <div className={styles.img_container}>
-                          <img
+                          <Image
                             src={post.image}
                             alt={post.title}
-                            width="width: 344px"
+                            width={344}
+                            height={500}
                           />
+
                         </div>
                         <div className={styles.box_title}>
                           <Typography variant="h5">{post.title}</Typography>
@@ -105,7 +109,10 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
 
                         <div className={styles.author_container}>
                           <div className={styles.img_container}>
-                            <img src={post?.publisherImage} alt={post.publisherName} />
+                            <Image
+                              width={344}
+                              height={500}
+                              src={post?.publisherImage} alt={post.publisherName} />
 
 
 
