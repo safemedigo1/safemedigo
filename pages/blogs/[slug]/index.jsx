@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 
 
 
-export default function BolgDetailsID({ blog }) {
+export default function BolgDetailsID({ blog, allBlogsTagsData }) {
   function createMarkup() {
     return { __html: blog.content };
   }
@@ -54,7 +54,7 @@ export default function BolgDetailsID({ blog }) {
   }
 
 
-  console.log(blog)
+
   return (
     <>
       <SecNavbar blog={blog} />
@@ -75,7 +75,7 @@ export default function BolgDetailsID({ blog }) {
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.title}>
             <Typography variant="h1">
-              {blog.title} (Blog Title)
+              {blog.title}
             </Typography>
           </div>
 
@@ -87,7 +87,6 @@ export default function BolgDetailsID({ blog }) {
             <div className={styles.name}>
               <a href="#">
                 {blog.publisher}
-
               </a>
               - {blog.jobTitle}
             </div>
@@ -106,8 +105,6 @@ export default function BolgDetailsID({ blog }) {
               </a>
               - {blog.reviewerJobTitle}
             </div>
-
-
           </Box>
 
           <div className={styles.date}>
@@ -178,7 +175,7 @@ export default function BolgDetailsID({ blog }) {
         </div>
 
         <div id={styles.related_tags}>
-          <Tags blog={blog} />
+          <Tags allBlogsTagsData={allBlogsTagsData} />
         </div>
 
         <div id={styles.cards_container}>
@@ -301,10 +298,22 @@ export async function getServerSideProps({ query }) {
   })
   const data = await res.json()
 
+  const allBlogTagsRes = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogsTags", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": 'en',
+    })
+  })
 
+  const allBlogsTagsData = await allBlogTagsRes.json()
   return {
     props: {
       blog: data,
+      allBlogsTagsData
     }
   }
 }

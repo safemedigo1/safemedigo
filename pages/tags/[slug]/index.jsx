@@ -1,11 +1,12 @@
 import { PageHeader, SecNavbar, Tags } from '@/components'
-import { Box, Pagination, Typography } from '@mui/material'
+import { Box, FormControl, InputLabel, Pagination, Select, Typography } from '@mui/material'
 import { Container } from '@mui/system'
 import { motion } from 'framer-motion'
 import Head from 'next/head'
 import React from 'react'
 import styles from '../../blogs/index.module.scss'
 import Image from 'next/image'
+import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 
 const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages }) => {
   const handleMyChangePage = (event, value) => {
@@ -13,11 +14,56 @@ const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPag
     router.push(`/tags/page/${value}`)
   }
 
+  const handleFilterChanges = (event, value) => {
+    router.push(`/category/${value.props.value}/page/1`);
+    // setTimeout(() => window.location.reload(), 2000);
+    setCategory(value.props.children)
+  }
+
+
   return (
     <div>
 
       <SecNavbar tag={blogs.data[0].tags[0].tagName} />
       <PageHeader />
+      <Head>
+        <title>Blogs</title>
+        <meta name="blogs" content="blogs for doctors" />
+      </Head>
+
+      <div id={styles.tags_filter}>
+        <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+          <div className={styles.filter}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-autowidth-label">Blogs</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                IconComponent={ExpandMoreOutlinedIcon}
+                label="Blogs"
+                onChange={handleFilterChanges}
+                style={{
+                  backgroundColor: "#E7EDEC",
+                  color: "#000000",
+                  fontSize: "18px",
+                  fontWeight: "bold",
+
+                }}
+              >
+
+
+                {blogCategory?.map((item) => (
+                  <MenuItem value={item.slug} >
+                    {item.categeryName}
+                  </MenuItem>
+                ))}
+
+
+              </Select>
+            </FormControl>
+          </div>
+        </Container>
+      </div>
 
       <Head>
         <title>Blogs</title>
@@ -119,8 +165,6 @@ export async function getServerSideProps({ query }) {
   const limit = 6; // Number of products to display per page
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
-
-
 
 
 
