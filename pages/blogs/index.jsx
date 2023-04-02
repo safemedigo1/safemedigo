@@ -30,7 +30,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
 
 
   const handleFilterChanges = (event, value) => {
-    router.push(`/category/${value.props.value}/page/1`);
+    router.push(`/category/${value.props.value}/page/1`, undefined, { scroll: false });
     // setTimeout(() => window.location.reload(), 2000);
     setCategory(value.props.children)
   }
@@ -43,7 +43,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
 
     // const category = router.query.category || "All";
     // router.push(`/category/${category}/page/${value}`);
-    router.push(`/blogs/page/${value}`)
+    router.push(`/blogs/page/${value}`, undefined, { scroll: false })
   }
 
 

@@ -55,6 +55,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
 
 
+
   return (
     <>
       <SecNavbar blog={blog} />

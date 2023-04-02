@@ -10,31 +10,33 @@ import Select from "@mui/material/Select";
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import Link from "next/link";
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SecNavbar from '@/components/Navbar/SecNavbar';
 import { motion } from 'framer-motion';
 import Image from 'next/image'
 
 const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages, allBlogsTagsData }) => {
-  const [category, setCategory] = useState(categorySlug);
+  const [category, setCategory] = useState(blogCategory[0].categeryName);
 
   const router = useRouter();
 
+
   const handleMyChangePage = (event, value) => {
     event.preventDefault();
-    // console.log(value, "VALUEEEE")
     if (value === 1) {
       router.push(`/blogs/`);
     }
 
-    router.push(`/blogs/page/${value}`)
+    router.push(`/blogs/page/${value}`, undefined, { scroll: false })
   }
 
   const handleFilterChanges = (event, value) => {
-    router.push(`/category/${value.props.value}/page/${currentPage}`);
+    router.push(`/category/${value.props.value}/page/${currentPage}`, undefined, { scroll: false });
     // setTimeout(() => window.location.reload(), 2000);
     setCategory(value.props.value)
   }
+
+
 
   return (
     <div>
@@ -45,12 +47,12 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.filter}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-autowidth-label">{categorySlug}</InputLabel>
+              <InputLabel id="demo-simple-select-autowidth-label">{category}</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 IconComponent={ExpandMoreOutlinedIcon}
-                label={`${categorySlug}`}
+                label={`${category}`}
                 onChange={handleFilterChanges}
                 style={{
                   backgroundColor: "#E7EDEC",
@@ -77,7 +79,7 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
             <section id={styles.blogs_sec}>
               <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
                 <div className={styles.title}>
-                  <Typography variant="h6">{category}</Typography>
+                  <Typography variant="h6">{blogCategory[0].categeryName}</Typography>
                 </div>
 
                 <div className={styles.boxes_container}>
@@ -168,12 +170,12 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
 export default PageNumber
 
 export async function getServerSideProps({ query }) {
+
   const categorySlug = query.slug
   const page = query.id; // If no page is specified, default to page 1
   const limit = 6; // Number of products to display per page
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
-
 
   const res1 = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
     method: 'POST',
@@ -233,6 +235,11 @@ export async function getServerSideProps({ query }) {
     }
   }
 }
+
+
+
+
+
 
 
 
