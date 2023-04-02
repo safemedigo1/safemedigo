@@ -35,7 +35,7 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
     // setTimeout(() => window.location.reload(), 2000);
     setCategory(value.props.value)
   }
-  // console.log(, "HHHHHHHHHHHHHEEEEEEEEERRRRRRRRRREEEEEEEEEEEEEEE")
+
   return (
     <div>
       <SecNavbar categorySlug={categorySlug} currentPage={currentPage} />
@@ -73,7 +73,6 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
 
       {blogs.count !== 0 ?
         <>
-
           <div className={styles.sections_container}>
             <section id={styles.blogs_sec}>
               <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>

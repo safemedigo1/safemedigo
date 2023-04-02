@@ -19,7 +19,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
 
   const { author, } = imgs;
-
+  console.log(blog)
 
   const router = useRouter();
 
@@ -69,7 +69,13 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
         }}
         id={styles.signle_blog_header}>
         <div className={styles.img_container}>
-          <Image width={50} height={4} src={blog.image} alt={blog.title} />
+          <Image
+            layout="responsive"
+            width={4}
+            height={218}
+            objectFit="cover"
+            objectPosition="center"
+            src={blog.image} alt={blog.title} />
         </div>
 
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
