@@ -78,9 +78,7 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
           <div className={styles.sections_container}>
             <section id={styles.blogs_sec}>
               <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-                <div className={styles.title}>
-                  <Typography variant="h6">{blogCategory[0].categeryName}</Typography>
-                </div>
+
 
                 <div className={styles.boxes_container}>
                   {blogs.data.map((post, idx) => (

@@ -24,25 +24,19 @@ import Image from 'next/image'
 
 
 export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages }) {
-  const [category, setCategory] = useState('All');
+  const [category, setCategory] = useState('All Blogs');
 
   const router = useRouter();
 
 
   const handleFilterChanges = (event, value) => {
     router.push(`/category/${value.props.value}/page/1`, undefined, { scroll: false });
-    // setTimeout(() => window.location.reload(), 2000);
     setCategory(value.props.children)
   }
 
 
   const handleMyChangePage = (event, value) => {
     event.preventDefault();
-    // router.push(`/blogs?page=${value}`)
-    // setTimeout(() => window.location.reload(), 1000);
-
-    // const category = router.query.category || "All";
-    // router.push(`/category/${category}/page/${value}`);
     router.push(`/blogs/page/${value}`, undefined, { scroll: false })
   }
 
@@ -61,7 +55,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.filter}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-autowidth-label">Blogs</InputLabel>
+              <InputLabel id="demo-simple-select-autowidth-label">All Blogs</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -94,9 +88,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
       <div className={styles.sections_container}>
         <section id={styles.blogs_sec}>
           <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-            <div className={styles.title}>
-              <Typography variant="h6">{category}</Typography>
-            </div>
+
             <div
               className={styles.boxes_container}>
               {
