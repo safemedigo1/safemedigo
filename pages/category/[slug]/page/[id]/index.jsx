@@ -54,6 +54,10 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
                 IconComponent={ExpandMoreOutlinedIcon}
                 label={category}
                 onChange={handleFilterChanges}
+
+
+
+
                 style={{
                   backgroundColor: "#E7EDEC",
                   color: "#000000",

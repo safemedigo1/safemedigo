@@ -56,11 +56,12 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
           <div className={styles.filter}>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-autowidth-label">All Blogs</InputLabel>
+
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 IconComponent={ExpandMoreOutlinedIcon}
-                label="Blogs"
+                label="All Blogs"
                 onChange={handleFilterChanges}
                 style={{
                   backgroundColor: "#E7EDEC",
@@ -70,7 +71,6 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
 
                 }}
               >
-
 
                 {blogCategory.map((item) => (
                   <MenuItem value={item.slug} >

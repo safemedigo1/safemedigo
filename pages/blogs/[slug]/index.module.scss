@@ -398,7 +398,8 @@
         width: 25px;
         height: 25px;
         color: var(--main-green-color);
-
+        transition: all 0.3s ease-in;
+        cursor: pointer;
         &:not(:last-child) {
           margin-right: 14.5px;
 
@@ -411,6 +412,10 @@
         &:last-child {
           margin-right: 32.07px;
           transform: rotate(90deg);
+        }
+
+        &:hover {
+          color: var(--main-cyan-color);
         }
       }
     }
