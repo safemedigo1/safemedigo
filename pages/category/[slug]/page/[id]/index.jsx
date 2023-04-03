@@ -33,14 +33,14 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
   const handleFilterChanges = (event, value) => {
     router.push(`/category/${value.props.value}/page/${currentPage}`, undefined, { scroll: false });
     // setTimeout(() => window.location.reload(), 2000);
-    setCategory(value.props.value)
+    setCategory(value.props.children)
   }
 
 
 
   return (
     <div>
-      <SecNavbar categorySlug={categorySlug} currentPage={currentPage} />
+      <SecNavbar category={category} currentPage={currentPage} />
       <PageHeader />
 
       <div id={styles.tags_filter}>
@@ -52,14 +52,13 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 IconComponent={ExpandMoreOutlinedIcon}
-                label={`${category}`}
+                label={category}
                 onChange={handleFilterChanges}
                 style={{
                   backgroundColor: "#E7EDEC",
                   color: "#000000",
                   fontSize: "18px",
                   fontWeight: "bold",
-
                 }}
               >
                 {blogCategory.map((item) => (

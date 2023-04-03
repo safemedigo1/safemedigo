@@ -72,6 +72,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
     });
 
     setCommentsDetails(getBlogComments.data)
+
   }
 
   const handleReplay = async () => {
@@ -222,7 +223,6 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                 </Typography>
                 <hr />
               </div>
-
               <div className={styles.card_body}>
                 {/* <div className={styles.user_comment}>
                   <div className={styles.user_data}>
@@ -242,7 +242,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                     </div>
                   </div>
                 </div> */}
-                {commentsDetails !== undefined ?
+                {
                   commentsDetails?.map((comment, idx) => (
                     <>
                       <div className={styles.user_comment} key={idx}>
@@ -290,8 +290,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                     </>
                   ))
 
-                  : <h1>No Comments</h1>}
-
+                }
                 {/* <div className={styles.admin_comment}>
                   <div className={styles.admin_data}>
                     <div className={styles.img_container}>
