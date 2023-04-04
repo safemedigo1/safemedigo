@@ -9,6 +9,7 @@ import Hair_Transplant_after from "../imgs/Hair_Transplant_after.png";
 import Hair_Transplant_before from "../imgs/Hair_Transplant_before.png";
 
 import author from "../imgs/author.png";
+import tr from "../imgs/tr.png";
 import design from "../imgs/design.png";
 import art_vid from "../imgs/art_vid.png";
 import preparing from "../imgs/preparing.png";
@@ -31,6 +32,7 @@ import why_turcky_img from "../imgs/why_turcky_img.png";
 
 import logo from "../svgs/logo.svg";
 import en from "../svgs/en.svg";
+import ar from "../svgs/ar.svg";
 import arrowDown from "../svgs/arrowDown.svg";
 import search from "../svgs/search.svg";
 import notificationsActive from "../svgs/notificationsActive.svg";
@@ -262,6 +264,8 @@ export default {
   Pain_Clinic_Algology,
   Pediatrics_Surgeries,
   Pediatrics,
+  ar,
+  tr,
   Plastic_Surgeries,
   Psychiatry,
   Psychology,

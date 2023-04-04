@@ -47,7 +47,7 @@ function HideOnScroll(props) {
 
 
 
-const Navbar = (props, { locale }) => {
+const Navbar = (props,) => {
   const { t } = useTranslation();
   const { lang, setLang } = useContext(appContext)
 
@@ -144,7 +144,7 @@ const Navbar = (props, { locale }) => {
     },
   ];
 
-  const { logo, NavSearch, en, arrowDown, user, search, notificationsActive, burger } = imgs;
+  const { logo, NavSearch, en, arrowDown, user, search, notificationsActive, burger, ar, tr } = imgs;
 
 
   // Toggle outside to close menu
@@ -171,16 +171,16 @@ const Navbar = (props, { locale }) => {
   return (
     <>
       <CssBaseline />
-      <HideOnScroll {...props}>
+      <HideOnScroll {...props} >
         <AppBar style={{ background: 'transparent' }} >
-          <div className={styles.navbar}>
+          <div className={styles.navbar} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
             <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
               <Grid container
                 alignItems="center"
                 className={styles.grid__container}>
                 <Grid item xs={2} sx={2}>
                   <Link href="/" className={styles.navbar__logo}>
-                    <Box display="flex" alignItems="center">
+                    <Box display="flex" alignItems="center" >
                       <img
                         src={logo.src}
                         alt="Picture of the author"
@@ -236,12 +236,33 @@ const Navbar = (props, { locale }) => {
 
                         <div className={styles.lang}>
                           <div className={styles.img_container}>
-                            <Image
-                              src={en.src}
-                              alt="Picture of the author"
-                              width={20.7}
-                              height={12.88}
-                            />
+                            {lang === 'en' &&
+                              <Image
+                                src={en.src}
+                                alt="Picture of the author"
+                                width={20.7}
+                                height={12.88}
+                              />
+                            }
+
+                            {lang === 'ar' &&
+                              <Image
+                                src={ar.src}
+                                alt="Picture of the author"
+                                width={20.7}
+                                height={12.88}
+                              />
+                            }
+
+                            {lang === 'tr' &&
+                              <Image
+                                src={tr.src}
+                                alt="Picture of the author"
+                                width={20.7}
+                                height={12.88}
+                              />
+                            }
+
                           </div>
 
                           <div className={styles.lang_type}>
@@ -277,7 +298,7 @@ const Navbar = (props, { locale }) => {
                                   TR
                                   <div className={styles.img_container}>
                                     <Image
-                                      src={en.src}
+                                      src={tr.src}
                                       alt="Picture of the author"
                                       width={20.7}
                                       height={12.88}
@@ -290,7 +311,7 @@ const Navbar = (props, { locale }) => {
                                   AR
                                   <div className={styles.img_container}>
                                     <Image
-                                      src={en.src}
+                                      src={ar.src}
                                       alt="Picture of the author"
                                       width={20.7}
                                       height={12.88}
@@ -347,7 +368,7 @@ const Navbar = (props, { locale }) => {
 
                   {showMenu && (
                     <motion.div
-                      animate={{ x: [300, 0] }}
+                      animate={lang === 'ar' ? { x: [-300, 0] } : { x: [300, 0] }}
                       transition={{ duration: 0.85, ease: "easeOut" }}
                       className={styles.side_bar}
                     >
@@ -361,7 +382,7 @@ const Navbar = (props, { locale }) => {
 
                         <div className={styles.links_container}>
 
-                          <Link onClick={() => setShowMenu(false)} className="link" href="/login">
+                          <Link onClick={() => setShowMenu(false)} className={styles.link} href="/login">
                             <div className={styles.icon_container}>
                               <PersonRoundedIcon />
                             </div>
@@ -511,6 +532,7 @@ const Navbar = (props, { locale }) => {
                       </div>
                     </motion.div>
                   )}
+
                 </div>
               </Grid>
             </Container>

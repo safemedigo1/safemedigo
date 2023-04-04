@@ -1,6 +1,8 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { appContext } from "@/context/store";
+import { useContext } from "react";
 
-export default function Document() {
+export default function Document(props) {
   return (
     <Html lang="en">
       <Head>
