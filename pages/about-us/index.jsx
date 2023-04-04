@@ -5,8 +5,22 @@ import { ContactDetails, Help, WhySafemedigo } from '@/components/Home';
 import imgs from "../../assets/constants/imgs";
 import styles from "./index.module.scss";
 // import '../../styles/'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from "react-i18next";
+import { useRouter } from 'next/router';
 
-const AboutUs = () => {
+
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common', 'home'])),
+    }
+  }
+}
+
+const AboutUs = (props) => {
+  const { t } = useTranslation();
 
   const { author, youComeFirst,
     safeHealthcare,
@@ -30,7 +44,8 @@ const AboutUs = () => {
 
   ]
 
-
+  const router = useRouter()
+  console.log(props)
   const SafeHealthcare = aboutUs.filter((item) => item.title === 'Safe Healthcare')
   const YouComeFirst = aboutUs.filter((item) => item.title === 'You Come First')
   const StressFreeTreatment = aboutUs.filter((item) => item.title === 'Stress Free Treatment')
@@ -60,10 +75,13 @@ const AboutUs = () => {
     { name: 'Majd Khaled', desc: 'Name@Safemedigo.Com', img: author.src },
   ]
 
+
+
   return (
     <>
       <SecNavbar />
       <PageHeader />
+      <h1>{t('home:welcome_msg')}/{props._nextI18Next.initialLocale}</h1>
 
       <section id={styles.about_us}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>

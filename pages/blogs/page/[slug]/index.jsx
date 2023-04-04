@@ -170,7 +170,7 @@ export default function BlogPage({ blogCategory, blogs, allBlogsTagsData, curren
   );
 }
 
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps({ query, locale }) {
   console.log(query, "MYQYERY")
   const page = query.slug || '1'; // If no page is specified, default to page 1
   const limit = 6; // Number of products to display per page
@@ -188,7 +188,7 @@ export async function getServerSideProps({ query }) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "lang": 'en',
+      "lang": locale,
     })
   })
   const data2 = await res1.json()
@@ -202,7 +202,7 @@ export async function getServerSideProps({ query }) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "lang": 'en',
+      "lang": locale,
       "blogCategoryId": myCategoryId[0]?.id || '0',
       "currentPage": page,
     })
@@ -221,7 +221,7 @@ export async function getServerSideProps({ query }) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "lang": 'en',
+      "lang": locale,
     })
   })
 

@@ -84,7 +84,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
     getBlogComments()
   }
 
-
+  console.log(blog.id)
   return (
     <>
       <SecNavbar blog={blog} />
@@ -367,7 +367,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
   );
 }
 
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps({ query, locale }) {
   const res = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetBlogUiDataBySlug", {
     method: 'POST',
     headers: {
@@ -376,7 +376,7 @@ export async function getServerSideProps({ query }) {
     },
     body: JSON.stringify({
       "slug": query.slug,
-      "lang": "en"
+      "lang": locale
     })
   })
   const data = await res.json()
@@ -388,7 +388,7 @@ export async function getServerSideProps({ query }) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "lang": 'en',
+      "lang": locale,
     })
   })
 

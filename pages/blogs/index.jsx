@@ -19,11 +19,12 @@ import { motion } from "framer-motion";
 import SecNavbar from "@/components/Navbar/SecNavbar";
 import axios from 'axios';
 import Image from 'next/image'
-
+import { useTranslation } from "react-i18next";
 
 
 
 export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages }) {
+  const { t } = useTranslation();
   const [category, setCategory] = useState('All Blogs');
 
   const router = useRouter();
@@ -50,6 +51,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
         <title>Blogs</title>
         <meta name="blogs" content="blogs for doctors" />
       </Head>
+      <h1>{t('home:welcome_msg')}</h1>
 
       <div id={styles.tags_filter}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -176,7 +178,8 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
   );
 };
 
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps({ query, locale }) {
+  console.log(locale, "Blooogsssssss")
 
   const page = query.page || '1'; // If no page is specified, default to page 1
   const limit = 6; // Number of products to display per page
@@ -191,7 +194,7 @@ export async function getServerSideProps({ query }) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "lang": 'en',
+      "lang": locale,
     })
   })
   const data2 = await res1.json()
@@ -199,7 +202,7 @@ export async function getServerSideProps({ query }) {
   const myCategoryId = data2.filter((c) => c.slug === query.category)
 
   const getBlogWithPageRes = await axios.post("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogWithPage", {
-    "lang": 'en',
+    "lang": locale,
     "blogCategoryId": myCategoryId?.[0]?.id || '0',
     "currentPage": page || 1
   }, {
@@ -225,7 +228,7 @@ export async function getServerSideProps({ query }) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "lang": 'en',
+      "lang": locale,
     })
   })
 
@@ -247,4 +250,5 @@ export async function getServerSideProps({ query }) {
     }
   }
 }
+
 

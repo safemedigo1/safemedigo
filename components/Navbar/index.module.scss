@@ -187,12 +187,98 @@
 
           .lang {
             display: flex;
-            // align-items: center;
             margin-right: 16px;
+            cursor: pointer;
+            position: relative;
+            .menuLinks__container {
+              ul {
+                position: absolute;
+                top: 46px;
+                left: -5px;
+                width: 100px;
+                border-radius: 0px 0px 5px 5px;
+                box-shadow: 0px 3px 2px #00000029;
+                padding-top: 10px;
+                padding-bottom: 25px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+
+                background-color: var(--main-white-color);
+                transform: translateY(-100px) translateZ(0px);
+                transition: all 0.4s ease;
+                z-index: -221;
+                opacity: 0;
+                visibility: hidden;
+
+                li {
+                  transition: all 0.4s ease;
+                  padding-left: 10px;
+                  width: 100%;
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+
+                  &:not(:last-child) {
+                    margin-bottom: 10px;
+                  }
+
+                  a {
+                    color: var(--main-dark-color);
+                    font-size: 16px;
+                    transition: all 0.4 ease;
+
+                    font-family: var(--quickstand-font);
+                    font-weight: var(--font-sem-bold);
+
+                    display: flex;
+                    .img_container {
+                      margin-left: 10px;
+                    }
+                  }
+
+                  &:hover {
+                    background-color: rgb(0 243 187 / 10%);
+                    border-radius: 5px;
+                    padding-left: 20px;
+
+                    a {
+                      margin-right: 4px;
+                    }
+                  }
+                }
+              }
+            }
+            &:hover {
+              .menuLinks__container {
+                height: 400px;
+                position: absolute;
+                top: 6px;
+                width: 100px;
+                left: 0px;
+                ul {
+                  transition: all 0.4s ease;
+                  visibility: visible;
+                  z-index: 1;
+                  opacity: 1;
+                  transform: translateY(0px) !important;
+                }
+              }
+              &::after {
+                opacity: 1;
+                left: 0;
+              }
+            }
 
             @media screen and (max-width: 992px) {
               margin-right: 0px;
               width: 100%;
+            }
+
+            &:hover {
+              .icon_container {
+                transform: rotate(180deg);
+              }
             }
 
             .img_container {
@@ -217,6 +303,7 @@
             }
 
             .icon_container {
+              transition: all 0.3s ease;
               img {
                 width: 14.84px;
                 height: 8.49px;

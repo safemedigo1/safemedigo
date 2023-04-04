@@ -159,7 +159,7 @@ const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPag
 export default TagsBlog
 
 
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps({ query, locale }) {
 
   const page = query.page || '1'; // If no page is specified, default to page 1
   const limit = 6; // Number of products to display per page
@@ -175,7 +175,7 @@ export async function getServerSideProps({ query }) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "lang": 'en',
+      "lang": locale,
       "tagSlug": query.slug,
       "currentPage": page,
     })
@@ -195,7 +195,7 @@ export async function getServerSideProps({ query }) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "lang": 'en',
+      "lang": locale,
     })
   })
 

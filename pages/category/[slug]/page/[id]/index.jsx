@@ -170,7 +170,7 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
 
 export default PageNumber
 
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps({ query, locale }) {
 
   const categorySlug = query.slug
   const page = query.id; // If no page is specified, default to page 1
@@ -185,7 +185,7 @@ export async function getServerSideProps({ query }) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "lang": 'en',
+      "lang": locale,
     })
   })
   const data2 = await res1.json()
@@ -199,7 +199,7 @@ export async function getServerSideProps({ query }) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "lang": 'en',
+      "lang": locale,
       "blogCategoryId": myCategoryId[0]?.id || '0',
       "currentPage": page,
     })
@@ -219,7 +219,7 @@ export async function getServerSideProps({ query }) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "lang": 'en',
+      "lang": locale,
     })
   })
 

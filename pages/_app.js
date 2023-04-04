@@ -9,11 +9,13 @@ import "nprogress/nprogress.css";
 import Router from "next/router";
 import nProgress from "nprogress";
 import "../styles/nprogress.css";
+import { appWithTranslation } from "next-i18next";
+
 Router.events.on("routeChangeStart", nProgress.start);
 Router.events.on("routeChangeError", nProgress.done);
 Router.events.on("routeChangeComplete", nProgress.done);
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
     <>
       <ContextProvider>
@@ -40,3 +42,5 @@ export default function App({ Component, pageProps }) {
     </>
   );
 }
+
+export default appWithTranslation(App);

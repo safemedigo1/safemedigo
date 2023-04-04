@@ -14,7 +14,7 @@ import { BiChevronDown, } from 'react-icons/bi'
 import { HiArrowSmRight } from 'react-icons/hi'
 import { useRouter } from "next/router";
 
-
+import Image from 'next/image'
 import Toolbar from '@mui/material/Toolbar';
 import CssBaseline from '@mui/material/CssBaseline';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
@@ -193,17 +193,11 @@ const Navbar = (props) => {
                       <div className={styles.links}>
                         <ul>
                           {navbarLinks.map((link, index) => (
-                            // ${styles.active}
-                            <li
-                              key={index}
-                              className={`${styles.link__item} ${styles.active}`}
-                            >
+                            <li key={index} className={`${styles.link__item} ${styles.active}`}>
                               <Link href={`${link.link}`}>{link.title}</Link>
-
                               {link.menuLink != null &&
                                 <div className={styles.menuLinks__container}>
-                                  <ul
-                                  >
+                                  <ul>
                                     {link.menuLink.map((links, index) => (
                                       <li
                                         key={index}>
@@ -227,11 +221,11 @@ const Navbar = (props) => {
                         <div className={styles.search_btn}>
                           <Link href="/search">
                             <div className={styles.icon_container}>
-                              <img
+                              <Image
                                 src={NavSearch.src}
                                 alt="Picture of the author"
-                                width="18.89px"
-                                height="19px"
+                                width={18.89}
+                                height={19}
                               />
                             </div>
                             <button>Search</button>
@@ -240,11 +234,11 @@ const Navbar = (props) => {
 
                         <div className={styles.lang}>
                           <div className={styles.img_container}>
-                            <img
+                            <Image
                               src={en.src}
                               alt="Picture of the author"
-                              width="20.7px"
-                              height="12.88px"
+                              width={20.7}
+                              height={12.88}
                             />
                           </div>
 
@@ -253,12 +247,57 @@ const Navbar = (props) => {
                           </div>
 
                           <div className={styles.icon_container}>
-                            <img
+                            <Image
                               src={arrowDown.src}
                               alt="Picture of the author"
-                              width="14.84px"
-                              height="8.49px"
+                              width={14.84}
+                              height={8.49}
                             />
+                          </div>
+
+                          <div className={styles.menuLinks__container}>
+                            <ul>
+                              <li>
+                                <a href={`/en`} >
+                                  EN
+                                  <div className={styles.img_container}>
+                                    <Image
+                                      src={en.src}
+                                      alt="Picture of the author"
+                                      width={20.7}
+                                      height={12.88}
+                                    />
+                                  </div>
+                                </a>
+                              </li>
+                              <li>
+                                <a href={`/tr`} >
+                                  TR
+                                  <div className={styles.img_container}>
+                                    <Image
+                                      src={en.src}
+                                      alt="Picture of the author"
+                                      width={20.7}
+                                      height={12.88}
+                                    />
+                                  </div>
+                                </a>
+                              </li>
+                              <li>
+                                <a href={`/ar`} >
+                                  AR
+                                  <div className={styles.img_container}>
+                                    <Image
+                                      src={en.src}
+                                      alt="Picture of the author"
+                                      width={20.7}
+                                      height={12.88}
+                                    />
+                                  </div>
+                                </a>
+                              </li>
+
+                            </ul>
                           </div>
                         </div>
 
