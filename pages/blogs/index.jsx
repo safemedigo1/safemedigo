@@ -179,7 +179,6 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
 };
 
 export async function getServerSideProps({ query, locale }) {
-  console.log(locale, "Blooogsssssss")
 
   const page = query.page || '1'; // If no page is specified, default to page 1
   const limit = 6; // Number of products to display per page

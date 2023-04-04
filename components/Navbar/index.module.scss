@@ -294,11 +294,10 @@
 
               span {
                 font-size: 16px;
-
-                font-family: var(--quickstand-font);
-                font-weight: var(--font-sem-bold);
-
+                text-decoration: none;
                 color: var(--main-dark-color);
+                font-family: var(--quickstand-font);
+                font-weight: var(--font-medium);
               }
             }
 
@@ -596,14 +595,40 @@
 
                 span {
                   font-size: 16px;
+                  text-decoration: none;
                   color: var(--main-dark-color);
-                  font-family: var(--font-medium);
+                  font-family: var(--quickstand-font);
+                  font-weight: var(--font-medium);
                 }
               }
+
               .icon_container {
+                transition: all 0.3s ease;
                 svg {
                   color: var(--main-dark-color);
                   font-size: 30px;
+                  transition: all 0.3s ease;
+                }
+
+                &.active {
+                  svg {
+                    transform: rotate(180deg);
+                  }
+                }
+              }
+            }
+
+            ul {
+              li {
+                a {
+                  font-size: 16px;
+                  text-decoration: none;
+                  color: var(--main-dark-color);
+                  font-family: var(--quickstand-font);
+                  font-weight: var(--font-medium);
+                  img {
+                    margin-left: 5px;
+                  }
                 }
               }
             }

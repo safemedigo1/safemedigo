@@ -1,4 +1,4 @@
-import { ContextProvider } from "@/context/store";
+import { ContextProvider } from "../context/store";
 import "@/styles/globals.scss";
 import NoSsr from "@mui/base/NoSsr";
 import CssBaseline from "@mui/material/CssBaseline";

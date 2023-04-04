@@ -94,7 +94,6 @@ const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPag
                           width={344}
                           height={500}
                         />
-                        {console.log(post)}
 
 
                       </div>

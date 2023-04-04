@@ -7,7 +7,6 @@ import Link from 'next/link';
 const SecNavbar = ({ categorySlug, category, currentPage, blog, tag }) => {
   const router = useRouter();
   const { pathname } = router;
-  console.log(blog)
   return (
     <>
       <nav id={styles.sec_nav}>

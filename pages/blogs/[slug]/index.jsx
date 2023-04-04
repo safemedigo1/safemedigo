@@ -55,7 +55,6 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
   useEffect(() => {
     getAllCommentByPage()
-    console.log(commentsDetails, 'HERE')
 
   }, [])
 
@@ -84,7 +83,6 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
     getBlogComments()
   }
 
-  console.log(blog.id)
   return (
     <>
       <SecNavbar blog={blog} />

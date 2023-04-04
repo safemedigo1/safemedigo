@@ -45,7 +45,6 @@ const AboutUs = (props) => {
   ]
 
   const router = useRouter()
-  console.log(props)
   const SafeHealthcare = aboutUs.filter((item) => item.title === 'Safe Healthcare')
   const YouComeFirst = aboutUs.filter((item) => item.title === 'You Come First')
   const StressFreeTreatment = aboutUs.filter((item) => item.title === 'Stress Free Treatment')

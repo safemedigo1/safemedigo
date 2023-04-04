@@ -9,7 +9,6 @@ import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import { PageHeader, SecNavbar } from '@/components';
 
 const TreatmentName = ({ blogs }) => {
-  console.log(blogs)
 
   const [expanded, setExpanded] = useState(false);
 

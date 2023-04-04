@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import imgs from "../../assets/constants/imgs";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
@@ -19,7 +19,8 @@ import Toolbar from '@mui/material/Toolbar';
 import CssBaseline from '@mui/material/CssBaseline';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
-
+import { useTranslation } from "react-i18next";
+import { appContext } from "@/context/store";
 
 // Hide navbar on scroll (to bottom)
 function HideOnScroll(props) {
@@ -41,62 +42,69 @@ function HideOnScroll(props) {
 
 
 
-const Navbar = (props) => {
+
+
+const Navbar = (props,) => {
+
+  const { lang, setLang } = useContext(appContext)
+
+  const { t } = useTranslation();
   const [showMenu, setShowMenu] = useState(false);
   const [showMenuLinks, setShowMenuLinks] = useState(false);
+  const [showLangMenu, setShowLangMenu] = useState(false)
   const menuLniks = [
     {
-      category: "Procedures & Symptoms",
+      category: t('navbar:procedures_symptoms'),
       cateLink: '/procedures&symptoms',
       links: [
         {
-          title: "Patients Reviews",
+          title: t("navbar:patients_reviews"),
           link: "/Reviews",
         },
         {
-          title: "Patients Stories",
+          title: t("navbar:patients_stories"),
           link: "/stories",
         },
 
         {
-          title: "Before & After",
+          title: t("navbar:beforeafter"),
           link: "/before&after",
         },
         {
-          title: "Doctor Q&A",
+          title: t("navbar:doctor_Q_A"),
           link: "q&a",
         },
         {
-          title: "Prices",
+          title: t("navbar:prices"),
           link: "/prices",
         },
 
         {
-          title: "Blogs",
+          title: t("navbar:blogs"),
           link: "/blogs",
         },
 
       ],
     },
     {
-      category: "About Safemedigo",
+      category: t("navbar:about_us"),
       links: [
         {
-          title: "Safety Standards",
+          title: t("navbar:safety_standards"),
           link: "/safety-standards",
         },
         {
-          title: "How It Works",
+          title: t("navbar:how_it_works"),
           link: "/how-it-works",
 
         },
         {
-          title: "About Us",
+          title: t("navbar:about_us"),
           link: "/about-us",
         },
         {
 
-          title: "Contact Us",
+          title: t("navbar:contact_us"),
           link: "/contact-us",
 
         },
@@ -107,28 +115,28 @@ const Navbar = (props) => {
   ];
 
   const navbarLinks = [
-    { title: "Procedures & Symptoms", link: "/procedures&symptoms", menuLink: null },
+    { title: t('navbar:procedures_symptoms'), link: "/procedures&symptoms", menuLink: null },
     {
-      title: "Reviews & Photos",
+      title: t("navbar:reviews_photos"),
       link: "/",
       menuLink: [
-        { title: "Patients Reviews", link: "/reviews" },
-        { title: "Before & After", link: "/before-after" },
-        { title: "Patients Stories", link: "/stories" },
-        { title: "Doctor Q&A", link: "/Q&A" },
-        { title: "Ask A Doctor", link: "/Q&A" },
-        { title: "Start Your Review", link: "/reviews" },
+        { title: t("navbar:patients_reviews"), link: "/reviews" },
+        { title: t("navbar:beforeafter"), link: "/before-after" },
+        { title: t("navbar:patients_stories"), link: "/stories" },
+        { title: t("navbar:doctor_Q_A"), link: "/Q&A" },
+        { title: t("navbar:ask_a_doctor"), link: "/Q&A" },
+        { title: t("navbar:start_your_review"), link: "/reviews" },
       ],
     },
-    { title: "Prices", link: "/", menuLink: null },
-    { title: "Blogs", link: "/blogs", menuLink: null },
+    { title: t("navbar:prices"), link: "/prices", menuLink: null },
+    { title: t("navbar:blogs"), link: "/blogs", menuLink: null },
     {
-      title: "About Us ",
+      title: t("navbar:about_us"),
       menuLink: [
-        { title: "Safety Standards", link: "/safety-standards" },
-        { title: "How It Works", link: "/how-it-works" },
-        { title: "About Us", link: "/about-us" },
-        { title: "Contact Us", link: "/contact-us" },
+        { title: t("navbar:safety_standards"), link: "/safety-standards" },
+        { title: t("navbar:how_it_works"), link: "/how-it-works" },
+        { title: t("navbar:about_us"), link: "/about-us" },
+        { title: t("navbar:contact_us"), link: "/contact-us" },
       ],
     },
   ];
@@ -158,7 +166,6 @@ const Navbar = (props) => {
 
 
 
-
   return (
     <>
       <CssBaseline />
@@ -182,7 +189,7 @@ const Navbar = (props) => {
                         width="51.34px"
                         height="45px"
                       />
-                      <h1>Safemedigo</h1>
+                      <h1>{t("navbar:logo")}</h1>
                     </Box>
                   </Link>
                 </Grid>
@@ -209,9 +216,6 @@ const Navbar = (props) => {
                                   </ul>
                                 </div>
                               }
-
-
-
                             </li>
                           ))}
                         </ul>
@@ -243,7 +247,7 @@ const Navbar = (props) => {
                           </div>
 
                           <div className={styles.lang_type}>
-                            <span>EN</span>
+                            <span>{lang}</span>
                           </div>
 
                           <div className={styles.icon_container}>
@@ -299,6 +303,7 @@ const Navbar = (props) => {
 
                             </ul>
                           </div>
+
                         </div>
 
 
@@ -313,7 +318,7 @@ const Navbar = (props) => {
                                 height="19.5px"
                               />
                             </div>
-                            <button>Sign In</button>
+                            <button>{t("navbar:sign_in")}</button>
                           </Link>
                         </div>
                       </div>
@@ -363,7 +368,7 @@ const Navbar = (props) => {
                               <PersonRoundedIcon />
                             </div>
                             <div className={styles.btn_container}>
-                              <Typography>Sign In</Typography>
+                              <Typography>{t("navbar:sign_in")}</Typography>
                             </div>
                           </Link>
 
@@ -392,15 +397,15 @@ const Navbar = (props) => {
                                 ))}
 
                                 <div className={styles.special_links}>
-                                  <a href="/reveiw">Start Your Review
+                                  <a href="/reveiw">{t('navbar:start_your_review')}
                                     <HiArrowSmRight />
                                   </a>
-                                  <a href="q&a">Ask A Doctor
+                                  <a href="q&a">{t('navbar:ask_a_doctor')}
                                     <HiArrowSmRight />
                                   </a>
                                 </div>
 
-                                <Box className={styles.lang} display='flex'>
+                                <Box className={styles.lang} display='flex' onClick={() => setShowLangMenu((prev) => !prev)}>
                                   <div className={styles.img_container}>
                                     <img
                                       src={en.src}
@@ -410,14 +415,64 @@ const Navbar = (props) => {
                                     />
                                   </div>
                                   <div className={styles.lang_type}>
-                                    <span>EN</span>
+                                    <span>{lang}</span>
                                   </div>
 
-                                  <div className={styles.icon_container}>
+                                  <div className={`${styles.icon_container} ${showLangMenu && styles.active}`} >
                                     <BiChevronDown />
                                   </div>
                                 </Box>
 
+                                {showLangMenu &&
+                                  <motion.ul
+                                    animate={{
+                                      y: [-40, 0],
+                                      opacity: 1
+                                    }}
+                                    transition={{ duration: 0.80, ease: "easeOut" }}
+                                    initial={{ opacity: 0 }}
+                                  >
+                                    <li>
+                                      <a href={`/en`} >
+                                        EN
+                                        <div className={styles.img_container}>
+                                          <Image
+                                            src={en.src}
+                                            alt="Picture of the author"
+                                            width={20.7}
+                                            height={12.88}
+                                          />
+                                        </div>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href={`/tr`} >
+                                        TR
+                                        <div className={styles.img_container}>
+                                          <Image
+                                            src={en.src}
+                                            alt="Picture of the author"
+                                            width={20.7}
+                                            height={12.88}
+                                          />
+                                        </div>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href={`/ar`} >
+                                        AR
+                                        <div className={styles.img_container}>
+                                          <Image
+                                            src={en.src}
+                                            alt="Picture of the author"
+                                            width={20.7}
+                                            height={12.88}
+                                          />
+                                        </div>
+                                      </a>
+                                    </li>
+                                  </motion.ul>
+                                }
 
                               </div>
 
@@ -426,7 +481,7 @@ const Navbar = (props) => {
                                   {menuLniks[1].category}
                                 </Typography>
                                 <div className={`${styles.icon_container} ${showMenuLinks && styles.active}`} >
-                                  <ExpandMoreOutlinedIcon color="red" />
+                                  <ExpandMoreOutlinedIcon />
                                 </div>
                               </div>
 
@@ -437,8 +492,6 @@ const Navbar = (props) => {
                                     opacity: 1
                                   }}
                                   transition={{ duration: 0.80, ease: "easeOut" }}
-
-
                                   initial={{ opacity: 0 }}
 
                                   className={styles.category_links}>

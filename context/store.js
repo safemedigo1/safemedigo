@@ -1,12 +1,11 @@
 import { createContext, useState } from "react";
 
-export const appContext = createContext();
+export let appContext = createContext();
 
 export const ContextProvider = ({ children }) => {
-  const [myState, setMyState] = useState(20034);
-
+  const [lang, setLang] = useState();
   return (
-    <appContext.Provider value={[myState, setMyState]}>
+    <appContext.Provider value={{ lang, setLang }}>
       {children}
     </appContext.Provider>
   );

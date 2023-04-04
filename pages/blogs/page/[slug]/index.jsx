@@ -21,7 +21,6 @@ export default function BlogPage({ blogCategory, blogs, allBlogsTagsData, curren
 
   const handleMyChangePage = (event, value) => {
     event.preventDefault();
-    console.log(value, "VALUEEEE")
     if (value === 1) {
       router.push(`/blogs/`);
     }
@@ -171,12 +170,10 @@ export default function BlogPage({ blogCategory, blogs, allBlogsTagsData, curren
 }
 
 export async function getServerSideProps({ query, locale }) {
-  console.log(query, "MYQYERY")
   const page = query.slug || '1'; // If no page is specified, default to page 1
   const limit = 6; // Number of products to display per page
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
-  console.log(query, "MYQYERY")
 
 
 
