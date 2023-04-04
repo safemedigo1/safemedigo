@@ -187,7 +187,7 @@ const Navbar = (props, { locale }) => {
                         width="51.34px"
                         height="45px"
                       />
-                      <h1>{t("navbar:logo")}</h1>
+                      <h1>Safemedigo</h1>
                     </Box>
                   </Link>
                 </Grid>
