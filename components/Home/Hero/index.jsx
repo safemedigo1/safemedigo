@@ -9,8 +9,11 @@ import imgs from "../../../assets/constants/imgs";
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import { consts } from 'react-elastic-carousel';
 import Search from '../Search/index'
+import { useTranslation } from "react-i18next";
+
 
 const Hero = () => {
+  const { t } = useTranslation();
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false },
@@ -57,26 +60,26 @@ const Hero = () => {
           <div className={styles.text_container}>
 
             <div className={styles.title}>
-              <Typography variant='h1'>Find The Right & Safe <br /> Treatment For You In Turkey</Typography>
+              <Typography variant='h1'>{t("hero_section:title1")}  <br /> {t("hero_section:title2")}</Typography>
             </div>
 
             <div className={styles.advantages}>
               <div className={styles.advantage}>
                 <BsCheckLg />
                 <Typography>
-                  24 Hours PATIENT SUPPORT
+                  {t('hero_section:hero_desc1')}
                 </Typography>
               </div>
               <div className={styles.advantage}>
                 <BsCheckLg />
                 <Typography>
-                  Lorem ipsum dolor sit amet
+                  {t('hero_section:hero_desc2')}
                 </Typography>
               </div>
               <div className={styles.advantage}>
                 <BsCheckLg />
                 <Typography>
-                  Lorem ipsum dolor sit amet
+                  {t('hero_section:hero_desc3')}
                 </Typography>
               </div>
             </div>
@@ -87,20 +90,20 @@ const Hero = () => {
               <div className={styles.more}>
                 <Link href='/'>
                   <HiPlay />
-                  <button>Watch Video</button>
+                  <button>{t("hero_section:watch_video")}</button>
                 </Link>
               </div>
 
               <div className={styles.start}>
                 <div className={styles.get_started_btn}>
                   <Link href='/'>
-                    <button>Get Started   </button>
+                    <button>{t("common:get_started")}  </button>
                   </Link>
                 </div>
 
                 <div className={styles.explore_btn}>
                   <Link href='/procedures&symptoms'>
-                    <button>Explore Our Procedures</button>
+                    <button>{t("hero_section:explore_our_procedures")}  </button>
                   </Link>
 
                 </div>

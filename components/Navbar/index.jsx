@@ -22,6 +22,9 @@ import Slide from '@mui/material/Slide';
 import { useTranslation } from "react-i18next";
 import { appContext } from "@/context/store";
 
+
+
+
 // Hide navbar on scroll (to bottom)
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -44,11 +47,11 @@ function HideOnScroll(props) {
 
 
 
-const Navbar = (props,) => {
-
+const Navbar = (props, { locale }) => {
+  const { t } = useTranslation();
   const { lang, setLang } = useContext(appContext)
 
-  const { t } = useTranslation();
+
   const [showMenu, setShowMenu] = useState(false);
   const [showMenuLinks, setShowMenuLinks] = useState(false);
   const [showLangMenu, setShowLangMenu] = useState(false)
@@ -165,21 +168,16 @@ const Navbar = (props,) => {
   const { pathname } = router;
 
 
-
   return (
     <>
       <CssBaseline />
       <HideOnScroll {...props}>
-
-
         <AppBar style={{ background: 'transparent' }} >
           <div className={styles.navbar}>
             <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-              <Grid
-                container
+              <Grid container
                 alignItems="center"
-                className={styles.grid__container}
-              >
+                className={styles.grid__container}>
                 <Grid item xs={2} sx={2}>
                   <Link href="/" className={styles.navbar__logo}>
                     <Box display="flex" alignItems="center">
@@ -232,7 +230,7 @@ const Navbar = (props,) => {
                                 height={19}
                               />
                             </div>
-                            <button>Search</button>
+                            <button>{t('navbar:search')}</button>
                           </Link>
                         </div>
 
@@ -532,3 +530,5 @@ const Navbar = (props,) => {
 };
 
 export default Navbar;
+
+

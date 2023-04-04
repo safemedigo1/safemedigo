@@ -11,7 +11,11 @@ import Link from 'next/link';
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 
+import { useTranslation } from "react-i18next";
+
 const MostPopular = () => {
+  const { t } = useTranslation();
+
   const { post1, post2, post3, post4, post5, } = imgs;
 
   const [breakPoints] = useState([
@@ -125,7 +129,7 @@ const MostPopular = () => {
 
           {pathname !== '/procedures&symptoms' &&
             <div className={styles.title}>
-              <Typography variant='h2'>Most Popular</Typography>
+              <Typography variant='h2'>{t('most_popular:title')}</Typography>
             </div>
           }
 
@@ -136,17 +140,17 @@ const MostPopular = () => {
               <div className={styles.header}>
                 <div className={`${styles.treatment} ${treatment && styles.active}`} onClick={handleTreatment}>
                   <Typography variant='h6'>
-                    <button>Treatment</button>
+                    <button>{t('most_popular:treatment')}</button>
                   </Typography>
                 </div>
                 <div className={`${styles.doctors} ${doctors && styles.active}`} onClick={handleDoctors}>
                   <Typography variant='h6'>
-                    <button>Doctors</button>
+                    <button> {t('most_popular:doctors')}</button>
                   </Typography>
                 </div>
                 <div className={`${styles.clinic} ${clinic && styles.active}`} onClick={handleClinic}>
                   <Typography variant='h6'>
-                    <button>Clinic</button>
+                    <button> {t('most_popular:clinic')}</button>
                   </Typography>
 
                 </div>
@@ -179,7 +183,7 @@ const MostPopular = () => {
               }
 
               <div className={styles.desc}>
-                <Typography>We Are An Independent Organisation And Only Ever Provide Fully Honest And Unbiased Information About Doctors That Have Been Thoroughly And Professionally Vetted.</Typography>
+                <Typography> {t('most_popular:desc')}</Typography>
               </div>
 
 
@@ -188,7 +192,7 @@ const MostPopular = () => {
 
                   <Link href='/'>
                     <button>
-                      Get Started
+                      {t('common:get_started')}
                     </button>
                   </Link>
                 </div>
@@ -203,7 +207,6 @@ const MostPopular = () => {
 
               {treatment &&
                 <motion.div
-
                   animate={{ opacity: 1 }}
                   initial={{ opacity: 0 }}
 

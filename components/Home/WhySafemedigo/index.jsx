@@ -1,20 +1,21 @@
 import React from 'react'
 import styles from './index.module.scss'
 import { Container, Typography, } from '@mui/material';
-import imgs from "../../../assets/constants/imgs";
 import { OurSafetyStanders, RealReviewsPatientStories, PatientSupport, BestTreatmentPackages } from "../../../assets/svgs/HoverIcons"
 import Link from 'next/link';
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 const WhySafemedigo = () => {
-  const { } = imgs;
+  const { t } = useTranslation();
+
 
 
   const cards = [
-    { title: 'Real Reviews & Patient Stories', desc: 'Explore The Successful Journey Of The Patients Chose Us To Be With Them In Their Treatment Process', img: <RealReviewsPatientStories /> },
-    { title: 'Best Treatment Packages', desc: 'Check And Compare Treatment Packages, Or Share Your Treatment And Your Budget With Us To Find A Treatment Package Suits You', img: <BestTreatmentPackages /> },
-    { title: '24 Hours Patient Support', desc: 'Our Communication Desk Will Respond To Your Quires Within Minutes', img: <PatientSupport /> },
-    { title: 'Our Safety Standards', desc: "By Emphasizing On All Aspects Concerning Safety, We Leave No Space For Substandard Treatment And Outside Care", img: <OurSafetyStanders /> },
+    { title: t('why_safemedigo:reveiws_title'), desc: t('why_safemedigo:reveiws_desc'), img: <RealReviewsPatientStories /> },
+    { title: t('why_safemedigo:package_title'), desc: t('why_safemedigo:package_desc'), img: <BestTreatmentPackages /> },
+    { title: t('why_safemedigo:support_title'), desc: t('why_safemedigo:support_desc'), img: <PatientSupport /> },
+    { title: t('why_safemedigo:standards_title'), desc: t('why_safemedigo:standards_desc'), img: <OurSafetyStanders /> },
   ]
 
 
@@ -26,7 +27,7 @@ const WhySafemedigo = () => {
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
         <div className={styles.section_container}>
           <div className={styles.sec_title}>
-            <Typography variant='h2'>Why Safemedigo</Typography>
+            <Typography variant='h2'>{t('why_safemedigo:title')}</Typography>
           </div>
           <div className={styles.boxes_container}>
             {cards.map((card, index) => (
@@ -49,7 +50,7 @@ const WhySafemedigo = () => {
           {pathname !== '/about-us' &&
             <div className={styles.btn_contianer}>
               <Link href='/about-us'>
-                <button>Find Out More</button>
+                <button>{t('why_safemedigo:find_more')}</button>
               </Link>
             </div>
 

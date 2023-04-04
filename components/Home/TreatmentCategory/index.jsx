@@ -2,6 +2,8 @@ import React from 'react'
 import styles from './index.module.scss'
 import { Container, Typography, } from '@mui/material';
 import imgs from "../../../assets/constants/imgs";
+import { useTranslation } from "react-i18next";
+
 
 
 const TreatmentCategory = () => {
@@ -52,6 +54,7 @@ const TreatmentCategory = () => {
     Weight_Loss_1,
 
   } = imgs;
+  const { t } = useTranslation();
 
 
   const cards = [
@@ -83,7 +86,7 @@ const TreatmentCategory = () => {
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
         <div className={styles.section_container}>
           <div className={styles.sec_title}>
-            <Typography variant='h2'>Treatment Category</Typography>
+            <Typography variant='h2'>{t('treatments_section:title')}</Typography>
           </div>
 
           <div className={styles.desc}>
@@ -100,13 +103,11 @@ const TreatmentCategory = () => {
                 <div className={styles.title}>
                   <Typography variant='h6'>{card.title}</Typography>
                 </div>
-
-
               </div>
             ))}
           </div>
           <div className={styles.btn_contianer}>
-            <button>Start Searching</button>
+            <button>{t('treatments_section:search')}</button>
           </div>
         </div>
       </Container>

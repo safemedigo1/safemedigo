@@ -3,8 +3,11 @@ import imgs from "../../../assets/constants/imgs";
 import styles from './index.module.scss'
 import { Container, Typography } from '@mui/material';
 import Link from 'next/link';
+import { useTranslation } from "react-i18next";
+
 
 const WhyTurkey = () => {
+  const { t } = useTranslation();
 
   const { author, turky_bg
     , why_turcky_img } = imgs;
@@ -16,7 +19,7 @@ const WhyTurkey = () => {
 
           <div className={styles.text_container}>
             <div className={styles.title}>
-              <Link href='q&a'>Why Should I Get Treatment In Turkey?</Link>
+              <Link href='q&a'>{t('why_turky_section:title')}</Link>
             </div>
 
             <div className={styles.img_sec_container}>

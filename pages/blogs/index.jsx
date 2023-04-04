@@ -14,21 +14,24 @@ import { PageHeader, Tags } from './../../components/';
 
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import SecNavbar from "@/components/Navbar/SecNavbar";
 import axios from 'axios';
 import Image from 'next/image'
 import { useTranslation } from "react-i18next";
+import { appContext } from "@/context/store";
 
 
 
-export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages }) {
+export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages, locale }) {
   const { t } = useTranslation();
   const [category, setCategory] = useState('All Blogs');
 
   const router = useRouter();
 
+  const { lang, setLang } = useContext(appContext);
+  setLang(locale)
 
   const handleFilterChanges = (event, value) => {
     router.push(`/category/${value.props.value}/page/1`, undefined, { scroll: false });
@@ -51,7 +54,6 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
         <title>Blogs</title>
         <meta name="blogs" content="blogs for doctors" />
       </Head>
-      <h1>{t('home:welcome_msg')}</h1>
 
       <div id={styles.tags_filter}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -245,7 +247,8 @@ export async function getServerSideProps({ query, locale }) {
       products: products.slice(startIndex, endIndex),
       currentPage: parseInt(page),
       totalPages,
-      allBlogsTagsData
+      allBlogsTagsData,
+      locale
     }
   }
 }

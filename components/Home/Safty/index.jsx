@@ -3,9 +3,12 @@ import imgs from "../../../assets/constants/imgs";
 import styles from './index.module.scss'
 import { Container, Typography } from '@mui/material';
 import Link from 'next/link';
+import { useTranslation } from "react-i18next";
+
 
 
 const Safty = () => {
+  const { t } = useTranslation();
   const { OurSafetyStandards00, OurSafterStanders01, left01,
     right01,
     right02,
@@ -17,11 +20,11 @@ const Safty = () => {
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false}>
         <div className={styles.section_container}>
           <div className={styles.title}>
-            <Typography variant='h2'>Our Safety Standards</Typography>
+            <Typography variant='h2'>{t('safety_standards_section:title')}</Typography>
           </div>
 
           <div className={styles.sec_desc}>
-            <Typography>Apart From Good Medical Results, We Highly Rate General Safety. Our Patient`S Have To Be Lifted Through The Various Downs That Come With Medical Care. It Is Important That The Patient Is Fully Aware Of All The Factors That Will Collectively Ensure They Receive Satisfactory Treatment In And Out Of Hospital. By Emphasizing On All Aspects Concerning Safety, We Leave No Space For Substandard Treatment And Outside Care. Get Full Benefits Of Your Medical Trip Through Our Safety Standards Structure That Entails:</Typography>
+            <Typography>{t('safety_standards_section:desc')}</Typography>
 
           </div>
 
@@ -31,16 +34,15 @@ const Safty = () => {
             <div className={styles.text_container}>
               <div className={styles.right_side}>
                 <Typography>
-                  Satisfactory Patient Feedback
+                  {t('safety_standards_section:feedback')}
                   <img src={left01.src} className={styles.left1} alt="" />
                 </Typography>
                 <Typography>
-                  Affordable Treatment Charges
-
+                  {t('safety_standards_section:charges')}
                   <img src={left02.src} className={styles.left2} alt="" />
                 </Typography>
                 <Typography>
-                  Clarity Concerning All Matters
+                  {t('safety_standards_section:clarity')}
                 </Typography>
               </div>
 
@@ -58,38 +60,38 @@ const Safty = () => {
                 <Typography>
                   <img src={right01.src} className={styles.right1} alt="" />
 
-                  Highly Reviewed Experts
+                  {t('safety_standards_section:experts')}
                 </Typography>
                 <Typography>
                   <img src={right02.src} className={styles.right2} alt="" />
-                  Modern Healthcare Facilities
+                  {t('safety_standards_section:modern')}
                 </Typography>
                 <Typography>
                   <img src={middle.src} className={styles.middle} alt="" />
-                  First-Class Medical Services
+                  {t('safety_standards_section:medical_services')}
                 </Typography>
               </div>
             </div>
 
             <div className={styles.desc}>
-              <Typography>Apart from good medical results, we highly rate general safety. our patient`s have to be lifted through the various downs that come with medical care. it is important that the patient is fully aware of all the factors that will collectively ensure they receive satisfactory treatment in and out of hospital. by emphasizing on all aspects concerning safety, we leave no space for substandard treatment and outside care. get full benefits of your medical trip through our safety standards structure that entails:</Typography>
+              <Typography>{t('safety_standards_section:desc')}</Typography>
 
 
               <div className={styles.list}>
                 <ul>
-                  <li>Satisfactory patient feedback</li>
-                  <li>Affordable treatment charges</li>
-                  <li>Clarity concerning all matters </li>
-                  <li>Modern healthcare facilities </li>
-                  <li>First-class medical services</li>
-                  <li>Highly reviewed experts</li>
+                  <li>{t('safety_standards_section:feedback')}</li>
+                  <li>{t('safety_standards_section:charges')}</li>
+                  <li>{t('safety_standards_section:clarity')} </li>
+                  <li>{t('safety_standards_section:modern')} </li>
+                  <li>{t('safety_standards_section:medical_services')}</li>
+                  <li>{t('safety_standards_section:experts')} </li>
                 </ul>
               </div>
             </div>
 
             <div className={styles.btn_container}>
               <Link href='/safety-standards'>
-                <button>Explore Our Safety Standards</button>
+                <button>{t('safety_standards_section:explore')} </button>
               </Link>
             </div>
           </div>

@@ -5,19 +5,11 @@ import { ContactDetails, Help, WhySafemedigo } from '@/components/Home';
 import imgs from "../../assets/constants/imgs";
 import styles from "./index.module.scss";
 // import '../../styles/'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from "react-i18next";
 import { useRouter } from 'next/router';
 
 
 
-export async function getStaticProps({ locale }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common', 'home'])),
-    }
-  }
-}
 
 const AboutUs = (props) => {
   const { t } = useTranslation();
@@ -44,7 +36,6 @@ const AboutUs = (props) => {
 
   ]
 
-  const router = useRouter()
   const SafeHealthcare = aboutUs.filter((item) => item.title === 'Safe Healthcare')
   const YouComeFirst = aboutUs.filter((item) => item.title === 'You Come First')
   const StressFreeTreatment = aboutUs.filter((item) => item.title === 'Stress Free Treatment')
@@ -80,7 +71,7 @@ const AboutUs = (props) => {
     <>
       <SecNavbar />
       <PageHeader />
-      <h1>{t('home:welcome_msg')}/{props._nextI18Next.initialLocale}</h1>
+      <h1>{t('home:welcome_msg')}</h1>
 
       <section id={styles.about_us}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -178,8 +169,6 @@ const AboutUs = (props) => {
         </Container>
       </section>
 
-
-
       <section id={styles.who_is_safemedigo}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.section_container}>
@@ -199,6 +188,7 @@ const AboutUs = (props) => {
       </section>
 
       <Help />
+
       <WhySafemedigo />
 
       <section id={styles.founders}>
@@ -230,9 +220,6 @@ const AboutUs = (props) => {
         </Container>
 
       </section>
-
-
-
 
       <section id={styles.medical_councilors}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -319,8 +306,6 @@ const AboutUs = (props) => {
           </div>
         </Container>
       </section>
-
-
 
       <ContactDetails />
 

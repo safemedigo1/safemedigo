@@ -6,8 +6,11 @@ import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import { consts } from 'react-elastic-carousel';
 import { Container, Typography, Rating, } from '@mui/material';
 import Link from 'next/link';
+import { useTranslation } from "react-i18next";
+
 
 const PatientStories = () => {
+  const { t } = useTranslation();
   const { post1, post2, post3, post4, post5, author } = imgs;
 
   const [breakPoints] = useState([
@@ -170,18 +173,18 @@ const PatientStories = () => {
 
           <div className={styles.text_container}>
             <div className={styles.title}>
-              <Typography variant='h2'>Patient Stories</Typography>
+              <Typography variant='h2'>{t('patient_stories:title')}</Typography>
             </div>
 
             <div className={styles.desc}>
-              <Typography>We Are An Independent Organisation And Only Ever Provide Fully Honest And Unbiased Information About Doctors That Have Been Thoroughly And Professionally Vetted.</Typography>
+              <Typography>{t('patient_stories:desc')}</Typography>
             </div>
 
             <div className={styles.btn_container}>
 
               <Link href='/'>
                 <button>
-                  Read Our Stories
+                  {t('patient_stories:read')}
                 </button>
               </Link>
             </div>

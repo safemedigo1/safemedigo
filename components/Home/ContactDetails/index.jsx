@@ -8,7 +8,11 @@ import { consts } from 'react-elastic-carousel';
 import { Container, Typography, } from '@mui/material';
 import Link from 'next/link';
 import { Phone } from '../../../assets/svgs/HoverIcons'
+import { useTranslation } from "react-i18next";
+
+
 const ContactDetails = () => {
+  const { t } = useTranslation();
   const { majd } = imgs;
 
   return (
@@ -18,14 +22,14 @@ const ContactDetails = () => {
           <div className={styles.talk}>
             <div className={styles.title}>
               <Typography variant='h3'>
-                Do You Still Have Question? Please Contact Us</Typography >
+                {t('contact_details:title1')}</Typography >
             </div>
             <div className={styles.sec_title}>
-              <Link href='/contact-us'>Let’s Talk</Link>
+              <Link href='/contact-us'>{t('contact_details:title2')}</Link>
             </div>
 
             <div className={styles.desc}>
-              <Typography>Our highly efficient health care coordinating team will be at your disposal full time. Contact us through the various platforms which we are part of.</Typography>
+              <Typography>{t('contact_details:desc')}</Typography>
             </div>
 
             <div className={styles.buttons_container}>
@@ -65,25 +69,25 @@ const ContactDetails = () => {
 
                 <div className={styles.job}>
                   <Typography>
-                    Your Personal Patient Manager
+                    {t('contact_details:manager')}
                   </Typography>
                 </div>
 
                 <div className={styles.name}>
                   <Typography>
-                    Majd
+                    {t('contact_details:majd')}
                   </Typography>
                 </div>
 
                 <div className={styles.desc}>
                   <Typography>
-                    have you settled on a location for your treatment? worries doesn't let you choose? Speaking with a live person provide you a real advice and assurance you require.
+                    {t('contact_details:card_desc')}
                   </Typography>
                 </div>
 
                 <div className={styles.btn}>
                   <Link href='/q&a'>
-                    <button>Ask a question</button>
+                    <button> {t('contact_details:ask')}</button>
                   </Link>
                 </div>
 

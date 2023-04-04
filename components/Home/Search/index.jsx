@@ -4,9 +4,11 @@ import { Container, Typography, } from '@mui/material';
 import Link from 'next/link';
 import Carousel from 'react-elastic-carousel';
 import imgs from "../../../assets/constants/imgs";
+import { useTranslation } from "react-i18next";
 
 
 const Search = () => {
+  const { t } = useTranslation();
   const { search } = imgs;
 
   const [breakPoints] = useState([
@@ -35,9 +37,9 @@ const Search = () => {
         <div className={styles.searc_card}>
           <div className={styles.searc_input}>
             <Link href='/search'>
-              <label htmlFor="">I’m Looking For</label>
+              <label htmlFor="">{t('search_section:title')}</label>
               <div className={styles.input_container}>
-                <input type="text" disabled placeholder='Treatment, Doctor, Clinic, Diseases' />
+                <input type="text" disabled placeholder={t('search_section:place_holder')} />
                 <img src={search.src} alt="" />
               </div>
             </Link>
@@ -45,7 +47,7 @@ const Search = () => {
 
           <div className={styles.tags}>
             <div className={styles.title}>
-              <Typography>Popular Searched Treatments</Typography>
+              <Typography>{t('search_section:tags_title')}</Typography>
             </div>
             <div className={styles.tags_container}>
               {tags.map((tag, index) => (
