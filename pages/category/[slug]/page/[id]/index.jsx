@@ -67,7 +67,7 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
                 }}
               >
                 {blogCategory.map((item) => (
-                  <MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} value={item.slug} >
+                  <MenuItem dir={`${router.locale === "ar" ? 'rtl' : 'ltr'}`} value={item.slug} >
                     {item.categeryName}
                   </MenuItem>
                 ))}
