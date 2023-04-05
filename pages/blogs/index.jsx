@@ -21,7 +21,7 @@ import axios from 'axios';
 import Image from 'next/image'
 import { useTranslation } from "react-i18next";
 import { appContext } from "@/context/store";
-
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 
 export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages, locale }) {
@@ -44,7 +44,6 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
     router.push(`/blogs/page/${value}`, undefined, { scroll: false })
   }
 
-  console.log(blogs)
 
   return (
     <>
@@ -56,18 +55,22 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
         <meta name="blogs" content="blogs for doctors" />
       </Head>
 
-      <div id={styles.tags_filter}>
+      <div id={styles.tags_filter} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.filter}>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-autowidth-label">All Blogs</InputLabel>
+            <FormControl fullWidth  >
+              <InputLabel id="demo-simple-select-autowidth-label">{t('blogs_page:filter_title')}</InputLabel>
 
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 IconComponent={ExpandMoreOutlinedIcon}
-                label="All Blogs"
+                label={t('blogs_page:filter_title')}
                 onChange={handleFilterChanges}
+                MenuProps={{
+                  anchorOrigin: { horizontal: 'right', vertical: 'bottom' },
+                  transformOrigin: { horizontal: 'right', vertical: 'top' },
+                }}
                 style={{
                   backgroundColor: "#E7EDEC",
                   color: "#000000",
@@ -78,7 +81,8 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
               >
 
                 {blogCategory.map((item) => (
-                  <MenuItem value={item.slug} >
+
+                  < MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} value={item.slug} >
                     {item.categeryName}
                   </MenuItem>
                 ))}
@@ -87,10 +91,10 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
               </Select>
             </FormControl>
           </div>
-        </Container>
-      </div>
+        </Container >
+      </div >
 
-      <div className={styles.sections_container}>
+      <div className={styles.sections_container} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <section id={styles.blogs_sec}>
           <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
 
@@ -168,7 +172,10 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
               '& ul > li> button:not(.Mui-selected)': { color: '#004747', fontWeight: 'bold', fontSize: '14px' },
               '& ul > li> .Mui-selected': { backgroundColor: '#004747', color: '#ffffff', fontWeight: 'bold', fontSize: '18px' }
             }} className="pagination">
-              <Pagination count={totalPages} page={currentPage} onChange={handleMyChangePage} />
+              <Pagination count={totalPages} page={currentPage}
+                dir="ltr"
+                onChange={handleMyChangePage}
+              />
 
             </Box>
           </Container>
@@ -249,9 +256,12 @@ export async function getServerSideProps({ query, locale }) {
       currentPage: parseInt(page),
       totalPages,
       allBlogsTagsData,
-      locale
+      locale,
+      ...(await serverSideTranslations(locale, ['common', 'home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'blogs_page'])),
     }
   }
 }
+
+
 
 

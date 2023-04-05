@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import SecNavbar from '@/components/Navbar/SecNavbar';
 import { motion } from 'framer-motion';
 import Image from 'next/image'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages, allBlogsTagsData }) => {
   const [category, setCategory] = useState(blogCategory[0].categeryName);
@@ -39,11 +40,11 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
 
 
   return (
-    <div>
+    <div >
       <SecNavbar category={category} currentPage={currentPage} />
       <PageHeader />
 
-      <div id={styles.tags_filter}>
+      <div id={styles.tags_filter} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.filter}>
             <FormControl fullWidth>
@@ -66,7 +67,7 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
                 }}
               >
                 {blogCategory.map((item) => (
-                  <MenuItem value={item.slug} >
+                  <MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} value={item.slug} >
                     {item.categeryName}
                   </MenuItem>
                 ))}
@@ -78,7 +79,7 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
 
       {blogs.count !== 0 ?
         <>
-          <div className={styles.sections_container}>
+          <div className={styles.sections_container} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
             <section id={styles.blogs_sec}>
               <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
 
@@ -148,7 +149,7 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
                   '& ul > li> button:not(.Mui-selected)': { color: '#004747', fontWeight: 'bold', fontSize: '14px' },
                   '& ul > li> .Mui-selected': { backgroundColor: '#004747', color: '#ffffff', fontWeight: 'bold', fontSize: '18px' }
                 }} className="pagination">
-                  <Pagination count={totalPages} page={currentPage} onChange={handleMyChangePage} />
+                  <Pagination dir='ltr' count={totalPages} page={currentPage} onChange={handleMyChangePage} />
 
                 </Box>
               </Container>
@@ -232,7 +233,8 @@ export async function getServerSideProps({ query, locale }) {
       currentPage: parseInt(page),
       totalPages,
       categorySlug,
-      allBlogsTagsData
+      allBlogsTagsData,
+      ...(await serverSideTranslations(locale, ['common', 'home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'blogs_page'])),
     }
   }
 }

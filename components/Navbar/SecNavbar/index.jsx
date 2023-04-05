@@ -17,7 +17,7 @@ const SecNavbar = ({ categorySlug, category, currentPage, blog, tag }) => {
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           {pathname === '/blogs' || pathname === '/blogs/page/[slug]' ?
             <>
-              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/blogs' className={styles.active}>/ Blogs</Link>
+              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/blogs' className={styles.active}>/{t('sec_navbar:blogs')}</Link>
             </> : <></>
           }
 
@@ -25,7 +25,7 @@ const SecNavbar = ({ categorySlug, category, currentPage, blog, tag }) => {
           {
             pathname === '/category/[slug]/page/[id]' ?
               <>
-                <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/blogs' > /Blogs</Link>
+                <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/blogs' > /{t('sec_navbar:blogs')}</Link>
                 <Link href={`/category/${categorySlug}/page/${currentPage}`} className={styles.active} > /{category}</Link>
               </> : <></>
           }

@@ -49,11 +49,10 @@ const PageHeader = ({ blog }) => {
                   {pathname === ('/blogs') | pathname === ('/blogs/page/[slug]') | pathname === ('/category/[slug]/page/[id]') | pathname === ('/tags/[slug]') ?
                     <>
                       <Typography variant='h4' >
-                        Safemedigo Blogs
+                        {t('page_header_comp:blogs_title')}
                       </Typography>
                       <Typography variant='h2'>
-                        All Of The Latest Medical Travel And Healthcare Developments
-                        In One Place.
+                        {t('page_header_comp:blogs_desc')}
                       </Typography>
                     </>
                     : <></>}

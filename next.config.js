@@ -14,14 +14,14 @@ const nextConfig = {
   swcMinify: true,
   images: {
     //   unoptimized: true,
-    domains: ["safemedigocpv2-001-site1.atempurl.com"],
+    domains: [
+      "safemedigocpv2-001-site1.atempurl.com",
+      "safemedigo.com",
+      "safemedigo.vercel.app",
+    ],
   },
 
   typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
     ignoreBuildErrors: true,
   },
   distDir: "build",
