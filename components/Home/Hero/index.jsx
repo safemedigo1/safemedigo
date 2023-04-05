@@ -1,4 +1,4 @@
-import React, { Children, useState } from 'react';
+import React, { Children, useContext, useState } from 'react';
 import styles from './index.module.scss';
 import { Container, Typography, Rating, Box, } from '@mui/material';
 import { BsCheckLg } from 'react-icons/bs';
@@ -10,10 +10,12 @@ import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import { consts } from 'react-elastic-carousel';
 import Search from '../Search/index'
 import { useTranslation } from "react-i18next";
+import { appContext } from "@/context/store";
 
 
 const Hero = () => {
   const { t } = useTranslation();
+  const { lang, setLang } = useContext(appContext)
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false },
@@ -54,7 +56,7 @@ const Hero = () => {
   }
 
   return (
-    <section id={styles.hero}>
+    <section id={styles.hero} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
         <div className={styles.hero_container}>
           <div className={styles.text_container}>
