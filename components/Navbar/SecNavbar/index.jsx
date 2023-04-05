@@ -32,7 +32,7 @@ const SecNavbar = ({ categorySlug, category, currentPage, blog, tag }) => {
 
           {pathname === '/safety-standards' &&
             <>
-              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/safety-standards' className={styles.active} > /Safety Standards</Link>
+              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/safety-standards' className={styles.active} > /{t('sec_navbar:safety_standards')}</Link>
             </>
           }
           {pathname === '/how-it-works' &&

@@ -73,8 +73,8 @@ const PageHeader = ({ blog }) => {
 
                   {pathname === '/safety-standards' &&
                     <>
-                      <Typography variant='h4'>Safety Standards</Typography>
-                      <Typography variant='h2'>We strictly work with healthcare facilities which are fully compliant with the international health providers standards. A step by step vetting process is conducted every year by our experienced team.</Typography>
+                      <Typography variant='h4'> {t('page_header_comp:safety_standards_title')}</Typography>
+                      <Typography variant='h2'>{t('page_header_comp:safety_standards_desc')}</Typography>
                     </>
                   }
 
