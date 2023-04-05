@@ -272,3 +272,18 @@
     }
   }
 }
+#contact_details[dir="rtl"] {
+  .section_container {
+    .talk {
+      .buttons_container {
+        .btn {
+          a {
+            button {
+              flex-direction: row-reverse;
+            }
+          }
+        }
+      }
+    }
+  }
+}

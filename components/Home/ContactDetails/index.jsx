@@ -1,22 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './index.module.scss'
 import imgs from "../../../assets/constants/imgs";
-import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
-import { FaShieldAlt } from 'react-icons/fa'
-import { MdLocationOn } from 'react-icons/md'
-import { consts } from 'react-elastic-carousel';
 import { Container, Typography, } from '@mui/material';
 import Link from 'next/link';
 import { Phone } from '../../../assets/svgs/HoverIcons'
 import { useTranslation } from "react-i18next";
+import { appContext } from "@/context/store";
+
 
 
 const ContactDetails = () => {
   const { t } = useTranslation();
   const { majd } = imgs;
+  const { lang } = useContext(appContext)
 
   return (
-    <section id={styles.contact_details}>
+    <section id={styles.contact_details} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false}>
         <div className={styles.section_container}>
           <div className={styles.talk}>

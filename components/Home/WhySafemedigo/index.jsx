@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './index.module.scss'
 import { Container, Typography, } from '@mui/material';
 import { OurSafetyStanders, RealReviewsPatientStories, PatientSupport, BestTreatmentPackages } from "../../../assets/svgs/HoverIcons"
 import Link from 'next/link';
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import { appContext } from "@/context/store";
 
 const WhySafemedigo = () => {
   const { t } = useTranslation();
+  const { lang } = useContext(appContext)
+
 
 
 
@@ -23,7 +26,7 @@ const WhySafemedigo = () => {
   const { pathname } = router;
 
   return (
-    <section id={styles.why_safemedigo}>
+    <section id={styles.why_safemedigo} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
         <div className={styles.section_container}>
           <div className={styles.sec_title}>

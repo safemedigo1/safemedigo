@@ -15,7 +15,7 @@ import { appContext } from "@/context/store";
 
 const Hero = () => {
   const { t } = useTranslation();
-  const { lang, setLang } = useContext(appContext)
+  const { lang } = useContext(appContext)
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false },

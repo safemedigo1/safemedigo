@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './index.module.scss'
 import { Container, Typography, } from '@mui/material';
 import imgs from "../../../assets/constants/imgs";
 import { useTranslation } from "react-i18next";
+import { appContext } from "@/context/store";
+
 
 
 
@@ -55,6 +57,7 @@ const TreatmentCategory = () => {
 
   } = imgs;
   const { t } = useTranslation();
+  const { lang } = useContext(appContext)
 
 
   const cards = [
@@ -82,7 +85,7 @@ const TreatmentCategory = () => {
   ]
 
   return (
-    <section id={styles.treatment_category}>
+    <section id={styles.treatment_category} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
         <div className={styles.section_container}>
           <div className={styles.sec_title}>

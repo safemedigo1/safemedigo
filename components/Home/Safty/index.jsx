@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import imgs from "../../../assets/constants/imgs";
 import styles from './index.module.scss'
 import { Container, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useTranslation } from "react-i18next";
+import { appContext } from "@/context/store";
+
 
 
 
 const Safty = () => {
+  const { lang } = useContext(appContext)
   const { t } = useTranslation();
   const { OurSafetyStandards00, OurSafterStanders01, left01,
     right01,
@@ -15,12 +18,12 @@ const Safty = () => {
     middle, left02, OurSafetyStandards002 } = imgs;
 
   return (
-    <section id={styles.safty}>
+    <section id={styles.safty} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
 
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false}>
-        <div className={styles.section_container}>
-          <div className={styles.title}>
-            <Typography variant='h2'>{t('safety_standards_section:title')}</Typography>
+        <div className={styles.section_container} >
+          <div className={styles.title} >
+            <Typography variant='h2' >{t('safety_standards_section:title')}</Typography>
           </div>
 
           <div className={styles.sec_desc}>

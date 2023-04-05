@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from './index.module.scss'
 import Carousel from 'react-elastic-carousel';
 import imgs from "../../../assets/constants/imgs";
@@ -10,12 +10,14 @@ import { Container, Typography, Rating, Box } from '@mui/material';
 import Link from 'next/link';
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { appContext } from "@/context/store";
+
 
 import { useTranslation } from "react-i18next";
 
 const MostPopular = () => {
   const { t } = useTranslation();
-
+  const { lang } = useContext(appContext)
   const { post1, post2, post3, post4, post5, } = imgs;
 
   const [breakPoints] = useState([
@@ -122,7 +124,7 @@ const MostPopular = () => {
     <Box sx={pathname !== '/procedures&symptoms' ? {
       backgroundColor: '#eef5f5'
 
-    } : { backgroundColor: '#F4F9F8' }} id={styles.most_popular} >
+    } : { backgroundColor: '#F4F9F8' }} id={styles.most_popular} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
 
       <Box sx={pathname !== '/procedures&symptoms' && { height: '660px' }} className={styles.section_container}>
         <Container sx={{ maxWidth: '1239px', }} maxWidth={false}  >

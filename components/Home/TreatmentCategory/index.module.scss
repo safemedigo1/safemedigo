@@ -204,3 +204,52 @@ section#treatment_category {
     }
   }
 }
+
+section#treatment_category[dir="rtl"] {
+  .section_container {
+    @media screen and (max-width: 992px) {
+      align-items: flex-start;
+    }
+
+    .sec_title {
+      text-align: right;
+
+      @media screen and (max-width: 992px) {
+        margin-bottom: 30px;
+      }
+    }
+
+    .boxes_container {
+      .box {
+        &:not(:last-child) {
+          @media screen and (max-width: 992px) {
+            margin-left: 0;
+          }
+        }
+
+        .img_container {
+          margin-right: 0px;
+          margin-left: 16px;
+
+          @media screen and (max-width: 992px) {
+            margin-left: 12px;
+          }
+
+          .default_icon,
+          .hovered_icon {
+            margin-right: 0px;
+            margin-left: 16px;
+          }
+        }
+      }
+    }
+
+    .btn_contianer {
+      margin-left: 80px;
+
+      @media screen and (max-width: 992px) {
+        margin-left: -11px;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from './index.module.scss'
 import Carousel from 'react-elastic-carousel';
 import imgs from "../../../assets/constants/imgs";
@@ -7,11 +7,14 @@ import { consts } from 'react-elastic-carousel';
 import { Container, Typography, Rating, } from '@mui/material';
 import Link from 'next/link';
 import { useTranslation } from "react-i18next";
+import { appContext } from "@/context/store";
+
 
 
 const PatientStories = () => {
   const { t } = useTranslation();
   const { post1, post2, post3, post4, post5, author } = imgs;
+  const { lang } = useContext(appContext)
 
   const [breakPoints] = useState([
 
@@ -167,7 +170,7 @@ const PatientStories = () => {
   }
 
   return (
-    <section id={styles.patient_stories}>
+    <section id={styles.patient_stories} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
       <Container className='mycontainer' sx={{ maxWidth: '1239px' }} maxWidth={false} >
         <div className={styles.section_container}>
 

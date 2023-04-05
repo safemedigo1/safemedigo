@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import imgs from "../../../assets/constants/imgs";
 import styles from './index.module.scss'
 import { Container, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useTranslation } from "react-i18next";
+import { appContext } from "@/context/store";
 
 
 const WhyTurkey = () => {
   const { t } = useTranslation();
+  const { lang } = useContext(appContext)
 
   const { author, turky_bg
     , why_turcky_img } = imgs;
   return (
-    <section id={styles.why_turky}>
+    <section id={styles.why_turky} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
       <Container sx={{ maxWidth: '1239px', }} maxWidth={false}>
 
         <div className={styles.section_container}>

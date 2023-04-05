@@ -282,3 +282,122 @@
     }
   }
 }
+
+// AR
+#searchs {
+  @media screen and (min-width: 992px) {
+    padding-left: 61px;
+    padding-right: 58px;
+  }
+
+  .searc_card {
+    .searc_input {
+      a {
+        margin-left: 0px;
+        margin-right: -262px;
+
+        @media screen and (max-width: 992px) {
+          margin-left: 0px;
+          margin-right: 0px;
+        }
+
+        @media screen and (max-width: 1200px) {
+          margin-left: 0px;
+          margin-right: 0px;
+        }
+
+        label {
+          margin-right: 0px;
+          margin-left: 17px;
+        }
+
+        .input_container {
+          input {
+            padding-right: 57px;
+            @media screen and (max-width: 992px) {
+              padding-right: 39px;
+            }
+          }
+
+          img {
+            right: 13px;
+            @media screen and (min-width: 992px) {
+              right: 21px;
+            }
+          }
+        }
+      }
+    }
+
+    .tags {
+      .title {
+        p {
+          text-align: center;
+          color: var(--main-dark-color);
+          font-size: 20px;
+          font-family: var(--quickstand-font);
+          font-weight: var(--font-medium);
+
+          @media screen and (max-width: 1200px) {
+            margin-left: 0px;
+            margin-right: 150px;
+          }
+        }
+      }
+    }
+  }
+
+  .tags_slider {
+    width: 100%;
+    @media screen and (max-width: 992px) {
+      margin-bottom: -24px;
+    }
+
+    @media screen and (min-width: 992px) {
+      display: none;
+    }
+
+    .title {
+      h3 {
+        color: var(--main-white-color);
+        font-family: var(--quickstand-font);
+        font-size: 18px;
+      }
+
+      @media screen and (max-width: 992px) {
+        margin-bottom: 14px;
+      }
+    }
+
+    a {
+      // width: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      button {
+        width: 141px;
+        height: 48px;
+
+        background-color: var(--light-green-color);
+        border: 1px solid var(--main-green-color);
+        border-radius: 24px;
+
+        text-align: center;
+        color: var(--main-dark-color);
+
+        font-size: 16px;
+        font-weight: var(--font-regular);
+        font-family: var(--quickstand-font);
+
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        margin-right: 10px;
+
+        &:hover {
+          background-color: var(--sec-green-color);
+          color: var(--main-dark-color);
+        }
+      }
+    }
+  }
+}

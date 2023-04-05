@@ -343,3 +343,178 @@
     }
   }
 }
+
+#safty[dir="rtl"] {
+  .section_container {
+    .content {
+      .text_container {
+        .right_side {
+          margin-right: 0px;
+          margin-left: 60px;
+
+          p {
+            &:first-child {
+              margin-left: 0px;
+              margin-right: -20px;
+            }
+
+            &:last-child {
+              margin-left: 0px;
+              margin-right: 20px;
+            }
+
+            .left1 {
+              top: -30%;
+              right: 90%;
+            }
+
+            .left2 {
+              right: 100%;
+            }
+          }
+        }
+
+        .left_side {
+          margin-left: 0px;
+          margin-right: 73px;
+
+          .right1 {
+            top: -5%;
+            left: 110%;
+          }
+
+          .right2 {
+            left: 110%;
+            top: 36%;
+          }
+
+          .middle {
+            left: 250px;
+          }
+
+          p {
+            color: #004747;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+            font-weight: var(--font-sem-bold);
+            font-family: var(--open-sans-font);
+
+            @media screen and (max-width: 992px) {
+              font-size: 14px;
+              margin-bottom: 20px;
+            }
+            &:first-child {
+              margin-left: 20px;
+            }
+
+            &:last-child {
+              margin-left: -20px;
+            }
+
+            &:hover {
+              color: var(--sec-cyan-color);
+            }
+          }
+        }
+      }
+
+      .desc {
+        margin-top: 50px;
+
+        @media screen and (min-width: 992px) {
+          display: none;
+        }
+        p {
+          color: var(--main-dark-color);
+          font-size: 16px;
+          font-weight: var(--font-regular);
+          font-family: var(--open-sans-font);
+        }
+
+        .list {
+          margin-top: 16px;
+
+          ul {
+            @media screen and (max-width: 992px) {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              grid-template-rows: 1fr;
+              grid-column-gap: 20px;
+              grid-row-gap: 0px;
+            }
+
+            @media screen and (max-width: 450px) {
+              grid-template-columns: repeat(1, 1fr);
+            }
+
+            li {
+              position: relative;
+              color: var(--main-dark-color);
+              font-size: 16px;
+              font-weight: var(--font-medium);
+              font-family: var(--quickstand-font);
+              margin: 0px;
+              margin-left: 14px;
+              letter-spacing: 0;
+              @media screen and (max-width: 992px) {
+                line-height: 1.2rem;
+                margin-top: 20px;
+              }
+
+              @media screen and (max-width: 450px) {
+                margin-top: 10px;
+              }
+
+              &::after {
+                position: absolute;
+                content: "";
+                top: 7px;
+                left: -14px;
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background-color: var(--main-green-color);
+              }
+            }
+          }
+        }
+      }
+
+      .btn_container {
+        text-align: center;
+        margin-top: 180px;
+
+        @media screen and (max-width: 992px) {
+          margin-top: 32px;
+        }
+
+        a {
+          button {
+            cursor: pointer;
+            border-radius: 5px;
+            width: 294px;
+            height: 57px;
+            background-color: var(--main-green-color);
+            color: var(--main-white-color);
+
+            font-size: 18px;
+            font-weight: bold;
+
+            font-weight: var(--font-bold);
+            font-family: var(--quickstand-font);
+
+            border: 1px solid var(--main-green-color);
+
+            transition: all 0.3s ease;
+
+            &:hover {
+              background-color: var(--main-white-color);
+              color: var(--main-green-color);
+              border-color: var(--main-dark-color);
+            }
+          }
+        }
+      }
+    }
+  }
+}
