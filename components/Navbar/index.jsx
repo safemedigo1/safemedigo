@@ -174,7 +174,7 @@ const Navbar = (props) => {
       <CssBaseline />
       <HideOnScroll {...props} >
         <AppBar style={{ background: 'transparent' }} >
-          <div className={styles.navbar} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
+          <div className={styles.navbar} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
             <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
               <Grid container
                 alignItems="center"
@@ -237,7 +237,7 @@ const Navbar = (props) => {
 
                         <div className={styles.lang}>
                           <div className={styles.img_container}>
-                            {lang === 'en' &&
+                            {router.locale === 'en' &&
                               <Image
                                 src={en.src}
                                 alt="Picture of the author"
@@ -246,7 +246,7 @@ const Navbar = (props) => {
                               />
                             }
 
-                            {lang === 'ar' &&
+                            {router.locale === 'ar' &&
                               <Image
                                 src={ar.src}
                                 alt="Picture of the author"
@@ -255,7 +255,7 @@ const Navbar = (props) => {
                               />
                             }
 
-                            {lang === 'tr' &&
+                            {router.locale === 'tr' &&
                               <Image
                                 src={tr.src}
                                 alt="Picture of the author"

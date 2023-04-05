@@ -26,7 +26,7 @@ const WhySafemedigo = () => {
   const { pathname } = router;
 
   return (
-    <section id={styles.why_safemedigo} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
+    <section id={styles.why_safemedigo} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
         <div className={styles.section_container}>
           <div className={styles.sec_title}>

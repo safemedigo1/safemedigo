@@ -44,6 +44,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
     router.push(`/blogs/page/${value}`, undefined, { scroll: false })
   }
 
+  console.log(blogs)
 
   return (
     <>

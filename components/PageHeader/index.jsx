@@ -3,11 +3,15 @@ import styles from "./index.module.scss";
 import imgs from "../../assets/constants/imgs";
 import { Container, Typography, Box } from "@mui/material";
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
+
 
 const PageHeader = ({ blog }) => {
   const router = useRouter();
   const { pathname } = router;
   const { design, designMobile, author } = imgs;
+  const { t } = useTranslation();
+
   return (
 
     <>
@@ -19,7 +23,7 @@ const PageHeader = ({ blog }) => {
               sm: "none",
               lg: "block"
             }
-          }} id={styles.blogs} >
+          }} id={styles.blogs} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} >
           <div className={styles.header_container}>
 
             <Container
@@ -63,8 +67,8 @@ const PageHeader = ({ blog }) => {
 
                   {pathname === '/about-us' &&
                     <>
-                      <Typography variant='h4'>About Us</Typography>
-                      <Typography variant='h2'>We are your preferred healthcare partner. Get one on one assistance before, during and after your medical journey. Sourcing information on medical care has been simplified to give you a better experience.</Typography>
+                      <Typography variant='h4'>{t('page_header_comp:title')}</Typography>
+                      <Typography variant='h2'>{t('page_header_comp:desc')}</Typography>
                     </>
                   }
 

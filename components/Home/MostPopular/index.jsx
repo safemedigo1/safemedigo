@@ -20,6 +20,7 @@ const MostPopular = () => {
   const { lang } = useContext(appContext)
   const { post1, post2, post3, post4, post5, } = imgs;
 
+
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },
@@ -124,7 +125,7 @@ const MostPopular = () => {
     <Box sx={pathname !== '/procedures&symptoms' ? {
       backgroundColor: '#eef5f5'
 
-    } : { backgroundColor: '#F4F9F8' }} id={styles.most_popular} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
+    } : { backgroundColor: '#F4F9F8' }} id={styles.most_popular} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
 
       <Box sx={pathname !== '/procedures&symptoms' && { height: '660px' }} className={styles.section_container}>
         <Container sx={{ maxWidth: '1239px', }} maxWidth={false}  >

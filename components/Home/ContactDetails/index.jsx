@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Phone } from '../../../assets/svgs/HoverIcons'
 import { useTranslation } from "react-i18next";
 import { appContext } from "@/context/store";
+import { useRouter } from 'next/router';
 
 
 
@@ -13,9 +14,9 @@ const ContactDetails = () => {
   const { t } = useTranslation();
   const { majd } = imgs;
   const { lang } = useContext(appContext)
-
+  const router = useRouter()
   return (
-    <section id={styles.contact_details} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
+    <section id={styles.contact_details} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false}>
         <div className={styles.section_container}>
           <div className={styles.talk}>

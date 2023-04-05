@@ -5,6 +5,7 @@ import { Container, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useTranslation } from "react-i18next";
 import { appContext } from "@/context/store";
+import { useRouter } from 'next/router';
 
 
 
@@ -17,8 +18,9 @@ const Safty = () => {
     right02,
     middle, left02, OurSafetyStandards002 } = imgs;
 
+  const router = useRouter();
   return (
-    <section id={styles.safty} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
+    <section id={styles.safty} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
 
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false}>
         <div className={styles.section_container} >

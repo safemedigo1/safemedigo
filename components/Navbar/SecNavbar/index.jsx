@@ -5,18 +5,15 @@ import { useRouter } from "next/router";
 import Link from 'next/link';
 import { useTranslation } from "react-i18next";
 
-import { appContext } from "@/context/store";
-
 
 const SecNavbar = ({ categorySlug, category, currentPage, blog, tag }) => {
   const router = useRouter();
   const { pathname } = router;
-
-  const { lang } = useContext(appContext)
   const { t } = useTranslation();
+
   return (
     <>
-      <nav id={styles.sec_nav}>
+      <nav id={styles.sec_nav} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           {pathname === '/blogs' || pathname === '/blogs/page/[slug]' ?
             <>
@@ -46,7 +43,7 @@ const SecNavbar = ({ categorySlug, category, currentPage, blog, tag }) => {
 
           {pathname === '/about-us' &&
             <>
-              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/about-us' className={styles.active} > /About us</Link>
+              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/about-us' className={styles.active} > /{t('sec_navbar:about_us')}</Link>
             </>
           }
           {pathname === '/procedures&symptoms' &&

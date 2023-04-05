@@ -11,6 +11,7 @@ import { consts } from 'react-elastic-carousel';
 import Search from '../Search/index'
 import { useTranslation } from "react-i18next";
 import { appContext } from "@/context/store";
+import { useRouter } from 'next/router';
 
 
 const Hero = () => {
@@ -22,7 +23,7 @@ const Hero = () => {
     { width: 400, pagination: false },
 
   ])
-
+  const router = useRouter();
   const { author, } = imgs;
 
   const cards = [
@@ -56,7 +57,7 @@ const Hero = () => {
   }
 
   return (
-    <section id={styles.hero} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
+    <section id={styles.hero} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
         <div className={styles.hero_container}>
           <div className={styles.text_container}>

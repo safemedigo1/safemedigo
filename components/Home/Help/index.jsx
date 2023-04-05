@@ -4,13 +4,14 @@ import { Container, Typography, Box } from '@mui/material';
 import imgs from "../../../assets/constants/imgs";
 import { useTranslation } from "react-i18next";
 import { appContext } from "@/context/store";
+import { useRouter } from 'next/router';
 
 
 const Help = () => {
   const { lang } = useContext(appContext)
   const { t } = useTranslation();
   const { QualityGuarantee, OnGuide, GetQuote, TravelAssist } = imgs;
-
+  const router = useRouter()
 
   const cards = [
     { title: t('help_section:qoute_title'), desc: t('help_section:qoute_desc'), img: GetQuote.src },
@@ -21,7 +22,7 @@ const Help = () => {
 
 
   return (
-    <Box id={styles.help} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}
+    <Box id={styles.help} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
       sx={window.location.pathname === '/' | window.location.pathname === '/ar' | window.location.pathname === '/en' | window.location.pathname === '/tr' ? { marginTop: { xs: "127px", sm: '127px', md: "20px", lg: '127px', xlg: '127px' }, paddingTop: { xs: "22px", sm: "22px", md: "22px", }, } : { paddingTop: "0px", marginTop: "0px" }}
 
     >
