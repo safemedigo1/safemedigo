@@ -40,7 +40,7 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
 
 
   return (
-    <div >
+    <div>
       <SecNavbar category={category} currentPage={currentPage} />
       <PageHeader />
 
@@ -55,10 +55,6 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
                 IconComponent={ExpandMoreOutlinedIcon}
                 label={category}
                 onChange={handleFilterChanges}
-
-
-
-
                 style={{
                   backgroundColor: "#E7EDEC",
                   color: "#000000",
@@ -172,7 +168,6 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
 export default PageNumber
 
 export async function getServerSideProps({ query, locale }) {
-
   const categorySlug = query.slug
   const page = query.id; // If no page is specified, default to page 1
   const limit = 6; // Number of products to display per page

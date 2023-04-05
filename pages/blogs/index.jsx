@@ -82,7 +82,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
 
                 {blogCategory.map((item) => (
 
-                  < MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} value={item.slug} >
+                  <MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} value={item.slug} >
                     {item.categeryName}
                   </MenuItem>
                 ))}
@@ -189,12 +189,10 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
 };
 
 export async function getServerSideProps({ query, locale }) {
-
   const page = query.page || '1'; // If no page is specified, default to page 1
   const limit = 6; // Number of products to display per page
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
-
 
   const res1 = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
     method: 'POST',
@@ -206,9 +204,13 @@ export async function getServerSideProps({ query, locale }) {
       "lang": locale,
     })
   })
+
+
   const data2 = await res1.json()
 
-  const myCategoryId = data2.filter((c) => c.slug === query.category)
+  const myCategoryId = data2.isSuccess != false && data2.filter((c) => c.slug === query.category)
+
+
 
   const getBlogWithPageRes = await axios.post("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogWithPage", {
     "lang": locale,

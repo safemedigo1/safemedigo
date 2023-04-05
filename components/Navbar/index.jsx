@@ -282,7 +282,7 @@ const Navbar = (props) => {
                           <div className={styles.menuLinks__container}>
                             <ul>
                               <li>
-                                <a href={`/en`} >
+                                <Link href={`/en${router.asPath}`} >
                                   EN
                                   <div className={styles.img_container}>
                                     <Image
@@ -292,10 +292,10 @@ const Navbar = (props) => {
                                       height={12.88}
                                     />
                                   </div>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a href={`/tr`} >
+                                <Link href={`/tr${router.asPath}`} >
                                   TR
                                   <div className={styles.img_container}>
                                     <Image
@@ -305,10 +305,11 @@ const Navbar = (props) => {
                                       height={12.88}
                                     />
                                   </div>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a href={`/ar`} >
+                                {console.log(router.asPath, "HERESS")}
+                                <Link href={`/ar${router.asPath}`} >
                                   AR
                                   <div className={styles.img_container}>
                                     <Image
@@ -318,7 +319,7 @@ const Navbar = (props) => {
                                       height={12.88}
                                     />
                                   </div>
-                                </a>
+                                </Link>
                               </li>
 
                             </ul>

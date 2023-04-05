@@ -167,7 +167,7 @@ const MostPopular = () => {
 
         </Container>
 
-        <Container className='mycontainer' sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false}  >
+        <Container className={`mycontainer ${router.locale === 'ar' && 'mycontainer_ar'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false}  >
 
           {pathname === '/procedures&symptoms' &&
             <div className={styles.title_mobile}>

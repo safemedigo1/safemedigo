@@ -1,5 +1,5 @@
 import { PageHeader, SecNavbar, Tags } from '@/components'
-import { Box, FormControl, InputLabel, Pagination, Select, Typography } from '@mui/material'
+import { Box, FormControl, InputLabel, MenuItem, Pagination, Select, Typography } from '@mui/material'
 import { Container } from '@mui/system'
 import { motion } from 'framer-motion'
 import Head from 'next/head'
@@ -7,8 +7,14 @@ import React from 'react'
 import styles from '../../blogs/index.module.scss'
 import Image from 'next/image'
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useRouter } from 'next/router'
+import { useTranslation } from "react-i18next";
+
 
 const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages }) => {
+  const { t } = useTranslation();
+
   const handleMyChangePage = (event, value) => {
     event.preventDefault();
     router.push(`/tags/page/${value}`)
@@ -20,27 +26,28 @@ const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPag
     setCategory(value.props.children)
   }
 
+  const router = useRouter();
 
   return (
     <div>
-
-      <SecNavbar tag={blogs.data[0].tags[0].tagName} />
-      <PageHeader />
       <Head>
         <title>Blogs</title>
         <meta name="blogs" content="blogs for doctors" />
       </Head>
 
-      <div id={styles.tags_filter}>
+      <SecNavbar tag={blogs.data[0].tags[0].tagName} />
+      <PageHeader />
+
+      <div id={styles.tags_filter} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.filter}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-autowidth-label">Blogs</InputLabel>
+              <InputLabel id="demo-simple-select-autowidth-label">{t('blogs_page:filter_title')}</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 IconComponent={ExpandMoreOutlinedIcon}
-                label="Blogs"
+                label={t('blogs_page:filter_title')}
                 onChange={handleFilterChanges}
                 style={{
                   backgroundColor: "#E7EDEC",
@@ -53,7 +60,7 @@ const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPag
 
 
                 {blogCategory?.map((item) => (
-                  <MenuItem value={item.slug} >
+                  <MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} value={item.slug} >
                     {item.categeryName}
                   </MenuItem>
                 ))}
@@ -70,11 +77,12 @@ const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPag
         <meta name="blogs" content="blogs for doctors" />
       </Head>
 
-      <div className={styles.sections_container}>
+      <div className={styles.sections_container} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+
         <section id={styles.blogs_sec}>
           <Container sx={{ maxWidth: "1239px", marginTop: '40px' }} maxWidth={false}>
             <div className={styles.title}>
-              <Typography variant="h6">{blogs.data[0].tags[0].tagName}</Typography>
+
             </div>
             <div
               className={styles.boxes_container}>
@@ -140,7 +148,7 @@ const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPag
               '& ul > li> button:not(.Mui-selected)': { color: '#004747', fontWeight: 'bold', fontSize: '14px' },
               '& ul > li> .Mui-selected': { backgroundColor: '#004747', color: '#ffffff', fontWeight: 'bold', fontSize: '18px' }
             }} className="pagination">
-              <Pagination count={totalPages} page={currentPage} onChange={handleMyChangePage} />
+              <Pagination dir="ltr" count={totalPages} page={currentPage} onChange={handleMyChangePage} />
 
             </Box>
           </Container>
@@ -159,7 +167,6 @@ export default TagsBlog
 
 
 export async function getServerSideProps({ query, locale }) {
-
   const page = query.page || '1'; // If no page is specified, default to page 1
   const limit = 6; // Number of products to display per page
   const startIndex = (page - 1) * limit;
@@ -182,6 +189,34 @@ export async function getServerSideProps({ query, locale }) {
   const data = await res.json()
 
 
+  const res1 = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": locale,
+    })
+  })
+  const data2 = await res1.json()
+
+  const myCategoryId = data2.filter((c) => c.slug === query.category)
+
+  const getBlogWithPageRes = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogWithPage", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    "lang": locale,
+    "blogCategoryId": myCategoryId?.[0]?.id || '0',
+    "currentPage": page || 1
+  },);
+  const getBlogWithPageData = await getBlogWithPageRes.data;
+
+
+
   const products = data.data;
   const totalProducts = data.count;
   const totalPages = Math.ceil(totalProducts / limit);
@@ -200,14 +235,17 @@ export async function getServerSideProps({ query, locale }) {
 
   const allBlogsTagsData = await allBlogTagsRes.json()
 
+  console.log(allBlogsTagsData)
 
   return {
     props: {
       blogs: data,
+      blogCategory: data2,
       products: products.slice(startIndex, endIndex),
       currentPage: parseInt(page),
       totalPages,
-      allBlogsTagsData
+      allBlogsTagsData,
+      ...(await serverSideTranslations(locale, ['common', 'home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'blogs_page'])),
     }
   }
 }

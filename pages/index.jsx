@@ -51,8 +51,6 @@ export default function Home(props) {
 
       <Hero />
       <Help />
-      <h1>
-      </h1>
       <WhySafemedigo />
       <TreatmentCategory />
       <MostPopular />

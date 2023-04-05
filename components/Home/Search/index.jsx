@@ -68,7 +68,7 @@ const Search = () => {
       <div className={styles.tags_slider}>
         <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
           <div className={styles.title}>
-            <Typography variant='h3'>Popular</Typography>
+            <Typography variant='h3'>{t('search_section:slider_title')}</Typography>
           </div>
         </Container>
 
