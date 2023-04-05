@@ -5,14 +5,13 @@ import { ContactDetails, Help, WhySafemedigo } from '@/components/Home';
 import imgs from "../../assets/constants/imgs";
 import styles from "./index.module.scss";
 // import '../../styles/'
-import { useTranslation } from "react-i18next";
-import { useRouter } from 'next/router';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-
-
+import { useTranslation } from "next-i18next";
 
 const AboutUs = (props) => {
   const { t } = useTranslation();
+  console.log(props, "my PROPS")
 
   const { author, youComeFirst,
     safeHealthcare,
@@ -314,3 +313,13 @@ const AboutUs = (props) => {
 }
 
 export default AboutUs
+
+
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common', 'home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar'])),
+    }
+  }
+}

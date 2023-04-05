@@ -25,7 +25,6 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   distDir: "build",
-  reactStrictMode: true,
   i18n,
 };
 

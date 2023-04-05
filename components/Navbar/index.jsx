@@ -19,8 +19,11 @@ import Toolbar from '@mui/material/Toolbar';
 import CssBaseline from '@mui/material/CssBaseline';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
-import { useTranslation } from "react-i18next";
 import { appContext } from "@/context/store";
+
+import { useTranslation } from "next-i18next";
+
+
 
 
 
@@ -46,8 +49,7 @@ function HideOnScroll(props) {
 
 
 
-
-const Navbar = (props,) => {
+const Navbar = (props) => {
   const { t } = useTranslation();
   const { lang, setLang } = useContext(appContext)
 
@@ -166,7 +168,6 @@ const Navbar = (props,) => {
   // Get routes to make dynamic data
   const router = useRouter();
   const { pathname } = router;
-
 
   return (
     <>
@@ -551,6 +552,6 @@ const Navbar = (props,) => {
   );
 };
 
-export default Navbar;
 
+export default Navbar;
 

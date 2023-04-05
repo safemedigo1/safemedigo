@@ -11,14 +11,16 @@ import {
   WhyTurkey
 } from '../components/Home'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from "react-i18next";
+
 import { useContext, useEffect } from "react";
 import { appContext } from "@/context/store";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details'])),
+      ...(await serverSideTranslations(locale, ['common', 'home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar'])),
     }
   }
 }
@@ -28,6 +30,10 @@ export default function Home(props) {
   useEffect(() => {
     setLang(props._nextI18Next.initialLocale)
   }, [])
+
+  const { t } = useTranslation();
+
+
 
   return (
     <>
@@ -43,9 +49,11 @@ export default function Home(props) {
 
       {/* Home Page Sections  */}
 
-
       <Hero />
       <Help />
+      <h1>
+        {t('common:get_started')}
+      </h1>
       <WhySafemedigo />
       <TreatmentCategory />
       <MostPopular />
