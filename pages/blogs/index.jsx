@@ -224,7 +224,6 @@ export async function getServerSideProps({ query, locale }) {
   });
   const data = await getBlogWithPageRes.data;
 
-
   const products = data.data;
   const totalProducts = data.count;
   const totalPages = Math.ceil(totalProducts / limit);
@@ -244,6 +243,7 @@ export async function getServerSideProps({ query, locale }) {
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ['common', 'home', 'navbar', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'blogs_page'])),
       blogs: data,
       blogCategory: data2,
       products: products.slice(startIndex, endIndex),
@@ -251,11 +251,8 @@ export async function getServerSideProps({ query, locale }) {
       totalPages,
       allBlogsTagsData,
       locale,
-      ...(await serverSideTranslations(locale, ['common', 'home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'blogs_page'])),
+
     }
   }
 }
-
-
-
 
