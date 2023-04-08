@@ -19,9 +19,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
     return { __html: blog.content };
   }
 
-
   const { author, } = imgs;
-
   const router = useRouter();
 
   function shareToFacebook() {
@@ -391,6 +389,7 @@ export async function getServerSideProps({ query, locale }) {
   })
 
   const allBlogsTagsData = await allBlogTagsRes.json()
+
   return {
     props: {
       blog: data,

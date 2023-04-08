@@ -13,7 +13,6 @@ import { useRouter } from 'next/dist/client/router';
 
 const AboutUs = (props) => {
   const { t } = useTranslation();
-
   const router = useRouter();
 
   const { author, youComeFirst,

@@ -52,8 +52,6 @@ const SafetyStandards = () => {
   const patientFeedback = safetyStandards.filter((item) => item.title === 'Satisfactory Patient Feedback')
   const clarityConcerning = safetyStandards.filter((item) => item.title === 'Clarity Concerning All Matters')
 
-
-
   return (
     <>
       <SecNavbar />

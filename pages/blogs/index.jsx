@@ -229,9 +229,6 @@ export async function getServerSideProps({ query, locale }) {
   const totalProducts = data.count;
   const totalPages = Math.ceil(totalProducts / limit);
 
-
-
-
   const allBlogTagsRes = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogsTags", {
     method: 'POST',
     headers: {
@@ -244,11 +241,6 @@ export async function getServerSideProps({ query, locale }) {
   })
 
   const allBlogsTagsData = await allBlogTagsRes.json()
-
-
-
-
-
 
   return {
     props: {
