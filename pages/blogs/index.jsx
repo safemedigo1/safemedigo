@@ -247,7 +247,7 @@ export async function getServerSideProps({ query, locale }) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['navbar',])),
+      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp'])),
       blogs: data,
       blogCategory: data2,
       // products: products.slice(startIndex, endIndex),
