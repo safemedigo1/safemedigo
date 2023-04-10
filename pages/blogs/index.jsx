@@ -24,6 +24,7 @@ import { appContext } from "@/context/store";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 
+
 export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages, locale }) {
   const { t } = useTranslation();
   const [category, setCategory] = useState('All Blogs');
@@ -244,7 +245,23 @@ export async function getServerSideProps({ query, locale }) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'about_us_page', 'blogs_page'])),
+      ...(await serverSideTranslations(locale, [
+        'common',
+        'home',
+        'navbar',
+        'hero_section',
+        'search_section',
+        'help_section',
+        'why_safemedigo',
+        'treatments_section',
+        'most_popular',
+        'patient_stories',
+        'safety_standards_section',
+        'why_turky_section',
+        'contact_details',
+        'sec_navbar',
+        'page_header_comp',
+        'about_us_page',])),
       blogs: data,
       blogCategory: data2,
       // products: products.slice(startIndex, endIndex),
