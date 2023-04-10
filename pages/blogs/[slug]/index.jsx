@@ -11,6 +11,8 @@ import Image from 'next/image'
 import { useRouter } from "next/router";
 import axios from "axios";
 
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from "next-i18next";
 
 
 export default function BolgDetailsID({ blog, allBlogsTagsData }) {
@@ -70,15 +72,6 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
     setCommentsDetails(getBlogComments.data)
 
-  }
-
-  const handleReplay = async () => {
-    const getBlogComments = await axios.post("http://safemedigoapi2-001-site1.atempurl.com/api/v1/BlogComment/AddReplay", {
-      "id": 2,
-      "replay": "Test Replay"
-    },);
-
-    getBlogComments()
   }
 
   return (
@@ -153,11 +146,11 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
               <div dangerouslySetInnerHTML={createMarkup()} />
             </article>
 
-            {blog.treatment !== null &&
+            {/* {blog.treatment !== null &&
               <div className={styles.blog_treatment_box}>
                 <div className={styles.box}>
                   <div className={styles.img_container}>
-                    <Image width={50} height={4} src={blog.treatment.image} alt={blog.treatment.name} />
+                    <Image width={50} height={4} src={blog?.treatment?.image} alt={blog?.treatment?.image} />
                   </div>
 
                   <div className={styles.text_container}>
@@ -187,8 +180,9 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
                 </div>
               </div>
-            }
+            } */}
 
+            {console.log(blog.treatment)}
           </div>
 
           <div className={styles.share}>
@@ -257,9 +251,6 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                           <div className={styles.date}>
                             {comment.createdDate}
                           </div>
-                        </div>
-                        <div className="replay">
-                          <button onClick={handleReplay}>REPLAY</button>
                         </div>
                       </div>
 
@@ -364,7 +355,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 }
 
 export async function getServerSideProps({ query, locale }) {
-  const res = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetBlogUiDataBySlug", {
+  const res = await fetch("https://api.safemedigo.com/api/v1/Blog/GetBlogUiDataBySlug", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -377,7 +368,7 @@ export async function getServerSideProps({ query, locale }) {
   })
   const data = await res.json()
 
-  const allBlogTagsRes = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogsTags", {
+  const allBlogTagsRes = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogsTags", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -392,6 +383,7 @@ export async function getServerSideProps({ query, locale }) {
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ['common', 'home', 'navbar', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'blogs_page'])),
       blog: data,
       allBlogsTagsData
     }

@@ -44,7 +44,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
     router.push(`/blogs/page/${value}`, undefined, { scroll: false })
   }
 
-
+  console.log(blogs, 'BLOGSS')
   return (
     <>
       <SecNavbar />
@@ -112,7 +112,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
                       <Link href={`/blogs/${post.slug}`}>
 
                         <div className={styles.img_container}>
-                          <Image
+                          <img
                             src={post.image}
                             alt={post.title}
                             width={344}
@@ -130,7 +130,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
 
                         <div className={styles.author_container}>
                           <div className={styles.img_container}>
-                            <Image
+                            <img
                               width={344}
                               height={500}
                               src={post?.publisherImage} alt={post.publisherName} />
@@ -194,7 +194,7 @@ export async function getServerSideProps({ query, locale }) {
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
 
-  const res1 = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
+  const res1 = await fetch("https://api.safemedigo.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -212,23 +212,24 @@ export async function getServerSideProps({ query, locale }) {
 
 
 
-  const getBlogWithPageRes = await axios.post("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogWithPage", {
-    "lang": locale,
-    "blogCategoryId": myCategoryId?.[0]?.id || '0',
-    "currentPage": page || 1
-  }, {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
-  });
+  const getBlogWithPageRes = await
+    axios.post("https://api.safemedigo.com/api/v1/Blog/GetAllBlogWithPage", {
+      "lang": locale,
+      "blogCategoryId": myCategoryId?.[0]?.id || '0',
+      "currentPage": page || 1
+    }, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
   const data = await getBlogWithPageRes.data;
 
   const products = data.data;
   const totalProducts = data.count;
   const totalPages = Math.ceil(totalProducts / limit);
 
-  const allBlogTagsRes = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogsTags", {
+  const allBlogTagsRes = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogsTags", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -243,10 +244,10 @@ export async function getServerSideProps({ query, locale }) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'home', 'navbar', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'blogs_page'])),
+      ...(await serverSideTranslations(locale, ['common', 'home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'about_us_page', 'blogs_page'])),
       blogs: data,
       blogCategory: data2,
-      products: products.slice(startIndex, endIndex),
+      // products: products.slice(startIndex, endIndex),
       currentPage: parseInt(page),
       totalPages,
       allBlogsTagsData,
