@@ -14,7 +14,7 @@ import { PageHeader, Tags } from './../../components/';
 
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import SecNavbar from "@/components/Navbar/SecNavbar";
 import axios from 'axios';
@@ -46,6 +46,9 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
   }
 
   console.log(blogs, 'BLOGSS')
+
+
+
   return (
     <>
       <SecNavbar />
@@ -245,23 +248,7 @@ export async function getServerSideProps({ query, locale }) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, [
-        'common',
-        'home',
-        'navbar',
-        'hero_section',
-        'search_section',
-        'help_section',
-        'why_safemedigo',
-        'treatments_section',
-        'most_popular',
-        'patient_stories',
-        'safety_standards_section',
-        'why_turky_section',
-        'contact_details',
-        'sec_navbar',
-        'page_header_comp',
-        'about_us_page',])),
+      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'page_header_comp', 'about_us_page', 'blogs_page'])),
       blogs: data,
       blogCategory: data2,
       // products: products.slice(startIndex, endIndex),
