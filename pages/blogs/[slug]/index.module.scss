@@ -725,3 +725,22 @@
     }
   }
 }
+
+// AR
+#blog_details[dir="rtl"] {
+  .share {
+    .icons_container {
+      svg {
+        &:last-child {
+          margin-right: 11px;
+          margin-left: 11px;
+          transform: rotate(90deg);
+        }
+
+        &:hover {
+          color: var(--main-cyan-color);
+        }
+      }
+    }
+  }
+}

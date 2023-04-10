@@ -95,6 +95,16 @@
         }
       }
 
+      // AR
+      .text_container[dir="rtl"] {
+        .title {
+          .num {
+            margin-right: 0px;
+            margin-left: 33px;
+          }
+        }
+      }
+
       .img_container {
         width: 301.86px;
         height: 202.08px;

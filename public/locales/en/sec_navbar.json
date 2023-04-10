@@ -1,1 +1,8 @@
-{"home":"Home","blogs":"Blogs","about_us":"About Us","safety_standards":"Safety Standards","procedures&symptoms":"procedures and symptoms"}
+{
+  "about_us": "About Us",
+  "blogs": "Blogs",
+  "home": "Home",
+  "procedures&symptoms": "procedures and symptoms",
+  "safety_standards": "Safety Standards",
+  "how_it_works": "How It Works"
+}

@@ -9,11 +9,10 @@ import { useTranslation } from "next-i18next";
 const PageHeader = ({ blog }) => {
   const router = useRouter();
   const { pathname } = router;
-  const { design, designMobile, author } = imgs;
+  const { design, designMobile, } = imgs;
   const { t } = useTranslation();
 
   return (
-
     <>
       {pathname !== '/' &&
         <Box sx={
@@ -59,8 +58,8 @@ const PageHeader = ({ blog }) => {
 
                   {pathname === '/how-it-works' &&
                     <>
-                      <Typography variant='h4'>How It Works</Typography>
-                      <Typography variant='h2'>Get a breakdown of how we go through the complex process of matching the patient with the best suited healthcare facility for them.</Typography>
+                      <Typography variant='h4'>{t('page_header_comp:how_it_works_title')} </Typography>
+                      <Typography variant='h2'>{t('page_header_comp:how_it_works_desc')} </Typography>
                     </>
                   }
 
@@ -105,15 +104,15 @@ const PageHeader = ({ blog }) => {
 
                 {pathname === ('/blogs/[slug]') &&
                   <>
-                    <Box sx={{ display: 'flex', alignItmes: 'flex-start', width: '100%' }} >
+                    <Box sx={{ display: 'flex', alignItmes: 'flex-start', width: '100%' }} className={styles.author_info} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} >
 
-                      <Box sx={{ display: 'flex', alignItmes: 'center', marginRight: '80px' }} className={styles.review_by}>
+                      <Box sx={{ display: 'flex', alignItmes: 'center' }} className={styles.review_by}>
                         <div className={styles.author_img}>
                           <img src={blog.reviewerImage} alt="" />
                         </div>
                         <div className={styles.info}>
                           <p>{blog?.reviewer}, {blog.reviewerJobTitle}</p>
-                          <p className={styles.date}> Posted {blog.date}</p>
+                          <p className={styles.date}>{t('page_header_comp:posted')} {blog.date}</p>
                         </div>
                       </Box>
 

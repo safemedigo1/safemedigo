@@ -6,10 +6,11 @@ import Link from 'next/link';
 import { useTranslation } from "react-i18next";
 
 
-const SecNavbar = ({ categorySlug, category, currentPage, blog, tag }) => {
+const SecNavbar = ({ categorySlug, category, currentPage, blog, tag, how_it_works }) => {
   const router = useRouter();
   const { pathname } = router;
   const { t } = useTranslation();
+
 
   return (
     <>
@@ -37,7 +38,7 @@ const SecNavbar = ({ categorySlug, category, currentPage, blog, tag }) => {
           }
           {pathname === '/how-it-works' &&
             <>
-              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/how-it-works' className={styles.active} > /How it works</Link>
+              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/how-it-works' className={styles.active} > /{t('sec_navbar:how_it_works')} </Link>
             </>
           }
 
@@ -60,7 +61,7 @@ const SecNavbar = ({ categorySlug, category, currentPage, blog, tag }) => {
 
           {pathname === ('/blogs/[slug]') &&
             <>
-              <Link href='/'> {t('sec_navbar:home')} </Link> <Link href='/blogs' > /Blogs</Link>  <Link href='#' className={styles.active}> /{blog.title}</Link>
+              <Link href='/'> {t('sec_navbar:home')} </Link> <Link href='/blogs' > /{t('sec_navbar:blogs')} </Link>  <Link href='#' className={styles.active}> /{blog.title}</Link>
             </>
           }
           {pathname === ('/tags/[slug]') &&

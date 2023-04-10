@@ -145,6 +145,12 @@
   }
 }
 
+.author_info {
+  .review_by {
+    margin-right: 80px;
+  }
+}
+
 // Ar
 #blogs[dir="rtl"] {
   .header_container {
@@ -278,6 +284,18 @@
           }
         }
       }
+    }
+  }
+}
+
+.author_info[dir="rtl"] {
+  .review_by {
+    margin-right: 0px;
+    margin-left: 80px;
+
+    .author_img {
+      margin-right: 0px !important;
+      margin-left: 20px;
     }
   }
 }

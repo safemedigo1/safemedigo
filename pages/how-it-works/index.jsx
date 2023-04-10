@@ -3,11 +3,16 @@ import { Container, Typography, Box } from "@mui/material";
 import { PageHeader, SecNavbar } from '@/components';
 import { ContactDetails } from '@/components/Home';
 import imgs from "../../assets/constants/imgs";
-import { motion } from "framer-motion";
 import styles from "./index.module.scss";
 // import '../../styles/'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
+
 
 const HowItWorks = () => {
+  const { t } = useTranslation();
+  const router = useRouter();
 
   const { checkAfterTreatment,
     getInTouch,
@@ -39,7 +44,7 @@ const HowItWorks = () => {
 
   return (
     <>
-      <SecNavbar />
+      <SecNavbar how_it_works={t('how_it_works:title')} />
       <PageHeader />
 
       <section id={styles.how_it_works}>
@@ -47,7 +52,7 @@ const HowItWorks = () => {
           <div className={styles.boxes_container}>
             <div className={styles.research}>
 
-              <div className={styles.text_container}>
+              <div className={styles.text_container} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
                 <div className={styles.title}>
                   <div className={styles.num}>
                     <span>
@@ -55,13 +60,13 @@ const HowItWorks = () => {
                     </span>
                   </div>
                   <Typography variant='h3'>
-                    {research[0].title}
+                    {t("how_it_works:resarch_title")}
                   </Typography>
                 </div>
 
                 <div className={styles.desc}>
                   <Typography>
-                    {research[0].desc}
+                    {t("how_it_works:resarch_desc")}
                   </Typography>
                 </div>
               </div>
@@ -76,19 +81,19 @@ const HowItWorks = () => {
             </div>
 
             <div className={styles.GetInTouch}>
-              <div className={styles.text_container}>
+              <div className={styles.text_container} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
                 <div className={styles.title}>
                   <div className={styles.num}><span>
                     {GetInTouch[0].id}
-
-                  </span></div>
+                  </span>
+                  </div>
                   <Typography variant='h3'>
-                    {GetInTouch[0].title}
+                    {t('how_it_works:get_in_touch_title')}
                   </Typography>
                 </div>
                 <div className={styles.desc}>
                   <Typography>
-                    {GetInTouch[0].desc}
+                    {t('how_it_works:get_in_touch_desc')}
                   </Typography>
                 </div>
               </div>
@@ -102,19 +107,19 @@ const HowItWorks = () => {
             </div>
 
             <div className={styles.ReadyToGo}>
-              <div className={styles.text_container}>
+              <div className={styles.text_container} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
                 <div className={styles.title}>
                   <div className={styles.num}><span>
                     {ReadyToGo[0].id}
 
                   </span></div>
                   <Typography variant='h3'>
-                    {ReadyToGo[0].title}
+                    {t('how_it_works:ready_to_go_title')}
                   </Typography>
                 </div>
                 <div className={styles.desc}>
                   <Typography>
-                    {ReadyToGo[0].desc}
+                    {t('how_it_works:ready_to_go_desc')}
                   </Typography>
                 </div>
               </div>
@@ -127,19 +132,19 @@ const HowItWorks = () => {
             </div>
 
             <div className={styles.SafetyTreatment}>
-              <div className={styles.text_container}>
+              <div className={styles.text_container} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
                 <div className={styles.title}>
                   <div className={styles.num}><span>
                     {SafetyTreatment[0].id}
 
                   </span></div>
                   <Typography variant='h3'>
-                    {SafetyTreatment[0].title}
+                    {t('how_it_works:safety_treatment_title')}
                   </Typography>
                 </div>
                 <div className={styles.desc}>
                   <Typography>
-                    {SafetyTreatment[0].desc}
+                    {t('how_it_works:safety_treatment_desc')}
                   </Typography>
                 </div>
               </div>
@@ -153,7 +158,7 @@ const HowItWorks = () => {
             </div>
 
             <div className={styles.CheckAfterTreatmen}>
-              <div className={styles.text_container}>
+              <div className={styles.text_container} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
                 <div className={styles.title}>
                   <div className={styles.num}>
                     <span>
@@ -162,12 +167,12 @@ const HowItWorks = () => {
                     </span>
                   </div>
                   <Typography variant='h3'>
-                    {CheckAfterTreatmen[0].title}
+                    {t('how_it_works:check_after_treatmen_title')}
                   </Typography>
                 </div>
                 <div className={styles.desc}>
                   <Typography>
-                    {CheckAfterTreatmen[0].desc}
+                    {t('how_it_works:check_after_treatmen_desc')}
                   </Typography>
                 </div>
               </div>
@@ -182,7 +187,7 @@ const HowItWorks = () => {
             </div>
 
             <div className={styles.IDidIt}>
-              <div className={styles.text_container}>
+              <div className={styles.text_container} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
                 <div className={styles.title}>
                   <div className={styles.num}>
                     <span>
@@ -191,12 +196,12 @@ const HowItWorks = () => {
                     </span>
                   </div>
                   <Typography variant='h3'>
-                    {IDidIt[0].title}
+                    {t('how_it_works:did_it_title')}
                   </Typography>
                 </div>
                 <div className={styles.desc}>
                   <Typography>
-                    {IDidIt[0].desc}
+                    {t('how_it_works:did_it_desc')}
                   </Typography>
                 </div>
               </div>
@@ -214,3 +219,12 @@ const HowItWorks = () => {
 }
 
 export default HowItWorks
+
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['sec_navbar', 'navbar', 'how_it_works', 'page_header_comp', 'contact_details'])),
+    }
+  }
+}

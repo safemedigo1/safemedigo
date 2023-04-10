@@ -6,7 +6,6 @@ import imgs from "../../assets/constants/imgs";
 import styles from "./index.module.scss";
 // import '../../styles/'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-
 import { useTranslation } from "next-i18next";
 import Image from 'next/image';
 import { useRouter } from 'next/dist/client/router';
