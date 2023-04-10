@@ -169,6 +169,14 @@ const Navbar = (props) => {
   const router = useRouter();
   const { pathname } = router;
 
+
+  const changeLocale = (locale) => {
+    router.push({
+      route: router.pathname,
+      query: router.query
+    }, router.asPath, { locale });
+  }
+
   return (
     <>
       <CssBaseline />
@@ -281,9 +289,9 @@ const Navbar = (props) => {
 
                           <div className={styles.menuLinks__container}>
                             <ul>
-                              <li>
+                              <li >
                                 <Link href={`/en${router.asPath}`} >
-                                  EN
+                                  En
                                   <div className={styles.img_container}>
                                     <Image
                                       src={en.src}
@@ -296,7 +304,7 @@ const Navbar = (props) => {
                               </li>
                               <li>
                                 <Link href={`/tr${router.asPath}`} >
-                                  TR
+                                  Tr
                                   <div className={styles.img_container}>
                                     <Image
                                       src={tr.src}
@@ -307,10 +315,9 @@ const Navbar = (props) => {
                                   </div>
                                 </Link>
                               </li>
-                              <li>
-                                {console.log(router.asPath, "HERESS")}
+                              <li   >
                                 <Link href={`/ar${router.asPath}`} >
-                                  AR
+                                  Ar
                                   <div className={styles.img_container}>
                                     <Image
                                       src={ar.src}
@@ -428,12 +435,32 @@ const Navbar = (props) => {
 
                                 <Box className={styles.lang} display='flex' onClick={() => setShowLangMenu((prev) => !prev)}>
                                   <div className={styles.img_container}>
-                                    <img
-                                      src={en.src}
-                                      alt="Picture of the author"
-                                      width="20.7px"
-                                      height="12.88px"
-                                    />
+                                    {router.locale === 'en' &&
+                                      <Image
+                                        src={en.src}
+                                        alt="Picture of the author"
+                                        width={20.7}
+                                        height={12.88}
+                                      />
+                                    }
+
+                                    {router.locale === 'ar' &&
+                                      <Image
+                                        src={ar.src}
+                                        alt="Picture of the author"
+                                        width={20.7}
+                                        height={12.88}
+                                      />
+                                    }
+
+                                    {router.locale === 'tr' &&
+                                      <Image
+                                        src={tr.src}
+                                        alt="Picture of the author"
+                                        width={20.7}
+                                        height={12.88}
+                                      />
+                                    }
                                   </div>
                                   <div className={styles.lang_type}>
                                     <span>{lang}</span>
@@ -454,8 +481,8 @@ const Navbar = (props) => {
                                     initial={{ opacity: 0 }}
                                   >
                                     <li>
-                                      <a href={`/en`} >
-                                        EN
+                                      <Link href={`/en${router.asPath}`} >
+                                        En
                                         <div className={styles.img_container}>
                                           <Image
                                             src={en.src}
@@ -464,33 +491,34 @@ const Navbar = (props) => {
                                             height={12.88}
                                           />
                                         </div>
-                                      </a>
+                                      </Link>
                                     </li>
                                     <li>
-                                      <a href={`/tr`} >
-                                        TR
+                                      <Link href={`/ar${router.asPath}`} >
+                                        Ar
                                         <div className={styles.img_container}>
                                           <Image
-                                            src={en.src}
+                                            src={ar.src}
                                             alt="Picture of the author"
                                             width={20.7}
                                             height={12.88}
                                           />
                                         </div>
-                                      </a>
+                                      </Link>
+
                                     </li>
                                     <li>
-                                      <a href={`/ar`} >
-                                        AR
+                                      <Link href={`/tr${router.asPath}`} >
+                                        Tr
                                         <div className={styles.img_container}>
                                           <Image
-                                            src={en.src}
+                                            src={tr.src}
                                             alt="Picture of the author"
                                             width={20.7}
                                             height={12.88}
                                           />
                                         </div>
-                                      </a>
+                                      </Link>
                                     </li>
                                   </motion.ul>
                                 }
@@ -543,16 +571,9 @@ const Navbar = (props) => {
 
       </HideOnScroll>
       <Toolbar />
-
-
-
-
-
-
     </>
   );
 };
-
 
 export default Navbar;
 
