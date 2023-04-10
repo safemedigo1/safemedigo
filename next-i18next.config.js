@@ -3,5 +3,4 @@ module.exports = {
     defaultLocale: "en",
     locales: ["en", "ar", "tr"],
   },
-  reloadOnPrerender: process.env.NODE_ENV === "development",
 };
