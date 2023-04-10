@@ -744,3 +744,16 @@
     }
   }
 }
+
+#signle_blog_header[dir="rtl"] {
+  .writer_info {
+    .writer_img {
+      margin-right: 0px;
+      margin-left: 15px;
+    }
+  }
+  .date {
+    margin-left: 0px;
+    margin-right: 52px;
+  }
+}

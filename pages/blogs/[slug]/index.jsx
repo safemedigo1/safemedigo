@@ -84,7 +84,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
             lg: "none"
           }
         }}
-        id={styles.signle_blog_header}>
+        id={styles.signle_blog_header} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <div className={styles.img_container}>
           <img
             layout="responsive"
