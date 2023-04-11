@@ -601,6 +601,13 @@
         .doctors,
         .clinic {
           .shadow_box {
+            top: 0px;
+            right: 96%;
+            transform: rotate(180deg);
+
+            @media screen and (max-width: 992px) {
+              display: none;
+            }
           }
 
           .box {

@@ -4,11 +4,14 @@ import { Container, Typography, } from '@mui/material';
 import imgs from "../../../assets/constants/imgs";
 import { useTranslation } from "react-i18next";
 import { appContext } from "@/context/store";
+import { useRouter } from "next/router";
 
 
 
 
 const TreatmentCategory = () => {
+  const router = useRouter();
+
   const {
     Alternative,
     Bone_Marrow,
@@ -85,7 +88,7 @@ const TreatmentCategory = () => {
   ]
 
   return (
-    <section id={styles.treatment_category} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
+    <section id={styles.treatment_category} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
         <div className={styles.section_container}>
           <div className={styles.sec_title}>
@@ -110,7 +113,7 @@ const TreatmentCategory = () => {
             ))}
           </div>
           <div className={styles.btn_contianer}>
-            <button>{t('treatments_section:search')}</button>
+            <button >{t('treatments_section:search')}</button>
           </div>
         </div>
       </Container>

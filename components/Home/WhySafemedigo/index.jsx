@@ -1,15 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styles from './index.module.scss'
 import { Container, Typography, } from '@mui/material';
 import { OurSafetyStanders, RealReviewsPatientStories, PatientSupport, BestTreatmentPackages } from "../../../assets/svgs/HoverIcons"
 import Link from 'next/link';
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
-import { appContext } from "@/context/store";
 
 const WhySafemedigo = () => {
   const { t } = useTranslation();
-  const { lang } = useContext(appContext)
 
 
 

@@ -13,7 +13,6 @@ import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import { BiChevronDown, } from 'react-icons/bi'
 import { HiArrowSmRight } from 'react-icons/hi'
 import { useRouter } from "next/router";
-
 import Image from 'next/image'
 import Toolbar from '@mui/material/Toolbar';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -51,7 +50,6 @@ function HideOnScroll(props) {
 
 const Navbar = (props) => {
   const { t } = useTranslation();
-  const { lang, setLang } = useContext(appContext)
 
 
   const [showMenu, setShowMenu] = useState(false);
@@ -275,7 +273,7 @@ const Navbar = (props) => {
                           </div>
 
                           <div className={styles.lang_type}>
-                            <span>{lang}</span>
+                            <span>{router.locale}</span>
                           </div>
 
                           <div className={styles.icon_container}>
@@ -289,45 +287,21 @@ const Navbar = (props) => {
 
                           <div className={styles.menuLinks__container}>
                             <ul>
-                              <li >
-                                <Link href={`/en${router.asPath}`} >
-                                  En
-                                  <div className={styles.img_container}>
-                                    <Image
-                                      src={en.src}
-                                      alt="Picture of the author"
-                                      width={20.7}
-                                      height={12.88}
-                                    />
-                                  </div>
-                                </Link>
-                              </li>
-                              <li>
-                                <Link href={`/tr${router.asPath}`} >
-                                  Tr
-                                  <div className={styles.img_container}>
-                                    <Image
-                                      src={tr.src}
-                                      alt="Picture of the author"
-                                      width={20.7}
-                                      height={12.88}
-                                    />
-                                  </div>
-                                </Link>
-                              </li>
-                              <li   >
-                                <Link href={`/ar${router.asPath}`} >
-                                  Ar
-                                  <div className={styles.img_container}>
-                                    <Image
-                                      src={ar.src}
-                                      alt="Picture of the author"
-                                      width={20.7}
-                                      height={12.88}
-                                    />
-                                  </div>
-                                </Link>
-                              </li>
+                              {router.locales.map((lang, idx) => (
+                                <li>
+                                  <a href={`/${lang}${router.asPath}`} key={idx}>
+                                    {lang}
+                                    <div className={styles.img_container}>
+                                      <Image
+                                        src={lang === 'ar' ? ar.src : lang === 'en' ? en.src : lang === 'tr' ? tr.src : ''}
+                                        alt="Picture of the author"
+                                        width={20.7}
+                                        height={12.88}
+                                      />
+                                    </div>
+                                  </a>
+                                </li>
+                              ))}
 
                             </ul>
                           </div>
@@ -377,7 +351,7 @@ const Navbar = (props) => {
 
                   {showMenu && (
                     <motion.div
-                      animate={lang === 'ar' ? { x: [-300, 0] } : { x: [300, 0] }}
+                      animate={router.locale === 'ar' ? { x: [-300, 0] } : { x: [300, 0] }}
                       transition={{ duration: 0.85, ease: "easeOut" }}
                       className={styles.side_bar}
                     >
@@ -463,7 +437,7 @@ const Navbar = (props) => {
                                     }
                                   </div>
                                   <div className={styles.lang_type}>
-                                    <span>{lang}</span>
+                                    <span>{router.locale}</span>
                                   </div>
 
                                   <div className={`${styles.icon_container} ${showLangMenu && styles.active}`} >
@@ -480,46 +454,24 @@ const Navbar = (props) => {
                                     transition={{ duration: 0.80, ease: "easeOut" }}
                                     initial={{ opacity: 0 }}
                                   >
-                                    <li>
-                                      <Link href={`/en${router.asPath}`} >
-                                        En
-                                        <div className={styles.img_container}>
-                                          <Image
-                                            src={en.src}
-                                            alt="Picture of the author"
-                                            width={20.7}
-                                            height={12.88}
-                                          />
-                                        </div>
-                                      </Link>
-                                    </li>
-                                    <li>
-                                      <Link href={`/ar${router.asPath}`} >
-                                        Ar
-                                        <div className={styles.img_container}>
-                                          <Image
-                                            src={ar.src}
-                                            alt="Picture of the author"
-                                            width={20.7}
-                                            height={12.88}
-                                          />
-                                        </div>
-                                      </Link>
 
-                                    </li>
-                                    <li>
-                                      <Link href={`/tr${router.asPath}`} >
-                                        Tr
-                                        <div className={styles.img_container}>
-                                          <Image
-                                            src={tr.src}
-                                            alt="Picture of the author"
-                                            width={20.7}
-                                            height={12.88}
-                                          />
-                                        </div>
-                                      </Link>
-                                    </li>
+
+
+                                    {router.locales.map((lang, idx) => (
+                                      <li>
+                                        <a href={`/${lang}${router.asPath}`} key={idx}>
+                                          {lang}
+                                          <div className={styles.img_container}>
+                                            <Image
+                                              src={lang === 'ar' ? ar.src : lang === 'en' ? en.src : lang === 'tr' ? tr.src : ''}
+                                              alt="Picture of the author"
+                                              width={20.7}
+                                              height={12.88}
+                                            />
+                                          </div>
+                                        </a>
+                                      </li>
+                                    ))}
                                   </motion.ul>
                                 }
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './index.module.scss'
 import Carousel from 'react-elastic-carousel';
 import imgs from "../../../assets/constants/imgs";
@@ -7,14 +7,14 @@ import { consts } from 'react-elastic-carousel';
 import { Container, Typography, Rating, } from '@mui/material';
 import Link from 'next/link';
 import { useTranslation } from "react-i18next";
-import { appContext } from "@/context/store";
+import { useRouter } from "next/router";
 
 
 
 const PatientStories = () => {
   const { t } = useTranslation();
   const { post1, post2, post3, post4, post5, author } = imgs;
-  const { lang } = useContext(appContext)
+  const router = useRouter();
 
   const [breakPoints] = useState([
 
@@ -170,13 +170,12 @@ const PatientStories = () => {
   }
 
   return (
-    <section id={styles.patient_stories} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
-      <Container className='mycontainer' sx={{ maxWidth: '1239px' }} maxWidth={false} >
+    <section id={styles.patient_stories} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+      <Container sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false}   >
         <div className={styles.section_container}>
-
           <div className={styles.text_container}>
             <div className={styles.title}>
-              <Typography variant='h2'>{t('patient_stories:title')}</Typography>
+              <Typography variant='h2' >{t('patient_stories:title')}</Typography>
             </div>
 
             <div className={styles.desc}>
@@ -192,8 +191,6 @@ const PatientStories = () => {
               </Link>
             </div>
           </div>
-
-
           <div className={styles.slider_container}>
             <div className={styles.shadow_box} />
 
@@ -202,7 +199,10 @@ const PatientStories = () => {
               itemsToScroll={2}
               renderArrow={myArrow}
               transition={{ duration: 0.95, ease: "easeOut" }}
+              isRTL={router.locale === 'ar' ? true : false}
             >
+
+              {console.log(router.locale, "HERERERERE")}
               {posts.map((post, index) => (
                 <Link href={`/blogs/${post.id}`} className={styles.box} key={index}>
                   <div className={styles.img_container}>
@@ -244,10 +244,6 @@ const PatientStories = () => {
             </Carousel>
 
           </div>
-
-
-
-
         </div>
       </Container>
 

@@ -360,5 +360,30 @@ section#hero[dir="rtl"] {
         }
       }
     }
+
+    .slider_container {
+      .box {
+        .box_header {
+          .img_container {
+            margin-right: 0px;
+            margin-left: 20px;
+
+            @media screen and (max-width: 992px) {
+              margin-right: 0px;
+              margin-left: 10px;
+            }
+          }
+
+          .title {
+            .rating {
+              flex-direction: row-reverse;
+              .reviews_num {
+                margin-left: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

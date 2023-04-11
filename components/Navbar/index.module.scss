@@ -697,6 +697,7 @@
     .lang,
     .login_btn {
       a {
+        flex-direction: row-reverse;
         .icon_container {
           margin-right: 0px;
           margin-left: 7.2px;

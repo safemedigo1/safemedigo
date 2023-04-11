@@ -297,10 +297,60 @@ section#patient_stories {
 }
 
 section#patient_stories[dir="rtl"] {
+  padding-top: 66.26px;
+  padding-bottom: 68.7px;
+
+  @media screen and (max-width: 992px) {
+    padding-top: 20px;
+  }
+
   .section_container {
     .text_container {
       margin-right: 0px;
       margin-left: 34px;
+    }
+
+    .slider_container {
+      .shadow_box {
+        top: 0px;
+        right: 96%;
+        transform: rotate(180deg);
+      }
+
+      .box {
+        margin-right: 0px;
+        margin-right: 26px;
+
+        @media screen and (max-width: 992px) {
+          margin-right: 0px;
+          margin-left: 10px;
+        }
+
+        .box_title {
+          padding-left: 22px;
+          padding-right: 15px;
+        }
+
+        .desc {
+          padding-left: 22px;
+          padding-right: 15px;
+        }
+
+        .author_container {
+          padding-left: 22px;
+          padding-right: 15px;
+
+          .img_container {
+            margin-right: 0px;
+            margin-left: 21.5px;
+          }
+        }
+
+        .btns_container {
+          padding-left: 0px;
+          padding-right: 15px;
+        }
+      }
     }
   }
 }

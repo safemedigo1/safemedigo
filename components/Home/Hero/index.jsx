@@ -117,11 +117,11 @@ const Hero = () => {
           </div>
 
           <div className={styles.slider_container}>
-
             <Carousel
               breakPoints={breakPoints}
               itemsToScroll={1}
               renderArrow={myArrow}
+              isRTL={router.locale === 'ar' ? true : false}
             >
               {cards.map((card, index) => (
                 <>

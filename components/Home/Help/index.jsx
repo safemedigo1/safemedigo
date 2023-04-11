@@ -1,14 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styles from './index.module.scss'
 import { Container, Typography, Box } from '@mui/material';
 import imgs from "../../../assets/constants/imgs";
 import { useTranslation } from "react-i18next";
-import { appContext } from "@/context/store";
 import { useRouter } from 'next/router';
 
 
 const Help = () => {
-  const { lang } = useContext(appContext)
   const { t } = useTranslation();
   const { QualityGuarantee, OnGuide, GetQuote, TravelAssist } = imgs;
   const router = useRouter()

@@ -1,6 +1,4 @@
 #help {
-  // background-color: #e7edec4d;
-
   padding-bottom: 42px;
 
   @media screen and (max-width: 992px) {
@@ -69,21 +67,15 @@
           align-items: flex-start;
         }
 
-        &:nth-child(3),
-        &:nth-child(4) {
+        &:not(:last-child) {
+          margin-right: 70px;
           @media screen and (max-width: 992px) {
+            margin-right: 0;
             margin-bottom: 30px;
           }
 
           @media screen and (max-width: 450px) {
             margin-bottom: 0px;
-          }
-        }
-
-        &:not(:last-child) {
-          margin-right: 70px;
-          @media screen and (max-width: 992px) {
-            margin-right: 0;
           }
         }
 
@@ -126,7 +118,4 @@
       }
     }
   }
-}
-
-#help[dir="rtl"] {
 }

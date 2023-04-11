@@ -1,18 +1,18 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './index.module.scss'
 import { Container, Typography, } from '@mui/material';
 import Link from 'next/link';
 import Carousel from 'react-elastic-carousel';
 import imgs from "../../../assets/constants/imgs";
 import { useTranslation } from "react-i18next";
-import { appContext } from "@/context/store";
-
+import { useRouter } from "next/router";
 
 
 const Search = () => {
   const { t } = useTranslation();
   const { search } = imgs;
-  const { lang } = useContext(appContext)
+
+  const router = useRouter();
 
   const [breakPoints] = useState([
     { width: 1, itemsToShow: 1 },
@@ -35,7 +35,7 @@ const Search = () => {
 
 
   return (
-    <div id={styles.search} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
+    <div id={styles.search} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
         <div className={styles.searc_card}>
           <div className={styles.searc_input}>
@@ -65,6 +65,7 @@ const Search = () => {
         </div>
 
       </Container>
+
       <div className={styles.tags_slider}>
         <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
           <div className={styles.title}>
@@ -72,13 +73,12 @@ const Search = () => {
           </div>
         </Container>
 
-        <Container className='mycontainer' sx={{ maxWidth: '1239px', }} maxWidth={false}  >
-
-
+        <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: '1239px', }} maxWidth={false} >
           <Carousel breakPoints={breakPoints}
             pagination={false}
             showArrows={false}
             itemsToScroll={1}
+            isRTL={router.locale === 'ar' ? true : false}
           >
             {tags.map((tag, index) => (
               <Link href='/' key={index}>

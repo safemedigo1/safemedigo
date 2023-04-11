@@ -1,17 +1,15 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import imgs from "../../../assets/constants/imgs";
 import styles from './index.module.scss'
 import { Container, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useTranslation } from "react-i18next";
-import { appContext } from "@/context/store";
 import { useRouter } from 'next/router';
 
 
 
 
 const Safty = () => {
-  const { lang } = useContext(appContext)
   const { t } = useTranslation();
   const { OurSafetyStandards00, OurSafterStanders01, left01,
     right01,

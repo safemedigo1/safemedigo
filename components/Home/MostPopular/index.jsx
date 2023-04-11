@@ -138,7 +138,6 @@ const MostPopular = () => {
 
 
           {pathname !== '/procedures&symptoms' &&
-
             <div className={styles.navigation}>
               <div className={styles.header}>
                 <div className={`${styles.treatment} ${treatment && styles.active}`} onClick={handleTreatment}>
@@ -163,20 +162,15 @@ const MostPopular = () => {
 
             </div>
           }
-
-
         </Container>
 
-        <Container className={`mycontainer ${router.locale === 'ar' && 'mycontainer_ar'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false}  >
-
+        <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false}  >
           {pathname === '/procedures&symptoms' &&
             <div className={styles.title_mobile}>
               <Typography variant='h2'>Most Popular Treatments</Typography>
             </div>
           }
           <div className={styles.content}>
-
-
             <div className={styles.text_container}>
 
               {pathname === '/procedures&symptoms' &&
@@ -231,8 +225,7 @@ const MostPopular = () => {
                     breakPoints={breakPoints}
                     itemsToScroll={2}
                     renderArrow={myArrow}
-
-
+                    isRTL={router.locale === 'ar' ? true : false}
                   >
                     {treatmentData.map((card, index) => (
                       <div className={styles.box} key={index}>
@@ -299,9 +292,7 @@ const MostPopular = () => {
                         breakPoints={breakPoints}
                         itemsToScroll={1}
                         renderArrow={myArrow}
-
-
-
+                        isRTL={router.locale === 'ar' ? true : false}
                       >
                         {doctorsData.map((doc, index) => (
                           <div className={styles.box} key={index}>
@@ -374,18 +365,16 @@ const MostPopular = () => {
                     <motion.div
                       animate={{ opacity: 1 }}
                       initial={{ opacity: 0 }}
-
                       transition={{ duration: 1, }}
-
                       className={styles.clinic}>
+
                       <Box sx={{ boxShadow: "inset -20px 0px 12px #eef5f5" }} />
 
                       <Carousel
                         breakPoints={breakPoints}
                         itemsToScroll={1}
                         renderArrow={myArrow}
-
-
+                        isRTL={router.locale === 'ar' ? true : false}
                       >
                         {clinicData.map((clinic, index) => (
                           <div className={styles.box} key={index}>
