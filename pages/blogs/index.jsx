@@ -3,15 +3,12 @@ import Link from "next/link";
 import Head from "next/head";
 import styles from "./index.module.scss";
 import { Box, Container, Typography } from "@mui/material";
-
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
-
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { PageHeader, Tags } from './../../components/';
-
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
 import { useContext, useEffect, useState } from "react";
@@ -79,12 +76,10 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
                   color: "#000000",
                   fontSize: "18px",
                   fontWeight: "bold",
-
                 }}
               >
 
                 {blogCategory.map((item) => (
-
                   <MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} value={item.slug} >
                     {item.categeryName}
                   </MenuItem>

@@ -87,7 +87,7 @@ const PageHeader = ({ blog }) => {
 
                   {pathname.includes('/procedures&symptoms/') &&
                     <>
-                      <Typography variant='h2'>TREATMENT GUIDE</Typography>
+                      <Typography variant='h2'>{t("page_header_comp:procedures&symptoms_single_title")}</Typography>
                       <Typography variant='h4'>Hair Transplantation</Typography>
                     </>
                   }

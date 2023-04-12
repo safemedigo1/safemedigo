@@ -47,6 +47,7 @@ header#treatment {
     }
   }
 }
+
 article.overview {
   padding-top: 48px;
   padding-bottom: 48px;
@@ -141,15 +142,28 @@ article.overview {
             ul {
               padding: 0;
               li {
+                position: relative;
                 padding: 0;
                 color: var(--main-dark-color);
                 font-size: 18px;
                 font-weight: var(--font-bold);
                 font-family: var(--quickstand-font);
                 margin-bottom: 24px;
+                margin-left: 12px;
                 @media screen and (max-width: 992px) {
                   font-size: 14px;
                   margin-bottom: 14px;
+                }
+
+                &::after {
+                  content: "";
+                  position: absolute;
+                  top: 40%;
+                  left: -11px;
+                  width: 6px;
+                  height: 6px;
+                  background-color: black;
+                  border-radius: 50%;
                 }
               }
             }
@@ -818,6 +832,56 @@ section.price {
     margin-top: 100px;
     @media screen and (max-width: 992px) {
       margin-top: 0px !important;
+    }
+  }
+}
+
+// AR
+article.overview[dir="rtl"] {
+  .details_container {
+    .details {
+      margin-right: 0px;
+      margin-left: 56px;
+
+      .desc {
+        margin-top: 21px;
+        margin-bottom: 17px;
+      }
+    }
+
+    .quick_details {
+      .details_container {
+        .boxes_container {
+          .box {
+            .title {
+              h6 {
+                color: var(--main-dark-color);
+                font-size: 14px;
+                font-weight: var(--font-regular);
+                font-family: var(--quickstand-font);
+              }
+            }
+
+            ul {
+              li {
+                margin-left: 0;
+                margin-right: 12px;
+
+                &::after {
+                  top: 40%;
+                  left: 105%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .menu_container {
+    @media screen and (min-width: 992px) {
+      width: 700px;
     }
   }
 }

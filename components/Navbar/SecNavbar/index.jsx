@@ -56,7 +56,7 @@ const SecNavbar = ({ categorySlug, category, currentPage, blog, tag, how_it_work
 
           {pathname === '/procedures&symptoms/[slug]' &&
             <>
-              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/procedures&symptoms/[slug]' > /procedures&symptoms</Link>
+              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/procedures&symptoms/[slug]' > /{t('sec_navbar:procedures&symptoms')}</Link>
               <Link href='/procedures&symptoms/[slug]' className={styles.active} > /Hair-Transplantation</Link>
             </>
           }

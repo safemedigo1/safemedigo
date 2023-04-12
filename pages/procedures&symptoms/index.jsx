@@ -605,7 +605,6 @@ export default ProceduresSymptoms
 
 export async function getServerSideProps({ locale }) {
 
-
   return {
     props: {
       ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms"])),

@@ -7,15 +7,18 @@ import styles from './index.module.scss';
 import imgs from "../../../assets/constants/imgs";
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import { PageHeader, SecNavbar } from '@/components';
+import { useTranslation } from "react-i18next";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useRouter } from 'next/router';
 
 const TreatmentName = ({ blogs }) => {
-
   const [expanded, setExpanded] = useState(false);
+  const { t } = useTranslation();
+  const router = useRouter();
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
-
 
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
@@ -95,6 +98,7 @@ const TreatmentName = ({ blogs }) => {
     Hair_Transplant_before, aircraft,
     plane,
     ReasonsRetention_Feature, patient_plan } = imgs;
+
 
   const beforeAfterCards = [
     { id: 1, title: 'FUE Hair Transplant - 4500 Grafts - 10 Month Post-Op', before_img: Hair_Transplant_before.src, after_img: Hair_Transplant_after.src },
@@ -219,38 +223,39 @@ const TreatmentName = ({ blogs }) => {
 
       <PageHeader />
 
-      <header id={styles.treatment}>
+      <header id={styles.treatment} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <nav>
-
           <div className={styles.links_container}>
             <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
               <List sx={{ display: 'flex', justifyContent: 'space-between', paddingTop: '20px', width: { sx: '100%', sm: '100%', md: '100%', lg: '700px' } }}>
                 <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
                   <Link href='#overview'>
-                    Overview
+                    {t("proceduresSymptoms_single:nav_overview")}
                   </Link>
                 </ListItem>
 
                 <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
                   <Link href='#price'>
-                    Prices
+                    {t("proceduresSymptoms_single:nav_prices")}
                   </Link>
                 </ListItem>
 
                 <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
                   <Link href='#q&a'>
-                    Q&A
+                    {t("proceduresSymptoms_single:nav_q&a")}
                   </Link>
                 </ListItem>
 
                 <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
                   <Link href='/'>
-                    Reviews
+                    {t("proceduresSymptoms_single:nav_reviews")}
                   </Link>
                 </ListItem>
 
                 <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                  <Link href='/'>Doctors</Link>
+                  <Link href='/'>
+                    {t("proceduresSymptoms_single:nav_doctors")}
+                  </Link>
                 </ListItem>
 
 
@@ -261,13 +266,14 @@ const TreatmentName = ({ blogs }) => {
 
         </nav >
       </header >
-      <article id={'overview'} className={styles.overview}>
+
+      <article id={'overview'} className={styles.overview} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.details_container}>
             <article className={styles.details}>
               <div className={styles.title}>
                 <Typography variant='h3'>
-                  What Is A Hair Transplant?
+                  {t("proceduresSymptoms_single:what_is")} Hair Transplant?
                 </Typography>
               </div>
 
@@ -281,39 +287,39 @@ const TreatmentName = ({ blogs }) => {
 
             <article className={styles.quick_details}>
               <div className={styles.title}>
-                <Typography variant='h3'>Quick Details</Typography>
+                <Typography variant='h3'>{t("proceduresSymptoms_single:quick_details_title")}</Typography>
               </div>
 
               <div className={styles.details_container}>
                 <div className={styles.boxes_container}>
                   <div className={styles.box}>
                     <div className={styles.title}>
-                      <Typography variant='h6'>Operation duration:</Typography>
+                      <Typography variant='h6'>{t("proceduresSymptoms_single:operation_duration")}:</Typography>
                     </div>
                     <List sx={{
                       listStyleType: 'disc',
                       padding: '0px',
 
                       '& .MuiListItem-root': {
-                        display: 'list-item',
+
                         listStylePosition: 'inside',
                         padding: '0px',
                         cursor: 'pointer'
                       },
                     }}>
-                      <ListItem>4-8 hours</ListItem>
+                      <ListItem>4-8 {t("proceduresSymptoms_single:hours")}</ListItem>
                     </List>
                   </div>
                   <div className={styles.box}>
                     <div className={styles.title}>
-                      <Typography variant='h6'>Type of anesthesia:</Typography>
+                      <Typography variant='h6'>{t("proceduresSymptoms_single:type_of_anesthesia")}:</Typography>
                     </div>
                     <List sx={{
                       listStyleType: 'disc',
                       padding: '0px',
 
                       '& .MuiListItem-root': {
-                        display: 'list-item',
+
                         listStylePosition: 'inside',
                         padding: '0px',
                         cursor: 'pointer'
@@ -324,14 +330,14 @@ const TreatmentName = ({ blogs }) => {
                   </div>
                   <div className={styles.box}>
                     <div className={styles.title}>
-                      <Typography variant='h6'>Cost starts from:</Typography>
+                      <Typography variant='h6'>{t("proceduresSymptoms_single:cost")}:</Typography>
                     </div>
                     <List sx={{
                       listStyleType: 'disc',
                       padding: '0px',
 
                       '& .MuiListItem-root': {
-                        display: 'list-item',
+
                         listStylePosition: 'inside',
                         padding: '0px',
                         cursor: 'pointer'
@@ -345,14 +351,14 @@ const TreatmentName = ({ blogs }) => {
                 <div className={styles.boxes_container}>
                   <div className={styles.box}>
                     <div className={styles.title}>
-                      <Typography variant='h6'>Max success rate:</Typography>
+                      <Typography variant='h6'>{t("proceduresSymptoms_single:success_rate")}:</Typography>
                     </div>
                     <List sx={{
                       listStyleType: 'disc',
                       padding: '0px',
 
                       '& .MuiListItem-root': {
-                        display: 'list-item',
+
                         listStylePosition: 'inside',
                         padding: '0px',
                         cursor: 'pointer'
@@ -363,14 +369,14 @@ const TreatmentName = ({ blogs }) => {
                   </div>
                   <div className={styles.box}>
                     <div className={styles.title}>
-                      <Typography variant='h6'>Procedure type::</Typography>
+                      <Typography variant='h6'>{t("proceduresSymptoms_single:procedure_type")}:</Typography>
                     </div>
                     <List sx={{
                       listStyleType: 'disc',
                       padding: '0px',
 
                       '& .MuiListItem-root': {
-                        display: 'list-item',
+
                         listStylePosition: 'inside',
                         padding: '0px',
                         cursor: 'pointer'
@@ -381,14 +387,14 @@ const TreatmentName = ({ blogs }) => {
                   </div>
                   <div className={styles.box}>
                     <div className={styles.title}>
-                      <Typography variant='h6'>Duration of the results:</Typography>
+                      <Typography variant='h6'>{t("proceduresSymptoms_single:duration_results")}:</Typography>
                     </div>
                     <List sx={{
                       listStyleType: 'disc',
                       padding: '0px',
 
                       '& .MuiListItem-root': {
-                        display: 'list-item',
+
                         listStylePosition: 'inside',
                         padding: '0px',
                         cursor: 'pointer'
@@ -403,6 +409,7 @@ const TreatmentName = ({ blogs }) => {
             </article>
           </div>
           <div className={styles.menu_container}>
+
             <Accordion disableGutters elevation={0}
               square={false} sx={{
                 '&:before': {
@@ -429,7 +436,7 @@ const TreatmentName = ({ blogs }) => {
                   padding: '0px',
 
                   '& .MuiListItem-root': {
-                    display: 'list-item',
+
                     listStylePosition: 'inside',
                     padding: '0px',
                     cursor: 'pointer'
@@ -476,7 +483,7 @@ const TreatmentName = ({ blogs }) => {
                   padding: '0px',
 
                   '& .MuiListItem-root': {
-                    display: 'list-item',
+
                     listStylePosition: 'inside',
                     padding: '0px',
                     cursor: 'pointer'
@@ -523,7 +530,7 @@ const TreatmentName = ({ blogs }) => {
                   padding: '0px',
 
                   '& .MuiListItem-root': {
-                    display: 'list-item',
+
                     listStylePosition: 'inside',
                     padding: '0px',
                     cursor: 'pointer'
@@ -572,7 +579,7 @@ const TreatmentName = ({ blogs }) => {
                   padding: '0px',
 
                   '& .MuiListItem-root': {
-                    display: 'list-item',
+
                     listStylePosition: 'inside',
                     padding: '0px',
                     cursor: 'pointer'
@@ -588,11 +595,7 @@ const TreatmentName = ({ blogs }) => {
 
             </Accordion>
           </div>
-
         </Container >
-
-
-
       </article>
 
 
@@ -634,7 +637,7 @@ const TreatmentName = ({ blogs }) => {
                     padding: '0px',
 
                     '& .MuiListItem-root': {
-                      display: 'list-item',
+
                       listStylePosition: 'inside',
                       padding: '0px',
                       cursor: 'pointer'
@@ -692,7 +695,10 @@ const TreatmentName = ({ blogs }) => {
           <div className={styles.slider_container}>
             <Carousel
               breakPoints={breakPoints}
-              itemsToScroll={1} renderArrow={myArrow} transitionMs={1000}>
+              itemsToScroll={1} renderArrow={myArrow} transitionMs={1000}
+              isRTL={router.locale === 'ar' ? true : false}
+
+            >
               {beforeAfterCards.map((bcard, index) => (
                 <div className={styles.box} key={index}>
                   <div className={styles.imgs_container}>
@@ -736,6 +742,8 @@ const TreatmentName = ({ blogs }) => {
               breakPoints={surgerySteps}
               renderArrow={myArrow}
               transitionMs={1000}
+              isRTL={router.locale === 'ar' ? true : false}
+
             >
               {stepsCards.map((stepCard, index) => (
                 <>
@@ -884,6 +892,8 @@ const TreatmentName = ({ blogs }) => {
 
                 <Carousel pagination={false} breakPoints={breakPointsOperation} showArrows={false}
                   transitionMs={1000}
+                  isRTL={router.locale === 'ar' ? true : false}
+
                 >
                   {OperationCards.map((operation, index) => (
                     <>
@@ -910,6 +920,8 @@ const TreatmentName = ({ blogs }) => {
 
                 <Carousel pagination={false} breakPoints={breakPointsOperation} showArrows={false}
                   transitionMs={1000}
+                  isRTL={router.locale === 'ar' ? true : false}
+
                 >
                   {OperationCards.map((operation, index) => (
                     <>
@@ -944,6 +956,8 @@ const TreatmentName = ({ blogs }) => {
 
                 <Carousel pagination={false} breakPoints={breakPointsOperation} showArrows={false}
                   transitionMs={1000}
+                  isRTL={router.locale === 'ar' ? true : false}
+
                 >
                   {OperationCards.map((operation, index) => (
                     <>
@@ -1169,6 +1183,8 @@ const TreatmentName = ({ blogs }) => {
               breakPoints={breakPointsSteps}
               renderArrow={myArrow}
               transitionMs={1000}
+              isRTL={router.locale === 'ar' ? true : false}
+
             >
               {treatment_desc.map((card, index) => (
                 <>
@@ -1263,3 +1279,13 @@ export default TreatmentName
 //     }
 //   }
 // }
+
+export async function getServerSideProps({ locale }) {
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", "proceduresSymptoms_single"])),
+
+    }
+  }
+}
