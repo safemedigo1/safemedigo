@@ -79,6 +79,10 @@ section#why_safemedigo {
             margin-right: 0;
             margin-bottom: 30px;
           }
+
+          @media screen and (max-width: 450px) {
+            margin-bottom: 20px;
+          }
         }
 
         .img_container {

@@ -69,13 +69,14 @@
 
         &:not(:last-child) {
           margin-right: 70px;
+
           @media screen and (max-width: 992px) {
             margin-right: 0;
             margin-bottom: 30px;
           }
 
           @media screen and (max-width: 450px) {
-            margin-bottom: 0px;
+            margin-bottom: 20px;
           }
         }
 

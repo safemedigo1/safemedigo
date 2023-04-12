@@ -115,7 +115,6 @@ const Hero = () => {
             </Box>
 
           </div>
-
           <div className={styles.slider_container}>
             <Carousel
               breakPoints={breakPoints}
@@ -125,8 +124,7 @@ const Hero = () => {
             >
               {cards.map((card, index) => (
                 <>
-                  <div
-                    className={styles.box} key={index}>
+                  <div className={styles.box} key={index}>
                     <div className={styles.box_header}>
                       <div className={styles.img_container}>
                         <img src={card.img} alt="" />
@@ -159,7 +157,6 @@ const Hero = () => {
                     </div>
 
                   </div>
-
                 </>
               ))}
 
