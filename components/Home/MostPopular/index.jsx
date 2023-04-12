@@ -162,14 +162,14 @@ const MostPopular = () => {
 
             </div>
           }
+          {pathname === '/procedures&symptoms' &&
+            <div className={styles.title_mobile}>
+              <Typography variant='h2'>{t('most_popular:title')}</Typography>
+            </div>
+          }
         </Container>
 
         <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false}  >
-          {pathname === '/procedures&symptoms' &&
-            <div className={styles.title_mobile}>
-              <Typography variant='h2'>Most Popular Treatments</Typography>
-            </div>
-          }
           <div className={styles.content}>
             <div className={styles.text_container}>
 
@@ -201,7 +201,6 @@ const MostPopular = () => {
 
 
             <div className={styles.slider_container}>
-
               {treatment &&
                 <motion.div
                   animate={{ opacity: 1 }}

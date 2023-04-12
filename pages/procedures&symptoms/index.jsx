@@ -133,11 +133,15 @@ const ProceduresSymptoms = () => {
             </div>
           </Container>
 
-          <Container className='mycontainer' sx={{ maxWidth: "1239px" }} maxWidth={false}>
+          <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.slider_container}>
-              <Carousel enableSwipe={true} breakPoints={breakPoints}
+              <Carousel
+                enableSwipe={true}
+                breakPoints={breakPoints}
                 transitionMs={1000}
                 renderArrow={myArrow}
+                isRTL={router.locale === 'ar' ? true : false}
+
               >
 
                 {cards.map((card, index) => (
