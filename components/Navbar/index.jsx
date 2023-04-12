@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useEffect, useRef, useState, } from "react";
 import imgs from "../../assets/constants/imgs";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
@@ -18,8 +18,6 @@ import Toolbar from '@mui/material/Toolbar';
 import CssBaseline from '@mui/material/CssBaseline';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
-import { appContext } from "@/context/store";
-
 import { useTranslation } from "next-i18next";
 
 
@@ -454,9 +452,6 @@ const Navbar = (props) => {
                                     transition={{ duration: 0.80, ease: "easeOut" }}
                                     initial={{ opacity: 0 }}
                                   >
-
-
-
                                     {router.locales.map((lang, idx) => (
                                       <li>
                                         <a href={`/${lang}${router.asPath}`} key={idx}>

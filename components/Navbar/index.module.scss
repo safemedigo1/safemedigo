@@ -626,6 +626,8 @@
                   color: var(--main-dark-color);
                   font-family: var(--quickstand-font);
                   font-weight: var(--font-medium);
+                  margin-bottom: 10px;
+
                   img {
                     margin-left: 5px;
                   }
@@ -747,6 +749,17 @@
                     transform: rotate(180deg);
                     margin-left: 0 !important;
                     margin-right: 10px;
+                  }
+                }
+              }
+
+              ul {
+                li {
+                  a {
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: flex-end;
+                    flex-direction: row-reverse;
                   }
                 }
               }
