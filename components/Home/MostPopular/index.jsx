@@ -175,7 +175,7 @@ const MostPopular = () => {
 
               {pathname === '/procedures&symptoms' &&
                 <div className={styles.title}>
-                  <Typography variant='h2'>Most Popular</Typography>
+                  <Typography variant='h2'>{t('most_popular:title')}</Typography>
                 </div>
               }
 

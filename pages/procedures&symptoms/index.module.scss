@@ -350,3 +350,21 @@ section.proceduresSymptoms {
     }
   }
 }
+
+section.proceduresSymptoms[dir="rtl"] {
+  .section_container {
+    .filter_section {
+      margin-right: 0px;
+      margin-left: 55px;
+    }
+
+    .info {
+      .info_header {
+        .img_container {
+          margin-right: 0px;
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+}

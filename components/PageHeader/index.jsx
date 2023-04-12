@@ -79,8 +79,8 @@ const PageHeader = ({ blog }) => {
 
                   {pathname === '/procedures&symptoms' &&
                     <>
-                      <Typography variant='h2'>All Medical Department</Typography>
-                      <Typography variant='h4'>Procedures & Symptoms</Typography>
+                      <Typography variant='h2'> {t('page_header_comp:procedures&symptoms_title')}</Typography>
+                      <Typography variant='h4'>{t('page_header_comp:procedures&symptoms_desc')}</Typography>
                     </>
                   }
 

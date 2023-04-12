@@ -16,19 +16,18 @@ const SecNavbar = ({ categorySlug, category, currentPage, blog, tag, how_it_work
     <>
       <nav id={styles.sec_nav} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+
           {pathname === '/blogs' || pathname === '/blogs/page/[slug]' ?
             <>
               <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/blogs' className={styles.active}>/{t('sec_navbar:blogs')}</Link>
             </> : <></>
           }
 
-
-          {
-            pathname === '/category/[slug]/page/[id]' ?
-              <>
-                <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/blogs' > /{t('sec_navbar:blogs')}</Link>
-                <Link href={`/category/${categorySlug}/page/${currentPage}`} className={styles.active} > /{category}</Link>
-              </> : <></>
+          {pathname === '/category/[slug]/page/[id]' ?
+            <>
+              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/blogs' > /{t('sec_navbar:blogs')}</Link>
+              <Link href={`/category/${categorySlug}/page/${currentPage}`} className={styles.active} > /{category}</Link>
+            </> : <></>
           }
 
           {pathname === '/safety-standards' &&
@@ -36,6 +35,7 @@ const SecNavbar = ({ categorySlug, category, currentPage, blog, tag, how_it_work
               <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/safety-standards' className={styles.active} > /{t('sec_navbar:safety_standards')}</Link>
             </>
           }
+
           {pathname === '/how-it-works' &&
             <>
               <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/how-it-works' className={styles.active} > /{t('sec_navbar:how_it_works')} </Link>
@@ -47,11 +47,13 @@ const SecNavbar = ({ categorySlug, category, currentPage, blog, tag, how_it_work
               <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/about-us' className={styles.active} > /{t('sec_navbar:about_us')}</Link>
             </>
           }
+
           {pathname === '/procedures&symptoms' &&
             <>
-              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/procedures&symptoms' className={styles.active} > /procedures&symptoms</Link>
+              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/procedures&symptoms' className={styles.active} > /{t('sec_navbar:procedures&symptoms')}</Link>
             </>
           }
+
           {pathname === '/procedures&symptoms/[slug]' &&
             <>
               <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/procedures&symptoms/[slug]' > /procedures&symptoms</Link>
@@ -64,6 +66,7 @@ const SecNavbar = ({ categorySlug, category, currentPage, blog, tag, how_it_work
               <Link href='/'> {t('sec_navbar:home')} </Link> <Link href='/blogs' > /{t('sec_navbar:blogs')} </Link>  <Link href='#' className={styles.active}> /{blog.title}</Link>
             </>
           }
+
           {pathname === ('/tags/[slug]') &&
             <>
               <Link href='/'> {t('sec_navbar:home')} </Link> <Link href='/blogs' > /Blogs</Link>  <Link href='#' className={styles.active}> /{tag}</Link>
