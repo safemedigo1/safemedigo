@@ -7,5 +7,6 @@
   "leave_comment": "Leave Comment",
   "load_more": "Load More",
   "name": "Name",
-  "share": "Share it."
+  "share": "Share it.",
+  "commentSuccess": "Comment sent successfully. The comment will be visible once approved"
 }

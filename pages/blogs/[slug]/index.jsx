@@ -74,7 +74,6 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
 
 
-  console.log(isLoadingComments)
   // Blog Comments API's
   const getAllCommentByPage = async () => {
     const getBlogComments = await axios.post("https://api.safemedigo.com/api/v1/BlogComment/GetAllBlogCommentByPage", {
@@ -122,13 +121,15 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
       setIsLoading(false)
       if (error.response.status === 500) {
         setCommentError(error.response.data);
+      } else {
+        setIsCommentSucces(addCommentData.data.isSuccess)
       }
     }
     )
+    setIsCommentSucces(addCommentData?.data?.isSuccess)
 
-    setIsCommentSucces(addCommentData.data.isSuccess)
+
     setIsLoading(false)
-    router.reload(router.asPath)
 
   }
 
@@ -433,8 +434,9 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
 
                 <div className={styles.add_comment_btn}>
+                  {console.log(isCommentSucces, "State")}
                   {isCommentSucces === true ?
-                    <h3>Your comment has been added</h3> :
+                    <h3>{t("single_blog:commentSuccess")}</h3> :
                     <button type="submit" >
                       {isLoading === false ?
                         <>
