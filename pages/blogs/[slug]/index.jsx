@@ -23,7 +23,6 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
   const [commentError, setCommentError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [errorList, setErrorList] = useState([]);
   const [currentPageCount, setCurrentPageCount] = useState(1)
 
   const [isCommentSucces, setIsCommentSucces] = useState()
@@ -85,7 +84,14 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
         'Content-Type': 'application/json'
       }
     });
-    setCommentsDetails(prev => [...prev, ...getBlogComments.data.returnData])
+
+
+    if (currentPageCount > 1) {
+      setCommentsDetails(prev => [...prev, ...getBlogComments.data.returnData])
+    } else {
+      setCommentsDetails(getBlogComments.data.returnData)
+    }
+
     setCommentsCount(getBlogComments.data.count)
   }
 
