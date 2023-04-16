@@ -22,6 +22,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
   const [commentsCount, setCommentsCount] = useState(0)
   const [commentError, setCommentError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingComments, setIsLoadingComments] = useState(false);
 
   const [currentPageCount, setCurrentPageCount] = useState(1)
 
@@ -73,6 +74,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
 
 
+  console.log(isLoadingComments)
   // Blog Comments API's
   const getAllCommentByPage = async () => {
     const getBlogComments = await axios.post("https://api.safemedigo.com/api/v1/BlogComment/GetAllBlogCommentByPage", {
@@ -83,7 +85,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       }
-    });
+    }).catch((error) => console.log(error))
 
 
     if (currentPageCount > 1) {
@@ -94,6 +96,11 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
     setCommentsCount(getBlogComments.data.count)
 
+    if (getBlogComments.status === 200) {
+      setIsLoadingComments(false)
+    } else {
+      setIsLoadingComments(false)
+    }
   }
 
 
@@ -126,8 +133,8 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
   }
 
   useEffect(() => {
-    getAllCommentByPage()
-  }, [])
+    getAllCommentByPage();
+  }, [currentPageCount])
 
 
   const handleInputChange = (e) => {
@@ -138,9 +145,8 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
   }
 
   const handleLoadMoreComments = () => {
+    setIsLoadingComments(true)
     setCurrentPageCount((prev) => prev + 1)
-
-    getAllCommentByPage()
   }
 
 
@@ -374,11 +380,18 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                     </div>
                   </div>
                 </div> */}
-                {commentsCount > 6 &&
-                  < div className={styles.load_more_btn}>
-                    <button onClick={handleLoadMoreComments}>{t("single_blog:load_more")}</button>
-                  </div>
+                {commentsCount !== commentsDetails.length &&
+                  <button className={styles.load_more_btn} onClick={handleLoadMoreComments}>
+                    {isLoadingComments !== true ?
+                      t("single_blog:load_more")
+                      :
+                      <>
+                        <CircularProgress />
+                      </>
 
+                    }
+
+                  </button>
                 }
 
               </div>
