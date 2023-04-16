@@ -4,6 +4,7 @@ import post2 from "../imgs/post2.png";
 import post3 from "../imgs/post3.png";
 import post4 from "../imgs/post4.png";
 import post5 from "../imgs/post5.png";
+import userimg from "../imgs/userimg.png";
 
 import Hair_Transplant_after from "../imgs/Hair_Transplant_after.png";
 import Hair_Transplant_before from "../imgs/Hair_Transplant_before.png";
@@ -266,6 +267,7 @@ export default {
   Pediatrics,
   ar,
   tr,
+  userimg,
   Plastic_Surgeries,
   Psychiatry,
   Psychology,

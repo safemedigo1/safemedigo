@@ -127,12 +127,8 @@ const ProceduresSymptoms = () => {
                   <Typography>10.500 {t("proceduresSymptoms:procedures")}</Typography>
                 </div>
               </div>
-
-
-
             </div>
           </Container>
-
           <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.slider_container}>
               <Carousel
@@ -225,8 +221,6 @@ const ProceduresSymptoms = () => {
 
             </div>
           </Container>
-
-
         </div>
       </section>
 

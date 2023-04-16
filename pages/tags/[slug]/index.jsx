@@ -174,7 +174,7 @@ export async function getServerSideProps({ query, locale }) {
 
 
 
-  const res = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogWithPageByTagName", {
+  const res = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogWithPageByTagName", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -189,7 +189,7 @@ export async function getServerSideProps({ query, locale }) {
   const data = await res.json()
 
 
-  const res1 = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
+  const res1 = await fetch("https://api.safemedigo.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -201,9 +201,9 @@ export async function getServerSideProps({ query, locale }) {
   })
   const data2 = await res1.json()
 
-  const myCategoryId = data2.filter((c) => c.slug === query.category)
+  const myCategoryId = await data2?.filter((c) => c.slug === query.category)
 
-  const getBlogWithPageRes = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogWithPage", {
+  const getBlogWithPageRes = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogWithPage", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -222,7 +222,7 @@ export async function getServerSideProps({ query, locale }) {
   const totalPages = Math.ceil(totalProducts / limit);
 
 
-  const allBlogTagsRes = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogsTags", {
+  const allBlogTagsRes = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogsTags", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

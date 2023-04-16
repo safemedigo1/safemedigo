@@ -10,19 +10,37 @@ import { GoPlus } from 'react-icons/go'
 import Image from 'next/image'
 import { useRouter } from "next/router";
 import axios from "axios";
+import Joi from "joi";
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from "next-i18next";
 
 
 export default function BolgDetailsID({ blog, allBlogsTagsData }) {
-  const [commentsDetails, setCommentsDetails] = useState()
+  const [commentsDetails, setCommentsDetails] = useState([])
+  const [commentsCount, setCommentsCount] = useState(0)
+  const [commentError, setCommentError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [errorList, setErrorList] = useState([]);
+  const [currentPageCount, setCurrentPageCount] = useState(1)
+
+  const [isCommentSucces, setIsCommentSucces] = useState()
+
+
+  const [userCommentDetails, setUserCommentDetails] = useState({
+    comment: "",
+    email: "",
+    name: "",
+  });
+
   function createMarkup() {
     return { __html: blog.content };
   }
 
   const { t } = useTranslation()
-  const { author, } = imgs;
+  const { author, userimg } = imgs;
   const router = useRouter();
 
   function shareToFacebook() {
@@ -58,19 +76,67 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
   // Blog Comments API's
   const getAllCommentByPage = async () => {
-    const getBlogComments = await axios.post("http://safemedigoapi2-001-site1.atempurl.com/api/v1/BlogComment/GetAllBlogCommentByPage", {
-      "currentPage": 1,
-      "blogId": 37
+    const getBlogComments = await axios.post("https://api.safemedigo.com/api/v1/BlogComment/GetAllBlogCommentByPage", {
+      "currentPage": currentPageCount,
+      "blogId": blog.id
     }, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       }
     });
+    setCommentsDetails(prev => [...prev, ...getBlogComments.data.returnData])
+    setCommentsCount(getBlogComments.data.count)
+  }
 
-    setCommentsDetails(getBlogComments.data)
+
+  const addComment = async (e) => {
+    e.preventDefault();
+
+    setIsLoading(true)
+    const addCommentData = await axios.post("https://api.safemedigo.com/api/v1/BlogComment/Add", {
+      "blogId": blog.id,
+      "comment": userCommentDetails.comment,
+      "email": userCommentDetails.email,
+      "name": userCommentDetails.name
+    }, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }).catch(error => {
+      setIsLoading(false)
+      if (error.response.status === 500) {
+        setCommentError(error.response.data);
+      }
+    }
+    )
+
+    setIsCommentSucces(addCommentData.data.isSuccess)
+    setIsLoading(false)
+    router.reload(router.asPath)
 
   }
+
+  useEffect(() => {
+    getAllCommentByPage()
+  }, [])
+
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    let userCommentDetailsDes = { ...userCommentDetails };
+    userCommentDetailsDes[e.target.name] = e.target.value;
+    setUserCommentDetails(userCommentDetailsDes);
+  }
+
+  const handleLoadMoreComments = () => {
+    setCurrentPageCount((prev) => prev + 1)
+
+    getAllCommentByPage()
+  }
+
+  console.log(commentsDetails, "HERERERRER")
 
   return (
     <>
@@ -140,8 +206,10 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
         <div id={styles.blog_details} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
           <div className={styles.headline}>
             <article className={styles.headline_inner}>
+              <img src={blog.image} alt={blog.title} />
               <div dangerouslySetInnerHTML={createMarkup()} />
             </article>
+
 
             {blog.treatment !== null &&
               <div className={styles.blog_treatment_box}>
@@ -179,9 +247,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
               </div>
             }
 
-            {console.log(blog.treatment)}
           </div>
-
           <div className={styles.share}>
             <Typography>
               <span>{t("single_blog:helpful")} </span>
@@ -201,13 +267,12 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
         <div id={styles.related_tags} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
           <Tags allBlogsTagsData={allBlogsTagsData} />
         </div>
-
         <div id={styles.cards_container} >
           <div className={styles.comments_card}>
             <div className={styles.card}>
               <div className={styles.header}>
                 <Typography dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-                  {t("single_blog:comments")} <span>(12)</span>
+                  {t("single_blog:comments")} <span>{commentsDetails?.count}</span>
                 </Typography>
                 <hr />
               </div>
@@ -230,16 +295,16 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                     </div>
                   </div>
                 </div> */}
-                {
+                {commentsDetails.length > 0 ?
                   commentsDetails?.map((comment, idx) => (
                     <>
                       <div className={styles.user_comment} key={idx}>
                         <div className={styles.user_data}>
                           <div className={styles.img_container}>
-                            <img width={50} height={4} src={author.src} alt="" />
+                            <img width={50} height={4} src={userimg.src} alt="" />
                           </div>
                           <div className={styles.name}>
-                            <span>user,</span>
+                            <span>{comment.name},</span>
                           </div>
                         </div>
                         <div className={styles.comment}>
@@ -247,35 +312,40 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                             {comment.comment}
                           </Typography>
                           <div className={styles.date}>
-                            {comment.createdDate}
+                            {comment.createdDateStr}
                           </div>
                         </div>
                       </div>
 
-                      <div className={styles.admin_comment}>
-                        <div className={styles.admin_data}>
-                          <div className={styles.img_container}>
-                            <img width={50} height={4} src={author.src} alt="" />
-                          </div>
-                          <div className={styles.name}>
-                            <span>reply user comment</span>
-                          </div>
-                        </div>
 
-                        <div className={styles.comment}>
-                          <Typography>
-                            {comment.reply}
-                          </Typography>
-
-                          <div className={styles.date}>
-                            {comment.replyDate}
+                      {comment.reply !== null &&
+                        < div className={styles.admin_comment}>
+                          <div className={styles.admin_data}>
+                            <div className={styles.img_container}>
+                              <img width={50} height={4} src={comment.replyUserImage} alt="" />
+                            </div>
+                            <div className={styles.replyUserNam}>
+                              <span>
+                                {comment.name}
+                              </span>
+                            </div>
                           </div>
-                        </div>
-                      </div>
+
+                          <div className={styles.comment}>
+                            <Typography>
+                              {comment.reply}
+                            </Typography>
+
+                            <div className={styles.date}>
+                              {comment.replyDateStr}
+                            </div>
+                          </div>
+                        </div >
+                      }
                     </>
                   ))
+                  : <h3>There's no more comments</h3>}
 
-                }
                 {/* <div className={styles.admin_comment}>
                   <div className={styles.admin_data}>
                     <div className={styles.img_container}>
@@ -298,10 +368,12 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                     </div>
                   </div>
                 </div> */}
+                {commentsCount > 6 &&
+                  < div className={styles.load_more_btn}>
+                    <button onClick={handleLoadMoreComments}>{t("single_blog:load_more")}</button>
+                  </div>
 
-                <div className={styles.load_more_btn}>
-                  <button>{t("single_blog:load_more")}</button>
-                </div>
+                }
 
               </div>
             </div>
@@ -318,36 +390,49 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                 <hr />
               </div>
 
-              <form action="">
+              <form action="" onSubmit={addComment}>
+                {commentError !== null &&
+                  <Typography sx={{ color: 'red' }}>{commentError.errors[0]}</Typography >
+                }
+
                 <div className={styles.name}>
                   <label dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} htmlFor="">{t("single_blog:name")} <span>*</span></label>
-                  <input type="text" placeholder="Enter Your Name" />
+                  <input type="text" name="name" placeholder="Enter Your Name" required onChange={handleInputChange} />
                 </div>
 
                 <div className={styles.email} >
                   <label htmlFor="" dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>{t("single_blog:email")} <span>*</span></label>
-                  <input type="emal" placeholder="Enter Your Email" />
+                  <input type="email" name="email" placeholder="Enter Your Email" required onChange={handleInputChange} />
                 </div>
 
                 <div className={styles.comment}>
                   <label dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} htmlFor="">{t("single_blog:comment")} <span>*</span></label>
-                  <textarea placeholder="Enter Your Comment" name="" rows="4" cols="50">
+                  <textarea placeholder="Enter Your Comment" rows="4" cols="50" required name="comment" onChange={handleInputChange}>
 
                   </textarea>
                 </div>
 
 
                 <div className={styles.add_comment_btn}>
-                  <button type="submit">
-                    <GoPlus />
-                    {t("single_blog:add_comment")}
-                  </button>
+                  {isCommentSucces === true ?
+                    <h3>Your comment has been added</h3> :
+                    <button type="submit" >
+                      {isLoading === false ?
+                        <>
+                          <GoPlus />
+                          {t("single_blog:add_comment")}
+                        </> :
+                        <CircularProgress color="success" />
+                      }
+                    </button>
+                  }
+
                 </div>
               </form>
             </div>
           </div>
         </div>
-      </Container>
+      </Container >
     </>
   );
 }
