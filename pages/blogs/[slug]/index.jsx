@@ -23,7 +23,8 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
   const [commentError, setCommentError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingComments, setIsLoadingComments] = useState(false);
-
+  const [errorList, setErrorList] = useState(false);
+  console.log(errorList, "OVER")
   const [currentPageCount, setCurrentPageCount] = useState(1)
 
   const [isCommentSucces, setIsCommentSucces] = useState()
@@ -107,29 +108,40 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
     e.preventDefault();
 
     setIsLoading(true)
-    const addCommentData = await axios.post("https://api.safemedigo.com/api/v1/BlogComment/Add", {
-      "blogId": blog.id,
-      "comment": userCommentDetails.comment,
-      "email": userCommentDetails.email,
-      "name": userCommentDetails.name
-    }, {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+
+    let validationRes = validationForm();
+    if (validationRes.error) {
+      // push error to error List Array
+      setErrorList(validationRes.error.details);
+
+      setIsLoading(false);
+    } else {
+
+      const addCommentData = await axios.post("https://api.safemedigo.com/api/v1/BlogComment/Add", {
+        "blogId": blog.id,
+        "comment": userCommentDetails.comment,
+        "email": userCommentDetails.email,
+        "name": userCommentDetails.name
+      }, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }).catch(error => {
+        setIsLoading(false)
+        if (error.response.status === 500) {
+          setCommentError(error.response.data);
+        } else {
+          setIsCommentSucces(addCommentData.data.isSuccess)
+        }
       }
-    }).catch(error => {
+      )
+      setIsCommentSucces(addCommentData?.data?.isSuccess)
+
+
       setIsLoading(false)
-      if (error.response.status === 500) {
-        setCommentError(error.response.data);
-      } else {
-        setIsCommentSucces(addCommentData.data.isSuccess)
-      }
     }
-    )
-    setIsCommentSucces(addCommentData?.data?.isSuccess)
 
-
-    setIsLoading(false)
 
   }
 
@@ -151,6 +163,21 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
   }
 
 
+  const validationForm = () => {
+    let scheme = Joi.object({
+      email: Joi.string()
+        .email({ tlds: { allow: ["com", "net", "org"] } })
+        .required(),
+      comment: Joi.string(),
+      name: Joi.string()
+    });
+
+    return scheme.validate(userCommentDetails, { abortEarly: false });
+  };
+
+  const handleFocus = () => {
+    setErrorList(false)
+  }
   return (
     <>
       <SecNavbar blog={blog} />
@@ -422,7 +449,10 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
                 <div className={styles.email} >
                   <label htmlFor="" dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>{t("single_blog:email")} <span>*</span></label>
-                  <input type="email" name="email" placeholder="Enter Your Email" required onChange={handleInputChange} />
+                  <input type="email" name="email" placeholder="Enter Your Email" required onFocus={handleFocus} onChange={handleInputChange} />
+                  {errorList !== false &&
+                    <Typography sx={{ color: 'red', marginTop: '10px' }}>{errorList[0].message}</Typography >
+                  }
                 </div>
 
                 <div className={styles.comment}>
