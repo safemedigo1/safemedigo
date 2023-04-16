@@ -93,6 +93,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
     }
 
     setCommentsCount(getBlogComments.data.count)
+
   }
 
 
@@ -142,7 +143,6 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
     getAllCommentByPage()
   }
 
-  console.log(commentsDetails, "HERERERRER")
 
   return (
     <>
@@ -278,7 +278,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
             <div className={styles.card}>
               <div className={styles.header}>
                 <Typography dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-                  {t("single_blog:comments")} <span>{commentsDetails?.count}</span>
+                  {t("single_blog:comments")} <span>{commentsCount}</span>
                 </Typography>
                 <hr />
               </div>
