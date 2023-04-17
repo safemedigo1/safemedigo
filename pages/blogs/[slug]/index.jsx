@@ -150,11 +150,9 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
     }
 
 
-    formRef.current?.reset();
 
   }
 
-  console.log(userCommentDetails, "USER COMMENT DETAILS")
 
   useEffect(() => {
     getAllCommentByPage();
