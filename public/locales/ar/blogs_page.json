@@ -1,1 +1,5 @@
-{"filter_title":"كل المدونات","tags_title":"الكلمات الشعبية"}
+{
+  "filter_title": "جميع المدونات",
+  "tags_title": "الكلمات الشائعة",
+  "choose_category": "اختر الفئة"
+}

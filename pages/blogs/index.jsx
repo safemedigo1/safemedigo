@@ -59,13 +59,14 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.filter}>
             <FormControl fullWidth  >
-              <InputLabel id="demo-simple-select-autowidth-label">{t('blogs_page:filter_title')}</InputLabel>
+              {/* <InputLabel id="demo-simple-select-autowidth-label">{t('blogs_page:filter_title')}</InputLabel> */}
 
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                displayEmpty
+                inputProps={{ 'aria-label': 'Without label' }}
+
                 IconComponent={ExpandMoreOutlinedIcon}
-                label={t('blogs_page:filter_title')}
+                // label={t('blogs_page:filter_title')}
                 onChange={handleFilterChanges}
                 MenuProps={{
                   anchorOrigin: { horizontal: 'right', vertical: 'bottom' },
@@ -73,12 +74,15 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
                 }}
                 style={{
                   backgroundColor: "#E7EDEC",
+
                   color: "#000000",
                   fontSize: "18px",
                   fontWeight: "bold",
                 }}
               >
-
+                <MenuItem disabled>
+                  <em>{t("blogs_page:choose_category")}</em>
+                </MenuItem>
                 {blogCategory.map((item) => (
                   <MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} value={item.slug} >
                     {item.categeryName}

@@ -1,1 +1,5 @@
-{"filter_title":"Tüm Bloglar","tags_title":"Popüler etiketler"}
+{
+  "filter_title": "Tüm Bloglar",
+  "tags_title": "Popüler etiketler",
+  "choose_category": "Choose category"
+}

@@ -443,6 +443,9 @@
     align-items: center;
   }
   .comments_card {
+    @media screen and (max-width: 450px) {
+      width: 100%;
+    }
     .card {
       width: 699px;
       background: var(--main-white-color);

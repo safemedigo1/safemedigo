@@ -15,9 +15,12 @@ import SecNavbar from '@/components/Navbar/SecNavbar';
 import { motion } from 'framer-motion';
 import Image from 'next/image'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from "react-i18next";
 
-const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages, allBlogsTagsData }) => {
+
+const PageNumber = ({ blogCategory, blogs, myCategoryId, currentPage, totalPages, allBlogsTagsData }) => {
   const [category, setCategory] = useState(blogCategory[0].categeryName);
+  const { t } = useTranslation();
 
   const router = useRouter();
 
@@ -48,12 +51,11 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.filter}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-autowidth-label">{category}</InputLabel>
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                displayEmpty
+                inputProps={{ 'aria-label': 'Without label' }}
                 IconComponent={ExpandMoreOutlinedIcon}
-                label={category}
+                // label={category}
                 onChange={handleFilterChanges}
                 style={{
                   backgroundColor: "#E7EDEC",
@@ -62,6 +64,10 @@ const PageNumber = ({ blogCategory, blogs, categorySlug, currentPage, totalPages
                   fontWeight: "bold",
                 }}
               >
+                <MenuItem disabled>
+                  <em>{myCategoryId[0].categeryName}</em>
+                </MenuItem>
+                {console.log(blogCategory)}
                 {blogCategory.map((item) => (
                   <MenuItem dir={`${router.locale === "ar" ? 'rtl' : 'ltr'}`} value={item.slug} >
                     {item.categeryName}
@@ -229,6 +235,7 @@ export async function getServerSideProps({ query, locale }) {
       totalPages,
       categorySlug,
       allBlogsTagsData,
+      myCategoryId,
       ...(await serverSideTranslations(locale, ['common', 'home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'blogs_page'])),
     }
   }
