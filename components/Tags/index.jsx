@@ -29,23 +29,26 @@ const Tags = ({ blog, allBlogsTagsData }) => {
   ];
   return (
     <section id={styles.tags}>
-      <div className={styles.title}>
-        <Typography variant="h6">{t('blogs_page:tags_title')}</Typography>
-      </div>
+      <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+        <div className={styles.title}>
+          <Typography variant="h6">{t('blogs_page:tags_title')}</Typography>
+        </div>
 
-      <div className={styles.tags_container}>
+        <div className={styles.tags_container}>
 
 
-        {allBlogsTagsData?.map((tag, idx) => (
-          <>
-            <div className={styles.tag} key={idx}>
-              <Link href={`/tags/${tag.slug}`}>
-                <button>{tag.tagName}</button>
-              </Link>
-            </div>
-          </>
-        ))}
-      </div>
+          {allBlogsTagsData?.map((tag, idx) => (
+            <>
+              <div className={styles.tag} key={idx}>
+                <Link href={`/tags/${tag.slug}`}>
+                  <button>{tag.tagName}</button>
+                </Link>
+              </div>
+            </>
+          ))}
+        </div>
+      </Container >
+
     </section>
   )
 }

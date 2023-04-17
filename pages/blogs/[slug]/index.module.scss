@@ -457,6 +457,7 @@
       @media screen and (max-width: 992px) {
         width: 100%;
         box-shadow: none;
+        padding: 28px 0px 28px 0px;
       }
 
       .header {
@@ -536,7 +537,6 @@
             p {
               @media screen and (max-width: 992px) {
                 background-color: var(--light-green-color);
-                width: fit-content;
                 border: none;
                 padding-top: 8.68px;
                 padding-bottom: 14.32px;
@@ -579,7 +579,6 @@
                 padding-right: 14.5px;
                 padding-left: 12.5px;
                 border-radius: 0px 10px 10px 10px;
-                width: fit-content;
               }
             }
           }
