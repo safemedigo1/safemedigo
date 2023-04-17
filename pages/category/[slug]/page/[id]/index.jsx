@@ -67,7 +67,6 @@ const PageNumber = ({ blogCategory, blogs, myCategoryId, currentPage, totalPages
                 <MenuItem disabled>
                   <em>{myCategoryId[0].categeryName}</em>
                 </MenuItem>
-                {console.log(blogCategory)}
                 {blogCategory.map((item) => (
                   <MenuItem dir={`${router.locale === "ar" ? 'rtl' : 'ltr'}`} value={item.slug} >
                     {item.categeryName}
@@ -162,7 +161,7 @@ const PageNumber = ({ blogCategory, blogs, myCategoryId, currentPage, totalPages
         </>
         :
 
-        <Container sx={{ maxWidth: "1239px", marginBottom: '30px' }} maxWidth={false}>
+        <Container sx={{ maxWidth: "1239px", marginBottom: '40px' }} maxWidth={false}>
           <h2>No Blogs In {category} </h2>
         </Container>
       }
