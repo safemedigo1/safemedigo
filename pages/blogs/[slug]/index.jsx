@@ -429,7 +429,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                       t("single_blog:load_more")
                       :
                       <>
-                        <CircularProgress CircularProgress color="success" />
+                        <CircularProgress sx={{ color: '#00ccb5' }} />
                       </>
 
                     }
@@ -489,7 +489,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                         <GoPlus />
                         {t("single_blog:add_comment")}
                       </> :
-                      <CircularProgress color="success" />
+                      <CircularProgress sx={{ color: '#00ccb5' }} />
                     }
                   </button>
 
