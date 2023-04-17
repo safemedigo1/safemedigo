@@ -61,7 +61,6 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
           <div className={styles.filter}>
             <FormControl fullWidth  >
               {/* <InputLabel id="demo-simple-select-autowidth-label">{t('blogs_page:filter_title')}</InputLabel> */}
-
               <Select
                 displayEmpty
                 inputProps={{ 'aria-label': 'Without label' }}
@@ -77,9 +76,10 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
                   color: "#000000",
                   fontSize: "18px",
                   fontWeight: "bold",
+
                 }}
               >
-                <MenuItem disabled>
+                <MenuItem disabled sx={{ display: 'none' }}>
                   {t("blogs_page:choose_category")}
                 </MenuItem>
                 {blogCategory.map((item) => (

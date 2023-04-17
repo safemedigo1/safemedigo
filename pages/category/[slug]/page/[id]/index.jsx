@@ -65,7 +65,7 @@ const PageNumber = ({ blogCategory, blogs, myCategoryId, currentPage, totalPages
                   fontWeight: "bold",
                 }}
               >
-                <MenuItem disabled>
+                <MenuItem disabled sx={{ display: 'none' }}>
                   {myCategoryId[0].categeryName}
                 </MenuItem>
                 {blogCategory.map((item) => (
