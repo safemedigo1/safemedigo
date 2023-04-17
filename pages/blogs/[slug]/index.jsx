@@ -150,7 +150,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
     }
 
 
-
+    formRef.current?.reset()
   }
 
 
@@ -188,6 +188,8 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
   const handleFocus = () => {
     setErrorList(false)
+    setIsCommentSucces(false)
+    setCommentError(null)
   }
 
 
@@ -459,7 +461,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
                 <div className={styles.name}>
                   <label dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} htmlFor="">{t("single_blog:name")} <span>*</span></label>
-                  <input type="text" name="name" placeholder="Enter Your Name" required onChange={handleInputChange} />
+                  <input type="text" name="name" placeholder="Enter Your Name" required onFocus={handleFocus} onChange={handleInputChange} />
                 </div>
 
                 <div className={styles.email} >
@@ -472,7 +474,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
                 <div className={styles.comment}>
                   <label dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} htmlFor="">{t("single_blog:comment")} <span>*</span></label>
-                  <textarea placeholder="Enter Your Comment" rows="4" cols="50" required name="comment" onChange={handleInputChange}>
+                  <textarea placeholder="Enter Your Comment" rows="4" cols="50" required name="comment" onFocus={handleFocus} onChange={handleInputChange}>
 
                   </textarea>
                 </div>
