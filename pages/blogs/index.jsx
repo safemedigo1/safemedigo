@@ -27,6 +27,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
   const [category, setCategory] = useState('All Blogs');
 
   const router = useRouter();
+  console.log(blogCategory, "HEREasdsadadsadsa")
 
   const { lang, setLang } = useContext(appContext);
   setLang(locale)
@@ -64,7 +65,6 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
               <Select
                 displayEmpty
                 inputProps={{ 'aria-label': 'Without label' }}
-
                 IconComponent={ExpandMoreOutlinedIcon}
                 // label={t('blogs_page:filter_title')}
                 onChange={handleFilterChanges}
@@ -74,14 +74,13 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
                 }}
                 style={{
                   backgroundColor: "#E7EDEC",
-
                   color: "#000000",
                   fontSize: "18px",
                   fontWeight: "bold",
                 }}
               >
                 <MenuItem disabled>
-                  <em>{t("blogs_page:choose_category")}</em>
+                  {t("blogs_page:choose_category")}
                 </MenuItem>
                 {blogCategory.map((item) => (
                   <MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} value={item.slug} >
@@ -211,7 +210,6 @@ export async function getServerSideProps({ query, locale }) {
   const data2 = await res1.json()
 
   const myCategoryId = data2.isSuccess != false && data2.filter((c) => c.slug === query.category)
-
 
 
   const getBlogWithPageRes = await

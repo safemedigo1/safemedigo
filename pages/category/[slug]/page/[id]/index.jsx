@@ -39,12 +39,13 @@ const PageNumber = ({ blogCategory, blogs, myCategoryId, currentPage, totalPages
     // setTimeout(() => window.location.reload(), 2000);
     setCategory(value.props.children)
   }
+  console.log("HERE")
 
 
 
   return (
     <div>
-      <SecNavbar category={category} currentPage={currentPage} />
+      <SecNavbar slug={myCategoryId[0].categeryName} currentPage={currentPage} />
       <PageHeader />
 
       <div id={styles.tags_filter} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
@@ -65,7 +66,7 @@ const PageNumber = ({ blogCategory, blogs, myCategoryId, currentPage, totalPages
                 }}
               >
                 <MenuItem disabled>
-                  <em>{myCategoryId[0].categeryName}</em>
+                  {myCategoryId[0].categeryName}
                 </MenuItem>
                 {blogCategory.map((item) => (
                   <MenuItem dir={`${router.locale === "ar" ? 'rtl' : 'ltr'}`} value={item.slug} >

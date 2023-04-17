@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useTranslation } from "react-i18next";
 
 
-const SecNavbar = ({ categorySlug, category, currentPage, blog, tag, how_it_works }) => {
+const SecNavbar = ({ categorySlug, slug, category, currentPage, blog, tag, how_it_works }) => {
   const router = useRouter();
   const { pathname } = router;
   const { t } = useTranslation();
@@ -23,11 +23,11 @@ const SecNavbar = ({ categorySlug, category, currentPage, blog, tag, how_it_work
             </> : <></>
           }
 
-          {pathname === '/category/[slug]/page/[id]' ?
+          {pathname === '/category/[slug]/page/[id]' &&
             <>
               <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/blogs' > /{t('sec_navbar:blogs')}</Link>
-              <Link href={`/category/${categorySlug}/page/${currentPage}`} className={styles.active} > /{category}</Link>
-            </> : <></>
+              <Link href={`/category/${categorySlug}/page/${currentPage}`} className={styles.active} > /{slug}</Link>
+            </>
           }
 
           {pathname === '/safety-standards' &&
