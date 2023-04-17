@@ -44,7 +44,7 @@ const PageNumber = ({ blogCategory, blogs, myCategoryId, currentPage, totalPages
 
 
   return (
-    <div>
+    <>
       <SecNavbar slug={myCategoryId[0].categeryName} currentPage={currentPage} />
       <PageHeader />
 
@@ -89,60 +89,64 @@ const PageNumber = ({ blogCategory, blogs, myCategoryId, currentPage, totalPages
                 <div className={styles.boxes_container}>
                   {blogs.data.map((post, idx) => (
                     <>
-                      <motion.a
+                      <motion.div
                         animate={{ opacity: 1 }}
                         initial={{ opacity: 0 }}
 
                         transition={{ duration: 1, }}
-                        href={`/blogs/${post.slug}`} className={styles.box} key={idx}>
-                        <div className={styles.img_container}>
-                          <Image
-                            src={post.image}
-                            alt={post.title}
-                            width={344}
-                            height={500}
-                          />
+                        className={styles.box} key={idx}>
+                        <Link href={`/blogs/${post.slug}`} >
 
-                        </div>
-                        <div className={styles.box_title}>
-                          <Typography variant="h5">{post.title}</Typography>
-                        </div>
-
-                        <div className={styles.desc}>
-                          <p>{post.briefContent}</p>
-                        </div>
-
-                        <div className={styles.author_container}>
                           <div className={styles.img_container}>
                             <Image
+                              src={post.image}
+                              alt={post.title}
                               width={344}
                               height={500}
-                              src={post?.publisherImage} alt={post.publisherName} />
-
-
+                            />
 
                           </div>
-                          <div className={styles.author_data}>
-                            <div className={styles.user_name}>
-                              {post.publisherName}
+                          <div className={styles.box_title}>
+                            <Typography variant="h5">{post.title}</Typography>
+                          </div>
+
+                          <div className={styles.desc}>
+                            <p>{post.briefContent}</p>
+                          </div>
+
+                          <div className={styles.author_container}>
+                            <div className={styles.img_container}>
+                              <Image
+                                width={344}
+                                height={500}
+                                src={post?.publisherImage} alt={post.publisherName} />
+
+
+
                             </div>
-                            <div className={styles.user_job}>{post.jobTitle}</div>
-                          </div>
-                        </div>
-
-                        <div className={styles.btns_container}>
-                          <div className={styles.trans_btn}>
-                            {post.tags.map((tag) => (
-                              <>
-                                <Link href={`/tags/${tag.slug}`}>
-                                  <button>{tag.tagName}</button>
-                                </Link>
-                              </>
-                            ))}
+                            <div className={styles.author_data}>
+                              <div className={styles.user_name}>
+                                {post.publisherName}
+                              </div>
+                              <div className={styles.user_job}>{post.jobTitle}</div>
+                            </div>
                           </div>
 
-                        </div>
-                      </motion.a>
+                          <div className={styles.btns_container}>
+                            <div className={styles.trans_btn}>
+                              {post.tags.map((tag) => (
+                                <>
+                                  <Link href={`/tags/${tag.slug}`}>
+                                    <button>{tag.tagName}</button>
+                                  </Link>
+                                </>
+                              ))}
+                            </div>
+
+                          </div>
+                        </Link>
+
+                      </motion.div>
                     </>
                   ))}
                 </div>
@@ -167,7 +171,7 @@ const PageNumber = ({ blogCategory, blogs, myCategoryId, currentPage, totalPages
         </Container>
       }
 
-    </div>
+    </>
   )
 }
 

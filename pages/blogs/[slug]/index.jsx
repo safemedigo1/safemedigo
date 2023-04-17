@@ -321,10 +321,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
       <div id={styles.related_tags} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Tags allBlogsTagsData={allBlogsTagsData} />
       </div>
-
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-
-
         <div id={styles.cards_container} >
           <div className={styles.comments_card}>
             <div className={styles.card}>
