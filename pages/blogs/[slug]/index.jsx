@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import imgs from "../../../assets/constants/imgs";
 import { PageHeader, SecNavbar, Tags } from "../../../components";
 import styles from "./index.module.scss";
@@ -36,13 +36,17 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
     name: "",
   });
 
+
   function createMarkup() {
     return { __html: blog.content };
   }
 
+
+
   const { t } = useTranslation()
   const { author, userimg } = imgs;
   const router = useRouter();
+  const formRef = useRef();
 
   function shareToFacebook() {
     const url = router.asPath;
@@ -131,8 +135,11 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
         setIsLoading(false)
         if (error.response.status === 500) {
           setCommentError(error.response.data);
+
         } else {
           setIsCommentSucces(addCommentData.data.isSuccess)
+
+
         }
       }
       )
@@ -143,11 +150,17 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
     }
 
 
+    formRef.current?.reset();
+
   }
+
+  console.log(userCommentDetails, "USER COMMENT DETAILS")
 
   useEffect(() => {
     getAllCommentByPage();
   }, [currentPageCount])
+
+
 
 
   const handleInputChange = (e) => {
@@ -178,6 +191,8 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
   const handleFocus = () => {
     setErrorList(false)
   }
+
+
   return (
     <>
       <SecNavbar blog={blog} />
@@ -414,7 +429,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                       t("single_blog:load_more")
                       :
                       <>
-                        <CircularProgress />
+                        <CircularProgress CircularProgress color="success" />
                       </>
 
                     }
@@ -437,7 +452,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                 <hr />
               </div>
 
-              <form action="" onSubmit={addComment}>
+              <form action="" ref={formRef} onSubmit={addComment}>
                 {commentError !== null &&
                   <Typography sx={{ color: 'red' }}>{commentError.errors[0]}</Typography >
                 }
@@ -464,19 +479,19 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
 
                 <div className={styles.add_comment_btn}>
-                  {console.log(isCommentSucces, "State")}
                   {isCommentSucces === true ?
-                    <h3>{t("single_blog:commentSuccess")}</h3> :
-                    <button type="submit" >
-                      {isLoading === false ?
-                        <>
-                          <GoPlus />
-                          {t("single_blog:add_comment")}
-                        </> :
-                        <CircularProgress color="success" />
-                      }
-                    </button>
+                    <Typography variant="h6" sx={{ marginBottom: "10px" }}>* {t("single_blog:commentSuccess")}</Typography > : ""
                   }
+
+                  <button type="submit"  >
+                    {isLoading === false ?
+                      <>
+                        <GoPlus />
+                        {t("single_blog:add_comment")}
+                      </> :
+                      <CircularProgress color="success" />
+                    }
+                  </button>
 
                 </div>
               </form>
