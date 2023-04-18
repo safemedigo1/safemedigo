@@ -42,7 +42,6 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
   }
 
 
-
   const { t } = useTranslation()
   const { author, userimg } = imgs;
   const router = useRouter();
@@ -268,7 +267,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
             </article>
 
 
-            {blog.treatment !== null &&
+            {blog?.treatment !== null &&
               <div className={styles.blog_treatment_box}>
                 <div className={styles.box}>
                   <div className={styles.img_container}>
@@ -276,20 +275,19 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                   </div>
 
                   <div className={styles.text_container}>
-
                     <div className={styles.treatment_title}>
-                      <Typography variant="h5">{blog.treatment.name}</Typography>
+                      <Typography variant="h5">{blog?.treatment?.name}</Typography>
                     </div>
                     <div className={styles.price}>
-                      <p>Cost Start From <span>{blog.treatment.cost} &euro;</span></p>
+                      <p>Cost Start From <span>{blog?.treatment?.cost} &euro;</span></p>
                     </div>
                     <div className={styles.starts}>
-                      <Rating name="size-medium" defaultValue={blog.treatment.rate} />
-                      <span className={styles.reviews_num}>{blog.treatment.reviewCount} Reviews</span>
+                      <Rating name="size-medium" defaultValue={blog?.treatment?.rate} />
+                      <span className={styles.reviews_num}>{blog?.treatment?.reviewCount} Reviews</span>
                     </div>
                     <div className={styles.desc}>
                       <Typography >
-                        {blog.treatment.description}
+                        {blog?.treatment?.description}
                       </Typography>
                     </div>
 
@@ -331,7 +329,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
             <div className={styles.card}>
               <div className={styles.header}>
                 <Typography dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-                  {t("single_blog:comments")} <span>{commentsCount}</span>
+                  {t("single_blog:comments")} <span>{`(${commentsCount})`}</span>
                 </Typography>
                 <hr />
               </div>

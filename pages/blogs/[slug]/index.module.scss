@@ -754,6 +754,20 @@
 
 // AR
 #blog_details[dir="rtl"] {
+  .headline {
+    .headline_img_container {
+      width: 100%;
+      height: 311.04px;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+      }
+      // @media screen and (max-width: 450px) {
+      //   display: none;
+      // }
+    }
+  }
   .share {
     .icons_container {
       svg {
