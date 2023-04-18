@@ -67,6 +67,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
                 IconComponent={ExpandMoreOutlinedIcon}
                 // label={t('blogs_page:filter_title')}
                 onChange={handleFilterChanges}
+
                 MenuProps={{
                   anchorOrigin: { horizontal: 'right', vertical: 'bottom' },
                   transformOrigin: { horizontal: 'right', vertical: 'top' },

@@ -10,6 +10,7 @@ import Router from "next/router";
 import nProgress from "nprogress";
 import "../styles/nprogress.css";
 import { appWithTranslation } from "next-i18next";
+import { Toaster } from "react-hot-toast";
 
 Router.events.on("routeChangeStart", nProgress.start);
 Router.events.on("routeChangeError", nProgress.done);
@@ -35,6 +36,27 @@ function App({ Component, pageProps }) {
         })(window,document,'script','dataLayer','GTM-K26NKMK');
       `}
             </Script>
+            <Toaster
+              toastOptions={{
+                success: {
+                  style: {
+                    color: "#004747",
+                    fontWeight: "bold",
+                  },
+                  iconTheme: {
+                    primary: "#004747",
+                    secondary: "#ffffff",
+                  },
+                },
+                error: {
+                  style: {
+                    color: "red",
+                    fontWeight: "bold",
+                  },
+                },
+              }}
+            />
+
             <Component {...pageProps} />
           </Layout>
         </NoSsr>

@@ -15,6 +15,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from "next-i18next";
+import toast from 'react-hot-toast';
 
 
 export default function BolgDetailsID({ blog, allBlogsTagsData }) {
@@ -24,7 +25,6 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingComments, setIsLoadingComments] = useState(false);
   const [errorList, setErrorList] = useState(false);
-  console.log(errorList, "OVER")
   const [currentPageCount, setCurrentPageCount] = useState(1)
 
   const [isCommentSucces, setIsCommentSucces] = useState()
@@ -119,8 +119,9 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
       setErrorList(validationRes.error.details);
 
       setIsLoading(false);
-    } else {
 
+      toast.error(t("single_blog:emailValid"))
+    } else {
       const addCommentData = await axios.post("https://api.safemedigo.com/api/v1/BlogComment/Add", {
         "blogId": blog.id,
         "comment": userCommentDetails.comment,
@@ -133,26 +134,24 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
         }
       }).catch(error => {
         setIsLoading(false)
+        toast.error(t("single_blog:commentFailed"))
+        setIsCommentSucces(false)
         if (error.response.status === 500) {
           setCommentError(error.response.data);
-
         } else {
           setIsCommentSucces(addCommentData.data.isSuccess)
-
-
         }
       }
       )
-      setIsCommentSucces(addCommentData?.data?.isSuccess)
-
-
       setIsLoading(false)
+      // console.log(, "OHEERRERE")
+      if (addCommentData?.status === 200) {
+        toast.success(t("single_blog:commentSuccess"))
+        formRef.current?.reset()
+      }
     }
 
-
-    formRef.current?.reset()
   }
-
 
   useEffect(() => {
     getAllCommentByPage();
@@ -188,8 +187,9 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
   const handleFocus = () => {
     setErrorList(false)
-    setIsCommentSucces(false)
+    setIsCommentSucces()
     setCommentError(null)
+
   }
 
 
@@ -431,7 +431,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                       t("single_blog:load_more")
                       :
                       <>
-                        <CircularProgress sx={{ color: '#00ccb5' }} />
+                        <CircularProgress color="inherit" />
                       </>
 
                     }
@@ -455,9 +455,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
               </div>
 
               <form action="" ref={formRef} onSubmit={addComment}>
-                {commentError !== null &&
-                  <Typography sx={{ color: 'red' }}>{commentError.errors[0]}</Typography >
-                }
+
 
                 <div className={styles.name}>
                   <label dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} htmlFor="">{t("single_blog:name")} <span>*</span></label>
@@ -469,6 +467,9 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                   <input type="email" name="email" placeholder="Enter Your Email" required onFocus={handleFocus} onChange={handleInputChange} />
                   {errorList !== false &&
                     <Typography sx={{ color: 'red', marginTop: '10px' }}>{errorList[0].message}</Typography >
+                  }
+                  {isCommentSucces === false &&
+                    <Typography sx={{ color: 'red', marginTop: '10px' }}>{t("single_blog:commentFailed")}</Typography >
                   }
                 </div>
 
@@ -491,7 +492,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                         <GoPlus />
                         {t("single_blog:add_comment")}
                       </> :
-                      <CircularProgress sx={{ color: '#00ccb5' }} />
+                      <CircularProgress color="inherit" />
                     }
                   </button>
 

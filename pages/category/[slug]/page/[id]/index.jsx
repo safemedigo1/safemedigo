@@ -54,16 +54,28 @@ const PageNumber = ({ blogCategory, blogs, myCategoryId, currentPage, totalPages
             <FormControl fullWidth>
               <Select
                 displayEmpty
-                inputProps={{ 'aria-label': 'Without label' }}
+                inputProps={{
+                  'aria-label': 'Without label', MenuProps: {
+                    MenuListProps: {
+                      sx: {
+                        backgroundColor: 'transparent',
+                      }
+                    }
+                  }
+                }}
                 IconComponent={ExpandMoreOutlinedIcon}
                 // label={category}
                 onChange={handleFilterChanges}
+
                 style={{
                   backgroundColor: "#E7EDEC",
                   color: "#000000",
                   fontSize: "18px",
                   fontWeight: "bold",
                 }}
+
+
+
               >
                 <MenuItem disabled sx={{ display: 'none' }}>
                   {myCategoryId[0].categeryName}
@@ -76,99 +88,100 @@ const PageNumber = ({ blogCategory, blogs, myCategoryId, currentPage, totalPages
               </Select>
             </FormControl>
           </div>
-        </Container>
-      </div>
+        </Container >
+      </div >
 
-      {blogs.count !== 0 ?
-        <>
-          <div className={styles.sections_container} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-            <section id={styles.blogs_sec}>
-              <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+      {
+        blogs.count !== 0 ?
+          <>
+            <div className={styles.sections_container} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+              <section id={styles.blogs_sec}>
+                <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
 
 
-                <div className={styles.boxes_container}>
-                  {blogs.data.map((post, idx) => (
-                    <>
-                      <motion.div
-                        animate={{ opacity: 1 }}
-                        initial={{ opacity: 0 }}
+                  <div className={styles.boxes_container}>
+                    {blogs.data.map((post, idx) => (
+                      <>
+                        <motion.div
+                          animate={{ opacity: 1 }}
+                          initial={{ opacity: 0 }}
 
-                        transition={{ duration: 1, }}
-                        className={styles.box} key={idx}>
-                        <Link href={`/blogs/${post.slug}`} >
+                          transition={{ duration: 1, }}
+                          className={styles.box} key={idx}>
+                          <Link href={`/blogs/${post.slug}`} >
 
-                          <div className={styles.img_container}>
-                            <Image
-                              src={post.image}
-                              alt={post.title}
-                              width={344}
-                              height={500}
-                            />
-
-                          </div>
-                          <div className={styles.box_title}>
-                            <Typography variant="h5">{post.title}</Typography>
-                          </div>
-
-                          <div className={styles.desc}>
-                            <p>{post.briefContent}</p>
-                          </div>
-
-                          <div className={styles.author_container}>
                             <div className={styles.img_container}>
                               <Image
+                                src={post.image}
+                                alt={post.title}
                                 width={344}
                                 height={500}
-                                src={post?.publisherImage} alt={post.publisherName} />
-
-
+                              />
 
                             </div>
-                            <div className={styles.author_data}>
-                              <div className={styles.user_name}>
-                                {post.publisherName}
+                            <div className={styles.box_title}>
+                              <Typography variant="h5">{post.title}</Typography>
+                            </div>
+
+                            <div className={styles.desc}>
+                              <p>{post.briefContent}</p>
+                            </div>
+
+                            <div className={styles.author_container}>
+                              <div className={styles.img_container}>
+                                <Image
+                                  width={344}
+                                  height={500}
+                                  src={post?.publisherImage} alt={post.publisherName} />
+
+
+
                               </div>
-                              <div className={styles.user_job}>{post.jobTitle}</div>
-                            </div>
-                          </div>
-
-                          <div className={styles.btns_container}>
-                            <div className={styles.trans_btn}>
-                              {post.tags.map((tag) => (
-                                <>
-                                  <Link href={`/tags/${tag.slug}`}>
-                                    <button>{tag.tagName}</button>
-                                  </Link>
-                                </>
-                              ))}
+                              <div className={styles.author_data}>
+                                <div className={styles.user_name}>
+                                  {post.publisherName}
+                                </div>
+                                <div className={styles.user_job}>{post.jobTitle}</div>
+                              </div>
                             </div>
 
-                          </div>
-                        </Link>
+                            <div className={styles.btns_container}>
+                              <div className={styles.trans_btn}>
+                                {post.tags.map((tag) => (
+                                  <>
+                                    <Link href={`/tags/${tag.slug}`}>
+                                      <button>{tag.tagName}</button>
+                                    </Link>
+                                  </>
+                                ))}
+                              </div>
 
-                      </motion.div>
-                    </>
-                  ))}
-                </div>
-                <Box sx={{
-                  display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: "center", marginTop: '50px',
-                  '& ul > li> button:not(.Mui-selected)': { color: '#004747', fontWeight: 'bold', fontSize: '14px' },
-                  '& ul > li> .Mui-selected': { backgroundColor: '#004747', color: '#ffffff', fontWeight: 'bold', fontSize: '18px' }
-                }} className="pagination">
-                  <Pagination dir='ltr' count={totalPages} page={currentPage} onChange={handleMyChangePage} />
+                            </div>
+                          </Link>
 
-                </Box>
-              </Container>
-            </section>
-            {/* Tags Component */}
-            <Tags allBlogsTagsData={allBlogsTagsData} />
-          </div>
-        </>
-        :
+                        </motion.div>
+                      </>
+                    ))}
+                  </div>
+                  <Box sx={{
+                    display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: "center", marginTop: '50px',
+                    '& ul > li> button:not(.Mui-selected)': { color: '#004747', fontWeight: 'bold', fontSize: '14px' },
+                    '& ul > li> .Mui-selected': { backgroundColor: '#004747', color: '#ffffff', fontWeight: 'bold', fontSize: '18px' }
+                  }} className="pagination">
+                    <Pagination dir='ltr' count={totalPages} page={currentPage} onChange={handleMyChangePage} />
 
-        <Container sx={{ maxWidth: "1239px", marginBottom: '40px' }} maxWidth={false}>
-          <h2>No Blogs In {category} </h2>
-        </Container>
+                  </Box>
+                </Container>
+              </section>
+              {/* Tags Component */}
+              <Tags allBlogsTagsData={allBlogsTagsData} />
+            </div>
+          </>
+          :
+
+          <Container sx={{ maxWidth: "1239px", marginBottom: '40px' }} maxWidth={false}>
+            <h2>No Blogs In {category} </h2>
+          </Container>
       }
 
     </>

@@ -8,5 +8,7 @@
   "load_more": "Load More",
   "name": "Name",
   "share": "Share it.",
-  "commentSuccess": "Comment sent successfully. The comment will be visible once approved"
+  "commentSuccess": "Comment sent successfully. The comment will be visible once approved",
+  "commentFailed": "This email has already made a comment",
+  "emailValid": "Email must be a valid email"
 }
