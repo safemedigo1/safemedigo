@@ -38,6 +38,7 @@ function App({ Component, pageProps }) {
             </Script>
             <Toaster
               toastOptions={{
+                duration: 4000,
                 success: {
                   style: {
                     color: "#004747",
