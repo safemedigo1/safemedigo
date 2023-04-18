@@ -261,7 +261,9 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
         <div id={styles.blog_details} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
           <div className={styles.headline}>
             <article className={styles.headline_inner}>
-              <img src={blog.image} alt={blog.title} />
+              <div className={styles.headline_img_container}>
+                <img src={blog.image} alt={blog.title} />
+              </div>
               <div dangerouslySetInnerHTML={createMarkup()} />
             </article>
 

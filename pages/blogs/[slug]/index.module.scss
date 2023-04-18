@@ -84,13 +84,17 @@
         width: 100%;
       }
 
-      img {
+      .headline_img_container {
         width: 100%;
         height: 311.04px;
-        border-radius: 5px;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 5px;
 
-        @media screen and (max-width: 450px) {
-          display: none;
+          @media screen and (max-width: 450px) {
+            display: none;
+          }
         }
       }
 
