@@ -11,12 +11,11 @@ import Image from 'next/image'
 import { useRouter } from "next/router";
 import axios from "axios";
 import Joi from "joi";
-import CircularProgress from '@mui/material/CircularProgress';
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from "next-i18next";
 import toast from 'react-hot-toast';
-import { Comment, ThreeDots } from 'react-loader-spinner'
+import { ThreeDots } from 'react-loader-spinner'
 
 
 export default function BolgDetailsID({ blog, allBlogsTagsData }) {
@@ -428,13 +427,14 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                 </div> */}
                 {commentsCount !== commentsDetails.length &&
                   <button className={styles.load_more_btn} onClick={handleLoadMoreComments}>
-                    {isLoadingComments === true ?
+                    {isLoadingComments !== true ?
                       t("single_blog:load_more")
                       :
                       <>
+                        Loading {` `}
                         <ThreeDots
-                          height="40"
-                          width="40"
+                          height="25"
+                          width="25"
                           radius="9"
                           color="#00ccb5"
                           ariaLabel="three-dots-loading"
@@ -442,6 +442,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                           wrapperClassName="load_more_btn"
                           visible={true}
                         />
+
                       </>
 
                     }
@@ -497,21 +498,25 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                   }
 
                   <button type="submit"  >
-                    {isLoading !== false ?
+                    {isLoading === false ?
                       <>
                         <GoPlus />
                         {t("single_blog:add_comment")}
                       </> :
-                      <Comment
-                        visible={true}
-                        height="40"
-                        width="40"
-                        ariaLabel="comment-loading"
-                        wrapperStyle={{}}
-                        wrapperClass="comment-wrapper"
-                        color="#004747"
-                        backgroundColor="#fff"
-                      />
+                      <>
+                        Sending {` `}
+                        <ThreeDots
+                          height="25"
+                          width="25"
+                          radius="9"
+                          color="#fff"
+                          ariaLabel="three-dots-loading"
+                          wrapperStyle={{}}
+                          wrapperClassName="load_more_btn"
+                          visible={true}
+                        />
+
+                      </>
                     }
                   </button>
 
