@@ -266,7 +266,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
               <div dangerouslySetInnerHTML={createMarkup()} />
             </article>
 
-
+            {console.log(blog, "HEREEEEEEEE")}
             {blog?.treatment !== null &&
               <div className={styles.blog_treatment_box}>
                 <div className={styles.box}>
