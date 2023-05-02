@@ -15,7 +15,7 @@ import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 
-const ProceduresSymptoms = () => {
+const ProceduresSymptoms = ({ dataPopularTreatments }) => {
   const [result, setResult] = useState(null)
   const [expanded, setExpanded] = useState(false);
   const { t } = useTranslation();
@@ -96,7 +96,7 @@ const ProceduresSymptoms = () => {
       <SecNavbar />
       <PageHeader />
 
-      <MostPopular />
+      <MostPopular dataPopularTreatments={dataPopularTreatments} />
 
       <section id={styles.medical_department} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <div className={styles.section_container}>
@@ -602,11 +602,24 @@ export default ProceduresSymptoms
 
 
 export async function getServerSideProps({ locale }) {
+  const resPopularTreatments = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetPopularTreatmentsByLang", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": locale
+    })
+  })
+  const dataPopularTreatments = await resPopularTreatments.json()
 
   return {
     props: {
+      dataPopularTreatments,
       ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms"])),
 
     }
   }
 }
+

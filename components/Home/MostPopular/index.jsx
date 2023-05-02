@@ -15,7 +15,8 @@ import { appContext } from "@/context/store";
 
 import { useTranslation } from "react-i18next";
 
-const MostPopular = () => {
+const MostPopular = ({ dataPopularTreatments }) => {
+  console.log(dataPopularTreatments, "From MostPoplar Components")
   const { t } = useTranslation();
   const { lang } = useContext(appContext)
   const { post1, post2, post3, post4, post5, } = imgs;
@@ -135,8 +136,6 @@ const MostPopular = () => {
               <Typography variant='h2'>{t('most_popular:title')}</Typography>
             </div>
           }
-
-
           {pathname !== '/procedures&symptoms' &&
             <div className={styles.navigation}>
               <div className={styles.header}>
@@ -162,6 +161,7 @@ const MostPopular = () => {
 
             </div>
           }
+
           {pathname === '/procedures&symptoms' &&
             <div className={styles.title_mobile}>
               <Typography variant='h2'>{t('most_popular:title')}</Typography>
@@ -226,49 +226,97 @@ const MostPopular = () => {
                     renderArrow={myArrow}
                     isRTL={router.locale === 'ar' ? true : false}
                   >
-                    {treatmentData.map((card, index) => (
-                      <div className={styles.box} key={index}>
-                        <div className={styles.img_container}>
-                          <img src={card.img} alt={card.title} />
-                        </div>
 
-                        <div className={styles.box_text_container}>
 
-                          <div className={styles.title}>
-                            <Typography variant='h5'>
-                              {card.title}
-                            </Typography>
+                    {
+                      pathname !== '/' ?
+                        dataPopularTreatments.map((card, index) => (
+                          <div className={styles.box} key={index}>
+                            <div className={styles.img_container}>
+                              <img src={card.imagePath} alt={card.title} />
+                            </div>
+
+                            <div className={styles.box_text_container}>
+
+                              <div className={styles.title}>
+                                <Typography variant='h5'>
+                                  {card.treatmentName}
+                                </Typography>
+                              </div>
+
+                              <div className={styles.price}>
+                                <Typography variant='h6'>
+                                  Cost Start From  {card.cost} &euro;
+                                </Typography>
+                              </div>
+
+                              <div className={styles.rating}>
+                                <Rating name="size-small" defaultValue={card.totalReviewed} size="small" />
+                                <span className={styles.reviews_num}>{card.totalReviewed} Reviews</span>
+                              </div>
+
+                              <div className={styles.desc}>
+
+
+                                <Typography>{card.description}</Typography>
+                              </div>
+
+                              <div className={styles.btn_container}>
+                                <Link href='/'>
+                                  More
+                                </Link>
+                              </div>
+
+                            </div>
+
+
+
                           </div>
+                        )) :
+                        treatmentData.map((card, index) => (
+                          <div className={styles.box} key={index}>
+                            <div className={styles.img_container}>
+                              <img src={card.img} alt={card.title} />
+                            </div>
 
-                          <div className={styles.price}>
-                            <Typography variant='h6'>
-                              Cost Start From  {card.price} &euro;
-                            </Typography>
+                            <div className={styles.box_text_container}>
+
+                              <div className={styles.title}>
+                                <Typography variant='h5'>
+                                  {card.title}
+                                </Typography>
+                              </div>
+
+                              <div className={styles.price}>
+                                <Typography variant='h6'>
+                                  Cost Start From  {card.price} &euro;
+                                </Typography>
+                              </div>
+
+                              <div className={styles.rating}>
+                                <Rating name="size-small" defaultValue={4} size="small" />
+                                <span className={styles.reviews_num}>90 Reviews</span>
+                              </div>
+
+                              <div className={styles.desc}>
+
+
+                                <Typography>{card.desc}</Typography>
+                              </div>
+
+                              <div className={styles.btn_container}>
+                                <Link href='/'>
+                                  More
+                                </Link>
+                              </div>
+
+                            </div>
+
+
+
                           </div>
-
-                          <div className={styles.rating}>
-                            <Rating name="size-small" defaultValue={4} size="small" />
-                            <span className={styles.reviews_num}>90 Reviews</span>
-                          </div>
-
-                          <div className={styles.desc}>
-
-
-                            <Typography>{card.desc}</Typography>
-                          </div>
-
-                          <div className={styles.btn_container}>
-                            <Link href='/'>
-                              More
-                            </Link>
-                          </div>
-
-                        </div>
-
-
-
-                      </div>
-                    ))}
+                        ))
+                    }
                   </Carousel>
                 </motion.div>
               }

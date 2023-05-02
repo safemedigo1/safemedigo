@@ -97,7 +97,7 @@ const TreatmentName = ({ blogs }) => {
   const { treatmentVideo, preparing, Hair_Transplant_after,
     Hair_Transplant_before, aircraft,
     plane,
-    ReasonsRetention_Feature, patient_plan } = imgs;
+    ReasonsRetention_Feature, patient_plan, author } = imgs;
 
 
   const beforeAfterCards = [
@@ -222,6 +222,8 @@ const TreatmentName = ({ blogs }) => {
       <SecNavbar />
 
       <PageHeader />
+
+
 
       <header id={styles.treatment} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <nav>

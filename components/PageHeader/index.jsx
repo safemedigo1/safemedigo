@@ -9,7 +9,7 @@ import { useTranslation } from "next-i18next";
 const PageHeader = ({ blog }) => {
   const router = useRouter();
   const { pathname } = router;
-  const { design, designMobile, } = imgs;
+  const { design, designMobile, author } = imgs;
   const { t } = useTranslation();
 
   return (
@@ -122,6 +122,37 @@ const PageHeader = ({ blog }) => {
                         </div>
                         <div className={styles.info}>
                           <p>{blog?.publisher}, {blog.jobTitle}</p>
+                        </div>
+                      </Box>
+
+
+                    </Box>
+
+                  </>
+                }
+
+                {pathname === ('/procedures&symptoms/[slug]') &&
+                  <>
+                    <Box sx={{ display: 'flex', alignItmes: 'flex-start', width: '100%' }} className={styles.author_info} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} >
+
+                      <Box sx={{ display: 'flex', alignItmes: 'center' }} className={styles.review_by}>
+                        <div className={styles.author_img}>
+                          <img src={author.src} alt="" />
+                        </div>
+                        <div className={styles.info}>
+                          <p>Reviewer, Job Title</p>
+                          <p className={styles.date}>{t('page_header_comp:posted')}  2023-04-10 08:05 PM
+
+                          </p>
+                        </div>
+                      </Box>
+
+                      <Box sx={{ display: 'flex', alignItmes: 'center' }} className={styles.review_by}>
+                        <div className={styles.author_img}>
+                          <img src={author.src} alt="" />
+                        </div>
+                        <div className={styles.info}>
+                          <p>publisher, Job Title</p>
                         </div>
                       </Box>
 
