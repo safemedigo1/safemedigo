@@ -12,7 +12,7 @@ export default function Layout({ children }, props) {
 
   return (
     <>
-      {pathname !== '/search' ?
+      {pathname !== '/search' & pathname !== '/login' & pathname !== '/signup' ?
         <>
           <Navbar />
           <main>{children}</main>
