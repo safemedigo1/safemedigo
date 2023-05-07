@@ -77,15 +77,16 @@ const PageHeader = ({ blog }) => {
                     </>
                   }
 
-                  {pathname === '/procedures&symptoms' &&
+                  {pathname === '/procedures&symptoms' | pathname === '/medicaldepartments/[slug]' | pathname === '/medicaldepartments/[slug]/[healthcase]' ?
                     <>
                       <Typography variant='h2'> {t('page_header_comp:procedures&symptoms_title')}</Typography>
                       <Typography variant='h4'>{t('page_header_comp:procedures&symptoms_desc')}</Typography>
-                    </>
+                    </> : ""
                   }
 
 
                   {pathname.includes('/procedures&symptoms/') &&
+
                     <>
                       <Typography variant='h2'>{t("page_header_comp:procedures&symptoms_single_title")}</Typography>
                       <Typography variant='h4'>Hair Transplantation</Typography>

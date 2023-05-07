@@ -11,11 +11,13 @@ import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 
-const TreatmentName = ({ blogs }) => {
+const TreatmentName = ({ dataTreatment }) => {
   const [expanded, setExpanded] = useState(false);
   const { t } = useTranslation();
   const router = useRouter();
 
+
+  console.log(dataTreatment)
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -1282,10 +1284,24 @@ export default TreatmentName
 //   }
 // }
 
-export async function getServerSideProps({ locale }) {
+export async function getServerSideProps({ locale, query }) {
+  const resTreatment = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentBySlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": locale,
+      "treatmentSlug": query.slug,
+
+    })
+  })
+  const dataTreatment = await resTreatment.json()
 
   return {
     props: {
+      dataTreatment,
       ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", "proceduresSymptoms_single"])),
 
     }

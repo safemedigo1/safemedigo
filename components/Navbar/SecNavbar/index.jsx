@@ -48,17 +48,19 @@ const SecNavbar = ({ categorySlug, slug, category, currentPage, blog, tag, how_i
             </>
           }
 
-          {pathname === '/procedures&symptoms' &&
+          {pathname === '/procedures&symptoms' | pathname === '/medicaldepartments/[slug]' | pathname === '/medicaldepartments/[slug]/[healthcase]' ?
             <>
               <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/procedures&symptoms' className={styles.active} > /{t('sec_navbar:procedures&symptoms')}</Link>
-            </>
+            </> : ""
           }
 
-          {pathname === '/procedures&symptoms/[slug]' &&
+
+
+          {pathname === ('/procedures&symptoms/[slug]') ?
             <>
-              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/procedures&symptoms/[slug]' > /{t('sec_navbar:procedures&symptoms')}</Link>
+              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/procedures&symptoms' > /{t('sec_navbar:procedures&symptoms')}</Link>
               <Link href='/procedures&symptoms/[slug]' className={styles.active} > /Hair-Transplantation</Link>
-            </>
+            </> : console.log(pathname, 'ELSEE')
           }
 
           {pathname === ('/blogs/[slug]') &&

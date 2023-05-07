@@ -1,10 +1,11 @@
+import styles from '../../procedures&symptoms/index.module.scss';
+
 import { MostPopular } from '@/components/Home'
 import { Container, Typography, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem } from '@mui/material'
 import React, { useState } from 'react'
 import Carousel from 'react-elastic-carousel';
 import { consts } from 'react-elastic-carousel';
-import imgs from "../../assets/constants/imgs";
-import styles from './index.module.scss';
+import imgs from "../../../assets/constants/imgs";
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { motion } from 'framer-motion';
@@ -15,18 +16,19 @@ import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 
-const ProceduresSymptoms = ({ dataPopularTreatments, dataMedicalDepartments }) => {
+const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, query }) => {
   const [result, setResult] = useState(null)
   const [expanded, setExpanded] = useState(false);
   const { t } = useTranslation();
 
   const router = useRouter();
 
-  // console.log(dataMedicalDepartments)
+
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+
 
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false, itemsToShow: 1.7, itemPosition: consts.START, itemsToScroll: 1 },
@@ -63,7 +65,6 @@ const ProceduresSymptoms = ({ dataPopularTreatments, dataMedicalDepartments }) =
     { title: 'Dermatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 20 },
   ]
 
-  // Change Arrow in react-elastic-carousel Lirbrary
   function myArrow({ type, onClick, isEdge }) {
     const pointer = type === consts.PREV ?
       <div className='left_arrow'>
@@ -143,8 +144,8 @@ const ProceduresSymptoms = ({ dataPopularTreatments, dataMedicalDepartments }) =
               >
                 {dataMedicalDepartments.map((card, index) => (
                   <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index}>
-
-                    <Link href={`medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={styles.box} >
+                    <Link href={`/medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={`${styles.box} 
+                    ${query.slug === `${card.slug}` && styles.active}`} >
 
                       <div className={styles.img_container}>
                         <img className={styles.main_img} src={card.image} alt="" />
@@ -211,12 +212,6 @@ const ProceduresSymptoms = ({ dataPopularTreatments, dataMedicalDepartments }) =
 
                   </Box>
                 ))}
-
-
-
-
-
-
               </Carousel>
 
             </div>
@@ -270,12 +265,56 @@ const ProceduresSymptoms = ({ dataPopularTreatments, dataMedicalDepartments }) =
 
                 <AccordionDetails >
 
+                  <List sx={{
+                    listStyleType: 'disc',
+                    padding: '0px',
 
-                  <Typography>Please Select Medical Department</Typography>
+                    '& .MuiListItem-root': {
+                      display: 'list-item',
+                      listStylePosition: 'inside',
+                      padding: '0px',
+                      cursor: 'pointer'
+                    },
+                  }}
+                  >
+
+                    {dataHealthCase.map((healthCase) => (
+                      <Link href={`${router.asPath}/${healthCase.slug}`}>
+                        <ListItem key={healthCase.id} variant='li' sx={{ cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                          {healthCase.name}
+                        </ListItem>
+                      </Link>
+                    ))}
+
+
+                  </List>
                 </AccordionDetails>
 
               </Accordion>
             </div >
+
+            <div className={styles.info}>
+              <div className={styles.info_inner}>
+                <div className={styles.info_header}>
+                  <div className={styles.img_container}>
+                    {console.log(dataHealthCase[0])}
+                    <img src={dataHealthCase[0].image} alt="" />
+                  </div>
+
+                  <div className={styles.title}>
+                    <Typography variant='h3'>
+                      {dataHealthCase[0].description}
+                    </Typography>
+
+                  </div>
+                </div>
+                <div className={styles.desc}>
+                  <Typography>
+                    {dataHealthCase[0].description}
+                  </Typography>
+                </div>
+              </div>
+            </div>
           </motion.div >
         </Container >
 
@@ -285,10 +324,11 @@ const ProceduresSymptoms = ({ dataPopularTreatments, dataMedicalDepartments }) =
   )
 }
 
-export default ProceduresSymptoms
+export default medicaldepartments
 
 
-export async function getServerSideProps({ locale }) {
+
+export async function getServerSideProps({ locale, query }) {
   const resPopularTreatments = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetPopularTreatmentsByLang", {
     method: 'POST',
     headers: {
@@ -314,15 +354,30 @@ export async function getServerSideProps({ locale }) {
   })
   const dataMedicalDepartments = await resMedicalDepartments.json()
 
+  const resHealthCase = await fetch("https://api.safemedigo.com/api/v1/HealthCases/GetAllHealthCaseByDepartmentSlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": locale,
+      "departmentSlug": query.slug
 
+    })
+  })
+  const dataHealthCase = await resHealthCase.json()
 
 
 
   return {
     props: {
       dataPopularTreatments,
+      dataHealthCase,
       dataMedicalDepartments,
+      query,
       ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms"])),
+
     }
   }
 }
