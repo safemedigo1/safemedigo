@@ -638,7 +638,7 @@ const TreatmentName = ({ dataTreatment }) => {
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.title}>
             <Typography variant='h3'>
-              {dataTreatment.treatmentName} Before & After Photos
+              Before & After Photos
             </Typography>
           </div>
 
@@ -763,7 +763,7 @@ const TreatmentName = ({ dataTreatment }) => {
 
           <div className={styles.sec_title}>
             <Typography variant='h3'>
-              {dataTreatment.treatmentName} Surgery Steps
+              Surgery Steps
             </Typography>
           </div>
         </Container >
@@ -807,7 +807,7 @@ const TreatmentName = ({ dataTreatment }) => {
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
         <section id={styles.what_you_need}>
           <div className={styles.title}>
-            <Typography variant='h3'>{dataTreatment.treatmentName}: What You Need To Know</Typography>
+            <Typography variant='h3'>What You Need To Know</Typography>
           </div>
           <div className={styles.menu_container}>
 
@@ -1063,7 +1063,7 @@ const TreatmentName = ({ dataTreatment }) => {
 
             <div className={styles.title}>
               <Typography variant='h3'>
-                Everything About {dataTreatment.treatmentName} In Video
+                All In Video
               </Typography>
             </div>
             <div className={styles.video_container}>
@@ -1079,7 +1079,7 @@ const TreatmentName = ({ dataTreatment }) => {
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.howToGetTreatment_container}>
             <div className={styles.sec_title}>
-              <Typography variant='h3' sx={sxTitle2}>How Can I Get {dataTreatment.treatmentName} Treatment In Turkey?</Typography>
+              <Typography variant='h3' sx={sxTitle2}>How Can I Get Treatment In Turkey?</Typography>
             </div>
 
             <div className={styles.menu_container}>
@@ -1198,7 +1198,7 @@ const TreatmentName = ({ dataTreatment }) => {
         <Container className='mycontainer' sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.sec_title}>
             <Typography variant='h3'>
-              {dataTreatment.treatmentName} Steps
+              Steps
             </Typography>
           </div>
 
@@ -1250,7 +1250,7 @@ const TreatmentName = ({ dataTreatment }) => {
         <div className={styles.section_container}>
           <div className={styles.title}>
             <Typography variant='h3'>
-              {dataTreatment.treatmentName} Cost Starts From ${dataTreatment.cost}
+              Cost Starts From ${dataTreatment.cost}
             </Typography>
           </div>
 
