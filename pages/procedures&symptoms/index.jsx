@@ -144,7 +144,7 @@ const ProceduresSymptoms = ({ dataPopularTreatments, dataMedicalDepartments }) =
                 {dataMedicalDepartments.map((card, index) => (
                   <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index}>
 
-                    <Link href={`medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={styles.box} >
+                    <Link href={`medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={styles.box} scroll={false}>
 
                       <div className={styles.img_container}>
                         <img className={styles.main_img} src={card.image} alt="" />
@@ -170,7 +170,7 @@ const ProceduresSymptoms = ({ dataPopularTreatments, dataMedicalDepartments }) =
 
                     </Link> */}
 
-                    <div className={styles.mobile_slider}>
+                    {/* <div className={styles.mobile_slider}>
                       <Link href='#proceduresSymptoms' onClick={() => handleResult(card)} className={styles.box} key={index}>
 
                         <div className={styles.img_container}>
@@ -207,7 +207,7 @@ const ProceduresSymptoms = ({ dataPopularTreatments, dataMedicalDepartments }) =
                         </div>
 
                       </Link>
-                    </div>
+                    </div> */}
 
                   </Box>
                 ))}

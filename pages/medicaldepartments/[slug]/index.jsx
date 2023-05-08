@@ -145,7 +145,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                 {dataMedicalDepartments.map((card, index) => (
                   <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index}>
                     <Link href={`/medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={`${styles.box} 
-                    ${query.slug === `${card.slug}` && styles.active}`} >
+                    ${query.slug === `${card.slug}` && styles.active}`} scroll={false}>
 
                       <div className={styles.img_container}>
                         <img className={styles.main_img} src={card.image} alt="" />
@@ -171,7 +171,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
                     </Link> */}
 
-                    <div className={styles.mobile_slider}>
+                    {/* <div className={styles.mobile_slider}>
                       <Link href='#proceduresSymptoms' onClick={() => handleResult(card)} className={styles.box} key={index}>
 
                         <div className={styles.img_container}>
@@ -208,7 +208,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                         </div>
 
                       </Link>
-                    </div>
+                    </div> */}
 
                   </Box>
                 ))}
@@ -277,9 +277,8 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                     },
                   }}
                   >
-
                     {dataHealthCase.map((healthCase) => (
-                      <Link href={`${router.asPath}/${healthCase.slug}`}>
+                      <Link href={`${router.asPath}/${healthCase.slug}`} scroll={false}>
                         <ListItem key={healthCase.id} variant='li' sx={{ cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
                           {healthCase.name}
                         </ListItem>

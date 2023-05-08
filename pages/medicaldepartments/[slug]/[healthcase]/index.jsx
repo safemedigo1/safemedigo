@@ -170,7 +170,7 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
 
                   </Link> */}
 
-                    <div className={styles.mobile_slider}>
+                    {/* <div className={styles.mobile_slider}>
                       <Link href='#proceduresSymptoms' onClick={() => handleResult(card)} className={styles.box} key={index}>
 
                         <div className={styles.img_container}>
@@ -207,12 +207,10 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                         </div>
 
                       </Link>
-                    </div>
+                    </div> */}
 
                   </Box>
                 ))}
-
-
               </Carousel>
 
             </div>
@@ -269,7 +267,6 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                   <List sx={{
                     listStyleType: 'disc',
                     padding: '0px',
-
                     '& .MuiListItem-root': {
                       display: 'list-item',
                       listStylePosition: 'inside',
@@ -278,8 +275,10 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                     },
                   }}
                   >
+
+                    {console.log(router, "ROUTEERRR")}
                     {dataHealthCase.map((healthCase) => (
-                      <Link href={`${router.asPath}/${healthCase.slug}`}>
+                      <Link href={`/medicaldepartments/${router.query.slug}/${healthCase.slug}`} scroll={false}>
                         <ListItem key={healthCase.id} variant='li' sx={{ cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
                           {healthCase.name}
                         </ListItem>
@@ -296,7 +295,7 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                   {t("proceduresSymptoms:all_procedures")}
                 </Typography>
                 <Typography sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                  {dataTreatmentsHealthCase.count} {t("proceduresSymptoms:procedures")}
+                  {dataTreatmentsHealthCase.count}  {t("proceduresSymptoms:procedures")}
                 </Typography>
                 <Typography sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
                   {t("proceduresSymptoms:medical_department_sort")}
@@ -626,8 +625,6 @@ export async function getServerSideProps({ locale, query }) {
     })
   })
   const dataTreatmentsHealthCase = await resTreatmentsHealthCase.json()
-
-  console.log(query, "HEGHEHEHssE")
 
   return {
     props: {

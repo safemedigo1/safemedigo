@@ -131,12 +131,12 @@ const MostPopular = ({ dataPopularTreatments }) => {
       <Box sx={pathname !== '/procedures&symptoms' && { height: '660px' }} className={styles.section_container}>
         <Container sx={{ maxWidth: '1239px', }} maxWidth={false}  >
 
-          {pathname !== '/procedures&symptoms' &&
+          {pathname === '/' &&
             <div className={styles.title}>
               <Typography variant='h2'>{t('most_popular:title')}</Typography>
             </div>
           }
-          {pathname !== '/procedures&symptoms' &&
+          {pathname === '/' &&
             <div className={styles.navigation}>
               <div className={styles.header}>
                 <div className={`${styles.treatment} ${treatment && styles.active}`} onClick={handleTreatment}>
@@ -162,7 +162,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
             </div>
           }
 
-          {pathname === '/procedures&symptoms' &&
+          {pathname !== '/' &&
             <div className={styles.title_mobile}>
               <Typography variant='h2'>{t('most_popular:title')}</Typography>
             </div>
@@ -320,7 +320,6 @@ const MostPopular = ({ dataPopularTreatments }) => {
                   </Carousel>
                 </motion.div>
               }
-
 
 
               {pathname !== '/procedures&symptoms' &&
@@ -492,9 +491,6 @@ const MostPopular = ({ dataPopularTreatments }) => {
                     </motion.div>
                   }
                 </>
-
-
-
               }
 
             </div>
