@@ -43,7 +43,7 @@ const TreatmentName = ({ dataTreatment }) => {
     { width: 400, pagination: true, itemsToShow: 2, itemsToScroll: 1, showArrows: false },
     { width: 800, pagination: true, itemsToShow: 2, itemsToScroll: 1, transitionMs: 1000, showArrows: false },
     { width: 900, pagination: false, itemsToShow: 2.5, itemsToScroll: 1, transitionMs: 1000 },
-    { width: 1000, pagination: false, itemsToShow: 3, itemsToScroll: 1, transitionMs: 1000 },
+    { width: 1000, pagination: false, itemsToShow: 4, itemsToScroll: 1, transitionMs: 1000 },
 
 
 
@@ -219,13 +219,52 @@ const TreatmentName = ({ dataTreatment }) => {
   }
 
 
+  function createMarkup() {
+    return { __html: dataTreatment.benifitsOverview };
+  }
+
+  function createMarkupSideEffects() {
+    return { __html: dataTreatment.sideEffectsOverview };
+  }
+
+  function createMarkupCandidateOverview() {
+    return { __html: dataTreatment.candidateOverview };
+  }
+
+  function createMarkupHospitalizationOverview() {
+    return { __html: dataTreatment.hospitalizationOverview };
+  }
+
+  function createMarkupPreOperationOverview() {
+    return { __html: dataTreatment.preOperationOverview };
+  }
+
+  function createMarkupDuringOperationOverview() {
+    return { __html: dataTreatment.duringOperationOverview };
+  }
+
+  function createMarkupAfterOperationOverview() {
+    return { __html: dataTreatment.afterOperationOverview };
+  }
+
+  function createMarkupGetTreatmentStepOne() {
+    return { __html: dataTreatment.getTreatmentStepOne };
+  }
+
+  function createMarkupGetTreatmentStepTwo() {
+    return { __html: dataTreatment.getTreatmentStepTwo };
+  }
+
+  function createMarkupGetTreatmentStepThree() {
+    return { __html: dataTreatment.getTreatmentStepThree };
+  }
+
+  console.log(dataTreatment.afterOperationOverview)
   return (
     <>
-      <SecNavbar />
+      <SecNavbar treatmentName={dataTreatment.treatmentName} />
 
-      <PageHeader />
-
-
+      <PageHeader treatment={dataTreatment} />
 
       <header id={styles.treatment} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <nav>
@@ -277,13 +316,13 @@ const TreatmentName = ({ dataTreatment }) => {
             <article className={styles.details}>
               <div className={styles.title}>
                 <Typography variant='h3'>
-                  {t("proceduresSymptoms_single:what_is")} Hair Transplant?
+                  {t("proceduresSymptoms_single:what_is")} {dataTreatment.treatmentName}?
                 </Typography>
               </div>
 
               <div className={styles.desc}>
                 <Typography>
-                  Hair Transplant Surgery Is A Cosmetic Procedure That Involves Taking Donor Hairs From One Or More Areas Of Your Body—Most Commonly The Back Or Sides Of Your Scalp, Or Even Your Beard, Back, Or Chest—And Moving Them To An Area Where You've Had Hair Loss. The Healthy Hair Follicles Are Transplanted As “Grafts” That Each Contain One, Two, Or Three Hairs. Hair Grafting Was Once Done Almost Exclusively On The Scalp, And That’s Still The Most Common Procedure. However, Hair Restoration Surgeons Are Now Doing Beard Transplants, Eyebrow Transplants, And Even Eyelash Transplants, According To Dr. Jeffrey Epstein, A Facial Plastic And Hair Restoration Surgeon In Miami. According To The American Academy Of Dermatology, More Than 80 Million Men And Women Experience Hair Loss. It’s Normal To Lose 50–100 Hairs A Day, But Bald Spots, A Thinning Part, And A Receding Hairline May Indicate A Bigger Issue That Warrants Hair Transplants. For Most People, The Causes Of Hair Loss Are Genetic. Androgenic Alopecia, Also Called Female Or Male Pattern Baldness, Commonly Begins In Men As A Receding Hairline Or Thinning In The Crown, While Women Usually Experience Recession Near The Temples And A Widening Part. Some People Also Develop An Autoimmune Disorder Called Alopecia Areata, Which Can Lead To Patchy Hair Loss Anywhere On The Body. If Your Hair Loss Hasn't Progressed Too Far, And Any Underlying Medical Conditions Can Be Successfully Treated, A Hair Transplant Can Usually Restore Most Of What You’ve Lost—And Deliver A Boost To Your Self-Confidence.
+                  {dataTreatment.description}
                 </Typography>
               </div>
 
@@ -311,7 +350,7 @@ const TreatmentName = ({ dataTreatment }) => {
                         cursor: 'pointer'
                       },
                     }}>
-                      <ListItem>4-8 {t("proceduresSymptoms_single:hours")}</ListItem>
+                      <ListItem>{dataTreatment.operationDuration} </ListItem>
                     </List>
                   </div>
                   <div className={styles.box}>
@@ -329,7 +368,7 @@ const TreatmentName = ({ dataTreatment }) => {
                         cursor: 'pointer'
                       },
                     }}>
-                      <ListItem>topical</ListItem>
+                      <ListItem>{dataTreatment.anesthesia}</ListItem>
                     </List>
                   </div>
                   <div className={styles.box}>
@@ -347,7 +386,7 @@ const TreatmentName = ({ dataTreatment }) => {
                         cursor: 'pointer'
                       },
                     }}>
-                      <ListItem>$1200</ListItem>
+                      <ListItem>${dataTreatment.startCost}</ListItem>
                     </List>
                   </div>
                 </div>
@@ -368,7 +407,7 @@ const TreatmentName = ({ dataTreatment }) => {
                         cursor: 'pointer'
                       },
                     }}>
-                      <ListItem>97%</ListItem>
+                      <ListItem>{dataTreatment.successRate}%</ListItem>
                     </List>
                   </div>
                   <div className={styles.box}>
@@ -386,7 +425,7 @@ const TreatmentName = ({ dataTreatment }) => {
                         cursor: 'pointer'
                       },
                     }}>
-                      <ListItem>simple (outpatient)</ListItem>
+                      <ListItem> {dataTreatment.procedureType}</ListItem>
                     </List>
                   </div>
                   <div className={styles.box}>
@@ -404,7 +443,7 @@ const TreatmentName = ({ dataTreatment }) => {
                         cursor: 'pointer'
                       },
                     }}>
-                      <ListItem>Lifetime</ListItem>
+                      <ListItem>{dataTreatment.resultDuration}</ListItem>
                     </List>
                   </div>
                 </div>
@@ -443,12 +482,11 @@ const TreatmentName = ({ dataTreatment }) => {
 
                     listStylePosition: 'inside',
                     padding: '0px',
-                    cursor: 'pointer'
                   },
                 }}
                 >
                   <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    Hair Transplant
+                    <div dangerouslySetInnerHTML={createMarkup()} />
                   </ListItem  >
 
 
@@ -490,12 +528,11 @@ const TreatmentName = ({ dataTreatment }) => {
 
                     listStylePosition: 'inside',
                     padding: '0px',
-                    cursor: 'pointer'
                   },
                 }}
                 >
                   <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    Hair Transplant
+                    <div dangerouslySetInnerHTML={createMarkupSideEffects()} />
                   </ListItem  >
 
 
@@ -504,7 +541,6 @@ const TreatmentName = ({ dataTreatment }) => {
               </AccordionDetails>
 
             </Accordion>
-
 
             <Accordion disableGutters elevation={0}
               square={false} sx={{
@@ -537,22 +573,17 @@ const TreatmentName = ({ dataTreatment }) => {
 
                     listStylePosition: 'inside',
                     padding: '0px',
-                    cursor: 'pointer'
                   },
                 }}
                 >
                   <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    Hair Transplant
+                    <div dangerouslySetInnerHTML={createMarkupCandidateOverview()} />
                   </ListItem  >
 
                 </List>
               </AccordionDetails>
 
             </Accordion>
-
-
-
-
 
             <Accordion disableGutters elevation={0}
               square={false} sx={{
@@ -586,12 +617,11 @@ const TreatmentName = ({ dataTreatment }) => {
 
                     listStylePosition: 'inside',
                     padding: '0px',
-                    cursor: 'pointer'
                   },
                 }}
                 >
                   <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    Hair Transplant
+                    <div dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
                   </ListItem  >
 
                 </List>
@@ -608,7 +638,7 @@ const TreatmentName = ({ dataTreatment }) => {
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.title}>
             <Typography variant='h3'>
-              FUE Hair Transplant Before & After Photos
+              {dataTreatment.treatmentName} Before & After Photos
             </Typography>
           </div>
 
@@ -703,11 +733,11 @@ const TreatmentName = ({ dataTreatment }) => {
               isRTL={router.locale === 'ar' ? true : false}
 
             >
-              {beforeAfterCards.map((bcard, index) => (
+              {dataTreatment?.treatmentImage.map((card, index) => (
                 <div className={styles.box} key={index}>
                   <div className={styles.imgs_container}>
-                    <img src={bcard.before_img} alt="" />
-                    <img src={bcard.after_img} alt="" />
+                    <img src={card.imgBefore} alt={card.description} />
+                    <img src={card.imgAfter} alt={card.description} />
                   </div>
                   <div className={styles.box_title}>
                     <Typography variant='h5'>Before</Typography>
@@ -715,7 +745,7 @@ const TreatmentName = ({ dataTreatment }) => {
                   </div>
                   <div className={styles.desc}>
                     <Typography>
-                      FUE Hair Transplant - 4500 Grafts - 10 Month Post-Op
+                      {card.description}
                     </Typography>
                   </div>
                 </div>
@@ -733,13 +763,12 @@ const TreatmentName = ({ dataTreatment }) => {
 
           <div className={styles.sec_title}>
             <Typography variant='h3'>
-              Hair Transplant Surgery Steps
+              {dataTreatment.treatmentName} Surgery Steps
             </Typography>
           </div>
         </Container >
 
         <Container className='mycontainer' sx={{ maxWidth: "1239px" }} maxWidth={false}>
-
           <div
             className={styles.slider_container}>
             <Carousel
@@ -749,20 +778,20 @@ const TreatmentName = ({ dataTreatment }) => {
               isRTL={router.locale === 'ar' ? true : false}
 
             >
-              {stepsCards.map((stepCard, index) => (
+              {dataTreatment.treatmentStep.map((stepCard, index) => (
                 <>
-                  <div className={styles.steps_container}>
+                  <div className={styles.steps_container} key={index}>
                     <div className={styles.step}>
-                      <span>{stepCard.id}</span>
+                      <span>{stepCard.stepCode}</span>
                     </div>
                   </div>
 
                   <div className={styles.box} key={index}>
                     <div className={styles.box_title}>
-                      <Typography variant="h6"> {stepCard.title}</Typography>
+                      <Typography variant="h6"> {stepCard.stepDescription}</Typography>
                     </div>
                     <div className={styles.img_container}>
-                      <img src={stepCard.img} alt="" />
+                      <img src={stepCard.stepImage} alt="" />
                     </div>
                   </div>
 
@@ -778,7 +807,7 @@ const TreatmentName = ({ dataTreatment }) => {
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
         <section id={styles.what_you_need}>
           <div className={styles.title}>
-            <Typography variant='h3'>FUE Hair Transplant: What You Need To Know</Typography>
+            <Typography variant='h3'>{dataTreatment.treatmentName}: What You Need To Know</Typography>
           </div>
           <div className={styles.menu_container}>
 
@@ -804,7 +833,10 @@ const TreatmentName = ({ dataTreatment }) => {
 
               <AccordionDetails sx={{ background: '#F4F9F8' }}>
 
-                <Typography sx={sxTitle} variant='h5'>Before Visiting The Hospital:</Typography>
+                <div dangerouslySetInnerHTML={createMarkupPreOperationOverview()} />
+
+
+                {/* <Typography sx={sxTitle} variant='h5'>Before Visiting The Hospital:</Typography>
 
                 <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
 
@@ -857,7 +889,7 @@ const TreatmentName = ({ dataTreatment }) => {
                   <div className={styles.img_container}>
                     <img src={preparing.src} alt="" />
                   </div>
-                </div>
+                </div> */}
 
               </AccordionDetails>
 
@@ -881,13 +913,13 @@ const TreatmentName = ({ dataTreatment }) => {
                 aria-controls="panel7d-content" id="panel7d-header"                >
                 <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
                   2- During Operation
-
                 </Typography>
               </AccordionSummary>
 
 
               <AccordionDetails sx={{ background: '#F4F9F8' }}>
-
+                <div dangerouslySetInnerHTML={createMarkupDuringOperationOverview()} />
+                {/* 
 
                 <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
 
@@ -978,7 +1010,7 @@ const TreatmentName = ({ dataTreatment }) => {
                     </>
                   ))}
 
-                </Carousel>
+                </Carousel> */}
 
               </AccordionDetails>
 
@@ -1007,21 +1039,20 @@ const TreatmentName = ({ dataTreatment }) => {
 
               <AccordionDetails >
 
-                <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
+                <div dangerouslySetInnerHTML={createMarkupAfterOperationOverview()} />
+
+
+
+                {/* <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
 
                 <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
 
 
                 <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
-
-
+ */}
               </AccordionDetails>
-
             </Accordion>
-
-
           </div>
-
         </section>
       </Container >
 
@@ -1032,11 +1063,11 @@ const TreatmentName = ({ dataTreatment }) => {
 
             <div className={styles.title}>
               <Typography variant='h3'>
-                Everything About FUE Hair Transplant In Video
+                Everything About {dataTreatment.treatmentName} In Video
               </Typography>
             </div>
             <div className={styles.video_container}>
-              <img src={treatmentVideo.src} alt="" />
+              <iframe width="560" height="315" src={dataTreatment.videoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
           </div>
 
@@ -1048,11 +1079,10 @@ const TreatmentName = ({ dataTreatment }) => {
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.howToGetTreatment_container}>
             <div className={styles.sec_title}>
-              <Typography variant='h3' sx={sxTitle2}>How Can I Get The Hair Transplant Treatment In Turkey?</Typography>
+              <Typography variant='h3' sx={sxTitle2}>How Can I Get {dataTreatment.treatmentName} Treatment In Turkey?</Typography>
             </div>
 
             <div className={styles.menu_container}>
-
               <Accordion disableGutters elevation={0}
                 square={false} sx={{
                   '&:before': {
@@ -1080,10 +1110,7 @@ const TreatmentName = ({ dataTreatment }) => {
                 </AccordionSummary>
 
                 <AccordionDetails sx={{ background: '#F4F9F8' }}>
-
-                  <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
-
-
+                  <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepOne()} />
                 </AccordionDetails>
 
               </Accordion>
@@ -1118,10 +1145,7 @@ const TreatmentName = ({ dataTreatment }) => {
                 </AccordionSummary>
 
                 <AccordionDetails sx={{ background: '#F4F9F8' }}>
-
-                  <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
-
-
+                  <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepTwo()} />
                 </AccordionDetails>
 
               </Accordion>
@@ -1155,10 +1179,7 @@ const TreatmentName = ({ dataTreatment }) => {
                 </AccordionSummary>
 
                 <AccordionDetails sx={{ background: '#F4F9F8' }}>
-
-                  <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
-
-
+                  <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepThree()} />
                 </AccordionDetails>
 
               </Accordion>
@@ -1175,10 +1196,9 @@ const TreatmentName = ({ dataTreatment }) => {
 
       <section id={styles.treatment_desc}>
         <Container className='mycontainer' sx={{ maxWidth: "1239px" }} maxWidth={false}>
-
           <div className={styles.sec_title}>
             <Typography variant='h3'>
-              Hair Transplant Surgery Steps
+              {dataTreatment.treatmentName} Steps
             </Typography>
           </div>
 
@@ -1190,32 +1210,29 @@ const TreatmentName = ({ dataTreatment }) => {
               isRTL={router.locale === 'ar' ? true : false}
 
             >
-              {treatment_desc.map((card, index) => (
+              {dataTreatment.treatmentProcedure.map((card, index) => (
                 <>
                   <div className={styles.steps_container} key={index}>
                     <div className={styles.step}>
-                      <span>{card.id}</span>
+                      <span>{card.procedureCode}</span>
                     </div>
                   </div>
 
                   <div className={styles.box}>
                     <div className={styles.title}>
                       <Typography variant='h6'>
-                        {card.title}
+                        {card.procedureName}
                       </Typography>
                     </div>
                     <div className={styles.img_container}>
-                      <img src={card.img} alt="" />
+                      <img src={card.procedureImage} alt={card.procedureName} />
                     </div>
 
                     <div className={styles.list}>
                       <ul>
-                        {card.list.map((li, idx) => (
-                          <li key={idx}>
-                            {li}
-                          </li>
-                        ))}
-
+                        <li>
+                          {card.procedureDescription}
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -1233,7 +1250,7 @@ const TreatmentName = ({ dataTreatment }) => {
         <div className={styles.section_container}>
           <div className={styles.title}>
             <Typography variant='h3'>
-              Hair Transplant Cost Starts From$1200
+              {dataTreatment.treatmentName} Cost Starts From ${dataTreatment.cost}
             </Typography>
           </div>
 

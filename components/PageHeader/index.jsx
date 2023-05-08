@@ -6,10 +6,10 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 
 
-const PageHeader = ({ blog }) => {
+const PageHeader = ({ blog, treatment }) => {
   const router = useRouter();
   const { pathname } = router;
-  const { design, designMobile, author } = imgs;
+  const { design, designMobile, author, userimg } = imgs;
   const { t } = useTranslation();
 
   return (
@@ -89,7 +89,7 @@ const PageHeader = ({ blog }) => {
 
                     <>
                       <Typography variant='h2'>{t("page_header_comp:procedures&symptoms_single_title")}</Typography>
-                      <Typography variant='h4'>Hair Transplantation</Typography>
+                      <Typography variant='h4'>{treatment.treatmentName}</Typography>
                     </>
                   }
 
@@ -138,11 +138,11 @@ const PageHeader = ({ blog }) => {
 
                       <Box sx={{ display: 'flex', alignItmes: 'center' }} className={styles.review_by}>
                         <div className={styles.author_img}>
-                          <img src={author.src} alt="" />
+                          {treatment.reviewerImage === null ? <img src={userimg.src} alt="" /> : <img src={treatment.reviewerImage} alt="" />}
                         </div>
                         <div className={styles.info}>
-                          <p>Reviewer, Job Title</p>
-                          <p className={styles.date}>{t('page_header_comp:posted')}  2023-04-10 08:05 PM
+                          <p>{treatment.reviewer}, Job Title</p>
+                          <p className={styles.date}>{t('page_header_comp:posted')}  {treatment.reviewDateStr}
 
                           </p>
                         </div>
@@ -150,10 +150,10 @@ const PageHeader = ({ blog }) => {
 
                       <Box sx={{ display: 'flex', alignItmes: 'center' }} className={styles.review_by}>
                         <div className={styles.author_img}>
-                          <img src={author.src} alt="" />
+                          {treatment.publisherImage === null ? <img src={userimg.src} alt="" /> : <img src={treatment.publisherImage} alt="" />}
                         </div>
                         <div className={styles.info}>
-                          <p>publisher, Job Title</p>
+                          <p>{treatment.publisher} , Job Title</p>
                         </div>
                       </Box>
 
