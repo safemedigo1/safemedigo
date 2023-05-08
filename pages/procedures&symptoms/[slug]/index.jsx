@@ -642,7 +642,7 @@ const TreatmentName = ({ dataTreatment }) => {
             </Typography>
           </div>
 
-          <div className={styles.menu_container}>
+          {/* <div className={styles.menu_container}>
             <div className={styles.menu}>
               <Accordion disableGutters elevation={0}
                 square={false} sx={{
@@ -724,7 +724,7 @@ const TreatmentName = ({ dataTreatment }) => {
                 <button>View All Photo</button>
               </Link>
             </div>
-          </div>
+          </div> */}
 
           <div className={styles.slider_container}>
             <Carousel
@@ -836,60 +836,6 @@ const TreatmentName = ({ dataTreatment }) => {
                 <div dangerouslySetInnerHTML={createMarkupPreOperationOverview()} />
 
 
-                {/* <Typography sx={sxTitle} variant='h5'>Before Visiting The Hospital:</Typography>
-
-                <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
-
-                <Box sx={sxBox}>
-                  <div className="card">
-                    <div className="img_container">
-                      <img src={preparing.src} alt="" />
-                    </div>
-                  </div>
-                  <div className="card">
-                    <div className="img_container">
-                      <img src={preparing.src} alt="" />
-                    </div>
-                  </div>
-                  <div className="card">
-                    <div className="img_container">
-                      <img src={preparing.src} alt="" />
-                    </div>
-                  </div>
-                  <div className="card">
-                    <div className="img_container">
-                      <img src={preparing.src} alt="" />
-                    </div>
-                  </div>
-                  <div className="card">
-                    <div className="img_container">
-                      <img src={preparing.src} alt="" />
-                    </div>
-                  </div>
-                </Box>
-
-                <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
-
-
-
-                <Typography sx={sxTitle} variant='h5'>First Day:</Typography>
-
-                <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
-
-
-
-
-
-
-
-                <div className={styles.box}>
-                  <div className={styles.box_title}>
-                    <Typography variant="h6">Markings</Typography>
-                  </div>
-                  <div className={styles.img_container}>
-                    <img src={preparing.src} alt="" />
-                  </div>
-                </div> */}
 
               </AccordionDetails>
 
