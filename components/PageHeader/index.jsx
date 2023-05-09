@@ -141,7 +141,7 @@ const PageHeader = ({ blog, treatment }) => {
                           {treatment.reviewerImage === null ? <img src={userimg.src} alt="" /> : <img src={treatment.reviewerImage} alt="" />}
                         </div>
                         <div className={styles.info}>
-                          <p>{treatment.reviewer}, Job Title</p>
+                          <p>{treatment.reviewer}, {treatment.reviewerJobTitle}</p>
                           <p className={styles.date}>{t('page_header_comp:posted')}  {treatment.reviewDateStr}
 
                           </p>
@@ -153,7 +153,7 @@ const PageHeader = ({ blog, treatment }) => {
                           {treatment.publisherImage === null ? <img src={userimg.src} alt="" /> : <img src={treatment.publisherImage} alt="" />}
                         </div>
                         <div className={styles.info}>
-                          <p>{treatment.publisher} , Job Title</p>
+                          <p>{treatment.publisher} , {treatment.publisherJobTitle}</p>
                         </div>
                       </Box>
 
