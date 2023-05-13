@@ -214,48 +214,46 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                 </AccordionSummary>
                 <AccordionDetails >
 
-                  <List
-                    sx={
-
-                      query.slug === 'Hair-loss' ?
-                        {
-                          listStyleType: 'disc',
+                  <List sx={
+                    query.slug === 'Hair-loss' ?
+                      {
+                        listStyleType: 'disc',
+                        padding: '0px',
+                        '& .MuiListItem-root': {
+                          // display: 'list-item',
+                          width: '50%',
+                          listStylePosition: 'inside',
                           padding: '0px',
-                          '& .MuiListItem-root': {
-                            // display: 'list-item',
-                            width: '50%',
-                            listStylePosition: 'inside',
-                            padding: '0px',
-                            cursor: 'pointer',
-                            padding: '2px',
-                            background: '#C5DFDC',
-                            borderRadius: '5px'
-                          },
-                        }
-                        :
-                        {
-                          listStyleType: 'disc',
+                          cursor: 'pointer',
+                          padding: '2px',
+                          background: '#C5DFDC',
+                          borderRadius: '5px'
+                        },
+                      }
+                      :
+                      {
+                        listStyleType: 'disc',
+                        padding: '0px',
+                        '& .MuiListItem-root': {
+                          // display: 'list-item',
+                          width: '50%',
+                          listStylePosition: 'inside',
                           padding: '0px',
-                          '& .MuiListItem-root': {
-                            // display: 'list-item',
-                            width: '50%',
-                            listStylePosition: 'inside',
-                            padding: '0px',
-                            cursor: 'pointer',
-                            padding: '2px',
-                            borderRadius: '5px'
-                          },
+                          cursor: 'pointer',
+                          padding: '2px',
+                          borderRadius: '5px'
+                        },
 
-                          '& .MuiListItem-root:hover': {
-                            background: '#C5DFDC',
-                          },
+                        '& .MuiListItem-root:hover': {
+                          background: '#C5DFDC',
+                        },
 
-                        }
+                      }
 
 
 
 
-                    }
+                  }
                   >
                     {dataHealthCase.map((healthCase) => (
                       <Link href={`/medicaldepartments/${router.query.slug}/${healthCase.slug}`} scroll={false}>

@@ -273,10 +273,11 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                         padding: '2px'
                       },
                       '& .MuiListItem-root:hover': {
-                        background: 'red',
+                        background: '#C5DFDC',
                         borderRadius: '5px'
                       }
-                    }}
+                    }
+                    }
                     >
 
                       {dataHealthCase.map((healthCase) => (
