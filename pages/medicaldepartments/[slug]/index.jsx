@@ -18,15 +18,13 @@ import { useRouter } from 'next/router';
 
 const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, query }) => {
   const [result, setResult] = useState(null)
-  const [expanded, setExpanded] = useState(false);
-  const { t } = useTranslation();
+  const [expanded, setExpanded] = useState(true);
 
+  const { t } = useTranslation();
   const router = useRouter();
 
-
-
   const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
+    setExpanded((prev) => !prev);
   };
 
 
@@ -86,13 +84,13 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
   const handleResult = (card) => {
     const filterResult = cards.find((item) => item.id === card.id)
-
     if (filterResult) {
       setResult(filterResult)
     }
-
   }
 
+
+  const description = dataMedicalDepartments.find((e) => query.slug === e.slug)
 
   return (
     <>
@@ -132,6 +130,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
               </div>
             </div>
           </Container>
+
           <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.slider_container}>
               <Carousel
@@ -140,13 +139,11 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                 transitionMs={1000}
                 renderArrow={myArrow}
                 isRTL={router.locale === 'ar' ? true : false}
-
               >
                 {dataMedicalDepartments.map((card, index) => (
                   <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index}>
                     <Link href={`/medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={`${styles.box} 
                     ${query.slug === `${card.slug}` && styles.active}`} scroll={false}>
-
                       <div className={styles.img_container}>
                         <img className={styles.main_img} src={card.image} alt="" />
                         <img className={styles.sec_img} src={card.secondImage} alt="" />
@@ -216,6 +213,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
             </div>
           </Container>
+
         </div >
       </section >
 
@@ -236,96 +234,98 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
             className={styles.section_container}>
 
-            <div className={styles.filter_section}>
-
-              <div className={styles.card_title}>
-                <Typography sx={{ display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' } }} variant='h3'>
-                  Procedures & Symptoms
-                </Typography>
-              </div>
-
-              <Accordion disableGutters elevation={0}
-                square={false} sx={{
-                  '&:before': {
-                    display: 'none',
-                  }
-                }}
-                expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-                <AccordionSummary
-
-                  sx={expanded !== 'panel1' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
-                    : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
-                  }
-                  expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                  aria-controls="panel1d-content" id="panel1d-header"                >
-                  <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                    {t("proceduresSymptoms:select")}
+            {dataHealthCase.length !== 0 &&
+              <div className={styles.filter_section}>
+                <div className={styles.card_title}>
+                  <Typography sx={{ display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' } }} variant='h3'>
+                    Procedures & Symptoms
                   </Typography>
-                </AccordionSummary>
+                </div>
 
-                <AccordionDetails >
-
-                  <List sx={{
-                    listStyleType: 'disc',
-                    padding: '0px',
-
-                    '& .MuiListItem-root': {
-                      display: 'list-item',
-                      listStylePosition: 'inside',
-                      padding: '0px',
-                      cursor: 'pointer'
-                    },
+                <Accordion disableGutters elevation={0}
+                  square={false} sx={{
+                    '&:before': {
+                      display: 'none',
+                    }
                   }}
-                  >
-                    {dataHealthCase.map((healthCase) => (
-                      <Link href={`${router.asPath}/${healthCase.slug}`} scroll={false}>
-                        <ListItem key={healthCase.id} variant='li' sx={{ cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                          {healthCase.name}
-                        </ListItem>
-                      </Link>
-                    ))}
+                  expanded={expanded} onChange={handleChange()}>
+                  <AccordionSummary
+                    sx={expanded === false ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                      : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded === false ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                    aria-controls="panel1d-content" id="panel1d-header"                >
+                    <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                      {t("proceduresSymptoms:select")}
+                    </Typography>
+                  </AccordionSummary>
 
+                  <AccordionDetails >
+                    <List sx={{
+                      listStyleType: 'disc',
+                      padding: '0px',
+                      '& .MuiListItem-root': {
+                        // display: 'list-item',
+                        width: '50%',
+                        listStylePosition: 'inside',
+                        padding: '0px',
+                        cursor: 'pointer',
+                        padding: '2px'
+                      },
+                      '& .MuiListItem-root:hover': {
+                        background: 'red',
+                        borderRadius: '5px'
+                      }
+                    }}
+                    >
 
-                  </List>
-                </AccordionDetails>
-
-              </Accordion>
-            </div >
+                      {dataHealthCase.map((healthCase) => (
+                        <Link href={`${router.asPath}/${healthCase.slug}`} scroll={false}>
+                          <ListItem key={healthCase.id} variant='li' sx={{ cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                            {healthCase.name}
+                          </ListItem>
+                        </Link>
+                      ))}
+                    </List>
+                  </AccordionDetails>
+                </Accordion>
+              </div >
+            }
 
             <div className={styles.info}>
               <div className={styles.info_inner}>
+
                 <div className={styles.info_header}>
                   <div className={styles.img_container}>
-                    {console.log(dataHealthCase[0])}
-                    <img src={dataHealthCase[0].image} alt="" />
+
+                    <img src={description.image} alt="" />
                   </div>
 
                   <div className={styles.title}>
                     <Typography variant='h3'>
-                      {dataHealthCase[0].description}
+                      {description.departmentName}
                     </Typography>
 
                   </div>
                 </div>
+
                 <div className={styles.desc}>
                   <Typography>
-                    {dataHealthCase[0].description}
+                    {description.description}
                   </Typography>
                 </div>
+
               </div>
             </div>
           </motion.div >
+
         </Container >
-
-
       </section >
     </>
   )
 }
 
 export default medicaldepartments
-
-
 
 export async function getServerSideProps({ locale, query }) {
   const resPopularTreatments = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetPopularTreatmentsByLang", {
@@ -339,7 +339,6 @@ export async function getServerSideProps({ locale, query }) {
     })
   })
   const dataPopularTreatments = await resPopularTreatments.json()
-
 
   const resMedicalDepartments = await fetch("https://api.safemedigo.com/api/v1/MedicalDepartment/GetAllMedicalDepartmentsByLang", {
     method: 'POST',
@@ -366,7 +365,6 @@ export async function getServerSideProps({ locale, query }) {
     })
   })
   const dataHealthCase = await resHealthCase.json()
-
 
 
   return {

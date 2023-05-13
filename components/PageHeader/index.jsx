@@ -100,9 +100,6 @@ const PageHeader = ({ blog, treatment }) => {
                   }
                 </div>
 
-
-
-
                 {pathname === ('/blogs/[slug]') &&
                   <>
                     <Box sx={{ display: 'flex', alignItmes: 'flex-start', width: '100%' }} className={styles.author_info} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} >

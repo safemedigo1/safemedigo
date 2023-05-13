@@ -19,16 +19,16 @@ import { useRouter } from 'next/router';
 
 const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, dataTreatmentsHealthCase, query }) => {
   const [result, setResult] = useState(null)
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
   const { t } = useTranslation();
 
   const router = useRouter();
 
-
-
   const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
+    setExpanded((prev) => !prev);
   };
+
+
 
 
   const [breakPoints] = useState([
@@ -66,6 +66,10 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
     { title: 'Dermatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 20 },
   ]
 
+
+
+
+
   function myArrow({ type, onClick, isEdge }) {
     const pointer = type === consts.PREV ?
       <div className='left_arrow'>
@@ -91,8 +95,9 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
     if (filterResult) {
       setResult(filterResult)
     }
-
   }
+
+  const description = dataMedicalDepartments.find((e) => query.slug === e.slug)
   return (
     <>
       <SecNavbar />
@@ -102,6 +107,7 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
 
       <section id={styles.medical_department} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <div className={styles.section_container}>
+
           <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.sec_header}>
               <div className={styles.title}>
@@ -131,6 +137,7 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
               </div>
             </div>
           </Container>
+
           <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.slider_container}>
               <Carousel
@@ -139,7 +146,6 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                 transitionMs={1000}
                 renderArrow={myArrow}
                 isRTL={router.locale === 'ar' ? true : false}
-
               >
                 {dataMedicalDepartments.map((card, index) => (
                   <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index}>
@@ -156,59 +162,6 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                       </div>
 
                     </Link>
-
-                    {/* <Link href='#proceduresSymptoms' onClick={() => handleResult(card)} className={styles.box} key={index}>q
-
-                    <div className={styles.img_container}>
-                      <img className={styles.main_img} src={card.img} alt="" />
-                      <img className={styles.sec_img} src={card.sec_img} alt="" />
-                    </div>
-
-                    <div className={styles.box_title}>
-                      <Typography variant="h6">{card.title}</Typography>
-                    </div>
-
-                  </Link> */}
-
-                    {/* <div className={styles.mobile_slider}>
-                      <Link href='#proceduresSymptoms' onClick={() => handleResult(card)} className={styles.box} key={index}>
-
-                        <div className={styles.img_container}>
-
-                          {
-                            result !== null &&
-                              result.id === card.id ? <img className={styles.sec_img} src={card.sec_img} alt="" /> : <img className={styles.main_img} src={card.img} alt="" />
-                          }
-
-                        </div>
-
-                        <div className={styles.box_title}>
-                          <Typography variant="h6">{card.title}</Typography>
-                        </div>
-
-                      </Link >
-                    </div>
-
-                    <div className={styles.mobile_slider}>
-                      <Link href='#proceduresSymptoms' onClick={() => handleResult(card)} className={styles.box} key={index}>
-
-                        <div className={styles.img_container}>
-
-                          {
-                            result !== null &&
-                              result.id === card.id ? <img className={styles.sec_img} src={card.sec_img} alt="" /> : <img className={styles.main_img} src={card.img} alt="" />
-
-                          }
-
-                        </div>
-
-                        <div className={styles.box_title}>
-                          <Typography variant="h6">{card.title}</Typography>
-                        </div>
-
-                      </Link>
-                    </div> */}
-
                   </Box>
                 ))}
               </Carousel>
@@ -236,7 +189,6 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
             className={styles.section_container}>
 
             <div className={styles.filter_section}>
-
               <div className={styles.card_title}>
                 <Typography sx={{ display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' } }} variant='h3'>
                   Procedures & Symptoms
@@ -249,43 +201,71 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                     display: 'none',
                   }
                 }}
-                expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                expanded={expanded} onChange={handleChange()}>
                 <AccordionSummary
-
-                  sx={expanded !== 'panel1' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                  sx={expanded === false ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
                     : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
                   }
-                  expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                  expandIcon={<ExpandMoreIcon sx={expanded === false ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
                   aria-controls="panel1d-content" id="panel1d-header"                >
                   <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
                     {t("proceduresSymptoms:select")}
                   </Typography>
                 </AccordionSummary>
-
                 <AccordionDetails >
 
-                  <List sx={{
-                    listStyleType: 'disc',
-                    padding: '0px',
-                    '& .MuiListItem-root': {
-                      display: 'list-item',
-                      listStylePosition: 'inside',
-                      padding: '0px',
-                      cursor: 'pointer'
-                    },
-                  }}
-                  >
+                  <List
+                    sx={
 
-                    {console.log(router, "ROUTEERRR")}
+                      query.slug === 'Hair-loss' ?
+                        {
+                          listStyleType: 'disc',
+                          padding: '0px',
+                          '& .MuiListItem-root': {
+                            // display: 'list-item',
+                            width: '50%',
+                            listStylePosition: 'inside',
+                            padding: '0px',
+                            cursor: 'pointer',
+                            padding: '2px',
+                            background: '#C5DFDC',
+                            borderRadius: '5px'
+                          },
+                        }
+                        :
+                        {
+                          listStyleType: 'disc',
+                          padding: '0px',
+                          '& .MuiListItem-root': {
+                            // display: 'list-item',
+                            width: '50%',
+                            listStylePosition: 'inside',
+                            padding: '0px',
+                            cursor: 'pointer',
+                            padding: '2px',
+                            borderRadius: '5px'
+                          },
+
+                          '& .MuiListItem-root:hover': {
+                            background: '#C5DFDC',
+                          },
+
+                        }
+
+
+
+
+                    }
+                  >
                     {dataHealthCase.map((healthCase) => (
                       <Link href={`/medicaldepartments/${router.query.slug}/${healthCase.slug}`} scroll={false}>
-                        <ListItem key={healthCase.id} variant='li' sx={{ cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                        <ListItem key={healthCase.id} variant='li' sx={{
+                          cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)'
+                        }}>
                           {healthCase.name}
                         </ListItem>
                       </Link>
                     ))}
-
-
                   </List>
                 </AccordionDetails>
               </Accordion>
@@ -301,11 +281,11 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                   {t("proceduresSymptoms:medical_department_sort")}
                 </Typography>
               </Box>
-
               {
                 dataTreatmentsHealthCase?.count !== 0 &&
                 dataTreatmentsHealthCase?.treatments.map((treatmentCase, index) => (
                   <Accordion
+                    key={index}
                     elevation={0}
                     expanded={true}
                     square={false} sx={{
@@ -340,190 +320,6 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                     </AccordionSummary>
                   </Accordion>
                 ))}
-              {/* 
-              <Accordion
-                elevation={0}
-                expanded={true}
-                square={false} sx={{
-                  '&:before': {
-                    display: 'none',
-                  },
-                  marginTop: "20px"
-                }}
-              >
-
-                <AccordionSummary
-                  sx={
-                    {
-                      backgroundColor: '#E7EDEC', color: '#000000', borderRadius: '5px', height: '55px', transition: 'all 0.3s ease-in-out', '&:hover': {
-                        backgroundColor: '#c5dfdc',
-                        transform: 'scale: 1.2',
-                        'svg': { marginLeft: '-10px' }
-                      }
-
-                      ,
-                      'a': { fontSize: { sm: '16px', md: '16px', lg: '18px', }, fontWeight: 'bold', color: '#000000', fontFamily: 'var(--quickstand-font)' }
-                    }
-                  }
-                  expandIcon={<ExpandMoreIcon sx={{
-                    color: '#000000', width: '30px', height: "30px", transform: 'rotate(90deg)', transform: `${router.locale === 'ar' ? "rotate(-90deg)" : ""}`, transition: 'all 0.3s ease-in-out',
-                  }} />}
-                >
-                  <Link href={`/procedures&symptoms/hair-loss`} style={{ width: '100%' }}>
-                    Hair Loss
-                    <Typography sx={{ fontSize: '14px' }}>80% {t("proceduresSymptoms:success_rate")} • {t("proceduresSymptoms:cost")}: $6,525</Typography>
-                  </Link>
-                </AccordionSummary>
-              </Accordion>
-
-
-              <Accordion
-                elevation={0}
-                expanded={true}
-                square={false} sx={{
-                  '&:before': {
-                    display: 'none',
-                  },
-                  marginTop: "20px"
-                }}
-              >
-
-                <AccordionSummary
-
-                  sx={
-                    {
-                      backgroundColor: '#E7EDEC', color: '#000000', borderRadius: '5px', height: '55px', transition: 'all 0.3s ease-in-out', '&:hover': {
-                        backgroundColor: '#c5dfdc',
-                        transform: 'scale: 1.2',
-                        'svg': { marginLeft: '-10px' }
-                      }
-
-                      ,
-                      'a': { fontSize: { sm: '16px', md: '16px', lg: '18px', }, fontWeight: 'bold', color: '#000000', fontFamily: 'var(--quickstand-font)' }
-                    }
-                  }
-                  expandIcon={<ExpandMoreIcon sx={{
-                    color: '#000000', width: '30px', height: "30px", transform: 'rotate(90deg)', transform: `${router.locale === 'ar' ? "rotate(-90deg)" : ""}`, transition: 'all 0.3s ease-in-out',
-                  }} />}
-                >
-                  <Link href={`/procedures&symptoms/hair-loss`} style={{ width: '100%' }}>
-                    Hair Loss
-                    <Typography sx={{ fontSize: '14px' }}>80% {t("proceduresSymptoms:success_rate")} • {t("proceduresSymptoms:cost")}: $6,525</Typography>
-                  </Link>
-                </AccordionSummary>
-              </Accordion>
-
-
-              <Accordion
-                elevation={0}
-                expanded={true}
-                square={false} sx={{
-                  '&:before': {
-                    display: 'none',
-                  },
-                  marginTop: "20px"
-                }}
-              >
-
-                <AccordionSummary
-
-                  sx={
-                    {
-                      backgroundColor: '#E7EDEC', color: '#000000', borderRadius: '5px', height: '55px', transition: 'all 0.3s ease-in-out', '&:hover': {
-                        backgroundColor: '#c5dfdc',
-                        transform: 'scale: 1.2',
-                        'svg': { marginLeft: '-10px' }
-                      }
-
-                      ,
-                      'a': { fontSize: { sm: '16px', md: '16px', lg: '18px', }, fontWeight: 'bold', color: '#000000', fontFamily: 'var(--quickstand-font)' }
-                    }
-                  }
-                  expandIcon={<ExpandMoreIcon sx={{
-                    color: '#000000', width: '30px', height: "30px", transform: 'rotate(90deg)', transform: `${router.locale === 'ar' ? "rotate(-90deg)" : ""}`, transition: 'all 0.3s ease-in-out',
-                  }} />}
-                >
-                  <Link href={`/procedures&symptoms/hair-loss`} style={{ width: '100%' }}>
-                    Hair Loss
-                    <Typography sx={{ fontSize: '14px' }}>80% {t("proceduresSymptoms:success_rate")} • {t("proceduresSymptoms:cost")}: $6,525</Typography>
-                  </Link>
-                </AccordionSummary>
-              </Accordion>
-
-
-              <Accordion
-                elevation={0}
-                expanded={true}
-                square={false} sx={{
-                  '&:before': {
-                    display: 'none',
-                  },
-                  marginTop: "20px"
-                }}
-              >
-
-                <AccordionSummary
-                  sx={
-                    {
-                      backgroundColor: '#E7EDEC', color: '#000000', borderRadius: '5px', height: '55px', transition: 'all 0.3s ease-in-out', '&:hover': {
-                        backgroundColor: '#c5dfdc',
-                        transform: 'scale: 1.2',
-                        'svg': { marginLeft: '-10px' }
-                      }
-
-                      ,
-                      'a': { fontSize: { sm: '16px', md: '16px', lg: '18px', }, fontWeight: 'bold', color: '#000000', fontFamily: 'var(--quickstand-font)' }
-                    }
-                  }
-                  expandIcon={<ExpandMoreIcon sx={{
-                    color: '#000000', width: '30px', height: "30px", transform: 'rotate(90deg)', transform: `${router.locale === 'ar' ? "rotate(-90deg)" : ""}`, transition: 'all 0.3s ease-in-out',
-                  }} />}
-                >
-                  <Link href={`/procedures&symptoms/hair-loss`} style={{ width: '100%' }}>
-                    Hair Loss
-                    <Typography sx={{ fontSize: '14px' }}>80% {t("proceduresSymptoms:success_rate")} • {t("proceduresSymptoms:cost")}: $6,525</Typography>
-                  </Link>
-                </AccordionSummary>
-              </Accordion>
-
-
-              <Accordion
-                elevation={0}
-                expanded={true}
-                square={false} sx={{
-                  '&:before': {
-                    display: 'none',
-                  },
-                  marginTop: "20px"
-                }}
-              >
-
-                <AccordionSummary
-
-                  sx={
-                    {
-                      backgroundColor: '#E7EDEC', color: '#000000', borderRadius: '5px', height: '55px', transition: 'all 0.3s ease-in-out', '&:hover': {
-                        backgroundColor: '#c5dfdc',
-                        transform: 'scale: 1.2',
-                        'svg': { marginLeft: '-10px' }
-                      }
-
-                      ,
-                      'a': { fontSize: { sm: '16px', md: '16px', lg: '18px', }, fontWeight: 'bold', color: '#000000', fontFamily: 'var(--quickstand-font)' }
-                    }
-                  }
-                  expandIcon={<ExpandMoreIcon sx={{
-                    color: '#000000', width: '30px', height: "30px", transform: 'rotate(90deg)', transform: `${router.locale === 'ar' ? "rotate(-90deg)" : ""}`, transition: 'all 0.3s ease-in-out',
-                  }} />}
-                >
-                  <Link href={`/procedures&symptoms/hair-loss`} style={{ width: '100%' }}>
-                    Hair Loss
-                    <Typography sx={{ fontSize: '14px' }}>80% {t("proceduresSymptoms:success_rate")} • {t("proceduresSymptoms:cost")}: $6,525</Typography>
-                  </Link>
-                </AccordionSummary>
-              </Accordion> */}
-
-
 
               {dataTreatmentsHealthCase.count > 6 &&
                 <div className={styles.btn_container}>
@@ -537,22 +333,24 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
               <div className={styles.info_inner}>
                 <div className={styles.info_header}>
                   <div className={styles.img_container}>
-                    {console.log(dataHealthCase[0])}
-                    <img src={dataHealthCase[0].image} alt="" />
+
+                    <img src={description.image} alt="" />
                   </div>
 
                   <div className={styles.title}>
                     <Typography variant='h3'>
-                      {dataHealthCase[0].description}
+                      {description.departmentName}
                     </Typography>
 
                   </div>
                 </div>
+
                 <div className={styles.desc}>
                   <Typography>
-                    {dataHealthCase[0].description}
+                    {description.description}
                   </Typography>
                 </div>
+
               </div>
             </div>
           </motion.div >
@@ -562,6 +360,7 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
       </section >
     </>)
 }
+
 
 export default HealthCase
 
@@ -621,7 +420,6 @@ export async function getServerSideProps({ locale, query }) {
       "healthCaseSlug": query.healthcase,
       "currentPage": 1,
       "departmentSlug": query.slug
-
     })
   })
   const dataTreatmentsHealthCase = await resTreatmentsHealthCase.json()

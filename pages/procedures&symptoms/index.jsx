@@ -154,7 +154,6 @@ const ProceduresSymptoms = ({ dataPopularTreatments, dataMedicalDepartments }) =
                       <div className={styles.box_title}>
                         <Typography variant="h6">{card.departmentName}</Typography>
                       </div>
-
                     </Link>
 
                     {/* <Link href='#proceduresSymptoms' onClick={() => handleResult(card)} className={styles.box} key={index}>q
@@ -211,12 +210,6 @@ const ProceduresSymptoms = ({ dataPopularTreatments, dataMedicalDepartments }) =
 
                   </Box>
                 ))}
-
-
-
-
-
-
               </Carousel>
 
             </div>
