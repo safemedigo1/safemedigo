@@ -146,8 +146,17 @@
 }
 
 .author_info {
+  @media screen and (max-width: 450px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
   .review_by {
     margin-right: 80px;
+
+    @media screen and (max-width: 450px) {
+      margin-right: 0;
+    }
   }
 }
 

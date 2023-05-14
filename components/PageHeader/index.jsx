@@ -23,8 +23,8 @@ const PageHeader = ({ blog, treatment }) => {
               lg: "block"
             }
           }} id={styles.blogs} dir={router.locale === 'ar' ? 'rtl' : 'ltr'} >
-          <div className={styles.header_container}>
 
+          <div className={styles.header_container}>
             <Container
               className={styles.sec_container}
               sx={{ maxWidth: "1239px" }}
@@ -55,6 +55,7 @@ const PageHeader = ({ blog, treatment }) => {
                       </Typography>
                     </>
                     : <></>}
+
 
                   {pathname === '/how-it-works' &&
                     <>

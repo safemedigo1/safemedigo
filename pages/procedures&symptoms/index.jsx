@@ -262,8 +262,6 @@ const ProceduresSymptoms = ({ dataPopularTreatments, dataMedicalDepartments }) =
                 </AccordionSummary>
 
                 <AccordionDetails >
-
-
                   <Typography>Please Select Medical Department</Typography>
                 </AccordionDetails>
 

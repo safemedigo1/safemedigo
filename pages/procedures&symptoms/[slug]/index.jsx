@@ -17,7 +17,6 @@ const TreatmentName = ({ dataTreatment }) => {
   const router = useRouter();
 
 
-  console.log(dataTreatment)
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -632,17 +631,16 @@ const TreatmentName = ({ dataTreatment }) => {
         </Container >
       </article>
 
+      {dataTreatment?.treatmentImage.length !== 0 &&
+        <section id={styles.before_after}>
+          <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+            <div className={styles.title}>
+              <Typography variant='h3'>
+                Before & After Photos
+              </Typography>
+            </div>
 
-
-      <section id={styles.before_after}>
-        <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-          <div className={styles.title}>
-            <Typography variant='h3'>
-              Before & After Photos
-            </Typography>
-          </div>
-
-          {/* <div className={styles.menu_container}>
+            {/* <div className={styles.menu_container}>
             <div className={styles.menu}>
               <Accordion disableGutters elevation={0}
                 square={false} sx={{
@@ -726,83 +724,89 @@ const TreatmentName = ({ dataTreatment }) => {
             </div>
           </div> */}
 
-          <div className={styles.slider_container}>
-            <Carousel
-              breakPoints={breakPoints}
-              itemsToScroll={1} renderArrow={myArrow} transitionMs={1000}
-              isRTL={router.locale === 'ar' ? true : false}
+            <div className={styles.slider_container}>
+              <Carousel
+                breakPoints={breakPoints}
+                itemsToScroll={1} renderArrow={myArrow} transitionMs={1000}
+                isRTL={router.locale === 'ar' ? true : false}
 
-            >
-              {dataTreatment?.treatmentImage.map((card, index) => (
-                <div className={styles.box} key={index}>
-                  <div className={styles.imgs_container}>
-                    <img src={card.imgBefore} alt={card.description} />
-                    <img src={card.imgAfter} alt={card.description} />
-                  </div>
-                  <div className={styles.box_title}>
-                    <Typography variant='h5'>Before</Typography>
-                    <Typography variant='h5'>After</Typography>
-                  </div>
-                  <div className={styles.desc}>
-                    <Typography>
-                      {card.description}
-                    </Typography>
-                  </div>
-                </div>
-              ))}
-
-            </Carousel>
-          </div>
-        </Container >
-
-      </section>
+              >
 
 
-      <section id={styles.steps}>
-        <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-
-          <div className={styles.sec_title}>
-            <Typography variant='h3'>
-              Surgery Steps
-            </Typography>
-          </div>
-        </Container >
-
-        <Container className='mycontainer' sx={{ maxWidth: "1239px" }} maxWidth={false}>
-          <div
-            className={styles.slider_container}>
-            <Carousel
-              breakPoints={surgerySteps}
-              renderArrow={myArrow}
-              transitionMs={1000}
-              isRTL={router.locale === 'ar' ? true : false}
-
-            >
-              {dataTreatment.treatmentStep.map((stepCard, index) => (
-                <>
-                  <div className={styles.steps_container} key={index}>
-                    <div className={styles.step}>
-                      <span>{stepCard.stepCode}</span>
+                {
+                  dataTreatment?.treatmentImage.map((card, index) => (
+                    <div className={styles.box} key={index}>
+                      <div className={styles.imgs_container}>
+                        <img src={card.imgBefore} alt={card.description} />
+                        <img src={card.imgAfter} alt={card.description} />
+                      </div>
+                      <div className={styles.box_title}>
+                        <Typography variant='h5'>Before</Typography>
+                        <Typography variant='h5'>After</Typography>
+                      </div>
+                      <div className={styles.desc}>
+                        <Typography>
+                          {card.description}
+                        </Typography>
+                      </div>
                     </div>
-                  </div>
+                  ))}
 
-                  <div className={styles.box} key={index}>
-                    <div className={styles.box_title}>
-                      <Typography variant="h6"> {stepCard.stepDescription}</Typography>
+              </Carousel>
+            </div>
+          </Container >
+
+        </section>
+      }
+
+
+      {dataTreatment.treatmentStep.length !== 0 &&
+        <section id={styles.steps}>
+          <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+            <div className={styles.sec_title}>
+              <Typography variant='h3'>
+                Surgery Steps
+              </Typography>
+            </div>
+          </Container >
+
+          <Container className='mycontainer' sx={{ maxWidth: "1239px" }} maxWidth={false}>
+            <div
+              className={styles.slider_container}>
+              <Carousel
+                breakPoints={surgerySteps}
+                renderArrow={myArrow}
+                transitionMs={1000}
+                isRTL={router.locale === 'ar' ? true : false}
+              >
+
+                {dataTreatment.treatmentStep.map((stepCard, index) => (
+                  <>
+                    <div className={styles.steps_container} key={index}>
+                      <div className={styles.step}>
+                        <span>{stepCard.stepCode}</span>
+                      </div>
                     </div>
-                    <div className={styles.img_container}>
-                      <img src={stepCard.stepImage} alt="" />
+
+                    <div className={styles.box} key={index}>
+                      <div className={styles.box_title}>
+                        <Typography variant="h6"> {stepCard.stepDescription}</Typography>
+                      </div>
+                      <div className={styles.img_container}>
+                        <img src={stepCard.stepImage} alt="" />
+                      </div>
                     </div>
-                  </div>
 
-                </>
-              ))}
+                  </>
+                ))}
 
-            </Carousel>
-          </div>
-        </Container >
+              </Carousel>
+            </div>
+          </Container >
 
-      </section>
+        </section>
+      }
+
 
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
         <section id={styles.what_you_need}>
@@ -830,15 +834,9 @@ const TreatmentName = ({ dataTreatment }) => {
 
                 </Typography>
               </AccordionSummary>
-
               <AccordionDetails sx={{ background: '#F4F9F8' }}>
-
                 <div dangerouslySetInnerHTML={createMarkupPreOperationOverview()} />
-
-
-
               </AccordionDetails>
-
             </Accordion>
 
 
@@ -1140,57 +1138,58 @@ const TreatmentName = ({ dataTreatment }) => {
 
       </section>
 
-      <section id={styles.treatment_desc}>
-        <Container className='mycontainer' sx={{ maxWidth: "1239px" }} maxWidth={false}>
-          <div className={styles.sec_title}>
-            <Typography variant='h3'>
-              Steps
-            </Typography>
-          </div>
+      {dataTreatment.treatmentProcedure != 0 &&
+        <section id={styles.treatment_desc}>
+          <Container className='mycontainer' sx={{ maxWidth: "1239px" }} maxWidth={false}>
+            <div className={styles.sec_title}>
+              <Typography variant='h3'>
+                Steps
+              </Typography>
+            </div>
 
-          <div className={styles.slider_container}>
-            <Carousel
-              breakPoints={breakPointsSteps}
-              renderArrow={myArrow}
-              transitionMs={1000}
-              isRTL={router.locale === 'ar' ? true : false}
+            <div className={styles.slider_container}>
+              <Carousel
+                breakPoints={breakPointsSteps}
+                renderArrow={myArrow}
+                transitionMs={1000}
+                isRTL={router.locale === 'ar' ? true : false}
 
-            >
-              {dataTreatment.treatmentProcedure.map((card, index) => (
-                <>
-                  <div className={styles.steps_container} key={index}>
-                    <div className={styles.step}>
-                      <span>{card.procedureCode}</span>
-                    </div>
-                  </div>
-
-                  <div className={styles.box}>
-                    <div className={styles.title}>
-                      <Typography variant='h6'>
-                        {card.procedureName}
-                      </Typography>
-                    </div>
-                    <div className={styles.img_container}>
-                      <img src={card.procedureImage} alt={card.procedureName} />
+              >
+                {dataTreatment.treatmentProcedure.map((card, index) => (
+                  <>
+                    <div className={styles.steps_container} key={index}>
+                      <div className={styles.step}>
+                        <span>{card.procedureCode}</span>
+                      </div>
                     </div>
 
-                    <div className={styles.list}>
-                      <ul>
-                        <li>
-                          {card.procedureDescription}
-                        </li>
-                      </ul>
+                    <div className={styles.box}>
+                      <div className={styles.title}>
+                        <Typography variant='h6'>
+                          {card.procedureName}
+                        </Typography>
+                      </div>
+                      <div className={styles.img_container}>
+                        <img src={card.procedureImage} alt={card.procedureName} />
+                      </div>
+
+                      <div className={styles.list}>
+                        <ul>
+                          <li>
+                            {card.procedureDescription}
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
 
-                </>
-              ))}
+                  </>
+                ))}
 
-            </Carousel>
-          </div>
-        </Container >
-      </section>
-
+              </Carousel>
+            </div>
+          </Container >
+        </section>
+      }
 
       <section id={'price'} className={styles.price}>
         <div className={styles.section_container}>

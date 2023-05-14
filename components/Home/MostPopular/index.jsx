@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './index.module.scss'
 import Carousel from 'react-elastic-carousel';
 import imgs from "../../../assets/constants/imgs";
@@ -10,17 +10,11 @@ import { Container, Typography, Rating, Box } from '@mui/material';
 import Link from 'next/link';
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import { appContext } from "@/context/store";
-
-
 import { useTranslation } from "react-i18next";
 
 const MostPopular = ({ dataPopularTreatments }) => {
-  console.log(dataPopularTreatments, "From MostPoplar Components")
   const { t } = useTranslation();
-  const { lang } = useContext(appContext)
   const { post1, post2, post3, post4, post5, } = imgs;
-
 
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
@@ -189,7 +183,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
 
                   <Link href='/'>
                     <button>
-                      {t('common:get_started')}
+                      {t('most_popular:get_started')}
                     </button>
                   </Link>
                 </div>
@@ -251,7 +245,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
                               </div>
 
                               <div className={styles.rating}>
-                                <Rating name="size-small" defaultValue={card.totalReviewed} size="small" />
+                                <Rating name="read-only" defaultValue={card.totalReviewed} size="small" readOnly />
                                 <span className={styles.reviews_num}>{card.totalReviewed} Reviews</span>
                               </div>
 
@@ -294,7 +288,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
                               </div>
 
                               <div className={styles.rating}>
-                                <Rating name="size-small" defaultValue={4} size="small" />
+                                <Rating name="read-only" defaultValue={4} size="small" />
                                 <span className={styles.reviews_num}>90 Reviews</span>
                               </div>
 
@@ -367,7 +361,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
                               </div>
 
                               <div className={styles.rating}>
-                                <Rating name="size-small" defaultValue={4} size="small" />
+                                <Rating name="read-only" defaultValue={4} size="small" />
                                 <span className={styles.reviews_num}>90 Reviews</span>
                               </div>
 
@@ -449,7 +443,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
                               </div>
 
                               <div className={styles.rating}>
-                                <Rating name="size-small" defaultValue={4} size="small" />
+                                <Rating name="read-only" defaultValue={4} size="small" />
                                 <span className={styles.reviews_num}>90 Reviews</span>
                               </div>
 
@@ -494,10 +488,6 @@ const MostPopular = ({ dataPopularTreatments }) => {
               }
 
             </div>
-
-
-
-
           </div>
         </Container>
 
@@ -508,3 +498,17 @@ const MostPopular = ({ dataPopularTreatments }) => {
 }
 
 export default MostPopular
+
+
+export async function getServerSideProps() {
+
+
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms",])),
+
+    }
+  }
+}
+
