@@ -244,6 +244,9 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
                 <Accordion disableGutters elevation={0}
                   square={false} sx={{
+                    backgroundColor: 'var(--main-white-color)',
+                    boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.1607843137)',
+
                     '&:before': {
                       display: 'none',
                     }
@@ -266,7 +269,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                       padding: '0px',
                       '& .MuiListItem-root': {
                         // display: 'list-item',
-                        width: '50%',
+                        width: '100%',
                         listStylePosition: 'inside',
                         padding: '0px',
                         cursor: 'pointer',

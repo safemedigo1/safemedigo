@@ -149,7 +149,6 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
               >
                 {dataMedicalDepartments.map((card, index) => (
                   <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index}>
-
                     <Link href={`/medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={`${styles.box} 
                     ${query.slug === `${card.slug}` && styles.active}`} >
                       <div className={styles.img_container}>
@@ -194,9 +193,11 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                   Procedures & Symptoms
                 </Typography>
               </div>
-
               <Accordion disableGutters elevation={0}
                 square={false} sx={{
+                  backgroundColor: 'var(--main-white-color)',
+                  boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.1607843137)',
+
                   '&:before': {
                     display: 'none',
                   }
@@ -212,20 +213,17 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                     {t("proceduresSymptoms:select")}
                   </Typography>
                 </AccordionSummary>
-                <AccordionDetails >
 
+                <AccordionDetails >
                   <List sx={
                     query.slug === 'Hair-loss' ?
                       {
                         listStyleType: 'disc',
                         padding: '0px',
                         '& .MuiListItem-root': {
-                          // display: 'list-item',
-                          width: '50%',
-                          listStylePosition: 'inside',
-                          padding: '0px',
+                          width: '100%',
                           cursor: 'pointer',
-                          padding: '2px',
+                          padding: '10px',
                           background: '#C5DFDC',
                           borderRadius: '5px'
                         },
@@ -236,11 +234,11 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                         padding: '0px',
                         '& .MuiListItem-root': {
                           // display: 'list-item',
-                          width: '50%',
+                          width: '100%',
                           listStylePosition: 'inside',
                           padding: '0px',
                           cursor: 'pointer',
-                          padding: '2px',
+                          padding: '10px',
                           borderRadius: '5px'
                         },
 
@@ -249,10 +247,6 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                         },
 
                       }
-
-
-
-
                   }
                   >
                     {dataHealthCase.map((healthCase) => (
@@ -279,6 +273,7 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                   {t("proceduresSymptoms:medical_department_sort")}
                 </Typography>
               </Box>
+
               {
                 dataTreatmentsHealthCase?.count !== 0 &&
                 dataTreatmentsHealthCase?.treatments.map((treatmentCase, index) => (
@@ -287,6 +282,7 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                     elevation={0}
                     expanded={true}
                     square={false} sx={{
+
                       '&:before': {
                         display: 'none',
                       },
@@ -302,7 +298,6 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                             transform: 'scale: 1.2',
                             'svg': { marginLeft: '-10px' }
                           }
-
                           ,
                           'a': { fontSize: { sm: '16px', md: '16px', lg: '18px', }, fontWeight: 'bold', color: '#000000', fontFamily: 'var(--quickstand-font)' }
                         }
@@ -324,9 +319,7 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                   <button>Load More</button>
                 </div>
               }
-
             </div >
-
             <div className={styles.info}>
               <div className={styles.info_inner}>
                 <div className={styles.info_header}>
@@ -353,8 +346,6 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
             </div>
           </motion.div >
         </Container >
-
-
       </section >
     </>)
 }
