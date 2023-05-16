@@ -18,7 +18,7 @@ import { useRouter } from 'next/router';
 
 const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, query }) => {
   const [result, setResult] = useState(null)
-  const [expanded, setExpanded] = useState(falseS);
+  const [expanded, setExpanded] = useState(false);
 
   const { t } = useTranslation();
   const router = useRouter();
