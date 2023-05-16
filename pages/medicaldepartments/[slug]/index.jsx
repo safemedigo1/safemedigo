@@ -265,19 +265,20 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
                   <AccordionDetails >
                     <List sx={{
-                      listStyleType: 'disc',
                       padding: '0px',
                       '& .MuiListItem-root': {
-                        // display: 'list-item',
                         width: '100%',
                         listStylePosition: 'inside',
                         padding: '0px',
                         cursor: 'pointer',
-                        padding: '2px'
+                        padding: '2px',
+                        marginTop: '10px',
+                        transition: 'all 0.3s ease'
                       },
                       '& .MuiListItem-root:hover': {
-                        background: '#C5DFDC',
-                        borderRadius: '5px'
+                        background: 'rgba(0, 243, 187, 0.1)',
+                        borderRadius: '5px',
+                        paddingLeft: '20px',
                       }
                     }
                     }

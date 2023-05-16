@@ -807,7 +807,6 @@ const TreatmentName = ({ dataTreatment }) => {
         </section>
       }
 
-
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
         <section id={styles.what_you_need}>
           <div className={styles.title}>

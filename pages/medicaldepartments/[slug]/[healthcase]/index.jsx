@@ -215,38 +215,23 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                 </AccordionSummary>
 
                 <AccordionDetails >
-                  <List sx={
-                    query.slug === 'Hair-loss' ?
-                      {
-                        listStyleType: 'disc',
-                        padding: '0px',
-                        '& .MuiListItem-root': {
-                          width: '100%',
-                          cursor: 'pointer',
-                          padding: '10px',
-                          background: '#C5DFDC',
-                          borderRadius: '5px'
-                        },
-                      }
-                      :
-                      {
-                        listStyleType: 'disc',
-                        padding: '0px',
-                        '& .MuiListItem-root': {
-                          // display: 'list-item',
-                          width: '100%',
-                          listStylePosition: 'inside',
-                          padding: '0px',
-                          cursor: 'pointer',
-                          padding: '10px',
-                          borderRadius: '5px'
-                        },
-
-                        '& .MuiListItem-root:hover': {
-                          background: '#C5DFDC',
-                        },
-
-                      }
+                  <List sx={{
+                    padding: '0px',
+                    '& .MuiListItem-root': {
+                      width: '100%',
+                      listStylePosition: 'inside',
+                      padding: '0px',
+                      cursor: 'pointer',
+                      padding: '2px',
+                      marginTop: '10px',
+                      transition: 'all 0.3s ease'
+                    },
+                    '& .MuiListItem-root:hover': {
+                      background: 'rgba(0, 243, 187, 0.1)',
+                      borderRadius: '5px',
+                      paddingLeft: '20px',
+                    }
+                  }
                   }
                   >
                     {dataHealthCase.map((healthCase) => (
@@ -282,7 +267,8 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                     elevation={0}
                     expanded={true}
                     square={false} sx={{
-
+                      backgroundColor: 'var(--main-white-color)',
+                      boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.1607843137)',
                       '&:before': {
                         display: 'none',
                       },
