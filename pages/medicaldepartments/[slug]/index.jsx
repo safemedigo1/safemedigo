@@ -27,7 +27,6 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
     setExpanded((prev) => !prev);
   };
 
-
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false, itemsToShow: 1.7, itemPosition: consts.START, itemsToScroll: 1 },
     { width: 400, pagination: true, showArrows: false, itemsToShow: 1.7, itemPosition: consts.START, itemsToScroll: 1 },
@@ -68,13 +67,11 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
       <div className='left_arrow'>
         <HiChevronLeft />
       </div>
-
       :
       <div className='right_arrow'>
         <  HiChevronRight />
       </div>
 
-      ;
     return (
       <button className='main_btn' onClick={onClick} disabled={isEdge}>
         {pointer}
@@ -89,16 +86,13 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
     }
   }
 
-
   const description = dataMedicalDepartments.find((e) => query.slug === e.slug)
 
   return (
     <>
       <SecNavbar />
       <PageHeader />
-
       <MostPopular dataPopularTreatments={dataPopularTreatments} />
-
       <section id={styles.medical_department} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <div className={styles.section_container}>
           <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -370,7 +364,6 @@ export async function getServerSideProps({ locale, query }) {
     })
   })
   const dataHealthCase = await resHealthCase.json()
-
 
   return {
     props: {

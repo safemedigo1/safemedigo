@@ -140,12 +140,11 @@
 
           .img_container {
             .sec_img {
+              display: block;
               opacity: 1;
             }
             .main_img {
-              opacity: 0;
               display: none;
-              transition: all 0.3s ease;
             }
           }
         }
@@ -155,12 +154,10 @@
 
           .img_container {
             .sec_img {
-              opacity: 1;
+              display: none;
             }
             .main_img {
-              opacity: 0;
-              display: none;
-              transition: all 0.3s ease;
+              display: block;
             }
           }
         }
