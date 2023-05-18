@@ -114,6 +114,16 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
   }, [])
 
 
+  // // Calculate the midpoint index
+  const midpointIndex = Math.floor(dataMedicalDepartments?.length / 2);
+
+  // Split the original array into two dynamic arrays
+  const firstHalfArray = dataMedicalDepartments?.slice(0, midpointIndex);
+  const secondHalfArray = dataMedicalDepartments?.slice(midpointIndex);
+
+
+
+
   return (
     <>
       <SecNavbar />
@@ -160,9 +170,11 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                 renderArrow={myArrow}
                 isRTL={router.locale === 'ar' ? true : false}
               >
-                {dataMedicalDepartments.map((card, index) => (
-                  <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index}>
-                    <Link href={`/medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={`${styles.box} 
+                {firstHalfArray.map((card, index) =>
+
+                (
+                  <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index} >
+                    <Link href={`/medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={`${styles.box}  
                     ${query.slug === `${card.slug}` && styles.active}`} scroll={false}>
                       <div className={styles.img_container}>
                         <img className={styles.main_img} src={card.image} alt="" />
@@ -172,63 +184,48 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                       <div className={styles.box_title}>
                         <Typography variant="h6">{card.departmentName}</Typography>
                       </div>
+                    </Link>
+
+
+                    < Link href={`/medicaldepartments/${secondHalfArray[index].slug}`} onClick={() => handleResult(secondHalfArray[index])} className={`${styles.box}  
+                    ${query.slug === `${secondHalfArray[index].slug}` && styles.active}`} scroll={false} >
+                      <div className={styles.img_container}>
+                        <img className={styles.main_img} src={secondHalfArray[index].image} alt="" />
+                        <img className={styles.sec_img} src={secondHalfArray[index].secondImage} alt="" />
+                      </div>
+                      <div className={styles.box_title}>
+                        <Typography variant="h6">{secondHalfArray[index].departmentName}</Typography>
+                      </div>
+
+                    </Link>
+                  </Box>
+
+                )
+                )}
+
+
+
+                {/* {Object.keys(firstHalfArray).map(function (template_name) {
+                  return (
+                    < Link href='#proceduresSymptoms' onClick={() => handleResult(secondHalfArray[template_name])} className={styles.box} > Q
+                      <div className={styles.img_container}>
+                        <img className={styles.main_img} src={secondHalfArray[template_name].img} alt="" />
+                        <img className={styles.sec_img} src={secondHalfArray[template_name].sec_img} alt="" />
+                      </div>
+                      <div className={styles.box_title}>
+                        <Typography variant="h6">{secondHalfArray[template_name].title}</Typography>
+                      </div>
 
                     </Link>
 
-                    {/* <Link href='#proceduresSymptoms' onClick={() => handleResult(card)} className={styles.box} key={index}>q
+                  );
+                })} */}
 
-                      <div className={styles.img_container}>
-                        <img className={styles.main_img} src={card.img} alt="" />
-                        <img className={styles.sec_img} src={card.sec_img} alt="" />
-                      </div>
 
-                      <div className={styles.box_title}>
-                        <Typography variant="h6">{card.title}</Typography>
-                      </div>
 
-                    </Link> */}
 
-                    {/* <div className={styles.mobile_slider}>
-                      <Link href='#proceduresSymptoms' onClick={() => handleResult(card)} className={styles.box} key={index}>
 
-                        <div className={styles.img_container}>
 
-                          {
-                            result !== null &&
-                              result.id === card.id ? <img className={styles.sec_img} src={card.sec_img} alt="" /> : <img className={styles.main_img} src={card.img} alt="" />
-                          }
-
-                        </div>
-
-                        <div className={styles.box_title}>
-                          <Typography variant="h6">{card.title}</Typography>
-                        </div>
-
-                      </Link >
-                    </div>
-
-                    <div className={styles.mobile_slider}>
-                      <Link href='#proceduresSymptoms' onClick={() => handleResult(card)} className={styles.box} key={index}>
-
-                        <div className={styles.img_container}>
-
-                          {
-                            result !== null &&
-                              result.id === card.id ? <img className={styles.sec_img} src={card.sec_img} alt="" /> : <img className={styles.main_img} src={card.img} alt="" />
-
-                          }
-
-                        </div>
-
-                        <div className={styles.box_title}>
-                          <Typography variant="h6">{card.title}</Typography>
-                        </div>
-
-                      </Link>
-                    </div> */}
-
-                  </Box>
-                ))}
               </Carousel>
 
             </div>

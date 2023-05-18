@@ -164,57 +164,7 @@ const ProceduresSymptoms = ({ dataPopularTreatments, dataMedicalDepartments, loc
                       </div>
                     </Link>
 
-                    {/* <Link href='#proceduresSymptoms' onClick={() => handleResult(card)} className={styles.box} key={index}>q
 
-                      <div className={styles.img_container}>
-                        <img className={styles.main_img} src={card.img} alt="" />
-                        <img className={styles.sec_img} src={card.sec_img} alt="" />
-                      </div>
-
-                      <div className={styles.box_title}>
-                        <Typography variant="h6">{card.title}</Typography>
-                      </div>
-
-                    </Link> */}
-
-                    {/* <div className={styles.mobile_slider}>
-                      <Link href='#proceduresSymptoms' onClick={() => handleResult(card)} className={styles.box} key={index}>
-
-                        <div className={styles.img_container}>
-
-                          {
-                            result !== null &&
-                              result.id === card.id ? <img className={styles.sec_img} src={card.sec_img} alt="" /> : <img className={styles.main_img} src={card.img} alt="" />
-                          }
-
-                        </div>
-
-                        <div className={styles.box_title}>
-                          <Typography variant="h6">{card.title}</Typography>
-                        </div>
-
-                      </Link >
-                    </div>
-
-                    <div className={styles.mobile_slider}>
-                      <Link href='#proceduresSymptoms' onClick={() => handleResult(card)} className={styles.box} key={index}>
-
-                        <div className={styles.img_container}>
-
-                          {
-                            result !== null &&
-                              result.id === card.id ? <img className={styles.sec_img} src={card.sec_img} alt="" /> : <img className={styles.main_img} src={card.img} alt="" />
-
-                          }
-
-                        </div>
-
-                        <div className={styles.box_title}>
-                          <Typography variant="h6">{card.title}</Typography>
-                        </div>
-
-                      </Link>
-                    </div> */}
 
                   </Box>
                 ))}
