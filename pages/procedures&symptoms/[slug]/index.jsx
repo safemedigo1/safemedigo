@@ -729,9 +729,7 @@ const TreatmentName = ({ dataTreatment }) => {
                 breakPoints={breakPoints}
                 itemsToScroll={1} renderArrow={myArrow} transitionMs={1000}
                 isRTL={router.locale === 'ar' ? true : false}
-
               >
-
 
                 {
                   dataTreatment?.treatmentImage.map((card, index) => (

@@ -196,7 +196,6 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
               <Accordion disableGutters elevation={0}
                 square={false} sx={{
                   backgroundColor: 'var(--main-white-color)',
-                  boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.1607843137)',
                   borderRadius: '5px',
                   '&:before': {
                     display: 'none',

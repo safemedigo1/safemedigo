@@ -244,6 +244,9 @@ const ProceduresSymptoms = ({ dataPopularTreatments, dataMedicalDepartments }) =
 
               <Accordion disableGutters elevation={0}
                 square={false} sx={{
+                  backgroundColor: 'var(--main-white-color)',
+                  borderRadius: '5px',
+
                   '&:before': {
                     display: 'none',
                   }
