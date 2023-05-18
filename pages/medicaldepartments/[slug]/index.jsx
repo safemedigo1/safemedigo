@@ -1,5 +1,5 @@
 import styles from '../../procedures&symptoms/index.module.scss';
-
+import { ThreeDots } from 'react-loader-spinner'
 import { MostPopular } from '@/components/Home'
 import { Container, Typography, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem } from '@mui/material'
 import React, { useEffect, useState } from 'react'
@@ -20,7 +20,10 @@ import axios from 'axios';
 const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, query, locale }) => {
   const [result, setResult] = useState(null)
   const [expanded, setExpanded] = useState(false);
-  const [dataTreatmentsHealthCase, setDataTreatmentsHealthCase] = useState();
+  const [dataTreatmentsHealthCase, setDataTreatmentsHealthCase] = useState(null);
+  const [TreatmentCountPage, setTreatmentCountPage] = useState(1)
+  const [TreatmentCount, setTreatmentCount] = useState(0)
+  const [treatmentLoading, setTreatmentLoading] = useState(false)
 
   const { t } = useTranslation();
   const router = useRouter();
@@ -90,13 +93,12 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
   const description = dataMedicalDepartments.find((e) => query.slug === e.slug)
 
-
   const getAllTreatments = async () => {
     const resTreatmentsHealthCase = await
       axios.post("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
         "lang": locale,
         "healthCaseSlug": "",
-        "currentPage": 1,
+        "currentPage": TreatmentCountPage,
         "departmentSlug": ""
       }, {
         headers: {
@@ -104,14 +106,35 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
           'Content-Type': 'application/json'
         }
       });
-    setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data)
+    // setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data?.treatments)
+
+    if (TreatmentCountPage > 1) {
+      setDataTreatmentsHealthCase(prev => [...prev, ...resTreatmentsHealthCase?.data?.treatments])
+
+    } else {
+      setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data?.treatments)
+    }
+
+    setTreatmentCount(resTreatmentsHealthCase?.data?.count)
 
   }
-  console.log(dataTreatmentsHealthCase, "TREATMENT HEALTH CASE")
+
+
+  const handleLoadMoreTreatments = () => {
+    setTreatmentCountPage((prev) => prev + 1)
+    if (dataTreatmentsHealthCase !== null) {
+      setTreatmentLoading(false)
+    } else {
+      setTreatmentLoading(true)
+    }
+
+    console.log(treatmentLoading)
+  }
+  console.log(treatmentLoading)
 
   useEffect(() => {
     getAllTreatments()
-  }, [])
+  }, [TreatmentCountPage])
 
 
   // // Calculate the midpoint index
@@ -326,7 +349,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                     {t("proceduresSymptoms:all_procedures")}
                   </Typography>
                   <Typography sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    {dataTreatmentsHealthCase?.count}  {t("proceduresSymptoms:procedures")}
+                    {TreatmentCount}  {t("proceduresSymptoms:procedures")}
                   </Typography>
                   <Typography sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
                     {t("proceduresSymptoms:medical_department_sort")}
@@ -334,8 +357,8 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                 </Box>
 
                 {
-                  dataTreatmentsHealthCase?.count !== 0 &&
-                  dataTreatmentsHealthCase?.treatments.map((treatmentCase, index) => (
+                  TreatmentCount !== 0 &&
+                  dataTreatmentsHealthCase?.map((treatmentCase, index) => (
                     <Accordion
                       key={index}
                       elevation={0}
@@ -374,11 +397,36 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                     </Accordion>
                   ))}
 
-                {dataTreatmentsHealthCase?.count > 6 &&
+                {TreatmentCount !== dataTreatmentsHealthCase?.length &&
                   <div className={styles.btn_container}>
-                    <button>Load More</button>
+                    <button onClick={handleLoadMoreTreatments}>
+                      {treatmentLoading !== true ?
+                        "Load More"
+                        :
+                        <>
+                          Loading {` `}
+                          <ThreeDots
+                            height="25"
+                            width="25"
+                            radius="9"
+                            color="#00ccb5"
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{}}
+                            wrapperClassName="load_more_btn"
+                            visible={true}
+                          />
+
+                        </>
+
+                      }
+
+
+                    </button>
                   </div>
                 }
+
+
+                {console.log(dataTreatmentsHealthCase?.length, 'TREATMENTSS')}
               </div >
             }
 

@@ -41,30 +41,13 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
     { width: 1750, pagination: false, itemsToShow: 4.1, itemsToScroll: 4, },
   ])
 
-  const { Dermatology, Dermatology_1, Knee, } = imgs;
 
-  const cards = [
-    { title: 'Gastroenterology & Hepatology', img: Knee.src, sec_img: Dermatology_1.src, id: 1 },
-    { title: 'Gastroenterology & Hepatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 2 },
-    { title: 'Hair Transplant', img: Dermatology.src, sec_img: Dermatology_1.src, id: 3 },
-    { title: 'Gastroenterology & Hepatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 4 },
-    { title: 'Gastroenterology & Hepatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 5 },
-    { title: 'Gastroenterology & Hepatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 6 },
-    { title: 'Gastroenterology & Hepatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 7 },
-    { title: 'Gastroenterology & Hepatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 8 },
-    { title: 'Gastroenterology & Hepatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 9 },
-    { title: 'Gastroenterology & Hepatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 10 },
-    { title: 'Dermatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 11 },
-    { title: 'Dermatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 12 },
-    { title: 'Dermatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 13 },
-    { title: 'Dermatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 14 },
-    { title: 'Dermatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 15 },
-    { title: 'Dermatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 16 },
-    { title: 'Dermatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 17 },
-    { title: 'Dermatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 18 },
-    { title: 'Dermatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 19 },
-    { title: 'Dermatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 20 },
-  ]
+  // // Calculate the midpoint index
+  const midpointIndex = Math.floor(dataMedicalDepartments?.length / 2);
+
+  // Split the original array into two dynamic arrays
+  const firstHalfArray = dataMedicalDepartments?.slice(0, midpointIndex);
+  const secondHalfArray = dataMedicalDepartments?.slice(midpointIndex);
 
 
 
@@ -147,21 +130,37 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                 renderArrow={myArrow}
                 isRTL={router.locale === 'ar' ? true : false}
               >
-                {dataMedicalDepartments.map((card, index) => (
-                  <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index}>
-                    <Link href={`/medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={`${styles.box} 
+                {firstHalfArray.map((card, index) => (
+
+                  <>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index}>
+                      <Link href={`/medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={`${styles.box} 
                     ${query.slug === `${card.slug}` && styles.active}`} >
-                      <div className={styles.img_container}>
-                        <img className={styles.main_img} src={card.image} alt="" />
-                        <img className={styles.sec_img} src={card.secondImage} alt="" />
-                      </div>
+                        <div className={styles.img_container}>
+                          <img className={styles.main_img} src={card.image} alt="" />
+                          <img className={styles.sec_img} src={card.secondImage} alt="" />
+                        </div>
 
-                      <div className={styles.box_title}>
-                        <Typography variant="h6">{card.departmentName}</Typography>
-                      </div>
+                        <div className={styles.box_title}>
+                          <Typography variant="h6">{card.departmentName}</Typography>
+                        </div>
 
-                    </Link>
-                  </Box>
+                      </Link>
+
+
+                      <Link href={`/medicaldepartments/${secondHalfArray[index].slug}`} onClick={() => handleResult(secondHalfArray[index])} className={`${styles.box}  
+                    ${query.slug === `${secondHalfArray[index].slug}` && styles.active}`} scroll={false} >
+                        <div className={styles.img_container}>
+                          <img className={styles.main_img} src={secondHalfArray[index].image} alt="" />
+                          <img className={styles.sec_img} src={secondHalfArray[index].secondImage} alt="" />
+                        </div>
+                        <div className={styles.box_title}>
+                          <Typography variant="h6">{secondHalfArray[index].departmentName}</Typography>
+                        </div>
+                      </Link>
+
+                    </Box>
+                  </>
                 ))}
               </Carousel>
 

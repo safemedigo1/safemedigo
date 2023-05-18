@@ -278,6 +278,9 @@ section.proceduresSymptoms {
           cursor: pointer;
           width: 204px;
           height: 56px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
           background-color: var(--main-green-color);
           color: var(--main-white-color);

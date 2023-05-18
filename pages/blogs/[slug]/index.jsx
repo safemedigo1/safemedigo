@@ -26,7 +26,6 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
   const [isLoadingComments, setIsLoadingComments] = useState(false);
   const [errorList, setErrorList] = useState(false);
   const [currentPageCount, setCurrentPageCount] = useState(1)
-
   const [isCommentSucces, setIsCommentSucces] = useState()
 
 
