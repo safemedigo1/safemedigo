@@ -178,12 +178,12 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
             </Typography>
           </Box>
 
-          <motion.div
-            animate={{
-              y: [-40, 0],
-              opacity: 1
-            }}
-            transition={{ duration: 0.80, ease: "easeOut" }}
+          <div
+            // animate={{
+            //   y: [-40, 0],
+            //   opacity: 1
+            // }}
+            // transition={{ duration: 0.80, ease: "easeOut" }}
 
             className={styles.section_container}>
 
@@ -339,7 +339,7 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
 
               </div>
             </div>
-          </motion.div >
+          </div >
         </Container >
       </section >
     </>)
