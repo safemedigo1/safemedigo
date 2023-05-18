@@ -233,15 +233,26 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                   }
                   }
                   >
+
+                    <Link href={`/medicaldepartments/Obstetrics-and-gynecology`} scroll={false}>
+                      <ListItem variant='li' sx={{
+                        cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)'
+                      }}>
+                        All Health Cases
+                      </ListItem>
+                    </Link>
+
                     {dataHealthCase.map((healthCase) => (
-                      <Link href={`/medicaldepartments/${router.query.slug}/${healthCase.slug}`} scroll={false}>
-                        <ListItem key={healthCase.id} variant='li' sx={{
+                      <Link href={`/medicaldepartments/${router.query.slug}/${healthCase.slug}`} scroll={false} key={healthCase.id}>
+                        <ListItem variant='li' sx={{
                           cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)'
                         }}>
                           {healthCase.name}
                         </ListItem>
                       </Link>
                     ))}
+
+
                   </List>
                 </AccordionDetails>
               </Accordion>
@@ -267,7 +278,6 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                     expanded={true}
                     square={false} sx={{
                       backgroundColor: 'var(--main-white-color)',
-                      boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.1607843137)',
                       '&:before': {
                         display: 'none',
                       },
