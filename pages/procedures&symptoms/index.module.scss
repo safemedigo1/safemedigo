@@ -281,18 +281,27 @@ section.proceduresSymptoms {
           display: flex;
           align-items: center;
           justify-content: center;
-
-          background-color: var(--main-green-color);
-          color: var(--main-white-color);
-
+          background-color: transparent;
+          color: var(--main-dark-color);
           border-radius: 5px;
-          border: 1px solid var(--main-green-color);
+          border: 2px solid var(--main-dark-color);
+          transition: all 0.3s ease;
 
           font-size: 18px;
           font-weight: var(--font-bold);
           font-family: var(--quickstand-font);
+          svg {
+            margin-left: 10px;
+          }
+
           @media screen and (max-width: 992px) {
             width: 100%;
+          }
+
+          &:hover {
+            background-color: var(--main-green-color);
+            color: var(--main-white-color);
+            border-color: var(--main-green-color);
           }
         }
       }

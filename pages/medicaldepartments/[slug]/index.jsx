@@ -94,6 +94,8 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
   const description = dataMedicalDepartments.find((e) => query.slug === e.slug)
 
   const getAllTreatments = async () => {
+    setTreatmentLoading(true)
+
     const resTreatmentsHealthCase = await
       axios.post("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
         "lang": locale,
@@ -107,6 +109,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
         }
       });
     // setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data?.treatments)
+    setTreatmentLoading(false)
 
     if (TreatmentCountPage > 1) {
       setDataTreatmentsHealthCase(prev => [...prev, ...resTreatmentsHealthCase?.data?.treatments])
@@ -121,16 +124,9 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
 
   const handleLoadMoreTreatments = () => {
+    setTreatmentLoading(true)
     setTreatmentCountPage((prev) => prev + 1)
-    if (dataTreatmentsHealthCase !== null) {
-      setTreatmentLoading(false)
-    } else {
-      setTreatmentLoading(true)
-    }
-
-    console.log(treatmentLoading)
   }
-  console.log(treatmentLoading)
 
   useEffect(() => {
     getAllTreatments()
