@@ -782,7 +782,7 @@ const TreatmentName = ({ dataTreatment }) => {
                   <>
                     <div className={styles.steps_container} key={index}>
                       <div className={styles.step}>
-                        <span>{stepCard.stepCode}</span>
+                        <span>{index + 1}</span>
                       </div>
                     </div>
 
@@ -1156,7 +1156,7 @@ const TreatmentName = ({ dataTreatment }) => {
                   <>
                     <div className={styles.steps_container} key={index}>
                       <div className={styles.step}>
-                        <span>{card.procedureCode}</span>
+                        <span>{index + 1}</span>
                       </div>
                     </div>
 
@@ -1171,11 +1171,9 @@ const TreatmentName = ({ dataTreatment }) => {
                       </div>
 
                       <div className={styles.list}>
-                        <ul>
-                          <li>
-                            {card.procedureDescription}
-                          </li>
-                        </ul>
+                        <p>
+                          {card.procedureDescription}
+                        </p>
                       </div>
                     </div>
 

@@ -422,7 +422,6 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                 }
 
 
-                {console.log(dataTreatmentsHealthCase?.length, 'TREATMENTSS')}
               </div >
             }
 

@@ -129,6 +129,11 @@ article.overview {
           margin-bottom: 38px;
         }
         .boxes_container {
+          &:last-child {
+            @media screen and (max-width: 1200px) {
+              width: 224px;
+            }
+          }
           .box {
             .title {
               h6 {
@@ -260,7 +265,7 @@ article.overview {
     }
 
     .box {
-      margin: 5px 20px 5px 5px;
+      // margin: 5px 20px 5px 5px;
 
       @media screen and (max-width: 992px) {
         margin-right: 10px !important;
@@ -280,6 +285,7 @@ article.overview {
         img {
           width: 194px;
           height: 100%;
+          object-fit: cover;
 
           @media screen and (max-width: 992px) {
             width: 50%;
@@ -313,7 +319,7 @@ article.overview {
           font-size: 18px;
           font-weight: var(--font-medium);
           font-family: var(--quickstand-font);
-
+          width: 300px;
           color: var(--main-green-color);
         }
       }
@@ -578,7 +584,7 @@ article.overview {
 
   .box {
     width: 285.2px;
-    height: 427.59px;
+    height: 560px;
 
     background-color: var(--main-white-color);
     box-shadow: 0px 2px 10px #00000029;
@@ -626,25 +632,25 @@ article.overview {
     .list {
       flex-basis: 100%;
 
-      ul {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-between;
+      // ul {
+      //   display: flex;
+      //   flex-direction: column;
+      //   align-items: flex-start;
+      //   justify-content: space-between;
 
-        height: 100%;
-        li {
-          list-style-type: disc;
-          list-style-position: inside;
-          color: var(--main-dark-color);
-          margin-bottom: 20px;
+      //   height: 100%;
+      // }
+      p {
+        list-style-type: disc;
+        list-style-position: inside;
+        color: var(--main-dark-color);
+        margin-bottom: 20px;
 
-          font-size: 16px;
-          font-weight: var(--font-medium);
-          letter-spacing: -1px;
-          line-height: 1.3rem;
-          font-family: var(--open-sans-font);
-        }
+        font-size: 16px;
+        font-weight: var(--font-medium);
+        letter-spacing: -1px;
+        line-height: 1.3rem;
+        font-family: var(--open-sans-font);
       }
     }
   }
