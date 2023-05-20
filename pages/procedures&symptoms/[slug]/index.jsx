@@ -284,7 +284,7 @@ const TreatmentName = ({ dataTreatment }) => {
                 </ListItem>
 
                 <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                  <Link href='#q&a'>
+                  <Link href='#QA'>
                     {t("proceduresSymptoms_single:nav_q&a")}
                   </Link>
                 </ListItem>
