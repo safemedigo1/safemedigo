@@ -1,6 +1,6 @@
 
 import styles from '../../../procedures&symptoms/index.module.scss';
-import { MostPopular } from '@/components/Home'
+import { ContactDetails, MostPopular } from '@/components/Home'
 import { Container, Typography, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem } from '@mui/material'
 import React, { useState } from 'react'
 import Carousel from 'react-elastic-carousel';
@@ -341,6 +341,10 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
           </div >
         </Container >
       </section >
+
+
+      <ContactDetails />
+
     </>)
 }
 
@@ -414,7 +418,7 @@ export async function getServerSideProps({ locale, query }) {
       dataMedicalDepartments,
       dataTreatmentsHealthCase,
       query,
-      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms"])),
+      ...(await serverSideTranslations(locale, ['navbar', "contact_details", 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms"])),
 
     }
   }

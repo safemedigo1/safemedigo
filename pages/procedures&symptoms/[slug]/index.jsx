@@ -10,6 +10,7 @@ import { PageHeader, SecNavbar } from '@/components';
 import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
+import { ContactDetails } from '@/components/Home';
 
 const TreatmentName = ({ dataTreatment }) => {
   const [expanded, setExpanded] = useState(false);
@@ -1212,6 +1213,160 @@ const TreatmentName = ({ dataTreatment }) => {
         </div>
       </section>
 
+      <section id={styles.QA}>
+        <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+          <div className={styles.title}>
+            <Typography variant='h3'>Guides And Common Questions</Typography>
+          </div>
+
+          <div className={styles.menu_container}>
+            <Accordion disableGutters elevation={0}
+              square={false} sx={{
+                '&:before': {
+                  display: 'none',
+                }
+              }}
+              expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+              <AccordionSummary
+                sx={expanded !== 'panel1' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC', color: '#000000' }
+                  : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
+                }
+                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                aria-controls="panel1d-content" id="panel1d-header">
+                <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                  How To Prepare Myself For Hair Transplant Surgery?
+
+                </Typography>
+              </AccordionSummary>
+
+              <AccordionDetails >
+
+                <List sx={{
+                  listStyleType: 'disc',
+                  padding: '0px',
+
+                  '& .MuiListItem-root': {
+
+                    listStylePosition: 'inside',
+                    padding: '0px',
+                  },
+                }}
+                >
+                  <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                    <div dangerouslySetInnerHTML={createMarkup()} />
+                  </ListItem  >
+
+
+
+                </List>
+              </AccordionDetails>
+
+            </Accordion>
+
+            <Accordion disableGutters elevation={0}
+              square={false} sx={{
+                marginTop: '9px',
+
+                '&:before': {
+                  display: 'none',
+                }
+              }}
+              expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+              <AccordionSummary
+
+                sx={expanded !== 'panel3' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC ', color: '#000000' }
+                  : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
+                }
+                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel3' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                aria-controls="panel3d-content" id="panel3d-header"                >
+                <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                  How To Care After Hair Transplant?
+
+                </Typography>
+              </AccordionSummary>
+
+              <AccordionDetails >
+
+                <List sx={{
+                  listStyleType: 'disc',
+                  padding: '0px',
+
+                  '& .MuiListItem-root': {
+
+                    listStylePosition: 'inside',
+                    padding: '0px',
+                  },
+                }}
+                >
+                  <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                    <div dangerouslySetInnerHTML={createMarkupSideEffects()} />
+                  </ListItem  >
+
+
+
+                </List>
+              </AccordionDetails>
+
+            </Accordion>
+
+            <Accordion disableGutters elevation={0}
+              square={false} sx={{
+                marginTop: '9px',
+                '&:before': {
+                  display: 'none',
+                }
+              }}
+              expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+              <AccordionSummary
+
+                sx={expanded !== 'panel2' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC ', color: '#000000' }
+                  : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
+                }
+                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel2' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                aria-controls="panel2d-content" id="panel2d-header"                >
+                <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                  How Can I Get Best Results After Hair Transplant?
+                </Typography>
+              </AccordionSummary>
+
+              <AccordionDetails >
+
+                <List sx={{
+                  listStyleType: 'disc',
+                  padding: '0px',
+
+                  '& .MuiListItem-root': {
+
+                    listStylePosition: 'inside',
+                    padding: '0px',
+                  },
+                }}
+                >
+                  <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                    <div dangerouslySetInnerHTML={createMarkupCandidateOverview()} />
+                  </ListItem  >
+
+                </List>
+              </AccordionDetails>
+
+            </Accordion>
+
+
+          </div>
+
+
+          <div className={styles.btn_container}>
+            <button>
+              Load More
+            </button>
+          </div>
+
+
+        </Container >
+
+      </section>
+
+      <ContactDetails />
     </>
   )
 }
@@ -1259,7 +1414,7 @@ export async function getServerSideProps({ locale, query }) {
   return {
     props: {
       dataTreatment,
-      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", "proceduresSymptoms_single"])),
+      ...(await serverSideTranslations(locale, ['navbar', "contact_details", 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", "proceduresSymptoms_single"])),
 
     }
   }

@@ -1,6 +1,6 @@
 import styles from '../../procedures&symptoms/index.module.scss';
 import { ThreeDots } from 'react-loader-spinner'
-import { MostPopular } from '@/components/Home'
+import { ContactDetails, MostPopular } from '@/components/Home'
 import { Container, Typography, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import Carousel from 'react-elastic-carousel';
@@ -198,6 +198,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                       <div className={styles.img_container}>
                         <img className={styles.main_img} src={card.image} alt="" />
                         <img className={styles.sec_img} src={card.secondImage} alt="" />
+
                       </div>
 
                       <div className={styles.box_title}>
@@ -454,6 +455,9 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
         </Container >
       </section >
+
+      <ContactDetails />
+
     </>
   )
 }
@@ -506,7 +510,7 @@ export async function getServerSideProps({ locale, query }) {
       dataMedicalDepartments,
       query,
       locale,
-      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms"])),
+      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', "contact_details", 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms"])),
 
     }
   }

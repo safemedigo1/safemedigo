@@ -162,6 +162,10 @@ article.overview {
                   margin-bottom: 14px;
                 }
 
+                @media screen and (min-width: 1200px) {
+                  width: 224px;
+                }
+
                 &::after {
                   content: "";
                   position: absolute;
@@ -658,6 +662,8 @@ article.overview {
 
 section.price {
   position: relative;
+  margin-top: 50px;
+  margin-bottom: 180px;
 
   @media screen and (max-width: 992px) {
     display: flex;
@@ -759,6 +765,66 @@ section.price {
             font-weight: bold;
           }
         }
+      }
+    }
+  }
+}
+
+section#QA {
+  margin-bottom: 40px;
+  .title {
+    margin-bottom: 24px;
+    h3 {
+      color: var(--main-dark-color);
+      font-size: 34px;
+      font-family: var(--quickstand-font);
+      font-weight: var(--font-sem-bold);
+
+      @media screen and (max-width: 992px) {
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .menu_container {
+    width: 699px;
+
+    @media screen and (max-width: 992px) {
+      width: 100%;
+    }
+  }
+
+  .btn_container {
+    margin-top: 40px;
+    button {
+      cursor: pointer;
+      width: 204px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      color: var(--main-dark-color);
+      border-radius: 5px;
+      border: 2px solid var(--main-dark-color);
+      transition: all 0.3s ease;
+
+      font-size: 18px;
+      font-weight: var(--font-bold);
+      font-family: var(--quickstand-font);
+      svg {
+        margin-left: 10px;
+      }
+
+      @media screen and (max-width: 992px) {
+        width: 100%;
+      }
+
+      &:hover {
+        background-color: var(--main-green-color);
+        color: var(--main-white-color);
+        border-color: var(--main-green-color);
       }
     }
   }
