@@ -410,24 +410,7 @@ const TreatmentName = ({ dataTreatment }) => {
                       <ListItem>{dataTreatment.successRate}%</ListItem>
                     </List>
                   </div>
-                  <div className={styles.box}>
-                    <div className={styles.title}>
-                      <Typography variant='h6'>{t("proceduresSymptoms_single:procedure_type")}:</Typography>
-                    </div>
-                    <List sx={{
-                      listStyleType: 'disc',
-                      padding: '0px',
 
-                      '& .MuiListItem-root': {
-
-                        listStylePosition: 'inside',
-                        padding: '0px',
-                        cursor: 'pointer'
-                      },
-                    }}>
-                      <ListItem> {dataTreatment.procedureType}</ListItem>
-                    </List>
-                  </div>
                   <div className={styles.box}>
                     <div className={styles.title}>
                       <Typography variant='h6'>{t("proceduresSymptoms_single:duration_results")}:</Typography>
@@ -444,6 +427,25 @@ const TreatmentName = ({ dataTreatment }) => {
                       },
                     }}>
                       <ListItem>{dataTreatment.resultDuration}</ListItem>
+                    </List>
+                  </div>
+
+                  <div className={styles.box}>
+                    <div className={styles.title}>
+                      <Typography variant='h6'>{t("proceduresSymptoms_single:procedure_type")}:</Typography>
+                    </div>
+                    <List sx={{
+                      listStyleType: 'disc',
+                      padding: '0px',
+
+                      '& .MuiListItem-root': {
+
+                        listStylePosition: 'inside',
+                        padding: '0px',
+                        cursor: 'pointer'
+                      },
+                    }}>
+                      <ListItem> {dataTreatment.procedureType}</ListItem>
                     </List>
                   </div>
                 </div>
@@ -798,14 +800,6 @@ const TreatmentName = ({ dataTreatment }) => {
 
                   </>
                 ))}
-                <div className={styles.box} >
-                  <div className={styles.box_title}>
-                    <Typography variant="h6"> TESTTTT</Typography>
-                  </div>
-                  <div className={styles.img_container}>
-                    <img src={test.src} alt="" />
-                  </div>
-                </div>
 
 
 
