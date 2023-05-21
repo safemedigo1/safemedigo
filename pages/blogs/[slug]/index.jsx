@@ -37,10 +37,12 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
 
   function createMarkup() {
-    return { __html: blog.content };
+    return { __html: decodeURI(blog.extraContent) };
 
   }
 
+
+  // console.log(, "BLOOGGG")
 
 
   const { t } = useTranslation()
@@ -265,11 +267,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                 <img src={blog.image} alt={blog.title} />
               </div>
 
-
               <div dangerouslySetInnerHTML={createMarkup()} />
-
-
-
 
             </article>
 
