@@ -42,7 +42,6 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
   }
 
 
-  // console.log(, "BLOOGGG")
 
 
   const { t } = useTranslation()

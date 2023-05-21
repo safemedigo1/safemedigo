@@ -1,5 +1,5 @@
 import Carousel, { consts } from 'react-elastic-carousel';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Typography, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Link from 'next/link';
@@ -11,9 +11,14 @@ import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 import { ContactDetails } from '@/components/Home';
+import axios from 'axios';
+import { ThreeDots } from 'react-loader-spinner'
 
-const TreatmentName = ({ dataTreatment }) => {
+const TreatmentName = ({ dataTreatment, locale, query, }) => {
   const [expanded, setExpanded] = useState(false);
+  const [currentPageCount, setCurrentPageCount] = useState(1)
+  const [qADetails, setQADetails] = useState(null);
+  const [isLoadingQA, setIsLoadingQA] = useState(false);
   const { t } = useTranslation();
   const router = useRouter();
 
@@ -95,6 +100,52 @@ const TreatmentName = ({ dataTreatment }) => {
     );
   }
 
+
+  const getQA = async () => {
+    const getQA = await axios.post("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentsQuestionAnswersBySlug", {
+      "lang": locale,
+      "treatmentSlug": query.slug,
+      "currentPage": currentPageCount
+
+    }, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }).catch((error) => console.log(error))
+
+    console.log(getQA, "QAAAAAA")
+
+
+    if (currentPageCount > 1) {
+      setQADetails(prev => [...prev, ...getQA.data.questionsAnswers])
+    } else {
+      setQADetails(getQA.data.questionsAnswers)
+    }
+
+
+    if (getQA.status === 200) {
+      setIsLoadingQA(false)
+    } else {
+      setIsLoadingQA(false)
+    }
+  }
+
+
+  const handleLoadMoreComments = () => {
+    setIsLoadingQA(true)
+    setCurrentPageCount((prev) => prev + 1)
+  }
+
+  useEffect(() => {
+    getQA();
+  }, [currentPageCount])
+
+
+
+
+
+  console.log(qADetails, "QAAQSQSQSQQAAQAQAQ")
 
   const { test, preparing, Hair_Transplant_after,
     Hair_Transplant_before, aircraft,
@@ -259,7 +310,6 @@ const TreatmentName = ({ dataTreatment }) => {
     return { __html: dataTreatment.getTreatmentStepThree };
   }
 
-  console.log(dataTreatment.afterOperationOverview)
   return (
     <>
       <SecNavbar treatmentName={dataTreatment.treatmentName} />
@@ -996,6 +1046,7 @@ const TreatmentName = ({ dataTreatment }) => {
 
                 <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
  */}
+
               </AccordionDetails>
             </Accordion>
           </div>
@@ -1224,146 +1275,94 @@ const TreatmentName = ({ dataTreatment }) => {
           </div>
 
           <div className={styles.menu_container}>
-            <Accordion disableGutters elevation={0}
-              square={false} sx={{
-                '&:before': {
-                  display: 'none',
-                }
-              }}
-              expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-              <AccordionSummary
-                sx={expanded !== 'panel1' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC', color: '#000000' }
-                  : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
-                }
-                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                aria-controls="panel1d-content" id="panel1d-header">
-                <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                  How To Prepare Myself For Hair Transplant Surgery?
 
-                </Typography>
-              </AccordionSummary>
+            {qADetails.map((q, index) => (
+              <>
+                <Accordion key={index} disableGutters elevation={0}
+                  square={false} sx={{
+                    '&:before': {
+                      display: 'none',
+                    }
+                  }}
+                  expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                  <AccordionSummary
+                    sx={expanded !== 'panel1' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC', color: '#000000' }
+                      : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                    aria-controls="panel1d-content" id="panel1d-header">
+                    <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                      {q.question}
 
-              <AccordionDetails >
+                    </Typography>
+                  </AccordionSummary>
 
-                <List sx={{
-                  listStyleType: 'disc',
-                  padding: '0px',
+                  <AccordionDetails >
 
-                  '& .MuiListItem-root': {
+                    <List sx={{
+                      listStyleType: 'disc',
+                      padding: '0px',
 
-                    listStylePosition: 'inside',
-                    padding: '0px',
-                  },
-                }}
-                >
-                  <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    <div dangerouslySetInnerHTML={createMarkup()} />
-                  </ListItem  >
+                      '& .MuiListItem-root': {
 
-
-
-                </List>
-              </AccordionDetails>
-
-            </Accordion>
-
-            <Accordion disableGutters elevation={0}
-              square={false} sx={{
-                marginTop: '9px',
-
-                '&:before': {
-                  display: 'none',
-                }
-              }}
-              expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-              <AccordionSummary
-
-                sx={expanded !== 'panel3' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC ', color: '#000000' }
-                  : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
-                }
-                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel3' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                aria-controls="panel3d-content" id="panel3d-header"                >
-                <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                  How To Care After Hair Transplant?
-
-                </Typography>
-              </AccordionSummary>
-
-              <AccordionDetails >
-
-                <List sx={{
-                  listStyleType: 'disc',
-                  padding: '0px',
-
-                  '& .MuiListItem-root': {
-
-                    listStylePosition: 'inside',
-                    padding: '0px',
-                  },
-                }}
-                >
-                  <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    <div dangerouslySetInnerHTML={createMarkupSideEffects()} />
-                  </ListItem  >
+                        listStylePosition: 'inside',
+                        padding: '0px',
+                      },
+                    }}
+                    >
+                      <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                        {q.answer}
+                      </ListItem  >
 
 
 
-                </List>
-              </AccordionDetails>
+                    </List>
+                  </AccordionDetails>
 
-            </Accordion>
+                </Accordion>
 
-            <Accordion disableGutters elevation={0}
-              square={false} sx={{
-                marginTop: '9px',
-                '&:before': {
-                  display: 'none',
-                }
-              }}
-              expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-              <AccordionSummary
+              </>
+            ))}
 
-                sx={expanded !== 'panel2' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC ', color: '#000000' }
-                  : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
-                }
-                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel2' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                aria-controls="panel2d-content" id="panel2d-header"                >
-                <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                  How Can I Get Best Results After Hair Transplant?
-                </Typography>
-              </AccordionSummary>
 
-              <AccordionDetails >
 
-                <List sx={{
-                  listStyleType: 'disc',
-                  padding: '0px',
 
-                  '& .MuiListItem-root': {
 
-                    listStylePosition: 'inside',
-                    padding: '0px',
-                  },
-                }}
-                >
-                  <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    <div dangerouslySetInnerHTML={createMarkupCandidateOverview()} />
-                  </ListItem  >
 
-                </List>
-              </AccordionDetails>
 
-            </Accordion>
 
 
           </div>
 
 
+
+          {/* {commentsDetails.length !== commentsDetails.length && */}
           <div className={styles.btn_container}>
-            <button>
-              Load More
+            <button className={styles.load_more_btn} onClick={handleLoadMoreComments}>
+              {isLoadingQA !== true ?
+                t("single_blog:load_more")
+                :
+                <>
+                  Loading {` `}
+                  <ThreeDots
+                    height="25"
+                    width="25"
+                    radius="9"
+                    color="#00ccb5"
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle={{}}
+                    wrapperClassName="load_more_btn"
+                    visible={true}
+                  />
+
+                </>
+
+              }
+
             </button>
           </div>
+          {/* // } */}
+
 
 
         </Container >
@@ -1418,7 +1417,9 @@ export async function getServerSideProps({ locale, query }) {
   return {
     props: {
       dataTreatment,
-      ...(await serverSideTranslations(locale, ['navbar', "contact_details", 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", "proceduresSymptoms_single"])),
+      locale,
+      query,
+      ...(await serverSideTranslations(locale, ['navbar', 'single_blog', "contact_details", 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", "proceduresSymptoms_single"])),
 
     }
   }
