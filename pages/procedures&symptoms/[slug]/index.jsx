@@ -799,6 +799,33 @@ const TreatmentName = ({ dataTreatment }) => {
                   </>
                 ))}
 
+
+
+                <div className={styles.box} >
+                  <div className={styles.box_title}>
+                    <Typography variant="h6">desccc</Typography>
+                  </div>
+                  <div className={styles.img_container}>
+                    <img src={preparing.src} alt="" />
+                  </div>
+                </div>
+                <div className={styles.box} >
+                  <div className={styles.box_title}>
+                    <Typography variant="h6">desccc</Typography>
+                  </div>
+                  <div className={styles.img_container}>
+                    <img src={author.src} alt="" />
+                  </div>
+                </div>
+                <div className={styles.box} >
+                  <div className={styles.box_title}>
+                    <Typography variant="h6">desccc</Typography>
+                  </div>
+                  <div className={styles.img_container}>
+                    <img src={plane.src} alt="" />
+                  </div>
+                </div>
+
               </Carousel>
             </div>
           </Container >
