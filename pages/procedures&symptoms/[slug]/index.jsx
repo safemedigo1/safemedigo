@@ -96,7 +96,7 @@ const TreatmentName = ({ dataTreatment }) => {
   }
 
 
-  const { treatmentVideo, preparing, Hair_Transplant_after,
+  const { test, preparing, Hair_Transplant_after,
     Hair_Transplant_before, aircraft,
     plane,
     ReasonsRetention_Feature, patient_plan, author } = imgs;
@@ -798,6 +798,14 @@ const TreatmentName = ({ dataTreatment }) => {
 
                   </>
                 ))}
+                <div className={styles.box} >
+                  <div className={styles.box_title}>
+                    <Typography variant="h6"> TESTTTT</Typography>
+                  </div>
+                  <div className={styles.img_container}>
+                    <img src={test.src} alt="" />
+                  </div>
+                </div>
 
 
 
