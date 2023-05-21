@@ -284,7 +284,7 @@ const TreatmentName = ({ dataTreatment }) => {
                 </ListItem>
 
                 <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                  <Link href='#QA'>
+                  <Link href='#q&a'>
                     {t("proceduresSymptoms_single:nav_q&a")}
                   </Link>
                 </ListItem>
@@ -1213,7 +1213,7 @@ const TreatmentName = ({ dataTreatment }) => {
         </div>
       </section>
 
-      <section id={styles.QA}>
+      <section id="q&a" className={styles.QA}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.title}>
             <Typography variant='h3'>Guides And Common Questions</Typography>
