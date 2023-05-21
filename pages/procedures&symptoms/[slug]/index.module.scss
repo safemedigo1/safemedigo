@@ -646,8 +646,8 @@ article.overview {
       //   height: 100%;
       // }
       p {
-        list-style-type: disc;
-        list-style-position: inside;
+        // list-style-type: disc;
+        // list-style-position: inside;
         color: var(--main-dark-color);
         margin-bottom: 20px;
 
@@ -656,6 +656,12 @@ article.overview {
         letter-spacing: -1px;
         line-height: 1.3rem;
         font-family: var(--open-sans-font);
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 13;
+        white-space: pre-wrap;
+        -webkit-line-clamp: 13;
       }
     }
   }
