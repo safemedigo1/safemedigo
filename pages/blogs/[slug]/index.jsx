@@ -38,11 +38,13 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
   function createMarkup() {
     return { __html: blog.content };
+
   }
 
 
+
   const { t } = useTranslation()
-  const { author, userimg } = imgs;
+  const { userimg } = imgs;
   const router = useRouter();
   const formRef = useRef();
 
@@ -262,10 +264,15 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
               <div className={styles.headline_img_container}>
                 <img src={blog.image} alt={blog.title} />
               </div>
+
+
               <div dangerouslySetInnerHTML={createMarkup()} />
+
+
+
+
             </article>
 
-            {console.log(blog, "HEREEEEEEEE")}
             {blog?.treatment !== null &&
               <div className={styles.blog_treatment_box}>
                 <div className={styles.box}>
