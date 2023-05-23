@@ -1282,13 +1282,13 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                       display: 'none',
                     }
                   }}
-                  expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                  expanded={expanded === 'panel11'} onChange={handleChange('panel11')}>
                   <AccordionSummary
-                    sx={expanded !== 'panel1' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC', color: '#000000' }
+                    sx={expanded !== 'panel11' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC', color: '#000000' }
                       : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
                     }
-                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                    aria-controls="panel1d-content" id="panel1d-header">
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel11' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                    aria-controls="panel11d-content" id="panel11d-header">
                     <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
                       {q.question}
 
@@ -1300,6 +1300,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                     <List sx={{
                       listStyleType: 'disc',
                       padding: '0px',
+                      maxWidth: '100%',
+                      overflow: 'scroll',
 
                       '& .MuiListItem-root': {
 
