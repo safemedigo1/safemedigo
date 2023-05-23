@@ -22,6 +22,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
   const { t } = useTranslation();
   const router = useRouter();
 
+  console.log(dataTreatment, "TREATMENTS DATAAA")
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -114,13 +115,11 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
       }
     }).catch((error) => console.log(error))
 
-    console.log(getQA, "QAAAAAA")
-
 
     if (currentPageCount > 1) {
-      setQADetails(prev => [...prev, ...getQA.data.questionsAnswers])
+      setQADetails(prev => [...prev, ...getQA?.data?.questionsAnswers])
     } else {
-      setQADetails(getQA.data.questionsAnswers)
+      setQADetails(getQA?.data?.questionsAnswers)
     }
 
 
@@ -145,7 +144,6 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
 
 
-  console.log(qADetails, "QAAQSQSQSQQAAQAQAQ")
 
   const { test, preparing, Hair_Transplant_after,
     Hair_Transplant_before, aircraft,
@@ -1101,7 +1099,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                       1
                     </span>
 
-                    Send Your Pictures
+                    Treatment Step
 
                   </Typography>
                 </AccordionSummary>
@@ -1136,7 +1134,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                       2
                     </span>
 
-                    Send Your Pictures
+                    Treatment Step
 
                   </Typography>
                 </AccordionSummary>
@@ -1170,7 +1168,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                       3
                     </span>
 
-                    Send Your Pictures
+                    Treatment Step
 
                   </Typography>
                 </AccordionSummary>
@@ -1275,8 +1273,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
           </div>
 
           <div className={styles.menu_container}>
-
-            {qADetails.map((q, index) => (
+            {console.log(qADetails, "QAAAA")}
+            {qADetails?.map((q, index) => (
               <>
                 <Accordion key={index} disableGutters elevation={0}
                   square={false} sx={{
@@ -1323,15 +1321,6 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
               </>
             ))}
-
-
-
-
-
-
-
-
-
           </div>
 
 
