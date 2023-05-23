@@ -1289,7 +1289,12 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   }}
                   expanded={expanded === 'panel15'} onChange={handleChange('panel15')}>
                   <AccordionSummary
-                    sx={{ display: 'flex', alignItems: 'flex-start', }}
+                    sx={{
+                      display: 'flex', alignItems: 'flex-start', borderBottom: '1px solid gray',
+                      padding: '0',
+                      paddingBottom: '10px'
+                      ,
+                    }}
                     expandIcon={<ExpandMoreIcon sx={expanded !== 'panel15' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#000000', width: '30px', height: "30px", marginBottom: '5px', }} />}
                     aria-controls="panel15d-content" id="panel15d-header">
                     <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
