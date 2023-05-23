@@ -22,7 +22,6 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
   const { t } = useTranslation();
   const router = useRouter();
 
-  console.log(dataTreatment, "TREATMENTS DATAAA")
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -113,7 +112,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       }
-    }).catch((error) => console.log(error))
+    }).catch((error) => console.log(error, "Error hanlder!!"))
 
 
     if (currentPageCount > 1) {
@@ -269,44 +268,48 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
 
   function createMarkup() {
-    return { __html: dataTreatment.benifitsOverview };
+    return { __html: decodeURI(dataTreatment.benifitsOverview) };
   }
 
   function createMarkupSideEffects() {
-    return { __html: dataTreatment.sideEffectsOverview };
+    return { __html: decodeURI(dataTreatment.sideEffectsOverview) };
   }
 
   function createMarkupCandidateOverview() {
-    return { __html: dataTreatment.candidateOverview };
+    return { __html: decodeURI(dataTreatment.candidateOverview) };
   }
 
   function createMarkupHospitalizationOverview() {
-    return { __html: dataTreatment.hospitalizationOverview };
+    return { __html: decodeURI(dataTreatment.hospitalizationOverview) };
   }
 
   function createMarkupPreOperationOverview() {
-    return { __html: dataTreatment.preOperationOverview };
+    return { __html: decodeURI(dataTreatment.preOperationOverview) };
   }
 
   function createMarkupDuringOperationOverview() {
-    return { __html: dataTreatment.duringOperationOverview };
+    return { __html: decodeURI(dataTreatment.duringOperationOverview) };
   }
 
   function createMarkupAfterOperationOverview() {
-    return { __html: dataTreatment.afterOperationOverview };
+    return { __html: decodeURI(dataTreatment.afterOperationOverview) };
   }
 
   function createMarkupGetTreatmentStepOne() {
-    return { __html: dataTreatment.getTreatmentStepOne };
+    return { __html: decodeURI(dataTreatment.getTreatmentStepOne) };
   }
 
   function createMarkupGetTreatmentStepTwo() {
-    return { __html: dataTreatment.getTreatmentStepTwo };
+    return { __html: decodeURI(dataTreatment.getTreatmentStepTwo) };
   }
 
   function createMarkupGetTreatmentStepThree() {
-    return { __html: dataTreatment.getTreatmentStepThree };
+    return { __html: decodeURI(dataTreatment.getTreatmentStepThree) };
   }
+  function createMarkupGetQA() {
+    return { __html: decodeURI(qADetails.map((obj) => obj.answer)) };
+  }
+
 
   return (
     <>
@@ -1276,7 +1279,6 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
           </div>
 
           <div className={styles.menu_container}>
-            {console.log(qADetails, "QAAAA")}
             {qADetails?.map((q, index) => (
               <>
                 <Accordion key={index} disableGutters elevation={0}
@@ -1325,7 +1327,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                     }}
                     >
                       <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                        {q.answer}
+                        <div dangerouslySetInnerHTML={createMarkupGetQA()} />
+
                       </ListItem  >
 
 

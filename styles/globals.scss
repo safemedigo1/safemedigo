@@ -465,6 +465,7 @@ section#PatientStories_patient_stories__oSemC,
 // Scroll bar
 ::-webkit-scrollbar {
   width: 7px;
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar-track {
@@ -473,8 +474,8 @@ section#PatientStories_patient_stories__oSemC,
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
   background: var(--main-green-color);
+  cursor: pointer;
 }
 
 #overview,
@@ -491,9 +492,9 @@ section#PatientStories_patient_stories__oSemC,
 
   ::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background: #7979798a;
+    background: #e4e4e4;
     &:hover {
-      background: var(--main-gray-color);
+      background: #a1a1a1;
       cursor: pointer !important;
     }
   }
