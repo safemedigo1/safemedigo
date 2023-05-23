@@ -601,8 +601,6 @@ article.overview {
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
-    overflow: hidden;
-    overflow-y: scroll;
 
     @media screen and (max-width: 992px) {
       width: 427.59px;
@@ -638,6 +636,8 @@ article.overview {
 
     .list {
       flex-basis: 100%;
+      overflow: hidden;
+      overflow-y: scroll;
 
       // ul {
       //   display: flex;
