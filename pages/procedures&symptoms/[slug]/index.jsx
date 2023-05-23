@@ -1284,10 +1284,10 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   }}
                   expanded={expanded === 'panel11'} onChange={handleChange('panel11')}>
                   <AccordionSummary
-                    sx={expanded !== 'panel11' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC', color: '#000000' }
-                      : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
+                    sx={expanded !== 'panel11' ? { '&:hover': { backgroundColor: 'transparent' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: 'transparent', color: '#000000' }
+                      : { backgroundColor: 'transparent', height: '55px', borderRadius: '5px' }
                     }
-                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel11' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel11' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#000000', width: '30px', height: "30px", marginBottom: '5px', }} />}
                     aria-controls="panel11d-content" id="panel11d-header">
                     <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
                       {q.question}
@@ -1310,7 +1310,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                       },
                     }}
                     >
-                      <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                      <ListItem variant='li' sx={{ textDecoration: 'underline', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
                         {q.answer}
                       </ListItem  >
 
@@ -1319,7 +1319,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                     </List>
                   </AccordionDetails>
 
-                </Accordion>
+                </Accordion >
 
               </>
             ))}
@@ -1358,7 +1358,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
         </Container >
 
-      </section>
+      </section >
 
       <ContactDetails />
     </>
