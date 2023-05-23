@@ -527,7 +527,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                 <List sx={{
                   listStyleType: 'disc',
                   padding: '0px',
-
+                  overflow: 'scroll',
                   '& .MuiListItem-root': {
 
                     listStylePosition: 'inside',
@@ -573,7 +573,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                 <List sx={{
                   listStyleType: 'disc',
                   padding: '0px',
-
+                  overflow: 'scroll',
                   '& .MuiListItem-root': {
 
                     listStylePosition: 'inside',
@@ -618,6 +618,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                 <List sx={{
                   listStyleType: 'disc',
                   padding: '0px',
+                  overflow: 'scroll',
 
                   '& .MuiListItem-root': {
 
@@ -662,6 +663,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                 <List sx={{
                   listStyleType: 'disc',
                   padding: '0px',
+                  overflow: 'scroll',
 
                   '& .MuiListItem-root': {
 
@@ -884,7 +886,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails sx={{ background: '#F4F9F8' }}>
+              <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'scroll' }}>
                 <div dangerouslySetInnerHTML={createMarkupPreOperationOverview()} />
               </AccordionDetails>
             </Accordion>
@@ -911,7 +913,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
               </AccordionSummary>
 
 
-              <AccordionDetails sx={{ background: '#F4F9F8' }}>
+              <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'scroll' }}>
                 <div dangerouslySetInnerHTML={createMarkupDuringOperationOverview()} />
                 {/* 
 
@@ -1031,7 +1033,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                 </Typography>
               </AccordionSummary>
 
-              <AccordionDetails >
+              <AccordionDetails sx={{ overflow: 'scroll' }}>
 
                 <div dangerouslySetInnerHTML={createMarkupAfterOperationOverview()} />
 
@@ -1104,7 +1106,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   </Typography>
                 </AccordionSummary>
 
-                <AccordionDetails sx={{ background: '#F4F9F8' }}>
+                <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'scroll' }} >
                   <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepOne()} />
                 </AccordionDetails>
 
@@ -1139,7 +1141,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   </Typography>
                 </AccordionSummary>
 
-                <AccordionDetails sx={{ background: '#F4F9F8' }}>
+                <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'scroll' }}>
                   <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepTwo()} />
                 </AccordionDetails>
 
@@ -1157,7 +1159,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
 
                 <AccordionSummary
-                  sx={expanded !== 'panel11' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                  sx={expanded !== 'panel11' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF', }
                     : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
                   }
                   expandIcon={<ExpandMoreIcon sx={expanded !== 'panel11' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
@@ -1173,7 +1175,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   </Typography>
                 </AccordionSummary>
 
-                <AccordionDetails sx={{ background: '#F4F9F8' }}>
+                <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'scroll' }}>
                   <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepThree()} />
                 </AccordionDetails>
 
@@ -1187,9 +1189,10 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
           </div>
         </Container >
 
-      </section>
+      </section >
 
-      {dataTreatment.treatmentProcedure != 0 &&
+      {
+        dataTreatment.treatmentProcedure != 0 &&
         <section id={styles.treatment_desc}>
           <Container className='mycontainer' sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.sec_title}>
@@ -1240,7 +1243,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
         </section>
       }
 
-      <section id={'price'} className={styles.price}>
+      < section id={'price'} className={styles.price} >
         <div className={styles.section_container}>
           <div className={styles.title}>
             <Typography variant='h3'>
@@ -1264,7 +1267,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       <section id="q&a" className={styles.QA}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -1278,17 +1281,17 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
               <>
                 <Accordion key={index} disableGutters elevation={0}
                   square={false} sx={{
+
+                    ".MuiAccordionSummary-content": { margin: '0px !important' },
                     '&:before': {
                       display: 'none',
                     }
                   }}
-                  expanded={expanded === 'panel11'} onChange={handleChange('panel11')}>
+                  expanded={expanded === 'panel15'} onChange={handleChange('panel15')}>
                   <AccordionSummary
-                    sx={expanded !== 'panel11' ? { '&:hover': { backgroundColor: 'transparent' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: 'transparent', color: '#000000' }
-                      : { backgroundColor: 'transparent', height: '55px', borderRadius: '5px' }
-                    }
-                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel11' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#000000', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                    aria-controls="panel11d-content" id="panel11d-header">
+                    sx={{ display: 'flex', alignItems: 'flex-start', }}
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel15' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#000000', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                    aria-controls="panel15d-content" id="panel15d-header">
                     <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
                       {q.question}
 
