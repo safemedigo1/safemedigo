@@ -60,11 +60,9 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
     // { width: 400, pagination: true, itemsToShow: 1.5, itemsToScroll: 1, showArrows: false },
     // { width: 800, pagination: false, itemsToShow: 5, itemsToScroll: 5 },
 
-
-
-    { width: 1, pagination: true, showArrows: false, itemsToShow: 1.4 },
-    { width: 400, pagination: true, itemsToShow: 2.4, itemsToScroll: 1, showArrows: false },
-    { width: 800, pagination: true, itemsToShow: 2.4, itemsToScroll: 1, transitionMs: 1000, showArrows: false },
+    { width: 1, pagination: true, showArrows: false, itemsToShow: 1 },
+    { width: 400, pagination: true, itemsToShow: 1.4, itemsToScroll: 1, showArrows: false, },
+    { width: 800, pagination: true, itemsToShow: 1.4, itemsToScroll: 1, showArrows: false },
     { width: 900, pagination: false, itemsToShow: 3, itemsToScroll: 1, transitionMs: 1000 },
     { width: 1000, pagination: false, itemsToShow: 5, itemsToScroll: 1, transitionMs: 1000 },
 
@@ -72,10 +70,10 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
   ])
 
   const [breakPointsOperation] = useState([
-    { width: 1, pagination: false, showArrows: false, itemsToShow: 1.1 },
+    { width: 1, pagination: false, showArrows: false, itemsToShow: 1.7 },
     { width: 300, pagination: false, showArrows: false, itemsToShow: 1.5, itemsToScroll: 1 },
     { width: 400, pagination: false, itemsToShow: 1.5, itemsToScroll: 1, showArrows: false },
-    { width: 600, pagination: false, itemsToShow: 3, itemsToScroll: 3 },
+    { width: 600, pagination: false, itemsToShow: 4, itemsToScroll: 3 },
 
   ])
 
@@ -824,41 +822,39 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
             </div>
           </Container >
 
-          <Container className='mycontainer' sx={{ maxWidth: "1239px" }} maxWidth={false}>
-            <div
-              className={styles.slider_container}>
-              <Carousel
-                breakPoints={surgerySteps}
-                renderArrow={myArrow}
-                transitionMs={1000}
-                isRTL={router.locale === 'ar' ? true : false}
-              >
+          <div
+            className={styles.slider_container}>
+            <Carousel
+              breakPoints={breakPointsOperation}
+              renderArrow={myArrow}
+              transitionMs={1000}
+              isRTL={router.locale === 'ar' ? true : false}
+            >
 
-                {dataTreatment.treatmentStep.map((stepCard, index) => (
-                  <>
-                    <div className={styles.steps_container} key={index}>
-                      <div className={styles.step}>
-                        <span>{index + 1}</span>
-                      </div>
+              {dataTreatment.treatmentStep.map((stepCard, index) => (
+                <>
+                  <div className={styles.steps_container} key={index}>
+                    <div className={styles.step}>
+                      <span>{index + 1}</span>
                     </div>
+                  </div>
 
-                    <div className={styles.box} key={index}>
-                      <div className={styles.box_title}>
-                        <Typography variant="h6"> {stepCard.stepDescription}</Typography>
-                      </div>
-                      <div className={styles.img_container}>
-                        <img src={stepCard.stepImage} alt="" />
-                      </div>
+                  <div className={styles.box} key={index}>
+                    <div className={styles.box_title}>
+                      <Typography variant="h6"> {stepCard.stepDescription}</Typography>
                     </div>
+                    <div className={styles.img_container}>
+                      <img src={stepCard.stepImage} alt="" />
+                    </div>
+                  </div>
 
-                  </>
-                ))}
+                </>
+              ))}
 
 
 
-              </Carousel>
-            </div>
-          </Container >
+            </Carousel>
+          </div>
 
         </section>
       }
@@ -1025,8 +1021,14 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
               expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
               <AccordionSummary
 
-                sx={expanded !== 'panel8' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
-                  : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+                sx={expanded !== 'panel8' ? {
+                  height: '55px', backgroundColor: '#004747', color: '#FFFFFF',
+
+                  borderRadius: '2px !important',
+
+                }
+
+                  : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', borderRadius: '2px !important', }
                 }
                 expandIcon={<ExpandMoreIcon sx={expanded !== 'panel8' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
                 aria-controls="panel8d-content" id="panel8d-header"                >
@@ -1103,13 +1105,11 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                     <span>
                       1
                     </span>
-
-                    Treatment Step
-
+                    Send Your Pictures
                   </Typography>
                 </AccordionSummary>
 
-                <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'scroll' }} >
+                <AccordionDetails sx={{ background: '#F4F9F8' }} >
                   <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepOne()} />
                 </AccordionDetails>
 
@@ -1139,12 +1139,11 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                       2
                     </span>
 
-                    Treatment Step
-
+                    Get Your Quote
                   </Typography>
                 </AccordionSummary>
 
-                <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'scroll' }}>
+                <AccordionDetails sx={{ background: '#F4F9F8' }}>
                   <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepTwo()} />
                 </AccordionDetails>
 
@@ -1173,12 +1172,11 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                       3
                     </span>
 
-                    Treatment Step
-
+                    Secure Your Appointment
                   </Typography>
                 </AccordionSummary>
 
-                <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'scroll' }}>
+                <AccordionDetails sx={{ background: '#F4F9F8' }}>
                   <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepThree()} />
                 </AccordionDetails>
 
@@ -1280,30 +1278,37 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
           <div className={styles.menu_container}>
             {qADetails?.map((q, index) => (
-              <>
-                <Accordion key={index} disableGutters elevation={0}
+              <div className={styles.QA_menu}>
+                {/* <Accordion key={index} disableGutters elevation={0}
                   square={false} sx={
-                    expanded === 'pannel16' ?
-                      {
-
-                        ".MuiAccordionSummary-content": { margin: '0px !important' },
-                        '&:before': {
-                          display: 'none',
-                        }
-                      } :
-                      { borderBottom: '1px solid var(--main-gray-color)' }
+                    {
+                      ".MuiAccordionSummary-content": { margin: '0px !important' },
+                      '&:before': {
+                        display: 'none',
+                      },
+                      borderBottom: '1px solid  #A1A1A1',
+                      marginTop: '30px'
+                    }
 
                   }
-                  expanded={expanded === 'panel15'} onChange={handleChange('panel15')}>
+                  expanded={expanded === `panel1${index}`} onChange={handleChange(`panel1${index}`)}>
                   <AccordionSummary
                     sx={{
                       display: 'flex', alignItems: 'flex-start',
                       padding: '0',
-                      paddingBottom: '10px'
-                      ,
+                      position: 'relative'
+                      // , '&::before': {
+                      //   content: '',
+                      //   position: 'absolute',
+                      //   width: '10px',
+                      //   backgroundColor: 'red',
+                      //   top: '0',
+                      //   left: '0',
+
+                      // }
                     }}
                     expandIcon={<ExpandMoreIcon sx={expanded !== 'panel15' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#000000', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                    aria-controls="panel15d-content" id="panel15d-header">
+                    aria-controls={`pannel4d${index}-content`} id={`pannel4d${index}-header`}>
                     <Typography sx={{ 'overflow-X': 'scroll', fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
                       {q.question}
 
@@ -1336,13 +1341,48 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                     </List>
                   </AccordionDetails>
 
-                </Accordion >
+                </Accordion > */}
 
-              </>
+                <Accordion disableGutters elevation={0}
+                  square={false} sx={{
+                    borderRadius: '0px !important',
+                    '&:not(:last-child)': {
+                      background: 'red !important'
+                    },
+                    borderBottom: '1px solid #A1A1A1',
+                    padding: '0'
+                    ,
+                    '&:before': {
+                      display: 'none',
+                    }
+                  }}
+                  expanded={expanded === `panel1${index}`} onChange={handleChange(`panel1${index}`)}>
+
+
+                  <AccordionSummary
+                    sx={
+                      {
+                        height: '55px', backgroundColor: 'transparent', color: '#000000', marginTop: '10px',
+                      }
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel9' ? { color: '#000000', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                    aria-controls="panel9d-content" id="panel9d-header">
+                    <Typography sx={paragrahp3}>
+
+                      {q.question}
+                    </Typography>
+                  </AccordionSummary>
+
+                  <AccordionDetails sx={{ background: '#F4F9F8' }} >
+                    <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepOne()} />
+                  </AccordionDetails>
+
+                </Accordion>
+
+
+              </div>
             ))}
           </div>
-
-
 
           {/* {commentsDetails.length !== commentsDetails.length && */}
           <div className={styles.btn_container}>
@@ -1370,6 +1410,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
             </button>
           </div>
           {/* // } */}
+
+
 
 
 

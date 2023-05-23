@@ -6,6 +6,7 @@
 
     @media screen and (max-width: 992px) {
       // padding-top: 57px;
+      padding-bottom: 20px;
       padding-top: 8px;
     }
 
@@ -68,7 +69,7 @@
 
         .review_by {
           .author_img {
-            margin-right: 20px;
+            margin-right: 1;
             width: 45px;
             height: 45px;
             @media screen and (max-width: 450px) {
@@ -161,8 +162,17 @@
     margin-right: 80px;
 
     @media screen and (max-width: 450px) {
-      margin-right: 0;
+      margin-right: 1;
+      margin-bottom: 16px;
     }
+    .info {
+      @media screen and (max-width: 450px) {
+        align-self: center;
+      }
+    }
+  }
+  .author_img {
+    margin-right: 16px;
   }
 }
 
@@ -227,7 +237,7 @@
 
         .review_by {
           .author_img {
-            margin-right: 20px;
+            margin-right: 16px;
             width: 45px;
             height: 45px;
 

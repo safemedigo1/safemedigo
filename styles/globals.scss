@@ -482,10 +482,6 @@ section#PatientStories_patient_stories__oSemC,
 #_slug__treatment_desc__VG0U3,
 #_slug__what_you_need__IFu4u,
 #_slug__howToGetTreatment__pC_W0 {
-  ::-webkit-scrollbar {
-    width: 10px !important;
-  }
-
   ::-webkit-scrollbar-track {
     border-radius: 5px;
   }
@@ -498,6 +494,10 @@ section#PatientStories_patient_stories__oSemC,
       cursor: pointer !important;
     }
   }
+}
+
+*::-webkit-scrollbar {
+  width: 10 !important;
 }
 
 // select color
