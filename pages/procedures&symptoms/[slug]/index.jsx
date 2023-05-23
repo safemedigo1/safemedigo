@@ -1270,7 +1270,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
       </section >
 
       <section id="q&a" className={styles.QA}>
-        <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+        <Container sx={{ maxWidth: "1239px", overflow: 'hidden' }} maxWidth={false}>
           <div className={styles.title}>
             <Typography variant='h3'>Guides And Common Questions</Typography>
           </div>
@@ -1280,24 +1280,29 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
             {qADetails?.map((q, index) => (
               <>
                 <Accordion key={index} disableGutters elevation={0}
-                  square={false} sx={{
+                  square={false} sx={
+                    expanded === 'pannel16' ?
+                      {
 
-                    ".MuiAccordionSummary-content": { margin: '0px !important' },
-                    '&:before': {
-                      display: 'none',
-                    }
-                  }}
+                        ".MuiAccordionSummary-content": { margin: '0px !important' },
+                        '&:before': {
+                          display: 'none',
+                        }
+                      } :
+                      { borderBottom: '1px solid var(--main-gray-color)' }
+
+                  }
                   expanded={expanded === 'panel15'} onChange={handleChange('panel15')}>
                   <AccordionSummary
                     sx={{
-                      display: 'flex', alignItems: 'flex-start', borderBottom: '1px solid gray',
+                      display: 'flex', alignItems: 'flex-start',
                       padding: '0',
                       paddingBottom: '10px'
                       ,
                     }}
                     expandIcon={<ExpandMoreIcon sx={expanded !== 'panel15' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#000000', width: '30px', height: "30px", marginBottom: '5px', }} />}
                     aria-controls="panel15d-content" id="panel15d-header">
-                    <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                    <Typography sx={{ 'overflow-X': 'scroll', fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
                       {q.question}
 
                     </Typography>
@@ -1308,8 +1313,9 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                     <List sx={{
                       listStyleType: 'disc',
                       padding: '0px',
-                      maxWidth: '100%',
-                      overflow: 'scroll',
+                      width: '100%',
+                      overflow: 'hidden',
+                      'overflow-x': 'scroll',
 
                       '& .MuiListItem-root': {
 
@@ -1318,7 +1324,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                       },
                     }}
                     >
-                      <ListItem variant='li' sx={{ textDecoration: 'underline', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                      <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
                         {q.answer}
                       </ListItem  >
 
