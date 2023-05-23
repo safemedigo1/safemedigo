@@ -477,21 +477,23 @@ section#PatientStories_patient_stories__oSemC,
   background: var(--main-green-color);
 }
 
-#_slug__treatment_desc__VG0U3 {
+#overview,
+#_slug__treatment_desc__VG0U3,
+#_slug__what_you_need__IFu4u,
+#_slug__howToGetTreatment__pC_W0 {
   ::-webkit-scrollbar {
-    width: 7px;
+    width: 10px !important;
   }
 
   ::-webkit-scrollbar-track {
-    border-radius: 10px;
+    border-radius: 5px;
   }
 
   ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-    background: var(--main-gray-color);
+    border-radius: 5px;
+    background: #7979798a;
     &:hover {
-      background: #7979798a;
+      background: var(--main-gray-color);
       cursor: pointer !important;
     }
   }
