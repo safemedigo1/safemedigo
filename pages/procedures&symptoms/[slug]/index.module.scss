@@ -129,16 +129,16 @@ article.overview {
           margin-bottom: 38px;
         }
         .boxes_container {
-          @media screen and (max-width: 450px) {
-            display: flex;
-            flex-direction: column-reverse;
-          }
           &:last-child {
             @media screen and (max-width: 1200px) {
               width: 224px;
             }
           }
           .box {
+            @media screen and (max-width: 450px) {
+              // width: 150px;
+            }
+
             .title {
               h6 {
                 color: var(--main-dark-color);

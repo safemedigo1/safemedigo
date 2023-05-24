@@ -30,24 +30,20 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1, itemsToScroll: 1 },
-    { width: 400, pagination: true, itemsToShow: 2, itemsToScroll: 1, showArrows: false },
-    { width: 800, pagination: true, itemsToShow: 2, itemsToScroll: 1, transitionMs: 1000, showArrows: false },
-    { width: 900, pagination: false, itemsToShow: 2, itemsToScroll: 1, transitionMs: 1000 },
-    { width: 1000, pagination: false, itemsToShow: 3, itemsToScroll: 1, transitionMs: 1000 },
+    { width: 400, pagination: true, itemsToShow: 3, itemsToScroll: 1, showArrows: false },
+    { width: 800, pagination: true, itemsToShow: 4, itemsToScroll: 1, transitionMs: 800, showArrows: false },
+    { width: 900, pagination: false, itemsToShow: 4, itemsToScroll: 1, transitionMs: 800 },
+
+
 
   ])
 
   const [breakPointsSteps] = useState([
-    // { width: 1, pagination: true, showArrows: false },
-    // { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },
-    // { width: 400, pagination: true, itemsToShow: 3, itemsToScroll: 1.1, showArrows: false },
-    // { width: 800, pagination: false, itemsToShow: 4, itemsToScroll: 4, transitionMs: 1000 },
-
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1, itemsToScroll: 1 },
-    { width: 400, pagination: true, itemsToShow: 2, itemsToScroll: 1, showArrows: false },
+    { width: 400, pagination: true, itemsToShow: 1, itemsToScroll: 1, showArrows: false },
     { width: 800, pagination: true, itemsToShow: 2, itemsToScroll: 1, transitionMs: 1000, showArrows: false },
-    { width: 900, pagination: false, itemsToShow: 2.5, itemsToScroll: 1, transitionMs: 1000 },
+    { width: 900, pagination: false, itemsToShow: 2, itemsToScroll: 1, transitionMs: 1000 },
     { width: 1000, pagination: false, itemsToShow: 4, itemsToScroll: 1, transitionMs: 1000 },
 
 
@@ -70,11 +66,11 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
   ])
 
   const [breakPointsOperation] = useState([
-    { width: 1, pagination: false, showArrows: false, itemsToShow: 1.7 },
-    { width: 300, pagination: false, showArrows: false, itemsToShow: 1.5, itemsToScroll: 1 },
-    { width: 400, pagination: false, itemsToShow: 1.5, itemsToScroll: 1, showArrows: false },
-    { width: 600, pagination: false, itemsToShow: 4, itemsToScroll: 3 },
-
+    { width: 1, pagination: true, showArrows: false },
+    { width: 300, pagination: true, showArrows: false, itemsToShow: 1.5, },
+    { width: 400, pagination: true, itemsToShow: 3, itemsToScroll: 1, showArrows: false },
+    { width: 800, pagination: true, itemsToShow: 4, itemsToScroll: 1, showArrows: false },
+    { width: 900, pagination: false, itemsToShow: 4, itemsToScroll: 1 },
   ])
 
 
@@ -139,70 +135,6 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
 
 
-
-
-
-  const { test, preparing, Hair_Transplant_after,
-    Hair_Transplant_before, aircraft,
-    plane,
-    ReasonsRetention_Feature, patient_plan, author } = imgs;
-
-
-  const beforeAfterCards = [
-    { id: 1, title: 'FUE Hair Transplant - 4500 Grafts - 10 Month Post-Op', before_img: Hair_Transplant_before.src, after_img: Hair_Transplant_after.src },
-    { id: 2, title: 'FUE Hair Transplant - 4500 Grafts - 10 Month Post-Op', before_img: Hair_Transplant_before.src, after_img: Hair_Transplant_after.src },
-    { id: 3, title: 'FUE Hair Transplant - 4500 Grafts - 10 Month Post-Op', before_img: Hair_Transplant_before.src, after_img: Hair_Transplant_after.src },
-    { id: 4, title: 'FUE Hair Transplant - 4500 Grafts - 10 Month Post-Op', before_img: Hair_Transplant_before.src, after_img: Hair_Transplant_after.src },
-    { id: 5, title: 'FUE Hair Transplant - 4500 Grafts - 10 Month Post-Op', before_img: Hair_Transplant_before.src, after_img: Hair_Transplant_after.src },
-    { id: 6, title: 'FUE Hair Transplant - 4500 Grafts - 10 Month Post-Op', before_img: Hair_Transplant_before.src, after_img: Hair_Transplant_after.src },
-    { id: 7, title: 'FUE Hair Transplant - 4500 Grafts - 10 Month Post-Op', before_img: Hair_Transplant_before.src, after_img: Hair_Transplant_after.src },
-    { id: 8, title: 'FUE Hair Transplant - 4500 Grafts - 10 Month Post-Op', before_img: Hair_Transplant_before.src, after_img: Hair_Transplant_after.src },
-    { id: 9, title: 'FUE Hair Transplant - 4500 Grafts - 10 Month Post-Op', before_img: Hair_Transplant_before.src, after_img: Hair_Transplant_after.src },
-    { id: 10, title: 'FUE Hair Transplant - 4500 Grafts - 10 Month Post-Op', before_img: Hair_Transplant_before.src, after_img: Hair_Transplant_after.src },
-  ]
-
-  const stepsCards = [
-    { id: 1, title: 'Preparing', img: preparing.src, },
-    { id: 2, title: 'Preparing', img: preparing.src, },
-    { id: 3, title: 'Preparing', img: preparing.src, },
-    { id: 4, title: 'Preparing', img: preparing.src, },
-    { id: 5, title: 'Preparing', img: preparing.src, },
-    { id: 6, title: 'Preparing', img: preparing.src, },
-    { id: 7, title: 'Preparing', img: preparing.src, },
-    { id: 8, title: 'Preparing', img: preparing.src, },
-    { id: 9, title: 'Preparing', img: preparing.src, },
-    { id: 10, title: 'Preparing', img: preparing.src, },
-  ]
-
-
-  const OperationCards = [
-    { id: 1, title: 'Preparing', img: preparing.src, },
-    { id: 2, title: 'Preparing', img: preparing.src, },
-    { id: 3, title: 'Preparing', img: preparing.src, },
-    { id: 4, title: 'Preparing', img: preparing.src, },
-    { id: 5, title: 'Preparing', img: preparing.src, },
-    { id: 6, title: 'Preparing', img: preparing.src, },
-    { id: 7, title: 'Preparing', img: preparing.src, },
-    { id: 8, title: 'Preparing', img: preparing.src, },
-    { id: 9, title: 'Preparing', img: preparing.src, },
-    { id: 10, title: 'Preparing', img: preparing.src, },
-  ]
-
-
-  const treatment_desc = [
-    { id: 1, title: 'Day 1 - Arrival', list: ['Pickup from İstanbul Airport (IST) or Sabiha Gökçen Airport (SAW)', 'Transfer to your hotel'], img: aircraft.src, },
-    { id: 2, title: 'Day 2 - Treatment', list: ['Pre-op consultation and blood tests', 'Hair transplant surgery'], img: patient_plan.src, },
-    { id: 3, title: 'Day 3 - Healing', list: ['Tour trip & Shopping or Rest in your hotel',], img: ReasonsRetention_Feature.src, },
-    { id: 4, title: 'Day 4 - Post-Op Check And Departure', list: ['Post-op check-up and PRP treatment', 'Transfer to the airport for departure flight at 2 pm or after'], img: plane.src, },
-    { id: 5, title: 'Day 1 - Arrival', list: ['Pickup from İstanbul Airport (IST) or Sabiha Gökçen Airport (SAW)', 'Transfer to your hotel'], img: aircraft.src, },
-    { id: 6, title: 'Day 2 - Treatment', list: ['Pre-op consultation and blood tests', 'Hair transplant surgery'], img: patient_plan.src, },
-    { id: 7, title: 'Day 3 - Healing', list: ['Tour trip & Shopping or Rest in your hotel',], img: ReasonsRetention_Feature.src, },
-    { id: 8, title: 'Day 4 - Post-Op Check And Departure', list: ['Post-op check-up and PRP treatment', 'Transfer to the airport for departure flight at 2 pm or after'], img: plane.src, },
-    { id: 9, title: 'Day 1 - Arrival', list: ['Pickup from İstanbul Airport (IST) or Sabiha Gökçen Airport (SAW)', 'Transfer to your hotel'], img: aircraft.src, },
-    { id: 10, title: 'Day 2 - Treatment', list: ['Pre-op consultation and blood tests', 'Hair transplant surgery'], img: patient_plan.src, },
-    { id: 11, title: 'Day 3 - Healing', list: ['Tour trip & Shopping or Rest in your hotel',], img: ReasonsRetention_Feature.src, },
-    { id: 12, title: 'Day 4 - Post-Op Check And Departure', list: ['Post-op check-up and PRP treatment', 'Transfer to the airport for departure flight at 2 pm or after'], img: plane.src, },
-  ]
 
 
 
@@ -293,8 +225,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
     return { __html: decodeURI(dataTreatment.afterOperationOverview) };
   }
 
-  function createMarkupGetTreatmentStepOne(q) {
-    return { __html: decodeURI(q) };
+  function createMarkupGetTreatmentStepOne() {
+    return { __html: decodeURI(dataTreatment.getTreatmentStepTwo) };
   }
 
   function createMarkupGetTreatmentStepTwo() {
@@ -304,8 +236,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
   function createMarkupGetTreatmentStepThree() {
     return { __html: decodeURI(dataTreatment.getTreatmentStepThree) };
   }
-  function createMarkupGetQA() {
-    return { __html: decodeURI(qADetails.map((obj) => obj.answer)) };
+  function createMarkupGetQA(q) {
+    return { __html: decodeURI(q) };
   }
 
 
@@ -402,7 +334,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                       <ListItem>{dataTreatment.operationDuration} </ListItem>
                     </List>
                   </div>
-                  <div className={styles.box} style={{ order: '-1' }}>
+                  <div className={styles.box} >
                     <div className={styles.title}>
                       <Typography variant='h6'>{t("proceduresSymptoms_single:type_of_anesthesia")}:</Typography>
                     </div>
@@ -441,9 +373,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                 </div>
 
 
-                <div className={styles.boxes_container} style={{
-                  alignItems: 'flex-end'
-                }}>
+                <div className={styles.boxes_container} >
                   <div className={styles.box}>
                     <div className={styles.title}>
                       <Typography variant='h6'>{t("proceduresSymptoms_single:success_rate")}:</Typography>
@@ -482,7 +412,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                     </List>
                   </div>
 
-                  <div className={styles.box} >
+                  <div className={styles.box} style={{ order: '-1' }}>
                     <div className={styles.title}>
                       <Typography variant='h6'>{t("proceduresSymptoms_single:procedure_type")}:</Typography>
                     </div>
@@ -689,96 +619,14 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
       {dataTreatment?.treatmentImage.length !== 0 &&
         <section id={styles.before_after}>
-          <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+          <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.title}>
               <Typography variant='h3'>
                 Before & After Photos
               </Typography>
             </div>
 
-            {/* <div className={styles.menu_container}>
-            <div className={styles.menu}>
-              <Accordion disableGutters elevation={0}
-                square={false} sx={{
-                  '&:before': {
-                    display: 'none',
-                  }
-                }}
-                expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
-                <AccordionSummary
 
-                  sx={expanded !== 'panel5' ? { height: '55px', borderRadius: '5px', backgroundColor: '#004747', color: '#FFFFFF' }
-                    : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', borderRadius: '5px', }
-                  }
-                  expandIcon={<ExpandMoreIcon sx={expanded !== 'panel5' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                  aria-controls="panel5d-content" id="panel5d-header"                >
-                  <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                    FUE Hair Transplant
-
-                  </Typography>
-                </AccordionSummary>
-
-                <AccordionDetails >
-
-                  <List sx={{
-                    listStyleType: 'disc',
-                    padding: '0px',
-
-                    '& .MuiListItem-root': {
-
-                      listStylePosition: 'inside',
-                      padding: '0px',
-                      cursor: 'pointer'
-                    },
-                  }}
-                  >
-                    <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                      Hair Transplant
-                    </ListItem  >
-                    <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                      Hair Transplant
-                    </ListItem  >
-                    <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                      Hair Transplant
-                    </ListItem  >
-                    <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                      Hair Transplant
-                    </ListItem  >
-                    <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                      Hair Transplant
-                    </ListItem  >
-                    <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                      Hair Transplant
-                    </ListItem  >
-                    <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                      Hair Transplant
-                    </ListItem  >
-                    <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                      Hair Transplant
-                    </ListItem  >
-                    <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                      Hair Transplant
-                    </ListItem  >
-                    <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                      Hair Transplant
-                    </ListItem  >
-                    <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                      Hair Transplant
-                    </ListItem  >
-
-
-                  </List>
-                </AccordionDetails>
-
-              </Accordion>
-            </div>
-
-            <div className={styles.btn_container}>
-              <Link href='/'>
-                <button>View All Photo</button>
-              </Link>
-            </div>
-          </div> */}
 
             <div className={styles.slider_container}>
               <Carousel
@@ -816,7 +664,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
       {dataTreatment.treatmentStep.length !== 0 &&
         <section id={styles.steps}>
-          <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+          <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.sec_title}>
               <Typography variant='h3'>
                 Surgery Steps
@@ -916,100 +764,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
               </AccordionSummary>
 
 
-              <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'scroll' }}>
+              <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
                 <div dangerouslySetInnerHTML={createMarkupDuringOperationOverview()} />
-                {/* 
-
-                <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
-
-
-
-
-                <Carousel pagination={false} breakPoints={breakPointsOperation} showArrows={false}
-                  transitionMs={1000}
-                  isRTL={router.locale === 'ar' ? true : false}
-
-                >
-                  {OperationCards.map((operation, index) => (
-                    <>
-                      <div className={styles.box} key={index}>
-                        <div className={styles.box_title}>
-                          <Typography variant="h6">{operation.title}</Typography>
-                        </div>
-                        <div className={styles.img_container}>
-                          <img src={operation.img} alt="" />
-                        </div>
-                      </div>
-
-                    </>
-                  ))}
-
-                </Carousel>
-
-
-                <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
-
-
-
-
-
-                <Carousel pagination={false} breakPoints={breakPointsOperation} showArrows={false}
-                  transitionMs={1000}
-                  isRTL={router.locale === 'ar' ? true : false}
-
-                >
-                  {OperationCards.map((operation, index) => (
-                    <>
-                      <div className={styles.box} key={index}>
-                        <div className={styles.box_title}>
-                          <Typography variant="h6">{operation.title}</Typography>
-                        </div>
-                        <div className={styles.img_container}>
-                          <img src={operation.img} alt="" />
-                        </div>
-                      </div>
-                    </>
-                  ))}
-
-                </Carousel>
-
-
-                <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
-
-                <div className={styles.box}>
-                  <div className={styles.box_title}>
-                    <Typography variant="h6">Markings</Typography>
-                  </div>
-                  <div className={styles.img_container}>
-                    <img src={preparing.src} alt="" />
-                  </div>
-                </div>
-
-
-                <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
-
-
-                <Carousel pagination={false} breakPoints={breakPointsOperation} showArrows={false}
-                  transitionMs={1000}
-                  isRTL={router.locale === 'ar' ? true : false}
-
-                >
-                  {OperationCards.map((operation, index) => (
-                    <>
-
-                      <div className={styles.box} key={index}>
-                        <div className={styles.box_title}>
-                          <Typography variant="h6">{operation.title}</Typography>
-                        </div>
-                        <div className={styles.img_container}>
-                          <img src={operation.img} alt="" />
-                        </div>
-                      </div>
-
-                    </>
-                  ))}
-
-                </Carousel> */}
 
               </AccordionDetails>
 
@@ -1045,16 +801,6 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
               <AccordionDetails sx={{ background: '#F4F9F8' }}>
 
                 <div dangerouslySetInnerHTML={createMarkupAfterOperationOverview()} />
-
-
-
-                {/* <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
-
-                <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
-
-
-                <Typography sx={sxParagraph}>If You Have Concerns About Doing A Medical Procedure, You Should Take A Simple Practical Step That Helps You To Get A Clearer Sense Of What You Want And Answers For Your Questions. In Other Words, Seek Counseling. Guide Through Of Consultation Process:</Typography>
- */}
 
               </AccordionDetails>
             </Accordion>
@@ -1296,7 +1042,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                       display: 'none',
                     }
                   }}
-                  expanded={expanded === `panel1${index}`} onChange={handleChange(`panel1${index}`)}>
+                  expanded={expanded === `panel1${index}2`} onChange={handleChange(`panel1${index}2`)}>
 
 
                   <AccordionSummary
@@ -1305,8 +1051,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                         height: '55px', backgroundColor: 'transparent', color: '#000000', marginTop: '10px',
                       }
                     }
-                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel9' ? { color: '#000000', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                    aria-controls="panel9d-content" id="panel9d-header">
+                    expandIcon={<ExpandMoreIcon sx={expanded !== `panel1${index}2` ? { color: '#000000', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                    aria-controls={`panel1${index}2-content `} id={`panel1${index}2-header`}>
                     <Typography sx={paragrahp3}>
 
                       {q.question}
@@ -1314,7 +1060,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   </AccordionSummary>
 
                   <AccordionDetails  >
-                    <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepOne(q.answer)} />
+                    <div dangerouslySetInnerHTML={createMarkupGetQA(q.answer)} />
                   </AccordionDetails>
 
                 </Accordion>
@@ -1349,7 +1095,6 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
             </button>
           </div>
-          {/* // } */}
 
 
 
@@ -1367,27 +1112,6 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 export default TreatmentName
 
 
-// export async function getServerSideProps(context) {
-//   const res = await fetch("http://safemedigoapi-001-site1.gtempurl.com/api/v1/Blog/GetAllBlogWithPage", {
-//     method: 'POST',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({
-//       "lang": 'ar',
-//       "blogCategoryId": 0,
-//       "currentPage": 2
-//     })
-//   })
-//   const data = await res.json()
-
-//   return {
-//     props: {
-//       blogs: data
-//     }
-//   }
-// }
 
 export async function getServerSideProps({ locale, query }) {
   const resTreatment = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentBySlug", {
