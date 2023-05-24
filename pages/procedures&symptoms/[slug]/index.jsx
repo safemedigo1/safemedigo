@@ -310,7 +310,13 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
               </div>
 
               <div className={styles.details_container}>
-                <div className={styles.boxes_container}>
+                <div className={styles.boxes_container} style={{
+                  flexWrap: 'wrap',
+                  display: 'flex',
+                  flexDirection: 'column-reverse',
+                  marginLeft: '16px',
+
+                }}>
                   <div className={styles.box}>
                     <div className={styles.title}>
                       <Typography variant='h6'>{t("proceduresSymptoms_single:operation_duration")}:</Typography>
