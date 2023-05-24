@@ -440,7 +440,10 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   </div>
                 </div>
 
-                <div className={styles.boxes_container}>
+
+                <div className={styles.boxes_container} style={{
+                  alignItems: 'flex-end'
+                }}>
                   <div className={styles.box}>
                     <div className={styles.title}>
                       <Typography variant='h6'>{t("proceduresSymptoms_single:success_rate")}:</Typography>
@@ -448,12 +451,12 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                     <List sx={{
                       listStyleType: 'disc',
                       padding: '0px',
-
                       '& .MuiListItem-root': {
 
                         listStylePosition: 'inside',
                         padding: '0px',
                         cursor: 'pointer'
+
                       },
                     }}>
                       <ListItem>{dataTreatment.successRate}%</ListItem>
@@ -479,7 +482,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                     </List>
                   </div>
 
-                  <div className={styles.box} style={{ order: '-1' }}>
+                  <div className={styles.box} >
                     <div className={styles.title}>
                       <Typography variant='h6'>{t("proceduresSymptoms_single:procedure_type")}:</Typography>
                     </div>
@@ -1280,76 +1283,12 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
           <div className={styles.menu_container}>
             {qADetails?.map((q, index) => (
               <div className={styles.QA_menu}>
-                {/* <Accordion key={index} disableGutters elevation={0}
-                  square={false} sx={
-                    {
-                      ".MuiAccordionSummary-content": { margin: '0px !important' },
-                      '&:before': {
-                        display: 'none',
-                      },
-                      borderBottom: '1px solid  #A1A1A1',
-                      marginTop: '30px'
-                    }
 
-                  }
-                  expanded={expanded === `panel1${index}`} onChange={handleChange(`panel1${index}`)}>
-                  <AccordionSummary
-                    sx={{
-                      display: 'flex', alignItems: 'flex-start',
-                      padding: '0',
-                      position: 'relative'
-                      // , '&::before': {
-                      //   content: '',
-                      //   position: 'absolute',
-                      //   width: '10px',
-                      //   backgroundColor: 'red',
-                      //   top: '0',
-                      //   left: '0',
-
-                      // }
-                    }}
-                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel15' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#000000', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                    aria-controls={`pannel4d${index}-content`} id={`pannel4d${index}-header`}>
-                    <Typography sx={{ 'overflow-X': 'scroll', fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                      {q.question}
-
-                    </Typography>
-                  </AccordionSummary>
-
-                  <AccordionDetails >
-
-                    <List sx={{
-                      listStyleType: 'disc',
-                      padding: '0px',
-                      width: '100%',
-                      overflow: 'hidden',
-                      'overflow-x': 'scroll',
-
-                      '& .MuiListItem-root': {
-
-                        listStylePosition: 'inside',
-                        padding: '0px',
-                      },
-                    }}
-                    >
-                      <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                        <div dangerouslySetInnerHTML={createMarkupGetQA()} />
-
-                      </ListItem  >
-
-
-
-                    </List>
-                  </AccordionDetails>
-
-                </Accordion > */}
 
                 <Accordion disableGutters elevation={0}
                   square={false} sx={{
                     borderRadius: '0px !important',
-                    '&:not(:last-child)': {
-                      background: 'red !important'
-                    },
+
                     borderBottom: '1px solid #A1A1A1',
                     padding: '0'
                     ,
@@ -1374,7 +1313,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                     </Typography>
                   </AccordionSummary>
 
-                  <AccordionDetails sx={{ background: '#F4F9F8' }} >
+                  <AccordionDetails  >
                     <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepOne(q.answer)} />
                   </AccordionDetails>
 
