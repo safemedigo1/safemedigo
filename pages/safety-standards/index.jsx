@@ -6,8 +6,8 @@ import { Container, Typography } from "@mui/material";
 import { ContactDetails } from '@/components/Home';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from "next/router";
-
 import { useTranslation } from "next-i18next";
+import Image from 'next/image';
 
 const SafetyStandards = () => {
   const { patientFeedback_img,
@@ -121,10 +121,10 @@ const SafetyStandards = () => {
               </div>
 
               <div className={styles.img_container}>
-                <img src={reviewedExperts[0].img} alt="" />
+                <Image width={100} height={100} src={reviewedExperts[0].img} alt="" />
 
                 <div className={styles.icon_container}>
-                  <img src={reviewedExperts[0].icon} alt="" />
+                  <Image width={100} height={100} src={reviewedExperts[0].icon} alt="" />
                 </div>
               </div>
             </div>
@@ -168,9 +168,9 @@ const SafetyStandards = () => {
 
               </div>
               <div className={styles.img_container}>
-                <img src={modernHealthcare[0].img} alt="" />
+                <Image width={100} height={100} src={modernHealthcare[0].img} alt="" />
                 <div className={styles.icon_container}>
-                  <img src={modernHealthcare[0].icon} alt="" />
+                  <Image width={100} height={100} src={modernHealthcare[0].icon} alt="" />
                 </div>
               </div>
             </div>
@@ -226,9 +226,9 @@ const SafetyStandards = () => {
                 </div>
               </div>
               <div className={styles.img_container}>
-                <img src={firstClassMedicalServices[0].img} alt="" />
+                <Image width={100} height={100} src={firstClassMedicalServices[0].img} alt="" />
                 <div className={styles.icon_container}>
-                  <img src={firstClassMedicalServices[0].icon} alt="" />
+                  <Image width={100} height={100} src={firstClassMedicalServices[0].icon} alt="" />
                 </div>
               </div>
             </div>
@@ -283,9 +283,9 @@ const SafetyStandards = () => {
                 </div>
               </div>
               <div className={styles.img_container}>
-                <img src={patientFeedback[0].img} alt="" />
+                <Image width={100} height={100} src={patientFeedback[0].img} alt="" />
                 <div className={styles.icon_container}>
-                  <img src={patientFeedback[0].icon} alt="" />
+                  <Image width={100} height={100} src={patientFeedback[0].icon} alt="" />
                 </div>
               </div>
             </div>
@@ -336,10 +336,10 @@ const SafetyStandards = () => {
               </div>
 
               <div className={styles.img_container}>
-                <img src={treatmentCharges[0].img} alt="" />
+                <Image width={100} height={100} src={treatmentCharges[0].img} alt="" />
 
                 <div className={styles.icon_container}>
-                  <img src={treatmentCharges[0].icon} alt="" />
+                  <Image width={100} height={100} src={treatmentCharges[0].icon} alt="" />
                 </div>
               </div>
             </div>
@@ -384,7 +384,7 @@ const SafetyStandards = () => {
               </div>
 
               <div className={styles.img_container}>
-                <img src={clarityConcerning[0].img} alt="" />
+                <Image width={100} height={100} src={clarityConcerning[0].img} alt="" />
               </div>
             </div>
 

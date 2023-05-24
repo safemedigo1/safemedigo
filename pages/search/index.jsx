@@ -6,9 +6,10 @@ import { Typography, AppBar, Container } from '@mui/material';
 import CloseIcon from "@mui/icons-material/Close";
 import { HiArrowSmRight } from 'react-icons/hi'
 import { FiChevronLeft } from 'react-icons/fi'
+import Image from 'next/image';
 
 const Search = () => {
-  const { logo, NavSearch, en, arrowDown, user, search, notifications, notificationsActive, burger } = imgs;
+  const { logo, } = imgs;
 
 
   const mostSearches = [
@@ -66,7 +67,7 @@ const Search = () => {
           <nav id={styles.navbar_search}>
             <div className={styles.logo}>
               <Link href='/'>
-                <img src={logo.src} alt="" />
+                <Image width={100} height={100} src={logo.src} alt="" />
                 <Typography variant='h1'>Safemedigo</Typography>
               </Link>
             </div>

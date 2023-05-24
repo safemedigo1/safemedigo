@@ -4,7 +4,6 @@ import { PageHeader, SecNavbar } from '@/components';
 import { ContactDetails, Help, WhySafemedigo } from '@/components/Home';
 import imgs from "../../assets/constants/imgs";
 import styles from "./index.module.scss";
-// import '../../styles/'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from "next-i18next";
 import Image from 'next/image';
@@ -93,9 +92,9 @@ const AboutUs = (props) => {
               </div>
 
               <div className={styles.img_container}>
-                <Image width={266} height={200} src={aboutUs[0].img} alt="" />
+                <Image width={200} height={200} src={aboutUs[0].img} alt="" />
                 <div className={styles.icon_container}>
-                  <img src={aboutUs[0].icon} alt="" />
+                  <Image height={100} src={aboutUs[0].icon} alt="" width={100} />
 
                 </div>
               </div>
@@ -116,9 +115,9 @@ const AboutUs = (props) => {
                 </div>
               </div>
               <div className={styles.img_container}>
-                <img src={YouComeFirst[0].img} alt="" />
+                <Image height={100} src={YouComeFirst[0].img} alt="" width={100} />
                 <div className={styles.icon_container}>
-                  <img src={YouComeFirst[0].icon} alt="" />
+                  <Image height={100} src={YouComeFirst[0].icon} alt="" width={100} />
 
                 </div>
               </div>
@@ -138,9 +137,9 @@ const AboutUs = (props) => {
                 </div>
               </div>
               <div className={styles.img_container}>
-                <img src={StressFreeTreatment[0].img} alt="" />
+                <Image height={100} src={StressFreeTreatment[0].img} alt="" width={100} />
                 <div className={styles.icon_container}>
-                  <img src={StressFreeTreatment[0].icon} alt="" />
+                  <Image height={100} src={StressFreeTreatment[0].icon} alt="" width={100} />
 
                 </div>
               </div>
@@ -161,7 +160,7 @@ const AboutUs = (props) => {
                 </div>
               </div>
               <div className={styles.img_container}>
-                <img src={AllInclusiveCare[0].img} alt="" />
+                <Image height={100} src={AllInclusiveCare[0].img} alt="" width={100} />
               </div>
             </div>
 
@@ -206,7 +205,7 @@ const AboutUs = (props) => {
             <div className={styles.boxes_container}>
               <div className={styles.founder}>
                 <div className={styles.img_container}>
-                  <img src={author.src} alt="" />
+                  <Image height={100} src={author.src} alt="" width={100} />
                 </div>
 
                 <div className={styles.name}>
@@ -240,7 +239,7 @@ const AboutUs = (props) => {
               {doctors.map((doctor, idx) => (
                 <div className={styles.box} key={idx}>
                   <div className={styles.img_container}>
-                    <img src={doctor.img} alt="" />
+                    <Image height={100} src={doctor.img} alt="" width={100} />
                   </div>
                   <div className={styles.name}>
                     <Typography>{doctor.name}</Typography>
@@ -268,7 +267,7 @@ const AboutUs = (props) => {
               {team.map((team, idx) => (
                 <div className={styles.box} key={idx}>
                   <div className={styles.img_container}>
-                    <img src={team.img} alt="" />
+                    <Image height={100} src={team.img} alt="" width={100} />
                   </div>
                   <div className={styles.name}>
                     <Typography>{team.name}</Typography>
@@ -294,7 +293,7 @@ const AboutUs = (props) => {
               {patientMangers.map((team, idx) => (
                 <div className={styles.box} key={idx}>
                   <div className={styles.img_container}>
-                    <img src={team.img} alt="" />
+                    <Image height={100} src={team.img} alt="" width={100} />
                   </div>
                   <div className={styles.name}>
                     <Typography>{team.name}</Typography>

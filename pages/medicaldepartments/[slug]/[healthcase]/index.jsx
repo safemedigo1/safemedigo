@@ -15,6 +15,7 @@ import { PageHeader, SecNavbar } from '@/components';
 import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 
 const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, dataTreatmentsHealthCase, query }) => {
@@ -137,8 +138,8 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                       <Link href={`/medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={`${styles.box} 
                     ${query.slug === `${card.slug}` && styles.active}`} >
                         <div className={styles.img_container}>
-                          <img className={styles.main_img} src={card.image} alt="" />
-                          <img className={styles.sec_img} src={card.secondImage} alt="" />
+                          <Image width={100} height={100} className={styles.main_img} src={card.image} alt="" />
+                          <Image width={100} height={100} className={styles.sec_img} src={card.secondImage} alt="" />
                         </div>
 
                         <div className={styles.box_title}>
@@ -151,8 +152,8 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                       <Link href={`/medicaldepartments/${secondHalfArray[index].slug}`} onClick={() => handleResult(secondHalfArray[index])} className={`${styles.box}  
                     ${query.slug === `${secondHalfArray[index].slug}` && styles.active}`} scroll={false} >
                         <div className={styles.img_container}>
-                          <img className={styles.main_img} src={secondHalfArray[index].image} alt="" />
-                          <img className={styles.sec_img} src={secondHalfArray[index].secondImage} alt="" />
+                          <Image width={100} height={100} className={styles.main_img} src={secondHalfArray[index].image} alt="" />
+                          <Image width={100} height={100} className={styles.sec_img} src={secondHalfArray[index].secondImage} alt="" />
                         </div>
                         <div className={styles.box_title}>
                           <Typography variant="h6">{secondHalfArray[index].departmentName}</Typography>
@@ -177,14 +178,7 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
             </Typography>
           </Box>
 
-          <div
-            // animate={{
-            //   y: [-40, 0],
-            //   opacity: 1
-            // }}
-            // transition={{ duration: 0.80, ease: "easeOut" }}
-
-            className={styles.section_container}>
+          <div className={styles.section_container}>
 
             <div className={styles.filter_section}>
               <div className={styles.card_title}>
@@ -319,7 +313,7 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                 <div className={styles.info_header}>
                   <div className={styles.img_container}>
 
-                    <img src={description.image} alt="" />
+                    <Image width={100} height={100} src={description.image} alt="" />
                   </div>
 
                   <div className={styles.title}>

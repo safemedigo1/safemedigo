@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import Image from 'next/image';
 
 const MostPopular = ({ dataPopularTreatments }) => {
   const { t } = useTranslation();
@@ -227,7 +228,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
                         dataPopularTreatments.map((card, index) => (
                           <Link href={`/procedures&symptoms/${card.slug}`} className={styles.box} key={index}>
                             <div className={styles.img_container}>
-                              <img src={card.imagePath} alt={card.title} />
+                              <Image width={344} height={191} src={card.imagePath} alt={card.title} />
                             </div>
 
                             <div className={styles.box_text_container}>
@@ -270,7 +271,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
                         treatmentData.map((card, index) => (
                           <div className={styles.box} key={index}>
                             <div className={styles.img_container}>
-                              <img src={card.img} alt={card.title} />
+                              <Image width={344} height={191} src={card.img} alt={card.title} />
                             </div>
 
                             <div className={styles.box_text_container}>
@@ -337,7 +338,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
                         {doctorsData.map((doc, index) => (
                           <div className={styles.box} key={index}>
                             <div className={styles.img_container}>
-                              <img src={doc.img} alt={doc.name} />
+                              <Image width={344} height={191} src={doc.img} alt={doc.name} />
                               <div className={styles.verified}>
                                 <FaShieldAlt />
                                 <Typography >
@@ -419,7 +420,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
                         {clinicData.map((clinic, index) => (
                           <div className={styles.box} key={index}>
                             <div className={styles.img_container}>
-                              <img src={clinic.img} alt={clinic.title} />
+                              <Image width={344} height={191} src={clinic.img} alt={clinic.title} />
                               <div className={styles.verified}>
                                 <FaShieldAlt />
                                 <Typography >

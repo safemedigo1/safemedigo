@@ -16,6 +16,7 @@ import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import Image from 'next/image';
 
 const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, query, locale }) => {
   const [result, setResult] = useState(null)
@@ -196,8 +197,8 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                     <Link href={`/medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={`${styles.box}  
                     ${query.slug === `${card.slug}` && styles.active}`} scroll={false}>
                       <div className={styles.img_container}>
-                        <img className={styles.main_img} src={card.image} alt="" />
-                        <img className={styles.sec_img} src={card.secondImage} alt="" />
+                        <Image width={100} height={100} className={styles.main_img} src={card.image} alt="" />
+                        <Image width={100} height={100} className={styles.sec_img} src={card.secondImage} alt="" />
 
                       </div>
 
@@ -210,8 +211,8 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                     < Link href={`/medicaldepartments/${secondHalfArray[index].slug}`} onClick={() => handleResult(secondHalfArray[index])} className={`${styles.box}  
                     ${query.slug === `${secondHalfArray[index].slug}` && styles.active}`} scroll={false} >
                       <div className={styles.img_container}>
-                        <img className={styles.main_img} src={secondHalfArray[index].image} alt="" />
-                        <img className={styles.sec_img} src={secondHalfArray[index].secondImage} alt="" />
+                        <Image width={100} height={100} className={styles.main_img} src={secondHalfArray[index].image} alt="" />
+                        <Image width={100} height={100} className={styles.sec_img} src={secondHalfArray[index].secondImage} alt="" />
                       </div>
                       <div className={styles.box_title}>
                         <Typography variant="h6">{secondHalfArray[index].departmentName}</Typography>
@@ -222,28 +223,6 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
                 )
                 )}
-
-
-
-                {/* {Object.keys(firstHalfArray).map(function (template_name) {
-                  return (
-                    < Link href='#proceduresSymptoms' onClick={() => handleResult(secondHalfArray[template_name])} className={styles.box} > Q
-                      <div className={styles.img_container}>
-                        <img className={styles.main_img} src={secondHalfArray[template_name].img} alt="" />
-                        <img className={styles.sec_img} src={secondHalfArray[template_name].sec_img} alt="" />
-                      </div>
-                      <div className={styles.box_title}>
-                        <Typography variant="h6">{secondHalfArray[template_name].title}</Typography>
-                      </div>
-
-                    </Link>
-
-                  );
-                })} */}
-
-
-
-
 
 
               </Carousel>
@@ -432,7 +411,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                 <div className={styles.info_header}>
                   <div className={styles.img_container}>
 
-                    <img src={description.image} alt="" />
+                    <Image width={100} height={100} src={description.image} alt="" />
                   </div>
 
                   <div className={styles.title}>
@@ -469,7 +448,11 @@ export async function getServerSideProps({ locale, query }) {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache',
+      'Expires': '0',
+
     },
     body: JSON.stringify({
       "lang": locale
@@ -481,7 +464,11 @@ export async function getServerSideProps({ locale, query }) {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache',
+      'Expires': '0',
+
     },
     body: JSON.stringify({
       "lang": locale
@@ -493,7 +480,11 @@ export async function getServerSideProps({ locale, query }) {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache',
+      'Expires': '0',
+
     },
     body: JSON.stringify({
       "lang": locale,

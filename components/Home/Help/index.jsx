@@ -4,6 +4,7 @@ import { Container, Typography, Box } from '@mui/material';
 import imgs from "../../../assets/constants/imgs";
 import { useTranslation } from "react-i18next";
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 
 const Help = () => {
@@ -33,7 +34,7 @@ const Help = () => {
             {cards.map((card, index) => (
               <div className={styles.box} key={index}>
                 <div className={styles.img_container}>
-                  <img src={card.img} alt="" />
+                  <Image width={100} height={100} src={card.img} alt="" />
                 </div>
                 <div className={styles.title}>
                   <Typography variant='h6'>{card.title}</Typography>

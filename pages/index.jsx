@@ -12,8 +12,7 @@ import {
 } from '../components/Home'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import { useContext, useEffect } from "react";
-import { appContext } from "@/context/store";
+import { useEffect } from "react";
 import { useTranslation } from "next-i18next";
 
 export async function getStaticProps({ locale }) {
@@ -25,10 +24,7 @@ export async function getStaticProps({ locale }) {
 }
 
 export default function Home(props) {
-  const { lang, setLang } = useContext(appContext)
-  useEffect(() => {
-    setLang(props._nextI18Next.initialLocale)
-  }, [])
+
 
   const { t } = useTranslation();
 

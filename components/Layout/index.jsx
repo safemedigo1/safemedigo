@@ -8,7 +8,6 @@ export default function Layout({ children }, props) {
   const router = useRouter();
   const { pathname } = router;
 
-  console.log(props, 'my PROPS  ')
 
   return (
     <>

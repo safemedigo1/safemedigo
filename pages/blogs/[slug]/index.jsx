@@ -208,12 +208,9 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
         }}
         id={styles.signle_blog_header} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <div className={styles.img_container}>
-          <img
-            layout="responsive"
-            width={4}
-            height={218}
-            objectFit="cover"
-            objectPosition="center"
+          <Image
+            width={100}
+            height={100}
             src={blog.image} alt={blog.title} />
         </div>
 
@@ -226,13 +223,13 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
           <div className={styles.writer_info}>
             <div className={styles.writer_img}>
-              <img width={50} height={4} src={blog.publisherImage} alt={blog.publisher} />
+              <Image width={100} height={100} src={blog.publisherImage} alt={blog.publisher} />
             </div>
 
             <div className={styles.name}>
-              <a href="#">
+              <Link href="/">
                 {blog.publisher}
-              </a>
+              </Link>
               - {blog.jobTitle}
             </div>
 
@@ -241,13 +238,13 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
           <Box sx={{ marginTop: '20px' }} className={styles.writer_info}>
             <div className={styles.writer_img}>
-              <img width={50} height={4} src={blog.reviewerImage} alt={blog.reviewer} />
+              <Image width={100} height={100} src={blog.reviewerImage} alt={blog.reviewer} />
             </div>
 
             <div className={styles.name}>
-              <a href="#">
+              <Link href="#">
                 {blog.reviewer}
-              </a>
+              </Link>
               - {blog.reviewerJobTitle}
             </div>
           </Box>
@@ -263,7 +260,9 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
           <div className={styles.headline}>
             <article className={styles.headline_inner}>
               <div className={styles.headline_img_container}>
-                <img src={blog.image} alt={blog.title} />
+                <Image width={770}
+                  height={518}
+                  src={blog.image} alt={blog.title} />
               </div>
 
               <div dangerouslySetInnerHTML={createMarkup()} />
@@ -274,7 +273,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
               <div className={styles.blog_treatment_box}>
                 <div className={styles.box}>
                   <div className={styles.img_container}>
-                    <img width={50} height={4} src={blog?.treatment?.image} alt={blog?.treatment?.image} />
+                    <Image width={100} height={100} src={blog?.treatment?.image} alt={blog?.treatment?.image} />
                   </div>
 
                   <div className={styles.text_container}>
@@ -295,9 +294,9 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                     </div>
 
                     <div className={styles.more_btn}>
-                      <a href='/'>
+                      <Link href='/'>
                         <button>More</button>
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
@@ -337,31 +336,14 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                 <hr />
               </div>
               <div className={styles.card_body}>
-                {/* <div className={styles.user_comment}>
-                  <div className={styles.user_data}>
-                    <div className={styles.img_container}>
-                      <Image width={50} height={4} src={author.src} alt="" />
-                    </div>
-                    <div className={styles.name}>
-                      <span>Sammer Mt,</span>
-                    </div>
-                  </div>
-                  <div className={styles.comment}>
-                    <Typography>
-                      Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Nam Viverra Euismod Odio,
-                    </Typography>
-                    <div className={styles.date}>
-                      Dec 6, 2017 - 18:55
-                    </div>
-                  </div>
-                </div> */}
+
                 {commentsDetails.length > 0 ?
                   commentsDetails?.map((comment, idx) => (
                     <>
                       <div className={styles.user_comment} key={idx}>
                         <div className={styles.user_data}>
                           <div className={styles.img_container}>
-                            <img width={50} height={4} src={userimg.src} alt="" />
+                            <Image width={100} height={100} src={userimg.src} alt="" />
                           </div>
                           <div className={styles.name}>
                             <span>{comment.name},</span>
@@ -382,7 +364,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                         < div className={styles.admin_comment}>
                           <div className={styles.admin_data}>
                             <div className={styles.img_container}>
-                              <img width={50} height={4} src={comment.replyUserImage} alt="" />
+                              <Image width={100} height={100} src={comment.replyUserImage} alt="" />
                             </div>
                             <div className={styles.replyUserNam}>
                               <span>
@@ -409,7 +391,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                 {/* <div className={styles.admin_comment}>
                   <div className={styles.admin_data}>
                     <div className={styles.img_container}>
-                      <Image width={50} height={4} src={author.src} alt="" />
+                      <Image width={100} height={100}  src={author.src} alt="" />
                     </div>
                     <div className={styles.name}>
                       <span>Admin</span>

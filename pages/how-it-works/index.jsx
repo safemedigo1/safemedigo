@@ -1,14 +1,13 @@
 import React from 'react'
-import { Container, Typography, Box } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { PageHeader, SecNavbar } from '@/components';
 import { ContactDetails } from '@/components/Home';
 import imgs from "../../assets/constants/imgs";
 import styles from "./index.module.scss";
-// import '../../styles/'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
-
+import Image from 'next/image';
 
 const HowItWorks = () => {
   const { t } = useTranslation();
@@ -72,10 +71,10 @@ const HowItWorks = () => {
               </div>
 
               <div className={styles.img_container}>
-                <img src={research[0].img} alt="" />
+                <Image width={100} height={100} src={research[0].img} alt="" />
 
                 <div className={styles.icon_container}>
-                  <img src={research[0].icon} alt="" />
+                  <Image width={100} height={100} src={research[0].icon} alt="" />
                 </div>
               </div>
             </div>
@@ -98,10 +97,10 @@ const HowItWorks = () => {
                 </div>
               </div>
               <div className={styles.img_container}>
-                <img src={GetInTouch[0].img} alt="" />
+                <Image width={100} height={100} src={GetInTouch[0].img} alt="" />
 
                 <div className={styles.icon_container}>
-                  <img src={GetInTouch[0].icon} alt="" />
+                  <Image width={100} height={100} src={GetInTouch[0].icon} alt="" />
                 </div>
               </div>
             </div>
@@ -124,9 +123,9 @@ const HowItWorks = () => {
                 </div>
               </div>
               <div className={styles.img_container}>
-                <img src={ReadyToGo[0].img} alt="" />
+                <Image width={100} height={100} src={ReadyToGo[0].img} alt="" />
                 <div className={styles.icon_container}>
-                  <img src={ReadyToGo[0].icon} alt="" />
+                  <Image width={100} height={100} src={ReadyToGo[0].icon} alt="" />
                 </div>
               </div>
             </div>
@@ -149,10 +148,10 @@ const HowItWorks = () => {
                 </div>
               </div>
               <div className={styles.img_container}>
-                <img src={SafetyTreatment[0].img} alt="" />
+                <Image width={100} height={100} src={SafetyTreatment[0].img} alt="" />
 
                 <div className={styles.icon_container}>
-                  <img src={SafetyTreatment[0].icon} alt="" />
+                  <Image width={100} height={100} src={SafetyTreatment[0].icon} alt="" />
                 </div>
               </div>
             </div>
@@ -178,9 +177,9 @@ const HowItWorks = () => {
               </div>
 
               <div className={styles.img_container}>
-                <img src={CheckAfterTreatmen[0].img} alt="" />
+                <Image width={100} height={100} src={CheckAfterTreatmen[0].img} alt="" />
                 <div className={styles.icon_container}>
-                  <img src={CheckAfterTreatmen[0].icon} alt="" />
+                  <Image width={100} height={100} src={CheckAfterTreatmen[0].icon} alt="" />
 
                 </div>
               </div>
@@ -206,7 +205,7 @@ const HowItWorks = () => {
                 </div>
               </div>
               <div className={styles.img_container}>
-                <img src={IDidIt[0].img} alt="" />
+                <Image width={100} height={100} src={IDidIt[0].img} alt="" />
               </div>
             </div>
           </div>

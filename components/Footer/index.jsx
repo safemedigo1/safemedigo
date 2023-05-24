@@ -4,6 +4,8 @@ import React from 'react'
 import imgs from '../../assets/constants/imgs'
 import styles from './index.module.scss'
 import { Box, Grid, Typography } from '@mui/material';
+import Image from 'next/image';
+
 
 const Footer = () => {
   const { logoFooter,
@@ -34,11 +36,11 @@ const Footer = () => {
         <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
           <div className={styles.logo_footer}>
             <Link href='/'>
-              <img
+              <Image
                 src={logoFooter.src}
                 alt="Safemedigo"
-                width="58.3px"
-                height="50.18px"
+                width={100}
+                height={100}
               />
               <Typography variant='h4' >Safemedigo</Typography>
             </Link>
@@ -142,11 +144,11 @@ const Footer = () => {
                 <>
                   <div className={styles.link} key={idx}>
                     <Link href={link.link}>
-                      <img
+                      <Image
                         src={link.img.src}
                         alt={link.link}
-                        width="28.79px"
-                        height="23.38px"
+                        width={100}
+                        height={100}
                       />
                     </Link>
                   </div>
@@ -163,7 +165,8 @@ const Footer = () => {
           <Box display='flex' alignItems='center' justifyContent='space-between'>
             <Box display='flex' className={styles.patient}>
               <div className={styles.img_container}>
-                <img src={author.src} alt="" />
+                <Image src={author.src} alt="" width={100}
+                  height={100} />
               </div>
 
               <div className={styles.doc_data}>

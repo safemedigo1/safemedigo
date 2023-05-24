@@ -5,6 +5,7 @@ import { Container, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useTranslation } from "react-i18next";
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 
 
@@ -19,7 +20,6 @@ const Safty = () => {
   const router = useRouter();
   return (
     <section id={styles.safty} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
-
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false}>
         <div className={styles.section_container} >
           <div className={styles.title} >
@@ -38,11 +38,11 @@ const Safty = () => {
               <div className={styles.right_side}>
                 <Typography>
                   {t('safety_standards_section:feedback')}
-                  <img src={left01.src} className={styles.left1} alt="" />
+                  <Image width={100} height={100} src={left01.src} className={styles.left1} alt="" />
                 </Typography>
                 <Typography>
                   {t('safety_standards_section:charges')}
-                  <img src={left02.src} className={styles.left2} alt="" />
+                  <Image width={100} height={100} src={left02.src} className={styles.left2} alt="" />
                 </Typography>
                 <Typography>
                   {t('safety_standards_section:clarity')}
@@ -50,27 +50,27 @@ const Safty = () => {
               </div>
 
               <div className={styles.images_container}>
-                <img src={OurSafterStanders01.src} className={styles.logo} alt="" />
-                <img src={OurSafetyStandards00.src} className={styles.ground} alt="" />
+                <Image width={100} height={100} src={OurSafterStanders01.src} className={styles.logo} alt="" />
+                <Image width={100} height={100} src={OurSafetyStandards00.src} className={styles.ground} alt="" />
 
                 <div className={styles.hovered}>
-                  <img src={OurSafetyStandards002.src} alt="" />
+                  <Image width={100} height={100} src={OurSafetyStandards002.src} alt="" />
                 </div>
               </div>
 
 
               <div className={styles.left_side}>
                 <Typography>
-                  <img src={right01.src} className={styles.right1} alt="" />
+                  <Image width={100} height={100} src={right01.src} className={styles.right1} alt="" />
 
                   {t('safety_standards_section:experts')}
                 </Typography>
                 <Typography>
-                  <img src={right02.src} className={styles.right2} alt="" />
+                  <Image width={100} height={100} src={right02.src} className={styles.right2} alt="" />
                   {t('safety_standards_section:modern')}
                 </Typography>
                 <Typography>
-                  <img src={middle.src} className={styles.middle} alt="" />
+                  <Image width={100} height={100} src={middle.src} className={styles.middle} alt="" />
                   {t('safety_standards_section:medical_services')}
                 </Typography>
               </div>

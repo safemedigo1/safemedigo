@@ -1,5 +1,5 @@
 import { Container } from '@mui/material'
-import React, { useContext } from 'react'
+import React from 'react'
 import styles from '../index.module.scss'
 import { useRouter } from "next/router";
 import Link from 'next/link';

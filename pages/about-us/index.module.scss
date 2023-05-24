@@ -82,16 +82,16 @@
         }
 
         img {
-          // width: 100%;
-          // height: 100%;
+          width: 100% !important;
+          height: 100% !important;
           @media screen and (max-width: 992px) {
-            width: 270px;
-            height: 170px;
+            width: 270px !important;
+            height: 170px !important;
           }
 
           @media screen and (max-width: 350px) {
-            width: 100%;
-            height: 100%;
+            width: 100% !important;
+            height: 100% !important;
           }
         }
 
@@ -259,8 +259,8 @@
           }
 
           img {
-            width: 100%;
-            height: 100%;
+            width: 100% !important;
+            height: 100% !important;
             border-radius: 50%;
           }
         }

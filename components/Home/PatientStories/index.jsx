@@ -4,10 +4,11 @@ import Carousel from 'react-elastic-carousel';
 import imgs from "../../../assets/constants/imgs";
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import { consts } from 'react-elastic-carousel';
-import { Container, Typography, Rating, } from '@mui/material';
+import { Container, Typography, } from '@mui/material';
 import Link from 'next/link';
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
+import Image from 'next/image';
 
 
 
@@ -202,14 +203,14 @@ const PatientStories = () => {
               isRTL={router.locale === 'ar' ? true : false}
             >
 
-              {console.log(router.locale, "HERERERERE")}
               {posts.map((post, index) => (
                 <Link href={`/blogs/${post.id}`} className={styles.box} key={index}>
                   <div className={styles.img_container}>
-                    <img
+                    <Image
                       src={post.img}
                       alt="Picture of the author"
-                      width="width: 344px"
+                      width={344}
+                      height={190}
                     />
                   </div>
                   <div className={styles.box_title}>
@@ -222,7 +223,7 @@ const PatientStories = () => {
 
                   <div className={styles.author_container}>
                     <div className={styles.img_container}>
-                      <img src={post.authorImg} alt="" />
+                      <Image width={100} height={100} src={post.authorImg} alt="" />
                     </div>
 
                     <div className={styles.author_data}>

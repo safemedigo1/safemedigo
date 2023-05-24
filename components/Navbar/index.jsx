@@ -24,7 +24,6 @@ import { useTranslation } from "next-i18next";
 
 
 
-
 // Hide navbar on scroll (to bottom)
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -182,11 +181,11 @@ const Navbar = (props) => {
                 <Grid item xs={2} sx={2}>
                   <Link href="/" className={styles.navbar__logo}>
                     <Box display="flex" alignItems="center" >
-                      <img
+                      <Image
                         src={logo.src}
                         alt="Picture of the author"
-                        width="51.34px"
-                        height="45px"
+                        width={51.34}
+                        height={45}
                       />
                       <h1>Safemedigo</h1>
                     </Box>
@@ -307,11 +306,11 @@ const Navbar = (props) => {
                         <div className={styles.login_btn}>
                           <Link href="/login">
                             <div className={styles.icon_container}>
-                              <img
+                              <Image
                                 src={user.src}
                                 alt="Picture of the author"
-                                width="18.13px"
-                                height="19.5px"
+                                width={18.13}
+                                height={19.5}
                               />
                             </div>
                             <button>{t("navbar:sign_in")}</button>
@@ -325,20 +324,19 @@ const Navbar = (props) => {
                 <div className={styles.icons_container} ref={menuRef}>
                   <Link href={'/search'} className={styles.search} >
                     <div className={styles.icon_container}>
-                      <img src={search.src} alt="" />
+                      <Image width={100} height={100} src={search.src} alt="" />
                     </div>
                   </Link>
 
                   <div className={styles.notifications} >
                     <div className={styles.icon_container}>
-                      <img src={notificationsActive.src} alt="" />
-                      {/* <div className={styles.notify} /> */}
+                      <Image width={100} height={100} src={notificationsActive.src} alt="" />
                     </div>
                   </div>
 
                   <div className={styles.menu} onClick={() => setShowMenu(true)}>
                     <div className={styles.icon_container}>
-                      <img src={burger.src} alt="" />
+                      <Image width={100} height={100} src={burger.src} alt="" />
                     </div>
                   </div>
 
@@ -393,12 +391,12 @@ const Navbar = (props) => {
                                 ))}
 
                                 <div className={styles.special_links}>
-                                  <a href="/reveiw">{t('navbar:start_your_review')}
+                                  <Link href="/reveiw">{t('navbar:start_your_review')}
                                     <HiArrowSmRight />
-                                  </a>
-                                  <a href="q&a">{t('navbar:ask_a_doctor')}
+                                  </Link>
+                                  <Link href="q&a">{t('navbar:ask_a_doctor')}
                                     <HiArrowSmRight />
-                                  </a>
+                                  </Link>
                                 </div>
 
                                 <Box className={styles.lang} display='flex' onClick={() => setShowLangMenu((prev) => !prev)}>

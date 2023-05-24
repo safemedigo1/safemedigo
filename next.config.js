@@ -1,17 +1,19 @@
 /! REMOVE THE Ionc configation!/;
 const { i18n } = require("./next-i18next.config");
 
-const withTm = require("next-transpile-modules")([
-  "@ionic/react",
-  "@ionic/core",
-  "@stencil/core",
-  "ionicons",
-]);
+// const withTm = require("next-transpile-modules")([
+//   "@ionic/react",
+//   "@ionic/core",
+//   "@stencil/core",
+//   "ionicons",
+// ]);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  runtime: "experimental-edge",
+
   images: {
     //   unoptimized: true,
     domains: [
@@ -30,4 +32,5 @@ const nextConfig = {
   i18n,
 };
 
-module.exports = withTm(nextConfig);
+// module.exports = withTm(nextConfig);
+module.exports = nextConfig;

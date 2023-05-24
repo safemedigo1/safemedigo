@@ -1,20 +1,20 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import imgs from "../../../assets/constants/imgs";
 import styles from './index.module.scss'
 import { Container, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useTranslation } from "react-i18next";
-import { appContext } from "@/context/store";
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 
 const WhyTurkey = () => {
   const { t } = useTranslation();
-  const { lang } = useContext(appContext)
+  const { author, why_turcky_img } = imgs;
+  const router = useRouter()
 
-  const { author, turky_bg
-    , why_turcky_img } = imgs;
   return (
-    <section id={styles.why_turky} dir={`${lang === 'ar' ? 'rtl' : 'ltr'}`}>
+    <section id={styles.why_turky} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
       <Container sx={{ maxWidth: '1239px', }} maxWidth={false}>
 
         <div className={styles.section_container}>
@@ -25,12 +25,8 @@ const WhyTurkey = () => {
             </div>
 
             <div className={styles.img_sec_container}>
-              <img src={why_turcky_img.src} alt="" />
+              <Image width={100} height={100} src={why_turcky_img.src} alt="" />
             </div>
-
-            {/* <div className={styles.article_name}>
-              <Typography>Article Name</Typography>
-            </div> */}
 
             <div className={styles.desc}>
               <Typography>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore etLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore etLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos </Typography>
@@ -38,7 +34,7 @@ const WhyTurkey = () => {
 
             <div className={styles.writer}>
               <div className={styles.img_container}>
-                <img src={author.src} alt="" />
+                <Image width={100} height={100} src={author.src} alt="" />
               </div>
 
               <div className={styles.text_container}>

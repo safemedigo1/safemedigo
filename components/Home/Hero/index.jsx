@@ -1,4 +1,4 @@
-import React, { Children, useContext, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './index.module.scss';
 import { Container, Typography, Rating, Box, } from '@mui/material';
 import { BsCheckLg } from 'react-icons/bs';
@@ -10,13 +10,12 @@ import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import { consts } from 'react-elastic-carousel';
 import Search from '../Search/index'
 import { useTranslation } from "react-i18next";
-import { appContext } from "@/context/store";
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 
 const Hero = () => {
   const { t } = useTranslation();
-  const { lang } = useContext(appContext)
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false },
@@ -127,7 +126,7 @@ const Hero = () => {
                   <div className={styles.box} key={index}>
                     <div className={styles.box_header}>
                       <div className={styles.img_container}>
-                        <img src={card.img} alt="" />
+                        <Image width={100} height={100} src={card.img} alt="" />
                       </div>
 
                       <div className={styles.title}>

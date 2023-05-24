@@ -4,6 +4,7 @@ import imgs from "../../assets/constants/imgs";
 import { Container, Typography, Box } from "@mui/material";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
+import Image from 'next/image';
 
 
 const PageHeader = ({ blog, treatment }) => {
@@ -107,7 +108,7 @@ const PageHeader = ({ blog, treatment }) => {
 
                       <Box sx={{ display: 'flex', alignItmes: 'center' }} className={styles.review_by}>
                         <div className={styles.author_img}>
-                          <img src={blog.reviewerImage} alt="" />
+                          <Image width={100} height={100} src={blog.reviewerImage} alt="" />
                         </div>
                         <div className={styles.info}>
                           <p>{blog?.reviewer}, {blog.reviewerJobTitle}</p>
@@ -117,7 +118,7 @@ const PageHeader = ({ blog, treatment }) => {
 
                       <Box sx={{ display: 'flex', alignItmes: 'center' }} className={styles.review_by}>
                         <div className={styles.author_img}>
-                          <img src={blog.publisherImage} alt="" />
+                          <Image width={100} height={100} src={blog.publisherImage} alt="" />
                         </div>
                         <div className={styles.info}>
                           <p>{blog?.publisher}, {blog.jobTitle}</p>
@@ -136,7 +137,7 @@ const PageHeader = ({ blog, treatment }) => {
 
                       <Box sx={{ display: 'flex', alignItmes: 'center' }} className={styles.review_by}>
                         <div className={styles.author_img}>
-                          {treatment.reviewerImage === null ? <img src={userimg.src} alt="" /> : <img src={treatment.reviewerImage} alt="" />}
+                          {treatment.reviewerImage === null ? <Image width={100} height={100} src={userimg.src} alt="" /> : <Image s width={100} height={100} src={treatment.reviewerImage} alt="" />}
                         </div>
                         <div className={styles.info}>
                           <p>{treatment.reviewer}, {treatment.reviewerJobTitle}</p>
@@ -148,7 +149,7 @@ const PageHeader = ({ blog, treatment }) => {
 
                       <Box sx={{ display: 'flex', alignItmes: 'center' }} className={styles.review_by}>
                         <div className={styles.author_img}>
-                          {treatment.publisherImage === null ? <img src={userimg.src} alt="" /> : <img src={treatment.publisherImage} alt="" />}
+                          {treatment.publisherImage === null ? <Image width={100} height={100} src={userimg.src} alt="" /> : <Image s width={100} height={100} src={treatment.publisherImage} alt="" />}
                         </div>
                         <div className={styles.info}>
                           <p>{treatment.publisher} , {treatment.publisherJobTitle}</p>
@@ -165,11 +166,11 @@ const PageHeader = ({ blog, treatment }) => {
 
               <div className={styles.img_container}>
                 <div className={styles.desk_top}>
-                  <img src={design.src} alt="" />
+                  <Image width={100} height={100} src={design.src} alt="" />
                 </div>
 
                 <div className={styles.mobile}>
-                  <img src={designMobile.src} alt="" />
+                  <Image width={100} height={100} src={designMobile.src} alt="" />
                 </div>
               </div>
             </Container>

@@ -21,11 +21,6 @@ import blog_bg from "../imgs/blog_bg.png";
 import Transplanting from "../imgs/Transplanting.png";
 import openingChannel from "../imgs/openingChannel.png";
 import designMobile from "../imgs/designMobile.png";
-import treatmentVideo from "../imgs/treatmentVideo.png";
-
-import aircraft from "../imgs/aircraft.png";
-import plane from "../imgs/plane.png";
-import ReasonsRetention_Feature from "../imgs/ReasonsRetention_Feature.png";
 
 import patient_plan from "../imgs/patient_plan.png";
 
@@ -216,10 +211,6 @@ export default {
   Hair_Transplant_after,
   Hair_Transplant_before,
 
-  aircraft,
-  plane,
-  ReasonsRetention_Feature,
-
   left01,
   right01,
   right02,
@@ -227,8 +218,6 @@ export default {
   left02,
   turky_bg,
   why_turcky_img,
-  treatmentVideo,
-  patient_plan,
 
   Allergy_And_Immunology,
   Alternative,

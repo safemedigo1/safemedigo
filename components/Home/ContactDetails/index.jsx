@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styles from './index.module.scss'
 import imgs from "../../../assets/constants/imgs";
 import { Container, Typography, } from '@mui/material';
@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Phone } from '../../../assets/svgs/HoverIcons'
 import { useTranslation } from "react-i18next";
 import { useRouter } from 'next/router';
-
+import Image from 'next/image';
 
 
 const ContactDetails = () => {
@@ -33,25 +33,25 @@ const ContactDetails = () => {
 
             <div className={styles.buttons_container}>
               <div className={styles.btn}>
-                <a href="tel:(+90) 552 502 6000">
+                <Link href="tel:(+90) 552 502 6000">
                   <button>
                     <Phone />
                     +90 552 502 6000
                   </button>
-                </a>
+                </Link>
               </div>
               <div className={styles.btn}>
-                <a href="https://en.wh.ms/201100791315" target="_blank">
+                <Link href="https://en.wh.ms/201100791315" target="_blank">
                   <button>Whatsapp</button>
-                </a>
+                </Link>
               </div>
               <div className={styles.btn}>
-                <a href="www.facebook.com" target="_blank"><button>Facebook</button></a>
+                <Link href="www.facebook.com" target="_blank"><button>Facebook</button></Link>
               </div>
               <div className={styles.btn}>
-                <a href="mailto:info@safemedigo.com" >
+                <Link href="mailto:info@safemedigo.com" >
                   <button>Email</button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@ const ContactDetails = () => {
           <div className={styles.personal_manger}>
             <div className={styles.box}>
               <div className={styles.img_container}>
-                <img src={majd.src} alt="" />
+                <img src={majd.src} alt="" width={100} height={100} quality={100} />
               </div>
 
 

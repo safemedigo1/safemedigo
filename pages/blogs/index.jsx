@@ -11,13 +11,12 @@ import Select from "@mui/material/Select";
 import { PageHeader, Tags } from './../../components/';
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import SecNavbar from "@/components/Navbar/SecNavbar";
 import axios from 'axios';
 import Image from 'next/image'
 import { useTranslation } from "react-i18next";
-import { appContext } from "@/context/store";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 
@@ -25,12 +24,10 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages, locale }) {
   const { t } = useTranslation();
   const [category, setCategory] = useState('All Blogs');
+  const [lang, setLang] = useState(locale);
 
   const router = useRouter();
-  console.log(blogCategory, "HEREasdsadadsadsa")
 
-  const { lang, setLang } = useContext(appContext);
-  setLang(locale)
 
   const handleFilterChanges = (event, value) => {
     router.push(`/category/${value.props.value}/page/1`, undefined, { scroll: false });
@@ -114,7 +111,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
                       <Link href={`/blogs/${post.slug}`}>
 
                         <div className={styles.img_container}>
-                          <img
+                          <Image
                             src={post.image}
                             alt={post.title}
                             width={344}
@@ -132,7 +129,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
 
                         <div className={styles.author_container}>
                           <div className={styles.img_container}>
-                            <img
+                            <Image
                               width={344}
                               height={500}
                               src={post?.publisherImage} alt={post.publisherName} />

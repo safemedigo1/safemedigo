@@ -13,6 +13,7 @@ import { useRouter } from 'next/router';
 import { ContactDetails } from '@/components/Home';
 import axios from 'axios';
 import { ThreeDots } from 'react-loader-spinner'
+import Image from 'next/image';
 
 const TreatmentName = ({ dataTreatment, locale, query, }) => {
   const [expanded, setExpanded] = useState(false);
@@ -48,15 +49,6 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
   ])
 
-  const [surgerySteps] = useState(
-    [
-      { width: 1, pagination: true, showArrows: false, itemsToShow: 1 },
-      { width: 400, pagination: true, itemsToShow: 1.4, itemsToScroll: 1, showArrows: false, },
-      { width: 800, pagination: true, itemsToShow: 1.4, itemsToScroll: 1, showArrows: false },
-      { width: 900, pagination: false, itemsToShow: 3, itemsToScroll: 1, },
-      { width: 1000, pagination: false, itemsToShow: 5, itemsToScroll: 1 },
-    ]
-  )
 
   const [breakPointsOperation] = useState([
     { width: 1, pagination: true, showArrows: false },
@@ -129,23 +121,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
 
 
-
-
   // Styling 
-  const sxParagraph = {
-    color: '#000000',
-    fontSize: '16px',
-    fontFamily: 'Open Sans, sans-serif',
-    fontWeight: '400',
-    marginTop: '16px'
-  }
-  const sxParagraph2 = {
-    color: '#000000',
-    fontSize: '16px',
-    fontFamily: 'Open Sans, sans-serif',
-    fontWeight: 'bold',
-    marginTop: '16px'
-  }
+
   const paragrahp3 =
   {
     fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)'
@@ -156,28 +133,6 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
   }
 
 
-  const sxBox = {
-    display: 'flex',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    marginTop: '27px',
-    flexWrap: 'wrap',
-    'img': {
-      width: '101.84px',
-      height: '132.4px'
-    },
-    '.card': {
-      marginBottom: { xs: '10px', sm: '10px', md: '10px', lg: '0' }
-    }
-  }
-  const sxTitle = {
-    marginTop: '24px',
-    marginBottom: '24px',
-    color: '#000000',
-    fontSize: '16px',
-    fontWeight: '600',
-    fontFamily: 'Open Sans, sans-serif'
-  }
 
   const sxTitle2 = {
     marginTop: '24px',
@@ -417,6 +372,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                     <List sx={{
                       listStyleType: 'disc',
                       padding: '0px',
+                      width: '70%',
 
                       '& .MuiListItem-root': {
 
@@ -644,8 +600,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   dataTreatment?.treatmentImage.map((card, index) => (
                     <div className={styles.box} key={index}>
                       <div className={styles.imgs_container}>
-                        <img src={card.imgBefore} alt={card.description} />
-                        <img src={card.imgAfter} alt={card.description} />
+                        <Image width={388} height={200} src={card.imgBefore} alt={card.description} />
+                        <Image width={388} height={200} src={card.imgAfter} alt={card.description} />
                       </div>
                       <div className={styles.box_title}>
                         <Typography variant='h5'>Before</Typography>
@@ -701,7 +657,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                         <Typography variant="h6"> {stepCard.stepDescription}</Typography>
                       </div>
                       <div className={styles.img_container}>
-                        <img src={stepCard.stepImage} alt="" />
+                        <Image width={230} height={281} src={stepCard.stepImage} alt="" />
                       </div>
                     </div>
 
@@ -791,14 +747,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
               expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
               <AccordionSummary
 
-                sx={expanded !== 'panel7' ? {
-                  height: '55px', backgroundColor: '#004747', color: '#FFFFFF',
-
-                  borderRadius: '2px !important',
-
-                }
-
-                  : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', borderRadius: '2px !important', }
+                sx={expanded !== 'panel7' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                  : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
                 }
                 expandIcon={<ExpandMoreIcon sx={expanded !== 'panel7' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
                 aria-controls="panel7a-content"
@@ -806,16 +756,17 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
               >
                 <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
                   3- After Operation
-
                 </Typography>
               </AccordionSummary>
 
+
               <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
-
                 <div dangerouslySetInnerHTML={createMarkupAfterOperationOverview()} />
-
               </AccordionDetails>
+
             </Accordion>
+
+
           </div>
         </section>
       </Container >
@@ -986,7 +937,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                         </Typography>
                       </div>
                       <div className={styles.img_container}>
-                        <img src={card.procedureImage} alt={card.procedureName} />
+                        <Image width={257} height={169.25} src={card.procedureImage} alt={card.procedureName} />
                       </div>
 
                       <div className={styles.list}>
@@ -1125,20 +1076,25 @@ export default TreatmentName
 
 
 
-export async function getServerSideProps({ locale, query }) {
-  const resTreatment = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentBySlug", {
-    method: 'POST',
+export async function getServerSideProps({ locale, query, }) {
+
+
+  const resTreatment = await axios.post("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentBySlug", {
+    "lang": locale,
+    "treatmentSlug": query.slug,
+  }, {
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      "lang": locale,
-      "treatmentSlug": query.slug,
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache',
+      'Expires': '0',
 
-    })
-  })
-  const dataTreatment = await resTreatment.json()
+
+    }
+  });
+
+  const dataTreatment = resTreatment.data;
 
   return {
     props: {

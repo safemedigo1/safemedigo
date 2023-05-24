@@ -6,6 +6,7 @@ import Carousel from 'react-elastic-carousel';
 import imgs from "../../../assets/constants/imgs";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
+import Image from 'next/image';
 
 
 const Search = () => {
@@ -43,7 +44,7 @@ const Search = () => {
               <label htmlFor="">{t('search_section:title')}</label>
               <div className={styles.input_container}>
                 <input type="text" disabled placeholder={t('search_section:place_holder')} />
-                <img src={search.src} alt="" />
+                <Image width={100} height={100} src={search.src} alt="" />
               </div>
             </Link>
           </div>

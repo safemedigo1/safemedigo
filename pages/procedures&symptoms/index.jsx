@@ -1,6 +1,6 @@
 import { MostPopular } from '@/components/Home'
-import { Container, Typography, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import { Container, Typography, Accordion, AccordionDetails, AccordionSummary, Box, } from '@mui/material'
+import React, { useState } from 'react'
 import Carousel from 'react-elastic-carousel';
 import { consts } from 'react-elastic-carousel';
 import imgs from "../../assets/constants/imgs";
@@ -14,7 +14,7 @@ import { PageHeader, SecNavbar } from '@/components';
 import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
-import axios from 'axios';
+import Image from 'next/image';
 
 const ProceduresSymptoms = ({ dataPopularTreatments, dataMedicalDepartments, locale }) => {
   const [result, setResult] = useState(null)
@@ -155,8 +155,8 @@ const ProceduresSymptoms = ({ dataPopularTreatments, dataMedicalDepartments, loc
                     <Link href={`medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={styles.box} scroll={false}>
 
                       <div className={styles.img_container}>
-                        <img className={styles.main_img} src={card.image} alt="" />
-                        <img className={styles.sec_img} src={card.secondImage} alt="" />
+                        <Image width={100} height={100} className={styles.main_img} src={card.image} alt="" />
+                        <Image width={100} height={100} className={styles.sec_img} src={card.secondImage} alt="" />
                       </div>
 
                       <div className={styles.box_title}>
