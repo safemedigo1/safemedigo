@@ -31,8 +31,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1, itemsToScroll: 1 },
     { width: 400, pagination: true, itemsToShow: 3, itemsToScroll: 1, showArrows: false },
-    { width: 800, pagination: true, itemsToShow: 4, itemsToScroll: 1, transitionMs: 800, showArrows: false },
-    { width: 900, pagination: false, itemsToShow: 4, itemsToScroll: 1, transitionMs: 800 },
+    { width: 800, pagination: true, itemsToShow: 4, itemsToScroll: 1, showArrows: false },
+    { width: 900, pagination: false, itemsToShow: 4, itemsToScroll: 1 },
 
 
 
@@ -42,9 +42,9 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1, itemsToScroll: 1 },
     { width: 400, pagination: true, itemsToShow: 1, itemsToScroll: 1, showArrows: false },
-    { width: 800, pagination: true, itemsToShow: 2, itemsToScroll: 1, transitionMs: 1000, showArrows: false },
-    { width: 900, pagination: false, itemsToShow: 2, itemsToScroll: 1, transitionMs: 1000 },
-    { width: 1000, pagination: false, itemsToShow: 4, itemsToScroll: 1, transitionMs: 1000 },
+    { width: 800, pagination: true, itemsToShow: 2, itemsToScroll: 1, showArrows: false },
+    { width: 900, pagination: false, itemsToShow: 2, itemsToScroll: 1, },
+    { width: 1000, pagination: false, itemsToShow: 4, itemsToScroll: 1, },
 
 
 
@@ -59,8 +59,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
     { width: 1, pagination: true, showArrows: false, itemsToShow: 1 },
     { width: 400, pagination: true, itemsToShow: 1.4, itemsToScroll: 1, showArrows: false, },
     { width: 800, pagination: true, itemsToShow: 1.4, itemsToScroll: 1, showArrows: false },
-    { width: 900, pagination: false, itemsToShow: 3, itemsToScroll: 1, transitionMs: 1000 },
-    { width: 1000, pagination: false, itemsToShow: 5, itemsToScroll: 1, transitionMs: 1000 },
+    { width: 900, pagination: false, itemsToShow: 3, itemsToScroll: 1, },
+    { width: 1000, pagination: false, itemsToShow: 5, itemsToScroll: 1, },
 
 
   ])
@@ -631,7 +631,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
             <div className={styles.slider_container}>
               <Carousel
                 breakPoints={breakPoints}
-                itemsToScroll={1} renderArrow={myArrow} transitionMs={1000}
+                itemsToScroll={1} renderArrow={myArrow}
                 isRTL={router.locale === 'ar' ? true : false}
               >
 
@@ -676,7 +676,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
               <Carousel
                 breakPoints={breakPointsOperation}
                 renderArrow={myArrow}
-                transitionMs={1000}
+
                 isRTL={router.locale === 'ar' ? true : false}
               >
 
@@ -956,7 +956,6 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
               <Carousel
                 breakPoints={breakPointsSteps}
                 renderArrow={myArrow}
-                transitionMs={1000}
                 isRTL={router.locale === 'ar' ? true : false}
 
               >

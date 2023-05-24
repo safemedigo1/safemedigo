@@ -135,10 +135,6 @@ article.overview {
             }
           }
           .box {
-            @media screen and (max-width: 450px) {
-              // width: 150px;
-            }
-
             .title {
               h6 {
                 color: var(--main-dark-color);
