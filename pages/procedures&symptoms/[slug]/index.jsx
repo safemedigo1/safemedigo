@@ -611,6 +611,9 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
               </AccordionDetails>
 
             </Accordion>
+
+
+
           </div>
         </Container >
       </article>
@@ -737,7 +740,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails sx={{ background: '#F4F9F8', display: 'flex ', flexWrap: 'wrap' }}>
+              <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
                 <div dangerouslySetInnerHTML={createMarkupPreOperationOverview()} className={styles.content} />
               </AccordionDetails>
             </Accordion>
