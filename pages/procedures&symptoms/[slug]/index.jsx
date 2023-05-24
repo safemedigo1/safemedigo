@@ -314,8 +314,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   flexWrap: 'wrap',
                   display: 'flex',
                   flexDirection: 'column-reverse',
-                  marginLeft: '16px',
-
+                  marginRight: '16px',
                 }}>
                   <div className={styles.box}>
                     <div className={styles.title}>
