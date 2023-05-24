@@ -50,20 +50,15 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
   ])
 
-  const [surgerySteps] = useState([
-    // { width: 1, pagination: true, showArrows: false },
-    // { width: 300, pagination: true, showArrows: false, itemsToShow: 1.5, itemsToScroll: 1 },
-    // { width: 400, pagination: true, itemsToShow: 1.5, itemsToScroll: 1, showArrows: false },
-    // { width: 800, pagination: false, itemsToShow: 5, itemsToScroll: 5 },
-
-    { width: 1, pagination: true, showArrows: false, itemsToShow: 1 },
-    { width: 400, pagination: true, itemsToShow: 1.4, itemsToScroll: 1, showArrows: false, },
-    { width: 800, pagination: true, itemsToShow: 1.4, itemsToScroll: 1, showArrows: false },
-    { width: 900, pagination: false, itemsToShow: 3, itemsToScroll: 1, },
-    { width: 1000, pagination: false, itemsToShow: 5, itemsToScroll: 1, },
-
-
-  ])
+  const [surgerySteps] = useState(
+    [
+      { width: 1, pagination: true, showArrows: false, itemsToShow: 1 },
+      { width: 400, pagination: true, itemsToShow: 1.4, itemsToScroll: 1, showArrows: false, },
+      { width: 800, pagination: true, itemsToShow: 1.4, itemsToScroll: 1, showArrows: false },
+      { width: 900, pagination: false, itemsToShow: 3, itemsToScroll: 1, },
+      { width: 1000, pagination: false, itemsToShow: 5, itemsToScroll: 1 },
+    ]
+  )
 
   const [breakPointsOperation] = useState([
     { width: 1, pagination: true, showArrows: false },
@@ -798,7 +793,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                 </Typography>
               </AccordionSummary>
 
-              <AccordionDetails sx={{ background: '#F4F9F8' }}>
+              <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
 
                 <div dangerouslySetInnerHTML={createMarkupAfterOperationOverview()} />
 
