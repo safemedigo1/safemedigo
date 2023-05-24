@@ -618,7 +618,9 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
         </Container >
       </article>
 
-      {dataTreatment?.treatmentImage.length !== 0 &&
+
+      {
+        dataTreatment?.treatmentImage.length !== 0 &&
         <section id={styles.before_after}>
           <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.title}>
@@ -664,7 +666,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
       }
 
 
-      {dataTreatment.treatmentStep.length !== 0 &&
+      {
+        dataTreatment.treatmentStep.length !== 0 &&
         <section id={styles.steps}>
           <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.sec_title}>
@@ -727,14 +730,16 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   display: 'none',
                 }
               }}
-              expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
+              expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
               <AccordionSummary
 
-                sx={expanded !== 'panel6' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                sx={expanded !== 'panel5' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
                   : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
                 }
-                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel6' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                aria-controls="panel6d-content" id="panel6d-header"                >
+                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel5' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                aria-controls="panel3a-content"
+                id="panel3a-header"
+              >
                 <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
                   1- Pre-Operation
 
@@ -753,14 +758,16 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   display: 'none',
                 }
               }}
-              expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
+              expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
               <AccordionSummary
 
-                sx={expanded !== 'panel7' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                sx={expanded !== 'panel6' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
                   : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
                 }
-                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel7' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                aria-controls="panel7d-content" id="panel7d-header"                >
+                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel6' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                aria-controls="panel6a-content"
+                id="panel6a-header"
+              >
                 <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
                   2- During Operation
                 </Typography>
@@ -781,10 +788,10 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   display: 'none',
                 }
               }}
-              expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
+              expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
               <AccordionSummary
 
-                sx={expanded !== 'panel8' ? {
+                sx={expanded !== 'panel7' ? {
                   height: '55px', backgroundColor: '#004747', color: '#FFFFFF',
 
                   borderRadius: '2px !important',
@@ -793,8 +800,10 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
                   : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', borderRadius: '2px !important', }
                 }
-                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel8' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                aria-controls="panel8d-content" id="panel8d-header"                >
+                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel7' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                aria-controls="panel7a-content"
+                id="panel7a-header"
+              >
                 <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
                   3- After Operation
 
