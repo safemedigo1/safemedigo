@@ -734,10 +734,10 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                 <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
                   1- Pre-Operation
 
-                </Typography>
+                </Typography>content
               </AccordionSummary>
-              <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'scroll' }}>
-                <div dangerouslySetInnerHTML={createMarkupPreOperationOverview()} />
+              <AccordionDetails sx={{ background: '#F4F9F8', display: 'flex ', flexWrap: 'wrap' }}>
+                <div dangerouslySetInnerHTML={createMarkupPreOperationOverview()} className={styles.content} />
               </AccordionDetails>
             </Accordion>
 
@@ -1046,7 +1046,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   <AccordionSummary
                     sx={
                       {
-                        height: '55px', backgroundColor: 'transparent', color: '#000000', marginTop: '10px',
+                        height: '55px', backgroundColor: 'transparent', color: '#000000', marginTop: '10px', paddingLeft: '0 !important'
+
                       }
                     }
                     expandIcon={<ExpandMoreIcon sx={expanded !== `panel1${index}2` ? { color: '#000000', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}

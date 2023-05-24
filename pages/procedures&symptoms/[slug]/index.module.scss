@@ -447,6 +447,19 @@ article.overview {
         }
       }
     }
+
+    .content {
+      img {
+        width: 100%;
+      }
+
+      figure {
+        .image {
+          background-color: red;
+          width: 20000px;
+        }
+      }
+    }
   }
 }
 
