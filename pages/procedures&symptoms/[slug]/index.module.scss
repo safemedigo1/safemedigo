@@ -271,8 +271,10 @@ article.overview {
       // margin: 5px 20px 5px 5px;
 
       @media screen and (max-width: 992px) {
-        // margin-right: 10px !important;
         width: 100%;
+      }
+      @media screen and (min-width: 450px) {
+        margin-right: 10px !important;
       }
 
       .imgs_container {
@@ -631,7 +633,7 @@ article.overview {
     }
 
     .title {
-      margin-bottom: 29px;
+      margin-bottom: 8px;
       max-height: 20px;
 
       h6 {
@@ -892,8 +894,8 @@ section.QA {
 
   .slider_container {
     margin-top: 42px;
-    position: relative;
 
+    position: relative;
     .steps_container {
       position: absolute;
       top: 0px;

@@ -30,7 +30,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1, itemsToScroll: 1 },
-    { width: 400, pagination: true, itemsToShow: 3, itemsToScroll: 1, showArrows: false },
+    { width: 400, pagination: true, itemsToShow: 4, itemsToScroll: 1, showArrows: false },
     { width: 800, pagination: true, itemsToShow: 4, itemsToScroll: 1, showArrows: false },
     { width: 900, pagination: false, itemsToShow: 4, itemsToScroll: 1 },
 
@@ -682,10 +682,11 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                 {dataTreatment.treatmentStep.map((stepCard, index) => (
                   <>
 
-
-                    <div className={styles.steps_container} key={index}>
-                      <div className={styles.step}>
-                        <span>{index + 1}</span>
+                    <div className={styles.counter_container}>
+                      <div className={styles.steps_container} key={index}>
+                        <div className={styles.step}>
+                          <span>{index + 1}</span>
+                        </div>
                       </div>
                     </div>
 
@@ -734,7 +735,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                 <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
                   1- Pre-Operation
 
-                </Typography>content
+                </Typography>
               </AccordionSummary>
               <AccordionDetails sx={{ background: '#F4F9F8', display: 'flex ', flexWrap: 'wrap' }}>
                 <div dangerouslySetInnerHTML={createMarkupPreOperationOverview()} className={styles.content} />
