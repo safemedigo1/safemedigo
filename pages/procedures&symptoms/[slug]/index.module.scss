@@ -129,6 +129,10 @@ article.overview {
           margin-bottom: 38px;
         }
         .boxes_container {
+          @media screen and (max-width: 450px) {
+            display: flex;
+            flex-direction: column-reverse;
+          }
           &:last-child {
             @media screen and (max-width: 1200px) {
               width: 224px;
@@ -138,7 +142,7 @@ article.overview {
             .title {
               h6 {
                 color: var(--main-dark-color);
-                font-size: 14px;
+                font-size: 16px;
                 font-weight: var(--font-regular);
                 font-family: var(--quickstand-font);
               }
@@ -158,8 +162,8 @@ article.overview {
                 line-height: 16px;
 
                 @media screen and (max-width: 992px) {
-                  font-size: 14px;
-                  margin-bottom: 14px;
+                  font-size: 16px;
+                  margin-bottom: 16px;
                 }
 
                 @media screen and (min-width: 1200px) {
@@ -317,7 +321,7 @@ article.overview {
         }
       }
       .desc {
-        margin-top: 16px;
+        margin-top: 8px;
 
         p {
           font-size: 18px;

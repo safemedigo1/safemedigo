@@ -293,8 +293,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
     return { __html: decodeURI(dataTreatment.afterOperationOverview) };
   }
 
-  function createMarkupGetTreatmentStepOne() {
-    return { __html: decodeURI(dataTreatment.getTreatmentStepOne) };
+  function createMarkupGetTreatmentStepOne(q) {
+    return { __html: decodeURI(q) };
   }
 
   function createMarkupGetTreatmentStepTwo() {
@@ -402,7 +402,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                       <ListItem>{dataTreatment.operationDuration} </ListItem>
                     </List>
                   </div>
-                  <div className={styles.box}>
+                  <div className={styles.box} style={{ order: '-1' }}>
                     <div className={styles.title}>
                       <Typography variant='h6'>{t("proceduresSymptoms_single:type_of_anesthesia")}:</Typography>
                     </div>
@@ -479,7 +479,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                     </List>
                   </div>
 
-                  <div className={styles.box}>
+                  <div className={styles.box} style={{ order: '-1' }}>
                     <div className={styles.title}>
                       <Typography variant='h6'>{t("proceduresSymptoms_single:procedure_type")}:</Typography>
                     </div>
@@ -528,7 +528,6 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                 <List sx={{
                   listStyleType: 'disc',
                   padding: '0px',
-                  overflow: 'scroll',
                   '& .MuiListItem-root': {
 
                     listStylePosition: 'inside',
@@ -536,7 +535,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   },
                 }}
                 >
-                  <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                  <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
                     <div dangerouslySetInnerHTML={createMarkup()} />
                   </ListItem  >
 
@@ -582,7 +581,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   },
                 }}
                 >
-                  <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                  <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
                     <div dangerouslySetInnerHTML={createMarkupSideEffects()} />
                   </ListItem  >
 
@@ -628,7 +627,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   },
                 }}
                 >
-                  <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                  <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
                     <div dangerouslySetInnerHTML={createMarkupCandidateOverview()} />
                   </ListItem  >
 
@@ -673,7 +672,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   },
                 }}
                 >
-                  <ListItem variant='li' sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                  <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
                     <div dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
                   </ListItem  >
 
@@ -820,41 +819,43 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                 Surgery Steps
               </Typography>
             </div>
+
+            <div
+              className={styles.slider_container}>
+              <Carousel
+                breakPoints={breakPointsOperation}
+                renderArrow={myArrow}
+                transitionMs={1000}
+                isRTL={router.locale === 'ar' ? true : false}
+              >
+
+                {dataTreatment.treatmentStep.map((stepCard, index) => (
+                  <>
+
+
+                    <div className={styles.steps_container} key={index}>
+                      <div className={styles.step}>
+                        <span>{index + 1}</span>
+                      </div>
+                    </div>
+
+                    <div className={styles.box} key={index}>
+                      <div className={styles.box_title}>
+                        <Typography variant="h6"> {stepCard.stepDescription}</Typography>
+                      </div>
+                      <div className={styles.img_container}>
+                        <img src={stepCard.stepImage} alt="" />
+                      </div>
+                    </div>
+
+                  </>
+                ))}
+
+
+
+              </Carousel>
+            </div>
           </Container >
-
-          <div
-            className={styles.slider_container}>
-            <Carousel
-              breakPoints={breakPointsOperation}
-              renderArrow={myArrow}
-              transitionMs={1000}
-              isRTL={router.locale === 'ar' ? true : false}
-            >
-
-              {dataTreatment.treatmentStep.map((stepCard, index) => (
-                <>
-                  <div className={styles.steps_container} key={index}>
-                    <div className={styles.step}>
-                      <span>{index + 1}</span>
-                    </div>
-                  </div>
-
-                  <div className={styles.box} key={index}>
-                    <div className={styles.box_title}>
-                      <Typography variant="h6"> {stepCard.stepDescription}</Typography>
-                    </div>
-                    <div className={styles.img_container}>
-                      <img src={stepCard.stepImage} alt="" />
-                    </div>
-                  </div>
-
-                </>
-              ))}
-
-
-
-            </Carousel>
-          </div>
 
         </section>
       }
@@ -1038,7 +1039,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                 </Typography>
               </AccordionSummary>
 
-              <AccordionDetails sx={{ overflow: 'scroll' }}>
+              <AccordionDetails sx={{ background: '#F4F9F8' }}>
 
                 <div dangerouslySetInnerHTML={createMarkupAfterOperationOverview()} />
 
@@ -1374,7 +1375,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                   </AccordionSummary>
 
                   <AccordionDetails sx={{ background: '#F4F9F8' }} >
-                    <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepOne()} />
+                    <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepOne(q.answer)} />
                   </AccordionDetails>
 
                 </Accordion>
