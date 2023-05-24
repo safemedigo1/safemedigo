@@ -34,8 +34,6 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
     { width: 800, pagination: true, itemsToShow: 4, itemsToScroll: 1, showArrows: false },
     { width: 900, pagination: false, itemsToShow: 4, itemsToScroll: 1 },
 
-
-
   ])
 
   const [breakPointsSteps] = useState([
@@ -625,9 +623,11 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                 Before & After Photos
               </Typography>
             </div>
+          </Container >
 
 
 
+          <Container className="custom_container">
             <div className={styles.slider_container}>
               <Carousel
                 breakPoints={breakPoints}
@@ -656,8 +656,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
               </Carousel>
             </div>
-          </Container >
-
+          </Container>
         </section>
       }
 

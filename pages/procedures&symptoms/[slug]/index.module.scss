@@ -271,7 +271,7 @@ article.overview {
       // margin: 5px 20px 5px 5px;
 
       @media screen and (max-width: 992px) {
-        margin-right: 10px !important;
+        // margin-right: 10px !important;
         width: 100%;
       }
 
@@ -350,6 +350,7 @@ article.overview {
       box-shadow: 0px 2px 10px #00000029;
       border-radius: 0px 0px 5px 5px;
       margin: 100px 0.87px 12px 0px;
+      margin-right: auto;
 
       .box_title {
         background-color: var(--main-green-color);
@@ -648,7 +649,7 @@ article.overview {
       overflow: hidden;
 
       overflow-y: scroll;
-
+      padding-right: 14px;
       p {
         color: var(--main-dark-color);
         margin-bottom: 20px;
