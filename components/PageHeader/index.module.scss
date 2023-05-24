@@ -98,7 +98,7 @@
               font-family: var(--open-sans-font);
 
               @media screen and (max-width: 992px) {
-                font-size: 12px;
+                font-size: 16px;
               }
             }
 
@@ -162,7 +162,7 @@
     margin-right: 80px;
 
     @media screen and (max-width: 450px) {
-      margin-right: 1;
+      margin-right: 0px;
       margin-bottom: 16px;
     }
     .info {
