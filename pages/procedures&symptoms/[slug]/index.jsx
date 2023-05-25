@@ -235,7 +235,6 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
             </Container>
 
           </div>
-
         </nav >
       </header >
 

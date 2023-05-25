@@ -121,7 +121,7 @@ const SafetyStandards = () => {
               </div>
 
               <div className={styles.img_container}>
-                <Image width={100} height={100} src={reviewedExperts[0].img} alt="" />
+                <Image width={315.91} height={100} src={reviewedExperts[0].img} alt="" />
 
                 <div className={styles.icon_container}>
                   <Image width={100} height={100} src={reviewedExperts[0].icon} alt="" />

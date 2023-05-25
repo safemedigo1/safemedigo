@@ -1,8 +1,5 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { purple } from "@mui/material/colors";
-
-const primary = purple[500]; // #f44336
 
 const ErrorPage = () => {
   return (

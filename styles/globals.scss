@@ -20,13 +20,17 @@
   --font-sem-bold: 600;
 
   --open-sans-font: "Open Sans", sans-serif;
-  --quickstand-font: "Quicksand", sans-serif;
+  // --quickstand-font: "__className_326411";
 }
 
 html,
 body {
-  font-family: "Quicksand", sans-serif !important;
+  // font-family: "Quicksand", sans-serif !important;
   scroll-behavior: smooth !important;
+}
+
+.css-o2w69a-MuiTypography-root {
+  // font-family: "Quicksand", sans-serif !important;
 }
 
 * {
