@@ -680,7 +680,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
           </div>
           <div className={styles.menu_container}>
 
-            <Accordion disableGutters elevation={0}
+            <Accordion disableGutters={false} elevation={0}
               square={false} sx={{
                 '&:before': {
                   display: 'none',
@@ -707,7 +707,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
             </Accordion>
 
 
-            <Accordion disableGutters elevation={0}
+            <Accordion disableGutters={false} elevation={0}
               square={false} sx={{
                 marginTop: '8px',
                 '&:before': {
@@ -737,22 +737,21 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
             </Accordion>
 
-            <Accordion disableGutters elevation={0}
+            <Accordion disableGutters={false} elevation={0}
               square={false} sx={{
                 marginTop: '8px',
                 '&:before': {
                   display: 'none',
                 }
               }}
-              expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
+              expanded={expanded === 'panel77'} onChange={handleChange('panel77')}>
               <AccordionSummary
 
-                sx={expanded !== 'panel7' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                sx={expanded !== 'panel77' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
                   : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
                 }
-                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel7' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                aria-controls="panel7a-content"
-                id="panel7a-header"
+                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel77' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+
               >
                 <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
                   3- After Operation
@@ -765,6 +764,8 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
               </AccordionDetails>
 
             </Accordion>
+
+
 
 
           </div>
@@ -991,13 +992,11 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
           <div className={styles.menu_container}>
             {qADetails?.map((q, index) => (
               <div className={styles.QA_menu}>
-
-
                 <Accordion disableGutters elevation={0}
                   square={false} sx={{
                     borderRadius: '0px !important',
 
-                    borderBottom: '1px solid #A1A1A1',
+                    borderBottom: '1px solid #E4E4E4',
                     padding: '0'
                     ,
                     '&:before': {
