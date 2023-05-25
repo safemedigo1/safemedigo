@@ -52,6 +52,11 @@ article.overview {
   padding-top: 48px;
   padding-bottom: 48px;
   background-color: #f4f9f8;
+
+  @media screen and (max-width: 450px) {
+    width: 100% !important;
+  }
+
   .details_container {
     display: flex;
     align-items: flex-start;
@@ -101,6 +106,10 @@ article.overview {
     }
 
     .quick_details {
+      @media screen and (max-width: 450px) {
+        width: 100% !important;
+      }
+
       .title {
         h3 {
           color: var(--main-dark-color);
