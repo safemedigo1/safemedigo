@@ -25,7 +25,7 @@ const WhyTurkey = () => {
             </div>
 
             <div className={styles.img_sec_container}>
-              <Image width={100} height={100} src={why_turcky_img.src} alt="" />
+              <Image width={722} height={100} src={why_turcky_img.src} alt="" />
             </div>
 
             <div className={styles.desc}>
