@@ -197,8 +197,8 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                     <Link href={`/medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={`${styles.box}  
                     ${query.slug === `${card.slug}` && styles.active}`} scroll={false}>
                       <div className={styles.img_container}>
-                        <Image width={100} height={100} className={styles.main_img} src={card.image} alt="" />
-                        <Image width={100} height={100} className={styles.sec_img} src={card.secondImage} alt="" />
+                        <Image width={77.12} height={77.12} className={styles.main_img} src={card.image} alt="" />
+                        <Image width={77.12} height={77.12} className={styles.sec_img} src={card.secondImage} alt="" />
 
                       </div>
 
@@ -211,8 +211,8 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                     < Link href={`/medicaldepartments/${secondHalfArray[index].slug}`} onClick={() => handleResult(secondHalfArray[index])} className={`${styles.box}  
                     ${query.slug === `${secondHalfArray[index].slug}` && styles.active}`} scroll={false} >
                       <div className={styles.img_container}>
-                        <Image width={100} height={100} className={styles.main_img} src={secondHalfArray[index].image} alt="" />
-                        <Image width={100} height={100} className={styles.sec_img} src={secondHalfArray[index].secondImage} alt="" />
+                        <Image width={77.12} height={77.12} className={styles.main_img} src={secondHalfArray[index].image} alt="" />
+                        <Image width={77.12} height={77.12} className={styles.sec_img} src={secondHalfArray[index].secondImage} alt="" />
                       </div>
                       <div className={styles.box_title}>
                         <Typography variant="h6">{secondHalfArray[index].departmentName}</Typography>

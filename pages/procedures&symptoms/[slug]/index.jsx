@@ -146,43 +146,43 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
 
   function createMarkup() {
-    return { __html: decodeURI(dataTreatment.benifitsOverview) };
+    return { __html: decodeURI(dataTreatment?.benifitsOverview) };
   }
 
   function createMarkupSideEffects() {
-    return { __html: decodeURI(dataTreatment.sideEffectsOverview) };
+    return { __html: decodeURI(dataTreatment?.sideEffectsOverview) };
   }
 
   function createMarkupCandidateOverview() {
-    return { __html: decodeURI(dataTreatment.candidateOverview) };
+    return { __html: decodeURI(dataTreatment?.candidateOverview) };
   }
 
   function createMarkupHospitalizationOverview() {
-    return { __html: decodeURI(dataTreatment.hospitalizationOverview) };
+    return { __html: decodeURI(dataTreatment?.hospitalizationOverview) };
   }
 
   function createMarkupPreOperationOverview() {
-    return { __html: decodeURI(dataTreatment.preOperationOverview) };
+    return { __html: decodeURI(dataTreatment?.preOperationOverview) };
   }
 
   function createMarkupDuringOperationOverview() {
-    return { __html: decodeURI(dataTreatment.duringOperationOverview) };
+    return { __html: decodeURI(dataTreatment?.duringOperationOverview) };
   }
 
   function createMarkupAfterOperationOverview() {
-    return { __html: decodeURI(dataTreatment.afterOperationOverview) };
+    return { __html: decodeURI(dataTreatment?.afterOperationOverview) };
   }
 
   function createMarkupGetTreatmentStepOne() {
-    return { __html: decodeURI(dataTreatment.getTreatmentStepTwo) };
+    return { __html: decodeURI(dataTreatment?.getTreatmentStepTwo) };
   }
 
   function createMarkupGetTreatmentStepTwo() {
-    return { __html: decodeURI(dataTreatment.getTreatmentStepTwo) };
+    return { __html: decodeURI(dataTreatment?.getTreatmentStepTwo) };
   }
 
   function createMarkupGetTreatmentStepThree() {
-    return { __html: decodeURI(dataTreatment.getTreatmentStepThree) };
+    return { __html: decodeURI(dataTreatment?.getTreatmentStepThree) };
   }
   function createMarkupGetQA(q) {
     return { __html: decodeURI(q) };
@@ -191,7 +191,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
   return (
     <>
-      <SecNavbar treatmentName={dataTreatment.treatmentName} />
+      <SecNavbar treatmentName={dataTreatment?.treatmentName} />
 
       <PageHeader treatment={dataTreatment} />
 
@@ -244,13 +244,13 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
             <article className={styles.details}>
               <div className={styles.title}>
                 <Typography variant='h3'>
-                  {t("proceduresSymptoms_single:what_is")} {dataTreatment.treatmentName}?
+                  {t("proceduresSymptoms_single:what_is")} {dataTreatment?.treatmentName}?
                 </Typography>
               </div>
 
               <div className={styles.desc}>
                 <Typography>
-                  {dataTreatment.description}
+                  {dataTreatment?.description}
                 </Typography>
               </div>
 
@@ -283,7 +283,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                         cursor: 'pointer'
                       },
                     }}>
-                      <ListItem>{dataTreatment.operationDuration} </ListItem>
+                      <ListItem>{dataTreatment?.operationDuration} </ListItem>
                     </List>
                   </div>
                   <div className={styles.box} >
@@ -301,7 +301,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                         cursor: 'pointer'
                       },
                     }}>
-                      <ListItem>{dataTreatment.anesthesia}</ListItem>
+                      <ListItem>{dataTreatment?.anesthesia}</ListItem>
                     </List>
                   </div>
                   <div className={styles.box}>
@@ -319,7 +319,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                         cursor: 'pointer'
                       },
                     }}>
-                      <ListItem>${dataTreatment.startCost}</ListItem>
+                      <ListItem>${dataTreatment?.startCost}</ListItem>
                     </List>
                   </div>
                 </div>
@@ -341,7 +341,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
                       },
                     }}>
-                      <ListItem>{dataTreatment.successRate}%</ListItem>
+                      <ListItem>{dataTreatment?.successRate}%</ListItem>
                     </List>
                   </div>
 
@@ -360,7 +360,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                         cursor: 'pointer'
                       },
                     }}>
-                      <ListItem>{dataTreatment.resultDuration}</ListItem>
+                      <ListItem>{dataTreatment?.resultDuration}</ListItem>
                     </List>
                   </div>
 
@@ -380,7 +380,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                         cursor: 'pointer'
                       },
                     }}>
-                      <ListItem> {dataTreatment.procedureType}</ListItem>
+                      <ListItem> {dataTreatment?.procedureType}</ListItem>
                     </List>
                   </div>
                 </div>
@@ -622,7 +622,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
 
 
       {
-        dataTreatment.treatmentStep.length !== 0 &&
+        dataTreatment?.treatmentStep?.length !== 0 &&
         <section id={styles.steps}>
           <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.sec_title}>
@@ -640,7 +640,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                 isRTL={router.locale === 'ar' ? true : false}
               >
 
-                {dataTreatment.treatmentStep.map((stepCard, index) => (
+                {dataTreatment?.treatmentStep.map((stepCard, index) => (
                   <>
 
                     <div className={styles.counter_container}>
@@ -782,7 +782,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
               </Typography>
             </div>
             <div className={styles.video_container}>
-              <iframe width="560" height="315" src={dataTreatment.videoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <iframe width="560" height="315" src={dataTreatment?.videoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
           </div>
 
@@ -906,7 +906,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
       </section >
 
       {
-        dataTreatment.treatmentProcedure != 0 &&
+        dataTreatment?.treatmentProcedure != 0 &&
         <section id={styles.treatment_desc}>
           <Container className='mycontainer' sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.sec_title}>
@@ -922,7 +922,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
                 isRTL={router.locale === 'ar' ? true : false}
 
               >
-                {dataTreatment.treatmentProcedure.map((card, index) => (
+                {dataTreatment?.treatmentProcedure.map((card, index) => (
                   <>
                     <div className={styles.steps_container} key={index}>
                       <div className={styles.step}>
@@ -960,7 +960,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
         <div className={styles.section_container}>
           <div className={styles.title}>
             <Typography variant='h3'>
-              Cost Starts From ${dataTreatment.cost}
+              Cost Starts From ${dataTreatment?.cost}
             </Typography>
           </div>
 
@@ -1074,9 +1074,8 @@ export default TreatmentName
 
 
 
+
 export async function getServerSideProps({ locale, query, }) {
-
-
   const resTreatment = await axios.post("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentBySlug", {
     "lang": locale,
     "treatmentSlug": query.slug,
@@ -1087,8 +1086,6 @@ export async function getServerSideProps({ locale, query, }) {
       'Cache-Control': 'no-cache',
       'Pragma': 'no-cache',
       'Expires': '0',
-
-
     }
   });
 

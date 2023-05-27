@@ -16,6 +16,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from "next-i18next";
 import toast from 'react-hot-toast';
 import { ThreeDots } from 'react-loader-spinner'
+import Link from "next/link";
 
 
 export default function BolgDetailsID({ blog, allBlogsTagsData }) {
@@ -242,7 +243,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
             </div>
 
             <div className={styles.name}>
-              <Link href="#">
+              <Link href="/">
                 {blog.reviewer}
               </Link>
               - {blog.reviewerJobTitle}
