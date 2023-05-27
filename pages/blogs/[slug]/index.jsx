@@ -210,9 +210,9 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
         id={styles.signle_blog_header} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <div className={styles.img_container}>
           <Image
-            width={100}
-            height={100}
-            src={blog.image} alt={blog.title} />
+            width={300}
+            height={218}
+            src={blog.image} alt={""} />
         </div>
 
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -261,9 +261,10 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
           <div className={styles.headline}>
             <article className={styles.headline_inner}>
               <div className={styles.headline_img_container}>
-                <Image width={770}
+                <Image
+                  width={770}
                   height={518}
-                  src={blog.image} alt={blog.title} />
+                  src={blog.image} alt={""} />
               </div>
 
               <div dangerouslySetInnerHTML={createMarkup()} />
@@ -274,7 +275,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
               <div className={styles.blog_treatment_box}>
                 <div className={styles.box}>
                   <div className={styles.img_container}>
-                    <Image width={100} height={100} src={blog?.treatment?.image} alt={blog?.treatment?.image} />
+                    <Image width={344} height={518} src={blog?.treatment?.image} alt={blog?.treatment?.image} />
                   </div>
 
                   <div className={styles.text_container}>
