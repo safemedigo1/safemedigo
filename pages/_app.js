@@ -19,7 +19,6 @@ const quicksand = Quicksand({
   weight: ["400", "600", "700"],
 });
 
-console.log(quicksand);
 Router.events.on("routeChangeStart", nProgress.start);
 Router.events.on("routeChangeError", nProgress.done);
 Router.events.on("routeChangeComplete", nProgress.done);

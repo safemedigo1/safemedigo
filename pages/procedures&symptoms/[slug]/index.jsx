@@ -15,7 +15,7 @@ import axios from 'axios';
 import { ThreeDots } from 'react-loader-spinner'
 import Image from 'next/image';
 
-const TreatmentName = ({ dataTreatment, locale, query, }) => {
+const TreatmentName = ({ dataTreatment, locale, params, }) => {
   const [expanded, setExpanded] = useState(false);
   const [currentPageCount, setCurrentPageCount] = useState(1)
   const [qADetails, setQADetails] = useState(null);
@@ -83,7 +83,7 @@ const TreatmentName = ({ dataTreatment, locale, query, }) => {
   const getQA = async () => {
     const getQA = await axios.post("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentsQuestionAnswersBySlug", {
       "lang": locale,
-      "treatmentSlug": query.slug,
+      "treatmentSlug": params.slug,
       "currentPage": currentPageCount
 
     }, {
@@ -1075,29 +1075,56 @@ export default TreatmentName
 
 
 
-export async function getServerSideProps({ locale, query, }) {
+export async function getStaticPaths() {
+  const res = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": 'en',
+      "healthCaseSlug": "",
+      "currentPage": 1,
+      "departmentSlug": ""
+    })
+  })
+  const data = await res.json()
+
+  const paths = data.treatments.map((treatment) => {
+    return {
+      params: { slug: treatment.slug.toString() }
+    }
+  })
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ locale, params }) {
   const resTreatment = await axios.post("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentBySlug", {
     "lang": locale,
-    "treatmentSlug": query.slug,
+    "treatmentSlug": params.slug,
   }, {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Cache-Control': 'no-cache',
-      'Pragma': 'no-cache',
-      'Expires': '0',
     }
   });
 
   const dataTreatment = resTreatment.data;
 
+
+
   return {
     props: {
       dataTreatment,
       locale,
-      query,
+      params,
       ...(await serverSideTranslations(locale, ['navbar', 'single_blog', "contact_details", 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", "proceduresSymptoms_single"])),
 
     }
   }
 }
+
+
+

@@ -18,7 +18,8 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import Image from 'next/image';
 
-const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, query, locale }) => {
+const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, params, locale }) => {
+  console.log(params.slug, "PARAMSSSZZ")
   const [result, setResult] = useState(null)
   const [expanded, setExpanded] = useState(false);
   const [dataTreatmentsHealthCase, setDataTreatmentsHealthCase] = useState(null);
@@ -92,7 +93,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
     }
   }
 
-  const description = dataMedicalDepartments.find((e) => query.slug === e.slug)
+  const description = dataMedicalDepartments.find((e) => params.slug === e.slug)
 
   const getAllTreatments = async () => {
     setTreatmentLoading(true)
@@ -195,7 +196,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                 (
                   <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index} >
                     <Link href={`/medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={`${styles.box}  
-                    ${query.slug === `${card.slug}` && styles.active}`} scroll={false}>
+                    ${params.slug === `${card.slug}` && styles.active}`} scroll={false}>
                       <div className={styles.img_container}>
                         <Image width={77.12} height={77.12} className={styles.main_img} src={card.image} alt="" />
                         <Image width={77.12} height={77.12} className={styles.sec_img} src={card.secondImage} alt="" />
@@ -209,7 +210,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
 
                     < Link href={`/medicaldepartments/${secondHalfArray[index].slug}`} onClick={() => handleResult(secondHalfArray[index])} className={`${styles.box}  
-                    ${query.slug === `${secondHalfArray[index].slug}` && styles.active}`} scroll={false} >
+                    ${params.slug === `${secondHalfArray[index].slug}` && styles.active}`} scroll={false} >
                       <div className={styles.img_container}>
                         <Image width={77.12} height={77.12} className={styles.main_img} src={secondHalfArray[index].image} alt="" />
                         <Image width={77.12} height={77.12} className={styles.sec_img} src={secondHalfArray[index].secondImage} alt="" />
@@ -341,7 +342,6 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                       expanded={true}
                       square={false} sx={{
                         backgroundColor: 'var(--main-white-color)',
-                        // boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.1607843137)',
                         '&:before': {
                           display: 'none',
                         },
@@ -443,7 +443,32 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
 export default medicaldepartments
 
-export async function getServerSideProps({ locale, query }) {
+export async function getStaticPaths() {
+  const res = await fetch("https://api.safemedigo.com/api/v1/MedicalDepartment/GetAllMedicalDepartmentsByLang", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": 'en',
+      "healthCaseSlug": "",
+      "currentPage": 1,
+      "departmentSlug": ""
+    })
+  })
+  const data = await res.json()
+
+  const paths = data.map((treatment) => {
+    return {
+      params: { slug: treatment.slug.toString() }
+    }
+  })
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ locale, params }) {
   const resPopularTreatments = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetPopularTreatmentsByLang", {
     method: 'POST',
     headers: {
@@ -488,7 +513,7 @@ export async function getServerSideProps({ locale, query }) {
     },
     body: JSON.stringify({
       "lang": locale,
-      "departmentSlug": query.slug
+      "departmentSlug": params.slug
 
     })
   })
@@ -499,7 +524,7 @@ export async function getServerSideProps({ locale, query }) {
       dataPopularTreatments,
       dataHealthCase,
       dataMedicalDepartments,
-      query,
+      params,
       locale,
       ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', "contact_details", 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms"])),
 
