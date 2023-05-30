@@ -25,6 +25,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
   const { t } = useTranslation();
   const [category, setCategory] = useState('All Blogs');
   const [lang, setLang] = useState(locale);
+  console.log(allBlogsTagsData, "HERERERE")
 
   const router = useRouter();
 
@@ -188,7 +189,6 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
 
 
 
-
 export async function getStaticProps({ params, locale }) {
   const page = '1'; // If no page is specified, default to page 1
   const limit = 6; // Number of products to display per page
@@ -249,11 +249,6 @@ export async function getStaticProps({ params, locale }) {
       totalPages,
       allBlogsTagsData,
       locale,
-    }
-  }
-  return {
-    props: {
-
     }
   }
 }

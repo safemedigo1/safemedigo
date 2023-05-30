@@ -221,7 +221,6 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
                     </Link>
                   </Box>
-
                 )
                 )}
 
@@ -410,8 +409,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
                 <div className={styles.info_header}>
                   <div className={styles.img_container}>
-
-                    <Image width={100} height={100} src={description.image} alt="" />
+                    <img src={description.image} alt="" />
                   </div>
 
                   <div className={styles.title}>
