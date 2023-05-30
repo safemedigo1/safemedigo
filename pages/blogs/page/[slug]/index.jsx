@@ -208,6 +208,7 @@ export async function getStaticProps({ params, locale }) {
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
 
+
   const res1 = await fetch("https://api.safemedigo.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
     method: 'POST',
     headers: {
@@ -254,6 +255,8 @@ export async function getStaticProps({ params, locale }) {
 
   const allBlogsTagsData = await allBlogTagsRes.json()
 
+  const translation = await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp']);
+
   return {
     props: {
       blogs: data,
@@ -262,7 +265,8 @@ export async function getStaticProps({ params, locale }) {
       currentPage: parseInt(page),
       totalPages,
       allBlogsTagsData,
-      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp'])),
+      translation,
+      // ...
     }
     , revalidate: 60,
 
