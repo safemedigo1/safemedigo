@@ -9,10 +9,11 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import Link from "next/link";
-import Head from "next/head";
 import { useState } from "react";
 import SecNavbar from '@/components/Navbar/SecNavbar';
 import Image from 'next/image'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { motion } from 'framer-motion'
 
 export default function BlogPage({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages }) {
   const router = useRouter();
@@ -41,7 +42,6 @@ export default function BlogPage({ blogCategory, blogs, allBlogsTagsData, curren
 
 
   const count = blogs.count / 6;
-  const newCount = Math.floor(count);
   return (
     <>
       <SecNavbar />
@@ -167,18 +167,49 @@ export default function BlogPage({ blogCategory, blogs, allBlogsTagsData, curren
 
     </>
   );
+
+
 }
 
-export async function getServerSideProps({ query, locale }) {
-  const page = query.slug || '1'; // If no page is specified, default to page 1
+
+
+
+export async function getStaticPaths() {
+  const res = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogWithPage", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": "en",
+      "blogCategoryId": '0',
+      "currentPage": '1',
+    })
+  })
+  const data = await res.json()
+  const totalProducts = data.count / 6;
+
+
+
+  const dynamicNumber = Math.ceil(totalProducts);
+  const numbersArray = Array.from({ length: dynamicNumber }, (_, index) => index + 1);
+  const paths = numbersArray.map((number) => ({
+    params: { slug: number.toString() },
+  }));
+
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params, locale }) {
+  console.log(params, "PARAMSZ")
+  const page = params.slug || '1'; // If no page is specified, default to page 1
   const limit = 6; // Number of products to display per page
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
 
-
-
-
-  const res1 = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
+  const res1 = await fetch("https://api.safemedigo.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -190,9 +221,9 @@ export async function getServerSideProps({ query, locale }) {
   })
   const data2 = await res1.json()
 
-  const myCategoryId = data2.filter((c) => c.slug === query.category)
+  const myCategoryId = data2.filter((c) => c.slug === params.category)
 
-  const res = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogWithPage", {
+  const res = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogWithPage", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -211,7 +242,7 @@ export async function getServerSideProps({ query, locale }) {
   const totalProducts = data.count;
   const totalPages = Math.ceil(totalProducts / limit);
 
-  const allBlogTagsRes = await fetch("http://safemedigoapi2-001-site1.atempurl.com/api/v1/Blog/GetAllBlogsTags", {
+  const allBlogTagsRes = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogsTags", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -231,8 +262,8 @@ export async function getServerSideProps({ query, locale }) {
       products: products.slice(startIndex, endIndex),
       currentPage: parseInt(page),
       totalPages,
-      allBlogsTagsData
-
+      allBlogsTagsData,
+      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp'])),
     }
   }
 }

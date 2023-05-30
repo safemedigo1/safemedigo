@@ -1,5 +1,5 @@
 import Carousel, { consts } from 'react-elastic-carousel';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { Container, Typography, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Link from 'next/link';
@@ -123,6 +123,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
   // Styling 
 
+
   const paragrahp3 =
   {
     fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)'
@@ -131,8 +132,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
     alignItems: 'center',
     'span': { backgroundColor: '#ffffff', color: '#004747', marginRight: '16px', width: '31px', borderRadius: '50%', height: '31px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }
   }
-
-
 
   const sxTitle2 = {
     marginTop: '24px',
@@ -455,7 +454,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </AccordionSummary>
 
               <AccordionDetails >
-
                 <List sx={{
                   listStyleType: 'disc',
                   padding: '0px',
@@ -470,9 +468,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
                     <div dangerouslySetInnerHTML={createMarkupSideEffects()} />
                   </ListItem  >
-
-
-
                 </List>
               </AccordionDetails>
 
@@ -487,7 +482,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               }}
               expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
               <AccordionSummary
-
                 sx={expanded !== 'panel2' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC ', color: '#000000' }
                   : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
                 }
@@ -500,7 +494,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </AccordionSummary>
 
               <AccordionDetails >
-
                 <List sx={{
                   listStyleType: 'disc',
                   padding: '0px',
@@ -566,8 +559,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </AccordionDetails>
 
             </Accordion>
-
-
 
           </div>
         </Container >
@@ -705,7 +696,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </AccordionDetails>
             </Accordion>
 
-
             <Accordion disableGutters={false} elevation={0}
               square={false} sx={{
                 marginTop: '8px',
@@ -713,15 +703,16 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   display: 'none',
                 }
               }}
-              expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
+              expanded={expanded === 'panel77'} onChange={handleChange('panel77')}
+
+            >
               <AccordionSummary
 
-                sx={expanded !== 'panel6' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                sx={expanded !== 'panel77' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
                   : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
                 }
-                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel6' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                aria-controls="panel6a-content"
-                id="panel6a-header"
+                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel77' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+
               >
                 <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
                   2- During Operation
@@ -730,8 +721,8 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
 
               <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
-                <div dangerouslySetInnerHTML={createMarkupDuringOperationOverview()} />
 
+                <div dangerouslySetInnerHTML={createMarkupDuringOperationOverview()} />
               </AccordionDetails>
 
             </Accordion>
@@ -743,17 +734,21 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   display: 'none',
                 }
               }}
-              expanded={expanded === 'panel77'} onChange={handleChange('panel77')}>
+              onChange={handleChange('panel6')}
+              expanded={expanded === 'panel6'}
+            >
               <AccordionSummary
 
-                sx={expanded !== 'panel77' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                sx={expanded !== 'panel6' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
                   : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
                 }
-                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel77' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-
+                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel6' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                aria-controls="panel6a-content"
+                id="panel6a-header"
               >
                 <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
                   3- After Operation
+
                 </Typography>
               </AccordionSummary>
 
@@ -790,7 +785,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
       </article>
 
       <section id={styles.howToGetTreatment}>
-
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.howToGetTreatment_container}>
             <div className={styles.sec_title}>
@@ -822,7 +816,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   </Typography>
                 </AccordionSummary>
 
-                <AccordionDetails sx={{ background: '#F4F9F8' }} >
+                <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }} >
                   <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepOne()} />
                 </AccordionDetails>
 
@@ -856,7 +850,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   </Typography>
                 </AccordionSummary>
 
-                <AccordionDetails sx={{ background: '#F4F9F8' }}>
+                <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
                   <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepTwo()} />
                 </AccordionDetails>
 
@@ -889,7 +883,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   </Typography>
                 </AccordionSummary>
 
-                <AccordionDetails sx={{ background: '#F4F9F8' }}>
+                <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
                   <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepThree()} />
                 </AccordionDetails>
 
@@ -1083,7 +1077,7 @@ export async function getStaticPaths() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "lang": 'en',
+      "lang": "en",
       "healthCaseSlug": "",
       "currentPage": 1,
       "departmentSlug": ""
