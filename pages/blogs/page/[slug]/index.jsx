@@ -196,10 +196,7 @@ export async function getStaticPaths({ locale }) {
   const numbersArray = Array.from({ length: dynamicNumber }, (_, index) => index + 1);
   const customLocale = ['en', 'ar', 'tr'];
 
-  // const paths = numbersArray.map((number, idx) => ({
-  //   params: { slug: number.toString(), },
-  //   locale: customLocale[idx]
-  // }));
+
 
 
   const paths = numbersArray.flatMap((number, idx) => customLocale.map((locale) => ({
@@ -211,7 +208,6 @@ export async function getStaticPaths({ locale }) {
 
 
 
-  console.log(paths, "PATHS")
   return { paths, fallback: false };
 }
 

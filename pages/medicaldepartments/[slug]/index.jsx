@@ -457,11 +457,13 @@ export async function getStaticPaths() {
   })
   const data = await res.json()
 
-  const paths = data.map((treatment) => {
-    return {
-      params: { slug: treatment.slug.toString() }
-    }
-  })
+
+  const customLocale = ['en', 'ar', 'tr'];
+  const paths = data.flatMap((treatment, idx) => customLocale.map((locale) => ({
+    params: { slug: treatment.slug.toString() },
+    locale: locale,
+  })))
+
 
   return { paths, fallback: false };
 }
