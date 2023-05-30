@@ -255,7 +255,6 @@ export async function getStaticProps({ params, locale }) {
 
   const allBlogsTagsData = await allBlogTagsRes.json()
 
-  const translation = await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp']);
 
   return {
     props: {
@@ -265,8 +264,7 @@ export async function getStaticProps({ params, locale }) {
       currentPage: parseInt(page),
       totalPages,
       allBlogsTagsData,
-      translation,
-      // ...
+      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp'])),
     }
     , revalidate: 60,
 
