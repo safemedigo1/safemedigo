@@ -579,7 +579,7 @@ export async function getStaticProps({ params, locale }) {
       allBlogsTagsData,
       ...(await serverSideTranslations(locale, ['single_blog', 'navbar', 'sec_navbar', 'page_header_comp', 'blogs_page'])),
     },
-    revalidate: 10,
+    revalidate: 0,
 
   }
 }
