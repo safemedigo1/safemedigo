@@ -602,6 +602,8 @@ export async function getStaticProps({ params, locale }) {
       blog: data,
       allBlogsTagsData
     }
+    , revalidate: 60,
+
   }
 }
 
