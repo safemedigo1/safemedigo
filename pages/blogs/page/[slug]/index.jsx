@@ -174,7 +174,7 @@ export default function BlogPage({ blogCategory, blogs, allBlogsTagsData, curren
 
 
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locale }) {
   const res = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogWithPage", {
     method: 'POST',
     headers: {
@@ -194,15 +194,30 @@ export async function getStaticPaths() {
 
   const dynamicNumber = Math.ceil(totalProducts);
   const numbersArray = Array.from({ length: dynamicNumber }, (_, index) => index + 1);
-  const paths = numbersArray.map((number) => ({
+  const customLocale = ['en', 'ar', 'tr'];
+
+  // const paths = numbersArray.map((number, idx) => ({
+  //   params: { slug: number.toString(), },
+  //   locale: customLocale[idx]
+  // }));
+
+
+  const paths = numbersArray.flatMap((number, idx) => customLocale.map((locale) => ({
     params: { slug: number.toString() },
-  }));
+    locale: locale,
+  })))
 
 
+
+
+
+  console.log(paths, "PATHS")
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params, locale }) {
+
+export async function getStaticProps({ locale, params }) {
+
   const page = params.slug || '1'; // If no page is specified, default to page 1
   const limit = 6; // Number of products to display per page
   const startIndex = (page - 1) * limit;

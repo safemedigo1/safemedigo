@@ -466,7 +466,7 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({ locale, params }) {
+export async function getStaticProps({ params, locale }) {
   const resPopularTreatments = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetPopularTreatmentsByLang", {
     method: 'POST',
     headers: {

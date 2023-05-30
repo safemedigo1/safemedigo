@@ -1,10 +1,11 @@
 {
-  "locales": ["en", "ca", "es"],
+  "locales": ["en", "tr", "ar"],
   "defaultLocale": "en",
   "pages": {
     "*": ["common"],
     "/": ["home", "example"],
     "/about": ["about"],
-    "/blogs": ["blogs_page"]
+    "/blogs": ["blogs_page"],
+    "/blogs/page/[slug]": ["blogs_page"]
   }
 }

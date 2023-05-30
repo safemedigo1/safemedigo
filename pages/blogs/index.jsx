@@ -189,7 +189,7 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
 
 
 
-export async function getStaticProps({ params, locale }) {
+export async function getStaticProps({ locale }) {
   const page = '1'; // If no page is specified, default to page 1
   const limit = 6; // Number of products to display per page
   const startIndex = (page - 1) * limit;
@@ -250,7 +250,6 @@ export async function getStaticProps({ params, locale }) {
       allBlogsTagsData,
       locale,
     }
-    , revalidate: 60,
 
   }
 }
