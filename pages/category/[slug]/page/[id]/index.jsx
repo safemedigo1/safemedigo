@@ -18,7 +18,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from "react-i18next";
 
 
-const PageNumber = ({ blogCategory, blogs, myCategoryId, currentPage, totalPages, allBlogsTagsData }) => {
+const PageNumber = ({ blogCategory, query, blogs, myCategoryId, currentPage, totalPages, allBlogsTagsData }) => {
   const [category, setCategory] = useState(blogCategory[0].categeryName);
   const { t } = useTranslation();
 
@@ -27,11 +27,11 @@ const PageNumber = ({ blogCategory, blogs, myCategoryId, currentPage, totalPages
 
   const handleMyChangePage = (event, value) => {
     event.preventDefault();
-    if (value === 1) {
-      router.push(`/blogs/`);
-    }
+    // if (value === 1) {
+    //   router.push(`/blogs/`);
+    // }
 
-    router.push(`/blogs/page/${value}`, undefined, { scroll: false })
+    router.push(`/category/${query.slug}/page/${value} `, undefined, { scroll: false })
   }
 
   const handleFilterChanges = (event, value) => {
@@ -39,7 +39,6 @@ const PageNumber = ({ blogCategory, blogs, myCategoryId, currentPage, totalPages
     // setTimeout(() => window.location.reload(), 2000);
     setCategory(value.props.children)
   }
-  console.log("HERE")
 
 
 
@@ -163,6 +162,7 @@ const PageNumber = ({ blogCategory, blogs, myCategoryId, currentPage, totalPages
                       </>
                     ))}
                   </div>
+
                   <Box sx={{
                     display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: "center", marginTop: '50px',
                     '& ul > li> button:not(.Mui-selected)': { color: '#004747', fontWeight: 'bold', fontSize: '14px' },
@@ -253,6 +253,7 @@ export async function getServerSideProps({ query, locale }) {
       categorySlug,
       allBlogsTagsData,
       myCategoryId,
+      query,
       ...(await serverSideTranslations(locale, ['most_popular', 'home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'blogs_page'])),
     }
   }
