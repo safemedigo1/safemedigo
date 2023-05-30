@@ -31,6 +31,7 @@ const nextConfig = {
   distDir: "build",
   i18n,
   staticPageGenerationTimeout: 120,
+  generateTimeout: 600000,
 };
 
 // module.exports = withTm(nextConfig);

@@ -174,7 +174,7 @@ export default function BlogPage({ blogCategory, blogs, allBlogsTagsData, curren
 
 
 
-export async function getStaticPaths({ locale }) {
+export async function getStaticPaths() {
   const res = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogWithPage", {
     method: 'POST',
     headers: {
