@@ -528,8 +528,8 @@ export async function getStaticProps({ params, locale }) {
       locale,
       ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', "contact_details", 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms"])),
 
-    }
-    , revalidate: 60,
+    },
+    revalidate: 10,
   }
 }
 

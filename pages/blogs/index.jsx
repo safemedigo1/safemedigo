@@ -249,8 +249,8 @@ export async function getStaticProps({ locale }) {
       totalPages,
       allBlogsTagsData,
       locale,
-    }
-
+    },
+    revalidate: 10,
   }
 }
 
