@@ -203,7 +203,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, locale }) {
-  console.log(params, "PARAMSZ")
   const page = params.slug || '1'; // If no page is specified, default to page 1
   const limit = 6; // Number of products to display per page
   const startIndex = (page - 1) * limit;

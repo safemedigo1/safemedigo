@@ -544,6 +544,31 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
+// export async function getStaticPaths() {
+//   const res = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogWithPage", {
+//     method: 'POST',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//       "lang": "en",
+//       "blogCategoryId": 0,
+//       "currentPage": 1
+//     })
+//   })
+//   const data = await res.json()
+
+//   const paths = data?.data?.map((data) => {
+//     return {
+//       params: { slug: data.slug.toString() }
+//     }
+//   })
+
+
+//   return { paths, fallback: false };
+// }
+
 export async function getStaticProps({ params, locale }) {
   const res = await fetch("https://api.safemedigo.com/api/v1/Blog/GetBlogUiDataBySlug", {
     method: 'POST',
