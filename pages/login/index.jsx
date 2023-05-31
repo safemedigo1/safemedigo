@@ -51,7 +51,9 @@ const login = () => {
             <div className={styles.google}>
               <button >
                 <FcGoogle />
-                Sign in with Google
+                <p>
+                  Sign in with Google
+                </p>
               </button>
 
             </div>

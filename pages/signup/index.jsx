@@ -49,9 +49,6 @@ const SignUp = () => {
             <Link href={'/forgot'} className={styles.forgot}>Forgot Password?</Link>
           </div>
 
-
-
-
           <div className={styles.or}>
             Or
           </div>
@@ -60,7 +57,9 @@ const SignUp = () => {
             <div className={styles.google}>
               <button >
                 <FcGoogle />
-                Sign in with Google
+                <p>
+                  Sign in with Google
+                </p>
               </button>
 
             </div>

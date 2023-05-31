@@ -1,21 +1,24 @@
 #login {
   background-color: var(--main-green-color);
   width: 100%;
+  height: 100%;
   display: flex;
+  @media screen and (max-width: 450px) {
+    background-color: transparent;
+  }
 
   .card_inner {
     margin: 35px auto;
     width: 500px;
-
     background-color: var(--main-white-color);
     padding: 29px;
-
     box-shadow: 0px 30px 30px #00000029;
-    opacity: 1;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-
+    @media screen and (max-width: 450px) {
+      width: 100%;
+    }
     .icon_container {
       align-self: flex-end;
       a {
@@ -140,12 +143,14 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-
       margin-bottom: 36px;
+      @media screen and (max-width: 450px) {
+        justify-content: center;
+      }
       .google {
         width: 300px;
         @media screen and (max-width: 450px) {
-          width: 100%;
+          width: fit-content;
         }
 
         button {
@@ -164,10 +169,23 @@
           border: none;
           border-radius: 5px;
 
+          @media screen and (max-width: 450px) {
+            width: fit-content;
+            padding: 6px;
+          }
+          p {
+            @media screen and (max-width: 450px) {
+              display: none;
+            }
+          }
+
           svg {
             width: 31px;
             height: 31px;
             margin-right: 28px;
+            @media screen and (max-width: 450px) {
+              margin-right: 0px;
+            }
           }
         }
       }
