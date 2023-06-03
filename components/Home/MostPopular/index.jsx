@@ -418,7 +418,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
                         isRTL={router.locale === 'ar' ? true : false}
                       >
                         {clinicData.map((clinic, index) => (
-                          <div className={styles.box} key={index}>
+                          <Link href='/hospitals/acibadem-hospital-in-taksim' className={styles.box} key={index}>
                             <div className={styles.img_container}>
                               <Image width={344} height={191} src={clinic.img} alt={clinic.title} />
                               <div className={styles.verified}>
@@ -478,7 +478,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
 
 
 
-                          </div>
+                          </Link>
                         ))}
 
 
