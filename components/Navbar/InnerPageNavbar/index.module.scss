@@ -1,0 +1,49 @@
+header#InnerPageNavbar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+
+  nav {
+    .links_container {
+      background-color: #45777b;
+
+      ul {
+        li {
+          a {
+            color: var(--main-white-color);
+            font-size: 18px;
+            font-family: var(--quickstand-font);
+            font-weight: var(--font-medium);
+
+            position: relative;
+
+            @media screen and (max-width: 992px) {
+              font-size: 14px;
+              letter-spacing: 0;
+            }
+
+            &::after {
+              transition: all 0.3s ease;
+              position: absolute;
+              content: "";
+              bottom: -16px;
+              left: 50%;
+              width: 68px;
+              height: 4px;
+              background-color: var(--sec-cyan-color);
+              z-index: 12;
+              transform: translateX(-50%);
+              opacity: 0;
+            }
+
+            &:hover::after {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}

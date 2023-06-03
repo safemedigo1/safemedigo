@@ -19,13 +19,13 @@
   --font-regular: 400;
   --font-sem-bold: 600;
 
-  --open-sans-font: "Open Sans", sans-serif;
+  --open-sans-font: "Open Sans";
   // --quickstand-font: "__className_326411";
 }
 
 html,
 body {
-  // font-family: "Quicksand", sans-serif !important;
+  font-family: "Quicksand" !important;
   scroll-behavior: smooth !important;
   height: 100vh;
 }

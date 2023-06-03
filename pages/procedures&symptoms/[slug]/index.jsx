@@ -14,6 +14,7 @@ import { ContactDetails } from '@/components/Home';
 import axios from 'axios';
 import { ThreeDots } from 'react-loader-spinner'
 import Image from 'next/image';
+import InnerPageNavbar from '@/components/Navbar/InnerPageNavbar';
 
 const TreatmentName = ({ dataTreatment, locale, params, }) => {
   const [expanded, setExpanded] = useState(false);
@@ -194,48 +195,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
       <PageHeader treatment={dataTreatment} />
 
-      <header id={styles.treatment} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-        <nav>
-          <div className={styles.links_container}>
-            <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-              <List sx={{ display: 'flex', justifyContent: 'space-between', paddingTop: '20px', width: { sx: '100%', sm: '100%', md: '100%', lg: '700px' } }}>
-                <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                  <Link href='#overview'>
-                    {t("proceduresSymptoms_single:nav_overview")}
-                  </Link>
-                </ListItem>
-
-                <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                  <Link href='#price'>
-                    {t("proceduresSymptoms_single:nav_prices")}
-                  </Link>
-                </ListItem>
-
-                <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                  <Link href='#q&a'>
-                    {t("proceduresSymptoms_single:nav_q&a")}
-                  </Link>
-                </ListItem>
-
-                <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                  <Link href='/'>
-                    {t("proceduresSymptoms_single:nav_reviews")}
-                  </Link>
-                </ListItem>
-
-                <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                  <Link href='/'>
-                    {t("proceduresSymptoms_single:nav_doctors")}
-                  </Link>
-                </ListItem>
-
-
-              </List>
-            </Container>
-
-          </div>
-        </nav >
-      </header >
+      <InnerPageNavbar />
 
       <article id={'overview'} className={styles.overview} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>

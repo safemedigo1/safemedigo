@@ -54,8 +54,6 @@ const SecNavbar = ({ categorySlug, slug, category, currentPage, blog, tag, how_i
             </> : ""
           }
 
-
-
           {pathname === ('/procedures&symptoms/[slug]') ?
             <>
               <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/medicaldepartments/Obstetrics-and-gynecology' > /{t('sec_navbar:procedures&symptoms')}</Link>
@@ -72,6 +70,12 @@ const SecNavbar = ({ categorySlug, slug, category, currentPage, blog, tag, how_i
           {pathname === ('/tags/[slug]') &&
             <>
               <Link href='/'> {t('sec_navbar:home')} </Link> <Link href='/blogs' > /Blogs</Link>  <Link href='#' className={styles.active}> /{tag}</Link>
+            </>
+          }
+
+          {pathname === ('/hospitals/[slug]') &&
+            <>
+              <Link href='/'> {t('sec_navbar:home')} </Link> <Link href='/' >/ Acibadem Hospital In Taksim</Link>
             </>
           }
         </Container>

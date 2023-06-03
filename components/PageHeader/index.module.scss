@@ -176,6 +176,193 @@
   }
 }
 
+#hospital {
+  background-color: var(--sec-green-color);
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  @media screen and (max-width: 992px) {
+    // padding-top: 57px;
+    padding-bottom: 20px;
+    padding-top: 8px;
+  }
+  font-family: "Quicksand";
+
+  .boxes_container {
+    display: flex;
+    .hospital_box {
+      background: #ffffff 0% 0% no-repeat padding-box;
+      box-shadow: 0px 3px 6px #00000029;
+      display: flex;
+      padding: 9px;
+      border-radius: 10px;
+      margin-right: 32px;
+      width: 800px;
+
+      .main_img {
+        width: 400px;
+        height: 100%;
+        margin-right: 26px;
+        img {
+          border-radius: 5px;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .text_container {
+        margin-top: 10px;
+        .header {
+          display: flex;
+          align-items: flex-start;
+          .icon_container {
+            width: 18.04px;
+            height: 19.25px;
+            margin-right: 8px;
+            svg {
+              width: 100%;
+              height: 100%;
+              color: var(--main-green-color);
+            }
+          }
+
+          .text {
+            p {
+              font-family: "Quicksand";
+              font-size: 16px;
+              color: var(--main-green-color);
+            }
+          }
+        }
+        .name {
+          margin-top: 18px;
+          margin-bottom: 8px;
+          h3 {
+            color: var(--main-dark-color);
+            font-size: 24px;
+            font-weight: var(--font-bold);
+            font-family: "Quicksand";
+          }
+        }
+
+        .rating {
+          margin-top: 9px;
+          display: flex;
+          align-items: center;
+
+          .reviews_num {
+            color: var(--main-dark-color);
+            margin-left: 11.4px;
+            font-size: 18px;
+
+            font-weight: var(--font-medium);
+            font-family: var(--quickstand-font);
+          }
+        }
+        .location {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 10px;
+          svg {
+            margin-right: 4.96px;
+            font-size: 25px;
+            color: var(--main-dark-color);
+          }
+          p {
+            color: var(--main-dark-color);
+            font-size: 16px;
+            font-weight: var(--font-medium);
+            font-family: var(--open-sans-font);
+            font-family: "Quicksand";
+          }
+        }
+
+        .category {
+          margin-top: 8px;
+          p {
+            color: var(--main-dark-color);
+            font-weight: var(--font-regular);
+            font-family: "Quicksand";
+          }
+        }
+      }
+    }
+
+    .info {
+      background: #ffffff 0% 0% no-repeat padding-box;
+      box-shadow: 0px 3px 6px #00000029;
+      border-radius: 10px;
+      padding: 24px;
+      width: 376px;
+
+      .header {
+        margin-bottom: 16px;
+        h4 {
+          margin: 0;
+          color: var(--main-green-color);
+          font-size: 18px;
+          font-weight: var(--font-bold);
+          font-family: "Quicksand";
+        }
+      }
+
+      .boxes_container {
+        display: flex;
+        align-items: flex-start;
+        .box {
+          background-color: var(--sec-green-color);
+          width: 100px;
+          min-height: 110px;
+          border-radius: 15px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 10px;
+          margin-bottom: 24px;
+
+          &:not(:last-child) {
+            margin-right: 13px;
+          }
+        }
+
+        .num {
+          p {
+            font-size: 28px;
+            font-weight: var(--font-medium);
+            color: var(--main-green-color);
+            font-family: "Quicksand";
+          }
+        }
+
+        .yearly {
+          p {
+            color: var(--main-dark-color);
+            font-size: 16px;
+            font-weight: var(--font-medium);
+            font-family: "Quicksand";
+          }
+        }
+      }
+
+      .button_container {
+        width: 100%;
+        button {
+          width: 100%;
+          background-color: var(--main-green-color);
+          color: var(--main-white-color);
+          border-radius: 5px;
+          height: 56px;
+          font-size: 18px;
+          font-weight: var(--font-bold);
+          font-family: "Quicksand";
+          cursor: pointer;
+          border: none;
+        }
+      }
+    }
+  }
+}
 // Ar
 #blogs[dir="rtl"] {
   .header_container {

@@ -29,8 +29,6 @@ const ErrorPage = () => {
 export default ErrorPage;
 
 export async function getStaticProps({ locale }) {
-  console.log(locale, "LOCALEE, From 404 !!!");
-
   return {
     props: {
       ...(await serverSideTranslations(locale, ["navbar"])),
