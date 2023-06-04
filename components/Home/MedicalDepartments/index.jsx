@@ -166,7 +166,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment,
                     ${slug === `${secondHalfArray[index].slug}` && styles.active}`} scroll={false} >
                       <div className={styles.img_container}>
                         <Image width={77.12} height={77.12} className={styles.main_img} src={secondHalfArray[index].image} alt="" />
-                        <Image width={77.12} height={77.12} className={styles.sec_img} src={secondHalfArray[index].image} alt="" />
+                        <Image width={77.12} height={77.12} className={styles.sec_img} src={secondHalfArray[index].secondImage} alt="" />
                       </div>
                       <div className={styles.box_title}>
                         <Typography variant="h6">{secondHalfArray[index].departmentName}</Typography>
