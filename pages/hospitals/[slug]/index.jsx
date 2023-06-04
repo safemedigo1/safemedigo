@@ -14,7 +14,7 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { MedicalDepartments } from "@/components/Home";
+import { MedicalDepartments, MostPopular } from "@/components/Home";
 import { useRouter } from "next/router";
 
 
@@ -82,7 +82,6 @@ const Hospital = () => {
     { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
   ]
 
-
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -100,10 +99,6 @@ const Hospital = () => {
       padding: theme.spacing(1),
     },
   }));
-
-
-
-
 
   function BootstrapDialogTitle(props) {
     const { children, onClose, ...other } = props;
@@ -128,7 +123,6 @@ const Hospital = () => {
       </DialogTitle>
     );
   }
-
 
   const hospiTalMedicalDepartment = [
     {
@@ -657,8 +651,6 @@ const Hospital = () => {
 
           </div>
 
-
-
         </section>
       </Container>
 
@@ -692,8 +684,6 @@ const Hospital = () => {
                     <div className={styles.img_container}>
                       <Image width={392} height={305} src={clinic.img} alt={clinic.title} />
                     </div>
-
-
                   </Link>
                 ))}
               </Carousel>

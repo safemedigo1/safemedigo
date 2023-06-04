@@ -13,6 +13,7 @@ import { PageHeader, SecNavbar } from '@/components';
 import { useTranslation } from "react-i18next";
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import MostPopular from '../MostPopular';
 
 const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment, params }) => {
   const [departments, setDepartments] = useState([])
@@ -184,6 +185,11 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment,
 
         </div >
       </section >
+
+
+      {router.pathname === '/hospitals/[slug]' &&
+        <MostPopular />
+      }
     </>
   )
 }

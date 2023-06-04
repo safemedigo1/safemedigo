@@ -170,6 +170,14 @@
             font-family: var(--open-sans-font);
             letter-spacing: 0;
           }
+
+          h3 {
+            color: var(--main-dark-color);
+            font-size: 28px;
+            font-weight: var(--font-sem-bold);
+            font-family: var(--quickstand-font);
+            line-height: 3rem;
+          }
         }
         .btn_container {
           a {

@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import Image from 'next/image';
-
+import departmentStyle from '../MedicalDepartments/index'
 const MostPopular = ({ dataPopularTreatments }) => {
   const { t } = useTranslation();
   const { post1, post2, post3, post4, post5, } = imgs;
@@ -175,13 +175,19 @@ const MostPopular = ({ dataPopularTreatments }) => {
               }
 
               <div className={styles.desc}>
-                <Typography> {t('most_popular:desc')}</Typography>
+
+
+                {router.pathname !== '/hospitals/[slug]' ?
+                  <Typography> {t('most_popular:desc')}</Typography>
+                  :
+                  <Typography variant={'h3'}> Acibadem Hospital Taksim Doctors</Typography>
+                }
+
               </div>
 
 
-              {pathname !== '/procedures&symptoms' &&
+              {pathname === '/' &&
                 <div className={styles.btn_container}>
-
                   <Link href='/'>
                     <button>
                       {t('most_popular:get_started')}
@@ -191,9 +197,30 @@ const MostPopular = ({ dataPopularTreatments }) => {
               }
 
 
+              {router.pathname === '/hospitals/[slug]' &&
+                <>
+                  <Link href={`/hospitals/{card.slug}`} id='box' className={`${styles.box}  
+                    {'active}`} scroll={false}>
+                    < div className={'img_container'}>
+                      < Image width={77.12} height={77.12} className={'main_img'} src={treatmentData[0].post3} alt="" />
+                      <Image width={77.12} height={77.12} className={'sec_img'} src={treatmentData[0].post3} alt="" />
+
+                    </div>
+
+                    <div className={'box_title'}>
+                      <Typography variant="h6">Gastroenterology & Hepatology</Typography>
+                    </div>
+
+                  </Link>
+                  <div className="desc">
+                    <Typography >Dermatology Is The Branch Of Medicine Dealing With The Skin. It Is A Speciality With Both Medical And Surgical Aspects Related To Skin, Hair, Nails, And Some Cosmetic Problems.</Typography>
+                  </div>
+                </>
+
+              }
+
+
             </div>
-
-
 
             <div className={styles.slider_container}>
               {treatment &&
@@ -487,6 +514,91 @@ const MostPopular = ({ dataPopularTreatments }) => {
                   }
                 </>
               }
+
+              {router.pathname === '/hospitals/[slug]' &&
+                <>
+                  <motion.div
+                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0 }}
+                    transition={{ duration: 1, }}
+                    className={styles.doctors}
+                  >
+                    <Box sx={{ boxShadow: "inset -20px 0px 12px #eef5f5" }} className={styles.shadow_box} />
+
+                    <Carousel
+                      breakPoints={breakPoints}
+                      itemsToScroll={1}
+                      renderArrow={myArrow}
+                      isRTL={router.locale === 'ar' ? true : false}
+                    >
+                      {doctorsData.map((doc, index) => (
+                        <div className={styles.box} key={index}>
+                          <div className={styles.img_container}>
+                            <Image width={344} height={191} src={doc.img} alt={doc.name} />
+                            <div className={styles.verified}>
+                              <FaShieldAlt />
+                              <Typography >
+                                Safemedigo verified
+                              </Typography>
+                            </div>
+                          </div>
+
+                          <div className={styles.box_text_container}>
+
+                            <div className={styles.name}>
+                              <Typography variant='h5'>
+                                {doc.name}
+                              </Typography>
+                            </div>
+
+                            <div className={styles.job_title}>
+                              <Typography variant='h6'>
+                                {doc.job_title}
+                              </Typography>
+                            </div>
+
+                            <div className={styles.rating}>
+                              <Rating name="read-only" defaultValue={4} size="small" />
+                              <span className={styles.reviews_num}>90 Reviews</span>
+                            </div>
+
+                            <div className={styles.location}>
+                              <MdLocationOn />
+                              <Typography >
+                                Istanbul, Turkey
+                              </Typography>
+                            </div>
+
+                            <div className={styles.patient_num}>
+                              <span>{doc.patients_num}</span>
+                              <Typography>Patients Treated Last Year</Typography>
+                            </div>
+
+                            <div className={styles.experience}>
+                              <span>{doc.experience}</span>
+                              <Typography> Years Of Experience</Typography>
+                            </div>
+
+                            <Box sx={{ marginTop: 'auto', width: '100%', display: 'flex', justifyContent: 'space-between', alignSelf: 'flex-end' }}>
+                              <div id={styles.price}>
+                                <Typography>Knee Replacement Starting From </Typography>
+                                <span>{doc.price}$</span>
+                              </div>
+
+                              <div className={styles.btn_container}>
+                                <Link href='/'>See Doctor Profile</Link>
+                              </div>
+                            </Box>
+
+
+                          </div>
+                        </div>
+                      ))}
+                    </Carousel>
+                  </motion.div>
+                </>
+              }
+
 
             </div>
           </div>
