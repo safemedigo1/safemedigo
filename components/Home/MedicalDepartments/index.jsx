@@ -36,7 +36,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment,
   useEffect(() => {
     if (router.pathname === '/hospitals/[slug]') {
       setDepartments(hospiTalMedicalDepartment);
-    } else if (router.pathname === '/medicaldepartments/[slug]') {
+    } else if (router.pathname.includes('/medicaldepartments/[slug]')) {
       setDepartments(dataMedicalDepartments);
     } else {
       setDepartments([]);
@@ -83,7 +83,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment,
               <div className={styles.title}>
                 <div className="header">
                   <Typography variant='h3'>
-                    {router.pathname === '/medicaldepartments/[slug]' ?
+                    {router.pathname.includes('/medicaldepartments/[slug]') ?
                       t("proceduresSymptoms:medical_department_title")
                       :
                       "All Medical Department In Acibadem Hospital Taksim"
@@ -98,7 +98,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment,
                       lg: 'block'
                     }
                   }} variant='h6'>
-                    {router.pathname === '/medicaldepartments/[slug]' ?
+                    {router.pathname.includes('/medicaldepartments/[slug]') ?
                       t("proceduresSymptoms:medical_department_sort")
                       :
                       "Sorted A To Z"
@@ -119,7 +119,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment,
                     }
                   }} variant='h6'>{t("proceduresSymptoms:medical_department_sort")}</Typography>
                   <Typography>
-                    {router.pathname === '/medicaldepartments/[slug]' ?
+                    {router.pathname.includes('/medicaldepartments/[slug]') ?
                       <>
                         10.500 {t("proceduresSymptoms:procedures")}
                       </>
@@ -146,7 +146,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment,
                 (
                   <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index} >
                     <Link href={
-                      router.pathname === '/medicaldepartments/[slug]' ?
+                      router.pathname.includes('/medicaldepartments/[slug]') ?
 
                         `/medicaldepartments/${card.slug}` : `/hospitals/${card.slug}`} className={`${styles.box}  
                     ${slug === `${card.slug}` && styles.active}`} scroll={false}>

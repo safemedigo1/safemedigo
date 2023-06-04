@@ -451,9 +451,6 @@ export async function getStaticPaths() {
     },
     body: JSON.stringify({
       "lang": 'en',
-      "healthCaseSlug": "",
-      "currentPage": 1,
-      "departmentSlug": ""
     })
   })
   const data = await res.json()
