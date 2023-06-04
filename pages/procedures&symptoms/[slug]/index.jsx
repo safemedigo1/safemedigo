@@ -1030,24 +1030,12 @@ export default TreatmentName
 
 
 export async function getStaticPaths() {
-  const res = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      "lang": "en",
-      "healthCaseSlug": "",
-      "currentPage": 1,
-      "departmentSlug": ""
-    })
-  })
+  const res = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetAllTreatmentSlugs")
   const data = await res.json()
 
   const customLocale = ['en', 'ar', 'tr'];
-  const paths = data.treatments.flatMap((treatment, idx) => customLocale.map((locale) => ({
-    params: { slug: treatment.slug.toString() },
+  const paths = data.flatMap((treatment, idx) => customLocale.map((locale) => ({
+    params: { slug: treatment },
     locale: locale,
   })))
 
@@ -1067,8 +1055,6 @@ export async function getStaticProps({ locale, params }) {
 
   const dataTreatment = resTreatment.data;
 
-
-
   return {
     props: {
       dataTreatment,
@@ -1078,7 +1064,6 @@ export async function getStaticProps({ locale, params }) {
 
     },
     revalidate: 10,
-
   }
 }
 

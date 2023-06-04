@@ -521,8 +521,6 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
 export async function getStaticPaths() {
   const res = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogSlugs");
-
-
   const data = await res.json()
 
   const paths = data?.map((data) => {
