@@ -418,10 +418,190 @@ const Hospital = () => {
         :
         "Obstetrics-and-gynecology"
     },
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
   ]
 
+  console.log(hospiTalMedicalDepartment, "HEREZZZZ")
 
-  // const HospitalParams = hospiTalMedicalDepartment.map((par) => par.slug)
   return (
     <>
       <SecNavbar />

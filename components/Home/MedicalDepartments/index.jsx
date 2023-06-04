@@ -81,7 +81,14 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment,
             <div className={styles.sec_header}>
               <div className={styles.title}>
                 <div className="header">
-                  <Typography variant='h3'>{t("proceduresSymptoms:medical_department_title")}</Typography>
+                  <Typography variant='h3'>
+                    {router.pathname === '/medicaldepartments/[slug]' ?
+                      t("proceduresSymptoms:medical_department_title")
+                      :
+                      "All Medical Department In Acibadem Hospital Taksim"
+                    }
+
+                  </Typography>
                   <Typography sx={{
                     display: {
                       xs: 'none',
@@ -89,7 +96,16 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment,
                       md: 'none',
                       lg: 'block'
                     }
-                  }} variant='h6'>{t("proceduresSymptoms:medical_department_sort")}</Typography>
+                  }} variant='h6'>
+                    {router.pathname === '/medicaldepartments/[slug]' ?
+                      t("proceduresSymptoms:medical_department_sort")
+                      :
+                      "Sorted A To Z"
+                    }
+
+
+
+                  </Typography>
                 </div>
 
                 <div className={styles.procedures_num}>
@@ -101,7 +117,15 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment,
                       lg: 'none'
                     }
                   }} variant='h6'>{t("proceduresSymptoms:medical_department_sort")}</Typography>
-                  <Typography>10.500 {t("proceduresSymptoms:procedures")}</Typography>
+                  <Typography>
+                    {router.pathname === '/medicaldepartments/[slug]' ?
+                      <>
+                        10.500 {t("proceduresSymptoms:procedures")}
+                      </>
+                      :
+                      "120 Doctors"
+                    }
+                  </Typography>
                 </div>
               </div>
             </div>
