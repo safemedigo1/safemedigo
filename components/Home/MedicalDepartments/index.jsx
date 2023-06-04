@@ -144,7 +144,10 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment,
 
                 (
                   <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index} >
-                    <Link href={`/medicaldepartments/${card.slug}`} className={`${styles.box}  
+                    <Link href={
+                      router.pathname === '/medicaldepartments/[slug]' ?
+
+                        `/medicaldepartments/${card.slug}` : `/hospitals/${card.slug}`} className={`${styles.box}  
                     ${slug === `${card.slug}` && styles.active}`} scroll={false}>
                       <div className={styles.img_container}>
                         <Image width={77.12} height={77.12} className={styles.main_img} src={card.image} alt="" />

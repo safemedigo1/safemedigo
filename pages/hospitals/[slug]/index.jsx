@@ -14,16 +14,14 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useRouter } from 'next/router';
-import { useTranslation } from "react-i18next";
 import { MedicalDepartments } from "@/components/Home";
+import { useRouter } from "next/router";
 
 
 const Hospital = () => {
-  const { certeficate } = imgs;
-  const { t } = useTranslation();
-
+  const { certeficate, post1 } = imgs;
   const router = useRouter();
+
 
   const cards = [
     { title: 'Patient name', img: certeficate.src, id: '1', desc: ' Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Consetetur Sadipscing Elitr, Sed Diam Nonumy  ' },
@@ -31,10 +29,21 @@ const Hospital = () => {
 
   ]
 
+  // BreakPoints
   const [breakPoints] = useState([
     { width: 1, itemsToShow: 1 },
   ])
   const [expanded, setExpanded] = useState(false);
+
+  const [hospitalBreakPoints] = useState([
+    { width: 1, pagination: true, showArrows: false },
+    { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },
+    { width: 400, pagination: true, itemsToShow: 2.5, itemsToScroll: 1, showArrows: false },
+    { width: 800, pagination: true, itemsToShow: 2.5, itemsToScroll: 1, transitionMs: 1000, showArrows: false },
+    { width: 900, pagination: false, itemsToShow: 2.5, itemsToScroll: 1, transitionMs: 1000 },
+
+  ])
+
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -60,156 +69,20 @@ const Hospital = () => {
     );
   }
 
-
-  const dataMedicalDepartments = [
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-taksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-taksims'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-taksxim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-taksqsim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-takswim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-takesim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-takxsim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-traksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazksasim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tsadaksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-takasdsim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-takasdsim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-takssadim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tsaksaim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-taadsksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
-    {
-      image: certeficate.src,
-      slug: 'acibadem-hospital-in-tazxczxcksim'
-    },
+  const clinicData = [
+    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '1000' },
+    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '2000' },
+    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '3000' },
+    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
+    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
+    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
+    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
+    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
+    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
+    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
   ]
 
-  const description = dataMedicalDepartments.find((e) => "acibadem-hospital-in-taksim" === e.slug)
 
-  // // Calculate the midpoint index
-  const midpointIndex = Math.floor(dataMedicalDepartments?.length / 2);
-
-  // Split the original array into two dynamic arrays
-  const firstHalfArray = dataMedicalDepartments?.slice(0, midpointIndex);
-  const secondHalfArray = dataMedicalDepartments?.slice(midpointIndex);
-
-
-
-
-
-  // Dialog
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -600,7 +473,6 @@ const Hospital = () => {
     },
   ]
 
-  console.log(hospiTalMedicalDepartment, "HEREZZZZ")
 
   return (
     <>
@@ -791,8 +663,47 @@ const Hospital = () => {
       </Container>
 
 
-      <MedicalDepartments hospiTalMedicalDepartment={hospiTalMedicalDepartment} />
 
+      <section id='reviews' className={styles.reviews}>
+        <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+          <div className={styles.boxes_container}>
+            <div className={styles.text_container}>
+              <div className={styles.title}>
+                <Typography variant={'h4'}>
+                  Acibadem Hospital Taksim
+                </Typography>
+              </div>
+
+              <div className={styles.desc}>
+                <Typography>
+                  Acıbadem Taksim Is Designed As General-Purpose Hospital On An Indoor Area Of Approximately 24 Thousand Square Meters.
+                </Typography>
+              </div>
+            </div>
+            <div className={styles.slider_container}>
+              <Carousel
+                breakPoints={hospitalBreakPoints}
+                itemsToScroll={1}
+                renderArrow={myArrow}
+                isRTL={router.locale === 'ar' ? true : false}
+              >
+                {clinicData.map((clinic, index) => (
+                  <Link href='/hospitals/acibadem-hospital-in-taksim' className={styles.box} key={index}>
+                    <div className={styles.img_container}>
+                      <Image width={392} height={305} src={clinic.img} alt={clinic.title} />
+                    </div>
+
+
+                  </Link>
+                ))}
+              </Carousel>
+
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <MedicalDepartments hospiTalMedicalDepartment={hospiTalMedicalDepartment} />
 
     </>
   )

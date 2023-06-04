@@ -126,3 +126,57 @@ section.overview {
     }
   }
 }
+
+section.reviews {
+  background-color: #f4f9f8;
+  padding-top: 60px;
+  padding-bottom: 56px;
+
+  .boxes_container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    .text_container {
+      width: 20%;
+
+      .title {
+        h4 {
+          color: var(--main-dark-color);
+          font-size: 28px;
+          font-family: var(--open-sans-font);
+          font-weight: var(--font-medium);
+        }
+      }
+
+      .desc {
+        margin-top: 10px;
+        p {
+          font-family: var(--open-sans-font);
+          font-size: 16px;
+        }
+      }
+    }
+
+    .slider_container {
+      width: 80%;
+
+      .box {
+        width: 392px;
+        height: 305px;
+        margin-right: 18px;
+
+        .img_container {
+          width: 100%;
+          height: 100%;
+
+          img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+}
