@@ -520,23 +520,14 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
 
 export async function getStaticPaths() {
-  const res = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogWithPage", {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      "lang": "en",
-      "blogCategoryId": 0,
-      "currentPage": 1
-    })
-  })
+  const res = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogSlugs");
+
+
   const data = await res.json()
 
-  const paths = data?.data?.map((data) => {
+  const paths = data?.map((data) => {
     return {
-      params: { slug: data.slug.toString() }
+      params: { slug: data.toString() }
     }
   })
 
