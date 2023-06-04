@@ -258,7 +258,7 @@ section#Hero_hero__M5nJ2 {
 
 #MostPopular_most_popular__ZmWsq,
 section#PatientStories_patient_stories__oSemC,
-#procedures_symptoms_medical_department__tzR90,
+#MedicalDepartments_medical_department__CT08h,
 #_slug__before_after__Pt2ZF,
 #_slug__steps__dD3sT,
 #_slug__treatment_desc__VG0U3 {
@@ -417,7 +417,9 @@ section#PatientStories_patient_stories__oSemC,
   }
 }
 
-#procedures_symptoms_medical_department__tzR90 {
+#MedicalDepartments_medical_department__CT08h,
+#medical_department {
+  // background: red;
   .rec-carousel {
     .right_arrow {
       right: -13px !important;

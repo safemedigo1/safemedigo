@@ -1,7 +1,7 @@
 import { PageHeader, SecNavbar } from "@/components";
 import InnerPageNavbar from "@/components/Navbar/InnerPageNavbar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Container, Typography, Dialog, DialogContent, DialogActions, DialogTitle, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem, Rating } from '@mui/material';
+import { Container, Typography, Dialog, DialogContent, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem, Rating } from '@mui/material';
 import Link from 'next/link';
 import styles from './index.module.scss';
 import Carousel from 'react-elastic-carousel';
@@ -14,9 +14,16 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useRouter } from 'next/router';
+import { useTranslation } from "react-i18next";
+import { MedicalDepartments } from "@/components/Home";
 
-const Hospital = (props) => {
+
+const Hospital = () => {
   const { certeficate } = imgs;
+  const { t } = useTranslation();
+
+  const router = useRouter();
 
   const cards = [
     { title: 'Patient name', img: certeficate.src, id: '1', desc: ' Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Consetetur Sadipscing Elitr, Sed Diam Nonumy  ' },
@@ -54,6 +61,153 @@ const Hospital = (props) => {
   }
 
 
+  const dataMedicalDepartments = [
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-taksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-taksims'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-taksxim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-taksqsim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-takswim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-takesim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-takxsim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-traksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazksasim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tsadaksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-takasdsim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-takasdsim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-takssadim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tsaksaim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-taadsksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+    {
+      image: certeficate.src,
+      slug: 'acibadem-hospital-in-tazxczxcksim'
+    },
+  ]
+
+  const description = dataMedicalDepartments.find((e) => "acibadem-hospital-in-taksim" === e.slug)
+
+  // // Calculate the midpoint index
+  const midpointIndex = Math.floor(dataMedicalDepartments?.length / 2);
+
+  // Split the original array into two dynamic arrays
+  const firstHalfArray = dataMedicalDepartments?.slice(0, midpointIndex);
+  const secondHalfArray = dataMedicalDepartments?.slice(midpointIndex);
+
+
+
+
 
   // Dialog
   const [open, setOpen] = useState(false);
@@ -73,6 +227,9 @@ const Hospital = (props) => {
       padding: theme.spacing(1),
     },
   }));
+
+
+
 
 
   function BootstrapDialogTitle(props) {
@@ -99,6 +256,172 @@ const Hospital = (props) => {
     );
   }
 
+
+  const hospiTalMedicalDepartment = [
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
+    {
+      departmentName
+        :
+        "Obstetrics and gynecology",
+      description
+        :
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+      , id
+        :
+        1
+      , image
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
+      , secondImage
+        :
+        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
+      , slug
+        :
+        "Obstetrics-and-gynecology"
+    },
+  ]
+
+
+  // const HospitalParams = hospiTalMedicalDepartment.map((par) => par.slug)
   return (
     <>
       <SecNavbar />
@@ -282,8 +605,13 @@ const Hospital = (props) => {
 
           </div>
 
+
+
         </section>
       </Container>
+
+
+      <MedicalDepartments hospiTalMedicalDepartment={hospiTalMedicalDepartment} />
 
 
     </>

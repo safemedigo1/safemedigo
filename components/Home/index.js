@@ -8,3 +8,4 @@ export { default as Search } from "./Search/index";
 export { default as TreatmentCategory } from "./TreatmentCategory/index";
 export { default as WhySafemedigo } from "./WhySafemedigo/index";
 export { default as WhyTurkey } from "./WhyTurkey/index";
+export { default as MedicalDepartments } from "./MedicalDepartments/index";

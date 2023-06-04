@@ -1,6 +1,6 @@
 import styles from '../../procedures&symptoms/index.module.scss';
 import { ThreeDots } from 'react-loader-spinner'
-import { ContactDetails, MostPopular } from '@/components/Home'
+import { ContactDetails, MedicalDepartments, MostPopular } from '@/components/Home'
 import { Container, Typography, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import Carousel from 'react-elastic-carousel';
@@ -19,7 +19,6 @@ import axios from 'axios';
 import Image from 'next/image';
 
 const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, params, locale }) => {
-  console.log(params.slug, "PARAMSSSZZ")
   const [result, setResult] = useState(null)
   const [expanded, setExpanded] = useState(false);
   const [dataTreatmentsHealthCase, setDataTreatmentsHealthCase] = useState(null);
@@ -150,7 +149,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
       <SecNavbar />
       <PageHeader />
       <MostPopular dataPopularTreatments={dataPopularTreatments} />
-      <section id={styles.medical_department} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+      {/* <section id={styles.medical_department} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <div className={styles.section_container}>
           <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.sec_header}>
@@ -231,8 +230,10 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
           </Container>
 
         </div >
-      </section >
+      </section > */}
+      <MedicalDepartments dataMedicalDepartments={dataMedicalDepartments} params={params} />
 
+      {console.log(params, "PARAMSZZ")}
       <section id={'proceduresSymptoms'} className={styles.proceduresSymptoms} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <Box sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'block' } }} className={styles.card_title}>
