@@ -62,7 +62,6 @@ const Hero = () => {
           <div className={styles.text_container}>
 
             <div className={styles.title}>
-              {/* <Typography variant='h1'>{t("hero_section:title1")}  <br /> {t("hero_section:title2")}</Typography> */}
               <h1>{t("hero_section:title1")}  <br /> {t("hero_section:title2")}</h1>
 
             </div>
@@ -121,7 +120,6 @@ const Hero = () => {
               breakPoints={breakPoints}
               itemsToScroll={1}
               renderArrow={myArrow}
-              isRTL={router.locale === 'ar' ? true : false}
             >
               {cards.map((card, index) => (
                 <>

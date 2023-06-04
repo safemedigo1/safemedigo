@@ -6,6 +6,7 @@ import post4 from "../imgs/post4.png";
 import post5 from "../imgs/post5.png";
 import test from "../imgs/test.png";
 import userimg from "../imgs/userimg.png";
+import certeficate from "../imgs/certeficate.png";
 
 import Hair_Transplant_after from "../imgs/Hair_Transplant_after.png";
 import Hair_Transplant_before from "../imgs/Hair_Transplant_before.png";
@@ -273,6 +274,7 @@ export default {
   Tooth_Implants,
   Urology,
   Weight_Loss,
+  certeficate,
 
   OurSafetyStandards002,
   Allergy_And_Immunology_1,
