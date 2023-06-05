@@ -130,6 +130,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
               <Typography variant='h2'>{t('most_popular:title')}</Typography>
             </div>
           }
+
           {pathname === '/' &&
             <div className={styles.navigation}>
               <div className={styles.header}>

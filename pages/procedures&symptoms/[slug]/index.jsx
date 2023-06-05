@@ -1039,6 +1039,8 @@ export async function getStaticPaths() {
     locale: locale,
   })))
 
+  console.log(paths, "HERERE")
+
   return { paths, fallback: false };
 }
 
