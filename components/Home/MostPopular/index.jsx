@@ -12,7 +12,6 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import Image from 'next/image';
-import departmentStyle from '../MedicalDepartments/index'
 const MostPopular = ({ dataPopularTreatments }) => {
   const { t } = useTranslation();
   const { post1, post2, post3, post4, post5, } = imgs;
@@ -118,10 +117,10 @@ const MostPopular = ({ dataPopularTreatments }) => {
 
 
   return (
-    <Box sx={pathname !== '/procedures&symptoms' ? {
+    <Box sx={pathname !== '/procedures&symptoms' & pathname !== '/hospitals/[slug]' ? {
       backgroundColor: '#eef5f5'
 
-    } : { backgroundColor: '#F4F9F8' }} id={styles.most_popular} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+    } : { backgroundColor: '#FFFFFF' }} id={styles.most_popular} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
 
       <Box sx={pathname !== '/procedures&symptoms' && { height: '660px' }} className={styles.section_container}>
         <Container sx={{ maxWidth: '1239px', }} maxWidth={false}  >
@@ -175,8 +174,6 @@ const MostPopular = ({ dataPopularTreatments }) => {
               }
 
               <div className={styles.desc}>
-
-
                 {router.pathname !== '/hospitals/[slug]' ?
                   <Typography> {t('most_popular:desc')}</Typography>
                   :

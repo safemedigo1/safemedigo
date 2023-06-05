@@ -6,7 +6,7 @@ import Link from 'next/link';
 import styles from './index.module.scss';
 import Carousel from 'react-elastic-carousel';
 import { useState } from "react";
-import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
+import { FaChevronRight, FaChevronLeft, FaUserAlt } from 'react-icons/fa'
 import imgs from "../../../assets/constants/imgs";
 import { consts } from 'react-elastic-carousel';
 import Image from "next/image";
@@ -14,15 +14,14 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { MedicalDepartments, MostPopular } from "@/components/Home";
+import { MedicalDepartments } from "@/components/Home";
 import { useRouter } from "next/router";
+import Hotles from "@/components/hospital/hotels";
 
 
 const Hospital = () => {
-  const { certeficate, post1 } = imgs;
+  const { certeficate, post1, why_turcky_img } = imgs;
   const router = useRouter();
-
-
   const cards = [
     { title: 'Patient name', img: certeficate.src, id: '1', desc: ' Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Consetetur Sadipscing Elitr, Sed Diam Nonumy  ' },
     { title: 'Patient name', img: certeficate.src, id: '2', desc: ' Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Consetetur Sadipscing Elitr, Sed Diam Nonumy  ' },
@@ -493,7 +492,6 @@ const Hospital = () => {
 
 
                 <div className={styles.slider_container}>
-
                   <Carousel
                     breakPoints={breakPoints}
                     itemsToScroll={1}
@@ -694,6 +692,34 @@ const Hospital = () => {
       </section>
 
       <MedicalDepartments hospiTalMedicalDepartment={hospiTalMedicalDepartment} />
+
+
+      <section id='testimonials' className={styles.testimonials}>
+        <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+
+          <div className={styles.section_container}>
+
+            <div className={styles.header}>
+              <div className={styles.icon_container}>
+                <FaUserAlt />
+              </div>
+              <div className={styles.title}>
+                <Typography variant="h3">Testimonials</Typography>
+              </div>
+            </div>
+
+            <div className={styles.content}>
+              <div className={styles.video_container}>
+                <img src={why_turcky_img.src} alt="" />
+              </div>
+            </div>
+          </div>
+
+        </Container>
+      </section>
+
+      <Hotles />
+
 
     </>
   )
