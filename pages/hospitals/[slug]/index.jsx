@@ -1,7 +1,7 @@
 import { PageHeader, SecNavbar } from "@/components";
 import InnerPageNavbar from "@/components/Navbar/InnerPageNavbar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Container, Typography, Dialog, DialogContent, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem, Rating } from '@mui/material';
+import { Container, Typography, Dialog, DialogContent, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem, DialogTitle } from '@mui/material';
 import Link from 'next/link';
 import styles from './index.module.scss';
 import Carousel from 'react-elastic-carousel';
