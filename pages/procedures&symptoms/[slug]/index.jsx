@@ -994,9 +994,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
           {QACount > 0 &&
             <div className={styles.btn_container}>
               <button className={styles.load_more_btn} onClick={handleLoadMoreComments}>
-                {console.log(isLoadingQA, "ERROR STATUS")}
-                {/* {console.log(commentsDetails.length, "commentsDetails length")} */}
-                {/* {console.log(commentsDetails, "commentsDetails")} */}
                 {isLoadingQA !== true ?
                   t("single_blog:load_more")
                   :
