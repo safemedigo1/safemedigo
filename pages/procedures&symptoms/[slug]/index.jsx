@@ -21,6 +21,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
   const [currentPageCount, setCurrentPageCount] = useState(1)
   const [qADetails, setQADetails] = useState(null);
   const [isLoadingQA, setIsLoadingQA] = useState(false);
+  const [QACount, setQACount] = useState()
   const { t } = useTranslation();
   const router = useRouter();
 
@@ -82,7 +83,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
 
   const getQA = async () => {
-    const getQA = await axios.post("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentsQuestionAnswersBySlug", {
+    const getQARes = await axios.post("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentsQuestionAnswersBySlug", {
       "lang": locale,
       "treatmentSlug": params.slug,
       "currentPage": currentPageCount
@@ -94,16 +95,17 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
       }
     }).catch((error) => console.log(error, "Error hanlder!!"))
 
-
     if (currentPageCount > 1) {
-      setQADetails(prev => [...prev, ...getQA?.data?.questionsAnswers])
+      setQADetails(prev => [...prev, ...getQARes?.data?.questionsAnswers])
     } else {
-      setQADetails(getQA?.data?.questionsAnswers)
+      setQADetails(getQARes?.data?.questionsAnswers)
     }
 
 
-    if (getQA.status === 200) {
+    if (getQARes.status === 200) {
       setIsLoadingQA(false)
+      setQACount(getQARes?.data?.count)
+
     } else {
       setIsLoadingQA(false)
     }
@@ -187,6 +189,9 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
   function createMarkupGetQA(q) {
     return { __html: decodeURI(q) };
   }
+  function createMarkupDescreption() {
+    return { __html: decodeURI(dataTreatment?.description) };
+  }
 
 
   return (
@@ -208,6 +213,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </div>
 
               <div className={styles.desc}>
+                <div dangerouslySetInnerHTML={createMarkupDescreption()} />
                 <Typography>
                   {dataTreatment?.description}
                 </Typography>
@@ -985,35 +991,33 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
             ))}
           </div>
 
-          {/* {commentsDetails.length !== commentsDetails.length && */}
-          <div className={styles.btn_container}>
-            <button className={styles.load_more_btn} onClick={handleLoadMoreComments}>
-              {isLoadingQA !== true ?
-                t("single_blog:load_more")
-                :
-                <>
-                  Loading {` `}
-                  <ThreeDots
-                    height="25"
-                    width="25"
-                    radius="9"
-                    color="#00ccb5"
-                    ariaLabel="three-dots-loading"
-                    wrapperStyle={{}}
-                    wrapperClassName="load_more_btn"
-                    visible={true}
-                  />
+          {QACount > 0 &&
+            <div className={styles.btn_container}>
+              <button className={styles.load_more_btn} onClick={handleLoadMoreComments}>
+                {console.log(isLoadingQA, "ERROR STATUS")}
+                {/* {console.log(commentsDetails.length, "commentsDetails length")} */}
+                {/* {console.log(commentsDetails, "commentsDetails")} */}
+                {isLoadingQA !== true ?
+                  t("single_blog:load_more")
+                  :
+                  <>
+                    Loading {` `}
+                    <ThreeDots
+                      height="25"
+                      width="25"
+                      radius="9"
+                      color="#00ccb5"
+                      ariaLabel="three-dots-loading"
+                      wrapperStyle={{}}
+                      wrapperClassName="load_more_btn"
+                      visible={true}
+                    />
+                  </>
 
-                </>
-
-              }
-
-            </button>
-          </div>
-
-
-
-
+                }
+              </button>
+            </div>
+          }
 
         </Container >
 
@@ -1039,7 +1043,6 @@ export async function getStaticPaths() {
     locale: locale,
   })))
 
-  console.log(paths, "HERERE")
 
   return { paths, fallback: false };
 }

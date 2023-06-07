@@ -58,7 +58,7 @@ const SecNavbar = ({ categorySlug, slug, category, currentPage, blog, tag, how_i
             <>
               <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/medicaldepartments/Obstetrics-and-gynecology' > /{t('sec_navbar:procedures&symptoms')}</Link>
               <Link href={router.asPath} className={styles.active} > /{treatmentName}</Link>
-            </> : console.log(pathname, 'ELSEE')
+            </> : ""
           }
 
           {pathname === ('/blogs/[slug]') &&

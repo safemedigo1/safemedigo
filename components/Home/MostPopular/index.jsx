@@ -249,7 +249,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
 
 
                     {
-                      pathname !== '/' ?
+                      pathname !== '/' & pathname !== '/hospitals/[slug]' ?
                         dataPopularTreatments?.map((card, index) => (
                           <Link href={`/procedures&symptoms/${card?.slug}`} className={styles.box} key={index}>
                             <div className={styles.img_container}>
@@ -276,8 +276,6 @@ const MostPopular = ({ dataPopularTreatments }) => {
                               </div>
 
                               <div className={styles.desc}>
-
-
                                 <Typography>{card.description}</Typography>
                               </div>
 
