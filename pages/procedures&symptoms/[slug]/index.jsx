@@ -585,7 +585,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
         </section>
       }
 
-
       {
         dataTreatment?.treatmentStep?.length !== 0 &&
         <section id={styles.steps}>
