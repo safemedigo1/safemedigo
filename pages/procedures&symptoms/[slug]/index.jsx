@@ -1040,7 +1040,6 @@ export async function getStaticPaths() {
     locale: locale,
   })))
 
-
   return { paths, fallback: false };
 }
 
