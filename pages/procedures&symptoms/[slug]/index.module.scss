@@ -52,7 +52,6 @@ article.overview {
   padding-top: 48px;
   padding-bottom: 48px;
   background-color: #f4f9f8;
-
   @media screen and (max-width: 450px) {
     width: 100% !important;
   }
@@ -68,6 +67,7 @@ article.overview {
     .details {
       width: 700px;
       margin-right: 56px;
+      overflow: hidden;
 
       @media screen and (max-width: 992px) {
         width: 100%;

@@ -38,6 +38,14 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
     { width: 900, pagination: false, itemsToShow: 4, itemsToScroll: 1 },
 
   ])
+  const [BeforeAfterbreakPoints] = useState([
+    { width: 1, pagination: true, showArrows: false },
+    { width: 300, pagination: true, showArrows: false, itemsToShow: 1, itemsToScroll: 1 },
+    { width: 400, pagination: true, itemsToShow: 1, itemsToScroll: 1, showArrows: false },
+    { width: 800, pagination: true, itemsToShow: 4, itemsToScroll: 1, showArrows: false },
+    { width: 900, pagination: false, itemsToShow: 3, itemsToScroll: 1 },
+
+  ])
 
   const [breakPointsSteps] = useState([
     { width: 1, pagination: true, showArrows: false },
@@ -547,7 +555,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
           <Container className="custom_container">
             <div className={styles.slider_container}>
               <Carousel
-                breakPoints={breakPoints}
+                breakPoints={BeforeAfterbreakPoints}
                 itemsToScroll={1} renderArrow={myArrow}
                 isRTL={router.locale === 'ar' ? true : false}
               >
@@ -556,8 +564,8 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   dataTreatment?.treatmentImage.map((card, index) => (
                     <div className={styles.box} key={index}>
                       <div className={styles.imgs_container}>
-                        <Image width={388} height={200} src={card.imgBefore} alt={card.description} />
-                        <Image width={388} height={200} src={card.imgAfter} alt={card.description} />
+                        <Image width={388} height={200} src={card.imgBefore} alt="" />
+                        <Image width={388} height={200} src={card.imgAfter} alt="" />
                       </div>
                       <div className={styles.box_title}>
                         <Typography variant='h5'>Before</Typography>
@@ -1026,9 +1034,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 }
 
 export default TreatmentName
-
-
-
 
 export async function getStaticPaths() {
   const res = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetAllTreatmentSlugs")
