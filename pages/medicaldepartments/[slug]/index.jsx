@@ -463,7 +463,10 @@ export async function getStaticPaths() {
   })))
 
 
-  return { paths, fallback: false };
+  return {
+    paths, fallback: 'blocking',
+    revalidate: 10
+  };
 }
 
 export async function getStaticProps({ params, locale }) {

@@ -1044,7 +1044,10 @@ export async function getStaticPaths() {
     locale: locale,
   })))
 
-  return { paths, fallback: false };
+  return {
+    paths, fallback: 'blocking',
+    revalidate: 10
+  };
 }
 
 export async function getStaticProps({ locale, params }) {
