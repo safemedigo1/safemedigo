@@ -516,7 +516,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 <List sx={{
                   listStyleType: 'disc',
                   padding: '0px',
-                  overflow: 'scroll',
+                  overflow: 'hidden',
 
                   '& .MuiListItem-root': {
 
