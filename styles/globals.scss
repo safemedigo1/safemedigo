@@ -627,6 +627,26 @@ section#PatientStories_patient_stories__oSemC,
           }
         }
       }
+      &:nth-last-child(2) {
+        ._slug__steps_container__6ZGdJ {
+          ._slug__step__Kzywh {
+            span {
+              &::after {
+                position: absolute;
+                content: "";
+                width: 333.9px;
+                height: 3px;
+
+                top: 50%;
+                left: 0%;
+                transform: translateY(-0%);
+                z-index: -1;
+                background-color: var(--main-green-color);
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -656,6 +676,27 @@ section#PatientStories_patient_stories__oSemC,
               position: absolute;
               content: "";
               width: 377px;
+              height: 3px;
+
+              top: 50%;
+              left: 10%;
+              transform: translateY(-0%);
+              z-index: -1;
+              background-color: var(--main-green-color);
+            }
+          }
+        }
+      }
+    }
+    &:nth-last-child(2) {
+      ._slug__steps_container__6ZGdJ {
+        ._slug__step__Kzywh {
+          span {
+            position: relative;
+            &::after {
+              position: absolute;
+              content: "";
+              width: 338px;
               height: 3px;
 
               top: 50%;
