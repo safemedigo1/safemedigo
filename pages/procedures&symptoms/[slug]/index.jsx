@@ -208,11 +208,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
               <div className={styles.desc}>
                 <div dangerouslySetInnerHTML={createMarkupDescreption()} />
-                <Typography>
-                  {dataTreatment?.description}
-                </Typography>
               </div>
-
 
             </article>
 
@@ -984,8 +980,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </div>
             ))}
           </div>
-
-
 
           {QACount > 0 &&
             qADetails.length + 1 !== QACount &&
