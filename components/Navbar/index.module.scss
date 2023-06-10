@@ -1,6 +1,5 @@
 .navbar {
   background-color: #ffffff;
-  // padding: 30px 0px 24px;
   padding-top: 16.4px;
   padding-bottom: 18.4px;
   box-shadow: 0px 3px 6px var(--main-dark-color) 0d;
@@ -60,7 +59,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 100%;
+            // width: 100%;
+
             .link__item {
               position: relative;
               &:not(:last-child) {
@@ -70,10 +70,12 @@
                 font-size: 16px;
                 color: var(--main-dark-color);
                 transition: all 0.3s ease-in-out;
-                letter-spacing: -1px;
 
-                font-family: var(--quickstand-font);
+                font-family: "Quicksand";
                 font-weight: var(--font-sem-bold);
+
+                white-space: nowrap; /* Prevent text from wrapping onto multiple lines */
+                text-overflow: ellipsis; /* Show an ellipsis to indicate that text has been truncated */
 
                 &:hover {
                   color: var(--main-green-color);
@@ -320,6 +322,9 @@
               align-items: flex-start;
               cursor: pointer;
 
+              font-family: "Quicksand";
+              font-weight: var(--font-sem-bold);
+
               .icon_container {
                 margin-right: 7.2px;
                 @media screen and (max-width: 992px) {
@@ -339,8 +344,10 @@
                 transition: all 0.3s ease-in-out;
                 cursor: pointer;
 
-                font-family: var(--quickstand-font);
+                font-family: "Quicksand";
                 font-weight: var(--font-sem-bold);
+                white-space: nowrap; /* Prevent text from wrapping onto multiple lines */
+                text-overflow: ellipsis; /* Show an ellipsis to indicate that text has been truncated */
               }
 
               &:hover {
