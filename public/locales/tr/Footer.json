@@ -1,1 +1,7 @@
-{}
+{
+  "address": "Adres",
+  "email": "E-posta",
+  "call": "Bizi Ara",
+  "Whatsapp": "WhatsApp",
+  "patient_manager": "Hasta Yöneticisi"
+}

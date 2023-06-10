@@ -149,91 +149,9 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
       <SecNavbar />
       <PageHeader />
       <MostPopular dataPopularTreatments={dataPopularTreatments} />
-      {/* <section id={styles.medical_department} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-        <div className={styles.section_container}>
-          <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-            <div className={styles.sec_header}>
-              <div className={styles.title}>
-                <div className="header">
-                  <Typography variant='h3'>{t("proceduresSymptoms:medical_department_title")}</Typography>
-                  <Typography sx={{
-                    display: {
-                      xs: 'none',
-                      sm: 'none',
-                      md: 'none',
-                      lg: 'block'
-                    }
-                  }} variant='h6'>{t("proceduresSymptoms:medical_department_sort")}</Typography>
-                </div>
 
-                <div className={styles.procedures_num}>
-                  <Typography sx={{
-                    display: {
-                      xs: 'block',
-                      sm: 'block',
-                      md: 'block',
-                      lg: 'none'
-                    }
-                  }} variant='h6'>{t("proceduresSymptoms:medical_department_sort")}</Typography>
-                  <Typography>10.500 {t("proceduresSymptoms:procedures")}</Typography>
-                </div>
-              </div>
-            </div>
-          </Container>
-
-          <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: "1239px" }} maxWidth={false}>
-            <div className={styles.slider_container}>
-              <Carousel
-                enableSwipe={true}
-                breakPoints={breakPoints}
-                transitionMs={1000}
-                renderArrow={myArrow}
-                isRTL={router.locale === 'ar' ? true : false}
-              >
-                {firstHalfArray.map((card, index) =>
-
-                (
-                  <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index} >
-                    <Link href={`/medicaldepartments/${card.slug}`} onClick={() => handleResult(card)} className={`${styles.box}  
-                    ${params.slug === `${card.slug}` && styles.active}`} scroll={false}>
-                      <div className={styles.img_container}>
-                        <Image width={77.12} height={77.12} className={styles.main_img} src={card.image} alt="" />
-                        <Image width={77.12} height={77.12} className={styles.sec_img} src={card.secondImage} alt="" />
-
-                      </div>
-
-                      <div className={styles.box_title}>
-                        <Typography variant="h6">{card.departmentName}</Typography>
-                      </div>
-                    </Link>
-
-
-                    < Link href={`/medicaldepartments/${secondHalfArray[index].slug}`} onClick={() => handleResult(secondHalfArray[index])} className={`${styles.box}  
-                    ${params.slug === `${secondHalfArray[index].slug}` && styles.active}`} scroll={false} >
-                      <div className={styles.img_container}>
-                        <Image width={77.12} height={77.12} className={styles.main_img} src={secondHalfArray[index].image} alt="" />
-                        <Image width={77.12} height={77.12} className={styles.sec_img} src={secondHalfArray[index].secondImage} alt="" />
-                      </div>
-                      <div className={styles.box_title}>
-                        <Typography variant="h6">{secondHalfArray[index].departmentName}</Typography>
-                      </div>
-
-                    </Link>
-                  </Box>
-                )
-                )}
-
-
-              </Carousel>
-
-            </div>
-          </Container>
-
-        </div >
-      </section > */}
       <MedicalDepartments dataMedicalDepartments={dataMedicalDepartments} params={params} />
 
-      {console.log(params, "PARAMSZZ")}
       <section id={'proceduresSymptoms'} className={styles.proceduresSymptoms} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <Box sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'block' } }} className={styles.card_title}>

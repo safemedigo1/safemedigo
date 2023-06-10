@@ -75,7 +75,7 @@
                 font-weight: var(--font-sem-bold);
 
                 white-space: nowrap; /* Prevent text from wrapping onto multiple lines */
-                text-overflow: ellipsis; /* Show an ellipsis to indicate that text has been truncated */
+                text-overflow: ellipsis;
 
                 &:hover {
                   color: var(--main-green-color);
@@ -346,8 +346,8 @@
 
                 font-family: "Quicksand";
                 font-weight: var(--font-sem-bold);
-                white-space: nowrap; /* Prevent text from wrapping onto multiple lines */
-                text-overflow: ellipsis; /* Show an ellipsis to indicate that text has been truncated */
+                white-space: nowrap;
+                text-overflow: ellipsis;
               }
 
               &:hover {

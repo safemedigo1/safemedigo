@@ -5,9 +5,13 @@ import imgs from '../../assets/constants/imgs'
 import styles from './index.module.scss'
 import { Box, Grid, Typography } from '@mui/material';
 import Image from 'next/image';
+import { useTranslation } from "react-i18next";
+
 
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   const { logoFooter,
     facebook,
     instagram,
@@ -172,7 +176,7 @@ const Footer = () => {
               <div className={styles.doc_data}>
                 <div className={styles.doc_job}>
                   <Link href='/'>
-                    <Typography variant='h6'>Patient Manager</Typography>
+                    <Typography variant='h6'>{t("Footer:patient_manager")}</Typography>
                   </Link>
 
                 </div>

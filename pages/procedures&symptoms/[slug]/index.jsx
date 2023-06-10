@@ -944,7 +944,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 <Accordion disableGutters elevation={0}
                   square={false} sx={{
                     borderRadius: '0px !important',
-
+                    marginBottom: '16px',
                     borderBottom: '1px solid #E4E4E4',
                     padding: '0'
                     ,
@@ -959,6 +959,8 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                     sx={
                       {
                         height: '55px', backgroundColor: 'transparent', color: '#000000', marginTop: '10px', paddingLeft: '0 !important'
+                        ,
+                        marginBottom: '16px',
 
                       }
                     }
