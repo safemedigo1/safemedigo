@@ -100,7 +100,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
       setQADetails(getQARes?.data?.questionsAnswers)
     }
 
-
     if (getQARes.status === 200) {
       setIsLoadingQA(false)
       setQACount(getQARes?.data?.count)
@@ -121,10 +120,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
   }, [currentPageCount])
 
 
-
-
   // Styling 
-
 
   const paragrahp3 =
   {
@@ -191,8 +187,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
   function createMarkupDescreption() {
     return { __html: decodeURI(dataTreatment?.description) };
   }
-  console.log(dataTreatment?.description)
-  console.log(createMarkupDescreption(), "SSSs")
 
   return (
     <>
@@ -991,7 +985,10 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
             ))}
           </div>
 
+
+
           {QACount > 0 &&
+            qADetails.length + 1 !== QACount &&
             <div className={styles.btn_container}>
               <button className={styles.load_more_btn} onClick={handleLoadMoreComments}>
                 {isLoadingQA !== true ?
