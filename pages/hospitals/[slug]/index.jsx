@@ -472,6 +472,7 @@ const Hospital = () => {
       <SecNavbar />
       <PageHeader />
       <InnerPageNavbar />
+
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
         <section id='overview' className={styles.overview}>
           <div className={styles.text_inner}>

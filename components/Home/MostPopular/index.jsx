@@ -208,8 +208,8 @@ const MostPopular = ({ dataPopularTreatments }) => {
                     <div className={'box_title'}>
                       <Typography variant="h6">Gastroenterology & Hepatology</Typography>
                     </div>
-
                   </Link>
+
                   <div className="desc">
                     <Typography >Dermatology Is The Branch Of Medicine Dealing With The Skin. It Is A Speciality With Both Medical And Surgical Aspects Related To Skin, Hair, Nails, And Some Cosmetic Problems.</Typography>
                   </div>
@@ -221,7 +221,9 @@ const MostPopular = ({ dataPopularTreatments }) => {
             </div>
 
             <div className={styles.slider_container}>
-              {treatment &&
+              {
+                router.pathname !== '/hospitals/[slug]' &&
+                treatment &&
                 <motion.div
                   animate={{ opacity: 1 }}
                   initial={{ opacity: 0 }}
