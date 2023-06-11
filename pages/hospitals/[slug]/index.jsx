@@ -17,6 +17,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { MedicalDepartments } from "@/components/Home";
 import { useRouter } from "next/router";
 import Hotles from "@/components/hospital/hotels";
+import Visits from "@/components/hospital/hotels/Visits";
 
 
 const Hospital = () => {
@@ -653,8 +654,6 @@ const Hospital = () => {
         </section>
       </Container>
 
-
-
       <section id='reviews' className={styles.reviews}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.boxes_container}>
@@ -719,7 +718,9 @@ const Hospital = () => {
         </Container>
       </section>
 
+
       <Hotles />
+      <Visits />
 
 
     </>

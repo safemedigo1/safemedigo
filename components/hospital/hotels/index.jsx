@@ -23,7 +23,6 @@ const Hotles = () => {
 
   ])
   const router = useRouter();
-  const { pathname } = router;
   const { post3, } = imgs;
   const doctorsData = [
     { name: 'Crowne Plaza Hotel - Floriya', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '10000' },

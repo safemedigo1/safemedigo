@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import Image from 'next/image';
+
 const MostPopular = ({ dataPopularTreatments }) => {
   const { t } = useTranslation();
   const { post1, post2, post3, post4, post5, } = imgs;
@@ -214,7 +215,14 @@ const MostPopular = ({ dataPopularTreatments }) => {
                     <Typography >Dermatology Is The Branch Of Medicine Dealing With The Skin. It Is A Speciality With Both Medical And Surgical Aspects Related To Skin, Hair, Nails, And Some Cosmetic Problems.</Typography>
                   </div>
                 </>
+              }
 
+              {router.pathname === '/hospitals/[slug]' &&
+
+                <>
+
+
+                </>
               }
 
 
