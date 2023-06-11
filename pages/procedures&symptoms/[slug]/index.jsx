@@ -932,86 +932,87 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
         </div>
       </section >
 
-      <section id="q&a" className={styles.QA}>
-        <Container sx={{ maxWidth: "1239px", overflow: 'hidden' }} maxWidth={false}>
-          <div className={styles.title}>
-            <Typography variant='h3'>Guides And Common Questions</Typography>
-          </div>
-
-          <div className={styles.menu_container}>
-            {qADetails?.map((q, index) => (
-              <div className={styles.QA_menu}>
-                <Accordion disableGutters elevation={0}
-                  square={false} sx={{
-                    borderRadius: '0px !important',
-                    marginBottom: '16px',
-                    borderBottom: '1px solid #E4E4E4',
-                    padding: '0'
-                    ,
-                    '&:before': {
-                      display: 'none',
-                    }
-                  }}
-                  expanded={expanded === `panel1${index}2`} onChange={handleChange(`panel1${index}2`)}>
-
-
-                  <AccordionSummary
-                    sx={
-                      {
-                        height: '55px', backgroundColor: 'transparent', color: '#000000', marginTop: '10px', paddingLeft: '0 !important'
-                        ,
-                        marginBottom: '16px',
-
-                      }
-                    }
-                    expandIcon={<ExpandMoreIcon sx={expanded !== `panel1${index}2` ? { color: '#000000', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                    aria-controls={`panel1${index}2-content `} id={`panel1${index}2-header`}>
-                    <Typography sx={paragrahp3}>
-
-                      {q.question}
-                    </Typography>
-                  </AccordionSummary>
-
-                  <AccordionDetails  >
-                    <div dangerouslySetInnerHTML={createMarkupGetQA(q.answer)} />
-                  </AccordionDetails>
-
-                </Accordion>
-
-
-              </div>
-            ))}
-          </div>
-
-          {QACount > 0 &&
-            qADetails.length + 1 !== QACount &&
-            <div className={styles.btn_container}>
-              <button className={styles.load_more_btn} onClick={handleLoadMoreComments}>
-                {isLoadingQA !== true ?
-                  t("single_blog:load_more")
-                  :
-                  <>
-                    Loading {` `}
-                    <ThreeDots
-                      height="25"
-                      width="25"
-                      radius="9"
-                      color="#00ccb5"
-                      ariaLabel="three-dots-loading"
-                      wrapperStyle={{}}
-                      wrapperClassName="load_more_btn"
-                      visible={true}
-                    />
-                  </>
-
-                }
-              </button>
+      {QACount > 0 &&
+        <section id="q&a" className={styles.QA}>
+          <Container sx={{ maxWidth: "1239px", overflow: 'hidden' }} maxWidth={false}>
+            <div className={styles.title}>
+              <Typography variant='h3'>Guides And Common Questions</Typography>
             </div>
-          }
 
-        </Container >
+            <div className={styles.menu_container}>
+              {qADetails?.map((q, index) => (
+                <div className={styles.QA_menu}>
+                  <Accordion disableGutters elevation={0}
+                    square={false} sx={{
+                      borderRadius: '0px !important',
+                      marginBottom: '16px',
+                      borderBottom: '1px solid #E4E4E4',
+                      padding: '0'
+                      ,
+                      '&:before': {
+                        display: 'none',
+                      }
+                    }}
+                    expanded={expanded === `panel1${index}2`} onChange={handleChange(`panel1${index}2`)}>
 
-      </section >
+
+                    <AccordionSummary
+                      sx={
+                        {
+                          height: '55px', backgroundColor: 'transparent', color: '#000000', marginTop: '10px', paddingLeft: '0 !important'
+                          ,
+                          marginBottom: '16px',
+
+                        }
+                      }
+                      expandIcon={<ExpandMoreIcon sx={expanded !== `panel1${index}2` ? { color: '#000000', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                      aria-controls={`panel1${index}2-content `} id={`panel1${index}2-header`}>
+                      <Typography sx={paragrahp3}>
+
+                        {q.question}
+                      </Typography>
+                    </AccordionSummary>
+
+                    <AccordionDetails  >
+                      <div dangerouslySetInnerHTML={createMarkupGetQA(q.answer)} />
+                    </AccordionDetails>
+
+                  </Accordion>
+
+
+                </div>
+              ))}
+            </div>
+            {
+              QACount !== qADetails.length &&
+              <div className={styles.btn_container}>
+                <button className={styles.load_more_btn} onClick={handleLoadMoreComments}>
+                  {isLoadingQA !== true ?
+                    t("single_blog:load_more")
+                    :
+                    <>
+                      Loading {` `}
+                      <ThreeDots
+                        height="25"
+                        width="25"
+                        radius="9"
+                        color="#00ccb5"
+                        ariaLabel="three-dots-loading"
+                        wrapperStyle={{}}
+                        wrapperClassName="load_more_btn"
+                        visible={true}
+                      />
+                    </>
+
+                  }
+                </button>
+              </div>
+            }
+
+          </Container >
+
+        </section >
+      }
 
       <ContactDetails />
     </>
