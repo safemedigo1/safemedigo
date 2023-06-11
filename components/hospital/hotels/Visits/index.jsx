@@ -85,6 +85,10 @@ const Visits = () => {
     },
     '.css-1t1j96h-MuiPaper-root-MuiDialog-paper': {
       boxShadow: '0 0 0 0'
+    },
+    '.css-uhb5lp': {
+      boxShadow: '0 0 0 0'
+
     }
 
 
