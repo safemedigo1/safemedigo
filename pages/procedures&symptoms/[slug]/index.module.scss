@@ -88,6 +88,12 @@ article.overview {
         }
       }
 
+      img {
+        margin-top: 16px;
+        margin-bottom: 16px;
+        object-fit: cover;
+      }
+
       .desc {
         margin-top: 21px;
         margin-bottom: 17px;
@@ -126,10 +132,6 @@ article.overview {
 
       .details_container {
         margin-top: 20px;
-        /* grid-template-columns: repeat(2, 1fr); */
-        /* grid-template-rows: 1fr; */
-        /* grid-column-gap: 50px; */
-        /* grid-row-gap: 0px; */
         display: flex;
         align-items: flex-start;
         flex-direction: row;
@@ -197,6 +199,14 @@ article.overview {
   .menu_container {
     @media screen and (min-width: 992px) {
       width: 700px;
+    }
+
+    img {
+      background-color: red;
+      max-width: 100%;
+      object-fit: contain;
+      margin-top: 16px;
+      margin-bottom: 16px;
     }
   }
 }

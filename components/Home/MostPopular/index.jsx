@@ -17,6 +17,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
   const { t } = useTranslation();
   const { post1, post2, post3, post4, post5, } = imgs;
 
+  console.log(dataPopularTreatments, "popular treatments")
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },

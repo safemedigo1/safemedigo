@@ -21,7 +21,6 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment,
   const { t } = useTranslation();
   const router = useRouter();
   const { slug } = router.query;
-
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false, itemsToShow: 1.7, itemPosition: consts.START, itemsToScroll: 1 },
     { width: 400, pagination: true, showArrows: false, itemsToShow: 1.7, itemPosition: consts.START, itemsToScroll: 1 },

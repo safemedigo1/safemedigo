@@ -202,7 +202,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
             <article className={styles.details}>
               <div className={styles.title}>
                 <Typography variant='h3'>
-                  {t("proceduresSymptoms_single:what_is")} {dataTreatment?.treatmentName}?
+                  {dataTreatment?.title}
                 </Typography>
               </div>
 
