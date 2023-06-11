@@ -17,7 +17,6 @@ import MostPopular from '../MostPopular';
 
 const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment, params }) => {
   const [departments, setDepartments] = useState([])
-
   const { t } = useTranslation();
   const router = useRouter();
   const { slug } = router.query;
@@ -66,7 +65,6 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment,
 
   // // Calculate the midpoint index
   const midpointIndex = Math.floor(departments?.length / 2);
-
   // Split the original array into two dynamic arrays
   const firstHalfArray = departments?.slice(0, midpointIndex);
   const secondHalfArray = departments?.slice(midpointIndex);
@@ -133,6 +131,83 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment,
 
           <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.slider_container}>
+
+              {departments?.length >= 2 ? <>
+                <Carousel
+                  enableSwipe={true}
+                  breakPoints={breakPoints}
+                  transitionMs={1000}
+                  renderArrow={myArrow}
+                  isRTL={router.locale === 'ar' ? true : false}
+                >
+                  {firstHalfArray.map((card, index) =>
+
+                  (
+                    <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index} >
+                      <Link href={
+                        router.pathname.includes('/medicaldepartments/[slug]') ?
+
+                          `/medicaldepartments/${card.slug}` : `/hospitals/${card.slug}`} className={`${styles.box}  
+                    ${slug === `${card.slug}` && styles.active}`} scroll={false}>
+                        <div className={styles.img_container}>
+                          <Image width={77.12} height={77.12} className={styles.main_img} src={card.image} alt="" />
+                          <Image width={77.12} height={77.12} className={styles.sec_img} src={card.secondImage} alt="" />
+
+                        </div>
+
+                        <div className={styles.box_title}>
+                          <Typography variant="h6">{card.departmentName}</Typography>
+                        </div>
+                      </Link>
+
+
+                      < Link href={`/medicaldepartments/${secondHalfArray[index].slug}`} className={`${styles.box}  
+                    ${slug === `${secondHalfArray[index].slug}` && styles.active}`} scroll={false} >
+                        <div className={styles.img_container}>
+                          <Image width={77.12} height={77.12} className={styles.main_img} src={secondHalfArray[index].image} alt="" />
+                          <Image width={77.12} height={77.12} className={styles.sec_img} src={secondHalfArray[index].secondImage} alt="" />
+                        </div>
+                        <div className={styles.box_title}>
+                          <Typography variant="h6">{secondHalfArray[index].departmentName}</Typography>
+                        </div>
+
+                      </Link>
+                    </Box>
+                  )
+                  )}
+
+
+                </Carousel>
+
+              </> : <>
+
+
+                {departments.map((card, index) =>
+
+                (
+                  <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index} >
+                    <Link href={
+                      router.pathname.includes('/medicaldepartments/[slug]') ?
+
+                        `/medicaldepartments/${card.slug}` : `/hospitals/${card.slug}`} className={`${styles.box}  
+                    ${slug === `${card.slug}` && styles.active}`} scroll={false}>
+                      <div className={styles.img_container}>
+                        <Image width={77.12} height={77.12} className={styles.main_img} src={card.image} alt="" />
+                        <Image width={77.12} height={77.12} className={styles.sec_img} src={card.secondImage} alt="" />
+
+                      </div>
+
+                      <div className={styles.box_title}>
+                        <Typography variant="h6">{card.departmentName}</Typography>
+                      </div>
+                    </Link>
+
+                  </Box>
+                )
+                )}
+
+
+              </>}
               <Carousel
                 enableSwipe={true}
                 breakPoints={breakPoints}
