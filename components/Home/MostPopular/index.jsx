@@ -124,7 +124,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
 
     } : { backgroundColor: '#FFFFFF' }} id={styles.most_popular} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
 
-      <Box sx={pathname !== '/procedures&symptoms' && { height: '660px' }} className={styles.section_container}>
+      <Box className={styles.section_container}>
         <Container sx={{ maxWidth: '1239px', }} maxWidth={false}  >
 
           {pathname === '/' &&
