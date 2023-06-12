@@ -21,11 +21,16 @@ const PageHeader = ({ blog, treatment }) => {
     <>
       {pathname !== '/' &&
         <>
-
-
           {
             pathname === ('/hospitals/[slug]') &&
-            <div id={styles.hospital}>
+            <Box sx={{
+              display: {
+                xs: "none",
+                sm: "none",
+                lg: "block"
+              }
+
+            }} id={styles.hospital}>
               <Container className={styles.sec_container}
                 sx={{ maxWidth: "1239px" }}
                 maxWidth={false}>
@@ -110,7 +115,7 @@ const PageHeader = ({ blog, treatment }) => {
                   </div>
                 </div>
               </Container>
-            </div>
+            </Box>
           }
 
           {pathname !== ('/hospitals/[slug]') &&

@@ -390,28 +390,6 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                   ))
                   : <h3>There's no more comments</h3>}
 
-                {/* <div className={styles.admin_comment}>
-                  <div className={styles.admin_data}>
-                    <div className={styles.img_container}>
-                      <Image width={100} height={100}  src={author.src} alt="" />
-                    </div>
-                    <div className={styles.name}>
-                      <span>Admin</span>
-                    </div>
-                  </div>
-
-                  <div className={styles.comment}>
-                    <Typography>
-
-                      Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Nam Viverra Euismod
-
-                    </Typography>
-
-                    <div className={styles.date}>
-                      Dec 6, 2017 - 18:55
-                    </div>
-                  </div>
-                </div> */}
                 {commentsCount !== commentsDetails.length &&
                   <button className={styles.load_more_btn} onClick={handleLoadMoreComments}>
                     {isLoadingComments !== true ?

@@ -1,7 +1,7 @@
 import { PageHeader, SecNavbar } from "@/components";
 import InnerPageNavbar from "@/components/Navbar/InnerPageNavbar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Container, Typography, Dialog, DialogContent, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem, DialogTitle } from '@mui/material';
+import { Container, Typography, Dialog, DialogContent, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem, DialogTitle, Rating } from '@mui/material';
 import Link from 'next/link';
 import styles from './index.module.scss';
 import Carousel from 'react-elastic-carousel';
@@ -18,6 +18,8 @@ import { MedicalDepartments } from "@/components/Home";
 import { useRouter } from "next/router";
 import Hotles from "@/components/hospital/hotels";
 import Visits from "@/components/hospital/hotels/Visits";
+import { MdLocationOn } from 'react-icons/md'
+import { FaShieldAlt } from 'react-icons/fa'
 
 
 const Hospital = () => {
@@ -472,6 +474,100 @@ const Hospital = () => {
     <>
       <SecNavbar />
       <PageHeader />
+      <Box
+        sx={{
+          display: {
+            xs: "block",
+            sm: "block",
+            lg: "none"
+          }
+        }}
+        id={styles.hospital_header} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+        <div className={styles.img_container}>
+          <Image
+            width={300}
+            height={218}
+            src={post1.src} alt={""} />
+        </div>
+
+        <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+          <div className={styles.header}>
+            <div className={styles.icon_container}>
+              <FaShieldAlt />
+            </div>
+            <div className={styles.text}>
+              <Typography>
+                Safemedigo verified
+              </Typography>
+            </div>
+          </div>
+
+          <div className={styles.title}>
+            <Typography variant="h3">
+              Acibadem Hospital Taksim
+            </Typography>
+          </div>
+
+          <div className={styles.text_container}>
+
+
+            <div className={styles.name}>
+              <Typography >
+                Specializations Dermatologist
+              </Typography>
+            </div>
+
+            <div className={styles.rating}>
+              <Rating name="read-only" defaultValue={4} size="small" />
+              <span className={styles.reviews_num}>90 Reviews</span>
+            </div>
+
+
+            <div className={styles.location}>
+              <MdLocationOn />
+              <Typography >
+                Acıbadem Mah. Çeçen Sok. Istanbul, Turkey
+              </Typography>
+            </div>
+
+            <div className={styles.boxes_container}>
+              <div className={styles.box}>
+                <div className={styles.num}>
+                  <Typography>163</Typography>
+                </div>
+                <div className={styles.yearly}>
+                  <Typography>Yearly patient</Typography>
+                </div>
+              </div>
+              <div className={styles.box}>
+                <div className={styles.num}>
+                  <Typography>2001</Typography>
+                </div>
+                <div className={styles.yearly}>
+                  <Typography>Founded year</Typography>
+                </div>
+              </div>
+              <div className={styles.box}>
+                <div className={styles.num}>
+                  <Typography>1500</Typography>
+                </div>
+                <div className={styles.yearly}>
+                  <Typography>Doctors & Employees</Typography>
+                </div>
+              </div>
+
+            </div>
+
+            <div className={styles.button_container}>
+              <button>Book Appointment</button>
+            </div>
+
+          </div>
+
+        </Container>
+      </Box>
+
+
       <InnerPageNavbar />
 
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -691,7 +787,10 @@ const Hospital = () => {
         </Container>
       </section>
 
-      <MedicalDepartments hospiTalMedicalDepartment={hospiTalMedicalDepartment} />
+      <section id='doctors'>
+        <MedicalDepartments hospiTalMedicalDepartment={hospiTalMedicalDepartment} />
+      </section>
+
 
 
       <section id='testimonials' className={styles.testimonials}>

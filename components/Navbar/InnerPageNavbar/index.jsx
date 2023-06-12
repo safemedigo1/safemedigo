@@ -26,12 +26,13 @@ const InnerPageNavbar = () => {
                   {t("proceduresSymptoms_single:nav_prices")}
                 </Link>
               </ListItem>
-
-              <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                <Link href='#q&a'>
-                  {t("proceduresSymptoms_single:nav_q&a")}
-                </Link>
-              </ListItem>
+              {router.pathname !== '/hospitals/[slug]' &&
+                <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
+                  <Link href='#q&a'>
+                    {t("proceduresSymptoms_single:nav_q&a")}
+                  </Link>
+                </ListItem>
+              }
 
               <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
                 <Link href='/'>
@@ -40,7 +41,7 @@ const InnerPageNavbar = () => {
               </ListItem>
 
               <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                <Link href='/'>
+                <Link href='#doctors'>
                   {t("proceduresSymptoms_single:nav_doctors")}
                 </Link>
               </ListItem>
