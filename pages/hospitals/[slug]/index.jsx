@@ -469,6 +469,15 @@ const Hospital = () => {
     },
   ]
 
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageClick = (imageSrc) => {
+    setSelectedImage(imageSrc);
+  };
+
+  const handleCloseImage = () => {
+    setSelectedImage(null);
+  };
 
   return (
     <>
@@ -567,7 +576,9 @@ const Hospital = () => {
         </Container>
       </Box>
 
-
+      {selectedImage !== null &&
+        <div className={styles.layer} />
+      }
       <InnerPageNavbar />
 
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -780,13 +791,21 @@ const Hospital = () => {
                 isRTL={router.locale === 'ar' ? true : false}
               >
                 {clinicData.map((clinic, index) => (
-                  <Link href='/hospitals/acibadem-hospital-in-taksim' className={styles.box} key={index}>
+                  <div onClick={() => handleImageClick(clinic.img)} className={styles.box} key={index}>
                     <div className={styles.img_container}>
                       <Image width={392} height={305} src={clinic.img} alt={clinic.title} />
                     </div>
-                  </Link>
+                  </div>
                 ))}
               </Carousel>
+
+              {selectedImage && (
+                <div className={styles.fullscreen_container} onClick={handleCloseImage}>
+                  <img src={selectedImage} className={styles.fullscreen_img} />
+                  <CloseIcon />
+                </div>
+              )}
+
 
             </div>
           </div>

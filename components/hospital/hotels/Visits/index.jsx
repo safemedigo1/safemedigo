@@ -24,6 +24,13 @@ const Visits = () => {
     { width: 900, pagination: false, itemsToShow: 2.5, itemsToScroll: 1, transitionMs: 1000 },
 
   ])
+
+  const [hotelImageBreakPoints] = useState([
+    { width: 1, pagination: true, showArrows: false },
+
+  ])
+
+
   const router = useRouter();
   const { post3, } = imgs;
   const doctorsData = [
@@ -220,19 +227,40 @@ const Visits = () => {
                         </BootstrapDialogTitle>
 
 
-                        <DialogContent dividers sx={{ display: 'flex', flexDirection: 'column' }}>
-                          <Box sx={{
-                            width: '100%', height: '200px', margin: 'auto',
-                            marginTop: '10px',
-                            marginBottom: '20px',
+                        <DialogContent id='visits' dividers sx={{ display: 'flex', flexDirection: 'column' }}>
 
-                            '& img': {
-                              objectFit: 'contain', width: '100%', height: '100%',
-                            }
-                          }}>
-                            <Image width={66.87} height={99.78} style={{ objectFit: 'contain' }} src={card.img} alt="" />
-                          </Box>
-                          <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }} >
+
+                          <Carousel
+                            breakPoints={hotelImageBreakPoints}
+                            itemsToScroll={1}
+                            renderArrow={myArrow}
+                            isRTL={router.locale === 'ar' ? true : false}
+                          >
+                            <Box sx={{
+                              width: '100%', height: '200px', margin: 'auto',
+                              marginTop: '10px',
+
+                              '& img': {
+                                objectFit: 'contain', width: '100%', height: '100%',
+                              }
+                            }}>
+                              <Image width={66.87} height={99.78} style={{ objectFit: 'contain' }} src={card.img} alt="" />
+
+                            </Box>
+                            <Box sx={{
+                              width: '100%', height: '200px', margin: 'auto',
+                              marginTop: '10px',
+
+                              '& img': {
+                                objectFit: 'contain', width: '100%', height: '100%',
+                              }
+                            }}>
+                              <Image width={66.87} height={99.78} style={{ objectFit: 'contain' }} src={card.img} alt="" />
+
+                            </Box>
+
+                          </Carousel >
+                          <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '10px', marginTop: '10px' }} >
                             <MdLocationOn />
                             <Typography >
                               Levazım, Çayır Sk. 4-1, 34340 Beşiktaş/İstanbul, Türkiye
