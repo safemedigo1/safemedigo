@@ -33,7 +33,7 @@ const Hospital = () => {
 
   // BreakPoints
   const [breakPoints] = useState([
-    { width: 1, itemsToShow: 1 },
+    { width: 1, itemsToShow: 1, showPagination: true },
   ])
   const [expanded, setExpanded] = useState(false);
 
@@ -751,7 +751,13 @@ const Hospital = () => {
       </Container>
 
       <section id='reviews' className={styles.reviews}>
-        <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+        <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false} >
+          <div className={styles.title_mob}>
+            <Typography variant={'h4'}>
+              Acibadem Hospital Taksim
+            </Typography>
+          </div>
+
           <div className={styles.boxes_container}>
             <div className={styles.text_container}>
               <div className={styles.title}>

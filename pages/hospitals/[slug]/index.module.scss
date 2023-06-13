@@ -138,6 +138,15 @@
 section.overview {
   width: 699px;
   margin-bottom: 66px;
+
+  overflow: hidden;
+
+  @media screen and (max-width: 992px) {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
+
   .text_inner {
     margin-top: 32px;
     margin-bottom: 24px;
@@ -155,6 +164,11 @@ section.overview {
       align-items: flex-start;
       justify-content: space-between;
       flex-direction: row-reverse;
+
+      @media screen and (max-width: 992px) {
+        flex-direction: column;
+      }
+
       .certificates_boxes,
       .desc_boxes {
         .title {
@@ -171,6 +185,8 @@ section.overview {
       }
 
       .certificates_boxes {
+        width: 100%;
+
         .title {
           h3 {
             padding-left: 16px;
@@ -179,6 +195,9 @@ section.overview {
 
         .slider_container {
           width: 465px;
+          @media screen and (max-width: 992px) {
+            width: 100%;
+          }
 
           .title {
             h6 {
@@ -242,7 +261,14 @@ section.overview {
       }
 
       .desc_boxes {
+        @media screen and (max-width: 992px) {
+          display: flex;
+          flex-wrap: wrap;
+          // flex-direction: column-reverse;
+          flex-direction: row;
+        }
         .box {
+          margin-right: 20px;
           ul {
             display: flex;
             flex-wrap: wrap;
@@ -269,12 +295,33 @@ section.reviews {
   padding-top: 60px;
   padding-bottom: 56px;
 
+  @media screen and (max-width: 992px) {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .title_mob {
+    margin-bottom: 10px;
+    @media screen and (min-width: 992px) {
+      display: none;
+    }
+    h4 {
+      color: var(--main-dark-color);
+      font-size: 18px;
+      font-family: var(--open-sans-font);
+      font-weight: var(--font-bold);
+    }
+  }
+
   .boxes_container {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     .text_container {
-      width: 20%;
+      width: 25%;
+
+      @media screen and (max-width: 992px) {
+        display: none;
+      }
 
       .title {
         h4 {
@@ -296,6 +343,10 @@ section.reviews {
 
     .slider_container {
       width: 80%;
+
+      @media screen and (max-width: 992px) {
+        width: 100%;
+      }
 
       .box {
         width: 392px;
@@ -337,6 +388,11 @@ section.testimonials {
     justify-content: flex-start;
     margin-right: auto;
     margin-left: 260px;
+
+    @media screen and (max-width: 992px) {
+      margin-left: 0;
+    }
+
     .icon_container {
       margin-right: 15.4px;
       margin-top: 7px;
@@ -365,6 +421,9 @@ section.testimonials {
     .video_container {
       width: 699px;
       height: 344px;
+      @media screen and (max-width: 992px) {
+        width: 100%;
+      }
       img {
         width: 100%;
         height: 100%;

@@ -127,6 +127,14 @@ const Visits = () => {
       <Box sx={{ background: '#FAFAFA', marginTop: '40px', paddingTop: '40px', marginBottom: '40px', paddingBottom: '40px' }} id="visits" className={styles.hotels}>
         <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false}>
 
+
+          <div className={styles.title_mob}>
+            <Typography variant={'h4'}>
+              Places To Visit Near Acibadem
+            </Typography>
+          </div>
+
+
           <div className={styles.section_container}>
             <div className={styles.text_container}>
               <div className={styles.title}>
