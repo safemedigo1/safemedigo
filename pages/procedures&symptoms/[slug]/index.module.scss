@@ -101,18 +101,18 @@ article.overview {
       .desc {
         margin-top: 21px;
         margin-bottom: 17px;
-        p {
-          color: var(--main-dark-color);
-          font-weight: var(--font-regular);
-          font-family: var(--open-sans-font);
-          font-size: 16px;
-          line-height: 1.9rem;
-          letter-spacing: 0;
+        // p {
+        //   color: var(--main-dark-color);
+        //   font-weight: var(--font-regular);
+        //   font-family: var(--open-sans-font);
+        //   font-size: 16px;
+        //   line-height: 1.9rem;
+        //   letter-spacing: 0;
 
-          @media screen and (max-width: 992px) {
-            line-height: 1.4rem;
-          }
-        }
+        //   @media screen and (max-width: 992px) {
+        //     line-height: 1.4rem;
+        //   }
+        // }
       }
     }
 
