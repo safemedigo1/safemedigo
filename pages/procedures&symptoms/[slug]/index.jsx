@@ -206,9 +206,11 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 </Typography>
               </div>
 
-              <div className={styles.desc} id={'not-apply'}>
-                <div dangerouslySetInnerHTML={createMarkupDescreption()} />
-              </div>
+              <div
+                id={"apply"}
+                className="ck-content"
+                dangerouslySetInnerHTML={createMarkupDescreption()}
+              />
 
             </article>
 
