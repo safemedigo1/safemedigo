@@ -24,7 +24,8 @@
 }
 
 html,
-body {
+body :not(#not-apply) {
+  background-color: red;
   font-family: "Quicksand" !important;
   scroll-behavior: smooth !important;
   height: 100vh;
@@ -34,28 +35,29 @@ body {
   // font-family: "Quicksand", sans-serif !important;
 }
 
-* {
+* :not(#not-apply) {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-ul {
+ul :not(#not-apply) {
   list-style: none;
   padding: 0;
   margin: 0;
-  li {
+  li :not(#not-apply) {
     padding: 0;
     margin: 0;
   }
 }
 
-li {
+li :not(#not-apply) {
+  background-color: red;
   padding: 0;
   margin: 0;
 }
 
-a {
+a :not(#not-apply) {
   text-decoration: none;
 }
 

@@ -206,7 +206,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 </Typography>
               </div>
 
-              <div className={styles.desc}>
+              <div className={styles.desc} id={'not-apply'}>
                 <div dangerouslySetInnerHTML={createMarkupDescreption()} />
               </div>
 
