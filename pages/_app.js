@@ -13,6 +13,7 @@ import { Toaster } from "react-hot-toast";
 import { Quicksand } from "@next/font/google";
 import theme from "../styles/theme";
 import { ThemeProvider } from "@mui/material/styles";
+import "../styles/content-styles.css";
 
 const quicksand = Quicksand({
   subsets: ["latin"],

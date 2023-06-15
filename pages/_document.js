@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from "next/document";
-
 export default function Document(props) {
   return (
     <Html lang="en">
@@ -11,6 +10,12 @@ export default function Document(props) {
           href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         ></link>
+
+        <link
+          rel="stylesheet"
+          href="../styles/content-styles.css"
+          type="text/css"
+        />
 
         {/* GTM container code */}
         <script
