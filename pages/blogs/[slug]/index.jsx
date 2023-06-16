@@ -197,6 +197,19 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
   return (
     <>
+      <Head>
+        <title>
+          {blog.title}
+        </title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* IG & TW files */}
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <script async defer src="//www.instagram.com/embed.js"></script>
+      </Head>
+
+
       <SecNavbar blog={blog} />
       <PageHeader blog={blog} />
       <Box
@@ -267,7 +280,11 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                   src={blog.image} alt={""} />
               </div>
 
-              <div dangerouslySetInnerHTML={createMarkup()} />
+              <div
+                id={"apply"}
+                className="ck-content"
+                dangerouslySetInnerHTML={createMarkup()}
+              />
 
             </article>
 

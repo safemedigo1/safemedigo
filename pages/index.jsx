@@ -12,7 +12,7 @@ import {
 } from '../components/Home'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import { useTranslation } from "next-i18next";
+import axios from "axios";
 
 
 
@@ -25,10 +25,7 @@ export async function getStaticProps({ locale }) {
   }
 }
 
-export default function Home({ dataTreatment }) {
-  const { t } = useTranslation();
-
-
+export default function Home() {
 
   return (
     <>
@@ -45,9 +42,11 @@ export default function Home({ dataTreatment }) {
           src="../../public/ckeditor-content-styles.css"
           type="text/css"
         />
+
       </Head>
 
       {/* Home Page Sections  */}
+
 
 
       <Hero />

@@ -4,7 +4,6 @@ import { Container, Typography, Accordion, AccordionDetails, AccordionSummary, B
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Link from 'next/link';
 import styles from './index.module.scss';
-import imgs from "../../../assets/constants/imgs";
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import { PageHeader, SecNavbar } from '@/components';
 import { useTranslation } from "react-i18next";
@@ -191,18 +190,29 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
   }
 
 
+
   return (
     <>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{dataTreatment?.treatmentName}</title>
 
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <script async defer src="//www.instagram.com/embed.js"></script>
       </Head>
+
+
+
+
 
       <SecNavbar treatmentName={dataTreatment?.treatmentName} />
 
       <PageHeader treatment={dataTreatment} />
 
       <InnerPageNavbar />
+
+
+
 
       <article id={'overview'} className={styles.overview} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -219,6 +229,8 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 className="ck-content"
                 dangerouslySetInnerHTML={createMarkupDescreption()}
               />
+
+
 
             </article>
 
@@ -615,8 +627,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
                 {dataTreatment?.treatmentStep.map((stepCard, index) => (
                   <>
-
-                    <div className={styles.counter_container}>
+                    <div className={styles.counter_container} key={index + 1}>
                       <div className={styles.steps_container} key={index}>
                         <div className={styles.step}>
                           <span>{index + 1}</span>
@@ -928,7 +939,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                       </div>
                     </div>
 
-                    <div className={styles.box}>
+                    <div className={styles.box} key={index + 2}>
                       <div className={styles.title}>
                         <Typography variant='h6'>
                           {card.procedureName}
@@ -989,7 +1000,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
             <div className={styles.menu_container}>
               {qADetails?.map((q, index) => (
-                <div className={styles.QA_menu}>
+                <div className={styles.QA_menu} key={index}>
                   <Accordion disableGutters elevation={0}
                     square={false} sx={{
                       borderRadius: '0px !important',
