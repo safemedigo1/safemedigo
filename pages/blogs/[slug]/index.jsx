@@ -17,6 +17,7 @@ import { useTranslation } from "next-i18next";
 import toast from 'react-hot-toast';
 import { ThreeDots } from 'react-loader-spinner'
 import Link from "next/link";
+import Head from "next/head";
 
 
 export default function BolgDetailsID({ blog, allBlogsTagsData }) {
