@@ -1,4 +1,6 @@
 import "@/styles/globals.scss";
+import "@/styles/content-styles.css";
+
 import NoSsr from "@mui/base/NoSsr";
 import CssBaseline from "@mui/material/CssBaseline";
 import Head from "next/head";
@@ -13,7 +15,6 @@ import { Toaster } from "react-hot-toast";
 import { Quicksand } from "@next/font/google";
 import theme from "../styles/theme";
 import { ThemeProvider } from "@mui/material/styles";
-import "../styles/content-styles.css";
 
 const quicksand = Quicksand({
   subsets: ["latin"],

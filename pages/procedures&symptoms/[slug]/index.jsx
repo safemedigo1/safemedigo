@@ -15,6 +15,7 @@ import axios from 'axios';
 import { ThreeDots } from 'react-loader-spinner'
 import Image from 'next/image';
 import InnerPageNavbar from '@/components/Navbar/InnerPageNavbar';
+import Head from 'next/head';
 
 const TreatmentName = ({ dataTreatment, locale, params, }) => {
   const [expanded, setExpanded] = useState(false);
@@ -184,12 +185,19 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
   function createMarkupGetQA(q) {
     return { __html: decodeURI(q) };
   }
+
   function createMarkupDescreption() {
     return { __html: decodeURI(dataTreatment?.description) };
   }
 
+
   return (
     <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      </Head>
+
       <SecNavbar treatmentName={dataTreatment?.treatmentName} />
 
       <PageHeader treatment={dataTreatment} />
@@ -350,6 +358,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
             <Accordion disableGutters elevation={0}
               square={false} sx={{
+                marginTop: '20px',
                 '&:before': {
                   display: 'none',
                 }
@@ -380,7 +389,10 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 }}
                 >
                   <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    <div dangerouslySetInnerHTML={createMarkup()} />
+                    <div
+                      id={"apply"}
+                      className="ck-content"
+                      dangerouslySetInnerHTML={createMarkup()} />
                   </ListItem  >
 
 
@@ -425,7 +437,12 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 }}
                 >
                   <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    <div dangerouslySetInnerHTML={createMarkupSideEffects()} />
+                    <div
+
+                      id={"apply"}
+                      className="ck-content"
+
+                      dangerouslySetInnerHTML={createMarkupSideEffects()} />
                   </ListItem  >
                 </List>
               </AccordionDetails>
@@ -466,7 +483,10 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 }}
                 >
                   <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    <div dangerouslySetInnerHTML={createMarkupCandidateOverview()} />
+                    <div
+                      id={"apply"}
+                      className="ck-content"
+                      dangerouslySetInnerHTML={createMarkupCandidateOverview()} />
                   </ListItem  >
 
                 </List>
@@ -511,7 +531,11 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 }}
                 >
                   <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    <div dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
+                    <div
+                      id={"apply"}
+                      className="ck-content"
+
+                      dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
                   </ListItem  >
 
                 </List>
@@ -650,7 +674,12 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 </Typography>
               </AccordionSummary>
               <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
-                <div dangerouslySetInnerHTML={createMarkupPreOperationOverview()} className={styles.content} />
+                <div
+                  id={"apply"}
+                  className={` ck-content ${styles.content}`}
+                  dangerouslySetInnerHTML={createMarkupPreOperationOverview()}
+                // className={} 
+                />
               </AccordionDetails>
             </Accordion>
 
@@ -680,7 +709,11 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
               <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
 
-                <div dangerouslySetInnerHTML={createMarkupDuringOperationOverview()} />
+                <div
+                  id={"apply"}
+                  className="ck-content"
+
+                  dangerouslySetInnerHTML={createMarkupDuringOperationOverview()} />
               </AccordionDetails>
 
             </Accordion>
@@ -712,7 +745,10 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
 
               <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
-                <div dangerouslySetInnerHTML={createMarkupAfterOperationOverview()} />
+                <div
+                  id={"apply"}
+                  className="ck-content"
+                  dangerouslySetInnerHTML={createMarkupAfterOperationOverview()} />
               </AccordionDetails>
 
             </Accordion>
@@ -775,7 +811,10 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 </AccordionSummary>
 
                 <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }} >
-                  <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepOne()} />
+                  <div
+                    id={"apply"}
+                    className="ck-content"
+                    dangerouslySetInnerHTML={createMarkupGetTreatmentStepOne()} />
                 </AccordionDetails>
 
               </Accordion>
@@ -809,7 +848,10 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 </AccordionSummary>
 
                 <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
-                  <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepTwo()} />
+                  <div
+                    id={"apply"}
+                    className="ck-content"
+                    dangerouslySetInnerHTML={createMarkupGetTreatmentStepTwo()} />
                 </AccordionDetails>
 
               </Accordion>
@@ -842,7 +884,11 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 </AccordionSummary>
 
                 <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
-                  <div dangerouslySetInnerHTML={createMarkupGetTreatmentStepThree()} />
+                  <div
+                    id={"apply"}
+                    className="ck-content"
+
+                    dangerouslySetInnerHTML={createMarkupGetTreatmentStepThree()} />
                 </AccordionDetails>
 
               </Accordion>
@@ -976,7 +1022,10 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                     </AccordionSummary>
 
                     <AccordionDetails  >
-                      <div dangerouslySetInnerHTML={createMarkupGetQA(q.answer)} />
+                      <div
+                        id={"apply"}
+                        className="ck-content"
+                        dangerouslySetInnerHTML={createMarkupGetQA(q.answer)} />
                     </AccordionDetails>
 
                   </Accordion>
