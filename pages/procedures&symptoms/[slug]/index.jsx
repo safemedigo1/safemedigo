@@ -389,27 +389,10 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </AccordionSummary>
 
               <AccordionDetails >
-
-                <List sx={{
-                  listStyleType: 'disc',
-                  padding: '0px',
-                  '& .MuiListItem-root': {
-
-                    listStylePosition: 'inside',
-                    padding: '0px',
-                  },
-                }}
-                >
-                  <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    <div
-                      id={"apply"}
-                      className="ck-content"
-                      dangerouslySetInnerHTML={createMarkup()} />
-                  </ListItem  >
-
-
-
-                </List>
+                <div
+                  id={"apply"}
+                  className="ck-content"
+                  dangerouslySetInnerHTML={createMarkup()} />
               </AccordionDetails>
 
             </Accordion>
@@ -437,26 +420,10 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </AccordionSummary>
 
               <AccordionDetails >
-                <List sx={{
-                  listStyleType: 'disc',
-                  padding: '0px',
-                  overflow: 'scroll',
-                  '& .MuiListItem-root': {
-
-                    listStylePosition: 'inside',
-                    padding: '0px',
-                  },
-                }}
-                >
-                  <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    <div
-
-                      id={"apply"}
-                      className="ck-content"
-
-                      dangerouslySetInnerHTML={createMarkupSideEffects()} />
-                  </ListItem  >
-                </List>
+                <div
+                  id={"apply"}
+                  className="ck-content"
+                  dangerouslySetInnerHTML={createMarkupSideEffects()} />
               </AccordionDetails>
 
             </Accordion>
@@ -482,26 +449,11 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </AccordionSummary>
 
               <AccordionDetails >
-                <List sx={{
-                  listStyleType: 'disc',
-                  padding: '0px',
-                  overflow: 'scroll',
+                <div
+                  id={"apply"}
+                  className="ck-content"
+                  dangerouslySetInnerHTML={createMarkupCandidateOverview()} />
 
-                  '& .MuiListItem-root': {
-
-                    listStylePosition: 'inside',
-                    padding: '0px',
-                  },
-                }}
-                >
-                  <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    <div
-                      id={"apply"}
-                      className="ck-content"
-                      dangerouslySetInnerHTML={createMarkupCandidateOverview()} />
-                  </ListItem  >
-
-                </List>
               </AccordionDetails>
 
             </Accordion>
@@ -529,28 +481,10 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </AccordionSummary>
 
               <AccordionDetails >
-
-                <List sx={{
-                  listStyleType: 'disc',
-                  padding: '0px',
-                  overflow: 'hidden',
-
-                  '& .MuiListItem-root': {
-
-                    listStylePosition: 'inside',
-                    padding: '0px',
-                  },
-                }}
-                >
-                  <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    <div
-                      id={"apply"}
-                      className="ck-content"
-
-                      dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
-                  </ListItem  >
-
-                </List>
+                <div
+                  id={"apply"}
+                  className="ck-content"
+                  dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
               </AccordionDetails>
 
             </Accordion>
