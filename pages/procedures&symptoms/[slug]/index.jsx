@@ -28,6 +28,16 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
+
+
+    // passing props to parent component
+    handleAccordionChange(id, newExpanded, panel);
+    if (newExpanded === true) {
+      getDispensingData(id);
+      setSlides(0);
+      event.currentTarget.scrollIntoView();
+    }
+
   };
 
 

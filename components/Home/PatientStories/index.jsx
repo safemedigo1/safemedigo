@@ -29,9 +29,6 @@ const PatientStories = () => {
 
   ])
 
-
-
-
   const posts = [
     {
       authorName: "Majd Khaled",
@@ -148,21 +145,16 @@ const PatientStories = () => {
     },
   ];
 
-
-
   // Change Arrow in react-elastic-carousel Lirbrary
   function myArrow({ type, onClick, isEdge }) {
     const pointer = type === consts.PREV ?
       <div className='left_arrow'>
         <HiChevronLeft />
       </div>
-
       :
       <div className='right_arrow'>
         <  HiChevronRight />
       </div>
-
-      ;
     return (
       <button className='main_btn' onClick={onClick} disabled={isEdge}>
         {pointer}
