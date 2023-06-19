@@ -191,6 +191,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
   function createMarkupGetTreatmentStepThree() {
     return { __html: decodeURI(dataTreatment?.getTreatmentStepThree) };
   }
+
   function createMarkupGetQA(q) {
     return { __html: decodeURI(q) };
   }
@@ -210,19 +211,9 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <script async defer src="//www.instagram.com/embed.js"></script>
       </Head>
-
-
-
-
-
       <SecNavbar treatmentName={dataTreatment?.treatmentName} />
-
       <PageHeader treatment={dataTreatment} />
-
       <InnerPageNavbar />
-
-
-
 
       <article id={'overview'} className={styles.overview} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -239,9 +230,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 className="ck-content"
                 dangerouslySetInnerHTML={createMarkupDescreption()}
               />
-
-
-
             </article>
 
             <article className={styles.quick_details}>
