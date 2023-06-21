@@ -260,6 +260,8 @@
           margin-top: 16px;
 
           ul {
+            margin: 0;
+            padding: 0;
             @media screen and (max-width: 992px) {
               display: grid;
               grid-template-columns: repeat(3, 1fr);
@@ -281,6 +283,7 @@
               margin: 0px;
               margin-left: 14px;
               letter-spacing: 0;
+              list-style-type: none;
               @media screen and (max-width: 992px) {
                 line-height: 1.2rem;
                 margin-top: 20px;

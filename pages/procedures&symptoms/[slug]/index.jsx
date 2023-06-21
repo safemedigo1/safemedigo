@@ -1,5 +1,5 @@
 import Carousel, { consts } from 'react-elastic-carousel';
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Container, Typography, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Link from 'next/link';
@@ -26,19 +26,14 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
   const router = useRouter();
 
 
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
 
 
-    // passing props to parent component
-    handleAccordionChange(id, newExpanded, panel);
-    if (newExpanded === true) {
-      getDispensingData(id);
-      setSlides(0);
-      event.currentTarget.scrollIntoView();
-    }
-
+  const handleChange = (panel, id) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
   };
+
+
+
 
 
   const [BeforeAfterbreakPoints] = useState([
@@ -130,6 +125,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
   }, [currentPageCount])
 
 
+
   // Styling 
 
   const paragrahp3 =
@@ -150,7 +146,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
     fontWeight: '600',
     fontFamily: 'Open Sans, sans-serif'
   }
-
 
   function createMarkup() {
     return { __html: decodeURI(dataTreatment?.benifitsOverview) };
@@ -200,6 +195,42 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
     return { __html: decodeURI(dataTreatment?.description) };
   }
 
+  const handleDetailEntered = () => {
+    if (detailRef.current) {
+      detailRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handleDetailExited = () => {
+    window.scrollTo(0, prevScrollPos);
+  };
+
+  const style = {
+    marginTop: '20px',
+    '&:before': {
+      display: 'none',
+    }
+  };
+
+  const accordionSummaryMainStyle = {
+    '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC', color: '#000000'
+  }
+
+  const accordionSummarySecStyle = {
+    backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px'
+  }
+
+  const expandMoreIconMainStyle = {
+    color: ' #000000', width: '30px', height: "30px"
+  }
+
+  const expandMoreIconSecStyle = {
+    color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px',
+  }
+
+  const typographyStyle = {
+    fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)'
+  }
 
 
   return (
@@ -366,127 +397,129 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
           </div>
           <div className={styles.menu_container}>
 
-            <Accordion disableGutters elevation={0}
-              square={false} sx={{
-                marginTop: '20px',
-                '&:before': {
-                  display: 'none',
-                }
-              }}
-              expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+            <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}
+              sx={style}
+              disableGutters elevation={0}
+              square={false}
+            >
               <AccordionSummary
-                sx={expanded !== 'panel1' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC', color: '#000000' }
-                  : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
+                sx={expanded !== 'panel1' ? accordionSummaryMainStyle
+                  : accordionSummarySecStyle
                 }
-                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ?
+                  expandMoreIconMainStyle
+                  : expandMoreIconSecStyle} />}
                 aria-controls="panel1d-content" id="panel1d-header">
-                <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                <Typography sx={typographyStyle}>
                   Benefits
-
                 </Typography>
               </AccordionSummary>
 
-              <AccordionDetails >
+              <AccordionDetails
+                onEntered={handleDetailEntered}
+                onExited={handleDetailExited}
+              >
                 <div
                   id={"apply"}
                   className="ck-content"
                   dangerouslySetInnerHTML={createMarkup()} />
               </AccordionDetails>
-
             </Accordion>
 
-            <Accordion disableGutters elevation={0}
-              square={false} sx={{
-                marginTop: '9px',
-
-                '&:before': {
-                  display: 'none',
-                }
-              }}
-              expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+            <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}
+              sx={style}
+              disableGutters elevation={0}
+              square={false}
+            >
               <AccordionSummary
-
-                sx={expanded !== 'panel3' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC ', color: '#000000' }
-                  : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
+                accordionSummaryMainStyle
+                sx={expanded !== 'panel2' ? accordionSummaryMainStyle
+                  : accordionSummarySecStyle
                 }
-                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel3' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                aria-controls="panel3d-content" id="panel3d-header"                >
-                <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel2' ?
+                  expandMoreIconMainStyle
+                  : expandMoreIconSecStyle} />}
+                aria-controls="panel2d-content" id="panel2d-header">
+                <Typography sx={typographyStyle}>
                   Possible Side Effects
-
                 </Typography>
               </AccordionSummary>
 
-              <AccordionDetails >
+              <AccordionDetails
+                onEntered={handleDetailEntered}
+                onExited={handleDetailExited}
+              >
                 <div
                   id={"apply"}
                   className="ck-content"
                   dangerouslySetInnerHTML={createMarkupSideEffects()} />
               </AccordionDetails>
-
             </Accordion>
 
-            <Accordion disableGutters elevation={0}
-              square={false} sx={{
-                marginTop: '9px',
-                '&:before': {
-                  display: 'none',
-                }
-              }}
-              expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-              <AccordionSummary
-                sx={expanded !== 'panel2' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC ', color: '#000000' }
-                  : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
-                }
-                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel2' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                aria-controls="panel2d-content" id="panel2d-header"                >
-                <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                  What Makes A Good Candidate
 
+
+
+
+            <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}
+              sx={style}
+              disableGutters elevation={0}
+              square={false}
+            >
+              <AccordionSummary
+                accordionSummaryMainStyle
+                sx={expanded !== 'panel3' ? accordionSummaryMainStyle
+                  : accordionSummarySecStyle
+                }
+                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel3' ?
+                  expandMoreIconMainStyle
+                  : expandMoreIconSecStyle} />}
+                aria-controls="panel3d-content" id="panel3d-header">
+                <Typography sx={typographyStyle}>
+                  What Makes A Good Candidate
                 </Typography>
               </AccordionSummary>
 
-              <AccordionDetails >
+              <AccordionDetails
+                onEntered={handleDetailEntered}
+                onExited={handleDetailExited}
+              >
                 <div
                   id={"apply"}
                   className="ck-content"
                   dangerouslySetInnerHTML={createMarkupCandidateOverview()} />
-
               </AccordionDetails>
-
             </Accordion>
 
-            <Accordion disableGutters elevation={0}
-              square={false} sx={{
-                marginTop: '9px',
 
-                '&:before': {
-                  display: 'none',
-                }
-              }}
-              expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+            <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}
+              sx={style}
+              disableGutters elevation={0}
+              square={false}
+            >
               <AccordionSummary
-
-                sx={expanded !== 'panel4' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC ', color: '#000000' }
-                  : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
+                accordionSummaryMainStyle
+                sx={expanded !== 'panel4' ? accordionSummaryMainStyle
+                  : accordionSummarySecStyle
                 }
-                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel4' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                aria-controls="panel4d-content" id="panel4d-header"                >
-                <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel4' ?
+                  expandMoreIconMainStyle
+                  : expandMoreIconSecStyle} />}
+                aria-controls="panel4d-content" id="panel4d-header">
+                <Typography sx={typographyStyle}>
                   Procedure Duration & Hospitalization
-
                 </Typography>
               </AccordionSummary>
 
-              <AccordionDetails >
+              <AccordionDetails
+                onEntered={handleDetailEntered}
+                onExited={handleDetailExited}
+              >
                 <div
                   id={"apply"}
                   className="ck-content"
                   dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
               </AccordionDetails>
-
             </Accordion>
-
           </div>
         </Container >
       </article>
@@ -588,120 +621,151 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
         </section>
       }
 
-      <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-        <section id={styles.what_you_need}>
-          <div className={styles.title}>
-            <Typography variant='h3'>What You Need To Know</Typography>
-          </div>
-          <div className={styles.menu_container}>
+      {/* <Container sx={{ maxWidth: "1239px" }} maxWidth={false}> */}
+      <section id={styles.what_you_need}>
+        <div className={styles.title}>
+          <Typography variant='h3'>What You Need To Know</Typography>
+        </div>
+        <div className={styles.menu_container}>
 
-            <Accordion disableGutters={false} elevation={0}
-              square={false} sx={{
-                '&:before': {
-                  display: 'none',
-                }
-              }}
-              expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
-              <AccordionSummary
 
-                sx={expanded !== 'panel5' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
-                  : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
-                }
-                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel5' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                aria-controls="panel3a-content"
-                id="panel3a-header"
-              >
-                <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                  1- Pre-Operation
+          {/* <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}
+            sx={style}
+            disableGutters elevation={0}
+            square={false}
+          >
+            <AccordionSummary
+              accordionSummaryMainStyle
+              sx={expanded !== 'panel5' ? accordionSummaryMainStyle
+                : accordionSummarySecStyle
+              }
+              expandIcon={<ExpandMoreIcon sx={expanded !== 'panel5' ?
+                expandMoreIconMainStyle
+                : expandMoreIconSecStyle} />}
+              aria-controls="panel5d-content" id="panel5d-header">
+              <Typography sx={typographyStyle}>
+                Procedure Duration & Hospitalization
+              </Typography>
+            </AccordionSummary>
 
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
-                <div
-                  id={"apply"}
-                  className={` ck-content ${styles.content}`}
-                  dangerouslySetInnerHTML={createMarkupPreOperationOverview()}
-                // className={} 
-                />
-              </AccordionDetails>
-            </Accordion>
+            <AccordionDetails
+              onEntered={handleDetailEntered}
+              onExited={handleDetailExited}
+            >
+              <div
+                id={"apply"}
+                className="ck-content"
+                dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
+            </AccordionDetails>
+          </Accordion> */}
 
-            <Accordion disableGutters={false} elevation={0}
-              square={false} sx={{
-                marginTop: '8px',
-                '&:before': {
-                  display: 'none',
-                }
-              }}
-              expanded={expanded === 'panel77'} onChange={handleChange('panel77')}
+
+          <Accordion disableGutters={false} elevation={0}
+            square={false} sx={{
+              '&:before': {
+                display: 'none',
+              }
+            }}
+            expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
+            <AccordionSummary
+
+              sx={expanded !== 'panel5' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+              }
+              expandIcon={<ExpandMoreIcon sx={expanded !== 'panel5' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+              aria-controls="panel3a-content"
+              id="panel3a-header"
+            >
+              <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                1- Pre-Operation
+
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
+              <div
+                id={"apply"}
+                className={` ck-content ${styles.content}`}
+                dangerouslySetInnerHTML={createMarkupPreOperationOverview()}
+              />
+            </AccordionDetails>
+          </Accordion>
+
+          <Accordion disableGutters={false} elevation={0}
+            square={false} sx={{
+              marginTop: '8px',
+              '&:before': {
+                display: 'none',
+              }
+            }}
+            expanded={expanded === 'panel77'} onChange={handleChange('panel77')}
+
+          >
+            <AccordionSummary
+
+              sx={expanded !== 'panel77' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+              }
+              expandIcon={<ExpandMoreIcon sx={expanded !== 'panel77' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
 
             >
-              <AccordionSummary
-
-                sx={expanded !== 'panel77' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
-                  : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
-                }
-                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel77' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-
-              >
-                <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                  2- During Operation
-                </Typography>
-              </AccordionSummary>
+              <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                2- During Operation
+              </Typography>
+            </AccordionSummary>
 
 
-              <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
+            <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
 
-                <div
-                  id={"apply"}
-                  className="ck-content"
+              <div
+                id={"apply"}
+                className="ck-content"
 
-                  dangerouslySetInnerHTML={createMarkupDuringOperationOverview()} />
-              </AccordionDetails>
+                dangerouslySetInnerHTML={createMarkupDuringOperationOverview()} />
+            </AccordionDetails>
 
-            </Accordion>
+          </Accordion>
 
-            <Accordion disableGutters={false} elevation={0}
-              square={false} sx={{
-                marginTop: '8px',
-                '&:before': {
-                  display: 'none',
-                }
-              }}
-              onChange={handleChange('panel6')}
-              expanded={expanded === 'panel6'}
+          <Accordion disableGutters={false} elevation={0}
+            square={false} sx={{
+              marginTop: '8px',
+              '&:before': {
+                display: 'none',
+              }
+            }}
+            onChange={handleChange('panel6')}
+            expanded={expanded === 'panel6'}
+          >
+            <AccordionSummary
+
+              sx={expanded !== 'panel6' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+              }
+              expandIcon={<ExpandMoreIcon sx={expanded !== 'panel6' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+              aria-controls="panel6a-content"
+              id="panel6a-header"
             >
-              <AccordionSummary
+              <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                3- After Operation
 
-                sx={expanded !== 'panel6' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
-                  : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
-                }
-                expandIcon={<ExpandMoreIcon sx={expanded !== 'panel6' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                aria-controls="panel6a-content"
-                id="panel6a-header"
-              >
-                <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                  3- After Operation
-
-                </Typography>
-              </AccordionSummary>
+              </Typography>
+            </AccordionSummary>
 
 
-              <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
-                <div
-                  id={"apply"}
-                  className="ck-content"
-                  dangerouslySetInnerHTML={createMarkupAfterOperationOverview()} />
-              </AccordionDetails>
+            <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
+              <div
+                id={"apply"}
+                className="ck-content"
+                dangerouslySetInnerHTML={createMarkupAfterOperationOverview()} />
+            </AccordionDetails>
 
-            </Accordion>
+          </Accordion>
 
 
 
 
-          </div>
-        </section>
-      </Container >
+        </div>
+      </section>
+      {/* </Container > */}
 
 
       <article id={styles.video}>
@@ -830,20 +894,12 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   <div
                     id={"apply"}
                     className="ck-content"
-
                     dangerouslySetInnerHTML={createMarkupGetTreatmentStepThree()} />
                 </AccordionDetails>
-
               </Accordion>
-
-
-
-
             </div>
-
           </div>
         </Container >
-
       </section >
 
       {
@@ -933,7 +989,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
             <div className={styles.menu_container}>
               {qADetails?.map((q, index) => (
                 <div className={styles.QA_menu} key={index}>
-                  <Accordion disableGutters elevation={0}
+                  {/* <Accordion disableGutters elevation={0}
                     square={false} sx={{
                       borderRadius: '0px !important',
                       marginBottom: '16px',
@@ -972,7 +1028,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                     </AccordionDetails>
 
                   </Accordion>
-
+ */}
 
                 </div>
               ))}

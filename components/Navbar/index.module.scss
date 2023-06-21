@@ -60,6 +60,7 @@
             align-items: center;
             justify-content: space-between;
             // width: 100%;
+            margin: 0;
 
             .link__item {
               position: relative;
@@ -195,6 +196,8 @@
             position: relative;
             .menuLinks__container {
               ul {
+                padding: 0;
+                margin: 0;
                 position: absolute;
                 top: 46px;
                 left: -5px;
