@@ -207,10 +207,12 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
   const style = {
     marginTop: '20px',
-    maxHeight: '50vh', overflowX: 'hidden',
     '&:before': {
       display: 'none',
     }
+  };
+  const accordionDetailsStyle = {
+    maxHeight: '50vh', overflowX: 'hidden',
   };
 
   const accordionSummaryMainStyle = {
@@ -417,8 +419,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </AccordionSummary>
 
               <AccordionDetails
-                onEntered={handleDetailEntered}
-                onExited={handleDetailExited}
+                sx={accordionDetailsStyle}
               >
                 <div
                   id={"apply"}
@@ -447,8 +448,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </AccordionSummary>
 
               <AccordionDetails
-                onEntered={handleDetailEntered}
-                onExited={handleDetailExited}
+                sx={accordionDetailsStyle}
               >
                 <div
                   id={"apply"}
@@ -481,8 +481,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </AccordionSummary>
 
               <AccordionDetails
-                onEntered={handleDetailEntered}
-                onExited={handleDetailExited}
+                sx={accordionDetailsStyle}
               >
                 <div
                   id={"apply"}
@@ -512,8 +511,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </AccordionSummary>
 
               <AccordionDetails
-                onEntered={handleDetailEntered}
-                onExited={handleDetailExited}
+                sx={accordionDetailsStyle}
               >
                 <div
                   id={"apply"}
@@ -628,37 +626,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
             <Typography variant='h3'>What You Need To Know</Typography>
           </div>
           <div className={styles.menu_container}>
-
-
-            {/* <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}
-            sx={style}
-            disableGutters elevation={0}
-            square={false}
-          >
-            <AccordionSummary
-              accordionSummaryMainStyle
-              sx={expanded !== 'panel5' ? accordionSummaryMainStyle
-                : accordionSummarySecStyle
-              }
-              expandIcon={<ExpandMoreIcon sx={expanded !== 'panel5' ?
-                expandMoreIconMainStyle
-                : expandMoreIconSecStyle} />}
-              aria-controls="panel5d-content" id="panel5d-header">
-              <Typography sx={typographyStyle}>
-                Procedure Duration & Hospitalization
-              </Typography>
-            </AccordionSummary>
-
-            <AccordionDetails
-              onEntered={handleDetailEntered}
-              onExited={handleDetailExited}
-            >
-              <div
-                id={"apply"}
-                className="ck-content"
-                dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
-            </AccordionDetails>
-          </Accordion> */}
 
 
             <Accordion disableGutters={false} elevation={0}
