@@ -207,6 +207,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
   const style = {
     marginTop: '20px',
+    maxHeight: '50vh', overflowX: 'hidden',
     '&:before': {
       display: 'none',
     }
@@ -989,7 +990,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
             <div className={styles.menu_container}>
               {qADetails?.map((q, index) => (
                 <div className={styles.QA_menu} key={index}>
-                  {/* <Accordion disableGutters elevation={0}
+                  <Accordion disableGutters elevation={0}
                     square={false} sx={{
                       borderRadius: '0px !important',
                       marginBottom: '16px',
@@ -1028,7 +1029,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                     </AccordionDetails>
 
                   </Accordion>
- */}
 
                 </div>
               ))}
