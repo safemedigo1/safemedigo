@@ -13,7 +13,6 @@ import { useTranslation } from "react-i18next";
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-
 const Hero = () => {
   const { t } = useTranslation();
   const [breakPoints] = useState([
@@ -22,6 +21,7 @@ const Hero = () => {
     { width: 400, pagination: false },
 
   ])
+
   const router = useRouter();
   const { author, } = imgs;
 
@@ -30,9 +30,6 @@ const Hero = () => {
     { title: 'Patient name', img: author.src, id: '2', desc: ' Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Consetetur Sadipscing Elitr, Sed Diam Nonumy  ' },
 
   ]
-
-
-
 
   // Change Arrow in react-elastic-carousel Lirbrary
   function myArrow({ type, onClick, isEdge }) {
@@ -60,10 +57,11 @@ const Hero = () => {
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
         <div className={styles.hero_container}>
           <div className={styles.text_container}>
-
             <div className={styles.title}>
-              <h1>{t("hero_section:title1")}  <br /> {t("hero_section:title2")}</h1>
-
+              <h1>{t("hero_section:title1")}
+                <br />
+                {t("hero_section:title2")}
+              </h1>
             </div>
 
             <div className={styles.advantages}>
@@ -115,6 +113,7 @@ const Hero = () => {
             </Box>
 
           </div>
+
           <div className={styles.slider_container}>
             <Carousel
               breakPoints={breakPoints}
@@ -164,6 +163,7 @@ const Hero = () => {
 
 
           </div>
+
         </div>
       </Container>
 
