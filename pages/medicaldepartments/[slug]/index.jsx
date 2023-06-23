@@ -377,7 +377,6 @@ export async function getStaticPaths() {
     params: { slug: treatment.slug.toString() },
     locale: locale,
   })))
-  console.log(paths, 'HERE')
 
 
   return {

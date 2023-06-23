@@ -9,14 +9,9 @@ section#hero {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    // flex-wrap: wrap;
+
     padding-top: 48px;
     padding-bottom: 213px;
-
-    // @media screen and (max-width: 992px) {
-    //   flex-direction: column;
-    //   padding-top: 40px;
-    // }
 
     @media screen and (max-width: 750px) {
       flex-direction: column;
@@ -193,22 +188,18 @@ section#hero {
         padding: 24px;
         margin: 0 15px;
         height: 281px;
-        // @media screen and (max-wdidth: 992px) {
-        //   height: 119.5px;
+
+        // @media screen and (min-width: 750px) {
+        //   height: 274.71px;
         // }
 
-        @media screen and (min-width: 750px) {
-          height: 274.71px;
-        }
-
-        @media screen and (max-width: 750px) {
+        @media screen and (max-width: 800px) {
           width: 333px;
           padding-bottom: 19px;
           padding-right: 15px;
           padding-left: 29px;
           padding-top: 19px;
           margin-bottom: 10px;
-
           height: 194.08px;
         }
 
