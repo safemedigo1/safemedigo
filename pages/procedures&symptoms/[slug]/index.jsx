@@ -212,7 +212,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
     }
   };
   const accordionDetailsStyle = {
-    maxHeight: '50vh', overflowX: 'hidden',
+    maxHeight: '50vh', overflowX: 'auto',
   };
 
   const accordionSummaryMainStyle = {
@@ -629,11 +629,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
 
             <Accordion disableGutters={false} elevation={0}
-              square={false} sx={{
-                '&:before': {
-                  display: 'none',
-                }
-              }}
+              square={false} sx={style}
               expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
               <AccordionSummary
 
@@ -649,7 +645,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
+              <AccordionDetails sx={{ background: '#F4F9F8', overflowX: 'auto', maxHeight: '50vh', }}>
                 <div
                   id={"apply"}
                   className={` ck-content ${styles.content}`}
@@ -659,12 +655,8 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
             </Accordion>
 
             <Accordion disableGutters={false} elevation={0}
-              square={false} sx={{
-                marginTop: '8px',
-                '&:before': {
-                  display: 'none',
-                }
-              }}
+              square={false} sx={style}
+
               expanded={expanded === 'panel77'} onChange={handleChange('panel77')}
 
             >
@@ -682,7 +674,9 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </AccordionSummary>
 
 
-              <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
+              <AccordionDetails sx={{
+                background: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto',
+              }}>
 
                 <div
                   id={"apply"}
@@ -694,12 +688,8 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
             </Accordion>
 
             <Accordion disableGutters={false} elevation={0}
-              square={false} sx={{
-                marginTop: '8px',
-                '&:before': {
-                  display: 'none',
-                }
-              }}
+              square={false} sx={style}
+
               onChange={handleChange('panel6')}
               expanded={expanded === 'panel6'}
             >
@@ -719,7 +709,9 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </AccordionSummary>
 
 
-              <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
+              <AccordionDetails sx={{
+                background: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto',
+              }}>
                 <div
                   id={"apply"}
                   className="ck-content"
@@ -762,11 +754,8 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
             <div className={styles.menu_container}>
               <Accordion disableGutters elevation={0}
-                square={false} sx={{
-                  '&:before': {
-                    display: 'none',
-                  }
-                }}
+                square={false} sx={style}
+
                 expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
 
 
@@ -785,7 +774,9 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   </Typography>
                 </AccordionSummary>
 
-                <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }} >
+                <AccordionDetails sx={{
+                  background: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto',
+                }} >
                   <div
                     id={"apply"}
                     className="ck-content"
@@ -796,13 +787,8 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
 
               <Accordion disableGutters elevation={0}
-                square={false} sx={{
-                  marginTop: '8px',
+                square={false} sx={style}
 
-                  '&:before': {
-                    display: 'none',
-                  }
-                }}
                 expanded={expanded === 'panel10'} onChange={handleChange('panel10')}>
 
 
@@ -822,7 +808,9 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   </Typography>
                 </AccordionSummary>
 
-                <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
+                <AccordionDetails sx={{
+                  background: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto',
+                }}>
                   <div
                     id={"apply"}
                     className="ck-content"
@@ -833,12 +821,8 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
 
               <Accordion disableGutters elevation={0}
-                square={false} sx={{
-                  marginTop: '8px',
-                  '&:before': {
-                    display: 'none',
-                  }
-                }}
+                square={false} sx={style}
+
                 expanded={expanded === 'panel11'} onChange={handleChange('panel11')}>
 
 
@@ -858,7 +842,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   </Typography>
                 </AccordionSummary>
 
-                <AccordionDetails sx={{ background: '#F4F9F8', overflow: 'hidden' }}>
+                <AccordionDetails sx={accordionDetailsStyle}>
                   <div
                     id={"apply"}
                     className="ck-content"
@@ -988,7 +972,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                       </Typography>
                     </AccordionSummary>
 
-                    <AccordionDetails  >
+                    <AccordionDetails sx={accordionDetailsStyle}>
                       <div
                         id={"apply"}
                         className="ck-content"

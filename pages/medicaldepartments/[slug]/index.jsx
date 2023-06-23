@@ -372,12 +372,12 @@ export async function getStaticPaths() {
   })
   const data = await res.json()
 
-
   const customLocale = ['en', 'ar', 'tr'];
   const paths = data.flatMap((treatment, idx) => customLocale.map((locale) => ({
     params: { slug: treatment.slug.toString() },
     locale: locale,
   })))
+  console.log(paths, 'HERE')
 
 
   return {
