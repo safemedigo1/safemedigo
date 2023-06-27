@@ -16,8 +16,6 @@ const PageHeader = ({ blog, treatment }) => {
   const { t } = useTranslation();
 
   return (
-
-
     <>
       {pathname !== '/' &&
         <>
@@ -241,7 +239,7 @@ const PageHeader = ({ blog, treatment }) => {
 
                           <Box sx={{ display: 'flex', alignItmes: 'center' }} className={styles.review_by}>
                             <div className={styles.author_img}>
-                              {treatment?.reviewerImage === null ? <Image width={100} height={100} src={userimg.src} alt="" /> : <Image s width={100} height={100} src={treatment?.reviewerImage} alt="" />}
+                              {treatment?.reviewerImage === null ? <Image width={100} height={100} src={userimg.src} alt="" /> : <img width={100} height={100} src={treatment?.reviewerImage} alt="" />}
                             </div>
                             <div className={styles.info}>
                               <p>{treatment?.reviewer}, {treatment?.reviewerJobTitle}</p>
@@ -289,9 +287,6 @@ const PageHeader = ({ blog, treatment }) => {
               </div >
             </Box >
           }
-
-
-
 
         </>
 

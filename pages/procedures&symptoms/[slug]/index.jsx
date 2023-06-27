@@ -206,7 +206,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
   };
 
   const style = {
-    marginTop: '20px',
+    marginTop: '10px',
     '&:before': {
       display: 'none',
     }
