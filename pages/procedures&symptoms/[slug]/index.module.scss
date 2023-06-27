@@ -964,13 +964,17 @@ article.overview[dir="rtl"] {
     .quick_details {
       .details_container {
         .boxes_container {
+          margin-right: 0px !important;
+          margin-left: 16px;
+
           .box {
             .title {
+              margin-bottom: 8px;
               h6 {
                 color: var(--main-dark-color);
                 font-size: 14px;
                 font-weight: var(--font-regular);
-                font-family: var(--quickstand-font);
+                font-family: var(--arabic-font) !important;
               }
             }
 
