@@ -218,13 +218,6 @@ const MostPopular = ({ dataPopularTreatments }) => {
                 </>
               }
 
-              {router.pathname === '/hospitals/[slug]' &&
-
-                <>
-
-
-                </>
-              }
 
 
             </div>
