@@ -26,8 +26,19 @@ const Hero = () => {
   const { author, } = imgs;
 
   const cards = [
-    { title: 'Patient name', img: author.src, id: '1', desc: ' Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Consetetur Sadipscing Elitr, Sed Diam Nonumy  ' },
-    { title: 'Patient name', img: author.src, id: '2', desc: ' Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Consetetur Sadipscing Elitr, Sed Diam Nonumy  ' },
+    { treatment: 'Knee Replacement', title: 'John Smith, 60Y, USA', img: author.src, id: '1', desc: "Safemedigo played a crucial role in my outstanding knee replacement surgery. They facilitated top-notch treatment in Turkey, ensuring exceptional care and expertise. Grateful for Safemedigo's assistance in my pain-free, active lifestyle." },
+    {
+      treatment: 'Hair Transplant', title: 'Emily Johnson, 40Y, UK', img: author.src, id: '2', desc: " With Safemedigo's assistance, my hair transplant in Turkey was a remarkable experience. They provided access to skilled staff, a comfortable environment, and ensured exceptional results. Grateful for Safemedigo's role in my transformation."
+    },
+    {
+      treatment: 'IVF', title: 'Sarah Thompson, 35Y, Australia', img: author.src, id: '2', desc: "Safemedigo made my IVF journey smoother by guiding me through every step of the process in Turkey. Their compassionate support, along with access to reputable clinics, helped me fulfill my dream of having a baby."
+    },
+    {
+      treatment: 'General Checkup', title: 'Michael Davis, 50Y, Canada', img: author.src, id: '2', desc: "Safemedigo facilitated my outstanding general checkup experience in Turkey. They ensured thorough examinations, friendly staff, and a prompt report. Grateful for Safemedigo's assistance in prioritizing my well-being."
+    },
+    {
+      treatment: 'Bypass Operation', title: 'Anna Schmidt, 65Y, Germany', img: author.src, id: '2', desc: "Safemedigo played a vital role in my bypass surgery in Turkey. Their assistance and expertise were invaluable, ensuring exceptional care and saving my life. Highly recommend Safemedigo for their exceptional support."
+    },
 
   ]
 
@@ -89,7 +100,7 @@ const Hero = () => {
             <Box sx={{ display: 'flex', alignItems: { xs: 'center', sm: 'center', md: 'center', lg: 'flex-start' }, justifyContent: { xs: 'flex-start', sm: 'flex-start', md: 'space-between', lg: 'space-between' }, flexDirection: { xs: 'row', sm: 'row', md: 'row', lg: 'column' } }}>
 
               <div className={styles.more}>
-                <Link href='/'>
+                <Link href='https://youtu.be/daQ9rUzX8wY' target='_blank'>
                   <HiPlay />
                   <button>{t("hero_section:watch_video")}</button>
                 </Link>
@@ -125,14 +136,14 @@ const Hero = () => {
                   <div className={styles.box} key={index}>
                     <div className={styles.box_header}>
                       <div className={styles.img_container}>
-                        <Image width={100} height={100} src={card.img} alt="" />
+                        <Image width={80} height={80} src={card.img} alt="" />
                       </div>
 
                       <div className={styles.title}>
                         <Typography variant="h6">{card.title}</Typography>
 
                         <div className={styles.link}>
-                          <Link href='/'>Knee Replacement</Link>
+                          <Link href='/'>{card.treatment}</Link>
                         </div>
 
                         <div className={styles.rating}>

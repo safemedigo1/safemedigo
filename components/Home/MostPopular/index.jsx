@@ -178,7 +178,13 @@ const MostPopular = ({ dataPopularTreatments }) => {
 
               <div className={styles.desc}>
                 {router.pathname !== '/hospitals/[slug]' ?
-                  <Typography> {t('most_popular:desc')}</Typography>
+                  <>
+                    {router.pathname !== '/medicaldepartments/[slug]' ?
+                      <Typography> {t('most_popular:desc2')}</Typography>
+                      :
+                      <Typography> {t('most_popular:desc')}</Typography>
+                    }
+                  </>
                   :
                   <Typography variant={'h3'}> Acibadem Hospital Taksim Doctors</Typography>
                 }
