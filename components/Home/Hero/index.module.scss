@@ -19,6 +19,8 @@ section#hero {
     }
 
     .text_container {
+      position: relative;
+      z-index: 1;
       @media screen and (max-width: 750px) {
         width: 100%;
       }
