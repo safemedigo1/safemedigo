@@ -233,3 +233,36 @@
     }
   }
 }
+
+#medical_department[dir="rtl"] {
+  .section_container {
+    .slider_container {
+      .box {
+        .img_container {
+          margin-left: 10px !important;
+          margin-right: 0px !important;
+        }
+
+        .box_title {
+          text-align: right;
+
+          h6 {
+            font-size: 16px !important;
+            color: var(--main-dark-color);
+            font-weight: var(--font-sem-bold);
+            font-family: var(--arabic-font);
+            line-height: 1.2rem;
+            line-height: 1.5rem;
+
+            @media screen and (max-width: 992px) {
+              margin-top: 0px;
+              font-size: 14px;
+
+              line-height: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
