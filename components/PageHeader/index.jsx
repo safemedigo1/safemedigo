@@ -251,7 +251,7 @@ const PageHeader = ({ blog, treatment }) => {
 
                           <Box sx={{ display: 'flex', alignItmes: 'center' }} className={styles.review_by}>
                             <div className={styles.author_img}>
-                              {treatment?.publisherImage === null ? <Image width={100} height={100} src={userimg.src} alt="" /> : <Image s width={100} height={100} src={treatment?.publisherImage} alt="" />}
+                              {treatment?.publisherImage === null ? <Image width={100} height={100} src={userimg.src} alt="" /> : <img s width={100} height={100} src={treatment?.publisherImage} alt="" />}
                             </div>
                             <div className={styles.info}>
                               <p>{treatment?.publisher} , {treatment?.publisherJobTitle}</p>
