@@ -7,12 +7,12 @@ import Head from "next/head";
 import Script from "next/script";
 import { Layout } from "../components";
 import "nprogress/nprogress.css";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import nProgress from "nprogress";
 import "../styles/nprogress.css";
 import { appWithTranslation } from "next-i18next";
 import { Toaster } from "react-hot-toast";
-import { Quicksand } from "@next/font/google";
+import { Quicksand, Tajawal } from "@next/font/google";
 import theme from "../styles/theme";
 import { ThemeProvider } from "@mui/material/styles";
 
@@ -20,16 +20,25 @@ const quicksand = Quicksand({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
 });
+const taiwal = Tajawal({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
 
 Router.events.on("routeChangeStart", nProgress.start);
 Router.events.on("routeChangeError", nProgress.done);
 Router.events.on("routeChangeComplete", nProgress.done);
 
 function App({ Component, pageProps }) {
+  const router = useRouter();
   return (
     <>
       <ThemeProvider theme={theme}>
-        <main className={`${quicksand.className}`}>
+        <main
+          className={`${
+            router.locale === "ar" ? taiwal.className : quicksand.className
+          }`}
+        >
           <NoSsr>
             <CssBaseline />
             <Layout>

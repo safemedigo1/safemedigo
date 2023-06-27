@@ -553,6 +553,16 @@
           }
         }
       }
+
+      .treatment,
+      .doctors,
+      .clinic {
+        h6 {
+          button {
+            font-family: var(--arabic-font) !important;
+          }
+        }
+      }
     }
 
     hr {

@@ -314,6 +314,10 @@ section#hero[dir="rtl"] {
     .text_container {
       .advantages {
         .advantage {
+          p {
+            font-family: var(--arabic-font) !important;
+            font-size: 18px;
+          }
           svg {
             margin-right: 0px;
             margin-left: 13.2px;

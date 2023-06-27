@@ -172,3 +172,17 @@ section#why_safemedigo {
     }
   }
 }
+
+section#why_safemedigo[dir="rtl"] {
+  .section_container {
+    .boxes_container {
+      .box {
+        .desc {
+          p {
+            font-family: var(--arabic-font) !important;
+          }
+        }
+      }
+    }
+  }
+}

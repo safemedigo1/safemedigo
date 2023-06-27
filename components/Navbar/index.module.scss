@@ -693,6 +693,9 @@
     .links {
       ul {
         li {
+          a {
+            font-family: var(--arabic-font) !important;
+          }
           &:not(:last-child) {
             margin-right: 0px;
             margin-left: 23px;
@@ -716,6 +719,10 @@
     .login_btn {
       a {
         flex-direction: row-reverse;
+        button {
+          font-family: var(--arabic-font) !important;
+        }
+
         .icon_container {
           margin-right: 0px;
           margin-left: 7.2px;

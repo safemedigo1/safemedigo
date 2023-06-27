@@ -296,6 +296,7 @@
       a {
         margin-left: 0px;
         margin-right: -262px;
+        font-family: var(--arabic-font) !important;
 
         @media screen and (max-width: 992px) {
           margin-left: 0px;
@@ -314,6 +315,8 @@
 
         .input_container {
           input {
+            font-family: var(--arabic-font) !important;
+
             padding-right: 57px;
             @media screen and (max-width: 992px) {
               padding-right: 39px;

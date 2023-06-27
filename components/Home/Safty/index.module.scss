@@ -349,6 +349,11 @@
 
 #safty[dir="rtl"] {
   .section_container {
+    .sec_desc {
+      p {
+        font-family: var(--arabic-font) !important;
+      }
+    }
     .content {
       .text_container {
         .right_side {
@@ -356,6 +361,8 @@
           margin-left: 60px;
 
           p {
+            font-family: var(--arabic-font) !important;
+
             &:first-child {
               margin-left: 0px;
               margin-right: -20px;
@@ -379,7 +386,9 @@
         .left_side {
           margin-left: 0px;
           margin-right: 73px;
-
+          p {
+            font-family: var(--arabic-font) !important;
+          }
           .right1 {
             top: -5%;
             left: 110%;
@@ -430,7 +439,7 @@
           color: var(--main-dark-color);
           font-size: 16px;
           font-weight: var(--font-regular);
-          font-family: var(--open-sans-font);
+          font-family: var(--arabic-font) !important;
         }
 
         .list {

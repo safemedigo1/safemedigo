@@ -308,6 +308,23 @@ section#patient_stories[dir="rtl"] {
     .text_container {
       margin-right: 0px;
       margin-left: 34px;
+      .title {
+        h2 {
+          font-family: var(--arabic-font) !important;
+        }
+      }
+
+      .desc {
+        p {
+          font-family: var(--arabic-font) !important;
+        }
+      }
+
+      .btn_container {
+        button {
+          font-family: var(--arabic-font) !important;
+        }
+      }
     }
 
     .slider_container {
