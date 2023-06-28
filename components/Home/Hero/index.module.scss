@@ -360,6 +360,7 @@ section#hero[dir="rtl"] {
     .slider_container {
       .box {
         .box_header {
+          flex-direction: row-reverse;
           .img_container {
             margin-right: 0px;
             margin-left: 20px;
@@ -374,7 +375,8 @@ section#hero[dir="rtl"] {
             .rating {
               flex-direction: row-reverse;
               .reviews_num {
-                margin-left: 10px;
+                margin-left: 0px;
+                margin-right: 10px;
               }
             }
           }

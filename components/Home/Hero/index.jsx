@@ -64,7 +64,7 @@ const Hero = () => {
   }
 
   return (
-    <section id={styles.hero} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+    <section id={styles.hero} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
         <div className={styles.hero_container}>
           <div className={styles.text_container}>
