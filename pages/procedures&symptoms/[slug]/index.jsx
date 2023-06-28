@@ -414,7 +414,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   : expandMoreIconSecStyle} />}
                 aria-controls="panel1d-content" id="panel1d-header">
                 <Typography sx={typographyStyle}>
-                  Benefits
+                  {t('proceduresSymptoms_single:benefits')}
                 </Typography>
               </AccordionSummary>
 
@@ -443,7 +443,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   : expandMoreIconSecStyle} />}
                 aria-controls="panel2d-content" id="panel2d-header">
                 <Typography sx={typographyStyle}>
-                  Possible Side Effects
+                  {t('proceduresSymptoms_single:Side_Effects')}
                 </Typography>
               </AccordionSummary>
 
@@ -476,7 +476,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   : expandMoreIconSecStyle} />}
                 aria-controls="panel3d-content" id="panel3d-header">
                 <Typography sx={typographyStyle}>
-                  What Makes A Good Candidate
+                  {t('proceduresSymptoms_single:Candidate')}
                 </Typography>
               </AccordionSummary>
 
@@ -506,7 +506,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   : expandMoreIconSecStyle} />}
                 aria-controls="panel4d-content" id="panel4d-header">
                 <Typography sx={typographyStyle}>
-                  Procedure Duration & Hospitalization
+                  {t('proceduresSymptoms_single:Hospitalization')}
                 </Typography>
               </AccordionSummary>
 
@@ -526,11 +526,11 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
       {
         dataTreatment?.treatmentImage.length !== 0 &&
-        <section id={styles.before_after}>
+        <section id={styles.before_after} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
           <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.title}>
               <Typography variant='h3'>
-                Before & After Photos
+                {t('proceduresSymptoms_single:before_after')}
               </Typography>
             </div>
           </Container >
@@ -553,8 +553,8 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                         <Image width={388} height={200} src={card.imgAfter} alt="" />
                       </div>
                       <div className={styles.box_title}>
-                        <Typography variant='h5'>Before</Typography>
-                        <Typography variant='h5'>After</Typography>
+                        <Typography variant='h5'>{t('proceduresSymptoms_single:before')}</Typography>
+                        <Typography variant='h5'>{t('proceduresSymptoms_single:after')}</Typography>
                       </div>
                       <div className={styles.desc}>
                         <Typography>
@@ -572,11 +572,11 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
       {
         dataTreatment?.treatmentStep?.length !== 0 &&
-        <section id={styles.steps}>
+        <section id={styles.steps} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
           <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.sec_title}>
               <Typography variant='h3'>
-                Surgery Steps
+                {t('proceduresSymptoms_single:surgery_steps')}
               </Typography>
             </div>
 
@@ -621,9 +621,9 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
       }
 
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-        <section id={styles.what_you_need}>
+        <section id={styles.what_you_need} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
           <div className={styles.title}>
-            <Typography variant='h3'>What You Need To Know</Typography>
+            <Typography variant='h3'>{t('proceduresSymptoms_single:what_you_need_to_know')}</Typography>
           </div>
           <div className={styles.menu_container}>
 
@@ -641,7 +641,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 id="panel3a-header"
               >
                 <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                  1- Pre-Operation
+                  1 - {t('proceduresSymptoms_single:preoperation')}
 
                 </Typography>
               </AccordionSummary>
@@ -669,7 +669,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
               >
                 <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                  2- During Operation
+                  2 - {t('proceduresSymptoms_single:during_operation')}
                 </Typography>
               </AccordionSummary>
 
@@ -703,7 +703,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 id="panel6a-header"
               >
                 <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                  3- After Operation
+                  3 - {t('proceduresSymptoms_single:after_operation')}
 
                 </Typography>
               </AccordionSummary>
@@ -720,21 +720,18 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
             </Accordion>
 
-
-
-
           </div>
         </section>
       </Container >
 
 
-      <article id={styles.video}>
+      <article id={styles.video} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.video_container}>
 
             <div className={styles.title}>
               <Typography variant='h3'>
-                All In Video
+                {t('proceduresSymptoms_single:all_in_video')}
               </Typography>
             </div>
             <div className={styles.video_container}>
@@ -745,11 +742,11 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
         </Container >
       </article>
 
-      <section id={styles.howToGetTreatment}>
+      <section id={styles.howToGetTreatment} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.howToGetTreatment_container}>
             <div className={styles.sec_title}>
-              <Typography variant='h3' sx={sxTitle2}>How Can I Get Treatment In Turkey?</Typography>
+              <Typography variant='h3' sx={sxTitle2}>{t('proceduresSymptoms_single:how_i_get_treatment')}</Typography>
             </div>
 
             <div className={styles.menu_container}>
@@ -770,7 +767,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                     <span>
                       1
                     </span>
-                    Send Your Pictures
+                    {t("proceduresSymptoms_single:Send_Your_Pictures")}
                   </Typography>
                 </AccordionSummary>
 
@@ -804,7 +801,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                       2
                     </span>
 
-                    Get Your Quote
+                    {t("proceduresSymptoms_single:Get_Your_Quote")}
                   </Typography>
                 </AccordionSummary>
 
@@ -838,7 +835,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                       3
                     </span>
 
-                    Secure Your Appointment
+                    {t("proceduresSymptoms_single:Secure_Your_Appointment")}
                   </Typography>
                 </AccordionSummary>
 
@@ -856,11 +853,11 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
       {
         dataTreatment?.treatmentProcedure != 0 &&
-        <section id={styles.treatment_desc}>
+        <section id={styles.treatment_desc} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
           <Container className='mycontainer' sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.sec_title}>
               <Typography variant='h3'>
-                Steps
+                {t("proceduresSymptoms_single:Steps")}
               </Typography>
             </div>
 
@@ -905,11 +902,11 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
         </section>
       }
 
-      < section id={'price'} className={styles.price} >
+      < section id={'price'} className={styles.price} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <div className={styles.section_container}>
           <div className={styles.title}>
             <Typography variant='h3'>
-              Cost Starts From ${dataTreatment?.cost}
+              {t('proceduresSymptoms_single:cost')} ${dataTreatment?.cost}
             </Typography>
           </div>
 
@@ -917,7 +914,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
             <div className={styles.qoute}>
               <Link href='/qoute'>
                 <button>
-                  Get A Qoute
+                  {t('proceduresSymptoms_single:Get_Your_Quote')}
                 </button>
               </Link>
             </div>
@@ -932,10 +929,10 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
       </section >
 
       {QACount > 0 &&
-        <section id="q&a" className={styles.QA}>
+        <section id="q&a" className={styles.QA} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
           <Container sx={{ maxWidth: "1239px", overflow: 'hidden' }} maxWidth={false}>
             <div className={styles.title}>
-              <Typography variant='h3'>Guides And Common Questions</Typography>
+              <Typography variant='h3'>{t('proceduresSymptoms_single:Guides_And_Common_Questions')}</Typography>
             </div>
 
             <div className={styles.menu_container}>
