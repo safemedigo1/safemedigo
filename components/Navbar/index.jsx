@@ -161,12 +161,7 @@ const Navbar = (props) => {
   const { pathname } = router;
 
 
-  const changeLocale = (locale) => {
-    router.push({
-      route: router.pathname,
-      query: router.query
-    }, router.asPath, { locale });
-  }
+
 
   return (
     <>
@@ -281,19 +276,25 @@ const Navbar = (props) => {
                           <div className={styles.menuLinks__container}>
                             <ul>
                               {router.locales.map((lang, idx) => (
-                                <li>
-                                  <a href={`/${lang}${router.asPath}`} key={idx}>
-                                    {lang}
-                                    <div className={styles.img_container}>
-                                      <Image
-                                        src={lang === 'ar' ? ar.src : lang === 'en' ? en.src : lang === 'tr' ? tr.src : ''}
-                                        alt="Picture of the author"
-                                        width={20.7}
-                                        height={12.88}
-                                      />
-                                    </div>
-                                  </a>
-                                </li>
+                                <>
+                                  {
+                                    router.locale !== lang &&
+                                    < li >
+                                      <a href={`/${lang}${router.asPath}`} key={idx}>
+                                        {lang}
+                                        <div className={styles.img_container}>
+                                          <Image
+                                            src={lang === 'ar' ? ar.src : lang === 'en' ? en.src : lang === 'tr' ? tr.src : ''}
+                                            alt="Picture of the author"
+                                            width={20.7}
+                                            height={12.88}
+                                          />
+                                        </div>
+                                      </a>
+                                    </li>
+                                  }
+                                </>
+
                               ))}
 
                             </ul>
@@ -447,19 +448,24 @@ const Navbar = (props) => {
                                     initial={{ opacity: 0 }}
                                   >
                                     {router.locales.map((lang, idx) => (
-                                      <li>
-                                        <a href={`/${lang}${router.asPath}`} key={idx}>
-                                          {lang}
-                                          <div className={styles.img_container}>
-                                            <Image
-                                              src={lang === 'ar' ? ar.src : lang === 'en' ? en.src : lang === 'tr' ? tr.src : ''}
-                                              alt="Picture of the author"
-                                              width={20.7}
-                                              height={12.88}
-                                            />
-                                          </div>
-                                        </a>
-                                      </li>
+                                      <>
+                                        {
+                                          router.locale !== lang &&
+                                          <li>
+                                            <a href={`/${lang}${router.asPath}`} key={idx}>
+                                              {lang}
+                                              <div className={styles.img_container}>
+                                                <Image
+                                                  src={lang === 'ar' ? ar.src : lang === 'en' ? en.src : lang === 'tr' ? tr.src : ''}
+                                                  alt="Picture of the author"
+                                                  width={20.7}
+                                                  height={12.88}
+                                                />
+                                              </div>
+                                            </a>
+                                          </li>
+                                        }
+                                      </>
                                     ))}
                                   </motion.ul>
                                 }
@@ -510,7 +516,7 @@ const Navbar = (props) => {
           </div>
         </AppBar>
 
-      </HideOnScroll>
+      </HideOnScroll >
       <Toolbar />
     </>
   );

@@ -217,7 +217,6 @@ const Footer = () => {
 
                 {contactLinks.map((contactLink, idx) => (
                   <>
-                    {console.log(contactLink)}
                     <div className={styles.box} key={idx}>
                       <div className={styles.box_title}>
                         <Typography variant='h6'>{contactLink.title}</Typography>
