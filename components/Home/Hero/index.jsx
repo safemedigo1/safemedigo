@@ -69,10 +69,23 @@ const Hero = () => {
         <div className={styles.hero_container}>
           <div className={styles.text_container}>
             <div className={styles.title}>
-              <h1>{t("hero_section:title1")}
+              <h1>{t("hero_section:title3")}
                 <br />
-                {t("hero_section:title2")}
+                {t("hero_section:title4")}
               </h1>
+
+              {router.locale !== 'tr' &&
+                <h1>{t("hero_section:title1")}
+                  <br />
+                  {t("hero_section:title2")}
+                </h1>
+
+              }
+              {router.locale === 'tr' &&
+                <h1>{t("hero_section:titleTr")}
+                </h1>
+              }
+
             </div>
 
             <div className={styles.advantages}>

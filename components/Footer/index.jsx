@@ -6,12 +6,13 @@ import styles from './index.module.scss'
 import { Box, Grid, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useTranslation } from "react-i18next";
+import { useRouter } from 'next/router'
 
 
 
 const Footer = () => {
   const { t } = useTranslation();
-
+  const router = useRouter();
   const { logoFooter,
     facebook,
     instagram,
@@ -28,15 +29,117 @@ const Footer = () => {
   ]
 
   const contactLinks = [
-    { title: 'Contact Us', link0: 'Lorem Ipsum', link1: 'Dolor Sit', link2: 'Amet,', link3: 'Conseteur', link4: 'Sadipscing', link5: 'Elitr, Sed', link6: 'Diam', link7: 'Nonumy', },
-    { title: 'Contact Us', link0: 'Lorem Ipsum', link1: 'Dolor Sit', link2: 'Amet,', link3: 'Conseteur', link4: 'Sadipscing', link5: 'Elitr, Sed', link6: 'Diam', link7: 'Nonumy', },
-    { title: 'Contact Us', link0: 'Lorem Ipsum', link1: 'Dolor Sit', link2: 'Amet,', link3: 'Conseteur', link4: 'Sadipscing', link5: 'Elitr, Sed', link6: 'Diam', link7: 'Nonumy', },
-    { title: 'Contact Us', link0: 'Lorem Ipsum', link1: 'Dolor Sit', link2: 'Amet,', link3: 'Conseteur', link4: 'Sadipscing', link5: 'Elitr, Sed', link6: 'Diam', link7: 'Nonumy', },
+    {
+      title: t('Footer:WHO_WE_ARE'),
+      links: [
+        {
+          link: t('Footer:Safety_Standards'),
+          ref: "/safety-standards"
+        },
+        {
+          link: t('Footer:How_It_Works'),
+          ref: "/how-it-works"
+        },
+        {
+          link: t('Footer:About_Us'),
+          ref: "/about-us"
+        },
+
+      ]
+    },
+
+
+
+    {
+      title: t('Footer:WHY_SAFEMEDIGO'),
+      links: [
+        {
+          link: t('navbar:patients_reviews'),
+          ref: "/reviews  "
+        },
+        {
+          link: t('navbar:beforeafter'),
+          ref: "/beforeafter"
+        },
+        {
+          link: t('navbar:patients_stories'),
+          ref: "/patients_stories"
+        },
+        {
+          link: t('navbar:doctor_Q_A'),
+          ref: "/doctor_Q_A"
+        },
+        {
+          link: t('navbar:ask_a_doctor'),
+          ref: "/ask_a_doctor"
+        },
+        {
+          link: t('navbar:start_your_review'),
+          ref: "/start_your_review"
+        },
+        {
+          link: t('Footer:E_Medical_history_record'),
+          ref: "/E_Medical_history_record"
+        },
+
+      ]
+    },
+
+
+    {
+      title: t('Footer:Our_Tailored_Medical_services'),
+      links: [
+        {
+          link: t('Footer:Get_a_Quote'),
+          ref: "/Quote"
+        },
+        {
+          link: t('Footer:Get_Budget_Friendly_Operation'),
+          ref: "/Quote"
+        },
+        {
+          link: t('Footer:Personalized_Medical_Planning'),
+          ref: "/Quote"
+        },
+        {
+          link: t('Footer:Patient_Assistance_Program'),
+          ref: "/Quote"
+        },
+        {
+          link: t('Footer:Specialized_Treatment_Coordination'),
+          ref: "/Quote"
+        },
+        {
+          link: t('Footer:Get_a_Second_Opinion'),
+          ref: "/Quote"
+        },
+        {
+          link: t('Footer:Language_Interpretation_Services'),
+          ref: "/Quote"
+        },
+        {
+          link: t('Footer:Get_a_Post_Treatment_Care'),
+          ref: "/Quote"
+        },
+        {
+          link: t('Footer:Telemedicine_Consultations'),
+          ref: "/Quote"
+        },
+        {
+          link: t('Footer:Medical_Records_Management'),
+          ref: "/Quote"
+        },
+        {
+          link: t('Footer:Wellness_and_Preventive_Care'),
+          ref: "/Quote"
+        },
+      ]
+    },
 
   ]
   return (
     <>
-      <footer id={styles.footer}>
+      <footer id={styles.footer} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
           <div className={styles.logo_footer}>
             <Link href='/'>
@@ -53,67 +156,23 @@ const Footer = () => {
           <section className={styles.info_section}>
             <div className={styles.links_container}>
               <div className={styles.boxes}>
+
                 {contactLinks.map((contactLink, idx) => (
                   <>
+                    {console.log(contactLink)}
                     <div className={styles.box} key={idx}>
                       <div className={styles.box_title}>
                         <Typography variant='h6'>{contactLink.title}</Typography>
                       </div>
                       <div className={styles.box_link}>
                         <ul>
-                          <li>
-                            <Link href={contactLink.link0}>
-
-                              {contactLink.link0}
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href={contactLink.link0}>
-                              {contactLink.link1}
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href={contactLink.link0}>
-
-                              {contactLink.link2}
-                            </Link>
-
-                          </li>
-                          <li>
-                            <Link href={contactLink.link0}>
-
-                              {contactLink.link3}
-                            </Link>
-
-                          </li>
-                          <li>
-                            <Link href={contactLink.link0}>
-
-                              {contactLink.link4}
-                            </Link>
-
-                          </li>
-                          <li>
-                            <Link href={contactLink.link0}>
-
-                              {contactLink.link5}
-                            </Link>
-
-                          </li>
-                          <li>
-                            <Link href={contactLink.link0}>
-
-                              {contactLink.link6}
-                            </Link>
-
-                          </li>
-                          <li>
-                            <Link href={contactLink.link0}>
-
-                              {contactLink.link7}
-                            </Link>
-
-                          </li>
+                          {contactLink.links.map((link, index) => (
+                            <li>
+                              <Link href={link.ref}>
+                                {link.link}
+                              </Link>
+                            </li>
+                          ))}
                         </ul>
                       </div>
                     </div>

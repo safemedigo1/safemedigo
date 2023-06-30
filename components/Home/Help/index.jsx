@@ -19,10 +19,9 @@ const Help = () => {
     { title: t('help_section:quality_title'), desc: t('help_section:quality_desc'), img: QualityGuarantee.src },
   ]
 
-
   return (
     <Box id={styles.help} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
-      sx={window.location.pathname === '/' | window.location.pathname === '/ar' | window.location.pathname === '/en' | window.location.pathname === '/tr' ? { marginTop: { xs: "127px", sm: '127px', md: "20px", lg: '127px', xlg: '127px' }, paddingTop: { xs: "22px", sm: "22px", md: "22px", }, } : { paddingTop: "0px", marginTop: "0px" }}
+      sx={router.pathname === '/' | router.pathname === '/ar' | router.pathname === '/en' | router.pathname === '/tr' ? { marginTop: { xs: "127px", sm: '127px', md: "20px", lg: '127px', xlg: '127px' }, paddingTop: { xs: "22px", sm: "22px", md: "22px", }, } : { paddingTop: "0px", marginTop: "0px" }}
 
     >
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >

@@ -1,6 +1,4 @@
 #how_it_works {
-  // margin-top: 56px;
-  // background: #fafafa;
   padding-bottom: 56px;
 
   @media screen and (max-width: 992px) {
@@ -208,6 +206,7 @@
           bottom: -246px;
           left: 228px;
           z-index: -1;
+          width: 100%;
         }
       }
     }
@@ -233,6 +232,7 @@
           bottom: -192px;
           left: 284px;
           z-index: -1;
+          width: 100%;
         }
       }
     }

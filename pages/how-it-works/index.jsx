@@ -223,7 +223,7 @@ export default HowItWorks
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['sec_navbar', 'navbar', 'how_it_works', 'page_header_comp', 'contact_details'])),
+      ...(await serverSideTranslations(locale, ['sec_navbar', 'navbar', 'how_it_works', 'page_header_comp', 'contact_details', 'Footer'])),
     }
   }
 }

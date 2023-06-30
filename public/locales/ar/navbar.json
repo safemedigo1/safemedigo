@@ -1,1 +1,19 @@
-{"about_us":"معلومات عنا","ask_a_doctor":"اسأل الطبيب","beforeafter":"قبل وبعد","blogs":"المدونات","contact_us":"اتصل بنا","doctor_Q_A":"سؤال وجواب دكتور","how_it_works":"كيف تعمل","logo":"Safemedigo","patients_reviews":"مراجعات المرضى","patients_stories":"قصص المرضى","prices":"الأسعار","procedures_symptoms":"الإجراءات والأعراض","reviews_photos":"التعليقات والصور","safety_standards":"معايير السلامة","search":"يبحث","sign_in":"تسجيل الدخول","start_your_review":"ابدأ مراجعتك"}
+{
+  "about_us": "معلومات عنا",
+  "ask_a_doctor": "إسأل طبيب",
+  "beforeafter": "قبل وبعد",
+  "blogs": "المقالات",
+  "contact_us": "اتصل بنا",
+  "doctor_Q_A": "الأسئلة وأجوبة الأطباء",
+  "how_it_works": "دليل الإستخدام",
+  "logo": "Safemedigo",
+  "patients_reviews": "تقييمات المرضى",
+  "patients_stories": "قصص المرضى",
+  "prices": "الأسعار",
+  "procedures_symptoms": "الإجراءات والحالات",
+  "reviews_photos": "التقييمات والصور",
+  "safety_standards": "معايير السلامة",
+  "search": "يبحث",
+  "sign_in": "تسجيل الدخول",
+  "start_your_review": "شارك تقييمك"
+}
