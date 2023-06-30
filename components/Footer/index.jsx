@@ -44,10 +44,13 @@ const Footer = () => {
           link: t('Footer:About_Us'),
           ref: "/about-us"
         },
+        {
+          link: t('Footer:Contact_Us'),
+          ref: "#contact-us"
+        },
 
       ]
     },
-
 
 
     {
@@ -136,7 +139,62 @@ const Footer = () => {
       ]
     },
 
+    {
+      title: t('Footer:POPULAR_TREATMENTS'),
+      links: [
+        {
+          link: t('Footer:Hair_transplant'),
+          ref: "/procedures&symptoms/FUE-Hair-Transplant-"
+        },
+        {
+          link: t('Footer:hollywood_smile'),
+          ref: "/procedures&symptoms/FUE-Hair-Transplant-"
+        },
+        {
+          link: t('Footer:dental_implants'),
+          ref: "/procedures&symptoms/FUE-Hair-Transplant-"
+        },
+        {
+          link: t('Footer:Liposuction'),
+          ref: "/procedures&symptoms/FUE-Hair-Transplant-"
+        },
+        {
+          link: t('Footer:gastric_sleeve'),
+          ref: "/procedures&symptoms/FUE-Hair-Transplant-"
+        },
+        {
+          link: t('Footer:IVF'),
+          ref: "/procedures&symptoms/FUE-Hair-Transplant-"
+        },
+        {
+          link: t('Footer:Vision_correction'),
+          ref: "/procedures&symptoms/FUE-Hair-Transplant-"
+        },
+        {
+          link: t('Footer:coronary_artery'),
+          ref: "/procedures&symptoms/FUE-Hair-Transplant-"
+        },
+        {
+          link: t('Footer:Joints_replacement'),
+          ref: "/procedures&symptoms/FUE-Hair-Transplant-"
+        },
+        {
+          link: t('Footer:Spine_surgeries'),
+          ref: "/procedures&symptoms/FUE-Hair-Transplant-"
+        },
+        {
+          link: t('Footer:Prostate_surgeries'),
+          ref: "/procedures&symptoms/FUE-Hair-Transplant-"
+        },
+        {
+          link: t('Footer:Penile_prosthesis'),
+          ref: "/procedures&symptoms/FUE-Hair-Transplant-"
+        },
+      ]
+    },
+
   ]
+
   return (
     <>
       <footer id={styles.footer} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
@@ -181,15 +239,6 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className={styles.form_container}>
-              <div className={styles.title}>
-                <Typography variant='h6'>Subscribe to Our Newsletter</Typography>
-              </div>
-              <form action="">
-                <input type="email" placeholder='Email@test.com' />
-                <button type='submit'>Send</button>
-              </form>
-            </div>
           </section>
 
           <hr />

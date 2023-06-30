@@ -39,7 +39,6 @@ import notifications from "../svgs/notifications.svg";
 import user from "../svgs/user.svg";
 import blog_detail from "../imgs/blog_detail.png";
 import majd from "../imgs/majd.png";
-import hero_car from "../imgs/hero_car.webp";
 import howItIworks_search from "../imgs/howItIworks_search.png";
 
 import logoFooter from "../svgs/logo-footer.svg";
@@ -276,7 +275,6 @@ export default {
   Urology,
   Weight_Loss,
   certeficate,
-  hero_car,
 
   OurSafetyStandards002,
   Allergy_And_Immunology_1,

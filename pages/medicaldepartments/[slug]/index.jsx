@@ -442,7 +442,7 @@ export async function getStaticProps({ params, locale }) {
       dataMedicalDepartments,
       params,
       locale,
-      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', "contact_details", 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms"])),
+      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', "contact_details", 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", 'Footer'])),
 
     },
     revalidate: 10,

@@ -104,7 +104,7 @@ const Navbar = (props) => {
         },
         {
           title: t("navbar:contact_us"),
-          link: "/contact-us",
+          link: "#contact-us",
         },
       ],
     },
@@ -132,7 +132,7 @@ const Navbar = (props) => {
         { title: t("navbar:safety_standards"), link: "/safety-standards" },
         { title: t("navbar:how_it_works"), link: "/how-it-works" },
         { title: t("navbar:about_us"), link: "/about-us" },
-        { title: t("navbar:contact_us"), link: "/contact-us" },
+        { title: t("navbar:contact_us"), link: "#contact-us" },
       ],
     },
   ];

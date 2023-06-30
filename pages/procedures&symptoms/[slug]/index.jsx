@@ -32,10 +32,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
     setExpanded(newExpanded ? panel : false);
   };
 
-
-
-
-
   const [BeforeAfterbreakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1, itemsToScroll: 1 },
@@ -54,7 +50,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
     { width: 1000, pagination: false, itemsToShow: 4, itemsToScroll: 1, },
 
   ])
-
 
   const [breakPointsOperation] = useState([
     { width: 1, pagination: true, showArrows: false },
@@ -213,6 +208,15 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
   };
   const accordionDetailsStyle = {
     maxHeight: '50vh', overflowX: 'auto',
+
+    "&::-webkit-scrollbar ": {
+      height: "7px !important"
+    },
+
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "red !important",
+      display: "block !important"
+    }
   };
 
   const accordionSummaryMainStyle = {
@@ -398,8 +402,8 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </div>
             </article>
           </div>
-          <div className={styles.menu_container}>
 
+          <div className={styles.menu_container}>
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}
               sx={style}
               disableGutters elevation={0}

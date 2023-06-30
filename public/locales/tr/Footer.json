@@ -26,5 +26,19 @@
   "Telemedicine_Consultations": "Teletıp Konsültasyonları",
   "Medical_Records_Management": "Tıbbi Kayıt Yönetimi",
   "Wellness_and_Preventive_Care": "Sağlık ve Önleyici Bakım",
-  "E_Medical_history_record": "E-Tıbbi geçmiş kaydı"
+  "E_Medical_history_record": "E-Tıbbi geçmiş kaydı",
+
+  "POPULAR_TREATMENTS": "POPÜLER TEDAVİLER",
+  "Hair_transplant": "saç ekimi",
+  "hollywood_smile": "hollywood smile",
+  "dental_implants": "diş implantları",
+  "Liposuction": "Liposuction",
+  "gastric_sleeve": "gtüp mide",
+  "IVF": "tüp bebek",
+  "Vision_correction": "gorme bozuklugu tedavısı",
+  "coronary_artery": "Koroner arter",
+  "Joints_replacement": "Eklem Cerrahisi",
+  "Spine_surgeries": "omurga ameliyatları",
+  "Prostate_surgeries": "prostat ameliyatları",
+  "Penile_prosthesis": "penis protezi"
 }

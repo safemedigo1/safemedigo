@@ -95,10 +95,7 @@ const Visits = () => {
     },
     '.css-uhb5lp': {
       boxShadow: '0 0 0 0'
-
     }
-
-
   }));
 
 

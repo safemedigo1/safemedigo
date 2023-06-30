@@ -34,12 +34,22 @@ section#hero {
           font-size: 44px;
           color: var(--sec-cyan-color);
           font-weight: 700;
+          margin-bottom: 0px !important;
 
           @media screen and (max-width: 992px) {
             font-size: 24px;
             line-height: 1.9rem;
             letter-spacing: 0px;
           }
+        }
+
+        h4 {
+          font-family: var(--open-sans-font);
+          font-size: 18px;
+          color: var(--main-white-color);
+          font-weight: normal;
+          margin-top: 0;
+          margin-left: 10px;
         }
       }
 
@@ -78,6 +88,8 @@ section#hero {
         @media screen and (max-width: 857px) {
           margin-right: 10px;
         }
+
+        cursor: pointer;
 
         a {
           display: flex;
@@ -370,6 +382,15 @@ section#hero[dir="rtl"] {
           }
 
           .title {
+            h4,
+            h1 {
+              font-family: var(--arabic-font);
+            }
+
+            h4 {
+              margin-left: 0px;
+              margin-right: 10px;
+            }
             .rating {
               flex-direction: row-reverse;
               .reviews_num {

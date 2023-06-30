@@ -25,14 +25,25 @@ const Search = () => {
   ])
 
   const tags = [
-    { tag: "Hair Treatment" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
+    { tag: t("Footer:Hair_transplant"), link: '/procedures&symptoms/FUE-Hair-Transplant-' },
+    { tag: t('Footer:hollywood_smile'), link: '/procedures&symptoms/FUE-Hair-Transplant-' },
+    { tag: t('Footer:dental_implants'), link: '/procedures&symptoms/FUE-Hair-Transplant-' },
+    { tag: t('Footer:Liposuction'), link: '/procedures&symptoms/FUE-Hair-Transplant-' },
+    { tag: t('Footer:gastric_sleeve'), link: '/procedures&symptoms/FUE-Hair-Transplant-' },
+    { tag: t('Footer:IVF'), link: '/procedures&symptoms/FUE-Hair-Transplant-' },
+    { tag: t('Footer:Vision_correction'), link: '/procedures&symptoms/FUE-Hair-Transplant-' },
+    { tag: t('Footer:coronary_artery'), link: '/procedures&symptoms/FUE-Hair-Transplant-' },
+    { tag: t('Footer:Joints_replacement'), link: '/procedures&symptoms/FUE-Hair-Transplant-' },
+    { tag: t('Footer:Spine_surgeries'), link: '/procedures&symptoms/FUE-Hair-Transplant-' },
+    { tag: t('Footer:Prostate_surgeries'), link: '/procedures&symptoms/FUE-Hair-Transplant-' },
+    { tag: t('Footer:Penile_prosthesis'), link: '/procedures&symptoms/FUE-Hair-Transplant-' },
+
+
+
   ];
+
+
+
 
 
   return (

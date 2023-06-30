@@ -15,112 +15,114 @@ const ContactDetails = () => {
   const router = useRouter()
 
   return (
-    <section id={styles.contact_details} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
-      <Container sx={{ maxWidth: '1239px' }} maxWidth={false}>
-        <div className={styles.section_container}>
-          <div className={styles.talk}>
-            <div className={styles.title}>
-              <Typography variant='h3'>
-                {t('contact_details:title1')}</Typography >
-            </div>
-            <div className={styles.sec_title}>
-              <Link href='/contact-us'>{t('contact_details:title2')}</Link>
-            </div>
-
-            <div className={styles.desc}>
-              <Typography>{t('contact_details:desc')}</Typography>
-            </div>
-
-            <div className={styles.buttons_container}>
-              <div className={styles.btn}>
-                <Link href="tel:(+90) 552 502 6000">
-                  <button>
-                    <Phone />
-                    +90 552 502 6000
-                  </button>
-                </Link>
+    <div id='contact-us'>
+      <section id={styles.contact_details} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+        <Container sx={{ maxWidth: '1239px' }} maxWidth={false}>
+          <div className={styles.section_container}>
+            <div className={styles.talk}>
+              <div className={styles.title}>
+                <Typography variant='h3'>
+                  {t('contact_details:title1')}</Typography >
               </div>
-              <div className={styles.btn}>
-                <Link href="https://en.wh.ms/201100791315" target="_blank">
-                  <button>Whatsapp</button>
-                </Link>
-              </div>
-              <div className={styles.btn}>
-                <Link href="www.facebook.com" target="_blank"><button>Facebook</button></Link>
-              </div>
-              <div className={styles.btn}>
-                <Link href="mailto:info@safemedigo.com" >
-                  <button>Email</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-
-          <div className={styles.personal_manger}>
-            <div className={styles.box}>
-              <div className={styles.img_container}>
-                <img src={majd.src} alt="" width={100} height={100} quality={100} />
+              <div className={styles.sec_title}>
+                <Link href='/contact-us'>{t('contact_details:title2')}</Link>
               </div>
 
+              <div className={styles.desc}>
+                <Typography>{t('contact_details:desc')}</Typography>
+              </div>
 
-              <div className={styles.text_container}>
-
-                <div className={styles.job}>
-                  <Typography>
-                    {t('contact_details:manager')}
-                  </Typography>
-                </div>
-
-                <div className={styles.name}>
-                  <Typography>
-                    {t('contact_details:majd')}
-                  </Typography>
-                </div>
-
-                <div className={styles.desc}>
-                  <Typography>
-                    {t('contact_details:card_desc')}
-                  </Typography>
-                </div>
-
+              <div className={styles.buttons_container}>
                 <div className={styles.btn}>
-                  <Link href='/q&a'>
-                    <button> {t('contact_details:ask')}</button>
+                  <Link href="tel:(+90) 552 502 6000">
+                    <button>
+                      <Phone />
+                      +90 552 502 6000
+                    </button>
                   </Link>
                 </div>
+                <div className={styles.btn}>
+                  <Link href="https://en.wh.ms/201100791315" target="_blank">
+                    <button>Whatsapp</button>
+                  </Link>
+                </div>
+                <div className={styles.btn}>
+                  <Link href="www.facebook.com" target="_blank"><button>Facebook</button></Link>
+                </div>
+                <div className={styles.btn}>
+                  <Link href="mailto:info@safemedigo.com" >
+                    <button>Email</button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+
+            <div className={styles.personal_manger}>
+              <div className={styles.box}>
+                <div className={styles.img_container}>
+                  <img src={majd.src} alt="" width={100} height={100} quality={100} />
+                </div>
+
+
+                <div className={styles.text_container}>
+
+                  <div className={styles.job}>
+                    <Typography>
+                      {t('contact_details:manager')}
+                    </Typography>
+                  </div>
+
+                  <div className={styles.name}>
+                    <Typography>
+                      {t('contact_details:majd')}
+                    </Typography>
+                  </div>
+
+                  <div className={styles.desc}>
+                    <Typography>
+                      {t('contact_details:card_desc')}
+                    </Typography>
+                  </div>
+
+                  <div className={styles.btn}>
+                    <Link href='/q&a'>
+                      <button> {t('contact_details:ask')}</button>
+                    </Link>
+                  </div>
+
+                </div>
 
               </div>
+            </div>
 
+
+            <div className={styles.contacts}>
+              <div className={styles.contact}>
+                <Typography>Whatsapp</Typography>
+                <Typography>+90 552 502 6000</Typography>
+              </div>
+              <div className={styles.contact}>
+                <Typography>Call Us</Typography>
+                <Typography>+90 552 502 6000</Typography>
+              </div>
+              <div className={styles.contact}>
+                <Typography>Email</Typography>
+                <Typography>info@safemedigo.com</Typography>
+              </div>
+              <div className={styles.address}>
+                <Typography>Address</Typography>
+
+                <Typography>Fulya, Öztürk Sk.
+                  Sima Apartmanı, No 4B, 3Rd Floor, Office N10
+                  34394 <br /> Şişli/İstanbul</Typography>
+              </div>
             </div>
           </div>
+        </Container>
+      </section>
+    </div>
 
-
-          <div className={styles.contacts}>
-            <div className={styles.contact}>
-              <Typography>Whatsapp</Typography>
-              <Typography>+90 552 502 6000</Typography>
-            </div>
-            <div className={styles.contact}>
-              <Typography>Call Us</Typography>
-              <Typography>+90 552 502 6000</Typography>
-            </div>
-            <div className={styles.contact}>
-              <Typography>Email</Typography>
-              <Typography>info@safemedigo.com</Typography>
-            </div>
-            <div className={styles.address}>
-              <Typography>Address</Typography>
-
-              <Typography>Fulya, Öztürk Sk.
-                Sima Apartmanı, No 4B, 3Rd Floor, Office N10
-                34394 <br /> Şişli/İstanbul</Typography>
-            </div>
-          </div>
-        </div>
-      </Container>
-
-    </section>
   )
 }
 

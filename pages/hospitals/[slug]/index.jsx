@@ -83,7 +83,7 @@ const Hospital = () => {
     { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
     { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
   ]
-
+  // Dialog MUI
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -592,7 +592,6 @@ const Hospital = () => {
           <div className={styles.info}>
             <div className={styles.boxes_container}>
               <div className={styles.certificates_boxes}>
-
                 <div className={styles.title}>
                   <Typography variant={'h3'}>
                     Certificates & Awards

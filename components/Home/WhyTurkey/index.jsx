@@ -29,7 +29,7 @@ const WhyTurkey = () => {
             </div>
 
             <div className={styles.desc}>
-              <Typography>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore etLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore etLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos </Typography>
+              <Typography>When it comes to medical tourism, Turkey stands out as a leading destination that offers a perfect balance of quality healthcare, affordability, and unforgettable experiences. With its state-of-the-art medical facilities, highly skilled professionals, cost-effective treatment options, seamless integration of healthcare and tourism, and warm hospitality, Turkey has cemented its position as a top choice for individuals seeking medical treatment abroad. So why should you do treatment in Turkey? The answer lies in the exceptional healthcare services and the opportunity to embark on a transformative journey that combines well-being and exploration.</Typography>
             </div>
 
             <div className={styles.writer}>
