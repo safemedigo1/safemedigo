@@ -40,11 +40,11 @@ const InnerPageNavbar = () => {
                 </Link>
               </ListItem>
 
-              <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
+              {/* <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
                 <Link href='#doctors'>
                   {t("proceduresSymptoms_single:nav_doctors")}
                 </Link>
-              </ListItem>
+              </ListItem> */}
 
 
             </List>
