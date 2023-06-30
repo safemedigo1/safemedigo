@@ -189,7 +189,7 @@ const Hero = () => {
 
                   <DialogContent dividers sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Box sx={{
-                      width: { xs: "125px", sm: '125px', md: "500px", lg: '500px', xlg: '500px' }, height: '300px',
+                      width: { xs: "300px", sm: '300px', md: "500px", lg: '500px', xlg: '500px' }, height: '300px',
                       marginTop: '10px',
                       marginBottom: '10px',
 
