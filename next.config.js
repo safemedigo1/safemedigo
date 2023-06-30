@@ -1,5 +1,6 @@
 /! REMOVE THE Ionc configation!/;
 const { i18n } = require("./next-i18next.config");
+const withImages = require("next-images");
 
 // const withTm = require("next-transpile-modules")([
 //   "@ionic/react",
