@@ -171,7 +171,7 @@ const Hero = () => {
             </div>
 
 
-            <Box sx={{ display: 'flex', alignItems: { xs: 'center', sm: 'center', md: 'center', lg: 'flex-start' }, justifyContent: { xs: 'flex-start', sm: 'flex-start', md: 'space-between', lg: 'space-between' }, flexDirection: { xs: 'row', sm: 'row', md: 'row', lg: 'column' } }}>
+            <Box sx={{ display: 'flex', alignItems: { xs: 'center', sm: 'center', md: 'center', lg: 'flex-start' }, justifyContent: { xs: 'flex-start', sm: 'flex-start', md: '', lg: '' }, flexDirection: { xs: 'row', sm: 'row', md: 'row', lg: 'row' } }}>
 
               <div className={styles.more}>
                 <a onClick={handleClickOpenVid}>
@@ -211,12 +211,12 @@ const Hero = () => {
                   </Link>
                 </div>
 
-                <div className={styles.explore_btn}>
+                {/* <div className={styles.explore_btn}>
                   <Link href='/procedures&symptoms'>
                     <button>{t("hero_section:explore_our_procedures")}  </button>
                   </Link>
 
-                </div>
+                </div> */}
               </div>
 
             </Box>
