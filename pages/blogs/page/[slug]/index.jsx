@@ -278,7 +278,7 @@ export async function getStaticProps({ locale, params }) {
       currentPage: parseInt(page),
       totalPages,
       allBlogsTagsData,
-      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp'])),
+      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp', 'Footer'])),
     },
     revalidate: 10,
 

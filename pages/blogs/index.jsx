@@ -242,7 +242,7 @@ export async function getStaticProps({ locale }) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp'])),
+      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp', 'Footer'])),
       blogs: data,
       blogCategory: data2,
       currentPage: parseInt(page),
@@ -254,72 +254,4 @@ export async function getStaticProps({ locale }) {
   }
 }
 
-
-// export async function getServerSideProps({ query, locale }) {
-//   const page = query.page || '1'; // If no page is specified, default to page 1
-//   const limit = 6; // Number of products to display per page
-//   const startIndex = (page - 1) * limit;
-//   const endIndex = startIndex + limit;
-
-//   const res1 = await fetch("https://api.safemedigo.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
-//     method: 'POST',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({
-//       "lang": locale,
-//     })
-//   })
-
-//   console.log(query, 'HHEEE')
-
-
-//   const data2 = await res1.json()
-
-//   const myCategoryId = data2.isSuccess != false && data2.filter((c) => c.slug === query.category)
-
-
-//   const getBlogWithPageRes = await
-//     axios.post("https://api.safemedigo.com/api/v1/Blog/GetAllBlogWithPage", {
-//       "lang": locale,
-//       "blogCategoryId": myCategoryId?.[0]?.id || '0',
-//       "currentPage": page || 1
-//     }, {
-//       headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//       }
-//     });
-//   const data = await getBlogWithPageRes.data;
-
-//   const products = data.data;
-//   const totalProducts = data.count;
-//   const totalPages = Math.ceil(totalProducts / limit);
-
-//   const allBlogTagsRes = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogsTags", {
-//     method: 'POST',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({
-//       "lang": locale,
-//     })
-//   })
-
-//   const allBlogsTagsData = await allBlogTagsRes.json()
-
-//   return {
-//     props: {
-//       ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', 'blogs_page', 'page_header_comp'])),
-//       blogs: data,
-//       blogCategory: data2,
-//       currentPage: parseInt(page),
-//       totalPages,
-//       allBlogsTagsData,
-//       locale,
-//     }
-//   }
-// }
 

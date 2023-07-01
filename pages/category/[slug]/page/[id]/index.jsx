@@ -254,7 +254,7 @@ export async function getServerSideProps({ query, locale }) {
       allBlogsTagsData,
       myCategoryId,
       query,
-      ...(await serverSideTranslations(locale, ['most_popular', 'home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'blogs_page'])),
+      ...(await serverSideTranslations(locale, ['most_popular', 'home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'blogs_page', 'Footer'])),
     }
   }
 }

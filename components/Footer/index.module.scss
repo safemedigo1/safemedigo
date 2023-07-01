@@ -78,14 +78,13 @@ footer#footer {
               font-weight: var(--font-bold);
               font-family: var(--quickstand-font);
               color: var(--main-white-color);
-
-              @media screen and (max-width: 992px) {
-                font-size: 21px;
-              }
             }
           }
 
           .box_link {
+            @media screen and (max-width: 992px) {
+              margin-right: 10px;
+            }
             ul {
               padding: 0;
               margin: 0;

@@ -409,7 +409,7 @@ export default SafetyStandards
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['most_popular', 'navbar', 'sec_navbar', 'page_header_comp', 'safety_standards_page', 'contact_details'])),
+      ...(await serverSideTranslations(locale, ['most_popular', 'navbar', 'sec_navbar', 'page_header_comp', 'safety_standards_page', 'contact_details', 'Footer'])),
     }
   }
 }
