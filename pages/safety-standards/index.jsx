@@ -324,11 +324,9 @@ const SafetyStandards = () => {
                     <li>
                       {t("safety_standards_page:treatment_li_4")}
                     </li>
+
                     <li>
                       {t("safety_standards_page:treatment_li_5")}
-                    </li>
-                    <li>
-                      {t("safety_standards_page:treatment_li_6")}
                     </li>
 
                   </ul>

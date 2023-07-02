@@ -1,1 +1,6 @@
-{"place_holder":"Treatment, Doctor, Clinic, Diseases","slider_title":"Popular","tags_title":"Popular Searched Treatments","title":"I’m Looking For"}
+{
+  "place_holder": "Procedure, Symptoms, Doctor, Clinic",
+  "slider_title": "Popular",
+  "tags_title": "Popular Searched Procedures",
+  "title": "I’m Looking For"
+}
