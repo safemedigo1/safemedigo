@@ -565,7 +565,7 @@ export async function getStaticProps({ params, locale }) {
     props: {
       blog: data,
       allBlogsTagsData,
-      ...(await serverSideTranslations(locale, ['single_blog', 'navbar', 'sec_navbar', 'page_header_comp', 'blogs_page'])),
+      ...(await serverSideTranslations(locale, ['single_blog', 'navbar', 'sec_navbar', 'page_header_comp', 'blogs_page', 'Footer'])),
     },
     revalidate: 10,
   }
