@@ -289,7 +289,6 @@ const Footer = () => {
                 </div>
                 <div className={styles.doc_name}>
                   <Link href='/'>
-
                     <Typography variant='h6'>name</Typography>
                   </Link>
 

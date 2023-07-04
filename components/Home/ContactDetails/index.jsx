@@ -47,7 +47,7 @@ const ContactDetails = () => {
                   </Link>
                 </div>
                 <div className={styles.btn}>
-                  <Link href="www.facebook.com" target="_blank"><button>Facebook</button></Link>
+                  <Link href="https://www.facebook.com/Safemedigo" target="_blank"><button>Facebook</button></Link>
                 </div>
                 <div className={styles.btn}>
                   <Link href="mailto:info@safemedigo.com" >

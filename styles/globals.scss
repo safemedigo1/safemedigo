@@ -186,6 +186,9 @@ section#Hero_hero__M5nJ2 {
       }
     }
 
+    .rec .rec-slider-container {
+      margin-right: 0;
+    }
     .left_arrow,
     .right_arrow {
       background-color: var(--main-white-color);
@@ -212,7 +215,7 @@ section#Hero_hero__M5nJ2 {
       top: 42%;
     }
     .right_arrow {
-      right: 6px;
+      right: -6px;
       top: 42%;
     }
 
@@ -247,6 +250,10 @@ section#Hero_hero__M5nJ2 {
     position: absolute;
     left: 8px;
     z-index: 11;
+  }
+
+  .main_btn {
+    padding: 0;
   }
 
   /* hide disabled buttons */
