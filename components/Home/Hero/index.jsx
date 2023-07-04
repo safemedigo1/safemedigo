@@ -106,13 +106,13 @@ const Hero = () => {
       background: 'transparent',
       width: '100% !important',
       minWidth: '100% !important',
-      maxWidth: '100% !important'
-
+      maxWidth: '100% !important',
 
     },
     '.css-uhb5lp': {
-      // boxShadow: '0 0 0 0',
-
+      width: '100% !important',
+      minWidth: '100% !important',
+      maxWidth: '100% !important',
     }
   }));
 
