@@ -16,8 +16,8 @@ const Search = () => {
   const router = useRouter();
 
   const [breakPoints] = useState([
-    { width: 1, itemsToShow: 1 },
-    { width: 300, itemsToShow: 2.4 },
+    { width: 1, itemsToShow: 2 },
+    { width: 300, itemsToShow: 2 },
     { width: 400, itemsToShow: 3 },
     { width: 500, itemsToShow: 4 },
     { width: 800, itemsToShow: 4 },
@@ -61,10 +61,10 @@ const Search = () => {
           </div>
 
           <div className={styles.tags}>
-            <div className={styles.title}>
-              <Typography>{t('search_section:tags_title')}</Typography>
-            </div>
             <div className={styles.tags_container}>
+              <div className={styles.title}>
+                <Typography>{t('search_section:slider_title')}:</Typography>
+              </div>
               {tags.map((tag, index) => (
                 <Link href={tag.link} key={index}>
                   <button>
@@ -80,12 +80,12 @@ const Search = () => {
 
       <div className={styles.tags_slider}>
         <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
-          <div className={styles.title}>
-            <Typography variant='h3'>{t('search_section:slider_title')}</Typography>
-          </div>
         </Container>
 
-        <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: '1239px', }} maxWidth={false} >
+        <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: '1239px', display: 'flex', alignItems: 'center' }} maxWidth={false} >
+          <div className={styles.title}>
+            <Typography variant='h3'>{t('search_section:slider_title')}:</Typography>
+          </div>
           <Carousel breakPoints={breakPoints}
             pagination={false}
             showArrows={false}

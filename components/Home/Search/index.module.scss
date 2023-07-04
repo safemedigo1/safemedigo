@@ -1,7 +1,7 @@
 #search {
   background-color: var(--main-white-color);
   position: absolute;
-  bottom: -120px;
+  bottom: -80px;
   left: 49%;
   transform: translateX(-50%);
   box-shadow: 0px 3px 6px rgb(0 0 0 / 16%);
@@ -86,7 +86,8 @@
 
         .input_container {
           position: relative;
-          flex: 1;
+          // flex: 1;
+          width: 70%;
           @media screen and (max-width: 992px) {
             width: 100%;
           }
@@ -152,17 +153,20 @@
     }
 
     .tags {
+      display: flex;
+      flex-wrap: wrap;
       @media screen and (max-width: 992px) {
         display: none;
       }
       .title {
         margin-bottom: 24px;
+        margin-right: 13px;
         @media screen and (min-width: 992px) {
-          text-align: center;
+          // text-align: center;
         }
 
         p {
-          text-align: center;
+          // text-align: center;
           color: var(--main-dark-color);
           font-size: 20px;
           font-family: var(--quickstand-font);
@@ -246,6 +250,7 @@
         color: var(--main-white-color);
         font-family: var(--quickstand-font);
         font-size: 18px;
+        margin-right: 10px;
       }
 
       @media screen and (max-width: 992px) {

@@ -61,7 +61,6 @@ const TreatmentCategory = () => {
   } = imgs;
   const { t } = useTranslation();
 
-
   const cards = [
     { title: 'Plastic Surgeries', img: Plastic_Surgeries.src, hover_icon: Plastic_Surgeries_1.src },
     { title: 'Hair Transplant', img: Hair_Transplant.src, hover_icon: Hair_Transplant_1.src },
@@ -94,10 +93,6 @@ const TreatmentCategory = () => {
             <Typography variant='h2'>{t('treatments_section:title')}</Typography>
           </div>
 
-          <div className={styles.desc}>
-            <Typography>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod </Typography>
-          </div>
-
           <div className={styles.boxes_container}>
             {cards.map((card, index) => (
               <div className={styles.box} key={index}>
@@ -113,7 +108,7 @@ const TreatmentCategory = () => {
           </div>
           <div className={styles.btn_contianer}>
             <Link href="/medicaldepartments/Obstetrics-and-gynecology">
-              <button >{t('treatments_section:search')}</button>
+              <button >{t('treatments_section:more')}</button>
             </Link>
           </div>
         </div>

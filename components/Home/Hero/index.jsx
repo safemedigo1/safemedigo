@@ -103,6 +103,26 @@ const Hero = () => {
     },
     '.css-1t1j96h-MuiPaper-root-MuiDialog-paper': {
       boxShadow: '0 0 0 0',
+
+    },
+
+  }));
+
+  const BootstrapDialogVid = styled(Dialog)(({ theme }) => ({
+    '& .MuiDialogContent-root': {
+      padding: theme.spacing(2),
+    },
+    '& .MuiDialogActions-root': {
+      padding: theme.spacing(1),
+    },
+
+    backgroundColor: '#00000073',
+    '.MuiModal-backdrop': {
+      position: 'static',
+
+    },
+    '.css-1t1j96h-MuiPaper-root-MuiDialog-paper': {
+      boxShadow: '0 0 0 0',
       width: '100% !important',
       minWidth: '100% !important',
       maxWidth: '100% !important',
@@ -205,7 +225,7 @@ const Hero = () => {
                 </a>
 
 
-                <BootstrapDialog
+                <BootstrapDialogVid
                   onClose={handleCloseVid}
                   aria-labelledby="customized-dialog-title"
                   open={openVid}
@@ -226,7 +246,7 @@ const Hero = () => {
 
 
                   </DialogContent>
-                </BootstrapDialog>
+                </BootstrapDialogVid>
               </div>
 
 

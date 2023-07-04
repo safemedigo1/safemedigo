@@ -49,7 +49,7 @@ section#hero {
           color: var(--main-white-color);
           font-weight: normal;
           margin-top: 0;
-          margin-left: 10px;
+          margin-left: 5px;
         }
       }
 
@@ -182,7 +182,7 @@ section#hero {
 
       @media screen and (max-width: 750px) {
         position: absolute;
-        bottom: -131px;
+        bottom: -150px;
         left: 50%;
         transform: translateX(-50%);
         width: 378px;
@@ -272,7 +272,7 @@ section#hero {
 
             .link {
               a {
-                color: var(--main-cyan-color);
+                color: var(--main-green-color);
                 text-decoration: underline;
                 font-size: 16px;
 

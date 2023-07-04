@@ -78,10 +78,8 @@ section#treatment_category {
       }
 
       .box {
-        // width: 100px;
         display: flex;
         align-items: center;
-        // margin-right: 90px;
         cursor: default;
         border-radius: 22px;
         transition: all 0.3s ease;
@@ -165,7 +163,7 @@ section#treatment_category {
             font-size: 21px;
             color: var(--main-dark-color);
 
-            font-weight: var(--font-medium);
+            font-weight: var(--font-bold);
             font-family: var(--quickstand-font);
             line-height: 1.5rem;
 
