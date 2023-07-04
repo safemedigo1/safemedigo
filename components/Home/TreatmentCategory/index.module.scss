@@ -188,7 +188,8 @@ section#treatment_category {
       }
 
       button {
-        color: var(--sec-cyan-color);
+        color: var(--main-cyan-color);
+        cursor: pointer;
         background-color: transparent;
         border: none;
         font-size: 18px;

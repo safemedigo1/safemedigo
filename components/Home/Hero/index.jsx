@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './index.module.scss';
-import { Container, Typography, Dialog, DialogContent, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem, DialogTitle, Rating } from '@mui/material';
+import { Container, Typography, Dialog, DialogContent, Box, DialogTitle, Rating } from '@mui/material';
 import { BsCheckLg } from 'react-icons/bs';
 import { HiPlay } from 'react-icons/hi';
 import Link from 'next/link';
@@ -96,16 +96,23 @@ const Hero = () => {
       padding: theme.spacing(1),
     },
 
-    background: '#1b1b1b12',
+    backgroundColor: '#00000073',
     '.MuiModal-backdrop': {
       position: 'static',
 
     },
     '.css-1t1j96h-MuiPaper-root-MuiDialog-paper': {
-      boxShadow: '0 0 0 0'
+      boxShadow: '0 0 0 0',
+      background: 'transparent',
+      width: '100% !important',
+      minWidth: '100% !important',
+      maxWidth: '100% !important'
+
+
     },
     '.css-uhb5lp': {
-      boxShadow: '0 0 0 0'
+      // boxShadow: '0 0 0 0',
+
     }
   }));
 
@@ -171,7 +178,22 @@ const Hero = () => {
             </div>
 
 
-            <Box sx={{ display: 'flex', alignItems: { xs: 'center', sm: 'center', md: 'center', lg: 'flex-start' }, justifyContent: { xs: 'flex-start', sm: 'flex-start', md: '', lg: '' }, flexDirection: { xs: 'row', sm: 'row', md: 'row', lg: 'row' } }}>
+            <Box sx={{ display: 'flex', alignItems: { xs: 'center', sm: 'center', md: 'center', lg: 'center' }, justifyContent: { xs: 'flex-start', sm: 'flex-start', md: '', lg: '' }, flexDirection: { xs: 'row', sm: 'row', md: 'row', lg: 'row' } }}>
+
+              <div className={styles.start}>
+                <div className={styles.get_started_btn}>
+                  <Link href='/'>
+                    <button>{t("most_popular:get_started")}</button>
+                  </Link>
+                </div>
+
+                {/* <div className={styles.explore_btn}>
+                  <Link href='/procedures&symptoms'>
+                    <button>{t("hero_section:explore_our_procedures")}  </button>
+                  </Link>
+
+                </div> */}
+              </div>
 
               <div className={styles.more}>
                 <a onClick={handleClickOpenVid}>
@@ -189,7 +211,7 @@ const Hero = () => {
 
                   <DialogContent dividers sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Box sx={{
-                      width: { xs: "300px", sm: '300px', md: "500px", lg: '500px', xlg: '500px' }, height: '300px',
+                      width: '100%', height: '500px',
                       marginTop: '10px',
                       marginBottom: '10px',
 
@@ -204,20 +226,7 @@ const Hero = () => {
                 </BootstrapDialog>
               </div>
 
-              <div className={styles.start}>
-                <div className={styles.get_started_btn}>
-                  <Link href='/'>
-                    <button>{t("most_popular:get_started")}</button>
-                  </Link>
-                </div>
 
-                {/* <div className={styles.explore_btn}>
-                  <Link href='/procedures&symptoms'>
-                    <button>{t("hero_section:explore_our_procedures")}  </button>
-                  </Link>
-
-                </div> */}
-              </div>
 
             </Box>
 
@@ -244,7 +253,7 @@ const Hero = () => {
                         </div>
 
                         <div className={styles.rating}>
-                          <Rating name="size-small" defaultValue={4} size="small" />
+                          <Rating name="read-only" readOnly defaultValue={4} size="small" />
                           <span className={styles.reviews_num}>90 Reviews</span>
                         </div>
 

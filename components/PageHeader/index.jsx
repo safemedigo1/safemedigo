@@ -7,6 +7,7 @@ import { useTranslation } from "next-i18next";
 import Image from 'next/image';
 import { MdLocationOn } from 'react-icons/md'
 import { FaShieldAlt } from 'react-icons/fa'
+import Link from "next/link";
 
 
 const PageHeader = ({ blog, treatment }) => {
@@ -213,8 +214,11 @@ const PageHeader = ({ blog, treatment }) => {
                               <Image width={100} height={100} src={blog.reviewerImage} alt="" />
                             </div>
                             <div className={styles.info}>
-                              <p>{blog?.reviewer}, {blog.reviewerJobTitle}</p>
-                              <p className={styles.date}>{t('page_header_comp:posted')} {blog.date}</p>
+                              <Link href={'/about-us'} style={{ cursor: 'pointer' }}>
+
+                                <p>{blog?.reviewer}, {blog.reviewerJobTitle}</p>
+                                <p className={styles.date}>{t('page_header_comp:posted')} {blog.date}</p>
+                              </Link>
                             </div>
                           </Box>
 
@@ -223,7 +227,11 @@ const PageHeader = ({ blog, treatment }) => {
                               <Image width={100} height={100} src={blog.publisherImage} alt="" />
                             </div>
                             <div className={styles.info}>
-                              <p>{blog?.publisher}, {blog.jobTitle}</p>
+
+                              <Link href={'/about-us'} style={{ cursor: 'pointer' }}>
+
+                                <p>{blog?.publisher}, {blog.jobTitle}</p>
+                              </Link>
                             </div>
                           </Box>
 
@@ -242,10 +250,13 @@ const PageHeader = ({ blog, treatment }) => {
                               {treatment?.reviewerImage === null ? <Image width={100} height={100} src={userimg.src} alt="" /> : <img width={100} height={100} src={treatment?.reviewerImage} alt="" />}
                             </div>
                             <div className={styles.info}>
-                              <p>{treatment?.reviewer}, {treatment?.reviewerJobTitle}</p>
-                              <p className={styles.date}>{t('page_header_comp:posted')}  {treatment?.reviewDateStr}
+                              <Link href={'/about-us'} style={{ cursor: 'pointer' }}>
 
-                              </p>
+                                <p>{treatment?.reviewer}, {treatment?.reviewerJobTitle}</p>
+                                <p className={styles.date}>{t('page_header_comp:posted')}  {treatment?.reviewDateStr}
+
+                                </p>
+                              </Link>
                             </div>
                           </Box>
 
@@ -254,7 +265,9 @@ const PageHeader = ({ blog, treatment }) => {
                               {treatment?.publisherImage === null ? <Image width={100} height={100} src={userimg.src} alt="" /> : <img s width={100} height={100} src={treatment?.publisherImage} alt="" />}
                             </div>
                             <div className={styles.info}>
-                              <p>{treatment?.publisher} , {treatment?.publisherJobTitle}</p>
+                              <Link href={'/about-us'} style={{ cursor: 'pointer' }}>
+                                <p>{treatment?.publisher} , {treatment?.publisherJobTitle}</p>
+                              </Link>
                             </div>
                           </Box>
 

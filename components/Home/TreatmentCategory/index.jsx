@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './index.module.scss'
-import { Container, Typography, } from '@mui/material';
+import { Container, Link, Typography, } from '@mui/material';
 import imgs from "../../../assets/constants/imgs";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
@@ -102,8 +102,8 @@ const TreatmentCategory = () => {
             {cards.map((card, index) => (
               <div className={styles.box} key={index}>
                 <div className={styles.img_container}>
-                  <Image width={100} height={100} className={styles.default_icon} src={card.img} alt="" />
-                  <Image width={100} height={100} className={styles.hovered_icon} src={card.hover_icon} alt="" />
+                  <Image width={100} height={100} className={styles.default_icon} src={card.img} alt={card.title} />
+                  <Image width={100} height={100} className={styles.hovered_icon} src={card.hover_icon} alt={card.title} />
                 </div>
                 <div className={styles.title}>
                   <Typography variant='h6'>{card.title}</Typography>
@@ -112,7 +112,9 @@ const TreatmentCategory = () => {
             ))}
           </div>
           <div className={styles.btn_contianer}>
-            <button >{t('treatments_section:search')}</button>
+            <Link href="/medicaldepartments/Obstetrics-and-gynecology">
+              <button >{t('treatments_section:search')}</button>
+            </Link>
           </div>
         </div>
       </Container>

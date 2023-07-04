@@ -35,7 +35,7 @@ section#hero {
           color: var(--sec-cyan-color);
           font-weight: 700;
           margin-bottom: 0px !important;
-
+          margin-top: 0px;
           @media screen and (max-width: 992px) {
             font-size: 24px;
             line-height: 1.9rem;
@@ -79,14 +79,10 @@ section#hero {
 
       .more {
         @media screen and (min-width: 992px) {
-          margin-bottom: 36px;
+          // margin-bottom: 36px;
         }
         @media screen and (min-width: 450px) {
           margin-right: 30px;
-        }
-
-        @media screen and (max-width: 857px) {
-          margin-right: 10px;
         }
 
         cursor: pointer;
@@ -99,7 +95,7 @@ section#hero {
             @media screen and (max-width: 992px) {
               margin-right: 5px;
             }
-            color: var(--sec-cyan-color);
+            color: var(--main-white-color);
             font-size: 35px;
           }
 
@@ -107,7 +103,7 @@ section#hero {
             background: transparent;
             border: none;
             padding: 0;
-            color: var(--sec-cyan-color);
+            color: var(--main-white-color);
             text-decoration: underline;
             font-size: 24px;
             font-family: var(--quickstand-font);
@@ -131,8 +127,8 @@ section#hero {
 
         .get_started_btn {
           margin-right: 34px;
-          @media screen and (max-width: 1200px) {
-            display: none;
+          @media screen and (max-width: 992px) {
+            margin-right: 5px;
           }
           a {
             button {
@@ -201,6 +197,7 @@ section#hero {
         padding: 24px;
         margin: 0 15px;
         height: 281px;
+        cursor: pointer;
 
         @media screen and (max-width: 800px) {
           width: 333px;
@@ -274,9 +271,8 @@ section#hero {
             }
 
             .link {
-              // margin-top: 16px;
               a {
-                color: var(--sec-cyan-color);
+                color: var(--main-cyan-color);
                 text-decoration: underline;
                 font-size: 16px;
 

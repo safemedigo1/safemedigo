@@ -22,10 +22,10 @@ const Footer = () => {
   } = imgs
 
   const socialLinks = [
-    { link: '/twitter', img: twitter },
-    { link: '/facebook', img: facebook },
-    { link: '/instagram', img: instagram },
-    { link: '/youtube', img: youtube },
+    { link: 'https://twitter.com/safemedigo', img: twitter },
+    { link: 'https://www.facebook.com/Safemedigo', img: facebook },
+    { link: 'https://www.instagram.com/safemedigo/', img: instagram },
+    { link: 'https://www.youtube.com/@safemedigo', img: youtube },
   ]
 
   const contactLinks = [
@@ -254,7 +254,7 @@ const Footer = () => {
               {socialLinks.map((link, idx) => (
                 <>
                   <div className={styles.link} key={idx}>
-                    <Link href={link.link}>
+                    <Link href={link.link} target='_blanck'>
                       <Image
                         src={link.img.src}
                         alt={link.link}

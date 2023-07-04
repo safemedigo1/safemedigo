@@ -207,7 +207,6 @@ article.overview {
     }
 
     img {
-      background-color: red;
       max-width: 100%;
       object-fit: contain;
       margin-top: 16px;
@@ -481,10 +480,6 @@ article.overview {
       }
 
       figure {
-        .image {
-          background-color: red;
-          width: 20000px;
-        }
       }
     }
   }

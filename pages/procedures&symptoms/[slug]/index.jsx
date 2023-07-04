@@ -214,8 +214,9 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
     },
 
     "&::-webkit-scrollbar-thumb": {
-      backgroundColor: "red !important",
-      display: "block !important"
+
+      display: "block !important",
+      width: '5px !important'
     }
   };
 

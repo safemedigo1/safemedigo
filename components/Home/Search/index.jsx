@@ -66,7 +66,7 @@ const Search = () => {
             </div>
             <div className={styles.tags_container}>
               {tags.map((tag, index) => (
-                <Link href='/' key={index}>
+                <Link href={tag.link} key={index}>
                   <button>
                     {tag.tag}
                   </button>
@@ -89,18 +89,17 @@ const Search = () => {
           <Carousel breakPoints={breakPoints}
             pagination={false}
             showArrows={false}
+            transitionMs={0}
             itemsToScroll={1}
             isRTL={router.locale === 'ar' ? true : false}
           >
             {tags.map((tag, index) => (
-              <Link href='/' key={index}>
+              <Link href={tag.link} key={index}>
                 <button>
                   {tag.tag}
                 </button>
               </Link>
             ))}
-
-
           </Carousel>
         </Container>
 

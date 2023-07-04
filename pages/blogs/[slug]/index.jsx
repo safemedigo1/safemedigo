@@ -304,7 +304,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                       <p>Cost Start From <span>{blog?.treatment?.cost} &euro;</span></p>
                     </div>
                     <div className={styles.starts}>
-                      <Rating name="size-medium" defaultValue={blog?.treatment?.rate} />
+                      <Rating name="read-only" defaultValue={blog?.treatment?.rate} />
                       <span className={styles.reviews_num}>{blog?.treatment?.reviewCount} Reviews</span>
                     </div>
                     <div className={styles.desc}>

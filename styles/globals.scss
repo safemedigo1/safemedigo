@@ -126,7 +126,6 @@ a {
 // MUI overrides classes
 .MuiOutlinedInput-notchedOutline {
   border-color: transparent !important;
-  color: red;
 }
 
 .Mui-focused .MuiOutlinedInput-notchedOutline {
@@ -565,7 +564,6 @@ section#PatientStories_patient_stories__oSemC,
 
 #MedicalDepartments_medical_department__CT08h,
 #medical_department {
-  // background: red;
   .rec-carousel {
     .right_arrow {
       right: -13px !important;
@@ -751,7 +749,7 @@ section#PatientStories_patient_stories__oSemC,
 }
 
 *::-webkit-scrollbar {
-  width: 10 !important;
+  // width: 10px;
 }
 
 // select color
