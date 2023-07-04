@@ -48,7 +48,6 @@ function HideOnScroll(props) {
 const Navbar = (props) => {
   const { t } = useTranslation();
 
-
   const [showMenu, setShowMenu] = useState(false);
   const [showMenuLinks, setShowMenuLinks] = useState(false);
   const [showLangMenu, setShowLangMenu] = useState(false)
@@ -65,7 +64,6 @@ const Navbar = (props) => {
           title: t("navbar:patients_stories"),
           link: "/stories",
         },
-
         {
           title: t("navbar:beforeafter"),
           link: "/before&after",
@@ -78,12 +76,10 @@ const Navbar = (props) => {
           title: t("navbar:prices"),
           link: "/prices",
         },
-
         {
           title: t("navbar:blogs"),
           link: "/blogs",
         },
-
       ],
     },
     {
@@ -138,7 +134,6 @@ const Navbar = (props) => {
   ];
 
   const { logo, NavSearch, en, arrowDown, user, search, notificationsActive, burger, ar, tr } = imgs;
-
 
   // Toggle outside to close menu
   const menuRef = useRef();
