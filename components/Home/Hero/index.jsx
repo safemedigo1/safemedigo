@@ -103,12 +103,11 @@ const Hero = () => {
     },
     '.css-1t1j96h-MuiPaper-root-MuiDialog-paper': {
       boxShadow: '0 0 0 0',
-      background: 'transparent !important',
-      backgroundColor: 'transparent !important',
       width: '100% !important',
       minWidth: '100% !important',
       maxWidth: '100% !important',
-
+      background: 'transparent !important',
+      backgroundColor: 'transparent !important',
     },
     '.css-uhb5lp': {
       width: '100% !important',
