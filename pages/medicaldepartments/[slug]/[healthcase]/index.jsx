@@ -309,8 +309,6 @@ export async function getStaticProps({ locale, params }) {
       params,
       ...(await serverSideTranslations(locale, ['navbar', "contact_details", 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", 'Footer'])),
       revalidate: 10,
-
-
     }
   }
 }

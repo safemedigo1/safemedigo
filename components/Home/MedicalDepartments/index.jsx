@@ -62,32 +62,9 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment,
     );
   }
 
-  // Calculate the midpoint index
-  // const midpointIndex = Math.floor(departments?.length / 2);
-  // // Split the original array into two dynamic arrays
-  // const firstHalfArray = departments?.slice(0, midpointIndex);
-  // const secondHalfArray = departments?.slice(midpointIndex);
+
 
   const midpointIndex = Math.floor(departments?.length / 2);
-
-  // Check if the length of the array is odd
-  // const isOdd = departments?.length % 2 !== 0;
-
-  // Split the original array into two dynamic arrays
-  // const firstHalfArray = departments?.slice(0, midpointIndex + (isOdd ? 1 : 0));
-  // const secondHalfArray = departments?.slice(midpointIndex + (isOdd ? 1 : 0));
-
-
-
-  // Check if the length of the array is even
-  // const isOdd = departments?.length % 2 !== 0;
-  // // Split the original array into two dynamic arrays
-  // const firstHalfArray = departments?.slice(0, midpointIndex + (isOdd ? 0 : 0));
-  // const secondHalfArray = departments?.slice(midpointIndex + (isOdd ? 0 : 0));
-
-
-
-
 
   const isOdd = departments?.length % 2 !== 0;
 
