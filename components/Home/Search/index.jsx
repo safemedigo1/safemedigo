@@ -47,7 +47,7 @@ const Search = () => {
 
 
   return (
-    <div id={styles.search} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+    <div id={styles.search} className={router.locale === 'tr' && styles.tr_styles} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
         <div className={styles.searc_card}>
           <div className={styles.searc_input}>

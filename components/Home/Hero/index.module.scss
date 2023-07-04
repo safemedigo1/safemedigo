@@ -78,6 +78,7 @@ section#hero {
       }
 
       .more {
+        position: relative;
         @media screen and (min-width: 992px) {
           // margin-bottom: 36px;
         }
@@ -86,6 +87,13 @@ section#hero {
         }
 
         cursor: pointer;
+
+        .fade {
+          position: absolute;
+          top: -7px;
+          left: -8px;
+          z-index: -1;
+        }
 
         a {
           display: flex;
@@ -126,9 +134,9 @@ section#hero {
         }
 
         .get_started_btn {
-          margin-right: 34px;
+          margin-right: 54px;
           @media screen and (max-width: 992px) {
-            margin-right: 5px;
+            margin-right: 30px;
           }
           a {
             button {
@@ -179,10 +187,11 @@ section#hero {
     .slider_container {
       width: 465px;
       position: relative;
+      // flex: 1;
 
       @media screen and (max-width: 750px) {
         position: absolute;
-        bottom: -150px;
+        // bottom: -150px;
         left: 50%;
         transform: translateX(-50%);
         width: 378px;
@@ -196,17 +205,18 @@ section#hero {
         border-radius: 8px;
         padding: 24px;
         margin: 0 15px;
-        height: 281px;
+        // height: 281px;
+        // height: 281px;
         cursor: pointer;
 
         @media screen and (max-width: 800px) {
-          width: 333px;
+          width: 344px;
           padding-bottom: 19px;
           padding-right: 15px;
           padding-left: 29px;
           padding-top: 19px;
-          margin-bottom: 10px;
-          height: 194.08px;
+          margin-bottom: 6px;
+          // height: 194.08px;
         }
 
         .box_header {
@@ -246,7 +256,6 @@ section#hero {
               font-weight: var(--font-bold);
 
               color: var(--main-dark-color);
-              // line-height: 0;
               @media screen and (max-width: 992px) {
                 font-size: 16px;
               }
@@ -298,17 +307,16 @@ section#hero {
             font-family: var(--open-sans-font);
             font-weight: var(--font-regular);
 
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 5;
-            white-space: pre-wrap;
-            -webkit-line-clamp: 5;
+            // overflow: hidden;
+            // display: -webkit-box;
+            // -webkit-box-orient: vertical;
+            // -webkit-line-clamp: 5;
+            // white-space: pre-wrap;
+            // -webkit-line-clamp: 5;
 
             @media screen and (max-width: 750px) {
               font-size: 15px;
-              -webkit-line-clamp: 2;
-              -webkit-line-clamp: 2;
+              // -webkit-line-clamp: 2;
             }
           }
         }
@@ -336,7 +344,7 @@ section#hero[dir="rtl"] {
 
       .more {
         @media screen and (min-width: 992px) {
-          margin-bottom: 36px;
+          // margin-bottom: 36px;
         }
         @media screen and (min-width: 450px) {
           margin-right: 0px;
@@ -346,6 +354,13 @@ section#hero[dir="rtl"] {
         @media screen and (max-width: 857px) {
           margin-right: 0px;
           margin-left: 10px;
+        }
+
+        .fade {
+          position: absolute;
+          top: -7px;
+          right: -8px;
+          z-index: -1;
         }
 
         a {
@@ -359,7 +374,12 @@ section#hero[dir="rtl"] {
       .start {
         .get_started_btn {
           margin-right: 0px;
-          margin-left: 34px;
+          margin-left: 54px;
+
+          @media screen and (max-width: 992px) {
+            margin-right: 0px;
+            margin-left: 30px;
+          }
         }
       }
     }

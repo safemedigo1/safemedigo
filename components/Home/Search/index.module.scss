@@ -24,7 +24,7 @@
     // display: none;
     width: 100%;
     background-color: transparent;
-    bottom: 15%;
+    bottom: 22%;
     left: 0;
     transform: translateX(0);
     box-shadow: none;
@@ -294,6 +294,7 @@
 // AR
 #search[dir="rtl"] {
   @media screen and (min-width: 992px) {
+    bottom: -60px;
     left: 48%;
   }
 
@@ -434,5 +435,12 @@
         }
       }
     }
+  }
+}
+
+// TR
+.tr_styles {
+  @media screen and (min-width: 992px) {
+    bottom: -117px !important;
   }
 }

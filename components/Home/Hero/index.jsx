@@ -15,6 +15,7 @@ import Image from 'next/image';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { styled } from '@mui/material/styles';
+import { Puff } from 'react-loader-spinner';
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -24,6 +25,7 @@ const Hero = () => {
     { width: 400, pagination: false },
 
   ])
+  const [showCard, setShowCard] = useState(false)
 
   const router = useRouter();
   const { author, } = imgs;
@@ -34,13 +36,13 @@ const Hero = () => {
       treatment: 'Hair Transplant', title: 'Emily, 40Y, UK', img: author.src, id: '2', desc: " With Safemedigo's assistance, my hair transplant in Turkey was a remarkable experience. They provided access to skilled staff, a comfortable environment, and ensured exceptional results. Grateful for Safemedigo's role in my transformation."
     },
     {
-      treatment: 'IVF', title: 'Sarah, 35Y, Australia', img: author.src, id: '2', desc: "Safemedigo made my IVF journey smoother by guiding me through every step of the process in Turkey. Their compassionate support, along with access to reputable clinics, helped me fulfill my dream of having a baby."
+      treatment: 'IVF', title: 'Sarah, 35Y, AU', img: author.src, id: '2', desc: "Safemedigo made my IVF journey smoother by guiding me through every step of the process in Turkey. Their compassionate support, along with access to reputable clinics, helped me fulfill my dream of having a baby."
     },
     {
-      treatment: 'General Checkup', title: 'Michael Davis, 50Y, Canada', img: author.src, id: '2', desc: "Safemedigo facilitated my outstanding general checkup experience in Turkey. They ensured thorough examinations, friendly staff, and a prompt report. Grateful for Safemedigo's assistance in prioritizing my well-being."
+      treatment: 'General Checkup', title: 'Michael Davis, 50Y, CA', img: author.src, id: '2', desc: "Safemedigo facilitated my outstanding general checkup experience in Turkey. They ensured thorough examinations, friendly staff, and a prompt report. Grateful for Safemedigo's assistance in prioritizing my well-being."
     },
     {
-      treatment: 'Bypass Operation', title: 'Anna Schmidt, 65Y, Germany', img: author.src, id: '2', desc: "Safemedigo played a vital role in my bypass surgery in Turkey. Their assistance and expertise were invaluable, ensuring exceptional care and saving my life. Highly recommend Safemedigo for their exceptional support."
+      treatment: 'Bypass Operation', title: 'Anna Schmidt, 65Y, DE', img: author.src, id: '2', desc: "Safemedigo played a vital role in my bypass surgery in Turkey. Their assistance and expertise were invaluable, ensuring exceptional care and saving my life. Highly recommend Safemedigo for their exceptional support."
     },
 
   ]
@@ -165,7 +167,9 @@ const Hero = () => {
 
   return (
     <section id={styles.hero} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
+
         <div className={styles.hero_container}>
           <div className={styles.text_container}>
             <div className={styles.title}>
@@ -209,17 +213,22 @@ const Hero = () => {
                     <button>{t("most_popular:get_started")}</button>
                   </Link>
                 </div>
-
-                {/* <div className={styles.explore_btn}>
-                  <Link href='/procedures&symptoms'>
-                    <button>{t("hero_section:explore_our_procedures")}  </button>
-                  </Link>
-
-                </div> */}
               </div>
 
               <div className={styles.more}>
                 <a onClick={handleClickOpenVid}>
+                  <div className={styles.fade}>
+                    <Puff
+                      height="50"
+                      width="50"
+                      radius={1}
+                      color="#ffffff"
+                      ariaLabel="puff-loading"
+                      wrapperStyle={{}}
+                      wrapperClass=""
+                      visible={true}
+                    />
+                  </div>
                   <HiPlay />
                   <button>{t("hero_section:watch_video")}</button>
                 </a>
@@ -237,10 +246,12 @@ const Hero = () => {
                       width: '100%', height: '500px',
                       marginTop: '10px',
                       marginBottom: '10px',
-
+                      'iframe': {
+                        height: { xs: '300px', sm: '300px', md: '450px', lg: '500px', xlg: '500px' }
+                      }
 
                     }}>
-                      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/daQ9rUzX8wY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                      <iframe width="100%" src="https://www.youtube.com/embed/daQ9rUzX8wY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
                     </Box>
 
@@ -255,7 +266,7 @@ const Hero = () => {
 
           </div>
 
-          <div className={styles.slider_container}>
+          <Box sx={showCard ? { bottom: { xs: '-170px', sm: '-170px', md: 0, lg: 0, xlg: 0 } } : { bottom: { xs: '-80px', sm: '-80px', md: 0, lg: 0, xlg: 0 } }} className={styles.slider_container}>
             <Carousel
               breakPoints={breakPoints}
               itemsToScroll={1}
@@ -263,7 +274,7 @@ const Hero = () => {
             >
               {cards.map((card, index) => (
                 <>
-                  <div className={styles.box} key={index} onClick={() => handleClickOpen(card)}>
+                  <div className={styles.box} key={index} onClick={() => setShowCard((prev) => !prev)}>
                     <div className={styles.box_header}>
                       <div className={styles.img_container}>
                         <Image width={80} height={80} src={card.img} alt="" />
@@ -284,55 +295,32 @@ const Hero = () => {
                       </div>
                     </div>
 
+                    <Box className={styles.desc} sx={showCard === false && {
+                      overflow: 'hidden',
+                      display: '-webkit-box',
+                      '-webkit-box-orient': 'vertical',
+                      '-webkit-line-clamp': { xs: 2, sm: 2, md: 5, lg: 5, xlg: 5 },
+                      'white-space': 'pre-wrap',
+                      '-webkit-line-clamp': { xs: '2', sm: '2', md: '5', lg: '5', xlg: '5' }
 
-
-
-
-                    <div className={styles.desc}>
+                    }} >
                       <Typography>
                         {card.desc}
                       </Typography>
-                    </div>
+                    </Box>
 
                   </div>
-
-                  <BootstrapDialog
-                    onClose={handleClose}
-                    aria-labelledby="customized-dialog-title"
-                    open={open}
-                  >
-                    <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                      {selectedCard && selectedCard.title}
-                    </BootstrapDialogTitle>
-                    <DialogContent dividers sx={{ display: 'flex', flexDirection: 'column' }}>
-                      <Box sx={{
-                        width: '100%', height: '200px', margin: 'auto',
-                        marginTop: '10px',
-                        marginBottom: '20px',
-
-                        '& img': {
-                          objectFit: 'contain', width: '100%', height: '100%',
-                        }
-                      }}>
-                        {selectedCard && <Image width={66.87} height={99.78} src={selectedCard.img} alt="" />}
-                      </Box>
-
-                      <Typography gutterBottom>
-                        {selectedCard && selectedCard.desc}
-                      </Typography>
-
-                    </DialogContent>
-                  </BootstrapDialog>
                 </>
               ))}
             </Carousel>
 
-          </div>
+          </Box>
 
         </div>
       </Container>
 
       <Search />
+
     </section >
   )
 }
