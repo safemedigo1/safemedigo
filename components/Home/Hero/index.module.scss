@@ -339,6 +339,8 @@ section#hero {
 section#hero[dir="rtl"] {
   .hero_container {
     .text_container {
+      margin-bottom: 20px;
+
       .advantages {
         .advantage {
           p {
@@ -388,7 +390,7 @@ section#hero[dir="rtl"] {
 
           @media screen and (max-width: 992px) {
             margin-right: 0px;
-            margin-left: 30px;
+            margin-left: 25px;
           }
         }
       }
