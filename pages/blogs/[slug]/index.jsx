@@ -242,7 +242,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
             </div>
 
             <div className={styles.name}>
-              <Link href="/">
+              <Link href="/about-us#team">
                 {blog.publisher}
               </Link>
               - {blog.jobTitle}
@@ -257,7 +257,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
             </div>
 
             <div className={styles.name}>
-              <Link href="/">
+              <Link href="/about-us#team">
                 {blog.reviewer}
               </Link>
               - {blog.reviewerJobTitle}

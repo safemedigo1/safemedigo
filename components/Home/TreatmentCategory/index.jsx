@@ -9,8 +9,9 @@ import Image from 'next/image';
 
 
 
-const TreatmentCategory = () => {
+const TreatmentCategory = ({ dataMedicalDepartmentsHome }) => {
   const router = useRouter();
+  console.log(dataMedicalDepartmentsHome, "MEDICAL FROM HOME")
 
   const {
     Alternative,
@@ -94,16 +95,16 @@ const TreatmentCategory = () => {
           </div>
 
           <div className={styles.boxes_container}>
-            {cards.map((card, index) => (
-              <div className={styles.box} key={index}>
+            {dataMedicalDepartmentsHome?.map((card, index) => (
+              <Link style={{ textDecoration: 'none' }} href={`/medicaldepartments/${card.slug}`} className={styles.box} key={index}>
                 <div className={styles.img_container}>
-                  <Image width={100} height={100} className={styles.default_icon} src={card.img} alt={card.title} />
-                  <Image width={100} height={100} className={styles.hovered_icon} src={card.hover_icon} alt={card.title} />
+                  <Image width={100} height={100} className={styles.default_icon} src={card.image} alt="" />
+                  <Image width={100} height={100} className={styles.hovered_icon} src={card.secondImage} alt="" />
                 </div>
                 <div className={styles.title}>
-                  <Typography variant='h6'>{card.title}</Typography>
+                  <Typography variant='h6'>{card.departmentName}</Typography>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
           <div className={styles.btn_contianer}>

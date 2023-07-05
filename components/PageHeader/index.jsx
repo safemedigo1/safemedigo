@@ -214,7 +214,7 @@ const PageHeader = ({ blog, treatment }) => {
                               <Image width={100} height={100} src={blog.reviewerImage} alt="" />
                             </div>
                             <div className={styles.info}>
-                              <Link href={'/about-us'} style={{ cursor: 'pointer' }}>
+                              <Link href={'/about-us#team'} style={{ cursor: 'pointer' }}>
 
                                 <p>{blog?.reviewer}, {blog.reviewerJobTitle}</p>
                                 <p className={styles.date}>{t('page_header_comp:posted')} {blog.date}</p>
@@ -228,7 +228,7 @@ const PageHeader = ({ blog, treatment }) => {
                             </div>
                             <div className={styles.info}>
 
-                              <Link href={'/about-us'} style={{ cursor: 'pointer' }}>
+                              <Link href={'/about-us#team'} style={{ cursor: 'pointer' }}>
 
                                 <p>{blog?.publisher}, {blog.jobTitle}</p>
                               </Link>

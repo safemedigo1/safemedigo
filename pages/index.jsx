@@ -12,21 +12,58 @@ import {
 } from '../components/Home'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import axios from "axios";
-
-
-
 export async function getStaticProps({ locale }) {
+  const resPopularTreatments = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetPopularTreatmentsByLang", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache',
+      'Expires': '0',
+
+    },
+    body: JSON.stringify({
+      "lang": locale
+    })
+  })
+  const dataPopularTreatments = await resPopularTreatments.json()
+
+  const resMedicalDepartments = await fetch("https://api.safemedigo.com/api/v1/MedicalDepartment/GetAllMedicalDepartmentsByLang", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache',
+      'Expires': '0',
+
+    },
+    body: JSON.stringify({
+      "lang": locale
+    })
+  })
+  const dataMedicalDepartments = await resMedicalDepartments.json()
+
+
+
 
   return {
     props: {
+      dataPopularTreatments,
+      dataMedicalDepartments,
+      locale,
+
       ...(await serverSideTranslations(locale, ['home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'safety_standards_page', 'blogs_page', 'proceduresSymptoms', 'Footer'])),
-    }
+    },
+    revalidate: 10,
   }
 }
 
-export default function Home() {
+export default function Home({ dataPopularTreatments,
+  dataMedicalDepartments, }) {
 
+  console.log(dataPopularTreatments, 'HOme')
   return (
     <>
       <Head>
@@ -52,8 +89,8 @@ export default function Home() {
       <Hero />
       <Help />
       <WhySafemedigo />
-      <TreatmentCategory />
-      <MostPopular />
+      <TreatmentCategory dataMedicalDepartmentsHome={dataMedicalDepartments} />
+      <MostPopular dataPopularTreatmentsHome={dataPopularTreatments} />
       <PatientStories />
       <Safty />
       <WhyTurkey />

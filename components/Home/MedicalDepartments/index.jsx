@@ -15,7 +15,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import MostPopular from '../MostPopular';
 
-const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment, params }) => {
+const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment }) => {
   const [departments, setDepartments] = useState([])
   const { t } = useTranslation();
   const router = useRouter();

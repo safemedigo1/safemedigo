@@ -89,8 +89,8 @@ const Search = () => {
           <Carousel breakPoints={breakPoints}
             pagination={false}
             showArrows={false}
-            transitionMs={0}
             itemsToScroll={1}
+            transitionMs={500}
             isRTL={router.locale === 'ar' ? true : false}
           >
             {tags.map((tag, index) => (

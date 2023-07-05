@@ -398,6 +398,9 @@
         color: var(--main-white-color);
         font-family: var(--quickstand-font);
         font-size: 18px;
+        @media screen and (max-width: 450px) {
+          width: 84px;
+        }
       }
 
       @media screen and (max-width: 992px) {

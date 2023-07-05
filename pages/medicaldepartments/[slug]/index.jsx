@@ -147,7 +147,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
     <>
       <SecNavbar />
       <PageHeader />
-      <MostPopular dataPopularTreatments={dataPopularTreatments} />
+      <MostPopular dataPopularTreatmentsMedical={dataPopularTreatments} />
 
       <MedicalDepartments dataMedicalDepartments={dataMedicalDepartments} params={params} />
 

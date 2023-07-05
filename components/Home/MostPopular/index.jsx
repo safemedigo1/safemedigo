@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './index.module.scss'
 import Carousel from 'react-elastic-carousel';
 import imgs from "../../../assets/constants/imgs";
@@ -13,9 +13,19 @@ import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import Image from 'next/image';
 
-const MostPopular = ({ dataPopularTreatments }) => {
+const MostPopular = (dataPopularTreatmentsMedical, dataPopularTreatmentsHome) => {
+  const router = useRouter();
+  const { pathname } = router;
   const { t } = useTranslation();
   const { post1, post2, post3, post4, post5, } = imgs;
+
+  const [popularTreatmetsData, setPopularTreatmetsData] = useState([])
+  useEffect(() => {
+    router.pathname === '/medicaldepartments/[slug]' ? setPopularTreatmetsData(dataPopularTreatmentsMedical.dataPopularTreatmentsMedical) :
+      setPopularTreatmetsData(dataPopularTreatmentsMedical.dataPopularTreatmentsHome)
+
+  }, [])
+
 
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false, itemsToShow: 1.1 },
@@ -113,8 +123,7 @@ const MostPopular = ({ dataPopularTreatments }) => {
     );
   }
 
-  const router = useRouter();
-  const { pathname } = router;
+
 
 
   return (
@@ -258,8 +267,8 @@ const MostPopular = ({ dataPopularTreatments }) => {
 
 
                     {
-                      pathname !== '/' & pathname !== '/hospitals/[slug]' ?
-                        dataPopularTreatments?.map((card, index) => (
+                      pathname !== '/hospitals/[slug]' ?
+                        popularTreatmetsData?.map((card, index) => (
                           <Link href={`/procedures&symptoms/${card?.slug}`} className={styles.box} key={index}>
                             <div className={styles.img_container}>
                               <Image width={344} height={191} src={card?.imagePath} alt={card.title} />

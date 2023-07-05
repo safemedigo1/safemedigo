@@ -4,7 +4,7 @@ import Carousel from 'react-elastic-carousel';
 import imgs from "../../../assets/constants/imgs";
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import { consts } from 'react-elastic-carousel';
-import { Container, Typography, } from '@mui/material';
+import { Box, Container, Typography, } from '@mui/material';
 import Link from 'next/link';
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
@@ -163,11 +163,20 @@ const PatientStories = () => {
       <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false}  >
         <div className={styles.section_container}>
           <div className={styles.text_container}>
-            <Container sx={{ maxWidth: '1239px', }} maxWidth={false} >
+            {router.locale === 'ar' ?
+              <Container sx={{ maxWidth: '1239px', }} maxWidth={false} >
+                <Box sx={{ display: { xs: 'block', sm: 'block', md: 'block', lg: 'none', xlg: 'none' } }} className={styles.title}>
+                  <Typography variant='h2' >{t('patient_stories:title')}</Typography>
+                </Box>
+              </Container> :
+
               <div className={styles.title}>
                 <Typography variant='h2' >{t('patient_stories:title')}</Typography>
               </div>
-            </Container>
+            }
+            <Box className={styles.title} sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'block', xlg: 'block' } }}>
+              <Typography variant='h2' >{t('patient_stories:title')}</Typography>
+            </Box>
             <div className={styles.desc}>
               <Typography>{t('patient_stories:desc')}</Typography>
             </div>

@@ -59,6 +59,10 @@
     color: var(--main-dark-color);
     font-weight: var(--font-medium);
     font-family: var(--open-sans-font);
+
+    @media screen and (max-width: 450px) {
+      margin-top: -20px;
+    }
   }
 }
 

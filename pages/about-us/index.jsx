@@ -256,7 +256,7 @@ const AboutUs = (props) => {
         </Container>
       </section>
 
-      <section id={styles.team} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
+      <section id={"team"} className={styles.team} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.section_container}>
             <div className={styles.title}>
