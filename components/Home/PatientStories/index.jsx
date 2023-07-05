@@ -160,7 +160,7 @@ const PatientStories = () => {
 
   return (
     <section id={styles.patient_stories} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
-      <Container sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false}   >
+      <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }}>
         <div className={styles.section_container}>
           <div className={styles.text_container}>
             <div className={styles.title}>
