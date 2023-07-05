@@ -170,13 +170,11 @@ const PatientStories = () => {
                 </Box>
               </Container> :
 
-              <div className={styles.title}>
+              <Box className={styles.title} sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'block', xlg: 'block' } }}>
                 <Typography variant='h2' >{t('patient_stories:title')}</Typography>
-              </div>
+              </Box>
             }
-            <Box className={styles.title} sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'block', xlg: 'block' } }}>
-              <Typography variant='h2' >{t('patient_stories:title')}</Typography>
-            </Box>
+
             <div className={styles.desc}>
               <Typography>{t('patient_stories:desc')}</Typography>
             </div>
