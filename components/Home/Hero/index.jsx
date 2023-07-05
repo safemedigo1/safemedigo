@@ -15,7 +15,7 @@ import Image from 'next/image';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { styled } from '@mui/material/styles';
-import { Puff } from 'react-loader-spinner';
+import { Puff, Rings } from 'react-loader-spinner';
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -25,7 +25,7 @@ const Hero = () => {
     { width: 400, pagination: false },
 
   ])
-  const [showCard, setShowCard] = useState(false)
+  const [showCard, setShowCard] = useState(true)
 
   const router = useRouter();
   const { author, } = imgs;
@@ -71,17 +71,9 @@ const Hero = () => {
 
 
   // Dialog MUI
-  const [open, setOpen] = useState(false);
   const [openVid, setOpenVid] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(null);
 
-  const handleClickOpen = (card) => {
-    setSelectedCard(card);
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
+
 
   const handleClickOpenVid = () => {
     setOpenVid(true);
@@ -90,25 +82,7 @@ const Hero = () => {
     setOpenVid(false);
   };
 
-  const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-    '& .MuiDialogContent-root': {
-      padding: theme.spacing(2),
-    },
-    '& .MuiDialogActions-root': {
-      padding: theme.spacing(1),
-    },
 
-    backgroundColor: '#00000073',
-    '.MuiModal-backdrop': {
-      position: 'static',
-
-    },
-    '.css-1t1j96h-MuiPaper-root-MuiDialog-paper': {
-      boxShadow: '0 0 0 0',
-
-    },
-
-  }));
 
   const BootstrapDialogVid = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -169,8 +143,7 @@ const Hero = () => {
     <section id={styles.hero} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
 
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
-
-        <div className={styles.hero_container}>
+        <div className={styles.hero_container} id={router.locale === 'tr' && styles.hero_container_tr}>
           <div className={styles.text_container}>
             <div className={styles.title}>
               <h1>{t("hero_section:title1")}
@@ -219,15 +192,16 @@ const Hero = () => {
                 <a onClick={handleClickOpenVid}>
                   <div className={styles.fade}>
                     <Puff
-                      height="50"
-                      width="50"
-                      radius={1}
+                      height="35"
+                      width="35"
+                      radius={'6'}
                       color="#ffffff"
                       ariaLabel="puff-loading"
                       wrapperStyle={{}}
                       wrapperClass=""
                       visible={true}
                     />
+
                   </div>
                   <HiPlay />
                   <button>{t("hero_section:watch_video")}</button>

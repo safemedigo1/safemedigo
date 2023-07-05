@@ -21,7 +21,7 @@ const Help = () => {
 
   return (
     <Box id={styles.help} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}
-      sx={router.pathname === '/' ? { marginTop: { xs: "125px", sm: '125px', md: "20px", lg: '100px', xlg: '100px' }, paddingTop: { xs: "22px", sm: "22px", md: "22px", }, } : { paddingTop: "0px", marginTop: "0px" }}
+      sx={router.pathname === '/' ? { marginTop: { xs: "160px", sm: '160px', md: "20px", lg: '100px', xlg: '100px' }, paddingTop: { xs: "22px", sm: "22px", md: "22px", }, } : { paddingTop: "0px", marginTop: "0px" }}
 
     >
       <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >

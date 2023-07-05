@@ -226,6 +226,15 @@ const Navbar = (props) => {
 
                         <div className={styles.lang}>
                           <div className={styles.img_container}>
+                            {router.locale === 'ar' &&
+                              <Image
+                                src={ar.src}
+                                alt="Picture of the author"
+                                width={20.7}
+                                height={12.88}
+                              />
+                            }
+
                             {router.locale === 'en' &&
                               <Image
                                 src={en.src}
@@ -235,14 +244,7 @@ const Navbar = (props) => {
                               />
                             }
 
-                            {router.locale === 'ar' &&
-                              <Image
-                                src={ar.src}
-                                alt="Picture of the author"
-                                width={20.7}
-                                height={12.88}
-                              />
-                            }
+
 
                             {router.locale === 'tr' &&
                               <Image
@@ -270,7 +272,7 @@ const Navbar = (props) => {
 
                           <div className={styles.menuLinks__container}>
                             <ul>
-                              {router.locales.map((lang, idx) => (
+                              {router.locales.slice().reverse().map((lang, idx) => (
                                 <>
                                   {
                                     router.locale !== lang &&
@@ -291,6 +293,9 @@ const Navbar = (props) => {
                                 </>
 
                               ))}
+
+
+
 
                             </ul>
                           </div>
@@ -442,7 +447,7 @@ const Navbar = (props) => {
                                     transition={{ duration: 0.80, ease: "easeOut" }}
                                     initial={{ opacity: 0 }}
                                   >
-                                    {router.locales.map((lang, idx) => (
+                                    {router.locales.slice().reverse().map((lang, idx) => (
                                       <>
                                         {
                                           router.locale !== lang &&
