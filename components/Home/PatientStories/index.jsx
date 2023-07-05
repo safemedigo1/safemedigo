@@ -20,7 +20,7 @@ const PatientStories = () => {
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },
-    { width: 400, pagination: true, itemsToShow: 2.1, itemsToScroll: 1, showArrows: false },
+    { width: 400, pagination: true, itemsToShow: 1.1, itemsToScroll: 1, showArrows: false },
     { width: 800, pagination: true, itemsToShow: 2.5, itemsToScroll: 1, transitionMs: 1000, showArrows: false },
     { width: 900, pagination: false, itemsToShow: 2.5, itemsToScroll: 1, transitionMs: 1000 },
   ])
@@ -160,13 +160,14 @@ const PatientStories = () => {
 
   return (
     <section id={styles.patient_stories} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
-      <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }}>
+      <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false}  >
         <div className={styles.section_container}>
           <div className={styles.text_container}>
-            <div className={styles.title}>
-              <Typography variant='h2' >{t('patient_stories:title')}</Typography>
-            </div>
-
+            <Container sx={{ maxWidth: '1239px', }} maxWidth={false} >
+              <div className={styles.title}>
+                <Typography variant='h2' >{t('patient_stories:title')}</Typography>
+              </div>
+            </Container>
             <div className={styles.desc}>
               <Typography>{t('patient_stories:desc')}</Typography>
             </div>
