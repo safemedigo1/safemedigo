@@ -436,6 +436,10 @@ section#hero[dir="rtl"] {
 // TR
 section#hero {
   #hero_container_tr {
+    @media screen and (max-width: 450px) {
+      margin-bottom: 60px;
+    }
+
     padding-bottom: 132px !important;
   }
 }
