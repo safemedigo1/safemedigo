@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "./index.module.scss";
 import imgs from "../../assets/constants/imgs";
 import Link from 'next/link';
@@ -7,10 +7,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import { HiArrowSmRight } from 'react-icons/hi'
 import { FiChevronLeft } from 'react-icons/fi'
 import Image from 'next/image';
-
-const Search = () => {
+import Fuse from 'fuse.js'
+const Search = ({ blogs, treatments }) => {
   const { logo, } = imgs;
-
+  const [mergedData, setMergedData] = useState(null)
 
   const mostSearches = [
     {
@@ -48,6 +48,41 @@ const Search = () => {
   ]
 
 
+
+
+  const [results, setResults] = useState([])
+  const [query, setQuery] = useState('')
+
+
+
+
+  const mergeData = () => {
+    const newData = blogs.concat(treatments)
+    setMergedData(newData)
+  }
+
+
+
+
+  useEffect(() => {
+    mergeData()
+    if (mergedData) {
+      const fuse = new Fuse(mergedData, { keys: ['title', 'treatmentNameEn'] })
+      const searchResults = fuse.search(query).map(result => result.item)
+      setResults(searchResults)
+    }
+
+  }, [query])
+
+
+  console.log(results)
+
+
+
+
+
+
+
   return (
     <>
       <AppBar position={'static'}
@@ -79,7 +114,8 @@ const Search = () => {
             </div>
 
             <div className={styles.input_container}>
-              <input type="text" placeholder='Treatment, Doctor, Clinic, Diseases' />
+              <input placeholder='Treatment, Doctor, Clinic, Diseases' type="text" value={query} onChange={e => setQuery(e.target.value)} />
+
               <Link href={'/'} className={styles.close_icon}>
                 <CloseIcon />
               </Link>
@@ -100,11 +136,8 @@ const Search = () => {
         }} maxWidth={false}>
           <div id={styles.search_wrapper}>
 
-            {/* <div className={styles.text_container}>
-              <Typography>
-                Find <br /> The Right & Safe <br /> Treatment <br /> For You In Turkey
-              </Typography>
-            </div> */}
+
+
 
             <div className={styles.results_card}>
               <div className={styles.card_header}>
@@ -118,12 +151,12 @@ const Search = () => {
                         <Typography variant='h4'>{search.title}</Typography>
                       </div>
 
-                      {search.menuNames.map((links, idx) => (
+                      {results.map((links, idx) => (
                         <Link href={'/'} key={idx}>
 
                           <div className={styles.name} key={idx}>
                             <Typography>
-                              {links.name}
+                              {links.title}
                             </Typography>
                             <div className={styles.page}>
                               <Typography>
@@ -144,6 +177,8 @@ const Search = () => {
                   </>
                 )}
               </div>
+
+
             </div>
 
           </div>
@@ -155,3 +190,47 @@ const Search = () => {
 }
 
 export default Search
+
+
+
+export async function getStaticProps({ locale }) {
+  const getAllBlogs = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogByLang", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache',
+      'Expires': '0',
+
+    },
+    body: JSON.stringify({
+      "lang": locale
+    })
+  })
+  const data = await getAllBlogs.json()
+
+  const getAllTreatments = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetAllTreatments", {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache',
+      'Expires': '0',
+
+    },
+
+  })
+  const treatmentsData = await getAllTreatments.json()
+
+
+
+  return {
+    props: {
+      blogs: data,
+      treatments: treatmentsData
+    },
+    revalidate: 10,
+  }
+}

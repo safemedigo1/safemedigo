@@ -63,7 +63,6 @@ export async function getStaticProps({ locale }) {
 export default function Home({ dataPopularTreatments,
   dataMedicalDepartments, }) {
 
-  console.log(dataPopularTreatments, 'HOme')
   return (
     <>
       <Head>
