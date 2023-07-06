@@ -2,6 +2,7 @@
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useRouter } from "next/router";
+import { Box } from "@mui/material";
 
 export default function Layout({ children }, props) {
   const router = useRouter();
@@ -16,7 +17,7 @@ export default function Layout({ children }, props) {
           <main>{children}</main>
           <Footer />
         </> : <>
-          <main>
+          <main style={pathname === '/search' && { background: '#004747' }}>
             {children}
           </main>
         </>
