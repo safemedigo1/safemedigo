@@ -6,27 +6,28 @@ import styles from './index.module.scss'
 import Image from 'next/image';
 import CloseIcon from "@mui/icons-material/Close";
 import { FaArrowLeft } from 'react-icons/fa';
-
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { datePicker } from '@material-ui/pickers';
-
-import { format } from 'date-fns';
-
-
-
+import dayjs from 'dayjs';
+import { DigitalClock } from '@mui/x-date-pickers/DigitalClock';
 
 
 const quote = () => {
   const { logo, } = imgs;
   const router = useRouter()
   const { pathname, query } = router
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(4);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [timeValue, setTimeValue] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+  };
+  const handleTimeChange = (time) => {
+    setSelectedTime(time?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1]);
   };
 
   function handleGoBack() {
@@ -96,10 +97,10 @@ const quote = () => {
 
           <div className={styles.steps}>
             <div className={styles.step}>
-              <span>1</span>
+              <span>{step}</span>
             </div>
             <div className={styles.step}>
-              <span>2</span>
+              <span>{step + 1}</span>
             </div>
           </div>
 
@@ -111,6 +112,15 @@ const quote = () => {
 
               {step === 2 &&
                 "Who Is This Treatment For?"
+              }
+              {step === 2 &&
+                "Who Is This Treatment For?"
+              }
+              {step === 3 &&
+                "Select Date"
+              }
+              {step === 4 &&
+                "Select Time"
               }
 
             </Typography>
@@ -182,17 +192,26 @@ const quote = () => {
           </form>
 
 
-          {step === 3 &&
-            selectedDate !== null &&
-            <Typography className={styles.selctedDate}>
-              Selected Date: {selectedDate?.$d?.toLocaleDateString()}</Typography>}
+          <Typography className={styles.selctedDate}>
+            {step === 3 &&
+              selectedDate !== null &&
+
+              `Selected Date: ${selectedDate?.$d?.toLocaleDateString()}`
+
+            }
+
+            {step === 4 &&
+              timeValue !== null &&
+              `Selected Time: ${timeValue}`
+
+            }
+          </Typography>
+
 
           <div className={styles.date}>
 
-
             {
               step === 3 &&
-
               <>
 
                 <LocalizationProvider dateAdapter={AdapterDayjs} datePicker={datePicker}>
@@ -208,11 +227,41 @@ const quote = () => {
               </>
             }
 
-          </div>
 
-          <div className={styles.continue_btn} onClick={nextStep}>
-            <button>Continue</button>
           </div>
+          {step === 4 &&
+            <div className={styles.time}>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DigitalClock
+                  value={timeValue?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1]}
+                  onChange={(newValue) => setTimeValue(newValue.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1])}
+
+                  sx={{
+                    '.css-1g2aoka-MuiButtonBase-root-MuiMenuItem-root-MuiDigitalClock-item.Mui-selected':
+                    {
+                      backgroundColor: '#004747 !important',
+                      color: 'white !important'
+                    }
+                  }}
+                />
+              </LocalizationProvider>
+            </div>
+
+          }
+
+          {step === 4 &&
+
+            <div className={styles.continue_btn} onClick={nextStep}>
+              <button>I Want As Soon As Possible</button>
+            </div>
+
+          }
+
+          {step < 4 &&
+            <div className={styles.continue_btn} onClick={nextStep}>
+              <button>Continue</button>
+            </div>
+          }
         </div>
 
 
