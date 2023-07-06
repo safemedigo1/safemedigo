@@ -8,9 +8,11 @@ import { HiArrowSmRight } from 'react-icons/hi'
 import { FiChevronLeft } from 'react-icons/fi'
 import Image from 'next/image';
 import Fuse from 'fuse.js'
+
 const Search = ({ blogs, treatments }) => {
-  const { logo, } = imgs;
+  const { logo, NavSearch } = imgs;
   const [mergedData, setMergedData] = useState(null)
+  const [openMostSearch, setOpenMostSearch] = useState(false)
 
   const mostSearches = [
     {
@@ -50,8 +52,8 @@ const Search = ({ blogs, treatments }) => {
 
 
 
-  const [results, setResults] = useState([])
-  const [query, setQuery] = useState('')
+  const [results, setResults] = useState(null)
+  const [query, setQuery] = useState([])
 
 
 
@@ -68,18 +70,17 @@ const Search = ({ blogs, treatments }) => {
     mergeData()
     if (mergedData) {
       const fuse = new Fuse(mergedData, { keys: ['title', 'treatmentNameEn'] })
-      const searchResults = fuse.search(query).map(result => result.item)
-      setResults(searchResults)
+      const searchResults = fuse.search(query).map(result => (result.item))
+      searchResults.length === 0 ? setResults(null) : setResults(searchResults)
+      setOpenMostSearch(true)
     }
 
   }, [query])
 
 
-  console.log(results)
-
-
-
-
+  const handleSearch = () => {
+    mergeData()
+  }
 
 
 
@@ -87,12 +88,8 @@ const Search = ({ blogs, treatments }) => {
     <>
       <AppBar position={'static'}
         sx={{
-          background: {
-            xs: "transparent",
-            sm: "transparent",
-            md: "transparent",
-            lg: "#00f3bb"
-          }
+          background: "#00f3bb"
+
         }}>
 
         <Container sx={{
@@ -109,16 +106,17 @@ const Search = ({ blogs, treatments }) => {
 
             <div className={styles.back_btn}>
               <a href="/" >
-                <FiChevronLeft />
+                <CloseIcon />
+
               </a>
             </div>
 
-            <div className={styles.input_container}>
+            <div className={styles.input_container} >
               <input placeholder='Treatment, Doctor, Clinic, Diseases' type="text" value={query} onChange={e => setQuery(e.target.value)} />
 
-              <Link href={'/'} className={styles.close_icon}>
-                <CloseIcon />
-              </Link>
+              <button className={styles.close_icon} onClick={() => handleSearch()}>
+                <img src={NavSearch.src} alt="" />
+              </button>
             </div>
 
           </nav>
@@ -140,22 +138,65 @@ const Search = ({ blogs, treatments }) => {
 
 
             <div className={styles.results_card}>
+
               <div className={styles.card_header}>
-                <Typography>Most Treatment Searched Right Now</Typography>
+                {results === null && query.length === 0 && <Typography>Most searched results</Typography>}
+                {results !== null && results.length > 0 && <Typography>Results for: {query}</Typography>}
+                {results === null && query.length !== 0 && < Typography > No results found for: {query}</Typography>}
+
+
+
+                {console.log(results, "Results")}
+                {console.log(query, "QUERY")}
               </div>
+
               <div className={styles.card_inner}>
-                {mostSearches.map((search, index) =>
+                {results === null && query.length === 0 && mostSearches.map((search, index) =>
                   <>
                     <div className={styles.box} key={index}>
                       <div className={styles.title}>
                         <Typography variant='h4'>{search.title}</Typography>
                       </div>
 
-                      {results.map((links, idx) => (
+                      {search.menuNames.map((links, idx) => (
                         <Link href={'/'} key={idx}>
-
                           <div className={styles.name} key={idx}>
                             <Typography>
+                              {links.name}
+                            </Typography>
+                            <div className={styles.page}>
+                              <Typography>
+                                Condition
+                              </Typography>
+                              <div className={styles.icon_container}>
+                                <HiArrowSmRight />
+                              </div>
+                            </div>
+                          </div>
+
+                        </Link>
+                      ))
+                      }
+
+
+                    </div >
+
+
+                  </>
+                )}
+
+                {results !== null && results.length > 0 && results.map((search, index) =>
+                  <>
+                    <div className={styles.box} key={index}>
+                      <div className={styles.title}>
+                        <Typography variant='h4'>{search.titleEn}</Typography>
+                      </div>
+
+                      {results.map((links, idx) => (
+                        <Link href={'/'} key={idx}>
+                          <div className={styles.name} key={idx}>
+                            <Typography>
+                              {links.titleEn}
                               {links.title}
                             </Typography>
                             <div className={styles.page}>
@@ -169,21 +210,24 @@ const Search = ({ blogs, treatments }) => {
                           </div>
 
                         </Link>
+                      ))
+                      }
 
-                      ))}
-                    </div>
+
+                    </div >
 
 
                   </>
                 )}
+
               </div>
 
 
             </div>
 
           </div>
-        </Container>
-      </div>
+        </Container >
+      </div >
     </>
 
   )

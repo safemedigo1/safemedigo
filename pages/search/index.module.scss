@@ -5,6 +5,7 @@ nav#navbar_search {
   padding-top: 12px;
   padding-bottom: 12px;
   box-shadow: 0px 3px 6px #0000000d;
+  position: relative;
 
   @media screen and (min-width: 992px) {
     align-items: flex-start;
@@ -38,6 +39,10 @@ nav#navbar_search {
 
   .back_btn {
     margin-bottom: -6px;
+    position: absolute;
+    z-index: 9999;
+    right: 11%;
+
     @media screen and (min-width: 992px) {
       display: none;
     }
@@ -52,6 +57,8 @@ nav#navbar_search {
     position: relative;
     @media screen and (max-width: 992px) {
       width: 100%;
+      background-color: var(--main-white-color);
+      border-radius: 8px !important;
     }
 
     input {
@@ -71,12 +78,14 @@ nav#navbar_search {
       font-size: 18px;
       font-family: var(--open-sans-font);
       font-weight: 600;
+      caret-color: var(--main-green-color);
+
       @media screen and (max-width: 992px) {
         font-size: 16px;
-
         padding-top: 17px;
         padding-bottom: 20px;
         padding-left: 12px;
+        background-color: var(--main-white-color);
       }
 
       &::placeholder {
@@ -98,26 +107,27 @@ nav#navbar_search {
       @media screen and (max-width: 992px) {
         width: 100%;
         border: none;
-        border-radius: 0%;
+        border-radius: 8px !important;
       }
     }
 
     .close_icon {
       position: absolute;
-      top: 10px;
-      right: 22px;
+      // top: 10px;
+      // right: 22px;
+      top: 30%;
+      right: 20px;
       z-index: 1;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
       @media screen and (max-width: 992px) {
-        top: 15px;
-        right: 0;
+        right: 3%;
       }
-      svg {
-        color: var(--main-dark-color);
-        font-size: 31.2px;
-        font-weight: bold;
-
+      img {
+        width: 20px;
+        height: 20px;
         @media screen and (max-width: 992px) {
-          font-size: 25px;
         }
       }
     }
@@ -164,9 +174,7 @@ nav#navbar_search {
       overflow-y: scroll;
 
       @media screen and (max-width: 992px) {
-        margin-top: 0;
-        border-radius: 0;
-        box-shadow: none;
+        margin-top: 30px !important;
       }
 
       .card_header {
@@ -179,7 +187,7 @@ nav#navbar_search {
 
         @media screen and (max-width: 992px) {
           padding-left: 30px;
-          padding-top: 0;
+          padding-top: 20px;
         }
 
         p {
