@@ -229,6 +229,9 @@ section#hero {
           margin-left: 0 !important;
           width: 333px;
         }
+        @media screen and (max-width: 400px) {
+          width: 100%;
+        }
         .box_header {
           display: flex;
           flex-direction: row;

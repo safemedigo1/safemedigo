@@ -12,7 +12,6 @@ import Fuse from 'fuse.js'
 const Search = ({ blogs, treatments }) => {
   const { logo, NavSearch } = imgs;
   const [mergedData, setMergedData] = useState(null)
-  const [openMostSearch, setOpenMostSearch] = useState(false)
 
   const mostSearches = [
     {
@@ -72,7 +71,6 @@ const Search = ({ blogs, treatments }) => {
       const fuse = new Fuse(mergedData, { keys: ['title', 'treatmentNameEn'] })
       const searchResults = fuse.search(query).map(result => (result.item))
       searchResults.length === 0 ? setResults(null) : setResults(searchResults)
-      setOpenMostSearch(true)
     }
 
   }, [query])

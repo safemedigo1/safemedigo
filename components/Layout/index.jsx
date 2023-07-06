@@ -11,13 +11,13 @@ export default function Layout({ children }, props) {
 
   return (
     <>
-      {pathname !== '/search' & pathname !== '/login' & pathname !== '/signup' & pathname != '/editor' ?
+      {pathname !== '/search' & pathname !== '/quote' & pathname !== '/login' & pathname !== '/signup' & pathname != '/editor' ?
         <>
           <Navbar />
           <main>{children}</main>
           <Footer />
         </> : <>
-          <main style={pathname === '/search' && { background: '#004747' }}>
+          <main style={pathname === '/search' | pathname === '/quote' && { background: '#004747' }}>
             {children}
           </main>
         </>

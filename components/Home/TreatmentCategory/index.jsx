@@ -11,7 +11,6 @@ import Image from 'next/image';
 
 const TreatmentCategory = ({ dataMedicalDepartmentsHome }) => {
   const router = useRouter();
-  console.log(dataMedicalDepartmentsHome, "MEDICAL FROM HOME")
 
   const {
     Alternative,
@@ -84,6 +83,7 @@ const TreatmentCategory = ({ dataMedicalDepartmentsHome }) => {
     { title: 'Alternative Medicine', img: Alternative.src, hover_icon: Alternative_1.src },
     { title: "Don't See What You Need?", img: Dont_See_What.src, hover_icon: Dont_See_What_1.src },
 
+
   ]
 
   return (
@@ -95,7 +95,7 @@ const TreatmentCategory = ({ dataMedicalDepartmentsHome }) => {
           </div>
 
           <div className={styles.boxes_container}>
-            {dataMedicalDepartmentsHome?.map((card, index) => (
+            {/* {dataMedicalDepartmentsHome?.map((card, index) => (
               <Link style={{ textDecoration: 'none' }} href={`/medicaldepartments/${card.slug}`} className={styles.box} key={index}>
                 <div className={styles.img_container}>
                   <Image width={100} height={100} className={styles.default_icon} src={card.image} alt="" />
@@ -103,6 +103,17 @@ const TreatmentCategory = ({ dataMedicalDepartmentsHome }) => {
                 </div>
                 <div className={styles.title}>
                   <Typography variant='h6'>{card.departmentName}</Typography>
+                </div>
+              </Link>
+            ))} */}
+            {cards?.map((card, index) => (
+              <Link style={{ textDecoration: 'none' }} href={`/medicaldepartments/${card.slug}`} className={styles.box} key={index}>
+                <div className={styles.img_container}>
+                  <Image width={100} height={100} className={styles.default_icon} src={card.img} alt="" />
+                  <Image width={100} height={100} className={styles.hovered_icon} src={card.hover_icon} alt="" />
+                </div>
+                <div className={styles.title}>
+                  <Typography variant='h6'>{card.title}</Typography>
                 </div>
               </Link>
             ))}

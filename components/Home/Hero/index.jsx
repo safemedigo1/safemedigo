@@ -182,7 +182,7 @@ const Hero = () => {
 
               <div className={styles.start}>
                 <div className={styles.get_started_btn}>
-                  <Link href='/'>
+                  <Link href='/quote'>
                     <button>{t("most_popular:get_started")}</button>
                   </Link>
                 </div>

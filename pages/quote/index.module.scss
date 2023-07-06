@@ -1,0 +1,152 @@
+.card_wrapper {
+  display: flex;
+
+  .quote_card {
+    width: 472px;
+    margin: 20px auto;
+    background-color: var(--main-white-color);
+    box-shadow: 0px 30px 30px #00000029;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 27px 24px;
+
+    .header {
+      position: relative;
+      width: 100%;
+      button {
+        background-color: transparent;
+        border: none;
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer;
+        display: flex;
+        margin-bottom: 8px;
+        img {
+          width: 51px;
+          height: 51px;
+        }
+        h1 {
+          color: var(--main-green-color);
+          font-size: 23px;
+          font-weight: var(--font-bold);
+          margin-left: 10px;
+        }
+      }
+
+      .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+        svg {
+          font-size: 30px;
+        }
+      }
+    }
+
+    .desc {
+      margin-bottom: 20px;
+      p {
+        text-align: center;
+        color: var(--main-dark-color);
+        font-size: 16px;
+        font-weight: var(--font-sem-bold);
+      }
+    }
+
+    .steps {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 16px;
+
+      .step {
+        background-color: #8d8d8d;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: flex;
+        z-index: 3;
+        span {
+          position: relative;
+          margin: auto;
+          color: var(--main-white-color);
+        }
+        &:not(:last-child) {
+          background-color: var(--main-green-color);
+
+          ::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 23px;
+            width: 190px;
+            height: 2px;
+            z-index: 1;
+            background-color: var(--main-green-color);
+          }
+        }
+      }
+    }
+
+    .treatment {
+      align-self: flex-start;
+      margin-bottom: 8px;
+      h4 {
+        color: var(--main-dark-color);
+        font-size: 18px;
+        font-weight: var(--font-bold);
+        font-family: "Quicksand";
+      }
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1rem;
+      label {
+        // flex: 1;
+        background-color: #e7edec;
+        border-radius: 5px;
+        // padding: 5px;
+        height: 40px;
+        span {
+          color: var(--main-dark-color);
+          font-size: 16px;
+          font-weight: var(--font-sem-bold);
+          font-family: "Quicksand";
+
+          svg {
+            color: var(--main-green-color);
+            width: 17px;
+            height: 17px;
+          }
+        }
+      }
+    }
+    .continue_btn {
+      margin-top: 24px;
+      width: 100%;
+      button {
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        color: var(--main-white-color);
+        background-color: var(--main-green-color);
+        width: 100%;
+        padding: 17px;
+        font-size: 18px;
+        font-weight: var(--font-bold);
+        font-family: "Quicksand";
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: var(--main-cyan-color);
+          color: var(--main-dark-color);
+        }
+      }
+    }
+  }
+}
