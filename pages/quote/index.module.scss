@@ -11,6 +11,7 @@
     flex-direction: column;
     align-items: center;
     padding: 27px 24px;
+    min-height: 100vh;
 
     .header {
       position: relative;
@@ -43,6 +44,29 @@
         cursor: pointer;
         svg {
           font-size: 30px;
+          transition: all 0.3s ease;
+          color: var(--main-dark-color);
+          &:hover {
+            color: #8d8d8d;
+          }
+        }
+      }
+
+      .back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        color: var(--main-dark-color);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        &:hover {
+          color: #8d8d8d;
+        }
+        svg {
+          margin-right: 8.37px;
         }
       }
     }
@@ -92,7 +116,7 @@
       }
     }
 
-    .treatment {
+    .question {
       align-self: flex-start;
       margin-bottom: 8px;
       h4 {
@@ -103,10 +127,16 @@
       }
     }
 
+    .form_2 {
+      display: block !important;
+    }
+
     form {
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-gap: 1rem;
+      margin-bottom: 24px;
+
       label {
         // flex: 1;
         background-color: #e7edec;
@@ -126,9 +156,31 @@
           }
         }
       }
+      .step_2 {
+        width: 100%;
+        label {
+          margin-right: 0;
+          margin-left: 0;
+
+          width: 100%;
+          margin-top: 20px;
+        }
+      }
+    }
+
+    .date {
+      background-color: #8d8d8d21;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+
+    .selctedDate {
+      margin-bottom: 8px;
+      font-size: 18px;
     }
     .continue_btn {
-      margin-top: 24px;
+      margin-top: auto;
+
       width: 100%;
       button {
         cursor: pointer;

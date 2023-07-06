@@ -1,10 +1,20 @@
-import React from 'react'
-import { Box, Checkbox, FormControlLabel, FormGroup, Typography } from '@material-ui/core';
+import React, { useState } from 'react'
+import { Checkbox, FormControlLabel, Typography, } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import imgs from "../../assets/constants/imgs";
 import styles from './index.module.scss'
 import Image from 'next/image';
 import CloseIcon from "@mui/icons-material/Close";
+import { FaArrowLeft } from 'react-icons/fa';
+
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
+import { datePicker } from '@material-ui/pickers';
+
+import { format } from 'date-fns';
+
+
 
 
 
@@ -12,6 +22,12 @@ const quote = () => {
   const { logo, } = imgs;
   const router = useRouter()
   const { pathname, query } = router
+  const [step, setStep] = useState(3);
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
 
   function handleGoBack() {
     router.back()
@@ -33,6 +49,16 @@ const quote = () => {
     { title: 'Others' },
   ]
 
+
+  const nextStep = (e) => {
+    e.preventDefault();
+    setStep(step + 1);
+  };
+
+  const prevStep = () => {
+    setStep(step - 1);
+  };
+
   return (
     <>
       <div className={styles.card_wrapper}>
@@ -51,6 +77,16 @@ const quote = () => {
             <div className={styles.close} onClick={handleGoBack}>
               <CloseIcon />
             </div>
+
+            {step >= 2 &&
+              <div className={styles.back} onClick={prevStep}>
+                <Typography>
+                  Back
+                </Typography>
+                <FaArrowLeft />
+              </div>
+            }
+
           </div>
 
           <div className={styles.desc}>
@@ -67,15 +103,50 @@ const quote = () => {
             </div>
           </div>
 
-          <div className={styles.treatment}>
-            <Typography variant='h4'>What Would You Like To Do?</Typography>
+          <div className={styles.question}>
+            <Typography variant='h4'>
+              {step === 1 &&
+                "What Would You Like To Do?"
+              }
+
+              {step === 2 &&
+                "Who Is This Treatment For?"
+              }
+
+            </Typography>
           </div>
 
 
-          <form >
 
-            {treatments.map((treatment) =>
-              <>
+
+          <form className={step === 2 && styles.form_2}>
+
+            {step === 1 &&
+
+              treatments.map((treatment) =>
+                <>
+                  <FormControlLabel required control={<Checkbox sx={{
+                    color: '#004747',
+                    '.Mui-checked': {
+                      color: '#004747 ',
+                    },
+                    '.MuiCheckbox-colorSecondary.Mui-checked': {
+                      color: '#004747 ',
+                    },
+                    '.MuiIconButton-root': {
+                      color: '#004747 ',
+                    },
+
+
+                  }} />} label={treatment.title} />
+                </>
+
+              )
+
+            }
+
+            {step === 2 &&
+              <div className={styles.step_2}>
                 <FormControlLabel required control={<Checkbox sx={{
                   color: '#004747',
                   '.Mui-checked': {
@@ -89,15 +160,57 @@ const quote = () => {
                   },
 
 
-                }} />} label={treatment.title} />
-              </>
+                }} />} label={"I Am Looking For Myself"} />
+                <FormControlLabel required control={<Checkbox sx={{
+                  color: '#004747',
+                  '.Mui-checked': {
+                    color: '#004747 ',
+                  },
+                  '.MuiCheckbox-colorSecondary.Mui-checked': {
+                    color: '#004747 ',
+                  },
+                  '.MuiIconButton-root': {
+                    color: '#004747 ',
+                  },
 
-            )}
 
+                }} />} label={"I Am Looking For Someone Else"} />
+              </div>
+
+            }
 
           </form>
 
-          <div className={styles.continue_btn}>
+
+          {step === 3 &&
+            selectedDate !== null &&
+            <Typography className={styles.selctedDate}>
+              Selected Date: {selectedDate?.$d?.toLocaleDateString()}</Typography>}
+
+          <div className={styles.date}>
+
+
+            {
+              step === 3 &&
+
+              <>
+
+                <LocalizationProvider dateAdapter={AdapterDayjs} datePicker={datePicker}>
+                  <DateCalendar
+                    value={selectedDate?.$d?.toLocaleDateString()}
+                    onChange={handleDateChange}
+                    format="MM/dd/yyyy"
+                    inputVariant="outlined"
+                    label="Select a date"
+                  />
+                </LocalizationProvider>
+
+              </>
+            }
+
+          </div>
+
+          <div className={styles.continue_btn} onClick={nextStep}>
             <button>Continue</button>
           </div>
         </div>
