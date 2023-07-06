@@ -86,7 +86,7 @@ const Search = ({ blogs, treatments }) => {
 
   return (
     <>
-      <AppBar position={'static'}
+      <AppBar position={'sticky'}
         sx={{
           background: "#00f3bb"
 
