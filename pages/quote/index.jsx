@@ -18,17 +18,14 @@ const quote = () => {
   const { logo, } = imgs;
   const router = useRouter()
   const { pathname, query } = router
-  const [step, setStep] = useState(4);
+  const [step, setStep] = useState(1);
   const [selectedDate, setSelectedDate] = useState(null);
   const [timeValue, setTimeValue] = useState(null);
-  const [selectedTime, setSelectedTime] = useState(null);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
-  const handleTimeChange = (time) => {
-    setSelectedTime(time?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1]);
-  };
+
 
   function handleGoBack() {
     router.back()

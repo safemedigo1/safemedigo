@@ -163,17 +163,15 @@ const PatientStories = () => {
       <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false}  >
         <div className={styles.section_container}>
           <div className={styles.text_container}>
-            {router.locale === 'ar' ?
-              <Container sx={{ maxWidth: '1239px', }} maxWidth={false} >
-                <Box sx={{ display: { xs: 'block', sm: 'block', md: 'block', lg: 'none', xlg: 'none' } }} className={styles.title}>
-                  <Typography variant='h2' >{t('patient_stories:title')}</Typography>
-                </Box>
-              </Container> :
-
-              <Box className={styles.title} sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'block', xlg: 'block' } }}>
+            <Container sx={{ maxWidth: '1239px', }} maxWidth={false} >
+              <Box sx={{ display: { xs: 'block', sm: 'block', md: 'block', lg: 'none', xlg: 'none' } }} className={styles.title}>
                 <Typography variant='h2' >{t('patient_stories:title')}</Typography>
               </Box>
-            }
+            </Container>
+
+            <Box className={styles.title} sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'block', xlg: 'block' } }}>
+              <Typography variant='h2' >{t('patient_stories:title')}</Typography>
+            </Box>
 
             <div className={styles.desc}>
               <Typography>{t('patient_stories:desc')}</Typography>
