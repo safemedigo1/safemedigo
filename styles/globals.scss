@@ -140,6 +140,11 @@ a {
   transition: all 0.3s ease;
 }
 
+.MuiFormControlLabel-root {
+  @media screen and (max-width: 450px) {
+    margin-left: 0 !important;
+  }
+}
 // Carsouel overrides Classes
 article {
   .rec .rec-item-wrapper {

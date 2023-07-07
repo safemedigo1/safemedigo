@@ -178,15 +178,20 @@ const quote = () => {
 
 
 
-          <form className={step === 1 && styles.form_1 || step === 2 && styles.form_2 || step === 3 && styles.form_3 || step === 4 && styles.form_4 || step === 5 && styles.form_5}>
+          <motion.form
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            className={step === 1 && styles.form_1 || step === 2 && styles.form_2 || step === 3 && styles.form_3 || step === 4 && styles.form_4 || step === 5 && styles.form_5}>
 
             {step === 1 &&
 
               treatments.map((treatment) =>
-                <motion.div
-                  animate={{ opacity: 1 }}
-                  initial={{ opacity: 0 }}>
-                  <FormControlLabel required control={<Checkbox sx={{
+                <FormControlLabel
+                  sx={{
+                    marginLeft: 0
+
+                  }}
+                  required control={<Checkbox sx={{
                     color: '#004747',
                     '.Mui-checked': {
                       color: '#004747 ',
@@ -197,10 +202,10 @@ const quote = () => {
                     '.MuiIconButton-root': {
                       color: '#004747 ',
                     },
+                    marginLeft: 0
 
 
                   }} />} label={treatment.title} />
-                </motion.div>
 
               )
 
@@ -390,7 +395,7 @@ const quote = () => {
               </motion.div>
             }
 
-          </form>
+          </motion.form>
 
 
           {step === 6 &&

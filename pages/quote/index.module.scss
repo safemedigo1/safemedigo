@@ -13,6 +13,10 @@
     align-items: center;
     padding: 27px 24px;
 
+    @media screen and (max-width: 500px) {
+      width: 100%;
+    }
+
     .header {
       position: relative;
       width: 100%;
@@ -133,12 +137,18 @@
       grid-template-columns: 1fr 1fr;
       grid-gap: 1rem;
       margin-bottom: 24px;
+      @media screen and (max-width: 450px) {
+        width: 100%;
+        margin-bottom: 15px;
+        grid-gap: 10px;
+      }
 
       label {
         background-color: #e7edec;
         border-radius: 5px;
-        height: 40px;
+        min-height: 40px;
         padding-right: 8px;
+
         span {
           color: var(--main-dark-color);
           font-size: 16px;
@@ -403,6 +413,7 @@
           border-left: none;
           border-bottom: 3px solid var(--main-dark-color);
           outline: none;
+          border-radius: 0;
           display: flex;
 
           color: var(--main-dark-color);
