@@ -285,6 +285,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
                 id={"apply"}
                 className="ck-content"
                 dangerouslySetInnerHTML={createMarkup()}
+                dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}
               />
 
             </article>

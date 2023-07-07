@@ -57,13 +57,16 @@ const TreatmentCategory = ({ dataMedicalDepartmentsHome }) => {
     Tooth_Implants_1,
     Urology_1,
     Weight_Loss_1,
+    Spine_Surgeries,
+    Spine_Surgeries_1
 
   } = imgs;
   const { t } = useTranslation();
 
   const cards = [
-    { title: 'Plastic Surgeries', img: Plastic_Surgeries.src, hover_icon: Plastic_Surgeries_1.src },
     { title: 'Hair Transplant', img: Hair_Transplant.src, hover_icon: Hair_Transplant_1.src },
+    { title: 'Plastic Surgeries', img: Plastic_Surgeries.src, hover_icon: Plastic_Surgeries_1.src },
+    { title: 'Spine Surgeries', img: Spine_Surgeries.src, hover_icon: Spine_Surgeries_1.src },
     { title: 'Medical Check Up', img: Medical_Check.src, hover_icon: Medical_Check_1.src },
     { title: 'Laser Eye Surgery', img: Laser_Eye_Surgery.src, hover_icon: Laser_Eye_Surgery_1.src },
     { title: 'Dentistry', img: Dentistry.src, hover_icon: Dentistry_1.src },
@@ -85,6 +88,7 @@ const TreatmentCategory = ({ dataMedicalDepartmentsHome }) => {
 
 
   ]
+
 
   return (
     <section id={styles.treatment_category} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>

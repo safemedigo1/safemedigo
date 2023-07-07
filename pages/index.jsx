@@ -45,14 +45,26 @@ export async function getStaticProps({ locale }) {
   })
   const dataMedicalDepartments = await resMedicalDepartments.json()
 
-
-
+  // Blog Slug (WhyTurkey)
+  const blogSlugRes = await fetch("https://api.safemedigo.com/api/v1/Blog/GetBlogUiDataBySlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "slug": 'الدليل-الشامل-للسياحة-العلاجية-في-تركيا:-لماذا-السفر-للعلاج',
+      "lang": locale
+    })
+  })
+  const blogSlugData = await blogSlugRes.json()
 
   return {
     props: {
       dataPopularTreatments,
       dataMedicalDepartments,
       locale,
+      blogSlugData,
 
       ...(await serverSideTranslations(locale, ['home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'safety_standards_page', 'blogs_page', 'proceduresSymptoms', 'Footer'])),
     },
@@ -61,7 +73,7 @@ export async function getStaticProps({ locale }) {
 }
 
 export default function Home({ dataPopularTreatments,
-  dataMedicalDepartments, }) {
+  dataMedicalDepartments, blogSlugData }) {
 
   return (
     <>
@@ -82,9 +94,6 @@ export default function Home({ dataPopularTreatments,
       </Head>
 
       {/* Home Page Sections  */}
-
-
-
       <Hero />
       <Help />
       <WhySafemedigo />
@@ -92,7 +101,7 @@ export default function Home({ dataPopularTreatments,
       <MostPopular dataPopularTreatmentsHome={dataPopularTreatments} />
       <PatientStories />
       <Safty />
-      <WhyTurkey />
+      <WhyTurkey blogSlugData={blogSlugData} />
       <ContactDetails />
 
     </>

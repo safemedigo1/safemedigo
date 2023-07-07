@@ -23,10 +23,7 @@ import Transplanting from "../imgs/Transplanting.png";
 import openingChannel from "../imgs/openingChannel.png";
 import designMobile from "../imgs/designMobile.png";
 
-import patient_plan from "../imgs/patient_plan.png";
-
 import turky_bg from "../imgs/turky_bg.png";
-import why_turcky_img from "../imgs/why_turcky_img.png";
 
 import logo from "../svgs/logo.svg";
 import en from "../svgs/en.svg";
@@ -199,6 +196,8 @@ import Stem_Cells_Therapy_Center_1 from "../svgs/treatment_categories_icons/hove
 import Tooth_Implants_1 from "../svgs/treatment_categories_icons/hoverd_icons/Tooth_Implants_1.svg";
 import Urology_1 from "../svgs/treatment_categories_icons/hoverd_icons/Urology_1.svg";
 import Weight_Loss_1 from "../svgs/treatment_categories_icons/hoverd_icons/Weight_Loss_1.svg";
+import Spine_Surgeries from "../svgs/treatment_categories_icons/Spine_Surgeries.svg";
+import Spine_Surgeries_1 from "../svgs/treatment_categories_icons/hoverd_icons/Spine_Surgeries_1.svg";
 
 export default {
   logo,
@@ -218,7 +217,6 @@ export default {
   middle,
   left02,
   turky_bg,
-  why_turcky_img,
 
   Allergy_And_Immunology,
   Alternative,
@@ -247,6 +245,9 @@ export default {
   Medical_Check,
   Nephrology,
   Neurology,
+  Spine_Surgeries,
+  Spine_Surgeries_1,
+
   Neurosurgery,
   Nuclear_Medicine_And_Molecular_Imaging,
   Nutritionist,
