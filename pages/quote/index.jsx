@@ -99,7 +99,9 @@ const quote = () => {
 
   }, [step, router]);
 
-
+  const handleBlur = () => {
+    document.activeElement.blur();
+  };
 
 
 
@@ -389,11 +391,11 @@ const quote = () => {
                 <div className={styles.username}>
                   <div className={styles.f_name}>
                     <label htmlFor="f_name">First Name <span>*</span></label>
-                    <input required type="text" name='f_name' placeholder='John' />
+                    <input onBlur={handleBlur} required type="text" name='f_name' placeholder='John' />
                   </div>
                   <div className={styles.l_name}>
                     <label htmlFor="l_name">Last Name <span>*</span></label>
-                    <input required type="text" name='l_name' placeholder='Doe' />
+                    <input onBlur={handleBlur} required type="text" name='l_name' placeholder='Doe' />
                   </div>
                 </div>
 
@@ -404,7 +406,7 @@ const quote = () => {
                     country={'tr'}
                     value={phoneNum}
                     onChange={newPhoneVal => setPhoneNum(newPhoneVal)}
-
+                    onBlur={handleBlur}
                     inputProps={{
                       name: 'phone',
                       required: true,
@@ -415,7 +417,7 @@ const quote = () => {
 
                 <div className={styles.email}>
                   <label htmlFor="email">Email <span>*</span></label>
-                  <input required type="email" name='email' placeholder='example@gmail.com' />
+                  <input onBlur={handleBlur} required type="email" name='email' placeholder='example@gmail.com' />
                 </div>
 
 
@@ -465,7 +467,7 @@ const quote = () => {
               </div>
               <div className="input">
 
-                <AuthCode containerClassName={styles.input_container} length={4} allowedCharacters='numeric' onChange={handleOnChange} />
+                <AuthCode onBlur={handleBlur} containerClassName={styles.input_container} length={4} allowedCharacters='numeric' onChange={handleOnChange} />
               </div>
               <div className={styles.resend}>
                 <Typography>
