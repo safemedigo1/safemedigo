@@ -17,9 +17,9 @@ export default function Layout({ children }, props) {
           <main>{children}</main>
           <Footer />
         </> : <>
-          <main style={pathname === '/search' | pathname === '/quote' && { background: '#004747', minHeight: '100vh' }}>
+          <Box sx={pathname === '/search' | pathname === '/quote' && { background: { lg: '#004747', xlg: '#004747' }, minHeight: '100vh' }}>
             {children}
-          </main>
+          </Box>
         </>
 
       }

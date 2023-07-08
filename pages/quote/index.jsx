@@ -146,10 +146,10 @@ const quote = () => {
               <ProgressBar
                 completed={step}
                 bgColor="#00ccb5"
-                height="5px"
+                height="8px"
                 isLabelVisible={false}
                 maxCompleted={5}
-                borderRadius="0"
+                borderRadius="5px"
               />
             </div>
           }
@@ -184,11 +184,11 @@ const quote = () => {
             </div>
           }
 
-          {/* {step === 1 &&
+          {step === 1 &&
             <div className={styles.desc}>
               <Typography>Hi, Thank You For Choosing Safemedigo For Your Healthcare Journey. We Prioritize Your Safety And Strive For A Smooth Experience.</Typography>
             </div>
-          } */}
+          }
 
           {/* 
           {step < 6 &&
