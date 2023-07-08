@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Checkbox, FormControlLabel, Typography, } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import imgs from "../../assets/constants/imgs";
@@ -18,15 +18,14 @@ import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
 import AuthCode from 'react-auth-code-input';
 import { motion } from "framer-motion";
-
-
+import { BsCheckLg } from 'react-icons/bs';
+import Link from 'next/link'
 const quote = () => {
   const { logo, } = imgs;
   const router = useRouter()
   const { pathname, query } = router
-  const [step, setStep] = useState(1);
-  const maxStep = 5;
-  const minStep = 1;
+  const [step, setStep] = useState(6);
+
 
   const [selectedDate, setSelectedDate] = useState(null);
   const [timeValue, setTimeValue] = useState(null);
@@ -35,12 +34,17 @@ const quote = () => {
 
   const [result, setResult] = useState();
 
+  const [asp, setAsp] = useState(false);
 
   const handleOnChange = (res) => {
     setResult(res);
   };
 
-
+  const handleAsp = () => {
+    setAsp(true)
+    setTimeValue(null)
+    setStep(step + 1);
+  }
 
   function handleGoBack() {
     router.back()
@@ -81,48 +85,66 @@ const quote = () => {
 
   };
 
+  useEffect(() => {
+    if (step === 7) {
+      const timer = setTimeout(() => {
+        router.push('/');
+      }, 3000);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [step, router]);
+
+
+
+
+
   return (
     <QuoteContext.Provider value={quote}>
 
       <div className={styles.card_wrapper}>
 
         <div className={styles.quote_card}>
-          <div className={styles.header}>
-            {step !== 6 &&
-              <button onClick={handleGoBack} className={styles.navbar__logo}>
-                <Image
-                  src={logo.src}
-                  alt="Picture of the author"
-                  width={51.34}
-                  height={45}
-                />
-                <h1>Safemedigo</h1>
-              </button>
-            }
+          {step !== 7 &&
+            <div className={styles.header}>
+              {step !== 6 &&
+                <button onClick={handleGoBack} className={styles.navbar__logo}>
+                  <Image
+                    src={logo.src}
+                    alt="Picture of the author"
+                    width={51.34}
+                    height={45}
+                  />
+                  <h1>Safemedigo</h1>
+                </button>
+              }
 
-            <div className={styles.close} onClick={handleGoBack}>
-              <CloseIcon />
-            </div>
-
-            {step >= 2 &&
-              <div className={styles.back} onClick={prevStep}>
-                <Typography>
-                  Back
-                </Typography>
-                <FaArrowLeft />
+              <div className={styles.close} onClick={handleGoBack}>
+                <CloseIcon />
               </div>
-            }
 
-          </div>
+              {step >= 2 &&
+                <div className={styles.back} onClick={prevStep}>
+                  <Typography>
+                    Back
+                  </Typography>
+                  <FaArrowLeft />
+                </div>
+              }
 
-          {step !== 6 &&
+            </div>
+          }
+
+          {step === 1 &&
             <div className={styles.desc}>
               <Typography>Hi, Thank You For Choosing Safemedigo For Your Healthcare Journey. We Prioritize Your Safety And Strive For A Smooth Experience.</Typography>
             </div>
           }
 
 
-          {step !== 6 &&
+          {step < 6 &&
             <div className={styles.steps}>
               <div className={styles.step}>
                 <span>{step}</span>
@@ -135,7 +157,16 @@ const quote = () => {
               }
             </div>
           }
-
+          {step === 5 &&
+            <motion.h4
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              style={{ fontWeight: 'bold' }}
+              className={styles.question}>
+              Please Provide Your Contact Details.
+              <span style={{ color: 'red' }}>*</span>
+            </motion.h4>
+          }
           <div className={styles.question}>
             {step === 1 &&
               <motion.h4
@@ -273,6 +304,18 @@ const quote = () => {
               </motion.div >
             }
 
+            {step === 4 &&
+              asp && timeValue === null &&
+              <motion.p
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                style={{ marginTop: 0, fontWeight: 'bold' }}
+                className={styles.selctedDate}>
+                Selected Time: As Soon As Possible
+              </motion.p>
+
+            }
+
             <div className={styles.date}>
               {
                 step === 3 &&
@@ -347,7 +390,7 @@ const quote = () => {
                     <input required type="text" name='f_name' placeholder='John' />
                   </div>
                   <div className={styles.l_name}>
-                    <label htmlFor="l_name">First Name <span>*</span></label>
+                    <label htmlFor="l_name">Last Name <span>*</span></label>
                     <input required type="text" name='l_name' placeholder='Doe' />
                   </div>
                 </div>
@@ -431,16 +474,33 @@ const quote = () => {
           }
 
 
+          {step === 7 &&
+            <motion.div
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
 
+            >
+              <div className={styles.step_8_container}>
+                <div className={styles.icon_container}>
+                  <BsCheckLg />
+                </div>
+                <div className={styles.title}>
+                  <Typography variant='h3'>We Got Your Request</Typography>
+                </div>
+                <div className={styles.desc}>
+                  <Typography>Thank You For Your Submission. Our Team Will Evaluate Your Request And Respond To You In A Timely Manner</Typography>
+                </div>
+              </div>
+            </motion.div>
+
+          }
 
 
 
           {step === 4 &&
-
-            <div className={styles.asp_btn} onClick={nextStep}>
+            <div className={styles.asp_btn} onClick={handleAsp}>
               <button>I Want As Soon As Possible</button>
             </div>
-
           }
 
           {step < 5 &&
@@ -448,6 +508,23 @@ const quote = () => {
               <button>Continue</button>
             </div>
           }
+
+          {step === 7 &&
+            <div className={styles.continue_btn} >
+              <Link href='/'>
+                <button>
+                  Done
+                </button>
+              </Link>
+            </div>
+          }
+
+          {step === 6 &&
+            <div className={styles.continue_btn} onClick={nextStep}>
+              <button>Continue</button>
+            </div>
+          }
+
           {step === 5 &&
             <div className={styles.continue_btn} onClick={nextStep}>
               <button>Send Inquiry</button>
