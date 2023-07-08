@@ -24,6 +24,11 @@
       min-height: 580px;
     }
 
+    @media screen and (max-width: 400px) {
+      min-height: 100vh;
+      padding: 24px;
+    }
+
     .progressBar {
       position: absolute;
       top: 0;
