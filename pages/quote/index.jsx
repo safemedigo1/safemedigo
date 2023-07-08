@@ -19,7 +19,10 @@ import 'react-phone-input-2/lib/style.css'
 import AuthCode from 'react-auth-code-input';
 import { motion } from "framer-motion";
 import { BsCheckLg } from 'react-icons/bs';
-import Link from 'next/link'
+import Link from 'next/link';
+import ProgressBar from "@ramonak/react-progress-bar";
+
+
 const quote = () => {
   const { logo, } = imgs;
   const router = useRouter()
@@ -97,11 +100,38 @@ const quote = () => {
       };
     }
 
-  }, [step, router]);
+  }, [step, router,]);
+
 
   const handleBlur = () => {
     document.activeElement.blur();
   };
+
+
+
+  useEffect(() => {
+    if (asp) {
+      setStep(step + 1)
+    }
+  }, [asp])
+
+  useEffect(() => {
+    if (selectedDate !== null) {
+      setStep(step + 1)
+    }
+  }, [selectedDate])
+
+  useEffect(() => {
+    if (timeValue !== null) {
+      setStep(step + 1)
+    }
+  }, [timeValue])
+
+  // Dagte Range
+
+
+
+
 
 
 
@@ -111,6 +141,20 @@ const quote = () => {
       <div className={styles.card_wrapper}>
 
         <div className={styles.quote_card}>
+
+          {step !== 5 &&
+            <div className={styles.progressBar}>
+              <ProgressBar
+                completed={step}
+                bgColor="#00ccb5"
+                height="5px"
+                isLabelVisible={false}
+                maxCompleted={5}
+                borderRadius="0"
+              />
+            </div>
+          }
+
           {step !== 7 &&
             <div className={styles.header}>
               {step !== 6 &&
@@ -141,13 +185,13 @@ const quote = () => {
             </div>
           }
 
-          {step === 1 &&
+          {/* {step === 1 &&
             <div className={styles.desc}>
               <Typography>Hi, Thank You For Choosing Safemedigo For Your Healthcare Journey. We Prioritize Your Safety And Strive For A Smooth Experience.</Typography>
             </div>
-          }
+          } */}
 
-
+          {/* 
           {step < 6 &&
             <div className={styles.steps}>
               <div className={styles.step}>
@@ -160,7 +204,8 @@ const quote = () => {
                 </div>
               }
             </div>
-          }
+          } */}
+
           {step === 5 &&
             <motion.h4
               animate={{ opacity: 1 }}
@@ -186,9 +231,7 @@ const quote = () => {
                 initial={{ opacity: 0 }}
               >
                 Who Is This Treatment For?
-
               </motion.h4 >
-
             }
             {step === 3 &&
               <motion.h4
@@ -283,8 +326,8 @@ const quote = () => {
 
             }
 
-            {step === 3 &&
-              selectedDate !== null &&
+            {step === 4 &&
+              selectedDate !== null && asp !== true &&
               <motion.div
                 animate={{ opacity: 1 }}
                 initial={{ opacity: 0 }}
@@ -309,7 +352,7 @@ const quote = () => {
             }
 
             {step === 4 &&
-              asp && timeValue === null &&
+              asp && selectedDate === null && timeValue === null &&
               <motion.p
                 animate={{ opacity: 1 }}
                 initial={{ opacity: 0 }}
@@ -346,7 +389,12 @@ const quote = () => {
                         '.css-15a9mqf-MuiPickersYear-yearButton.Mui-selected': {
                           backgroundColor: '#004747 !important',
                           color: 'white !important'
+                        },
+                        '.css-vu42c1.Mui-selected': {
+                          backgroundColor: '#004747 !important',
+                          color: 'white !important'
                         }
+
                       }}
                     />
                   </LocalizationProvider>
@@ -367,13 +415,26 @@ const quote = () => {
                   <DigitalClock
                     value={timeValue?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1]}
                     onChange={(newValue) => setTimeValue(newValue?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1])}
-
+                    skipDisabled
+                    minTime={dayjs().set('hour', 9).set('minute', 30).second(0)}
+                    maxTime={dayjs().set('hour', 17).set('minute', 30)}
 
                     sx={{
                       '.css-1g2aoka-MuiButtonBase-root-MuiMenuItem-root-MuiDigitalClock-item.Mui-selected':
                       {
                         backgroundColor: '#004747 !important',
                         color: 'white !important'
+                      },
+                      '.css-186wig7.Mui-selected': {
+                        backgroundColor: '#004747 !important',
+                        color: 'white !important'
+                      },
+                      'ul': {
+                        display: 'flex',
+                        flexDirection: 'row',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        justifyContent: 'center'
                       }
                     }}
                   />
@@ -501,13 +562,13 @@ const quote = () => {
 
 
 
-          {step === 4 &&
+          {step === 3 &&
             <div className={styles.asp_btn} onClick={handleAsp}>
               <button>I Want As Soon As Possible</button>
             </div>
           }
 
-          {step < 5 &&
+          {step < 3 &&
             <div className={styles.continue_btn} onClick={nextStep}>
               <button>Continue</button>
             </div>
