@@ -66,7 +66,6 @@ const quote = () => {
     { title: 'Spine Surgery' },
     { title: 'Penile Prosthesis' },
     { title: 'Coronary Artery' },
-    { title: 'Others' },
   ]
 
 
@@ -142,7 +141,7 @@ const quote = () => {
 
         <div className={styles.quote_card}>
 
-          {step !== 5 &&
+          {step <= 5 &&
             <div className={styles.progressBar}>
               <ProgressBar
                 completed={step}
@@ -262,9 +261,32 @@ const quote = () => {
             className={step === 1 && styles.form_1 || step === 2 && styles.form_2 || step === 3 && styles.form_3 || step === 4 && styles.form_4 || step === 5 && styles.form_5}>
 
             {step === 1 &&
+              <>
+                {treatments.map((treatment) =>
+                  <FormControlLabel
+                    sx={{
+                      marginLeft: 0
 
-              treatments.map((treatment) =>
+                    }}
+                    required control={<Checkbox sx={{
+                      color: '#004747',
+                      '.Mui-checked': {
+                        color: '#004747 ',
+                      },
+                      '.MuiCheckbox-colorSecondary.Mui-checked': {
+                        color: '#004747 ',
+                      },
+                      '.MuiIconButton-root': {
+                        color: '#004747 ',
+                      },
+                      marginLeft: 0
+
+                    }} />} label={treatment.title} />
+                )}
+
                 <FormControlLabel
+                  className={styles.last_child}
+
                   sx={{
                     marginLeft: 0
 
@@ -282,12 +304,14 @@ const quote = () => {
                     },
                     marginLeft: 0
 
-
-                  }} />} label={treatment.title} />
-
-              )
+                  }} />} label={"Others"} className={styles.last_child} />
+              </>
 
             }
+
+
+
+
 
             {step === 2 &&
               <motion.div

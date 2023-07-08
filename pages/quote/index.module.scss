@@ -20,8 +20,7 @@
       width: 100%;
       margin-top: 8px !important;
       border-radius: 0;
-      // // height: fit-content;
-      // padding: 15px;
+
       min-height: 580px;
     }
 
@@ -163,11 +162,15 @@
         margin-bottom: 8px;
       }
 
+      .last_child {
+        grid-column: 1 / span 2;
+      }
       label {
         background-color: #e7edec;
         border-radius: 5px;
         min-height: 40px;
         padding-right: 8px;
+        width: 100%;
 
         span {
           color: var(--main-dark-color);
