@@ -24,7 +24,7 @@ const quote = () => {
   const { logo, } = imgs;
   const router = useRouter()
   const { pathname, query } = router
-  const [step, setStep] = useState(6);
+  const [step, setStep] = useState(1);
 
 
   const [selectedDate, setSelectedDate] = useState(null);
@@ -82,10 +82,11 @@ const quote = () => {
       step !== 1
       setStep(step - 1);
     }
-
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     if (step === 7) {
       const timer = setTimeout(() => {
         router.push('/');
@@ -95,6 +96,7 @@ const quote = () => {
         clearTimeout(timer);
       };
     }
+
   }, [step, router]);
 
 
