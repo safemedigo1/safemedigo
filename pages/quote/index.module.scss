@@ -118,6 +118,9 @@
             height: 2px;
             z-index: 1;
             background-color: var(--main-green-color);
+            @media screen and (max-width: 450px) {
+              width: 155px;
+            }
           }
         }
       }
