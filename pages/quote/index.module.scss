@@ -1,3 +1,10 @@
+.progressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
 .card_wrapper {
   display: flex;
   position: relative;
@@ -5,14 +12,9 @@
   @media screen and (max-width: 992px) {
     width: 100%;
     height: 100%;
+    overflow: hidden;
   }
 
-  .progressBar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
   .quote_card {
     width: 472px;
     margin: 20px auto;
@@ -195,6 +197,9 @@
 
     form {
       margin-bottom: 8px;
+      @media screen and (max-width: 400px) {
+        margin-bottom: 0;
+      }
     }
     .form_1 {
       display: grid;
@@ -466,6 +471,10 @@
             align-items: flex-start;
             margin-top: 20px;
             margin-bottom: 20px;
+            @media screen and (max-width: 400px) {
+              margin-top: 8px;
+              margin-bottom: 8px;
+            }
             height: auto;
             background-color: transparent;
             span {
