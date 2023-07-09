@@ -81,8 +81,9 @@ const quote = () => {
   };
 
   const prevStep = () => {
-    {
-      step !== 1
+    if (step === 5 && asp === true) {
+      setStep(step - 2);
+    } else {
       setStep(step - 1);
     }
 
@@ -124,7 +125,14 @@ const quote = () => {
 
   useEffect(() => {
     if (timeValue !== null) {
-      setStep(step + 1)
+      const timer = setTimeout(() => {
+        setStep(step + 1)
+      }, 1000);
+
+      return () => {
+        clearTimeout(timer);
+      };
+
     }
   }, [timeValue])
 
@@ -362,6 +370,7 @@ const quote = () => {
 
           }
 
+
           <div className={styles.date}>
             {
               step === 3 &&
@@ -402,86 +411,87 @@ const quote = () => {
           </div>
 
 
-          {step === 4 &&
-            <motion.div
-              animate={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-              className={styles.time}>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DigitalClock
-                  value={timeValue?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1]}
-                  onChange={(newValue) => setTimeValue(newValue?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1])}
-                  skipDisabled
-                  minTime={dayjs().set('hour', 9).set('minute', 30).second(0)}
-                  maxTime={dayjs().set('hour', 17).set('minute', 30)}
-
-                  sx={{
-                    '.css-1g2aoka-MuiButtonBase-root-MuiMenuItem-root-MuiDigitalClock-item.Mui-selected':
-                    {
-                      backgroundColor: '#004747 !important',
-                      color: 'white !important'
-                    },
-                    '.css-186wig7.Mui-selected': {
-                      backgroundColor: '#004747 !important',
-                      color: 'white !important'
-                    },
-                    'ul': {
-                      display: 'flex',
-                      flexDirection: 'row',
-                      flexWrap: 'wrap',
-                      alignItems: 'center',
-                      justifyContent: 'flex-start',
-
-                      'li': {
-                        background: '#E7EDEC',
-                        borderRadius: '5px',
-                      }
-                    },
-                    maxHeight: "100%"
-
-                  }}
-                />
-
-              </LocalizationProvider>
 
 
 
+          <motion.div
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            className={styles.time} style={step !== 4 && { display: 'none' }}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DigitalClock
+                value={timeValue?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1]}
+                onChange={(newValue) => setTimeValue(newValue?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1])}
+                skipDisabled
+                minTime={dayjs().set('hour', 9).set('minute', 30).second(0)}
+                maxTime={dayjs().set('hour', 17).set('minute', 30)}
+
+                sx={{
+                  '.css-1g2aoka-MuiButtonBase-root-MuiMenuItem-root-MuiDigitalClock-item.Mui-selected':
+                  {
+                    backgroundColor: '#004747 !important',
+                    color: 'white !important'
+                  },
+                  '.css-186wig7.Mui-selected': {
+                    backgroundColor: '#004747 !important',
+                    color: 'white !important'
+                  },
+                  'ul': {
+                    display: 'flex',
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                    alignItems: 'center',
+                    justifyContent: 'flex-start',
+
+                    'li': {
+                      backgroundColor: '#E7EDEC',
+                      borderRadius: '5px',
+                    }
+                  },
+                  maxHeight: "100%"
+
+                }}
+              />
+              {console.log(timeValue)}
+            </LocalizationProvider>
 
 
-              {step === 4 &&
-                selectedDate !== null && asp !== true &&
-                <motion.div
-                  animate={{ opacity: 1 }}
-                  initial={{ opacity: 0 }}
-                  className={styles.selctedDate}
-                >
-                  {timeValue === null &&
-                    <Typography
-                    >
-                      {selectedDate?.$d?.toLocaleDateString()}
-                    </Typography>
-                  }
-                </motion.div >
-              }
 
-              {step === 4 &&
-                timeValue !== null &&
-                <motion.div
-                  animate={{ opacity: 1 }}
-                  initial={{ opacity: 0 }}
-                  className={styles.selctedDate}
-                >
-                  <Typography >
-                    {selectedDate !== null && asp !== true && selectedDate?.$d?.toLocaleDateString()} {timeValue}
+
+
+
+            {step === 4 &&
+              selectedDate !== null && asp !== true &&
+              <motion.div
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                className={styles.selctedDate}
+              >
+                {timeValue === null &&
+                  <Typography
+                  >
+                    Selected date: {selectedDate?.$d?.toLocaleDateString()}
                   </Typography>
-                </motion.div >
-              }
+                }
+              </motion.div >
+            }
+
+            {step === 4 &&
+              timeValue !== null &&
+              <motion.div
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                className={styles.selctedDate}
+              >
+                <Typography >
+                  Selected date: {selectedDate !== null && asp !== true && selectedDate?.$d?.toLocaleDateString()} {timeValue}
+                </Typography>
+              </motion.div >
+            }
 
 
 
-            </motion.div>
-
-          }
+          </motion.div>
 
           {step === 5 &&
             <motion.div

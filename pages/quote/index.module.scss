@@ -32,20 +32,22 @@
       // border-radius: 0;
       // padding: 10px;
       // padding-bottom: 0;
-      // padding-top: 8px;
+      padding: 8px;
       // margin-top: 0;
       // margin-bottom: 0;
       margin-bottom: auto;
       // overflow: hidden;
       box-shadow: inset;
       // height: 100vh;
-
+      margin-top: 8px;
+      margin-bottom: 0;
+      padding-bottom: 0;
       align-items: center;
+      box-shadow: none;
     }
 
     @media screen and (max-width: 400px) {
       background-color: transparent;
-      box-shadow: none;
       padding: 10px;
       padding-bottom: 0;
     }
@@ -105,7 +107,9 @@
         transition: all 0.3s ease;
         cursor: pointer;
         &:hover {
-          color: #8d8d8d;
+          @media screen and (min-width: 992px) {
+            color: #8d8d8d;
+          }
         }
         svg {
           margin-right: 8.37px;
@@ -210,6 +214,11 @@
           font-size: 16px;
           font-weight: var(--font-sem-bold);
           font-family: "Quicksand";
+          padding: 8;
+          @media screen and (max-width: 400px) {
+            font-size: 14px;
+            font-weight: bold;
+          }
 
           svg {
             color: var(--main-green-color);
@@ -278,15 +287,27 @@
           padding-top: 0px;
         }
 
-        li {
-          color: var(--main-dark-color);
+        ul {
+          display: flex;
+          // align-items: center;
+          justify-content: flex-start;
+          li {
+            color: var(--main-dark-color);
+            margin: 4px;
+
+            width: 95px;
+            padding: 0;
+            padding: 8px;
+            @media screen and (min-width: 450px) {
+            }
+          }
         }
       }
 
       .selctedDate {
         margin-bottom: 8px;
         font-size: 18px;
-        text-align: center;
+        text-align: left;
         margin-top: 8px;
         p {
           color: var(--main-dark-color);
@@ -524,7 +545,7 @@
       margin-top: auto;
 
       @media screen and (max-width: 450px) {
-        margin-top: 8px;
+        // margin-top: 8px;
         margin-bottom: 16px;
       }
     }
