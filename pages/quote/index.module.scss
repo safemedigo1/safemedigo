@@ -218,7 +218,9 @@
 
     .form_2 {
       display: block !important;
-
+      @media screen and (max-width: 450px) {
+        margin-bottom: auto;
+      }
       .step_2 {
         width: 100%;
         label {
@@ -516,12 +518,20 @@
 
     .continue_btn {
       margin-top: auto;
+
+      @media screen and (max-width: 450px) {
+        margin-top: 8px;
+        margin-bottom: 16px;
+      }
     }
 
     .step_8_container {
       display: flex;
       align-items: center;
       flex-direction: column;
+      @media screen and (max-width: 450px) {
+        margin-bottom: auto;
+      }
       .icon_container {
         background-color: #00f3bb;
         border-radius: 50%;
