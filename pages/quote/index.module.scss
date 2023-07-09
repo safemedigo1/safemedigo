@@ -13,6 +13,10 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
+    overflow: -webkit-hidden; /* Google Chrome and Safari */
+    overflow: -moz-hidden; /* Mozilla Firefox */
+    overflow: -ms-hidden; /* Microsoft Edge and Internet Explorer */
+    overflow: -o-hidden; /* Opera */
   }
 
   .quote_card {
@@ -39,6 +43,12 @@
       // margin-top: 0;
       // margin-bottom: 0;
       // overflow: hidden;
+
+      overflow: hidden;
+      overflow: -webkit-hidden; /* Google Chrome and Safari */
+      overflow: -moz-hidden; /* Mozilla Firefox */
+      overflow: -ms-hidden; /* Microsoft Edge and Internet Explorer */
+      overflow: -o-hidden; /* Opera */
       box-shadow: inset;
       // height: 100vh;
       margin: 0;
@@ -59,6 +69,7 @@
       background-color: transparent;
       padding: 10px;
       padding-bottom: 0;
+      padding-top: 0;
     }
 
     .header {
@@ -95,6 +106,10 @@
         right: 0;
         top: 0;
         cursor: pointer;
+
+        @media screen and (max-width: 400px) {
+          top: 16px;
+        }
         svg {
           font-size: 30px;
           transition: all 0.3s ease;
@@ -115,6 +130,10 @@
         color: var(--main-dark-color);
         transition: all 0.3s ease;
         cursor: pointer;
+
+        @media screen and (max-width: 400px) {
+          top: 16px;
+        }
         &:hover {
           @media screen and (min-width: 992px) {
             color: #8d8d8d;
