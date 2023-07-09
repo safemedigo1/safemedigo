@@ -347,30 +347,6 @@ const quote = () => {
 
           }
 
-          {step === 4 &&
-            selectedDate !== null && asp !== true &&
-            <motion.div
-              animate={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-            >
-              <Typography
-                className={styles.selctedDate}>
-                Selected Date: {selectedDate?.$d?.toLocaleDateString()}
-              </Typography>
-            </motion.div >
-          }
-
-          {step === 4 &&
-            timeValue !== null &&
-            <motion.div
-              animate={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-            >
-              <Typography className={styles.selctedDate}>
-                Selected Time: {timeValue}
-              </Typography>
-            </motion.div >
-          }
 
           {step === 4 &&
             asp && selectedDate === null && timeValue === null &&
@@ -468,6 +444,42 @@ const quote = () => {
                 />
 
               </LocalizationProvider>
+
+
+
+
+
+              {step === 4 &&
+                selectedDate !== null && asp !== true &&
+                <motion.div
+                  animate={{ opacity: 1 }}
+                  initial={{ opacity: 0 }}
+                  className={styles.selctedDate}
+                >
+                  {timeValue === null &&
+                    <Typography
+                    >
+                      {selectedDate?.$d?.toLocaleDateString()}
+                    </Typography>
+                  }
+                </motion.div >
+              }
+
+              {step === 4 &&
+                timeValue !== null &&
+                <motion.div
+                  animate={{ opacity: 1 }}
+                  initial={{ opacity: 0 }}
+                  className={styles.selctedDate}
+                >
+                  <Typography >
+                    {selectedDate !== null && asp !== true && selectedDate?.$d?.toLocaleDateString()} {timeValue}
+                  </Typography>
+                </motion.div >
+              }
+
+
+
             </motion.div>
 
           }
