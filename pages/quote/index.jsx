@@ -21,6 +21,7 @@ import { motion } from "framer-motion";
 import { BsCheckLg } from 'react-icons/bs';
 import Link from 'next/link';
 import ProgressBar from "@ramonak/react-progress-bar";
+import { Container } from '@mui/material';
 
 
 const quote = () => {
@@ -135,59 +136,60 @@ const quote = () => {
 
 
   return (
-    <div className={styles.card_wrapper}>
-      <div className={styles.quote_card}>
+    <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+      <div className={styles.card_wrapper}>
+        <div className={styles.quote_card}>
 
-        {step <= 5 &&
-          <div className={styles.progressBar}>
-            <ProgressBar
-              completed={step}
-              bgColor="#00ccb5"
-              height="8px"
-              isLabelVisible={false}
-              maxCompleted={5}
-              borderRadius="5px"
-            />
-          </div>
-        }
-
-        {step !== 7 &&
-          <div className={styles.header}>
-            {step !== 6 &&
-              <button onClick={handleGoBack} className={styles.navbar__logo}>
-                <Image
-                  src={logo.src}
-                  alt="Picture of the author"
-                  width={51.34}
-                  height={45}
-                />
-                <h1>Safemedigo</h1>
-              </button>
-            }
-
-            <div className={styles.close} onClick={handleGoBack}>
-              <CloseIcon />
+          {step <= 5 &&
+            <div className={styles.progressBar}>
+              <ProgressBar
+                completed={step}
+                bgColor="#00ccb5"
+                height="8px"
+                isLabelVisible={false}
+                maxCompleted={5}
+                borderRadius="5px"
+              />
             </div>
+          }
 
-            {step >= 2 &&
-              <div className={styles.back} onClick={prevStep}>
-                <Typography>
-                  Back
-                </Typography>
-                <FaArrowLeft />
+          {step !== 7 &&
+            <div className={styles.header}>
+              {step !== 6 &&
+                <button onClick={handleGoBack} className={styles.navbar__logo}>
+                  <Image
+                    src={logo.src}
+                    alt="Picture of the author"
+                    width={51.34}
+                    height={45}
+                  />
+                  <h1>Safemedigo</h1>
+                </button>
+              }
+
+              <div className={styles.close} onClick={handleGoBack}>
+                <CloseIcon />
               </div>
-            }
 
-          </div>
-        }
+              {step >= 2 &&
+                <div className={styles.back} onClick={prevStep}>
+                  <Typography>
+                    Back
+                  </Typography>
+                  <FaArrowLeft />
+                </div>
+              }
 
-        {step === 1 &&
-          <div className={styles.desc}>
-            <Typography>Hi, Thank You For Choosing Safemedigo For Your Healthcare Journey. We Prioritize Your Safety And Strive For A Smooth Experience.</Typography>
-          </div>
-        }
+            </div>
+          }
 
-        {/* 
+          {step === 1 &&
+            <div className={styles.desc}>
+              <Typography>Hi, Thank You For Choosing Safemedigo For Your Healthcare Journey. We Prioritize Your Safety And Strive For A Smooth Experience.</Typography>
+            </div>
+          }
+
+          {/* 
           {step < 6 &&
             <div className={styles.steps}>
               <div className={styles.step}>
@@ -202,65 +204,88 @@ const quote = () => {
             </div>
           } */}
 
-        {step === 5 &&
-          <motion.h4
+          {step === 5 &&
+            <motion.h4
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              style={{ fontWeight: 'bold' }}
+              className={styles.question}>
+              Please Provide Your Contact Details.
+              <span style={{ color: 'red' }}>*</span>
+            </motion.h4>
+          }
+          <div className={styles.question}>
+            {step === 1 &&
+              <motion.h4
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+              >
+                What Would You Like To Do?
+              </motion.h4 >
+            }
+            {step === 2 &&
+              <motion.h4
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+              >
+                Who Is This Treatment For?
+              </motion.h4 >
+            }
+            {step === 3 &&
+              <motion.h4
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+              >
+                Select Date
+              </motion.h4 >
+
+            }
+            {step === 4 &&
+              <motion.h4
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+              >
+                Select Time
+              </motion.h4 >
+            }
+
+          </div>
+
+
+
+
+          <motion.form
             animate={{ opacity: 1 }}
             initial={{ opacity: 0 }}
-            style={{ fontWeight: 'bold' }}
-            className={styles.question}>
-            Please Provide Your Contact Details.
-            <span style={{ color: 'red' }}>*</span>
-          </motion.h4>
-        }
-        <div className={styles.question}>
-          {step === 1 &&
-            <motion.h4
-              animate={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-            >
-              What Would You Like To Do?
-            </motion.h4 >
-          }
-          {step === 2 &&
-            <motion.h4
-              animate={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-            >
-              Who Is This Treatment For?
-            </motion.h4 >
-          }
-          {step === 3 &&
-            <motion.h4
-              animate={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-            >
-              Select Date
-            </motion.h4 >
+            className={step === 1 && styles.form_1 || step === 2 && styles.form_2 || step === 3 && styles.form_3 || step === 4 && styles.form_4 || step === 5 && styles.form_5}>
 
-          }
-          {step === 4 &&
-            <motion.h4
-              animate={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-            >
-              Select Time
-            </motion.h4 >
-          }
+            {step === 1 &&
+              <>
+                {treatments.map((treatment) =>
+                  <FormControlLabel
+                    sx={{
+                      marginLeft: 0
 
-        </div>
+                    }}
+                    required control={<Checkbox sx={{
+                      color: '#004747',
+                      '.Mui-checked': {
+                        color: '#004747 ',
+                      },
+                      '.MuiCheckbox-colorSecondary.Mui-checked': {
+                        color: '#004747 ',
+                      },
+                      '.MuiIconButton-root': {
+                        color: '#004747 ',
+                      },
+                      marginLeft: 0
 
+                    }} />} label={treatment.title} />
+                )}
 
-
-
-        <motion.form
-          animate={{ opacity: 1 }}
-          initial={{ opacity: 0 }}
-          className={step === 1 && styles.form_1 || step === 2 && styles.form_2 || step === 3 && styles.form_3 || step === 4 && styles.form_4 || step === 5 && styles.form_5}>
-
-          {step === 1 &&
-            <>
-              {treatments.map((treatment) =>
                 <FormControlLabel
+                  className={styles.last_child}
+
                   sx={{
                     marginLeft: 0
 
@@ -278,251 +303,20 @@ const quote = () => {
                     },
                     marginLeft: 0
 
-                  }} />} label={treatment.title} />
-              )}
+                  }} />} label={"Others"} className={styles.last_child} />
+              </>
 
-              <FormControlLabel
-                className={styles.last_child}
-
-                sx={{
-                  marginLeft: 0
-
-                }}
-                required control={<Checkbox sx={{
-                  color: '#004747',
-                  '.Mui-checked': {
-                    color: '#004747 ',
-                  },
-                  '.MuiCheckbox-colorSecondary.Mui-checked': {
-                    color: '#004747 ',
-                  },
-                  '.MuiIconButton-root': {
-                    color: '#004747 ',
-                  },
-                  marginLeft: 0
-
-                }} />} label={"Others"} className={styles.last_child} />
-            </>
-
-          }
-
-
-
-
-
-          {step === 2 &&
-            <motion.div
-              animate={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-              className={styles.step_2}>
-              <FormControlLabel required control={<Checkbox sx={{
-                color: '#004747',
-                '.Mui-checked': {
-                  color: '#004747 ',
-                },
-                '.MuiCheckbox-colorSecondary.Mui-checked': {
-                  color: '#004747 ',
-                },
-                '.MuiIconButton-root': {
-                  color: '#004747 ',
-                },
-
-
-              }} />} label={"I Am Looking For Myself"} />
-              <FormControlLabel required control={<Checkbox sx={{
-                color: '#004747',
-                '.Mui-checked': {
-                  color: '#004747 ',
-                },
-                '.MuiCheckbox-colorSecondary.Mui-checked': {
-                  color: '#004747 ',
-                },
-                '.MuiIconButton-root': {
-                  color: '#004747 ',
-                },
-
-
-              }} />} label={"I Am Looking For Someone Else"} />
-            </motion.div>
-
-          }
-
-
-          {step === 4 &&
-            asp && selectedDate === null && timeValue === null &&
-            <motion.p
-              animate={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-              style={{ marginTop: 0, fontWeight: 'bold' }}
-              className={styles.selctedDate}>
-              Selected Time: As Soon As Possible
-            </motion.p>
-
-          }
-
-          <div className={styles.date}>
-            {
-              step === 3 &&
-              <motion.div
-                animate={{ opacity: 1 }}
-                initial={{ opacity: 0 }}
-              >
-
-                <LocalizationProvider dateAdapter={AdapterDayjs} datePicker={datePicker}>
-                  <DateCalendar
-                    value={selectedDate}
-                    onChange={(newDateVal) => setSelectedDate(dayjs(newDateVal))}
-                    format="MM/dd/yyyy"
-                    inputVariant="outlined"
-                    label="Select a date"
-                    minDate={dayjs()}
-
-                    sx={{
-                      '.css-wngcaj-MuiButtonBase-root-MuiPickersDay-root.Mui-selected ':
-                      {
-                        backgroundColor: '#004747 !important',
-                        color: 'white !important'
-                      },
-                      '.css-15a9mqf-MuiPickersYear-yearButton.Mui-selected': {
-                        backgroundColor: '#004747 !important',
-                        color: 'white !important'
-                      },
-                      '.css-vu42c1.Mui-selected': {
-                        backgroundColor: '#004747 !important',
-                        color: 'white !important'
-                      }
-
-                    }}
-                  />
-                </LocalizationProvider>
-
-              </motion.div>
             }
 
 
-          </div>
-
-
-          {step === 4 &&
-            <motion.div
-              animate={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-              className={styles.time}>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DigitalClock
-                  value={timeValue?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1]}
-                  onChange={(newValue) => setTimeValue(newValue?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1])}
-                  skipDisabled
-                  minTime={dayjs().set('hour', 9).set('minute', 30).second(0)}
-                  maxTime={dayjs().set('hour', 17).set('minute', 30)}
-
-                  sx={{
-                    '.css-1g2aoka-MuiButtonBase-root-MuiMenuItem-root-MuiDigitalClock-item.Mui-selected':
-                    {
-                      backgroundColor: '#004747 !important',
-                      color: 'white !important'
-                    },
-                    '.css-186wig7.Mui-selected': {
-                      backgroundColor: '#004747 !important',
-                      color: 'white !important'
-                    },
-                    'ul': {
-                      display: 'flex',
-                      flexDirection: 'row',
-                      flexWrap: 'wrap',
-                      alignItems: 'center',
-                      justifyContent: 'flex-start',
-
-                      'li': {
-                        background: '#E7EDEC',
-                        borderRadius: '5px',
-                      }
-                    },
-                    maxHeight: "100%"
-
-                  }}
-                />
-
-              </LocalizationProvider>
 
 
 
-
-
-              {step === 4 &&
-                selectedDate !== null && asp !== true &&
-                <motion.div
-                  animate={{ opacity: 1 }}
-                  initial={{ opacity: 0 }}
-                  className={styles.selctedDate}
-                >
-                  {timeValue === null &&
-                    <Typography
-                    >
-                      {selectedDate?.$d?.toLocaleDateString()}
-                    </Typography>
-                  }
-                </motion.div >
-              }
-
-              {step === 4 &&
-                timeValue !== null &&
-                <motion.div
-                  animate={{ opacity: 1 }}
-                  initial={{ opacity: 0 }}
-                  className={styles.selctedDate}
-                >
-                  <Typography >
-                    {selectedDate !== null && asp !== true && selectedDate?.$d?.toLocaleDateString()} {timeValue}
-                  </Typography>
-                </motion.div >
-              }
-
-
-
-            </motion.div>
-
-          }
-
-          {step === 5 &&
-            <motion.div
-              animate={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-              className={styles.form_container}>
-              <div className={styles.username}>
-                <div className={styles.f_name}>
-                  <label htmlFor="f_name">First Name <span>*</span></label>
-                  <input onBlur={handleBlur} required type="text" name='f_name' placeholder='John' />
-                </div>
-                <div className={styles.l_name}>
-                  <label htmlFor="l_name">Last Name <span>*</span></label>
-                  <input onBlur={handleBlur} required type="text" name='l_name' placeholder='Doe' />
-                </div>
-              </div>
-
-              <div className={styles.phone}>
-                <label htmlFor="phone">Phone Number <span>*</span></label>
-
-                <PhoneInput
-                  country={'tr'}
-                  value={phoneNum}
-                  onChange={newPhoneVal => setPhoneNum(newPhoneVal)}
-                  onBlur={handleBlur}
-                  inputProps={{
-                    name: 'phone',
-                    required: true,
-                  }}
-                />
-
-              </div>
-
-              <div className={styles.email}>
-                <label htmlFor="email">Email <span>*</span></label>
-                <input onBlur={handleBlur} required type="email" name='email' placeholder='example@gmail.com' />
-              </div>
-
-
-              <div className={styles.terms_label}>
+            {step === 2 &&
+              <motion.div
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                className={styles.step_2}>
                 <FormControlLabel required control={<Checkbox sx={{
                   color: '#004747',
                   '.Mui-checked': {
@@ -536,107 +330,317 @@ const quote = () => {
                   },
 
 
+                }} />} label={"I Am Looking For Myself"} />
+                <FormControlLabel required control={<Checkbox sx={{
+                  color: '#004747',
+                  '.Mui-checked': {
+                    color: '#004747 ',
+                  },
+                  '.MuiCheckbox-colorSecondary.Mui-checked': {
+                    color: '#004747 ',
+                  },
+                  '.MuiIconButton-root': {
+                    color: '#004747 ',
+                  },
 
-                }} />} label={"I agree to my given details including health data may be processed by Safemedigo for the purpose of obtaining quotes. This includes the transfer of my data to healthcare providers. The consent can be revoked at any time with effect for the future.*"} />
+
+                }} />} label={"I Am Looking For Someone Else"} />
+              </motion.div>
+
+            }
+
+
+            {step === 4 &&
+              asp && selectedDate === null && timeValue === null &&
+              <motion.p
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                style={{ marginTop: 0, fontWeight: 'bold' }}
+                className={styles.selctedDate}>
+                Selected Time: As Soon As Possible
+              </motion.p>
+
+            }
+
+            <div className={styles.date}>
+              {
+                step === 3 &&
+                <motion.div
+                  animate={{ opacity: 1 }}
+                  initial={{ opacity: 0 }}
+                >
+
+                  <LocalizationProvider dateAdapter={AdapterDayjs} datePicker={datePicker}>
+                    <DateCalendar
+                      value={selectedDate}
+                      onChange={(newDateVal) => setSelectedDate(dayjs(newDateVal))}
+                      format="MM/dd/yyyy"
+                      inputVariant="outlined"
+                      label="Select a date"
+                      minDate={dayjs()}
+
+                      sx={{
+                        '.css-wngcaj-MuiButtonBase-root-MuiPickersDay-root.Mui-selected ':
+                        {
+                          backgroundColor: '#004747 !important',
+                          color: 'white !important'
+                        },
+                        '.css-15a9mqf-MuiPickersYear-yearButton.Mui-selected': {
+                          backgroundColor: '#004747 !important',
+                          color: 'white !important'
+                        },
+                        '.css-vu42c1.Mui-selected': {
+                          backgroundColor: '#004747 !important',
+                          color: 'white !important'
+                        }
+
+                      }}
+                    />
+                  </LocalizationProvider>
+
+                </motion.div>
+              }
+
+
+            </div>
+
+
+            {step === 4 &&
+              <motion.div
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                className={styles.time}>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DigitalClock
+                    value={timeValue?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1]}
+                    onChange={(newValue) => setTimeValue(newValue?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1])}
+                    skipDisabled
+                    minTime={dayjs().set('hour', 9).set('minute', 30).second(0)}
+                    maxTime={dayjs().set('hour', 17).set('minute', 30)}
+
+                    sx={{
+                      '.css-1g2aoka-MuiButtonBase-root-MuiMenuItem-root-MuiDigitalClock-item.Mui-selected':
+                      {
+                        backgroundColor: '#004747 !important',
+                        color: 'white !important'
+                      },
+                      '.css-186wig7.Mui-selected': {
+                        backgroundColor: '#004747 !important',
+                        color: 'white !important'
+                      },
+                      'ul': {
+                        display: 'flex',
+                        flexDirection: 'row',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        justifyContent: 'flex-start',
+
+                        'li': {
+                          background: '#E7EDEC',
+                          borderRadius: '5px',
+                        }
+                      },
+                      maxHeight: "100%"
+
+                    }}
+                  />
+
+                </LocalizationProvider>
+
+
+
+
+
+                {step === 4 &&
+                  selectedDate !== null && asp !== true &&
+                  <motion.div
+                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0 }}
+                    className={styles.selctedDate}
+                  >
+                    {timeValue === null &&
+                      <Typography
+                      >
+                        {selectedDate?.$d?.toLocaleDateString()}
+                      </Typography>
+                    }
+                  </motion.div >
+                }
+
+                {step === 4 &&
+                  timeValue !== null &&
+                  <motion.div
+                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0 }}
+                    className={styles.selctedDate}
+                  >
+                    <Typography >
+                      {selectedDate !== null && asp !== true && selectedDate?.$d?.toLocaleDateString()} {timeValue}
+                    </Typography>
+                  </motion.div >
+                }
+
+
+
+              </motion.div>
+
+            }
+
+            {step === 5 &&
+              <motion.div
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                className={styles.form_container}>
+                <div className={styles.username}>
+                  <div className={styles.f_name}>
+                    <label htmlFor="f_name">First Name <span>*</span></label>
+                    <input onBlur={handleBlur} required type="text" name='f_name' placeholder='John' />
+                  </div>
+                  <div className={styles.l_name}>
+                    <label htmlFor="l_name">Last Name <span>*</span></label>
+                    <input onBlur={handleBlur} required type="text" name='l_name' placeholder='Doe' />
+                  </div>
+                </div>
+
+                <div className={styles.phone}>
+                  <label htmlFor="phone">Phone Number <span>*</span></label>
+
+                  <PhoneInput
+                    country={'tr'}
+                    value={phoneNum}
+                    onChange={newPhoneVal => setPhoneNum(newPhoneVal)}
+                    onBlur={handleBlur}
+                    inputProps={{
+                      name: 'phone',
+                      required: true,
+                    }}
+                  />
+
+                </div>
+
+                <div className={styles.email}>
+                  <label htmlFor="email">Email <span>*</span></label>
+                  <input onBlur={handleBlur} required type="email" name='email' placeholder='example@gmail.com' />
+                </div>
+
+
+                <div className={styles.terms_label}>
+                  <FormControlLabel required control={<Checkbox sx={{
+                    color: '#004747',
+                    '.Mui-checked': {
+                      color: '#004747 ',
+                    },
+                    '.MuiCheckbox-colorSecondary.Mui-checked': {
+                      color: '#004747 ',
+                    },
+                    '.MuiIconButton-root': {
+                      color: '#004747 ',
+                    },
+
+
+
+                  }} />} label={"I agree to my given details including health data may be processed by Safemedigo for the purpose of obtaining quotes. This includes the transfer of my data to healthcare providers. The consent can be revoked at any time with effect for the future.*"} />
+                </div>
+
+              </motion.div>
+            }
+
+          </motion.form>
+
+
+          {step === 6 &&
+            <motion.div
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+
+              className={styles.conf_code}>
+              <div className={styles.title}>
+                <Typography variant={'h3'}>
+                  Confirmation Message
+                </Typography>
+              </div>
+              <div className={styles.desc}>
+                <Typography>We Want To Make Sure It Is You. In Order To Further Verify Your Identity, Enter The Verification Code That Was Sent To:</Typography>
               </div>
 
+              <div className={styles.mobile_num}>
+                <Typography>
+                  (+20)013 313 1302
+                </Typography>
+              </div>
+              <div className="input">
+
+                <AuthCode onBlur={handleBlur} containerClassName={styles.input_container} length={4} allowedCharacters='numeric' onChange={handleOnChange} />
+              </div>
+              <div className={styles.resend}>
+                <Typography>
+                  Didn't receive an email? <button>Resend?</button>
+                </Typography>
+              </div>
             </motion.div>
           }
 
-        </motion.form>
 
+          {step === 7 &&
+            <motion.div
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
 
-        {step === 6 &&
-          <motion.div
-            animate={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-
-            className={styles.conf_code}>
-            <div className={styles.title}>
-              <Typography variant={'h3'}>
-                Confirmation Message
-              </Typography>
-            </div>
-            <div className={styles.desc}>
-              <Typography>We Want To Make Sure It Is You. In Order To Further Verify Your Identity, Enter The Verification Code That Was Sent To:</Typography>
-            </div>
-
-            <div className={styles.mobile_num}>
-              <Typography>
-                (+20)013 313 1302
-              </Typography>
-            </div>
-            <div className="input">
-
-              <AuthCode onBlur={handleBlur} containerClassName={styles.input_container} length={4} allowedCharacters='numeric' onChange={handleOnChange} />
-            </div>
-            <div className={styles.resend}>
-              <Typography>
-                Didn't receive an email? <button>Resend?</button>
-              </Typography>
-            </div>
-          </motion.div>
-        }
-
-
-        {step === 7 &&
-          <motion.div
-            animate={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-
-          >
-            <div className={styles.step_8_container}>
-              <div className={styles.icon_container}>
-                <BsCheckLg />
+            >
+              <div className={styles.step_8_container}>
+                <div className={styles.icon_container}>
+                  <BsCheckLg />
+                </div>
+                <div className={styles.title}>
+                  <Typography variant='h3'>We Got Your Request</Typography>
+                </div>
+                <div className={styles.desc}>
+                  <Typography>Thank You For Your Submission. Our Team Will Evaluate Your Request And Respond To You In A Timely Manner</Typography>
+                </div>
               </div>
-              <div className={styles.title}>
-                <Typography variant='h3'>We Got Your Request</Typography>
-              </div>
-              <div className={styles.desc}>
-                <Typography>Thank You For Your Submission. Our Team Will Evaluate Your Request And Respond To You In A Timely Manner</Typography>
-              </div>
+            </motion.div>
+
+          }
+
+
+
+          {step === 3 &&
+            <div className={styles.asp_btn} onClick={handleAsp}>
+              <button>I Want As Soon As Possible</button>
             </div>
-          </motion.div>
+          }
 
-        }
+          {step < 3 &&
+            <div className={styles.continue_btn} onClick={nextStep}>
+              <button>Continue</button>
+            </div>
+          }
 
+          {step === 7 &&
+            <div className={styles.continue_btn} >
+              <Link href='/'>
+                <button>
+                  Done
+                </button>
+              </Link>
+            </div>
+          }
 
+          {step === 6 &&
+            <div className={styles.continue_btn} onClick={nextStep}>
+              <button>Continue</button>
+            </div>
+          }
 
-        {step === 3 &&
-          <div className={styles.asp_btn} onClick={handleAsp}>
-            <button>I Want As Soon As Possible</button>
-          </div>
-        }
-
-        {step < 3 &&
-          <div className={styles.continue_btn} onClick={nextStep}>
-            <button>Continue</button>
-          </div>
-        }
-
-        {step === 7 &&
-          <div className={styles.continue_btn} >
-            <Link href='/'>
-              <button>
-                Done
-              </button>
-            </Link>
-          </div>
-        }
-
-        {step === 6 &&
-          <div className={styles.continue_btn} onClick={nextStep}>
-            <button>Continue</button>
-          </div>
-        }
-
-        {step === 5 &&
-          <div className={styles.continue_btn} onClick={nextStep}>
-            <button>Send Inquiry</button>
-          </div>
-        }
+          {step === 5 &&
+            <div className={styles.continue_btn} onClick={nextStep}>
+              <button>Send Inquiry</button>
+            </div>
+          }
+        </div>
       </div>
-    </div>
+    </Container >
+
   )
 }
 
