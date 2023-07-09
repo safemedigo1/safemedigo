@@ -1,13 +1,12 @@
-.progressBar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
 .card_wrapper {
   display: flex;
   position: relative;
+  .progressBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
 
   @media screen and (max-width: 992px) {
     width: 100%;
