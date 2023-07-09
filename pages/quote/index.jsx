@@ -46,7 +46,7 @@ const quote = () => {
   const handleAsp = () => {
     setAsp(true)
     setTimeValue(null)
-    setStep(step + 1);
+    setStep(step + 2);
   }
 
   function handleGoBack() {
@@ -108,11 +108,11 @@ const quote = () => {
 
 
 
-  useEffect(() => {
-    if (asp) {
-      setStep(step + 1)
-    }
-  }, [asp])
+  // useEffect(() => {
+  //   if (asp) {
+  //     setStep(step + 1)
+  //   }
+  // }, [asp])
 
   useEffect(() => {
     if (selectedDate !== null) {

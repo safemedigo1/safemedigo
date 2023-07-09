@@ -12,18 +12,16 @@
     align-items: center;
     padding: 27px 24px;
     position: relative;
-    min-height: 580px;
+    min-height: 400px;
 
     @media screen and (max-width: 450px) {
       width: 100%;
       border-radius: 0;
       padding: 10px;
       padding-bottom: 0;
-      padding-top: 0;
+      padding-top: 8px;
       margin-top: 0;
       margin-bottom: 0;
-
-      // min-height: 580px;
     }
 
     @media screen and (max-width: 400px) {
@@ -54,7 +52,7 @@
         display: flex;
         margin-bottom: 8px;
 
-        @media screen and (max-width: 400px) {
+        @media screen and (max-width: 450px) {
           margin-top: 10px;
           margin-bottom: 0;
         }
@@ -160,7 +158,7 @@
     .question {
       align-self: flex-start;
       margin-bottom: 8px;
-      @media screen and (max-width: 400px) {
+      @media screen and (max-width: 450px) {
         margin-top: 0 !important;
       }
 
