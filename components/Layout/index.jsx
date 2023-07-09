@@ -4,7 +4,7 @@ import Footer from "../Footer";
 import { useRouter } from "next/router";
 import { Box } from "@mui/material";
 
-export default function Layout({ children }, props) {
+export default function Layout({ children }) {
   const router = useRouter();
   const { pathname } = router;
 

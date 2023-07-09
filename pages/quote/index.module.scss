@@ -587,6 +587,13 @@
       }
     }
 
+    .continue_btn_sec {
+      button {
+        background-color: #0047479c !important;
+        cursor: not-allowed !important;
+      }
+    }
+
     .step_8_container {
       display: flex;
       align-items: center;
@@ -634,7 +641,8 @@
     }
 
     .continue_btn,
-    .asp_btn {
+    .asp_btn,
+    .continue_btn_sec {
       width: 100%;
       button {
         cursor: pointer;

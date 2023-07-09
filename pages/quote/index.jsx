@@ -68,6 +68,10 @@ const quote = () => {
     { title: 'Penile Prosthesis' },
     { title: 'Coronary Artery' },
   ]
+  const question = [
+    { title: 'I Am Looking For Myself' },
+    { title: 'I Am Looking For Someone Else' },
+  ]
 
 
   const nextStep = (e) => {
@@ -138,9 +142,30 @@ const quote = () => {
 
   // Dagte Range
 
+  const [selectedValues, setSelectedValues] = useState([]);
+  const [forValues, setForValues] = useState([]);
 
+  const handleforValues = (event) => {
+    const value = event.target.value;
+    const checked = event.target.checked;
 
+    if (checked) {
+      setForValues([...forValues, value]);
+    } else {
+      setForValues(forValues.filter((val) => val !== value));
+    }
+  };
 
+  const handleCheckboxChange = (event) => {
+    const value = event.target.value;
+    const checked = event.target.checked;
+
+    if (checked) {
+      setSelectedValues([...selectedValues, value]);
+    } else {
+      setSelectedValues(selectedValues.filter((val) => val !== value));
+    }
+  };
 
 
 
@@ -271,26 +296,33 @@ const quote = () => {
 
             {step === 1 &&
               <>
-                {treatments.map((treatment) =>
+                {treatments.map((treatment, index) =>
                   <FormControlLabel
+                    key={index}
+
                     sx={{
                       marginLeft: 0
 
                     }}
-                    required control={<Checkbox sx={{
-                      color: '#004747',
-                      '.Mui-checked': {
-                        color: '#004747 ',
-                      },
-                      '.MuiCheckbox-colorSecondary.Mui-checked': {
-                        color: '#004747 ',
-                      },
-                      '.MuiIconButton-root': {
-                        color: '#004747 ',
-                      },
-                      marginLeft: 0
+                    required
+                    control={<Checkbox
+                      value={treatment.title}
+                      checked={selectedValues.includes(treatment.title)}
+                      onChange={handleCheckboxChange}
+                      sx={{
+                        color: '#004747',
+                        '.Mui-checked': {
+                          color: '#004747 ',
+                        },
+                        '.MuiCheckbox-colorSecondary.Mui-checked': {
+                          color: '#004747 ',
+                        },
+                        '.MuiIconButton-root': {
+                          color: '#004747 ',
+                        },
+                        marginLeft: 0
 
-                    }} />} label={treatment.title} />
+                      }} />} label={treatment.title} />
                 )}
 
                 <FormControlLabel
@@ -300,6 +332,11 @@ const quote = () => {
                     marginLeft: 0
 
                   }}
+
+                  value={"Others"}
+                  checked={selectedValues.includes("Others")}
+                  onChange={handleCheckboxChange}
+
                   required control={<Checkbox sx={{
                     color: '#004747',
                     '.Mui-checked': {
@@ -323,34 +360,32 @@ const quote = () => {
                 animate={{ opacity: 1 }}
                 initial={{ opacity: 0 }}
                 className={styles.step_2}>
-                <FormControlLabel required control={<Checkbox sx={{
-                  color: '#004747',
-                  '.Mui-checked': {
-                    color: '#004747 ',
-                  },
-                  '.MuiCheckbox-colorSecondary.Mui-checked': {
-                    color: '#004747 ',
-                  },
-                  '.MuiIconButton-root': {
-                    color: '#004747 ',
-                  },
+
+                {question.map((q, index) => (
+                  <FormControlLabel
+                    key={index}
+                    value={q.title}
+                    checked={forValues.includes(q.title)}
+                    onChange={handleforValues}
+
+                    required
+                    control={<Checkbox sx={{
+                      color: '#004747',
+                      '.Mui-checked': {
+                        color: '#004747 ',
+                      },
+                      '.MuiCheckbox-colorSecondary.Mui-checked': {
+                        color: '#004747 ',
+                      },
+                      '.MuiIconButton-root': {
+                        color: '#004747 ',
+                      },
 
 
-                }} />} label={"I Am Looking For Myself"} />
-                <FormControlLabel required control={<Checkbox sx={{
-                  color: '#004747',
-                  '.Mui-checked': {
-                    color: '#004747 ',
-                  },
-                  '.MuiCheckbox-colorSecondary.Mui-checked': {
-                    color: '#004747 ',
-                  },
-                  '.MuiIconButton-root': {
-                    color: '#004747 ',
-                  },
+                    }} />} label={q.title} />
+                ))}
 
 
-                }} />} label={"I Am Looking For Someone Else"} />
               </motion.div>
 
             }
@@ -450,7 +485,6 @@ const quote = () => {
 
                   }}
                 />
-                {console.log(timeValue)}
               </LocalizationProvider>
 
 
@@ -617,8 +651,19 @@ const quote = () => {
             </div>
           }
 
-          {step < 3 &&
-            <div className={styles.continue_btn} onClick={nextStep}>
+          {step === 1 &&
+
+            selectedValues.length === 0 ? < div className={styles.continue_btn_sec} >
+            <button>Continue</button>
+          </div> : < div className={styles.continue_btn} onClick={nextStep}>
+            <button>Continue</button>
+          </div>
+
+          }
+
+          {step === 2 &&
+
+            forValues.length === 0 && < div className={styles.continue_btn_sec} >
               <button>Continue</button>
             </div>
           }
@@ -645,7 +690,7 @@ const quote = () => {
             </div>
           }
         </div>
-      </div>
+      </div >
     </>
 
   )
