@@ -578,8 +578,9 @@
       }
     }
 
-    .continue_btn {
-      margin-top: auto;
+    .continue_btn,
+    .continue_btn_sec {
+      // margin-top: auto;
 
       @media screen and (max-width: 450px) {
         // margin-top: 8px;

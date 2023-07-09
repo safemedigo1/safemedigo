@@ -652,22 +652,36 @@ const quote = () => {
           }
 
           {step === 1 &&
-
-            selectedValues.length === 0 ? < div className={styles.continue_btn_sec} >
-            <button>Continue</button>
-          </div> : < div className={styles.continue_btn} onClick={nextStep}>
-            <button>Continue</button>
-          </div>
-
+            <>
+              {selectedValues.length === 0 &&
+                < div className={styles.continue_btn_sec} >
+                  <button>Continue</button>
+                </div>}
+              {
+                selectedValues.length > 0 &&
+                < div className={styles.continue_btn} onClick={nextStep}>
+                  <button>Continue</button>
+                </div>
+              }
+            </>
           }
-
           {step === 2 &&
-
-            forValues.length === 0 && < div className={styles.continue_btn_sec} >
-              <button>Continue</button>
-            </div>
+            <>
+              {forValues.length === 0 &&
+                < div className={styles.continue_btn_sec} >
+                  <button>Continue</button>
+                </div>}
+              {
+                forValues.length > 0 &&
+                < div className={styles.continue_btn} onClick={nextStep}>
+                  <button>Continue</button>
+                </div>
+              }
+            </>
           }
 
+
+          {console.log(step)}
           {step === 7 &&
             <div className={styles.continue_btn} >
               <Link href='/'>
