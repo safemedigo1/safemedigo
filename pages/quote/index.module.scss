@@ -2,6 +2,13 @@
   display: flex;
   height: 100vh;
   overflow: hidden;
+  position: relative;
+  .progressBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
   .quote_card {
     width: 472px;
     margin: 20px auto;
@@ -12,7 +19,6 @@
     flex-direction: column;
     align-items: center;
     padding: 27px 24px;
-    position: relative;
     // min-height: 400px;
 
     @media screen and (max-width: 992px) {
@@ -35,13 +41,6 @@
       box-shadow: none;
       padding: 10px;
       padding-bottom: 0;
-    }
-
-    .progressBar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
     }
 
     .header {

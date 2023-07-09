@@ -137,20 +137,20 @@ const quote = () => {
 
   return (
     <div className={styles.card_wrapper}>
+      {step <= 5 &&
+        <div className={styles.progressBar}>
+          <ProgressBar
+            completed={step}
+            bgColor="#00ccb5"
+            height="8px"
+            isLabelVisible={false}
+            maxCompleted={5}
+            borderRadius="5px"
+          />
+        </div>
+      }
       <div className={styles.quote_card}>
 
-        {step <= 5 &&
-          <div className={styles.progressBar}>
-            <ProgressBar
-              completed={step}
-              bgColor="#00ccb5"
-              height="8px"
-              isLabelVisible={false}
-              maxCompleted={5}
-              borderRadius="5px"
-            />
-          </div>
-        }
 
         {step !== 7 &&
           <div className={styles.header}>
