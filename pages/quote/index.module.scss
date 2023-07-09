@@ -17,6 +17,13 @@
     overflow: -moz-hidden; /* Mozilla Firefox */
     overflow: -ms-hidden; /* Microsoft Edge and Internet Explorer */
     overflow: -o-hidden; /* Opera */
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 502;
   }
 
   .quote_card {
@@ -57,12 +64,6 @@
       align-items: center;
       box-shadow: none;
       min-height: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 502;
     }
 
     @media screen and (max-width: 400px) {
