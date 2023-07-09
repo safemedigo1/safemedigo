@@ -368,7 +368,6 @@ const quote = () => {
                 animate={{ opacity: 1 }}
                 initial={{ opacity: 0 }}
               >
-
                 <LocalizationProvider dateAdapter={AdapterDayjs} datePicker={datePicker}>
                   <DateCalendar
                     value={selectedDate}
@@ -377,7 +376,6 @@ const quote = () => {
                     inputVariant="outlined"
                     label="Select a date"
                     minDate={dayjs()}
-
                     sx={{
                       '.css-wngcaj-MuiButtonBase-root-MuiPickersDay-root.Mui-selected ':
                       {
@@ -392,7 +390,6 @@ const quote = () => {
                         backgroundColor: '#004747 !important',
                         color: 'white !important'
                       }
-
                     }}
                   />
                 </LocalizationProvider>
