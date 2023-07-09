@@ -31,8 +31,10 @@ html,
 body {
   font-family: "Quicksand" !important;
   scroll-behavior: smooth !important;
+
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
+
   background-color: var(--main-white-color);
 }
 
