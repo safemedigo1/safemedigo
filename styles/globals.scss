@@ -31,7 +31,9 @@ html,
 body {
   font-family: "Quicksand" !important;
   scroll-behavior: smooth !important;
-  height: 100vh;
+  height: 100%;
+  overflow: auto;
+  background-color: var(--main-white-color);
 }
 
 // * {
