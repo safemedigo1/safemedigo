@@ -8,7 +8,7 @@ export default function Layout({ children }, props) {
   const router = useRouter();
   const { pathname } = router;
 
-
+  console.log(children.filter(str => str != ';'))
   return (
     <>
       {pathname !== '/search' & pathname !== '/quote' & pathname !== '/login' & pathname !== '/signup' & pathname != '/editor' ?
@@ -18,7 +18,7 @@ export default function Layout({ children }, props) {
           <Footer />
         </> : <>
           <Box sx={pathname === '/search' | pathname === '/quote' && { background: { lg: '#004747', xlg: '#004747' }, minHeight: '100vh' }}>
-            {children}
+            {children.filter(str => str != ';')}
           </Box>
         </>
 
