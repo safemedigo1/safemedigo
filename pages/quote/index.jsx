@@ -458,8 +458,15 @@ const quote = () => {
                         flexDirection: 'row',
                         flexWrap: 'wrap',
                         alignItems: 'center',
-                        justifyContent: 'center'
-                      }
+                        justifyContent: 'flex-start',
+
+                        'li': {
+                          background: '#E7EDEC',
+                          borderRadius: '5px',
+                        }
+                      },
+                      maxHeight: "100%"
+
                     }}
                   />
 

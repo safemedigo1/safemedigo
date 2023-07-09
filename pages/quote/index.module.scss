@@ -31,6 +31,7 @@
       background-color: transparent;
       box-shadow: none;
       padding: 10px;
+      padding-bottom: 0;
     }
 
     .progressBar {
@@ -107,7 +108,7 @@
       margin-bottom: 16px;
 
       @media screen and (max-width: 400px) {
-        margin-bottom: 8px;
+        margin-bottom: 7px;
       }
 
       p {
@@ -159,6 +160,9 @@
     .question {
       align-self: flex-start;
       margin-bottom: 8px;
+      @media screen and (max-width: 400px) {
+        margin-top: 0 !important;
+      }
 
       h4 {
         color: var(--main-dark-color);
@@ -185,8 +189,8 @@
         grid-column: 1 / span 2;
       }
       label {
-        background-color: #e7edec;
         border-radius: 5px;
+        background-color: #e7edec;
         // min-height: 40px;
         margin-left: 0 !important;
         padding-right: 8px;
@@ -257,7 +261,8 @@
     .form_4 {
       width: 100%;
       .time {
-        background-color: #e7edec;
+        // background-color: #e7edec;
+        height: 100%;
         width: 100%;
         border-radius: 5px;
         margin-bottom: 16px;
