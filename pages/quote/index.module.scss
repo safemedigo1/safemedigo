@@ -1,6 +1,7 @@
 .card_wrapper {
   display: flex;
-
+  height: 100vh;
+  overflow: hidden;
   .quote_card {
     width: 472px;
     margin: 20px auto;
@@ -26,6 +27,7 @@
       margin-top: 0;
       margin-bottom: 0;
       min-height: auto !important;
+      height: 100%;
     }
 
     @media screen and (max-width: 400px) {
