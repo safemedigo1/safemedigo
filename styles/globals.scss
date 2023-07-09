@@ -28,12 +28,12 @@
 }
 
 html,
-body {
+body,
+#__next {
   font-family: "Quicksand" !important;
   scroll-behavior: smooth !important;
 
   height: 100%;
-  overflow: auto;
 
   background-color: var(--main-white-color);
 }

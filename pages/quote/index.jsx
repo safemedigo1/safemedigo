@@ -85,6 +85,7 @@ const quote = () => {
       step !== 1
       setStep(step - 1);
     }
+
   };
 
   useEffect(() => {
