@@ -35,20 +35,15 @@
     align-items: flex-start;
     padding: 27px 24px;
     box-sizing: border-box;
-    min-height: 570px;
+    height: 600px;
 
     @media screen and (max-width: 992px) {
       margin-top: 16px;
     }
     @media screen and (max-width: 450px) {
-      // border-radius: 0;
-      // padding: 10px;
-      // padding-bottom: 0;
       padding: 8px;
-      // margin-top: 0;
-      // margin-bottom: 0;
-      // overflow: hidden;
-
+      padding-top: 0;
+      padding-bottom: 0;
       overflow: hidden;
       overflow: -webkit-hidden; /* Google Chrome and Safari */
       overflow: -moz-hidden; /* Mozilla Firefox */
@@ -580,7 +575,8 @@
 
     .continue_btn,
     .continue_btn_sec {
-      margin-top: auto;
+      margin-top: 16px;
+      // margin-top: auto;
 
       @media screen and (max-width: 450px) {
         // margin-top: 8px;
