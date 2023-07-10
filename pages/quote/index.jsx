@@ -211,7 +211,7 @@ const quote = () => {
     if (updatedFormData && updatedFormData.agree === true) {
       setIsLoading(true)
 
-      const url = `http://localhost:3000/api/sendEmail`;
+      const url = `https://www.safemedigo.com/api/sendEmail`;
       const response = await fetch(url, {
         method: 'POST',
         headers: {
