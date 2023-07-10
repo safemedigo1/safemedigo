@@ -108,14 +108,16 @@
         right: 0;
         top: 0;
         cursor: pointer;
-
         top: 14px;
+
         svg {
           font-size: 30px;
           transition: all 0.3s ease;
           color: var(--main-dark-color);
-          &:hover {
-            color: #8d8d8d;
+          @media screen and (min-width: 992px) {
+            &:hover {
+              color: #8d8d8d;
+            }
           }
         }
       }
@@ -329,9 +331,8 @@
             align-content: space-between;
           }
           li {
-            color: var(--main-dark-color);
             margin: 4px;
-
+            cursor: pointer;
             padding: 0;
             align-items: center;
             justify-content: center;
@@ -351,6 +352,46 @@
             @media screen and (min-width: 450px) {
               margin-top: 8px;
             }
+          }
+        }
+
+        // .any_time {
+        //   display: flex;
+        //   padding: 0;
+        //   margin: 0;
+        //   li {
+        //     cursor: pointer;
+        //     margin: 4px;
+        //     padding: 0;
+        //     align-items: center;
+        //     justify-content: center;
+        //     width: 95px;
+        //     height: 43px;
+        //     color: var(--main-dark-color);
+        //     font-weight: var(--font-bold);
+        //     font-family: "Quicksand";
+        //     list-style-type: none;
+        //     background-color: #e7edec;
+        //     border-radius: 5px;
+        //     display: flex;
+
+        //     @media screen and (max-width: 450px) {
+        //       width: 120px;
+        //       margin-left: 0;
+        //     }
+        //     @media screen and (max-width: 400px) {
+        //       width: 110px;
+        //     }
+        //     @media screen and (min-width: 450px) {
+        //       margin-top: 8px;
+        //     }
+        //   }
+        // }
+
+        .any_time.selected {
+          li {
+            background-color: #004747 !important;
+            color: white;
           }
         }
       }

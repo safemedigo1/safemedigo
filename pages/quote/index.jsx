@@ -33,7 +33,7 @@ const quote = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [timeValue, setTimeValue] = useState(null);
   const [phoneNum, setPhoneNum] = useState('');
-  const [anyTime, setAnyTime] = useState(false)
+  // const [anyTime, setAnyTime] = useState(true)
   const [result, setResult] = useState();
 
   const [asp, setAsp] = useState(false);
@@ -91,6 +91,13 @@ const quote = () => {
 
   };
 
+  // useEffect(() => {
+  //   if (timeValue) {
+  //     setAnyTime(false)
+  //   }
+  // }, [timeValue])
+
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -106,6 +113,11 @@ const quote = () => {
 
   }, [step, router,]);
 
+  // const handleAnyTime = () => {
+  //   setAnyTime(true)
+  //   setTimeValue(null)
+  //   // setStep(step + 1)
+  // }
 
 
   useEffect(() => {
@@ -556,8 +568,10 @@ const quote = () => {
                   }}
                 />
               </LocalizationProvider>
-
-
+              {/* 
+              <ul className={`${styles.any_time} ${anyTime && styles.selected}`} onClick={handleAnyTime}>
+                <li>Any time</li>
+              </ul> */}
 
 
               {step === 4 &&
