@@ -191,6 +191,11 @@ const quote = () => {
 
 
 
+  useEffect(() => {
+    setUpdatedFormData({ ...formData, phone: phoneNum, selectedForm_1: selectedValues, selectedForm_2: forValues, selectedDate: selectedDate?.$d?.toLocaleDateString(), selectedTime: timeValue, asp: asp })
+
+  }, [formData])
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -199,8 +204,6 @@ const quote = () => {
     // const updatedFormData = { ...formData, phone: phoneNum };
     setIsLoading(true)
 
-    const hanldeUpdateData = { ...formData, phone: phoneNum, selectedForm_1: selectedValues, selectedForm_2: forValues, selectedDate: selectedDate?.$d?.toLocaleDateString(), selectedTime: timeValue, asp: asp }
-    setUpdatedFormData(hanldeUpdateData)
 
     if (formData.agree !== true) {
       toast.error("Terms must be selected !")
@@ -230,7 +233,6 @@ const quote = () => {
 
       }
 
-      console.log(response)
 
     }
 
@@ -701,7 +703,8 @@ const quote = () => {
 
               <div className={styles.mobile_num}>
                 <Typography>
-                  (+20)013 313 1302
+                  {/* (+20)013 313 1302 */}
+                  {phoneNum}
                 </Typography>
               </div>
               <div className="input">
