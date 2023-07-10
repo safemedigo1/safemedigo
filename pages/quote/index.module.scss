@@ -35,7 +35,9 @@
     align-items: flex-start;
     padding: 27px 24px;
     box-sizing: border-box;
-    min-height: 500px;
+    @media screen and (min-width: 992px) {
+      min-height: 600px;
+    }
 
     @media screen and (max-width: 992px) {
       margin-top: 16px;
@@ -215,8 +217,8 @@
 
     form {
       margin-bottom: 8px;
-      @media screen and (max-width: 450px) {
-        // margin-bottom: 50px;
+      @media screen and (min-width: 992px) {
+        margin-bottom: auto;
       }
     }
     .form_1 {
