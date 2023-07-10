@@ -12,7 +12,6 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { datePicker } from '@material-ui/pickers';
 import dayjs from 'dayjs';
 import { DigitalClock } from '@mui/x-date-pickers/DigitalClock';
-import QuoteContext from '../QuoteContext';
 // 
 import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
@@ -21,7 +20,7 @@ import { motion } from "framer-motion";
 import { BsCheckLg } from 'react-icons/bs';
 import Link from 'next/link';
 import ProgressBar from "@ramonak/react-progress-bar";
-import { Container } from '@mui/material';
+import toast from 'react-hot-toast';
 
 
 const quote = () => {
@@ -33,8 +32,7 @@ const quote = () => {
 
   const [selectedDate, setSelectedDate] = useState(null);
   const [timeValue, setTimeValue] = useState(null);
-  const [quote, setQuote] = React.useState('HELLOE');
-  const [phoneNum, setPhoneNum] = React.useState();
+  const [phoneNum, setPhoneNum] = useState('');
 
   const [result, setResult] = useState();
 
@@ -109,11 +107,6 @@ const quote = () => {
   }, [step, router,]);
 
 
-  const handleBlur = () => {
-    document.activeElement.blur();
-  };
-
-
 
   // useEffect(() => {
   //   if (asp) {
@@ -165,6 +158,75 @@ const quote = () => {
     } else {
       setSelectedValues(selectedValues.filter((val) => val !== value));
     }
+  };
+
+
+  // Step 5
+  const [formData, setFormData] = useState({
+    fname: '',
+    lname: '',
+    email: '',
+    phone: '',
+    agree: false,
+
+  });
+
+  const [updatedFormData, setUpdatedFormData] = useState()
+
+
+  const handleChangeFrom = (event) => {
+    // const { name, value } = event.target ?? {};
+    const { name, value, checked } = event.target;
+
+    // setFormData({
+    //   ...formData,
+    //   [name]: value,
+    // });
+    setFormData({
+      ...formData,
+      [name]: name === 'agree' ? checked : value,
+    });
+
+
+  };
+
+  const handleChangePhone = (newPhoneVal, countryData) => {
+    setPhoneNum(newPhoneVal);
+  };
+
+
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Submit the form data to the server
+    // Add the phone number to the form data
+    // const updatedFormData = { ...formData, phone: phoneNum };
+    setUpdatedFormData({ ...formData, phone: phoneNum })
+    if (formData.agree !== true) {
+      toast.error("Terms must be selected !")
+    }
+
+    if (updatedFormData && updatedFormData.agree === true) {
+
+      const url = `http://localhost:3000/api/sendEmail`;
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...updatedFormData }),
+      });
+
+      console.log()
+      if (response.status === 200) {
+        toast.success("Inquiry has been sent")
+        setStep(step + 1)
+      }
+
+    }
+
   };
 
 
@@ -286,13 +348,13 @@ const quote = () => {
 
           </div>
 
-
-
-
           <motion.form
             animate={{ opacity: 1 }}
             initial={{ opacity: 0 }}
-            className={step === 1 && styles.form_1 || step === 2 && styles.form_2 || step === 3 && styles.form_3 || step === 4 && styles.form_4 || step === 5 && styles.form_5}>
+            onSubmit={handleSubmit}
+            className={step === 1 && styles.form_1 || step === 2 && styles.form_2 || step === 3 && styles.form_3 || step === 4 && styles.form_4 || step === 5 && styles.form_5}
+
+          >
 
             {step === 1 &&
               <>
@@ -532,12 +594,12 @@ const quote = () => {
                 className={styles.form_container}>
                 <div className={styles.username}>
                   <div className={styles.f_name}>
-                    <label htmlFor="f_name">First Name <span>*</span></label>
-                    <input onBlur={handleBlur} required type="text" name='f_name' placeholder='John' />
+                    <label htmlFor="fname">First Name <span>*</span></label>
+                    <input onChange={handleChangeFrom} required type="text" name='fname' placeholder='John' />
                   </div>
                   <div className={styles.l_name}>
-                    <label htmlFor="l_name">Last Name <span>*</span></label>
-                    <input onBlur={handleBlur} required type="text" name='l_name' placeholder='Doe' />
+                    <label htmlFor="lname">Last Name <span>*</span></label>
+                    <input onChange={handleChangeFrom} required type="text" name='lname' placeholder='Doe' />
                   </div>
                 </div>
 
@@ -547,45 +609,57 @@ const quote = () => {
                   <PhoneInput
                     country={'tr'}
                     value={phoneNum}
-                    onChange={newPhoneVal => setPhoneNum(newPhoneVal)}
-                    onBlur={handleBlur}
+                    onChange={handleChangePhone}
+                    // onChange={newPhoneVal => setPhoneNum(newPhoneVal)}
+
                     inputProps={{
                       name: 'phone',
                       required: true,
                     }}
                   />
-
                 </div>
 
                 <div className={styles.email}>
                   <label htmlFor="email">Email <span>*</span></label>
-                  <input onBlur={handleBlur} required type="email" name='email' placeholder='example@gmail.com' />
+                  <input onChange={handleChangeFrom} required type="email" name='email' placeholder='example@gmail.com' />
                 </div>
 
 
                 <div className={styles.terms_label}>
-                  <FormControlLabel required control={<Checkbox sx={{
-                    color: '#004747',
-                    marginTop: '8px',
-                    marginBottom: '8px',
-                    '.Mui-checked': {
-                      color: '#004747 ',
-                    },
-                    '.MuiCheckbox-colorSecondary.Mui-checked': {
-                      color: '#004747 ',
-                    },
-                    '.MuiIconButton-root': {
-                      color: '#004747 ',
-                    },
+                  <FormControlLabel required control={<Checkbox
+                    checked={formData.agree}
+                    name="agree"
+                    onChange={handleChangeFrom}
+
+                    sx={{
+                      color: '#004747',
+                      marginTop: '8px',
+                      marginBottom: '8px',
+                      '.Mui-checked': {
+                        color: '#004747 ',
+                      },
+                      '.MuiCheckbox-colorSecondary.Mui-checked': {
+                        color: '#004747 ',
+                      },
+                      '.MuiIconButton-root': {
+                        color: '#004747 ',
+                      },
 
 
 
-                  }} />} label={"I agree to my given details including health data may be processed by Safemedigo for the purpose of obtaining quotes. This includes the transfer of my data to healthcare providers. The consent can be revoked at any time with effect for the future.*"} />
+                    }} />} label={"I agree to my given details including health data may be processed by Safemedigo for the purpose of obtaining quotes. This includes the transfer of my data to healthcare providers. The consent can be revoked at any time with effect for the future.*"} />
                 </div>
 
               </motion.div>
             }
 
+
+
+            {step === 5 &&
+              <div className={styles.continue_btn} >
+                <button type="submit">Send Inquiry</button>
+              </div>
+            }
           </motion.form>
 
 
@@ -611,7 +685,7 @@ const quote = () => {
               </div>
               <div className="input">
 
-                <AuthCode onBlur={handleBlur} containerClassName={styles.input_container} length={4} allowedCharacters='numeric' onChange={handleOnChange} />
+                <AuthCode containerClassName={styles.input_container} length={4} allowedCharacters='numeric' onChange={handleOnChange} />
               </div>
               <div className={styles.resend}>
                 <Typography>
@@ -680,8 +754,6 @@ const quote = () => {
             </>
           }
 
-
-          {console.log(step)}
           {step === 7 &&
             <div className={styles.continue_btn} >
               <Link href='/'>
@@ -698,11 +770,7 @@ const quote = () => {
             </div>
           }
 
-          {step === 5 &&
-            <div className={styles.continue_btn} onClick={nextStep}>
-              <button>Send Inquiry</button>
-            </div>
-          }
+
         </div>
       </div >
     </>
