@@ -563,6 +563,9 @@
           color: var(--main-dark-color);
           font-weight: var(--font-sem-bold);
           text-align: center;
+          @media screen and (max-width: 450px) {
+            font-size: 26px;
+          }
         }
       }
 
@@ -660,6 +663,9 @@
             font-size: 28px;
             font-weight: bold;
             text-align: center;
+            @media screen and (max-width: 450px) {
+              font-size: 26px;
+            }
           }
         }
 
