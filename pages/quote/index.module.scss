@@ -39,9 +39,6 @@
 
     @media screen and (max-width: 992px) {
       margin-top: 16px;
-      height: 100%;
-      min-height: 100vh;
-      min-width: 100vw;
     }
     @media screen and (max-width: 450px) {
       padding: 8px;
@@ -58,10 +55,10 @@
       padding-top: 10px;
       align-items: center;
       box-shadow: none;
-      height: 100%;
-
+      // height: 631px;
       margin-top: 8px;
       border-radius: 0;
+      // max-height: 100%;
     }
 
     @media screen and (max-width: 400px) {
@@ -215,18 +212,14 @@
 
     form {
       margin-bottom: 8px;
-      @media screen and (max-width: 400px) {
-        margin-bottom: 0;
+      @media screen and (max-width: 450px) {
+        margin-bottom: auto;
       }
     }
     .form_1 {
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-gap: 8px;
-      @media screen and (max-width: 450px) {
-        width: 100%;
-        margin-bottom: 8px;
-      }
 
       .last_child {
         grid-column: 1 / span 2;
@@ -292,6 +285,10 @@
 
     .form_3 {
       width: 100%;
+      @media screen and (max-width: 450px) {
+        width: 100%;
+        margin-bottom: 8px;
+      }
       .date {
         width: 100%;
         background-color: #8d8d8d21;
@@ -354,6 +351,9 @@
     }
 
     .form_5 {
+      @media screen and (max-width: 450px) {
+        margin-bottom: 8px;
+      }
       label {
         // flex: 1;
         background-color: #e7edec;
