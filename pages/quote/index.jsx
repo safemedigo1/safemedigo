@@ -28,7 +28,7 @@ const quote = () => {
   const { logo, } = imgs;
   const router = useRouter()
   const { pathname, query } = router
-  const [step, setStep] = useState(6);
+  const [step, setStep] = useState(7);
 
   const [selectedDate, setSelectedDate] = useState(null);
   const [timeValue, setTimeValue] = useState(null);
@@ -94,15 +94,15 @@ const quote = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    if (step === 7) {
-      const timer = setTimeout(() => {
-        router.push('/');
-      }, 3000);
+    // if (step === 7) {
+    //   const timer = setTimeout(() => {
+    //     router.push('/');
+    //   }, 3000);
 
-      return () => {
-        clearTimeout(timer);
-      };
-    }
+    //   return () => {
+    //     clearTimeout(timer);
+    //   };
+    // }
 
   }, [step, router,]);
 
@@ -721,7 +721,7 @@ const quote = () => {
             <motion.div
               animate={{ opacity: 1 }}
               initial={{ opacity: 0 }}
-
+              className={styles.step_7_container}
             >
               <div className={styles.step_8_container}>
                 <div className={styles.icon_container}>
