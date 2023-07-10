@@ -23,7 +23,7 @@ import { FaShieldAlt } from 'react-icons/fa'
 
 
 const Hospital = () => {
-  const { certeficate, post1, why_turcky_img } = imgs;
+  const { certeficate, post1 } = imgs;
   const router = useRouter();
   const cards = [
     { title: 'Patient name', img: certeficate.src, id: '1', desc: ' Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Consetetur Sadipscing Elitr, Sed Diam Nonumy  ' },
@@ -833,7 +833,7 @@ const Hospital = () => {
 
             <div className={styles.content}>
               <div className={styles.video_container}>
-                <img src={why_turcky_img.src} alt="" />
+                <img src={post1.src} alt="" />
               </div>
             </div>
           </div>
