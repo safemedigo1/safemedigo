@@ -218,6 +218,8 @@ const quote = () => {
         setStep(step + 1)
       }
 
+      console.log(updatedFormData)
+
     }
 
   };
@@ -649,7 +651,7 @@ const quote = () => {
 
 
             {step === 5 &&
-              <div className={styles.continue_btn} >
+              <div className={styles.inquiry} >
                 <button type="submit">Send Inquiry</button>
               </div>
             }
