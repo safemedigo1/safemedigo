@@ -687,6 +687,14 @@
 
     .inquiry {
       button {
+        &:hover {
+          @media screen and (min-width: 992px) {
+            svg {
+              color: var(--main-dark-color);
+            }
+          }
+        }
+
         div {
           justify-content: center;
         }

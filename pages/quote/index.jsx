@@ -33,7 +33,7 @@ const quote = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [timeValue, setTimeValue] = useState(null);
   const [phoneNum, setPhoneNum] = useState('');
-
+  const [anyTime, setAnyTime] = useState(false)
   const [result, setResult] = useState();
 
   const [asp, setAsp] = useState(false);
@@ -94,15 +94,15 @@ const quote = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    // if (step === 7) {
-    //   const timer = setTimeout(() => {
-    //     router.push('/');
-    //   }, 3000);
+    if (step === 7) {
+      const timer = setTimeout(() => {
+        router.push('/');
+      }, 3000);
 
-    //   return () => {
-    //     clearTimeout(timer);
-    //   };
-    // }
+      return () => {
+        clearTimeout(timer);
+      };
+    }
 
   }, [step, router,]);
 
@@ -228,11 +228,12 @@ const quote = () => {
         setIsLoading(false)
       }
       if (response.status === 200) {
-        setStep(step + 1);
+        setStep(step + 2);
         setIsLoading(false)
 
       }
 
+      console.log(response)
 
     }
 
@@ -555,8 +556,6 @@ const quote = () => {
                   }}
                 />
               </LocalizationProvider>
-
-
 
 
 

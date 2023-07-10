@@ -38,10 +38,8 @@ export default async function sendEmail(req, res) {
     from: "majd.khaled87@gmail.com",
     to: "majd.khaled87@gmail.com",
     subject: "New message from your website",
-    text: `Name: ${fname} ${lname}\nEmail: ${email}\nPhone Number: ${phone}\nI like to do : ${selectedForm_1}\nFor:${selectedForm_2}\nDate:${selectedDate}\nTime:${selectedTime}\nI Want As Soon As Possible:${asp}`,
+    text: `First name:${fname}\nLast name${lname}\nEmail: ${email}\nPhone Number: ${phone}\nI like to do : ${selectedForm_1}\nFor:${selectedForm_2}\nDate:${selectedDate}\nTime:${selectedTime}\nI Want As Soon As Possible:${asp}`,
   };
-
-  console.log(mailOptions, "options");
 
   try {
     await transporter.sendMail(mailOptions);
