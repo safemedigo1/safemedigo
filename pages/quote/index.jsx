@@ -174,13 +174,9 @@ const quote = () => {
 
 
   const handleChangeFrom = (event) => {
-    // const { name, value } = event.target ?? {};
     const { name, value, checked } = event.target;
 
-    // setFormData({
-    //   ...formData,
-    //   [name]: value,
-    // });
+
     setFormData({
       ...formData,
       [name]: name === 'agree' ? checked : value,
@@ -198,15 +194,14 @@ const quote = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     // Submit the form data to the server
     // Add the phone number to the form data
     // const updatedFormData = { ...formData, phone: phoneNum };
+
     setUpdatedFormData({ ...formData, phone: phoneNum, selectedForm_1: selectedValues, selectedForm_2: forValues, selectedDate: selectedDate?.$d?.toLocaleDateString(), selectedTime: timeValue, asp: asp })
     if (formData.agree !== true) {
       toast.error("Terms must be selected !")
     }
-    console.log(updatedFormData)
 
     if (updatedFormData && updatedFormData.agree === true) {
 
@@ -219,9 +214,7 @@ const quote = () => {
         body: JSON.stringify({ ...updatedFormData }),
       });
 
-      console.log(response.status)
       if (response.status === 200) {
-        toast.success("Inquiry has been sent")
         setStep(step + 1)
       }
 
