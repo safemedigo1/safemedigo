@@ -519,7 +519,7 @@ const quote = () => {
                   onChange={(newValue) => setTimeValue(newValue?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1])}
                   skipDisabled
                   minTime={dayjs().set('hour', 9).set('minute', 30).second(0)}
-                  maxTime={dayjs().set('hour', 17).set('minute', 30)}
+                  maxTime={dayjs().set('hour', 18).set('minute', 0)}
 
                   sx={{
                     '.css-1g2aoka-MuiButtonBase-root-MuiMenuItem-root-MuiDigitalClock-item.Mui-selected':

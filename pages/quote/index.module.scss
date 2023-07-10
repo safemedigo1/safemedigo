@@ -82,7 +82,7 @@
         margin-bottom: 8px;
 
         @media screen and (max-width: 450px) {
-          margin-top: 10px;
+          margin-top: 24px;
           margin-bottom: 0;
         }
         img {
@@ -103,8 +103,8 @@
         top: 0;
         cursor: pointer;
 
-        @media screen and (max-width: 400px) {
-          top: 16px;
+        @media screen and (max-width: 450px) {
+          top: 14px;
         }
         svg {
           font-size: 30px;
@@ -127,7 +127,7 @@
         transition: all 0.3s ease;
         cursor: pointer;
 
-        @media screen and (max-width: 400px) {
+        @media screen and (max-width: 450px) {
           top: 16px;
         }
         &:hover {
@@ -213,7 +213,7 @@
     form {
       margin-bottom: 8px;
       @media screen and (max-width: 450px) {
-        margin-bottom: auto;
+        margin-bottom: 50px;
       }
     }
     .form_1 {
@@ -238,9 +238,14 @@
           font-weight: var(--font-sem-bold);
           font-family: "Quicksand";
           padding: 8;
+
           @media screen and (max-width: 400px) {
             font-size: 14px;
             font-weight: bold;
+          }
+
+          @media screen and (max-width: 450px) {
+            padding-right: 2px;
           }
 
           svg {
@@ -253,8 +258,10 @@
     }
 
     .form_2 {
-      display: block !important;
-      margin-bottom: auto;
+      @media screen and (max-width: 450px) {
+        margin-bottom: 350px !important;
+      }
+
       .step_2 {
         width: 100%;
         label {
@@ -287,8 +294,9 @@
       width: 100%;
       @media screen and (max-width: 450px) {
         width: 100%;
-        margin-bottom: 8px;
+        margin-bottom: 100px !important;
       }
+
       .date {
         width: 100%;
         background-color: #8d8d8d21;
@@ -316,7 +324,6 @@
           display: flex;
           // align-items: center;
           justify-content: flex-start;
-
           @media screen and (max-width: 450px) {
             justify-content: space-between;
             align-content: space-between;
@@ -327,9 +334,17 @@
 
             width: 95px;
             padding: 0;
-            padding: 8px;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+
+            width: 95px;
+            height: 43px;
+            color: var(--main-dark-color);
+            font-weight: var(--font-bold);
+            font-family: "Quicksand";
             @media screen and (min-width: 450px) {
-              margin-top: 1rem;
+              margin-top: 8px;
             }
           }
         }
@@ -379,6 +394,10 @@
         display: flex;
         align-items: flex-start;
         flex-direction: column;
+        @media screen and (max-width: 450px) {
+          // margin-bottom: 10px !important;
+        }
+
         .username {
           display: flex;
           justify-content: space-between;
@@ -494,8 +513,8 @@
             margin-top: 16px;
             margin-bottom: 16px;
             @media screen and (max-width: 400px) {
-              margin-top: 8px;
-              margin-bottom: 8px;
+              // margin-top: 8px;
+              // margin-bottom: 8px;
             }
             height: auto;
             background-color: transparent;
