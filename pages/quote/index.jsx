@@ -28,7 +28,7 @@ const quote = () => {
   const { logo, } = imgs;
   const router = useRouter()
   const { pathname, query } = router
-  const [step, setStep] = useState(7);
+  const [step, setStep] = useState(1);
 
   const [selectedDate, setSelectedDate] = useState(null);
   const [timeValue, setTimeValue] = useState(null);
@@ -211,7 +211,7 @@ const quote = () => {
     if (updatedFormData && updatedFormData.agree === true) {
       setIsLoading(true)
 
-      const url = `https://www.safemedigo.com/api/sendEmail`;
+      const url = `/api/sendEmail`;
       const response = await fetch(url, {
         method: 'POST',
         headers: {
