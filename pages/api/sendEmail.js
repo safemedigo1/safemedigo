@@ -4,8 +4,25 @@ export default async function sendEmail(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
-  const { fname, lname, email, phone } = req.body;
-  if (!fname || !lname || !email || !phone) {
+  const {
+    fname,
+    lname,
+    email,
+    phone,
+    selectedForm_1,
+    selectedForm_2,
+    selectedDate,
+    selectedTime,
+    asp,
+  } = req.body;
+  if (
+    !fname ||
+    !lname ||
+    !email ||
+    !phone ||
+    !selectedForm_1 ||
+    !selectedForm_2
+  ) {
     return res.status(400).json({ error: "Please fill in all fields" });
   }
 
@@ -21,7 +38,7 @@ export default async function sendEmail(req, res) {
     from: "majd.khaled87@gmail.com",
     to: "majd.khaled87@gmail.com",
     subject: "New message from your website",
-    text: `Name: ${fname} ${lname}\nEmail: ${email}\nPhone Number: ${phone}`,
+    text: `Name: ${fname} ${lname}\nEmail: ${email}\nPhone Number: ${phone}\nI like to do : ${selectedForm_1}\nFor:${selectedForm_2}\nDate:${selectedDate}\nTime:${selectedTime} I Want As Soon As Possible?:${asp}`,
   };
 
   console.log(mailOptions, "options");

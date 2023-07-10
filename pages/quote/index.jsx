@@ -108,12 +108,6 @@ const quote = () => {
 
 
 
-  // useEffect(() => {
-  //   if (asp) {
-  //     setStep(step + 1)
-  //   }
-  // }, [asp])
-
   useEffect(() => {
     if (selectedDate !== null) {
       setStep(step + 1)
@@ -149,6 +143,7 @@ const quote = () => {
     }
   };
 
+
   const handleCheckboxChange = (event) => {
     const value = event.target.value;
     const checked = event.target.checked;
@@ -168,6 +163,10 @@ const quote = () => {
     email: '',
     phone: '',
     agree: false,
+    selectedForm_1: '',
+    selectedForm_2: '',
+    selectedDate: '',
+    selectedTime: ''
 
   });
 
@@ -203,10 +202,11 @@ const quote = () => {
     // Submit the form data to the server
     // Add the phone number to the form data
     // const updatedFormData = { ...formData, phone: phoneNum };
-    setUpdatedFormData({ ...formData, phone: phoneNum })
+    setUpdatedFormData({ ...formData, phone: phoneNum, selectedForm_1: selectedValues, selectedForm_2: forValues, selectedDate: selectedDate?.$d?.toLocaleDateString(), selectedTime: timeValue, asp: asp })
     if (formData.agree !== true) {
       toast.error("Terms must be selected !")
     }
+    console.log(updatedFormData)
 
     if (updatedFormData && updatedFormData.agree === true) {
 
@@ -219,7 +219,7 @@ const quote = () => {
         body: JSON.stringify({ ...updatedFormData }),
       });
 
-      console.log()
+      console.log(response.status)
       if (response.status === 200) {
         toast.success("Inquiry has been sent")
         setStep(step + 1)
