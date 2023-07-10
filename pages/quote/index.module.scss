@@ -533,6 +533,10 @@
     }
 
     .conf_code {
+      margin-bottom: auto;
+      @media screen and (max-width: 450px) {
+        margin-bottom: 150px !important;
+      }
       .title {
         margin-bottom: 5px;
 
@@ -540,7 +544,6 @@
           color: var(--main-dark-color);
           font-weight: var(--font-sem-bold);
           font-size: 28px;
-          margin-top: 50px;
         }
       }
       .desc {
@@ -668,6 +671,11 @@
     }
 
     .inquiry {
+      button {
+        div {
+          justify-content: center;
+        }
+      }
       @media screen and (min-width: 992px) {
         margin-top: 39px;
       }

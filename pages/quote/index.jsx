@@ -21,14 +21,14 @@ import { BsCheckLg } from 'react-icons/bs';
 import Link from 'next/link';
 import ProgressBar from "@ramonak/react-progress-bar";
 import toast from 'react-hot-toast';
+import { ThreeDots } from 'react-loader-spinner'
 
 
 const quote = () => {
   const { logo, } = imgs;
   const router = useRouter()
   const { pathname, query } = router
-  const [step, setStep] = useState(1);
-
+  const [step, setStep] = useState(6);
 
   const [selectedDate, setSelectedDate] = useState(null);
   const [timeValue, setTimeValue] = useState(null);
@@ -37,7 +37,7 @@ const quote = () => {
   const [result, setResult] = useState();
 
   const [asp, setAsp] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const handleOnChange = (res) => {
     setResult(res);
   };
@@ -197,28 +197,40 @@ const quote = () => {
     // Submit the form data to the server
     // Add the phone number to the form data
     // const updatedFormData = { ...formData, phone: phoneNum };
+    setIsLoading(true)
 
-    setUpdatedFormData({ ...formData, phone: phoneNum, selectedForm_1: selectedValues, selectedForm_2: forValues, selectedDate: selectedDate?.$d?.toLocaleDateString(), selectedTime: timeValue, asp: asp })
+    const hanldeUpdateData = { ...formData, phone: phoneNum, selectedForm_1: selectedValues, selectedForm_2: forValues, selectedDate: selectedDate?.$d?.toLocaleDateString(), selectedTime: timeValue, asp: asp }
+    setUpdatedFormData(hanldeUpdateData)
+
     if (formData.agree !== true) {
       toast.error("Terms must be selected !")
+      setIsLoading(false)
     }
 
-    if (updatedFormData && updatedFormData.agree === true) {
 
-      const url = `https://www.safemedigo.com/api/sendEmail`;
+    if (updatedFormData && updatedFormData.agree === true) {
+      setIsLoading(true)
+
+      const url = `http://localhost:3000/api/sendEmail`;
       const response = await fetch(url, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({ ...updatedFormData }),
       });
 
+      if (response) {
+        setIsLoading(false)
+      }
       if (response.status === 200) {
-        setStep(step + 1)
+        setStep(step + 1);
+        setIsLoading(false)
+
       }
 
-      console.log(updatedFormData)
+      console.log(response)
 
     }
 
@@ -247,23 +259,21 @@ const quote = () => {
 
           {step !== 7 &&
             <div className={styles.header}>
-              {step !== 6 &&
-                <button onClick={handleGoBack} className={styles.navbar__logo}>
-                  <Image
-                    src={logo.src}
-                    alt="Picture of the author"
-                    width={51.34}
-                    height={45}
-                  />
-                  <h1>Safemedigo</h1>
-                </button>
-              }
+              <button onClick={handleGoBack} className={styles.navbar__logo}>
+                <Image
+                  src={logo.src}
+                  alt="Picture of the author"
+                  width={51.34}
+                  height={45}
+                />
+                <h1>Safemedigo</h1>
+              </button>
 
               <div className={styles.close} onClick={handleGoBack}>
                 <CloseIcon />
               </div>
 
-              {step >= 2 &&
+              {step >= 2 && step !== 6 &&
                 <div className={styles.back} onClick={prevStep}>
                   <Typography>
                     Back
@@ -652,7 +662,23 @@ const quote = () => {
 
             {step === 5 &&
               <div className={styles.inquiry} >
-                <button type="submit">Send Inquiry</button>
+                <button type="submit">
+                  {isLoading ?
+                    <ThreeDots
+                      height="25"
+                      width="25"
+                      radius="9"
+                      color="#00ccb5"
+                      ariaLabel="three-dots-loading"
+                      wrapperStyle={{}}
+                      wrapperClassName="load_more_btn"
+                      visible={true}
+                    />
+                    : "Send Inquiry"
+
+                  }
+
+                </button>
               </div>
             }
           </motion.form>
