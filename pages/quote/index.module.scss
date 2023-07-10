@@ -213,7 +213,7 @@
     form {
       margin-bottom: 8px;
       @media screen and (max-width: 450px) {
-        margin-bottom: 50px;
+        // margin-bottom: 50px;
       }
     }
     .form_1 {
@@ -259,7 +259,7 @@
 
     .form_2 {
       @media screen and (max-width: 450px) {
-        margin-bottom: 350px !important;
+        margin-bottom: 300px !important;
       }
 
       .step_2 {
@@ -294,7 +294,7 @@
       width: 100%;
       @media screen and (max-width: 450px) {
         width: 100%;
-        margin-bottom: 100px !important;
+        margin-bottom: 50px !important;
       }
 
       .date {
