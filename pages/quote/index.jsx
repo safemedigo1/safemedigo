@@ -28,7 +28,7 @@ const quote = () => {
   const { logo, } = imgs;
   const router = useRouter()
   const { pathname, query } = router
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(5);
 
   const [selectedDate, setSelectedDate] = useState(null);
   const [timeValue, setTimeValue] = useState(null);
@@ -240,7 +240,8 @@ const quote = () => {
         setIsLoading(false)
       }
       if (response.status === 200) {
-        setStep(step + 2);
+        handleCodeSubmit();
+        setStep(step + 1);
         setIsLoading(false)
 
       }
@@ -251,7 +252,57 @@ const quote = () => {
 
   };
 
+  // Handle OTP
 
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const [enteredOtp, setEnteredOtp] = useState("");
+  const [otp, setOtp] = useState('');
+
+  const handleCodeSubmit = async (event) => {
+    // event.preventDefault();
+    try {
+      const response = await fetch('http://localhost:3000/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: updatedFormData?.email, enteredOtp })
+      });
+      const data = await response.json();
+      setOtp(data.otp);
+
+
+
+
+
+    } catch (error) {
+      console.error(error);
+      setMessage('Failed to send OTP code');
+    }
+
+  };
+
+
+  function verifyOTP(otp, enteredOtp) {
+    return otp === enteredOtp;
+  }
+
+  const handleConfirmation = async (event) => {
+    if (verifyOTP(otp, enteredOtp)) {
+      setMessage('code is valid');
+      setStep(step + 1)
+
+    } else {
+      setMessage('Invalid code');
+    }
+  };
+
+  const handleCodeChange = (code) => {
+    setEnteredOtp(code);
+  };
+
+  console.log(otp)
+  console.log(enteredOtp)
 
   return (
     <>
@@ -716,17 +767,20 @@ const quote = () => {
 
               <div className={styles.mobile_num}>
                 <Typography>
-                  {/* (+20)013 313 1302 */}
-                  {phoneNum}
+                  {updatedFormData?.email}
                 </Typography>
               </div>
               <div className="input">
 
-                <AuthCode containerClassName={styles.input_container} length={4} allowedCharacters='numeric' onChange={handleOnChange} />
+                <AuthCode containerClassName={styles.input_container} length={4} allowedCharacters='numeric' onChange={handleCodeChange}
+                />
               </div>
               <div className={styles.resend}>
                 <Typography>
-                  Didn't receive an email? <button>Resend?</button>
+                  Didn't receive an email? <button onClick={handleCodeSubmit}>Resend?</button>
+                </Typography>
+                <Typography>
+                  {message}
                 </Typography>
               </div>
             </motion.div>
@@ -802,7 +856,7 @@ const quote = () => {
           }
 
           {step === 6 &&
-            <div className={styles.continue_btn} onClick={nextStep}>
+            <div className={styles.continue_btn} onClick={handleConfirmation}>
               <button>Continue</button>
             </div>
           }
