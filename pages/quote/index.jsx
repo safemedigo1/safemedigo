@@ -254,7 +254,6 @@ const quote = () => {
 
   // Handle OTP
 
-  const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
   const [enteredOtp, setEnteredOtp] = useState("");
@@ -263,7 +262,7 @@ const quote = () => {
   const handleCodeSubmit = async (event) => {
     // event.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/api/auth', {
+      const response = await fetch('/api/auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: updatedFormData?.email, enteredOtp })
@@ -419,30 +418,91 @@ const quote = () => {
 
           </div>
 
-          <motion.form
-            animate={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-            onSubmit={handleSubmit}
-            className={step === 1 && styles.form_1 || step === 2 && styles.form_2 || step === 3 && styles.form_3 || step === 4 && styles.form_4 || step === 5 && styles.form_5}
+          {step !== 6 &&
+            <motion.form
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              onSubmit={handleSubmit}
+              className={step === 1 && styles.form_1 || step === 2 && styles.form_2 || step === 3 && styles.form_3 || step === 4 && styles.form_4 || step === 5 && styles.form_5}
 
-          >
+            >
 
-            {step === 1 &&
-              <>
-                {treatments.map((treatment, index) =>
+              {step === 1 &&
+                <>
+                  {treatments.map((treatment, index) =>
+                    <FormControlLabel
+                      key={index}
+
+                      sx={{
+                        marginLeft: 0
+
+                      }}
+                      required
+                      control={<Checkbox
+                        value={treatment.title}
+                        checked={selectedValues.includes(treatment.title)}
+                        onChange={handleCheckboxChange}
+                        sx={{
+                          color: '#004747',
+                          '.Mui-checked': {
+                            color: '#004747 ',
+                          },
+                          '.MuiCheckbox-colorSecondary.Mui-checked': {
+                            color: '#004747 ',
+                          },
+                          '.MuiIconButton-root': {
+                            color: '#004747 ',
+                          },
+                          marginLeft: 0
+
+                        }} />} label={treatment.title} />
+                  )}
+
                   <FormControlLabel
-                    key={index}
+                    className={styles.last_child}
 
                     sx={{
                       marginLeft: 0
 
                     }}
-                    required
-                    control={<Checkbox
-                      value={treatment.title}
-                      checked={selectedValues.includes(treatment.title)}
-                      onChange={handleCheckboxChange}
-                      sx={{
+
+                    value={"Others"}
+                    checked={selectedValues.includes("Others")}
+                    onChange={handleCheckboxChange}
+
+                    required control={<Checkbox sx={{
+                      color: '#004747',
+                      '.Mui-checked': {
+                        color: '#004747 ',
+                      },
+                      '.MuiCheckbox-colorSecondary.Mui-checked': {
+                        color: '#004747 ',
+                      },
+                      '.MuiIconButton-root': {
+                        color: '#004747 ',
+                      },
+                      marginLeft: 0
+
+                    }} />} label={"Others"} className={styles.last_child} />
+                </>
+
+              }
+
+              {step === 2 &&
+                <motion.div
+                  animate={{ opacity: 1 }}
+                  initial={{ opacity: 0 }}
+                  className={styles.step_2}>
+
+                  {question.map((q, index) => (
+                    <FormControlLabel
+                      key={index}
+                      value={q.title}
+                      checked={forValues.includes(q.title)}
+                      onChange={handleforValues}
+
+                      required
+                      control={<Checkbox sx={{
                         color: '#004747',
                         '.Mui-checked': {
                           color: '#004747 ',
@@ -453,301 +513,242 @@ const quote = () => {
                         '.MuiIconButton-root': {
                           color: '#004747 ',
                         },
-                        marginLeft: 0
-
-                      }} />} label={treatment.title} />
-                )}
-
-                <FormControlLabel
-                  className={styles.last_child}
-
-                  sx={{
-                    marginLeft: 0
-
-                  }}
-
-                  value={"Others"}
-                  checked={selectedValues.includes("Others")}
-                  onChange={handleCheckboxChange}
-
-                  required control={<Checkbox sx={{
-                    color: '#004747',
-                    '.Mui-checked': {
-                      color: '#004747 ',
-                    },
-                    '.MuiCheckbox-colorSecondary.Mui-checked': {
-                      color: '#004747 ',
-                    },
-                    '.MuiIconButton-root': {
-                      color: '#004747 ',
-                    },
-                    marginLeft: 0
-
-                  }} />} label={"Others"} className={styles.last_child} />
-              </>
-
-            }
-
-            {step === 2 &&
-              <motion.div
-                animate={{ opacity: 1 }}
-                initial={{ opacity: 0 }}
-                className={styles.step_2}>
-
-                {question.map((q, index) => (
-                  <FormControlLabel
-                    key={index}
-                    value={q.title}
-                    checked={forValues.includes(q.title)}
-                    onChange={handleforValues}
-
-                    required
-                    control={<Checkbox sx={{
-                      color: '#004747',
-                      '.Mui-checked': {
-                        color: '#004747 ',
-                      },
-                      '.MuiCheckbox-colorSecondary.Mui-checked': {
-                        color: '#004747 ',
-                      },
-                      '.MuiIconButton-root': {
-                        color: '#004747 ',
-                      },
 
 
-                    }} />} label={q.title} />
-                ))}
+                      }} />} label={q.title} />
+                  ))}
 
-
-              </motion.div>
-
-            }
-
-
-            {step === 4 &&
-              asp && selectedDate === null && timeValue === null &&
-              <motion.p
-                animate={{ opacity: 1 }}
-                initial={{ opacity: 0 }}
-                style={{ marginTop: 0, fontWeight: 'bold' }}
-                className={styles.selctedDate}>
-                Selected Time: As Soon As Possible
-              </motion.p>
-
-            }
-
-
-            <div className={styles.date}>
-              {
-                step === 3 &&
-                <motion.div
-                  animate={{ opacity: 1 }}
-                  initial={{ opacity: 0 }}
-                >
-                  <LocalizationProvider dateAdapter={AdapterDayjs} datePicker={datePicker}>
-                    <DateCalendar
-                      value={selectedDate}
-                      onChange={(newDateVal) => setSelectedDate(dayjs(newDateVal))}
-                      format="MM/dd/yyyy"
-                      inputVariant="outlined"
-                      label="Select a date"
-                      minDate={dayjs()}
-                      sx={{
-                        '.css-wngcaj-MuiButtonBase-root-MuiPickersDay-root.Mui-selected ':
-                        {
-                          backgroundColor: '#004747 !important',
-                          color: 'white !important'
-                        },
-                        '.css-15a9mqf-MuiPickersYear-yearButton.Mui-selected': {
-                          backgroundColor: '#004747 !important',
-                          color: 'white !important'
-                        },
-                        '.css-vu42c1.Mui-selected': {
-                          backgroundColor: '#004747 !important',
-                          color: 'white !important'
-                        }
-                      }}
-                    />
-                  </LocalizationProvider>
 
                 </motion.div>
+
               }
 
 
-            </div>
+              {step === 4 &&
+                asp && selectedDate === null && timeValue === null &&
+                <motion.p
+                  animate={{ opacity: 1 }}
+                  initial={{ opacity: 0 }}
+                  style={{ marginTop: 0, fontWeight: 'bold' }}
+                  className={styles.selctedDate}>
+                  Selected Time: As Soon As Possible
+                </motion.p>
+
+              }
+
+
+              <div className={styles.date}>
+                {
+                  step === 3 &&
+                  <motion.div
+                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0 }}
+                  >
+                    <LocalizationProvider dateAdapter={AdapterDayjs} datePicker={datePicker}>
+                      <DateCalendar
+                        value={selectedDate}
+                        onChange={(newDateVal) => setSelectedDate(dayjs(newDateVal))}
+                        format="MM/dd/yyyy"
+                        inputVariant="outlined"
+                        label="Select a date"
+                        minDate={dayjs()}
+                        sx={{
+                          '.css-wngcaj-MuiButtonBase-root-MuiPickersDay-root.Mui-selected ':
+                          {
+                            backgroundColor: '#004747 !important',
+                            color: 'white !important'
+                          },
+                          '.css-15a9mqf-MuiPickersYear-yearButton.Mui-selected': {
+                            backgroundColor: '#004747 !important',
+                            color: 'white !important'
+                          },
+                          '.css-vu42c1.Mui-selected': {
+                            backgroundColor: '#004747 !important',
+                            color: 'white !important'
+                          }
+                        }}
+                      />
+                    </LocalizationProvider>
+
+                  </motion.div>
+                }
+
+
+              </div>
 
 
 
 
 
-            <motion.div
-              animate={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-              className={styles.time} style={step !== 4 && { display: 'none' }}>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DigitalClock
-                  value={timeValue?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1]}
-                  onChange={(newValue) => setTimeValue(newValue?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1])}
-                  skipDisabled
-                  minTime={dayjs().set('hour', 9).set('minute', 30).second(0)}
-                  maxTime={dayjs().set('hour', 18).set('minute', 0)}
+              <motion.div
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                className={styles.time} style={step !== 4 && { display: 'none' }}>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DigitalClock
+                    value={timeValue?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1]}
+                    onChange={(newValue) => setTimeValue(newValue?.$d?.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric", hour12: true }).split(", ")[1])}
+                    skipDisabled
+                    minTime={dayjs().set('hour', 9).set('minute', 30).second(0)}
+                    maxTime={dayjs().set('hour', 18).set('minute', 0)}
 
-                  sx={{
-                    '.css-1g2aoka-MuiButtonBase-root-MuiMenuItem-root-MuiDigitalClock-item.Mui-selected':
-                    {
-                      backgroundColor: '#004747 !important',
-                      color: 'white !important'
-                    },
-                    '.css-186wig7.Mui-selected': {
-                      backgroundColor: '#004747 !important',
-                      color: 'white !important'
-                    },
-                    'ul': {
-                      display: 'flex',
-                      flexDirection: 'row',
-                      flexWrap: 'wrap',
-                      alignItems: 'center',
-                      justifyContent: 'flex-start',
+                    sx={{
+                      '.css-1g2aoka-MuiButtonBase-root-MuiMenuItem-root-MuiDigitalClock-item.Mui-selected':
+                      {
+                        backgroundColor: '#004747 !important',
+                        color: 'white !important'
+                      },
+                      '.css-186wig7.Mui-selected': {
+                        backgroundColor: '#004747 !important',
+                        color: 'white !important'
+                      },
+                      'ul': {
+                        display: 'flex',
+                        flexDirection: 'row',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        justifyContent: 'flex-start',
 
-                      'li': {
-                        backgroundColor: '#E7EDEC',
-                        borderRadius: '5px',
-                      }
-                    },
-                    maxHeight: "100%"
+                        'li': {
+                          backgroundColor: '#E7EDEC',
+                          borderRadius: '5px',
+                        }
+                      },
+                      maxHeight: "100%"
 
-                  }}
-                />
-              </LocalizationProvider>
-              {/* 
+                    }}
+                  />
+                </LocalizationProvider>
+                {/* 
               <ul className={`${styles.any_time} ${anyTime && styles.selected}`} onClick={handleAnyTime}>
                 <li>Any time</li>
               </ul> */}
 
 
-              {step === 4 &&
-                selectedDate !== null && asp !== true &&
-                <motion.div
-                  animate={{ opacity: 1 }}
-                  initial={{ opacity: 0 }}
-                  className={styles.selctedDate}
-                >
-                  {timeValue === null &&
-                    <Typography
-                    >
-                      Selected date: {selectedDate?.$d?.toLocaleDateString()}
+                {step === 4 &&
+                  selectedDate !== null && asp !== true &&
+                  <motion.div
+                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0 }}
+                    className={styles.selctedDate}
+                  >
+                    {timeValue === null &&
+                      <Typography
+                      >
+                        Selected date: {selectedDate?.$d?.toLocaleDateString()}
+                      </Typography>
+                    }
+                  </motion.div >
+                }
+
+                {step === 4 &&
+                  timeValue !== null &&
+                  <motion.div
+                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0 }}
+                    className={styles.selctedDate}
+                  >
+                    <Typography >
+                      Selected date: {selectedDate !== null && asp !== true && selectedDate?.$d?.toLocaleDateString()} {timeValue}
                     </Typography>
-                  }
-                </motion.div >
-              }
-
-              {step === 4 &&
-                timeValue !== null &&
-                <motion.div
-                  animate={{ opacity: 1 }}
-                  initial={{ opacity: 0 }}
-                  className={styles.selctedDate}
-                >
-                  <Typography >
-                    Selected date: {selectedDate !== null && asp !== true && selectedDate?.$d?.toLocaleDateString()} {timeValue}
-                  </Typography>
-                </motion.div >
-              }
+                  </motion.div >
+                }
 
 
-
-            </motion.div>
-
-            {step === 5 &&
-              <motion.div
-                animate={{ opacity: 1 }}
-                initial={{ opacity: 0 }}
-                className={styles.form_container}>
-                <div className={styles.username}>
-                  <div className={styles.f_name}>
-                    <label htmlFor="fname">First Name <span>*</span></label>
-                    <input onChange={handleChangeFrom} required type="text" name='fname' placeholder='John' />
-                  </div>
-                  <div className={styles.l_name}>
-                    <label htmlFor="lname">Last Name <span>*</span></label>
-                    <input onChange={handleChangeFrom} required type="text" name='lname' placeholder='Doe' />
-                  </div>
-                </div>
-
-                <div className={styles.phone}>
-                  <label htmlFor="phone">Phone Number <span>*</span></label>
-
-                  <PhoneInput
-                    country={'tr'}
-                    value={phoneNum}
-                    onChange={handleChangePhone}
-                    // onChange={newPhoneVal => setPhoneNum(newPhoneVal)}
-
-                    inputProps={{
-                      name: 'phone',
-                      required: true,
-                    }}
-                  />
-                </div>
-
-                <div className={styles.email}>
-                  <label htmlFor="email">Email <span>*</span></label>
-                  <input onChange={handleChangeFrom} required type="email" name='email' placeholder='example@gmail.com' />
-                </div>
-
-
-                <div className={styles.terms_label}>
-                  <FormControlLabel required control={<Checkbox
-                    checked={formData.agree}
-                    name="agree"
-                    onChange={handleChangeFrom}
-
-                    sx={{
-                      color: '#004747',
-                      marginTop: '8px',
-                      marginBottom: '8px',
-                      '.Mui-checked': {
-                        color: '#004747 ',
-                      },
-                      '.MuiCheckbox-colorSecondary.Mui-checked': {
-                        color: '#004747 ',
-                      },
-                      '.MuiIconButton-root': {
-                        color: '#004747 ',
-                      },
-
-
-
-                    }} />} label={"I agree to my given details including health data may be processed by Safemedigo for the purpose of obtaining quotes. This includes the transfer of my data to healthcare providers. The consent can be revoked at any time with effect for the future.*"} />
-                </div>
 
               </motion.div>
-            }
 
+              {step === 5 &&
+                <motion.div
+                  animate={{ opacity: 1 }}
+                  initial={{ opacity: 0 }}
+                  className={styles.form_container}>
+                  <div className={styles.username}>
+                    <div className={styles.f_name}>
+                      <label htmlFor="fname">First Name <span>*</span></label>
+                      <input onChange={handleChangeFrom} required type="text" name='fname' placeholder='John' />
+                    </div>
+                    <div className={styles.l_name}>
+                      <label htmlFor="lname">Last Name <span>*</span></label>
+                      <input onChange={handleChangeFrom} required type="text" name='lname' placeholder='Doe' />
+                    </div>
+                  </div>
 
+                  <div className={styles.phone}>
+                    <label htmlFor="phone">Phone Number <span>*</span></label>
 
-            {step === 5 &&
-              <div className={styles.inquiry} >
-                <button type="submit">
-                  {isLoading ?
-                    <ThreeDots
-                      height="25"
-                      width="25"
-                      radius="9"
-                      color="#00ccb5"
-                      ariaLabel="three-dots-loading"
-                      wrapperStyle={{}}
-                      wrapperClassName="load_more_btn"
-                      visible={true}
+                    <PhoneInput
+                      country={'tr'}
+                      value={phoneNum}
+                      onChange={handleChangePhone}
+                      // onChange={newPhoneVal => setPhoneNum(newPhoneVal)}
+
+                      inputProps={{
+                        name: 'phone',
+                        required: true,
+                      }}
                     />
-                    : "Send Inquiry"
+                  </div>
 
-                  }
+                  <div className={styles.email}>
+                    <label htmlFor="email">Email <span>*</span></label>
+                    <input onChange={handleChangeFrom} required type="email" name='email' placeholder='example@gmail.com' />
+                  </div>
 
-                </button>
-              </div>
-            }
-          </motion.form>
+
+                  <div className={styles.terms_label}>
+                    <FormControlLabel required control={<Checkbox
+                      checked={formData.agree}
+                      name="agree"
+                      onChange={handleChangeFrom}
+
+                      sx={{
+                        color: '#004747',
+                        marginTop: '8px',
+                        marginBottom: '8px',
+                        '.Mui-checked': {
+                          color: '#004747 ',
+                        },
+                        '.MuiCheckbox-colorSecondary.Mui-checked': {
+                          color: '#004747 ',
+                        },
+                        '.MuiIconButton-root': {
+                          color: '#004747 ',
+                        },
+
+
+
+                      }} />} label={"I agree to my given details including health data may be processed by Safemedigo for the purpose of obtaining quotes. This includes the transfer of my data to healthcare providers. The consent can be revoked at any time with effect for the future.*"} />
+                  </div>
+
+                </motion.div>
+              }
+
+
+
+              {step === 5 &&
+                <div className={styles.inquiry} >
+                  <button type="submit">
+                    {isLoading ?
+                      <ThreeDots
+                        height="25"
+                        width="25"
+                        radius="9"
+                        color="#00ccb5"
+                        ariaLabel="three-dots-loading"
+                        wrapperStyle={{}}
+                        wrapperClassName="load_more_btn"
+                        visible={true}
+                      />
+                      : "Send Inquiry"
+
+                    }
+
+                  </button>
+                </div>
+              }
+            </motion.form>
+          }
 
 
           {step === 6 &&
