@@ -456,6 +456,7 @@
 
           .f_name,
           .l_name {
+            width: 47%;
             @media screen and (max-width: 450px) {
               width: 100%;
             }
@@ -479,7 +480,7 @@
               padding: 10px;
               font-size: 14px;
               color: var(--main-dark-color);
-
+              width: 100%;
               @media screen and (max-width: 450px) {
                 width: 100%;
                 margin-bottom: 8px;
@@ -731,7 +732,7 @@
         &:hover {
           @media screen and (min-width: 992px) {
             svg {
-              color: var(--main-dark-color);
+              color: var(--main-white-color);
             }
           }
         }
