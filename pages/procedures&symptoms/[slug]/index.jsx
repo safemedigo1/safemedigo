@@ -283,60 +283,68 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   flexDirection: 'column-reverse',
                   marginRight: '16px',
                 }}>
-                  <div className={styles.box}>
-                    <div className={styles.title}>
-                      <Typography variant='h6'>{t("proceduresSymptoms_single:operation_duration")}:</Typography>
-                    </div>
-                    <List sx={{
-                      listStyleType: 'disc',
-                      padding: '0px',
-
-                      '& .MuiListItem-root': {
-
-                        listStylePosition: 'inside',
+                  {dataTreatment?.operationDuration !== "" &&
+                    <div className={styles.box}>
+                      <div className={styles.title}>
+                        <Typography variant='h6'>{t("proceduresSymptoms_single:operation_duration")}:</Typography>
+                      </div>
+                      <List sx={{
+                        listStyleType: 'disc',
                         padding: '0px',
-                        cursor: 'pointer'
-                      },
-                    }}>
-                      <ListItem>{dataTreatment?.operationDuration} </ListItem>
-                    </List>
-                  </div>
-                  <div className={styles.box} >
-                    <div className={styles.title}>
-                      <Typography variant='h6'>{t("proceduresSymptoms_single:type_of_anesthesia")}:</Typography>
+                        '& .MuiListItem-root': {
+                          listStylePosition: 'inside',
+                          padding: '0px',
+                          cursor: 'pointer'
+                        },
+                      }}>
+                        <ListItem>{dataTreatment?.operationDuration} </ListItem>
+                      </List>
                     </div>
-                    <List sx={{
-                      listStyleType: 'disc',
-                      padding: '0px',
-
-                      '& .MuiListItem-root': {
-
-                        listStylePosition: 'inside',
+                  }
+                  {dataTreatment?.anesthesia !== "" &&
+                    <div className={styles.box} >
+                      <div className={styles.title}>
+                        <Typography variant='h6'>{t("proceduresSymptoms_single:type_of_anesthesia")}:</Typography>
+                      </div>
+                      <List sx={{
+                        listStyleType: 'disc',
                         padding: '0px',
-                        cursor: 'pointer'
-                      },
-                    }}>
-                      <ListItem>{dataTreatment?.anesthesia}</ListItem>
-                    </List>
-                  </div>
-                  <div className={styles.box}>
-                    <div className={styles.title}>
-                      <Typography variant='h6'>{t("proceduresSymptoms_single:cost")}:</Typography>
+
+                        '& .MuiListItem-root': {
+
+                          listStylePosition: 'inside',
+                          padding: '0px',
+                          cursor: 'pointer'
+                        },
+                      }}>
+                        <ListItem>{dataTreatment?.anesthesia}</ListItem>
+                      </List>
                     </div>
-                    <List sx={{
-                      listStyleType: 'disc',
-                      padding: '0px',
 
-                      '& .MuiListItem-root': {
+                  }
 
-                        listStylePosition: 'inside',
+
+
+                  {dataTreatment?.startCost !== "" &&
+                    <div className={styles.box}>
+                      <div className={styles.title}>
+                        <Typography variant='h6'>{t("proceduresSymptoms_single:cost")}:</Typography>
+                      </div>
+                      <List sx={{
+                        listStyleType: 'disc',
                         padding: '0px',
-                        cursor: 'pointer'
-                      },
-                    }}>
-                      <ListItem>${dataTreatment?.startCost}</ListItem>
-                    </List>
-                  </div>
+
+                        '& .MuiListItem-root': {
+
+                          listStylePosition: 'inside',
+                          padding: '0px',
+                          cursor: 'pointer'
+                        },
+                      }}>
+                        <ListItem>${dataTreatment?.startCost}</ListItem>
+                      </List>
+                    </div>
+                  }
                 </div>
 
 
@@ -360,24 +368,26 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                     </List>
                   </div>
 
-                  <div className={styles.box}>
-                    <div className={styles.title}>
-                      <Typography variant='h6'>{t("proceduresSymptoms_single:duration_results")}:</Typography>
-                    </div>
-                    <List sx={{
-                      listStyleType: 'disc',
-                      padding: '0px',
-
-                      '& .MuiListItem-root': {
-
-                        listStylePosition: 'inside',
+                  {dataTreatment?.resultDuration !== "" &&
+                    <div className={styles.box}>
+                      <div className={styles.title}>
+                        <Typography variant='h6'>{t("proceduresSymptoms_single:duration_results")}:</Typography>
+                      </div>
+                      <List sx={{
+                        listStyleType: 'disc',
                         padding: '0px',
-                        cursor: 'pointer'
-                      },
-                    }}>
-                      <ListItem>{dataTreatment?.resultDuration}</ListItem>
-                    </List>
-                  </div>
+
+                        '& .MuiListItem-root': {
+
+                          listStylePosition: 'inside',
+                          padding: '0px',
+                          cursor: 'pointer'
+                        },
+                      }}>
+                        <ListItem>{dataTreatment?.resultDuration}</ListItem>
+                      </List>
+                    </div>
+                  }
 
                   <div className={styles.box} style={{ order: '-1' }}>
                     <div className={styles.title}>
