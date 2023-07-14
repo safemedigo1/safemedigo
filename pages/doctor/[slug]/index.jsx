@@ -1,9 +1,8 @@
 import { PageHeader, SecNavbar } from "@/components";
-import InnerPageNavbar from "@/components/Navbar/InnerPageNavbar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Container, Typography, Dialog, DialogContent, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem, DialogTitle, Rating } from '@mui/material';
 import Link from 'next/link';
-import styles from './index.module.scss';
+import styles from '../../hospitals/[slug]/index.module.scss';
 import Carousel from 'react-elastic-carousel';
 import { useState } from "react";
 import { FaChevronRight, FaChevronLeft, FaUserAlt } from 'react-icons/fa'
@@ -14,26 +13,50 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { MedicalDepartments } from "@/components/Home";
+import { MedicalDepartments, MostPopular } from "@/components/Home";
 import { useRouter } from "next/router";
 import Hotles from "@/components/hospital/hotels";
 import Visits from "@/components/hospital/hotels/Visits";
 import { MdLocationOn } from 'react-icons/md'
 import { FaShieldAlt } from 'react-icons/fa'
+import BeforeAfter from '@/components/BeforeAfter'
+import ClinicCards from '@/components/ClinicCards/index'
 
 
-const Hospital = () => {
+const DoctorName = () => {
   const { certeficate, post1 } = imgs;
-  const router = useRouter();
   const cards = [
     { title: 'Patient name', img: certeficate.src, id: '1', desc: ' Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Consetetur Sadipscing Elitr, Sed Diam Nonumy  ' },
     { title: 'Patient name', img: certeficate.src, id: '2', desc: ' Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Consetetur Sadipscing Elitr, Sed Diam Nonumy  ' },
-
   ]
+
+  const beforeCards = [
+    {
+      description: "Title", imgBefore: certeficate.src, imgAfter: certeficate.src
+
+    },
+    {
+      description: "Title", imgBefore: certeficate.src, imgAfter: certeficate.src
+
+    },
+    {
+      description: "Title", imgBefore: certeficate.src, imgAfter: certeficate.src
+
+    },
+    {
+      description: "Title", imgBefore: certeficate.src, imgAfter: certeficate.src
+
+    },
+    {
+      description: "Title", imgBefore: certeficate.src, imgAfter: certeficate.src
+
+    },
+  ]
+  const router = useRouter();
 
   // BreakPoints
   const [breakPoints] = useState([
-    { width: 1, itemsToShow: 1, showPagination: true },
+    { width: 1, itemsToShow: 1, showPagination: false },
   ])
   const [expanded, setExpanded] = useState(false);
 
@@ -453,7 +476,7 @@ const Hospital = () => {
         "Obstetrics and gynecology",
       description
         :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
+        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns."
       , id
         :
         1
@@ -479,10 +502,12 @@ const Hospital = () => {
     setSelectedImage(null);
   };
 
+
   return (
     <>
       <SecNavbar />
       <PageHeader />
+
       <Box
         sx={{
           display: {
@@ -576,10 +601,7 @@ const Hospital = () => {
         </Container>
       </Box>
 
-      {selectedImage !== null &&
-        <div className={styles.layer} />
-      }
-      <InnerPageNavbar />
+
 
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
         <section id='overview' className={styles.overview}>
@@ -685,24 +707,11 @@ const Hospital = () => {
                 <div className={styles.box}>
                   <div className={styles.title}>
                     <Typography variant={'h3'}>
-                      Branches
+                      Specialties
                     </Typography>
                   </div>
                   <ul>
-                    <li>3</li>
-                  </ul>
-                </div>
-
-
-                <div className={styles.box}>
-                  <div className={styles.title}>
-                    <Typography variant={'h3'}>
-                      Beds
-                    </Typography>
-                  </div>
-                  <ul>
-                    <li>20</li>
-
+                    <li> Foot And Ankle Surgery Hip And Knee Surgery Trauma Surgery Spine Surgery</li>
                   </ul>
                 </div>
 
@@ -726,7 +735,133 @@ const Hospital = () => {
                   expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
                   aria-controls="panel1d-content" id="panel1d-header">
                   <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                    Benefits
+                    Procedures & Clinical Interest
+
+                  </Typography>
+                </AccordionSummary>
+
+                <AccordionDetails >
+
+                  <List sx={{
+                    listStyleType: 'disc',
+                    padding: '0px',
+                    '& .MuiListItem-root': {
+
+                      listStylePosition: 'inside',
+                      padding: '0px',
+                    },
+                  }}
+                  >
+                    <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                      text text text text text text text text text text text text text text text text text text text text text text
+                    </ListItem  >
+
+
+
+                  </List>
+                </AccordionDetails>
+
+              </Accordion>
+              <Accordion disableGutters elevation={0}
+                square={false} sx={{
+                  marginTop: '8px',
+                  '&:before': {
+                    display: 'none',
+                  }
+                }}
+                expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                <AccordionSummary
+                  sx={expanded !== 'panel2' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC', color: '#000000' }
+                    : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
+                  }
+                  expandIcon={<ExpandMoreIcon sx={expanded !== 'panel2' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                  aria-controls="panel2d-content" id="panel2d-header">
+                  <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                    Memberships
+
+                  </Typography>
+                </AccordionSummary>
+
+                <AccordionDetails >
+
+                  <List sx={{
+                    listStyleType: 'disc',
+                    padding: '0px',
+                    '& .MuiListItem-root': {
+
+                      listStylePosition: 'inside',
+                      padding: '0px',
+                    },
+                  }}
+                  >
+                    <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                      text text text text text text text text text text text text text text text text text text text text text text
+                    </ListItem  >
+
+
+
+                  </List>
+                </AccordionDetails>
+
+              </Accordion>
+              <Accordion disableGutters elevation={0}
+                square={false} sx={{
+                  marginTop: '8px',
+                  '&:before': {
+                    display: 'none',
+                  }
+                }}
+                expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+                <AccordionSummary
+                  sx={expanded !== 'panel3' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC', color: '#000000' }
+                    : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
+                  }
+                  expandIcon={<ExpandMoreIcon sx={expanded !== 'panel3' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                  aria-controls="panel3d-content" id="panel3d-header">
+                  <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                    Education
+
+                  </Typography>
+                </AccordionSummary>
+
+                <AccordionDetails >
+
+                  <List sx={{
+                    listStyleType: 'disc',
+                    padding: '0px',
+                    '& .MuiListItem-root': {
+
+                      listStylePosition: 'inside',
+                      padding: '0px',
+                    },
+                  }}
+                  >
+                    <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                      text text text text text text text text text text text text text text text text text text text text text text
+                    </ListItem  >
+
+
+
+                  </List>
+                </AccordionDetails>
+
+              </Accordion>
+              <Accordion disableGutters elevation={0}
+                square={false} sx={{
+                  marginTop: '8px',
+                  '&:before': {
+                    display: 'none',
+                  }
+                }}
+                expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
+                <AccordionSummary
+                  sx={expanded !== 'panel5' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC', color: '#000000' }
+                    : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
+                  }
+                  expandIcon={<ExpandMoreIcon sx={expanded !== 'panel5' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                  aria-controls="panel5d-content" id="panel5d-header">
+                  <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                    Career
 
                   </Typography>
                 </AccordionSummary>
@@ -764,7 +899,7 @@ const Hospital = () => {
         <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false} >
           <div className={styles.title_mob}>
             <Typography variant={'h4'}>
-              Acibadem Hospital Taksim
+              Media
             </Typography>
           </div>
 
@@ -772,13 +907,13 @@ const Hospital = () => {
             <div className={styles.text_container}>
               <div className={styles.title}>
                 <Typography variant={'h4'}>
-                  Acibadem Hospital Taksim
+                  Media
                 </Typography>
               </div>
 
               <div className={styles.desc}>
                 <Typography>
-                  Acıbadem Taksim Is Designed As General-Purpose Hospital On An Indoor Area Of Approximately 24 Thousand Square Meters.
+                  Here Some Of Media Materials Might Give You An Imagination Helps You To Get Closer By Your Feelings To What Is Doctor Offering And What He Is Into...
                 </Typography>
               </div>
             </div>
@@ -811,48 +946,46 @@ const Hospital = () => {
         </Container>
       </section>
 
-      <section id='doctors'>
-        <MedicalDepartments hospiTalMedicalDepartment={hospiTalMedicalDepartment} />
-      </section>
+      <BeforeAfter beforeCards={beforeCards} />
 
-      <section id='testimonials' className={styles.testimonials}>
-        <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+      <Box sx={{ paddingTop: '38px' }}>
+        <MostPopular />
+      </Box>
 
-          <div className={styles.section_container}>
+      <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
 
-            <div className={styles.header}>
-              <div className={styles.icon_container}>
-                <FaUserAlt />
-              </div>
-              <div className={styles.title}>
-                <Typography variant="h3">Testimonials</Typography>
-              </div>
+
+        <Box sx={{ marginTop: '38px', paddingBottom: '38px', display: 'flex', flexDirection: 'row' }}>
+          <Box sx={{
+            width: '29.6%', display: {
+              xlg: 'block', lg: 'block', md: 'block',
+              sm: 'none', xs: 'none'
+            }
+          }}>
+            <div className="title">
+              <h1>Similar Doctor</h1>
             </div>
 
-            <div className={styles.content}>
-              <div className={styles.video_container}>
-                <img src={post1.src} alt="" />
-              </div>
+            <div className={styles.desc}>
+              <Typography>We Are An Independent Organisation And Only Ever Provide Fully Honest And Unbiased Information About Doctors That Have Been Thoroughly And Professionally Vetted.</Typography>
             </div>
-          </div>
 
-        </Container>
-      </section>
-
-      <Hotles />
-      <Visits />
+          </Box>
+          <ClinicCards />
+        </Box>
+      </Container>
 
     </>
   )
 }
 
-export default Hospital
+export default DoctorName
 
 export async function getServerSideProps({ locale }) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["navbar", "proceduresSymptoms_single", 'Footer'])),
+      ...(await serverSideTranslations(locale, ["navbar", "proceduresSymptoms_single", 'Footer', 'most_popular'])),
     },
   };
 }

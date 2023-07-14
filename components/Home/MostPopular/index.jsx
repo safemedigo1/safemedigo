@@ -24,6 +24,7 @@ const MostPopular = (dataPopularTreatmentsMedical, dataPopularTreatmentsHome) =>
     router.pathname === '/medicaldepartments/[slug]' ? setPopularTreatmetsData(dataPopularTreatmentsMedical.dataPopularTreatmentsMedical) :
       setPopularTreatmetsData(dataPopularTreatmentsMedical.dataPopularTreatmentsHome)
 
+
   }, [])
 
 
@@ -59,7 +60,6 @@ const MostPopular = (dataPopularTreatmentsMedical, dataPopularTreatmentsHome) =>
     setDoctors(false)
     setTreatment(false)
   }
-
 
   const treatmentData = [
     { title: 'Treatment Name', price: '1200', desc: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod TemAliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet  Et Ea Rebum. Stet Et Ea Rebum. Stet Et Ea Rebum. Stet Et Ea Rebum. Stet  o Duo Dolores Et Ea Rebum. Stet  Et Ea Rebum. Stet Et Ea Rebum. Stet Et Ea Rebum. Stet Et Ea Rebum. Stet ", img: post3.src },
@@ -129,7 +129,6 @@ const MostPopular = (dataPopularTreatmentsMedical, dataPopularTreatmentsHome) =>
   return (
     <Box sx={pathname !== '/procedures&symptoms' & pathname !== '/hospitals/[slug]' ? {
       backgroundColor: '#eef5f5'
-
     } : { backgroundColor: '#FFFFFF' }} id={styles.most_popular} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
 
       <Box className={styles.section_container}>
@@ -167,11 +166,12 @@ const MostPopular = (dataPopularTreatmentsMedical, dataPopularTreatmentsHome) =>
             </div>
           }
 
-          {pathname !== '/' &&
+          {pathname !== '/' && pathname !== '/doctor/[slug]' &&
             <div className={styles.title_mobile}>
               <Typography variant='h2'>{t('most_popular:title')}</Typography>
             </div>
           }
+
         </Container>
 
         <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false}  >
@@ -183,6 +183,12 @@ const MostPopular = (dataPopularTreatmentsMedical, dataPopularTreatmentsHome) =>
                   <Typography variant='h2'>{t('most_popular:title')}</Typography>
                 </div>
               }
+              {pathname === '/doctor/[slug]' &&
+                <div className={styles.title}>
+                  <h1>Location</h1>
+                </div>
+              }
+
 
               <div className={styles.desc}>
                 {router.pathname !== '/hospitals/[slug]' ?
@@ -198,6 +204,10 @@ const MostPopular = (dataPopularTreatmentsMedical, dataPopularTreatmentsHome) =>
                 }
 
               </div>
+
+
+
+
 
 
               {pathname === '/' &&
@@ -234,11 +244,12 @@ const MostPopular = (dataPopularTreatmentsMedical, dataPopularTreatmentsHome) =>
 
 
 
+
             </div>
 
             <div className={styles.slider_container}>
               {
-                router.pathname !== '/hospitals/[slug]' &&
+                router.pathname !== '/hospitals/[slug]' && router.pathname !== '/doctor/[slug]' &&
                 treatment &&
                 <motion.div
                   animate={{ opacity: 1 }}
@@ -356,7 +367,6 @@ const MostPopular = (dataPopularTreatmentsMedical, dataPopularTreatmentsHome) =>
                   </Carousel>
                 </motion.div>
               }
-
 
               {pathname !== '/procedures&symptoms' &&
                 <>
@@ -517,7 +527,88 @@ const MostPopular = (dataPopularTreatmentsMedical, dataPopularTreatmentsHome) =>
 
                             </div>
 
+                          </Link>
+                        ))}
 
+
+                      </Carousel>
+                    </motion.div>
+                  }
+
+
+                  {pathname === '/doctor/[slug]' &&
+                    <motion.div
+                      animate={{ opacity: 1 }}
+                      initial={{ opacity: 0 }}
+                      transition={{ duration: 1, }}
+                      className={styles.clinic}>
+
+                      <Box sx={{ boxShadow: "inset -20px 0px 12px #eef5f5" }} />
+
+                      <Carousel
+                        breakPoints={breakPoints}
+                        itemsToScroll={1}
+                        renderArrow={myArrow}
+                        isRTL={router.locale === 'ar' ? true : false}
+                      >
+                        {clinicData.map((clinic, index) => (
+                          <Link href='/hospitals/acibadem-hospital-in-taksim' className={styles.box} key={index}>
+                            <div className={styles.img_container}>
+                              <Image width={344} height={191} src={clinic.img} alt={clinic.title} />
+                              <div className={styles.verified}>
+                                <FaShieldAlt />
+                                <Typography >
+                                  Safemedigo verified
+                                </Typography>
+                              </div>
+                            </div>
+
+                            <div className={styles.box_text_container}>
+
+                              <div className={styles.name}>
+                                <Typography variant='h5'>
+                                  {clinic.title}
+                                </Typography>
+                              </div>
+
+                              <div className={styles.type}>
+                                <Typography variant='h6'>
+                                  {clinic.type}
+                                </Typography>
+                              </div>
+
+                              <div className={styles.rating}>
+                                <Rating name="read-only" defaultValue={4} size="small" />
+                                <span className={styles.reviews_num}>90 Reviews</span>
+                              </div>
+
+                              <div className={styles.location}>
+                                <MdLocationOn />
+                                <Typography >
+                                  Istanbul, Turkey
+                                </Typography>
+                              </div>
+
+                              <div className={styles.founded}>
+                                <span>{clinic.founded}</span>
+                                <Typography>Founded Year</Typography>
+                              </div>
+
+                              <div className={styles.employess}>
+                                <span>{clinic.employess}</span>
+                                <Typography> Doctors & Employees</Typography>
+                              </div>
+
+                              <div className={styles.yearly_patient}>
+                                <span>{clinic.yearly_patient}</span>
+                                <Typography>Yearly Patient</Typography>
+                              </div>
+
+                              <div className={styles.btn_container}>
+                                <Link href='/'>See Hospital Profile</Link>
+                              </div>
+
+                            </div>
 
                           </Link>
                         ))}

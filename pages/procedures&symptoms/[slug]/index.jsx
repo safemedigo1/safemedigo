@@ -15,7 +15,7 @@ import { ThreeDots } from 'react-loader-spinner'
 import Image from 'next/image';
 import InnerPageNavbar from '@/components/Navbar/InnerPageNavbar';
 import Head from 'next/head';
-
+import BeforeAfter from '@/components/BeforeAfter'
 const TreatmentName = ({ dataTreatment, locale, params, }) => {
   const [expanded, setExpanded] = useState(false);
   const [currentPageCount, setCurrentPageCount] = useState(1)
@@ -32,14 +32,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
     setExpanded(newExpanded ? panel : false);
   };
 
-  const [BeforeAfterbreakPoints] = useState([
-    { width: 1, pagination: true, showArrows: false },
-    { width: 300, pagination: true, showArrows: false, itemsToShow: 1, itemsToScroll: 1 },
-    { width: 400, pagination: true, itemsToShow: 1, itemsToScroll: 1, showArrows: false },
-    { width: 800, pagination: true, itemsToShow: 4, itemsToScroll: 1, showArrows: false },
-    { width: 900, pagination: false, itemsToShow: 3, itemsToScroll: 1 },
 
-  ])
 
   const [breakPointsSteps] = useState([
     { width: 1, pagination: true, showArrows: false },
@@ -541,48 +534,9 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
       {
         dataTreatment?.treatmentImage.length !== 0 &&
-        <section id={styles.before_after} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-          <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: "1239px" }} maxWidth={false}>
-            <div className={styles.title}>
-              <Typography variant='h3'>
-                {t('proceduresSymptoms_single:before_after')}
-              </Typography>
-            </div>
-          </Container >
+        <BeforeAfter treatments={dataTreatment?.treatmentImage} />
 
 
-
-          <Container className="custom_container">
-            <div className={styles.slider_container}>
-              <Carousel
-                breakPoints={BeforeAfterbreakPoints}
-                itemsToScroll={1} renderArrow={myArrow}
-                isRTL={router.locale === 'ar' ? true : false}
-              >
-
-                {
-                  dataTreatment?.treatmentImage.map((card, index) => (
-                    <div className={styles.box} key={index}>
-                      <div className={styles.imgs_container}>
-                        <Image width={388} height={200} src={card.imgBefore} alt="" />
-                        <Image width={388} height={200} src={card.imgAfter} alt="" />
-                      </div>
-                      <div className={styles.box_title}>
-                        <Typography variant='h5'>{t('proceduresSymptoms_single:before')}</Typography>
-                        <Typography variant='h5'>{t('proceduresSymptoms_single:after')}</Typography>
-                      </div>
-                      <div className={styles.desc}>
-                        <Typography>
-                          {card.description}
-                        </Typography>
-                      </div>
-                    </div>
-                  ))}
-
-              </Carousel>
-            </div>
-          </Container>
-        </section>
       }
 
       {

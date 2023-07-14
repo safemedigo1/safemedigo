@@ -78,6 +78,11 @@ const SecNavbar = ({ categorySlug, slug, category, currentPage, blog, tag, how_i
               <Link href='/'> {t('sec_navbar:home')}  </Link> <Link href='/' >/ Acibadem Hospital In Taksim</Link>
             </>
           }
+          {pathname === ('/doctor/[slug]') &&
+            <>
+              <Link href='/'> {t('sec_navbar:home')}  </Link> <Link href='/' >/ Profile</Link>
+            </>
+          }
         </Container>
       </nav>
     </>
