@@ -387,7 +387,7 @@ const MostPopular = (dataPopularTreatmentsMedical, dataPopularTreatmentsHome) =>
                         isRTL={router.locale === 'ar' ? true : false}
                       >
                         {doctorsData.map((doc, index) => (
-                          <div className={styles.box} key={index}>
+                          <Link href={'/doctor/docName'} className={styles.box} key={index}>
                             <div className={styles.img_container}>
                               <Image width={344} height={191} src={doc.img} alt={doc.name} />
                               <div className={styles.verified}>
@@ -447,7 +447,7 @@ const MostPopular = (dataPopularTreatmentsMedical, dataPopularTreatmentsHome) =>
 
 
                             </div>
-                          </div>
+                          </Link>
                         ))}
                       </Carousel>
                     </motion.div>

@@ -912,7 +912,14 @@ const DoctorName = () => {
               </div>
 
               <div className={styles.desc}>
-                <Typography>
+                <Typography sx={{
+                  color: "var(--main-dark-color)",
+                  fontSize: '18px',
+                  fontWeight: "var(--font-sem-bold)",
+                  fontFamily: "var(--open-sans-font)",
+                  letterSpacing: '0',
+                  marginRight: '20px'
+                }}>
                   Here Some Of Media Materials Might Give You An Imagination Helps You To Get Closer By Your Feelings To What Is Doctor Offering And What He Is Into...
                 </Typography>
               </div>
@@ -967,13 +974,20 @@ const DoctorName = () => {
             </div>
 
             <div className={styles.desc}>
-              <Typography>We Are An Independent Organisation And Only Ever Provide Fully Honest And Unbiased Information About Doctors That Have Been Thoroughly And Professionally Vetted.</Typography>
+              <Typography sx={{
+                color: "var(--main-dark-color)",
+                fontSize: '18px',
+                fontWeight: "var(--font-sem-bold)",
+                fontFamily: "var(--open-sans-font)",
+                letterSpacing: '0'
+
+              }}>We Are An Independent Organisation And Only Ever Provide Fully Honest And Unbiased Information About Doctors That Have Been Thoroughly And Professionally Vetted.</Typography>
             </div>
 
           </Box>
           <ClinicCards />
         </Box>
-      </Container>
+      </Container >
 
     </>
   )
