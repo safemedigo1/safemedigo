@@ -18,13 +18,11 @@ const MostPopular = (dataPopularTreatmentsMedical, dataPopularTreatmentsHome) =>
   const { pathname } = router;
   const { t } = useTranslation();
   const { post1, post2, post3, post4, post5, } = imgs;
-
   const [popularTreatmetsData, setPopularTreatmetsData] = useState([])
+
   useEffect(() => {
     router.pathname === '/medicaldepartments/[slug]' ? setPopularTreatmetsData(dataPopularTreatmentsMedical.dataPopularTreatmentsMedical) :
       setPopularTreatmetsData(dataPopularTreatmentsMedical.dataPopularTreatmentsHome)
-
-
   }, [])
 
 

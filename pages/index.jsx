@@ -53,7 +53,7 @@ export async function getStaticProps({ locale }) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      "slug": 'الدليل-الشامل-للسياحة-العلاجية-في-تركيا:-لماذا-السفر-للعلاج',
+      "slug": 'The-Comprehensive-Guide-to-Medical-Tourism-in-Turkey:-Why-Travel-for-Treatment',
       "lang": locale
     })
   })

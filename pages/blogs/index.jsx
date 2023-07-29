@@ -101,8 +101,10 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
             <div
               className={styles.boxes_container}>
               {
+
                 blogs?.data.map((post, idx) => (
                   <>
+
                     <motion.div
                       animate={{ opacity: 1 }}
                       initial={{ opacity: 0 }}
@@ -110,7 +112,6 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
                       transition={{ duration: 1, }}
                       className={styles.box} key={idx}>
                       <Link href={`/blogs/${post.slug}`}>
-
                         <div className={styles.img_container}>
                           <Image
                             src={post.image}
