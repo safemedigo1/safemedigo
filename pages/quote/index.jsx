@@ -9,7 +9,9 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
-import { datePicker } from '@material-ui/pickers';
+// import { datePicker } from '@material-ui/pickers';
+import DatePicker from '@material-ui/pickers/DatePicker';
+
 import dayjs from 'dayjs';
 import { DigitalClock } from '@mui/x-date-pickers/DigitalClock';
 //
@@ -544,7 +546,7 @@ const quote = () => {
                     animate={{ opacity: 1 }}
                     initial={{ opacity: 0 }}
                   >
-                    <LocalizationProvider dateAdapter={AdapterDayjs} datePicker={datePicker}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs} DatePicker={DatePicker}>
                       <DateCalendar
                         value={selectedDate}
                         onChange={(newDateVal) => setSelectedDate(dayjs(newDateVal))}
