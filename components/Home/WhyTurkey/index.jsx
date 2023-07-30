@@ -11,7 +11,6 @@ const WhyTurkey = ({ blogSlugData }) => {
   const { t } = useTranslation();
   const router = useRouter()
 
-  console.log(blogSlugData, "HERE")
 
   return (
     <section id={styles.why_turky} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
