@@ -244,7 +244,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
         <script async defer src="//www.instagram.com/embed.js"></script>
       </Head>
       <SecNavbar treatmentName={dataTreatment?.treatmentName} />
-      <PageHeader treatment={dataTreatment} />
+      <PageHeader treatment={dataTreatment && dataTreatment} />
       <InnerPageNavbar />
 
       <article id={'overview'} className={styles.overview} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
