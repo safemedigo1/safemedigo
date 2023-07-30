@@ -997,7 +997,7 @@ export async function getStaticPaths() {
     params: { slug: treatment },
     locale: locale,
   })))
-
+  console.log(paths, "SLUGSS")
   return {
     paths, fallback: 'blocking',
   };
