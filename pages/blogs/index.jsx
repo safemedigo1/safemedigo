@@ -196,7 +196,7 @@ export async function getStaticProps({ locale }) {
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
 
-  const res1 = await fetch("https://api.safemedigo.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
+  const res1 = await fetch("https://api2.safemedigo.com/api/v1/BlogCategory/GetAllBlogCategoriesByLang", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -212,7 +212,7 @@ export async function getStaticProps({ locale }) {
 
 
   const getBlogWithPageRes = await
-    axios.post("https://api.safemedigo.com/api/v1/Blog/GetAllBlogWithPage", {
+    axios.post("https://api2.safemedigo.com/api/v1/Blog/GetAllBlogWithPage", {
       "lang": locale,
       "blogCategoryId": '0',
       "currentPage": 1
@@ -228,7 +228,7 @@ export async function getStaticProps({ locale }) {
   const totalProducts = data.count;
   const totalPages = Math.ceil(totalProducts / limit);
 
-  const allBlogTagsRes = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogsTags", {
+  const allBlogTagsRes = await fetch("https://api2.safemedigo.com/api/v1/Blog/GetAllBlogsTags", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

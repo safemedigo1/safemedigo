@@ -75,7 +75,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
 
   const getQA = async () => {
-    const getQARes = await axios.post("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentsQuestionAnswersBySlug", {
+    const getQARes = await axios.post("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsQuestionAnswersBySlug", {
       "lang": locale,
       "treatmentSlug": params.slug,
       "currentPage": currentPageCount
@@ -989,7 +989,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 export default TreatmentName
 
 export async function getStaticPaths() {
-  const res = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetAllTreatmentSlugs")
+  const res = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetAllTreatmentSlugs")
   const data = await res.json()
 
   const customLocale = ['en', 'ar', 'tr'];
@@ -1004,7 +1004,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ locale, params }) {
-  const resTreatment = await axios.post("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentBySlug", {
+  const resTreatment = await axios.post("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentBySlug", {
     "lang": locale,
     "treatmentSlug": params.slug,
   }, {

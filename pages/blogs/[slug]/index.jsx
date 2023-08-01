@@ -84,7 +84,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
   // Blog Comments API's
   const getAllCommentByPage = async () => {
-    const getBlogComments = await axios.post("https://api.safemedigo.com/api/v1/BlogComment/GetAllBlogCommentByPage", {
+    const getBlogComments = await axios.post("https://api2.safemedigo.com/api/v1/BlogComment/GetAllBlogCommentByPage", {
       "currentPage": currentPageCount,
       "blogId": blog.id
     }, {
@@ -125,7 +125,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
       toast.error(t("single_blog:emailValid"))
     } else {
-      const addCommentData = await axios.post("https://api.safemedigo.com/api/v1/BlogComment/Add", {
+      const addCommentData = await axios.post("https://api2.safemedigo.com/api/v1/BlogComment/Add", {
         "blogId": blog.id,
         "comment": userCommentDetails.comment,
         "email": userCommentDetails.email,
@@ -517,7 +517,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
 
 export async function getStaticPaths() {
-  const res = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogSlugs");
+  const res = await fetch("https://api2.safemedigo.com/api/v1/Blog/GetAllBlogSlugs");
   const data = await res.json()
 
   const paths = data?.map((data) => {
@@ -536,7 +536,7 @@ export async function getStaticPaths() {
 
 
 export async function getStaticProps({ params, locale }) {
-  const res = await fetch("https://api.safemedigo.com/api/v1/Blog/GetBlogUiDataBySlug", {
+  const res = await fetch("https://api2.safemedigo.com/api/v1/Blog/GetBlogUiDataBySlug", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -549,7 +549,7 @@ export async function getStaticProps({ params, locale }) {
   })
   const data = await res.json()
 
-  const allBlogTagsRes = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogsTags", {
+  const allBlogTagsRes = await fetch("https://api2.safemedigo.com/api/v1/Blog/GetAllBlogsTags", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

@@ -214,12 +214,12 @@ export default HealthCase
 
 
 export async function getStaticPaths() {
-  const res = await fetch("https://api.safemedigo.com/api/v1/HealthCases/GetAllHealthCasesSlugs")
+  const res = await fetch("https://api2.safemedigo.com/api/v1/HealthCases/GetAllHealthCasesSlugs")
   const data = await res.json()
 
   const customLocale = ['en', 'ar', 'tr'];
 
-  const resDepartmentsSlug = await fetch("https://api.safemedigo.com/api/v1/MedicalDepartment/GetAllMedicalDepartmentsByLang", {
+  const resDepartmentsSlug = await fetch("https://api2.safemedigo.com/api/v1/MedicalDepartment/GetAllMedicalDepartmentsByLang", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -245,7 +245,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ locale, params }) {
   console.log(params, "MY PARAMS")
-  const resPopularTreatments = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetPopularTreatmentsByLang", {
+  const resPopularTreatments = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetPopularTreatmentsByLang", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -258,7 +258,7 @@ export async function getStaticProps({ locale, params }) {
   const dataPopularTreatments = await resPopularTreatments.json()
 
 
-  const resMedicalDepartments = await fetch("https://api.safemedigo.com/api/v1/MedicalDepartment/GetAllMedicalDepartmentsByLang", {
+  const resMedicalDepartments = await fetch("https://api2.safemedigo.com/api/v1/MedicalDepartment/GetAllMedicalDepartmentsByLang", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -270,7 +270,7 @@ export async function getStaticProps({ locale, params }) {
   })
   const dataMedicalDepartments = await resMedicalDepartments.json()
 
-  const resHealthCase = await fetch("https://api.safemedigo.com/api/v1/HealthCases/GetAllHealthCaseByDepartmentSlug", {
+  const resHealthCase = await fetch("https://api2.safemedigo.com/api/v1/HealthCases/GetAllHealthCaseByDepartmentSlug", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -285,7 +285,7 @@ export async function getStaticProps({ locale, params }) {
   const dataHealthCase = await resHealthCase.json()
 
 
-  const resTreatmentsHealthCase = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
+  const resTreatmentsHealthCase = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

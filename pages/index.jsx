@@ -13,7 +13,7 @@ import {
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export async function getStaticProps({ locale }) {
-  const resPopularTreatments = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetPopularTreatmentsByLang", {
+  const resPopularTreatments = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetPopularTreatmentsByLang", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -29,7 +29,7 @@ export async function getStaticProps({ locale }) {
   })
   const dataPopularTreatments = await resPopularTreatments.json()
 
-  const resMedicalDepartments = await fetch("https://api.safemedigo.com/api/v1/MedicalDepartment/GetAllMedicalDepartmentsByLang", {
+  const resMedicalDepartments = await fetch("https://api2.safemedigo.com/api/v1/MedicalDepartment/GetAllMedicalDepartmentsByLang", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -46,7 +46,7 @@ export async function getStaticProps({ locale }) {
   const dataMedicalDepartments = await resMedicalDepartments.json()
 
   // Blog Slug (WhyTurkey)
-  const blogSlugRes = await fetch("https://api.safemedigo.com/api/v1/Blog/GetBlogUiDataBySlug", {
+  const blogSlugRes = await fetch("https://api2.safemedigo.com/api/v1/Blog/GetBlogUiDataBySlug", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

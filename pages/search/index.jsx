@@ -236,7 +236,7 @@ export default Search
 
 
 export async function getStaticProps({ locale }) {
-  const getAllBlogs = await fetch("https://api.safemedigo.com/api/v1/Blog/GetAllBlogByLang", {
+  const getAllBlogs = await fetch("https://api2.safemedigo.com/api/v1/Blog/GetAllBlogByLang", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -252,7 +252,7 @@ export async function getStaticProps({ locale }) {
   })
   const data = await getAllBlogs.json()
 
-  const getAllTreatments = await fetch("https://api.safemedigo.com/api/v1/Treatments/GetAllTreatments", {
+  const getAllTreatments = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetAllTreatments", {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
