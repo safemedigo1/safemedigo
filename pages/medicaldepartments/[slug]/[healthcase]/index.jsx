@@ -231,7 +231,6 @@ export async function getStaticPaths() {
   })
   const dataDepartmentSlig = await resDepartmentsSlug.json()
 
-  console.log(dataDepartmentSlig)
 
   const paths = data.flatMap((health, idx) => customLocale.flatMap((locale) => dataDepartmentSlig.map((department) => ({
     params: { slug: department.slug.toString(), healthcase: health, },
@@ -244,7 +243,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ locale, params }) {
-  console.log(params, "MY PARAMS")
   const resPopularTreatments = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetPopularTreatmentsByLang", {
     method: 'POST',
     headers: {
@@ -283,8 +281,6 @@ export async function getStaticProps({ locale, params }) {
     })
   })
   const dataHealthCase = await resHealthCase.json()
-
-
   const resTreatmentsHealthCase = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
     method: 'POST',
     headers: {
