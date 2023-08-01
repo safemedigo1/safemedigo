@@ -307,7 +307,7 @@ const Footer = () => {
               </div>
 
               <div className={styles.quote}>
-                <Link href='/'>
+                <Link href='/quoute'>
                   <button>Get A Quote</button>
                 </Link>
               </div>

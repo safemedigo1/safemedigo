@@ -42,7 +42,7 @@ const ContactDetails = () => {
                   </Link>
                 </div>
                 <div className={styles.btn}>
-                  <Link href="https://en.wh.ms/201100791315" target="_blank">
+                  <Link href="https://wa.me/message/JLFXRTHJEOH2H1" target="_blank">
                     <button>Whatsapp</button>
                   </Link>
                 </div>
