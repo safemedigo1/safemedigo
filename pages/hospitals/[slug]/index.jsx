@@ -2,7 +2,6 @@ import { PageHeader, SecNavbar } from "@/components";
 import InnerPageNavbar from "@/components/Navbar/InnerPageNavbar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Container, Typography, Dialog, DialogContent, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem, DialogTitle, Rating } from '@mui/material';
-import Link from 'next/link';
 import styles from './index.module.scss';
 import Carousel from 'react-elastic-carousel';
 import { useState } from "react";
@@ -22,7 +21,7 @@ import { MdLocationOn } from 'react-icons/md'
 import { FaShieldAlt } from 'react-icons/fa'
 
 
-const Hospital = () => {
+const Hospital = ({ dataHospitalSlug }) => {
   const { certeficate, post1 } = imgs;
   const router = useRouter();
   const cards = [
@@ -482,7 +481,7 @@ const Hospital = () => {
   return (
     <>
       <SecNavbar />
-      <PageHeader />
+      <PageHeader dataHospitalSlug={dataHospitalSlug} />
       <Box
         sx={{
           display: {
@@ -514,9 +513,10 @@ const Hospital = () => {
           <div className={styles.title}>
             <Typography variant="h3">
               Acibadem Hospital Taksim
+              {dataHospitalSlug.name}
             </Typography>
           </div>
-
+          {console.log(dataHospitalSlug.name, "SSSS")}
           <div className={styles.text_container}>
 
 
@@ -848,10 +848,39 @@ const Hospital = () => {
 
 export default Hospital
 
-export async function getServerSideProps({ locale }) {
+
+export async function getStaticPaths() {
+  const resHospitalsSlugs = await fetch("https://api2.safemedigo.com/api/v1/Blog/GetAllBlogSlugs");
+  const dataHospitalsSlugs = await resHospitalsSlugs.json()
+
+  const paths = dataHospitalsSlugs?.map((data) => {
+    return {
+      params: { slug: data.toString() }
+    }
+  })
+
 
   return {
+    paths,
+    fallback: 'blocking',
+  };
+}
+export async function getStaticProps({ locale, params }) {
+  const resHospitalSlug = await fetch("https://api2.safemedigo.com/api/v1/Hospital/GetHospitalBySlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "hospitalSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataHospitalSlug = await resHospitalSlug.json()
+  return {
     props: {
+      dataHospitalSlug,
       ...(await serverSideTranslations(locale, ["navbar", "proceduresSymptoms_single", 'Footer'])),
     },
   };

@@ -37,7 +37,6 @@ export async function getStaticProps({ locale }) {
       'Cache-Control': 'no-cache',
       'Pragma': 'no-cache',
       'Expires': '0',
-
     },
     body: JSON.stringify({
       "lang": locale
@@ -59,12 +58,29 @@ export async function getStaticProps({ locale }) {
   })
   const blogSlugData = await blogSlugRes.json()
 
+  const resMostPopularClinc = await fetch("https://api2.safemedigo.com/api/v1/Hospital/ListPopularHospitals", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache',
+      'Expires': '0',
+    },
+    body: JSON.stringify({
+      "lang": locale
+    })
+  })
+  const dataMostPopularClinc = await resMostPopularClinc.json()
+
+
   return {
     props: {
       dataPopularTreatments,
       dataMedicalDepartments,
       locale,
       blogSlugData,
+      dataMostPopularClinc,
 
       ...(await serverSideTranslations(locale, ['home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'safety_standards_page', 'blogs_page', 'proceduresSymptoms', 'Footer'])),
     },
@@ -73,8 +89,8 @@ export async function getStaticProps({ locale }) {
 }
 
 export default function Home({ dataPopularTreatments,
-  dataMedicalDepartments, blogSlugData }) {
-
+  dataMedicalDepartments, blogSlugData, dataMostPopularClinc }) {
+  console.log(dataMostPopularClinc, 'HERE')
   return (
     <>
       <Head>
@@ -98,7 +114,7 @@ export default function Home({ dataPopularTreatments,
       <Help />
       <WhySafemedigo />
       <TreatmentCategory dataMedicalDepartmentsHome={dataMedicalDepartments} />
-      <MostPopular dataPopularTreatmentsHome={dataPopularTreatments} />
+      <MostPopular dataPopularTreatmentsHome={dataPopularTreatments} dataMostPopularClincHome={dataMostPopularClinc} />
       <PatientStories />
       <Safty />
       <WhyTurkey blogSlugData={blogSlugData} />

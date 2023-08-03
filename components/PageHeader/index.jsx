@@ -10,8 +10,9 @@ import { FaShieldAlt } from 'react-icons/fa'
 import Link from "next/link";
 
 
-const PageHeader = ({ blog, treatment }) => {
+const PageHeader = ({ blog, treatment, dataHospitalSlug }) => {
   const router = useRouter();
+
   const { pathname } = router;
   const { design, designMobile, post1, userimg } = imgs;
   const { t } = useTranslation();
@@ -36,45 +37,53 @@ const PageHeader = ({ blog, treatment }) => {
                 <div className={styles.boxes_container}>
                   <div className={styles.hospital_box}>
                     <div className={styles.main_img}>
-                      <Image width={400} height={240} src={post1.src} alt={""} />
+                      <Image width={400} height={240} src={dataHospitalSlug.logo} alt={""} />
                     </div>
 
                     <div className={styles.text_container}>
-                      <div className={styles.header}>
-                        <div className={styles.icon_container}>
-                          <FaShieldAlt />
+
+                      {dataHospitalSlug.isVerified &&
+
+                        <div className={styles.header}>
+
+                          <div className={styles.icon_container}>
+                            <FaShieldAlt />
+                          </div>
+                          <div className={styles.text}>
+                            <Typography>
+                              Safemedigo verified
+                            </Typography>
+                          </div>
+
                         </div>
-                        <div className={styles.text}>
-                          <Typography>
-                            Safemedigo verified
-                          </Typography>
-                        </div>
-                      </div>
+                      }
 
                       <div className={styles.name}>
                         <Typography variant="h3">
-                          Acibadem Hospital Taksim
+                          {dataHospitalSlug.name}
                         </Typography>
                       </div>
                       <div className={styles.location}>
                         <MdLocationOn />
                         <Typography >
-                          Acıbadem Mah. Çeçen Sok. Istanbul, Turkey
+                          {dataHospitalSlug.address}
                         </Typography>
                       </div>
                       <div className={styles.rating}>
-                        <Rating name="read-only" defaultValue={4} size="small" />
-                        <span className={styles.reviews_num}>90 Reviews</span>
+                        <Rating name="read-only" defaultValue={dataHospitalSlug.totalReviews} size="small" />
+                        <span className={styles.reviews_num}>{dataHospitalSlug.totalReviews} Reviews</span>
                       </div>
 
                       <div className={styles.category}>
                         <Typography>
-                          General Hospital
+                          {dataHospitalSlug.hospitalKindName}
                         </Typography>
                       </div>
 
                     </div>
                   </div>
+
+
 
                   <div className={styles.info}>
                     <div className={styles.header}>
@@ -91,7 +100,7 @@ const PageHeader = ({ blog, treatment }) => {
                       </div>
                       <div className={styles.box}>
                         <div className={styles.num}>
-                          <Typography>2001</Typography>
+                          <Typography>{dataHospitalSlug.foundedYear}</Typography>
                         </div>
                         <div className={styles.yearly}>
                           <Typography>Founded year</Typography>
@@ -99,7 +108,7 @@ const PageHeader = ({ blog, treatment }) => {
                       </div>
                       <div className={styles.box}>
                         <div className={styles.num}>
-                          <Typography>1500</Typography>
+                          <Typography>{dataHospitalSlug.employeesCount}</Typography>
                         </div>
                         <div className={styles.yearly}>
                           <Typography>Doctors & Employees</Typography>
@@ -117,7 +126,7 @@ const PageHeader = ({ blog, treatment }) => {
             </Box>
           }
           {
-            pathname === ('/doctor/[slug]') && pathname === ('/doctor/[slug]') &&
+            pathname === ('/doctor/[slug]') &&
             <Box sx={{
               display: {
                 xs: "none",
