@@ -147,7 +147,6 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
       }
       )
       setIsLoading(false)
-      // console.log(, "OHEERRERE")
       if (addCommentData?.status === 200) {
         toast.success(t("single_blog:commentSuccess"))
         formRef.current?.reset()
@@ -526,7 +525,6 @@ export async function getStaticPaths() {
     }
   })
 
-  console.log(paths)
   return {
     paths,
     fallback: 'blocking',

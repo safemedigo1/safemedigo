@@ -248,7 +248,6 @@ const quote = () => {
 
       }
 
-      console.log(response)
 
     }
 
@@ -302,8 +301,7 @@ const quote = () => {
     setEnteredOtp(code);
   };
 
-  console.log(otp)
-  console.log(enteredOtp)
+
 
   return (
     <>

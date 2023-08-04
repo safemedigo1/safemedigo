@@ -235,7 +235,6 @@ export async function getServerSideProps({ query, locale }) {
 
   const allBlogsTagsData = await allBlogTagsRes.json()
 
-  console.log(allBlogsTagsData)
 
   return {
     props: {

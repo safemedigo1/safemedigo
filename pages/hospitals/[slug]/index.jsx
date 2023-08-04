@@ -516,7 +516,6 @@ const Hospital = ({ dataHospitalSlug }) => {
               {dataHospitalSlug.name}
             </Typography>
           </div>
-          {console.log(dataHospitalSlug.name, "SSSS")}
           <div className={styles.text_container}>
 
 

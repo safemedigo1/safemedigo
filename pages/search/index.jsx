@@ -144,8 +144,6 @@ const Search = ({ blogs, treatments }) => {
 
 
 
-                {console.log(results, "Results")}
-                {console.log(query, "QUERY")}
               </div>
 
               <div className={styles.card_inner}>

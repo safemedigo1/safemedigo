@@ -361,7 +361,6 @@ export async function getStaticProps({ locale, params }) {
   })
   const dataHealthCase = await resHealthCase.json()
 
-  console.log(params.slug, 'ZZZZZ')
   const resTreatmentsHealthCase = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
     method: 'POST',
     headers: {

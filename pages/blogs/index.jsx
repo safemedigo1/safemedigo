@@ -25,7 +25,6 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
   const { t } = useTranslation();
   const [category, setCategory] = useState('All Blogs');
   const [lang, setLang] = useState(locale);
-  console.log(allBlogsTagsData, "HERERERE")
 
   const router = useRouter();
 
