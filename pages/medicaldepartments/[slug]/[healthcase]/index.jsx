@@ -14,6 +14,7 @@ import axios from 'axios';
 
 
 const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, params }) => {
+
   const [expanded, setExpanded] = useState(false);
 
   const [dataTreatmentsHealthCase, setDataTreatmentsHealthCase] = useState(null);
@@ -52,13 +53,12 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
     setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data)
     setTreatmentLoading(false)
 
+    console.log(dataTreatmentsHealthCase, "HEEEE")
 
 
     if (TreatmentCountPage > 1) {
       setDataTreatmentsHealthCase(prev => [...prev, ...resTreatmentsHealthCase?.data?.treatments])
 
-    } else {
-      setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data?.treatments)
     }
 
     setTreatmentCount(resTreatmentsHealthCase?.data?.count)
@@ -317,7 +317,7 @@ export async function getStaticPaths() {
 
 
   return {
-    paths, fallback: false,
+    paths, fallback: 'blocking',
   };
 }
 

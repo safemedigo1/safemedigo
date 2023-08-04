@@ -22,7 +22,7 @@ const nextConfig = {
       "http://safemedigo1-001-site4.itempurl.com//",
       "safemedigo.com",
       "safemedigo.vercel.app",
-      "cp1.safemedigo.com",
+      "cp2.safemedigo.com",
       "https://api.safemedigo.com",
     ],
   },

@@ -18,6 +18,8 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 
 const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, params, locale }) => {
+
+
   const [result, setResult] = useState(null)
   const [expanded, setExpanded] = useState(false);
   const [dataTreatmentsHealthCase, setDataTreatmentsHealthCase] = useState(null);
@@ -91,7 +93,8 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
     }
   }
 
-  const description = dataMedicalDepartments.find((e) => params.slug === e.slug)
+  const description = dataMedicalDepartments?.find((e) => params.slug === e.slug)
+
 
   const getAllTreatments = async () => {
     setTreatmentLoading(true)
@@ -101,7 +104,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
         "lang": locale,
         "healthCaseSlug": "",
         "currentPage": TreatmentCountPage,
-        "departmentSlug": ""
+        "departmentSlug": params.slug
       }, {
         headers: {
           'Accept': 'application/json',
@@ -162,7 +165,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
             className={styles.section_container}>
 
-            {dataHealthCase.length !== 0 &&
+            {dataHealthCase?.length !== 0 &&
               <div className={styles.filter_section}>
                 <div className={styles.card_title}>
                   <Typography sx={{ display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' } }} variant='h3'>
@@ -218,10 +221,10 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                         </ListItem>
                       </Link> */}
 
-                      {dataHealthCase.map((healthCase) => (
-                        <Link href={`/medicaldepartments/${params.slug}/${healthCase.slug}`} scroll={false} key={healthCase.id} >
+                      {dataHealthCase?.map((healthCase) => (
+                        <Link href={`/medicaldepartments/${params.slug}/${healthCase?.slug}`} scroll={false} key={healthCase?.id} >
                           <ListItem variant='li' sx={{ cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                            {healthCase.name}
+                            {healthCase?.name}
                           </ListItem>
                         </Link>
                       ))}
