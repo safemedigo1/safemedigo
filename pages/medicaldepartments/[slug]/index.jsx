@@ -133,12 +133,6 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
   }, [TreatmentCountPage])
 
 
-  // // Calculate the midpoint index
-  const midpointIndex = Math.floor(dataMedicalDepartments?.length / 2);
-
-  // Split the original array into two dynamic arrays
-  const firstHalfArray = dataMedicalDepartments?.slice(0, midpointIndex);
-  const secondHalfArray = dataMedicalDepartments?.slice(midpointIndex);
 
 
 
@@ -215,17 +209,17 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                     }
                     }
                     >
-
+                      {/* 
                       <Link href={`/medicaldepartments/Obstetrics-and-gynecology`} scroll={false}>
                         <ListItem variant='li' sx={{
                           cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)'
                         }}>
                           All Health Cases
                         </ListItem>
-                      </Link>
+                      </Link> */}
 
                       {dataHealthCase.map((healthCase) => (
-                        <Link href={`${router.asPath}/${healthCase.slug}`} scroll={false} key={healthCase.id} >
+                        <Link href={`/medicaldepartments/${params.slug}/${healthCase.slug}`} scroll={false} key={healthCase.id} >
                           <ListItem variant='li' sx={{ cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
                             {healthCase.name}
                           </ListItem>

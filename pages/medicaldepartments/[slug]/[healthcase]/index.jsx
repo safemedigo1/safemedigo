@@ -1,4 +1,3 @@
-
 import styles from '../../../procedures&symptoms/index.module.scss';
 import { ContactDetails, MedicalDepartments, MostPopular } from '@/components/Home'
 import { Container, Typography, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem } from '@mui/material'
@@ -41,9 +40,9 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
     const resTreatmentsHealthCase = await
       axios.post("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
         "lang": router.locale,
-        "healthCaseSlug": "TestV1",
+        "healthCaseSlug": "All-health-conditions",
         "currentPage": TreatmentCountPage,
-        "departmentSlug": "Gastroenterology-and-Hepatology"
+        "departmentSlug": ""
       }, {
         headers: {
           'Accept': 'application/json',
@@ -365,32 +364,31 @@ export async function getStaticProps({ locale, params }) {
   })
   const dataHealthCase = await resHealthCase.json()
 
-  // const resTreatmentsHealthCase = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
-  //   method: 'POST',
-  //   headers: {
-  //     'Accept': 'application/json',
-  //     'Content-Type': 'application/json'
-  //   },
-  //   body: JSON.stringify({
-  //     "lang": locale,
-  //     "healthCaseSlug": params.healthcase,
-  //     "currentPage": 1,
-  //     "departmentSlug": params.slug
-  //   })
-  // })
-  // const dataTreatmentsHealthCase = await resTreatmentsHealthCase.json()
-  // console.log(dataTreatmentsHealthCase, "HERE")
+  const resTreatmentsHealthCase = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": locale,
+      "healthCaseSlug": params.healthcase,
+      "currentPage": 1,
+      "departmentSlug": params.slug
+    })
+  })
+  const dataTreatmentsHealthCase = await resTreatmentsHealthCase.json()
+  console.log(dataTreatmentsHealthCase, "HERE")
 
   return {
     props: {
       dataPopularTreatments,
       dataHealthCase,
       dataMedicalDepartments,
-      // dataTreatmentsHealthCase,
+      dataTreatmentsHealthCase,
       params,
       ...(await serverSideTranslations(locale, ['navbar', "contact_details", 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", 'Footer'])),
       revalidate: 10,
     }
   }
 }
-
