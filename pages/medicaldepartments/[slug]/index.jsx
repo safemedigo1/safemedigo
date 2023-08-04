@@ -430,10 +430,10 @@ export async function getStaticProps({ params, locale }) {
     body: JSON.stringify({
       "lang": locale,
       "departmentSlug": params.slug
-
     })
   })
   const dataHealthCase = await resHealthCase.json()
+
 
   return {
     props: {

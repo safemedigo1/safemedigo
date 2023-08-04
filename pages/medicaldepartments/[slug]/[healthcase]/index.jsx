@@ -2,7 +2,7 @@
 import styles from '../../../procedures&symptoms/index.module.scss';
 import { ContactDetails, MedicalDepartments, MostPopular } from '@/components/Home'
 import { Container, Typography, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Link from 'next/link';
 import { PageHeader, SecNavbar } from '@/components';
@@ -11,17 +11,75 @@ import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import axios from 'axios';
 
 
-const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, dataTreatmentsHealthCase, params }) => {
+const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, params }) => {
   const [expanded, setExpanded] = useState(false);
+
+  const [dataTreatmentsHealthCase, setDataTreatmentsHealthCase] = useState(null);
+  const [TreatmentCountPage, setTreatmentCountPage] = useState(1)
+  const [TreatmentCount, setTreatmentCount] = useState(0)
+  const [treatmentLoading, setTreatmentLoading] = useState(false)
+
+
+
   const { t } = useTranslation();
+
+
 
   const router = useRouter();
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded((prev) => !prev);
   };
+
+
+  const getAllTreatments = async () => {
+    setTreatmentLoading(true)
+
+    const resTreatmentsHealthCase = await
+      axios.post("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
+        "lang": router.locale,
+        "healthCaseSlug": "TestV1",
+        "currentPage": TreatmentCountPage,
+        "departmentSlug": "Gastroenterology-and-Hepatology"
+      }, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
+    setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data)
+    setTreatmentLoading(false)
+
+    console.log(resTreatmentsHealthCase?.data)
+    console.log(TreatmentCountPage, "THE ONE")
+
+
+
+    // if (TreatmentCountPage > 1) {
+    //   setDataTreatmentsHealthCase(prev => [...prev, ...resTreatmentsHealthCase?.data?.treatments])
+
+    // } else {
+    //   setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data?.treatments)
+    // }
+
+    setTreatmentCount(resTreatmentsHealthCase?.data?.count)
+
+  }
+
+
+
+  const handleLoadMoreTreatments = () => {
+    setTreatmentLoading(true)
+    setTreatmentCountPage((prev) => prev + 1)
+  }
+
+  useEffect(() => {
+    getAllTreatments()
+  }, [TreatmentCountPage])
+
 
 
   const description = dataMedicalDepartments.find((e) => params.slug === e.slug)
@@ -92,7 +150,7 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                   }
                   >
 
-                    <Link href={`/medicaldepartments/Obstetrics-and-gynecology`} scroll={false}>
+                    <Link href={`/medicaldepartments/All-medical-procedures`} scroll={false}>
                       <ListItem variant='li' sx={{
                         cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)'
                       }}>
@@ -120,7 +178,7 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                   {t("proceduresSymptoms:all_procedures")}
                 </Typography>
                 <Typography sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                  {dataTreatmentsHealthCase.count}  {t("proceduresSymptoms:procedures")}
+                  {dataTreatmentsHealthCase?.count}  {t("proceduresSymptoms:procedures")}
                 </Typography>
                 <Typography sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
                   {t("proceduresSymptoms:medical_department_sort")}
@@ -129,7 +187,7 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
 
               {
                 dataTreatmentsHealthCase?.count !== 0 &&
-                dataTreatmentsHealthCase?.treatments.map((treatmentCase, index) => (
+                dataTreatmentsHealthCase?.treatments?.map((treatmentCase, index) => (
                   <Accordion
                     key={index}
                     elevation={0}
@@ -167,9 +225,31 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                   </Accordion>
                 ))}
 
-              {dataTreatmentsHealthCase.count > 6 &&
+              {dataTreatmentsHealthCase?.count > 6 &&
                 <div className={styles.btn_container}>
-                  <button>Load More</button>
+                  <button onClick={handleLoadMoreTreatments}>
+                    {treatmentLoading !== true ?
+                      "Load More"
+                      :
+                      <>
+                        Loading {` `}
+                        <ThreeDots
+                          height="25"
+                          width="25"
+                          radius="9"
+                          color="#00ccb5"
+                          ariaLabel="three-dots-loading"
+                          wrapperStyle={{}}
+                          wrapperClassName="load_more_btn"
+                          visible={true}
+                        />
+
+                      </>
+
+                    }
+
+
+                  </button>
                 </div>
               }
             </div >
@@ -237,6 +317,9 @@ export async function getStaticPaths() {
     locale: locale,
   }))))
 
+
+
+
   return {
     paths, fallback: false,
   };
@@ -281,27 +364,29 @@ export async function getStaticProps({ locale, params }) {
     })
   })
   const dataHealthCase = await resHealthCase.json()
-  const resTreatmentsHealthCase = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      "lang": locale,
-      "healthCaseSlug": params.healthcase,
-      "currentPage": 1,
-      "departmentSlug": params.slug
-    })
-  })
-  const dataTreatmentsHealthCase = await resTreatmentsHealthCase.json()
+
+  // const resTreatmentsHealthCase = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
+  //   method: 'POST',
+  //   headers: {
+  //     'Accept': 'application/json',
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify({
+  //     "lang": locale,
+  //     "healthCaseSlug": params.healthcase,
+  //     "currentPage": 1,
+  //     "departmentSlug": params.slug
+  //   })
+  // })
+  // const dataTreatmentsHealthCase = await resTreatmentsHealthCase.json()
+  // console.log(dataTreatmentsHealthCase, "HERE")
 
   return {
     props: {
       dataPopularTreatments,
       dataHealthCase,
       dataMedicalDepartments,
-      dataTreatmentsHealthCase,
+      // dataTreatmentsHealthCase,
       params,
       ...(await serverSideTranslations(locale, ['navbar', "contact_details", 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", 'Footer'])),
       revalidate: 10,

@@ -54,7 +54,7 @@ const Navbar = (props) => {
   const menuLniks = [
     {
       category: t('navbar:procedures_symptoms'),
-      cateLink: '/medicaldepartments/Obstetrics-and-gynecology',
+      cateLink: '/medicaldepartments/All-medical-procedures',
       links: [
         {
           title: t("navbar:patients_reviews"),
@@ -107,7 +107,7 @@ const Navbar = (props) => {
   ];
 
   const navbarLinks = [
-    { title: t('navbar:procedures_symptoms'), link: "/medicaldepartments/Obstetrics-and-gynecology", menuLink: null },
+    { title: t('navbar:procedures_symptoms'), link: "/medicaldepartments/All-medical-procedures", menuLink: null },
     {
       title: t("navbar:reviews_photos"),
       link: "/",

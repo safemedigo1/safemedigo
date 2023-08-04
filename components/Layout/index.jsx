@@ -8,7 +8,7 @@ export default function Layout({ children }) {
   const router = useRouter();
   const { pathname } = router;
 
-  console.log(children.filter(str => str != ';'))
+  // console.log(children.filter(str => str != ';'))
   return (
     <>
       {pathname !== '/search' & pathname !== '/quote' & pathname !== '/login' & pathname !== '/signup' & pathname != '/editor' ?
