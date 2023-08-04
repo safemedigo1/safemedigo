@@ -24,6 +24,7 @@ const nextConfig = {
       "safemedigo.vercel.app",
       "cp2.safemedigo.com",
       "https://api.safemedigo.com",
+      "cp1.safemedigo.com",
     ],
   },
 

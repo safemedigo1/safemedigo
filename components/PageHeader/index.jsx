@@ -70,7 +70,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug }) => {
                         </Typography>
                       </div>
                       <div className={styles.rating}>
-                        <Rating name="read-only" defaultValue={dataHospitalSlug.totalReviews} size="small" />
+                        <Rating name="read-only" defaultValue={dataHospitalSlug.totalReviews} size="small" readOnly />
                         <span className={styles.reviews_num}>{dataHospitalSlug.totalReviews} Reviews</span>
                       </div>
 

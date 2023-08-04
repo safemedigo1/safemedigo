@@ -542,7 +542,6 @@ const MostPopular = (dataPopularTreatmentsMedical,) => {
                       className={styles.clinic}>
 
                       <Box sx={{ boxShadow: "inset -20px 0px 12px #eef5f5" }} />
-
                       <Carousel
                         breakPoints={breakPoints}
                         itemsToScroll={1}
