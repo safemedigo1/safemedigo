@@ -40,9 +40,9 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
     const resTreatmentsHealthCase = await
       axios.post("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
         "lang": router.locale,
-        "healthCaseSlug": "All-health-conditions",
+        "healthCaseSlug": params.healthcase,
         "currentPage": TreatmentCountPage,
-        "departmentSlug": ""
+        "departmentSlug": params.slug
       }, {
         headers: {
           'Accept': 'application/json',
@@ -52,17 +52,14 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
     setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data)
     setTreatmentLoading(false)
 
-    console.log(resTreatmentsHealthCase?.data)
-    console.log(TreatmentCountPage, "THE ONE")
 
 
+    if (TreatmentCountPage > 1) {
+      setDataTreatmentsHealthCase(prev => [...prev, ...resTreatmentsHealthCase?.data?.treatments])
 
-    // if (TreatmentCountPage > 1) {
-    //   setDataTreatmentsHealthCase(prev => [...prev, ...resTreatmentsHealthCase?.data?.treatments])
-
-    // } else {
-    //   setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data?.treatments)
-    // }
+    } else {
+      setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data?.treatments)
+    }
 
     setTreatmentCount(resTreatmentsHealthCase?.data?.count)
 
@@ -364,6 +361,7 @@ export async function getStaticProps({ locale, params }) {
   })
   const dataHealthCase = await resHealthCase.json()
 
+  console.log(params.slug, 'ZZZZZ')
   const resTreatmentsHealthCase = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
     method: 'POST',
     headers: {
@@ -378,7 +376,6 @@ export async function getStaticProps({ locale, params }) {
     })
   })
   const dataTreatmentsHealthCase = await resTreatmentsHealthCase.json()
-  console.log(dataTreatmentsHealthCase, "HERE")
 
   return {
     props: {
