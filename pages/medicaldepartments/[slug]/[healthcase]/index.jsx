@@ -100,12 +100,12 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
                       </ListItem>
                     </Link>
 
-                    {dataHealthCase.map((healthCase) => (
+                    {dataHealthCase?.map((healthCase) => (
                       <Link href={`/medicaldepartments/${router.query.slug}/${healthCase.slug}`} scroll={false} key={healthCase.id}>
                         <ListItem variant='li' sx={{
                           cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)'
                         }}>
-                          {healthCase.name}
+                          {healthCase?.name}
                         </ListItem>
                       </Link>
                     ))}
