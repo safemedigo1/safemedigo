@@ -129,7 +129,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
                   <Typography>
                     {router.pathname.includes('/medicaldepartments/[slug]') ?
                       <>
-                        10.500 {t("proceduresSymptoms:procedures")}
+                        {departments.length} {t("proceduresSymptoms:procedures")}
                       </>
                       :
                       "120 Doctors"
@@ -182,12 +182,12 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
               </> : <>
 
 
-                {departments.map((card, index) =>
+                {departments?.map((card, index) =>
                 (
                   <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index} >
                     <Link href={
                       router.pathname.includes('/medicaldepartments/[slug]') ?
-                        `/medicaldepartments/${card.slug}` : `/hospitals/${card.slug}`} className={`${styles.box}  
+                        `/medicaldepartments/${card?.slug}` : `/hospitals/${card?.slug}`} className={`${styles.box}  
                     ${slug === `${card.slug}` && styles.active}`} scroll={false}>
                       <div className={styles.img_container}>
                         <Image width={77.12} height={77.12} className={styles.main_img} src={card.image} alt="" />
@@ -195,7 +195,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
                       </div>
 
                       <div className={styles.box_title}>
-                        <Typography variant="h6">{card.departmentName}</Typography>
+                        <Typography variant="h6">{card?.departmentName}</Typography>
                       </div>
                     </Link>
 

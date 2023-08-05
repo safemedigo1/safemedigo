@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import Image from 'next/image';
 
-const MostPopular = (dataPopularTreatmentsMedical,) => {
+const MostPopular = (dataPopularTreatmentsMedical) => {
   const router = useRouter();
   const { pathname } = router;
   const { t } = useTranslation();
@@ -23,10 +23,19 @@ const MostPopular = (dataPopularTreatmentsMedical,) => {
 
   useEffect(() => {
     setPopularHospitalsData(dataPopularTreatmentsMedical.dataMostPopularClincHome)
-    router.pathname === '/medicaldepartments/[slug]' ? setPopularTreatmetsData(dataPopularTreatmentsMedical.dataPopularTreatmentsMedical) :
-      setPopularTreatmetsData(dataPopularTreatmentsMedical.dataPopularTreatmentsHome)
-  }, [])
+    if (router.pathname === '/medicaldepartments/[slug]/[healthcase]') {
+      setPopularTreatmetsData(dataPopularTreatmentsMedical.dataPopularTreatmentsHealth)
+    }
 
+    if (router.pathname === '/medicaldepartments/[slug]') {
+      setPopularTreatmetsData(dataPopularTreatmentsMedical.dataPopularTreatmentsMedical)
+    }
+    if (router.pathname === '/') {
+      setPopularTreatmetsData(dataPopularTreatmentsMedical.dataPopularTreatmentsHome)
+    }
+  }, [])
+  console.log(dataPopularTreatmentsMedical.dataPopularTreatmentsHealth, "HEREZZZZZZ")
+  console.log(router.pathname, "PATHHHH")
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false, itemsToShow: 1.1 },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },

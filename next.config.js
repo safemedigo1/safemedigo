@@ -19,7 +19,7 @@ const nextConfig = {
     //   unoptimized: true,
     domains: [
       "https://api2.safemedigo.com",
-      "http://safemedigo1-001-site4.itempurl.com//",
+      "http://safemedigo1-001-site4.itempurl.com",
       "safemedigo.com",
       "safemedigo.vercel.app",
       "cp2.safemedigo.com",

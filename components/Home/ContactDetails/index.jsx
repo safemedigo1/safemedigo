@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { Phone } from '../../../assets/svgs/HoverIcons'
 import { useTranslation } from "react-i18next";
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 
 
 const ContactDetails = () => {

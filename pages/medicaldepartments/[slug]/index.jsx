@@ -18,7 +18,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 
 const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, params, locale }) => {
-
+  console.log(params, "PROP_1")
 
   const [result, setResult] = useState(null)
   const [expanded, setExpanded] = useState(false);
@@ -132,9 +132,8 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
   }
 
   useEffect(() => {
-    getAllTreatments()
+    getAllTreatments();
   }, [TreatmentCountPage])
-
 
 
 
@@ -169,7 +168,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
               <div className={styles.filter_section}>
                 <div className={styles.card_title}>
                   <Typography sx={{ display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' } }} variant='h3'>
-                    Procedures & Symptoms
+                    Procedures
                   </Typography>
                 </div>
 
@@ -377,7 +376,7 @@ export async function getStaticPaths() {
 
 
   return {
-    paths, fallback: 'blocking',
+    paths, fallback: false,
   };
 }
 

@@ -53,7 +53,6 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
     setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data)
     setTreatmentLoading(false)
 
-    console.log(dataTreatmentsHealthCase, "HEEEE")
 
 
     if (TreatmentCountPage > 1) {
@@ -84,7 +83,7 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
       <SecNavbar />
       <PageHeader />
 
-      <MostPopular dataPopularTreatments={dataPopularTreatments} />
+      <MostPopular dataPopularTreatmentsHealth={dataPopularTreatments} />
 
 
       <MedicalDepartments dataMedicalDepartments={dataMedicalDepartments} params={params} />
@@ -102,7 +101,7 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
             <div className={styles.filter_section}>
               <div className={styles.card_title}>
                 <Typography sx={{ display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' } }} variant='h3'>
-                  Procedures & Symptoms
+                  Procedures
                 </Typography>
               </div>
               <Accordion disableGutters elevation={0}
