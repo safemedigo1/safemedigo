@@ -212,7 +212,6 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
         </div >
       </section >
 
-
       {
         router.pathname === '/hospitals/[slug]' &&
         <MostPopular />

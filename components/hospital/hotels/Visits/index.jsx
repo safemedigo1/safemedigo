@@ -15,7 +15,7 @@ import imgs from "../../../../assets/constants/imgs";
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 
-const Visits = () => {
+const Visits = ({ vistis }) => {
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },
@@ -30,22 +30,24 @@ const Visits = () => {
 
   ])
 
+  const [selectedCard, setSelectedCard] = useState(null)
+
 
   const router = useRouter();
   const { post3, } = imgs;
-  const doctorsData = [
-    { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '10000' },
-    { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '5000' },
-    { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '3000' },
-    { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '2000' },
-    { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '1000' },
-    { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
-    { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
-    { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
-    { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
-    { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
-    { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
-  ]
+  // const doctorsData = [
+  //   { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '10000' },
+  //   { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '5000' },
+  //   { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '3000' },
+  //   { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '2000' },
+  //   { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '1000' },
+  //   { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
+  //   { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
+  //   { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
+  //   { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
+  //   { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
+  //   { name: 'Istanbul Museum', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
+  // ]
 
   // Change Arrow in react-elastic-carousel Lirbrary
   function myArrow({ type, onClick, isEdge }) {
@@ -70,7 +72,8 @@ const Visits = () => {
 
   const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (card) => {
+    setSelectedCard(card)
     setOpen(true);
   };
   const handleClose = () => {
@@ -166,12 +169,12 @@ const Visits = () => {
                   renderArrow={myArrow}
                   isRTL={router.locale === 'ar' ? true : false}
                 >
-                  {doctorsData.map((card, index) => (
+                  {vistis?.map((card, index) => (
 
                     <>
-                      <Box sx={{ cursor: 'pointer' }} className={styles.box} key={index} onClick={handleClickOpen} >
+                      <Box sx={{ cursor: 'pointer' }} className={styles.box} key={index} onClick={() => handleClickOpen(card)} >
                         <div className={styles.img_container}>
-                          <Image width={344} height={191} src={card.img} alt={card.name} />
+                          <Image width={344} height={191} src={card.logo} alt={card.name} />
 
                         </div>
 
@@ -181,20 +184,20 @@ const Visits = () => {
                               {card.name}
                             </Typography>
                             <Typography sx={{ fontSize: '16px', color: '#000000', fontWeight: 'Regular', fontFamily: 'Quicksand' }}>
-                              Museum
+                              {card.hotspotType}
                             </Typography>
                           </div>
 
                           <div className={styles.location}>
                             <MdLocationOn />
                             <Typography >
-                              Istanbul, Turkey
+                              {card.address}
                             </Typography>
                           </div>
 
                           <div className={styles.desc}>
                             <Typography>
-                              We Were Accommodated 1 Month Ago At This Hotel And I Can Say That I Had The Worst Experience So Far. Nowhere Have I Seen Breakfast As Poor As At This Hotel, Poor Coffee, Some Bread, 2 Cherry Tomatoes And 2 Slices Of Cheese. We Are Talking About A 5 Star Hotel With An Indoor Pool But Closed And At Other Hotels The Pools Were Open.
+                              {card.description}
                             </Typography>
                           </div>
 
@@ -202,7 +205,7 @@ const Visits = () => {
                           <Box sx={{ marginTop: 'auto', width: '100%', display: 'flex', justifyContent: 'space-between', alignSelf: 'flex-end' }}>
 
                             <div className={styles.btn_container}>
-                              <Link href='/'>Check The Hotel</Link>
+                              <a >Show More</a>
                             </div>
                           </Box>
 
@@ -210,69 +213,73 @@ const Visits = () => {
                         </div>
                       </Box>
 
-                      <BootstrapDialog
-                        onClose={handleClose}
-                        aria-labelledby="customized-dialog-title2"
-                        open={open}
-                      >
-
-                        <BootstrapDialogTitle id="customized-dialog-title2" onClose={handleClose}>
-                          <Typography>
-                            {card.name}
-                          </Typography>
-
-                        </BootstrapDialogTitle>
-
-
-                        <DialogContent id='visits' dividers sx={{ display: 'flex', flexDirection: 'column' }}>
-
-
-                          <Carousel
-                            breakPoints={hotelImageBreakPoints}
-                            itemsToScroll={1}
-                            renderArrow={myArrow}
-                            isRTL={router.locale === 'ar' ? true : false}
-                          >
-                            <Box sx={{
-                              width: '100%', height: '200px', margin: 'auto',
-                              marginTop: '10px',
-
-                              '& img': {
-                                objectFit: 'contain', width: '100%', height: '100%',
-                              }
-                            }}>
-                              <Image width={66.87} height={99.78} style={{ objectFit: 'contain' }} src={card.img} alt="" />
-
-                            </Box>
-                            <Box sx={{
-                              width: '100%', height: '200px', margin: 'auto',
-                              marginTop: '10px',
-
-                              '& img': {
-                                objectFit: 'contain', width: '100%', height: '100%',
-                              }
-                            }}>
-                              <Image width={66.87} height={99.78} style={{ objectFit: 'contain' }} src={card.img} alt="" />
-
-                            </Box>
-
-                          </Carousel >
-                          <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '10px', marginTop: '10px' }} >
-                            <MdLocationOn />
-                            <Typography >
-                              Levazım, Çayır Sk. 4-1, 34340 Beşiktaş/İstanbul, Türkiye
-                            </Typography>
-                          </Box>
-                          <Typography gutterBottom>
-                            We Were Accommodated 1 Month Ago At This Hotel And I Can Say That I Had The Worst Experience So Far. Nowhere Have I Seen Breakfast As Poor As At This Hotel, Poor Coffee, Some Bread, 2 Cherry Tomatoes And 2 Slices Of Cheese. We Are Talking About A 5 Star Hotel With An Indoor Pool But Closed And At Other Hotels The Pools Were Open.
-                          </Typography>
-
-                        </DialogContent>
-                      </BootstrapDialog>
 
                     </>
                   ))}
+
                 </Carousel>
+                {selectedCard != null &&
+                  <BootstrapDialog
+                    onClose={handleClose}
+                    aria-labelledby="customized-dialog-title2"
+                    open={open}
+                  >
+
+                    <BootstrapDialogTitle id="customized-dialog-title2" onClose={handleClose}>
+                      <Typography>
+                        {selectedCard.name}
+                      </Typography>
+
+                    </BootstrapDialogTitle>
+
+
+                    <DialogContent id='visits' dividers sx={{ display: 'flex', flexDirection: 'column' }}>
+
+
+                      <Carousel
+                        breakPoints={hotelImageBreakPoints}
+                        itemsToScroll={1}
+                        renderArrow={myArrow}
+                        isRTL={router.locale === 'ar' ? true : false}
+                      >
+                        <Box sx={{
+                          width: '100%', height: '200px', margin: 'auto',
+                          marginTop: '10px',
+
+                          '& img': {
+                            objectFit: 'contain', width: '100%', height: '100%',
+                          }
+                        }}>
+                          <Image width={66.87} height={99.78} style={{ objectFit: 'contain' }} src={selectedCard.logo} alt="" />
+
+                        </Box>
+                        <Box sx={{
+                          width: '100%', height: '200px', margin: 'auto',
+                          marginTop: '10px',
+
+                          '& img': {
+                            objectFit: 'contain', width: '100%', height: '100%',
+                          }
+                        }}>
+                          <Image width={66.87} height={99.78} style={{ objectFit: 'contain' }} src={selectedCard.logo} alt="" />
+
+                        </Box>
+
+                      </Carousel >
+                      <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '10px', marginTop: '10px' }} >
+                        <MdLocationOn />
+                        <Typography >
+                          {selectedCard.address}
+                        </Typography>
+                      </Box>
+                      <Typography gutterBottom>
+                        {selectedCard.description}
+                      </Typography>
+
+                    </DialogContent>
+                  </BootstrapDialog>
+
+                }
               </motion.div>
             </div>
           </div>

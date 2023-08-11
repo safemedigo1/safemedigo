@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import Image from 'next/image';
 
-const Hotles = () => {
+const Hotles = ({ hotels }) => {
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },
@@ -37,6 +37,8 @@ const Hotles = () => {
     { name: 'Crowne Plaza Hotel - Floriya', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
     { name: 'Crowne Plaza Hotel - Floriya', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
   ]
+
+  console.log(hotels, "HOTELS")
 
   // Change Arrow in react-elastic-carousel Lirbrary
   function myArrow({ type, onClick, isEdge }) {
@@ -96,29 +98,29 @@ const Hotles = () => {
                   renderArrow={myArrow}
                   isRTL={router.locale === 'ar' ? true : false}
                 >
-                  {doctorsData.map((doc, index) => (
+                  {hotels?.map((hotel, index) => (
                     <div className={styles.box} key={index}>
                       <div className={styles.img_container}>
-                        <Image width={344} height={191} src={doc.img} alt={doc.name} />
+                        <Image width={344} height={191} src={hotel.hotelLogo} alt={hotel.hotelName} />
 
                       </div>
 
                       <div className={styles.box_text_container}>
                         <div className={styles.name}>
                           <Typography variant='h5'>
-                            {doc.name}
+                            {hotel.hotelName}
                           </Typography>
                         </div>
 
 
                         <div className={styles.rating}>
-                          <Rating name="read-only" defaultValue={4} size="small" />
+                          <Rating name="read-only" defaultValue={hotel.hotelRating} size="small" />
                         </div>
 
                         <div className={styles.location}>
                           <MdLocationOn />
                           <Typography >
-                            Istanbul, Turkey
+                            {hotel.hotelAddress}
                           </Typography>
                         </div>
 
@@ -126,32 +128,41 @@ const Hotles = () => {
                           <Typography>10 Minuets To Clinic</Typography>
                         </div>
 
-                        <div className={styles.way}>
-                          <BsCheck />
-                          <Typography>
-                            Free Wi-Fi
-                          </Typography>
-                        </div>
 
-                        <div className={styles.way}>
-                          <BsCheck />
-                          <Typography>
-                            Has Resturant
-                          </Typography>
-                        </div>
+                        {hotel.hasFreeWifi &&
+                          <div className={styles.way}>
+                            <BsCheck />
+                            <Typography>
+                              Free Wi-Fi
+                            </Typography>
+                          </div>
 
-                        <div className={styles.way}>
-                          <BsCheck />
-                          <Typography>
-                            Laundry Service
-                          </Typography>
-                        </div>
+                        }
+
+                        {hotel.hasFreeBreakfast &&
+                          <div className={styles.way}>
+                            <BsCheck />
+                            <Typography>
+                              Has Resturant
+                            </Typography>
+                          </div>
+                        }
+
+                        {hotel.hasLanduryService &&
+                          <div className={styles.way}>
+                            <BsCheck />
+                            <Typography>
+                              Laundry Service
+                            </Typography>
+                          </div>
+
+                        }
 
 
                         <Box sx={{ marginTop: 'auto', width: '100%', display: 'flex', justifyContent: 'space-between', alignSelf: 'flex-end' }}>
                           <div id={styles.price}>
                             <Typography>Starting From </Typography>
-                            <span>{doc.price}$</span>
+                            <span>{hotel.startingPrice}$</span>
                           </div>
 
                           <div className={styles.btn_container}>

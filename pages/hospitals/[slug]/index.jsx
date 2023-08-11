@@ -21,7 +21,7 @@ import { MdLocationOn } from 'react-icons/md'
 import { FaShieldAlt } from 'react-icons/fa'
 
 
-const Hospital = ({ dataHospitalSlug }) => {
+const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificatest, dataHospitalMedia, dataHospitalVisits, dataHospitalHotels }) => {
   const { certeficate, post1 } = imgs;
   const router = useRouter();
   const cards = [
@@ -29,8 +29,8 @@ const Hospital = ({ dataHospitalSlug }) => {
     { title: 'Patient name', img: certeficate.src, id: '2', desc: ' Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Consetetur Sadipscing Elitr, Sed Diam Nonumy  ' },
 
   ]
+  const [selectedCard, setSelectedCard] = useState(null)
 
-  // BreakPoints
   const [breakPoints] = useState([
     { width: 1, itemsToShow: 1, showPagination: true },
   ])
@@ -85,8 +85,9 @@ const Hospital = ({ dataHospitalSlug }) => {
   // Dialog MUI
   const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (card) => {
     setOpen(true);
+    setSelectedCard(card)
   };
   const handleClose = () => {
     setOpen(false);
@@ -495,24 +496,25 @@ const Hospital = ({ dataHospitalSlug }) => {
           <Image
             width={300}
             height={218}
-            src={post1.src} alt={""} />
+            src={dataHospitalSlug.logo} alt={""} />
         </div>
 
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-          <div className={styles.header}>
-            <div className={styles.icon_container}>
-              <FaShieldAlt />
+          {dataHospitalSlug.isVerified &&
+            <div className={styles.header}>
+              <div className={styles.icon_container}>
+                <FaShieldAlt />
+              </div>
+              <div className={styles.text}>
+                <Typography>
+                  Safemedigo verified
+                </Typography>
+              </div>
             </div>
-            <div className={styles.text}>
-              <Typography>
-                Safemedigo verified
-              </Typography>
-            </div>
-          </div>
+          }
 
           <div className={styles.title}>
             <Typography variant="h3">
-              Acibadem Hospital Taksim
               {dataHospitalSlug.name}
             </Typography>
           </div>
@@ -521,27 +523,28 @@ const Hospital = ({ dataHospitalSlug }) => {
 
             <div className={styles.name}>
               <Typography >
-                Specializations Dermatologist
+                Specializations        {dataHospitalSlug.hospitalKindName}
+
               </Typography>
             </div>
 
             <div className={styles.rating}>
-              <Rating name="read-only" defaultValue={4} size="small" />
-              <span className={styles.reviews_num}>90 Reviews</span>
+              <Rating name="read-only" defaultValue={dataHospitalSlug.rate} size="small" />
+              <span className={styles.reviews_num}>{dataHospitalSlug.totalReviews} Reviews</span>
             </div>
 
 
             <div className={styles.location}>
               <MdLocationOn />
               <Typography >
-                Acıbadem Mah. Çeçen Sok. Istanbul, Turkey
+                {dataHospitalSlug.address}
               </Typography>
             </div>
 
             <div className={styles.boxes_container}>
               <div className={styles.box}>
                 <div className={styles.num}>
-                  <Typography>163</Typography>
+                  <Typography>{dataHospitalSlug.yearlyPatient}</Typography>
                 </div>
                 <div className={styles.yearly}>
                   <Typography>Yearly patient</Typography>
@@ -549,7 +552,7 @@ const Hospital = ({ dataHospitalSlug }) => {
               </div>
               <div className={styles.box}>
                 <div className={styles.num}>
-                  <Typography>2001</Typography>
+                  <Typography>{dataHospitalSlug.foundedYear}</Typography>
                 </div>
                 <div className={styles.yearly}>
                   <Typography>Founded year</Typography>
@@ -557,7 +560,7 @@ const Hospital = ({ dataHospitalSlug }) => {
               </div>
               <div className={styles.box}>
                 <div className={styles.num}>
-                  <Typography>1500</Typography>
+                  <Typography>{dataHospitalSlug.employeesCount}</Typography>
                 </div>
                 <div className={styles.yearly}>
                   <Typography>Doctors & Employees</Typography>
@@ -584,7 +587,7 @@ const Hospital = ({ dataHospitalSlug }) => {
         <section id='overview' className={styles.overview}>
           <div className={styles.text_inner}>
             <Typography>
-              There Are Many Diseases And Disorders Of The Musculoskeletal System Under The Title Of Orthopedics And Traumatology. Treatment Of These Diseases Includes Medical And Surgical Methods. Medical Treatments Can Be Summarized As Drug Applications, Injections And Physiotherapy While Surgical Treatments Consist Of Many Methods Depending On The Severity And Urgency Of The Disease. Today, Specialization In Certain Subjects By Dividing Into Branches Among Orthopedic Surgeons Is Increasingly Common. The Aim Here Is That Patients Can Receive Service From A Specialist And Experienced Physician. Assoc. Dr. Mehmet Nuri Erdem Started His Orthopedic Career In Istanbul Florence Nightingale Hospital In 2003 And Has So Far Covered More Than 2000 Successful Surgeries And Many International And National Scientific Articles. For The Last 3 Years, He Has Been A Faculty Member At The University And Running His Own Clinic With His Team. This Team Consists Of Operating Room Nurses, Physiotherapists, Neuromonitorization Technicians And Polyclinic Assistants, All Of Whom Are Competent And Experienced Healthcare Professionals In Their Field. Our Clinic Provides Services In The Field Of Orthopedics, Especially Spine Surgery, Prosthetic Surgery And Sports Surgery. Spine Surgery Group Includes Deformities Such As Scoliosis, Kyphosis, Lumbar And Neck Hernias, Conditions Related To Spinal Calcification, Spine Fractures, Tumors And Infections. In Prosthetic Surgery, Especially The Knee And Hip Joint Prostheses And Their Revision, That Is Correction Operations, Can Be Considered. In Addition, We Provide Services In The Process Of Returning To Sports After Injuries And Physiotherapy Following, Especially Closed Surgeries Of The Knee Joint. In The Field Of Traumatology, We Treat All Bone Fractures In The Body Except Skull Bones. We, Accompanied By Our Expert Staff, Provide Services In All Stages Of Fracture Healing, Such As Conservative Or Surgical Treatment Of Fractures, Post-Treatment Bone Union And Physical Therapy To Restore The Joint Range Of Motion. Our Aim Is To Bring You Back To Your Health, By Taking All Innovative Approaches Into Consideration, To The Extent Of Our Experience And Skill, From The Moment You Apply To Us Until Your Treatment Ends.
+              {dataHospitalSlug.breif}
             </Typography>
           </div>
 
@@ -605,23 +608,23 @@ const Hospital = ({ dataHospitalSlug }) => {
                     renderArrow={myArrow}
                     pagination={false}
                   >
-                    {cards.map((card, index) => (
+                    {dataHospitalCertificatest?.map((card, index) => (
                       <>
-                        <div className={styles.box} key={index} onClick={handleClickOpen}>
+                        <div className={styles.box} key={index} onClick={() => handleClickOpen(card)}>
                           <div className={styles.title}>
-                            <Typography variant="h6">Best Doctor Award - 2020</Typography>
+                            <Typography variant="h6">{card.name}</Typography>
                           </div>
                           <div className={styles.boxes_container}>
                             <div className={styles.box_header}>
                               <div className={styles.img_container}>
-                                <Image width={66.87} height={99.78} src={card.img} alt="" />
+                                <Image width={66.87} height={99.78} src={card.image} alt={card.name} />
                               </div>
 
                             </div>
 
                             <div className={styles.desc}>
                               <Typography>
-                                Joint Commission International Accreditation And Certification Is Recognized As A Global Leader For Health Care Quality Of Care And Patient Safety. Joint Commission... READ ALL International Accreditation And Certification Is Recognized As A Global Leader For Health Care Quality Of Care And Patient Safety.
+                                {card.description}
                               </Typography>
 
                               <button>READ ALL</button>
@@ -629,35 +632,38 @@ const Hospital = ({ dataHospitalSlug }) => {
                           </div>
 
                         </div>
-                        <BootstrapDialog
-                          onClose={handleClose}
-                          aria-labelledby="customized-dialog-title"
-                          open={open}
-                        >
-                          <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                            Best Doctor Award - 2020
-                          </BootstrapDialogTitle>
-                          <DialogContent dividers sx={{ display: 'flex', flexDirection: 'column' }}>
-                            <Box sx={{
-                              width: '100%', height: '200px', margin: 'auto',
-                              marginTop: '10px',
-                              marginBottom: '20px',
-
-                              '& img': {
-                                objectFit: 'contain', width: '100%', height: '100%',
-                              }
-                            }}>
-                              <Image width={66.87} height={99.78} src={card.img} alt="" />
-                            </Box>
-
-                            <Typography gutterBottom>
-                              Joint Commission International Accreditation And Certification Is Recognized As A Global Leader For Health Care Quality Of Care And Patient Safety. Joint Commission... READ ALL International Accreditation And Certification Is Recognized As A Global Leader For Health Care Quality Of Care And Patient Safety.
-                            </Typography>
-
-                          </DialogContent>
-                        </BootstrapDialog>
                       </>
                     ))}
+
+                    {selectedCard != null &&
+                      <BootstrapDialog
+                        onClose={handleClose}
+                        aria-labelledby="customized-dialog-title"
+                        open={open}
+                      >
+                        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+                          {selectedCard.name}
+                        </BootstrapDialogTitle>
+                        <DialogContent dividers sx={{ display: 'flex', flexDirection: 'column' }}>
+                          <Box sx={{
+                            width: '100%', height: '200px', margin: 'auto',
+                            marginTop: '10px',
+                            marginBottom: '20px',
+
+                            '& img': {
+                              objectFit: 'contain', width: '100%', height: '100%',
+                            }
+                          }}>
+                            <Image width={66.87} height={99.78} src={selectedCard.image} alt={selectedCard.name} />
+                          </Box>
+
+                          <Typography gutterBottom>
+                            {selectedCard.description}
+                          </Typography>
+
+                        </DialogContent>
+                      </BootstrapDialog>
+                    }
 
                   </Carousel>
                 </div>
@@ -673,12 +679,12 @@ const Hospital = ({ dataHospitalSlug }) => {
                   </div>
 
                   <ul>
-                    <li>English,</li>
-                    <li>Turkish,</li>
-                    <li>English,</li>
-                    <li>English,</li>
-                    <li>Turkish,</li>
-                    <li>English,</li>
+                    {dataHospitalLang?.map((lang, idx) =>
+                      <>
+                        <li key={idx}>{lang.languageName}</li>,
+                      </>
+                    )}
+
                   </ul>
                 </div>
                 <div className={styles.box}>
@@ -700,7 +706,7 @@ const Hospital = ({ dataHospitalSlug }) => {
                     </Typography>
                   </div>
                   <ul>
-                    <li>20</li>
+                    <li>{dataHospitalSlug.bedsCount}</li>
 
                   </ul>
                 </div>
@@ -763,7 +769,7 @@ const Hospital = ({ dataHospitalSlug }) => {
         <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false} >
           <div className={styles.title_mob}>
             <Typography variant={'h4'}>
-              Acibadem Hospital Taksim
+              {dataHospitalSlug.name}
             </Typography>
           </div>
 
@@ -771,7 +777,7 @@ const Hospital = ({ dataHospitalSlug }) => {
             <div className={styles.text_container}>
               <div className={styles.title}>
                 <Typography variant={'h4'}>
-                  Acibadem Hospital Taksim
+                  {dataHospitalSlug.name}
                 </Typography>
               </div>
 
@@ -788,10 +794,10 @@ const Hospital = ({ dataHospitalSlug }) => {
                 renderArrow={myArrow}
                 isRTL={router.locale === 'ar' ? true : false}
               >
-                {clinicData.map((clinic, index) => (
-                  <div onClick={() => handleImageClick(clinic.img)} className={styles.box} key={index}>
+                {dataHospitalMedia?.map((clinic, index) => (
+                  <div onClick={() => handleImageClick(clinic.path)} className={styles.box} key={index}>
                     <div className={styles.img_container}>
-                      <Image width={392} height={305} src={clinic.img} alt={clinic.title} />
+                      <Image width={392} height={305} src={clinic.path} alt={clinic.title} />
                     </div>
                   </div>
                 ))}
@@ -838,8 +844,8 @@ const Hospital = ({ dataHospitalSlug }) => {
         </Container>
       </section>
 
-      <Hotles />
-      <Visits />
+      <Hotles hotels={dataHospitalHotels} />
+      <Visits vistis={dataHospitalVisits} />
 
     </>
   )
@@ -877,9 +883,86 @@ export async function getStaticProps({ locale, params }) {
     })
   })
   const dataHospitalSlug = await resHospitalSlug.json()
+
+  const resHospitalLang = await fetch("https://api2.safemedigo.com/api/v1/Hospital/GetHospitalLanguagesBySlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "hospitalSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataHospitalLang = await resHospitalLang.json()
+
+
+  const resHospitalCertificatest = await fetch("https://api2.safemedigo.com/api/v1/Hospital/GetHospitalCertificatestBySlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "hospitalSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataHospitalCertificatest = await resHospitalCertificatest.json()
+
+  const resHospitalMedia = await fetch("https://api2.safemedigo.com/api/v1/Hospital/GetHospitalMediaBySlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "hospitalSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataHospitalMedia = await resHospitalMedia.json()
+
+
+
+  const resHospitalVisits = await fetch("https://api2.safemedigo.com/api/v1/Hospital/GetHospitalHotspotsBySlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "hospitalSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataHospitalVisits = await resHospitalVisits.json()
+
+
+  const resHospitalHotels = await fetch("https://api2.safemedigo.com/api/v1/Hospital/GetHospitalHotelsBySlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "hospitalSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataHospitalHotels = await resHospitalHotels.json()
+
+
+
   return {
     props: {
       dataHospitalSlug,
+      dataHospitalLang,
+      dataHospitalCertificatest,
+      dataHospitalMedia,
+      dataHospitalVisits,
+      dataHospitalHotels,
       ...(await serverSideTranslations(locale, ["navbar", "proceduresSymptoms_single", 'Footer'])),
     },
   };
