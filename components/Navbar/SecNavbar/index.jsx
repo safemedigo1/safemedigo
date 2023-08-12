@@ -50,13 +50,13 @@ const SecNavbar = ({ categorySlug, slug, category, currentPage, blog, tag, how_i
 
           {pathname === '/procedures&symptoms' | pathname === '/medicaldepartments/[slug]' | pathname === '/medicaldepartments/[slug]/[healthcase]' ?
             <>
-              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/medicaldepartments/Obstetrics-and-gynecology' className={styles.active} > /{t('sec_navbar:procedures&symptoms')}</Link>
+              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/medicaldepartments/All-medical-procedures' className={styles.active} > /{t('sec_navbar:procedures&symptoms')}</Link>
             </> : ""
           }
 
           {pathname === ('/procedures&symptoms/[slug]') ?
             <>
-              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/medicaldepartments/Obstetrics-and-gynecology' > /{t('sec_navbar:procedures&symptoms')}</Link>
+              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/medicaldepartments/All-medical-procedures' > /{t('sec_navbar:procedures&symptoms')}</Link>
               <Link href={router.asPath} className={styles.active} > /{treatmentName}</Link>
             </> : ""
           }
