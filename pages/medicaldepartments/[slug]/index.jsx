@@ -18,8 +18,6 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 
 const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, params, locale }) => {
-  console.log(params, "PROP_1")
-
   const [result, setResult] = useState(null)
   const [expanded, setExpanded] = useState(false);
   const [dataTreatmentsHealthCase, setDataTreatmentsHealthCase] = useState(null);
@@ -374,7 +372,6 @@ export async function getStaticPaths() {
     locale: locale,
   })))
 
-
   return {
     paths, fallback: false,
   };
@@ -386,9 +383,7 @@ export async function getStaticProps({ params, locale }) {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Cache-Control': 'no-cache',
-      'Pragma': 'no-cache',
-      'Expires': '0',
+
 
     },
     body: JSON.stringify({
@@ -402,9 +397,7 @@ export async function getStaticProps({ params, locale }) {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Cache-Control': 'no-cache',
-      'Pragma': 'no-cache',
-      'Expires': '0',
+
 
     },
     body: JSON.stringify({
@@ -418,9 +411,7 @@ export async function getStaticProps({ params, locale }) {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Cache-Control': 'no-cache',
-      'Pragma': 'no-cache',
-      'Expires': '0',
+
 
     },
     body: JSON.stringify({
@@ -430,6 +421,7 @@ export async function getStaticProps({ params, locale }) {
   })
   const dataHealthCase = await resHealthCase.json()
 
+  console.log(dataHealthCase, "JSSSS");
 
   return {
     props: {

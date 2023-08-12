@@ -14,9 +14,7 @@ import axios from 'axios';
 
 
 const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, params }) => {
-
   const [expanded, setExpanded] = useState(false);
-
   const [dataTreatmentsHealthCase, setDataTreatmentsHealthCase] = useState(null);
   const [TreatmentCountPage, setTreatmentCountPage] = useState(1)
   const [TreatmentCount, setTreatmentCount] = useState(0)

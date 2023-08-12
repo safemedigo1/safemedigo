@@ -244,7 +244,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
         <script async defer src="//www.instagram.com/embed.js"></script>
       </Head>
       <SecNavbar treatmentName={dataTreatment?.treatmentName} />
-      <PageHeader treatment={dataTreatment && dataTreatment} />
+      <PageHeader treatment={dataTreatment} />
       <InnerPageNavbar />
 
       <article id={'overview'} className={styles.overview} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
@@ -442,7 +442,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               square={false}
             >
               <AccordionSummary
-                accordionSummaryMainStyle
+
                 sx={expanded !== 'panel2' ? accordionSummaryMainStyle
                   : accordionSummarySecStyle
                 }
@@ -475,7 +475,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               square={false}
             >
               <AccordionSummary
-                accordionSummaryMainStyle
+
                 sx={expanded !== 'panel3' ? accordionSummaryMainStyle
                   : accordionSummarySecStyle
                 }
@@ -505,7 +505,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               square={false}
             >
               <AccordionSummary
-                accordionSummaryMainStyle
+
                 sx={expanded !== 'panel4' ? accordionSummaryMainStyle
                   : accordionSummarySecStyle
                 }
@@ -561,7 +561,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 {dataTreatment?.treatmentStep.map((stepCard, index) => (
                   <>
                     <div className={styles.counter_container} key={index + 1}>
-                      <div className={styles.steps_container} key={index}>
+                      <div className={styles.steps_container} >
                         <div className={styles.step}>
                           <span>{index + 1}</span>
                         </div>
@@ -997,23 +997,25 @@ export async function getStaticPaths() {
     params: { slug: treatment },
     locale: locale,
   })))
+
   return {
     paths, fallback: 'blocking',
   };
 }
 
 export async function getStaticProps({ locale, params }) {
-  const resTreatment = await axios.post("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentBySlug", {
-    "lang": locale,
-    "treatmentSlug": params.slug,
-  }, {
+  const resTreatment = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentBySlug", {
+    method: 'POST',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    }
-  });
-
-  const dataTreatment = resTreatment.data;
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": locale,
+      "treatmentSlug": params.slug,
+    })
+  })
+  const dataTreatment = await resTreatment.json()
 
   return {
     props: {
