@@ -47,10 +47,10 @@ function HideOnScroll(props) {
 
 const Navbar = (props) => {
   const { t } = useTranslation();
-
   const [showMenu, setShowMenu] = useState(false);
-  const [showMenuLinks, setShowMenuLinks] = useState(false);
-  const [showLangMenu, setShowLangMenu] = useState(false)
+  const [showMenuLinks, setShowMenuLinks] = useState(true);
+  const [showLangMenu, setShowLangMenu] = useState(false);
+
   const menuLniks = [
     {
       category: t('navbar:procedures_symptoms'),

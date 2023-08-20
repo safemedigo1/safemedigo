@@ -53,40 +53,40 @@ const Footer = () => {
     },
 
 
-    {
-      title: t('Footer:WHY_SAFEMEDIGO'),
-      links: [
-        {
-          link: t('navbar:patients_reviews'),
-          ref: "/reviews  "
-        },
-        {
-          link: t('navbar:beforeafter'),
-          ref: "/beforeafter"
-        },
-        {
-          link: t('navbar:patients_stories'),
-          ref: "/patients_stories"
-        },
-        {
-          link: t('navbar:doctor_Q_A'),
-          ref: "/doctor_Q_A"
-        },
-        {
-          link: t('navbar:ask_a_doctor'),
-          ref: "/ask_a_doctor"
-        },
-        {
-          link: t('navbar:start_your_review'),
-          ref: "/start_your_review"
-        },
-        {
-          link: t('Footer:E_Medical_history_record'),
-          ref: "/E_Medical_history_record"
-        },
+    // {
+    //   title: t('Footer:WHY_SAFEMEDIGO'),
+    //   links: [
+    //     {
+    //       link: t('navbar:patients_reviews'),
+    //       ref: "/reviews  "
+    //     },
+    //     {
+    //       link: t('navbar:beforeafter'),
+    //       ref: "/beforeafter"
+    //     },
+    //     {
+    //       link: t('navbar:patients_stories'),
+    //       ref: "/patients_stories"
+    //     },
+    //     {
+    //       link: t('navbar:doctor_Q_A'),
+    //       ref: "/doctor_Q_A"
+    //     },
+    //     {
+    //       link: t('navbar:ask_a_doctor'),
+    //       ref: "/ask_a_doctor"
+    //     },
+    //     {
+    //       link: t('navbar:start_your_review'),
+    //       ref: "/start_your_review"
+    //     },
+    //     {
+    //       link: t('Footer:E_Medical_history_record'),
+    //       ref: "/E_Medical_history_record"
+    //     },
 
-      ]
-    },
+    //   ]
+    // },
 
 
     {
