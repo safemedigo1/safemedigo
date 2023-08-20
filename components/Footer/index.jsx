@@ -94,7 +94,7 @@ const Footer = () => {
       links: [
         {
           link: t('Footer:Get_a_Quote'),
-          ref: "/Quote"
+          ref: "/quote"
         },
         {
           link: t('Footer:Get_Budget_Friendly_Operation'),
@@ -307,7 +307,7 @@ const Footer = () => {
               </div>
 
               <div className={styles.quote}>
-                <Link href='/quoute'>
+                <Link href='/quote'>
                   <button>Get A Quote</button>
                 </Link>
               </div>

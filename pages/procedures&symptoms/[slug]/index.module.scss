@@ -166,6 +166,8 @@ article.overview {
 
             ul {
               padding: 0;
+              width: 100%;
+
               li {
                 position: relative;
                 padding: 0;
@@ -960,9 +962,11 @@ article.overview[dir="rtl"] {
             }
 
             ul {
+              width: 100%;
+
               li {
                 margin-left: 0;
-                margin-right: 12px;
+                // margin-right: 12px;
 
                 &::after {
                   top: 40%;

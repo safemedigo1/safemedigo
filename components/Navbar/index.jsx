@@ -56,26 +56,26 @@ const Navbar = (props) => {
       category: t('navbar:procedures_symptoms'),
       cateLink: '/medicaldepartments/All-medical-procedures',
       links: [
-        {
-          title: t("navbar:patients_reviews"),
-          link: "/Reviews",
-        },
-        {
-          title: t("navbar:patients_stories"),
-          link: "/stories",
-        },
-        {
-          title: t("navbar:beforeafter"),
-          link: "/before&after",
-        },
-        {
-          title: t("navbar:doctor_Q_A"),
-          link: "q&a",
-        },
-        {
-          title: t("navbar:prices"),
-          link: "/prices",
-        },
+        // {
+        //   title: t("navbar:patients_reviews"),
+        //   link: "/Reviews",
+        // },
+        // {
+        //   title: t("navbar:patients_stories"),
+        //   link: "/stories",
+        // },
+        // {
+        //   title: t("navbar:beforeafter"),
+        //   link: "/before&after",
+        // },
+        // {
+        //   title: t("navbar:doctor_Q_A"),
+        //   link: "q&a",
+        // },
+        // {
+        //   title: t("navbar:prices"),
+        //   link: "/prices",
+        // },
         {
           title: t("navbar:blogs"),
           link: "/blogs",
@@ -108,19 +108,22 @@ const Navbar = (props) => {
 
   const navbarLinks = [
     { title: t('navbar:procedures_symptoms'), link: "/medicaldepartments/All-medical-procedures", menuLink: null },
-    {
-      title: t("navbar:reviews_photos"),
-      link: "/",
-      menuLink: [
-        { title: t("navbar:patients_reviews"), link: "/reviews" },
-        { title: t("navbar:beforeafter"), link: "/before-after" },
-        { title: t("navbar:patients_stories"), link: "/stories" },
-        { title: t("navbar:doctor_Q_A"), link: "/Q&A" },
-        { title: t("navbar:ask_a_doctor"), link: "/Q&A" },
-        { title: t("navbar:start_your_review"), link: "/reviews" },
-      ],
-    },
-    { title: t("navbar:prices"), link: "/prices", menuLink: null },
+    // {
+    //   title: t("navbar:reviews_photos"),
+    //   link: "/",
+    //   menuLink: [
+    //     { title: t("navbar:patients_reviews"), link: "/reviews" },
+    //     { title: t("navbar:beforeafter"), link: "/before-after" },
+    //     { title: t("navbar:patients_stories"), link: "/stories" },
+    //     { title: t("navbar:doctor_Q_A"), link: "/Q&A" },
+    //     { title: t("navbar:ask_a_doctor"), link: "/Q&A" },
+    //     { title: t("navbar:start_your_review"), link: "/reviews" },
+    //   ],
+    // },
+    // { title: t("navbar:prices"), link: "/prices", menuLink: null },
+    { title: t("navbar:safety_standards"), link: "/safety-standards" },
+    { title: t("navbar:how_it_works"), link: "/how-it-works" },
+
     { title: t("navbar:blogs"), link: "/blogs", menuLink: null },
     {
       title: t("navbar:about_us"),
@@ -189,7 +192,7 @@ const Navbar = (props) => {
                           {navbarLinks.map((link, index) => (
                             <li key={index} className={`${styles.link__item} ${styles.active}`}>
                               <Link href={`${link.link}`}>{link.title}</Link>
-                              {link.menuLink != null &&
+                              {/* {link.menuLink != null &&
                                 <div className={styles.menuLinks__container}>
                                   <ul>
                                     {link.menuLink.map((links, index) => (
@@ -202,7 +205,7 @@ const Navbar = (props) => {
                                     ))}
                                   </ul>
                                 </div>
-                              }
+                              } */}
                             </li>
                           ))}
                         </ul>
@@ -390,14 +393,14 @@ const Navbar = (props) => {
                                   </>
                                 ))}
 
-                                <div className={styles.special_links}>
+                                {/* <div className={styles.special_links}>
                                   <Link href="/reveiw">{t('navbar:start_your_review')}
                                     <HiArrowSmRight />
                                   </Link>
                                   <Link href="q&a">{t('navbar:ask_a_doctor')}
                                     <HiArrowSmRight />
                                   </Link>
-                                </div>
+                                </div> */}
 
                                 <Box className={styles.lang} display='flex' onClick={() => setShowLangMenu((prev) => !prev)}>
                                   <div className={styles.img_container}>
