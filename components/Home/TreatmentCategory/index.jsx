@@ -65,25 +65,47 @@ const TreatmentCategory = ({ dataMedicalDepartmentsHome }) => {
 
   const cards = [
     { title: 'Hair Transplant', img: Hair_Transplant.src, hover_icon: Hair_Transplant_1.src },
-    { title: 'Plastic Surgeries', img: Plastic_Surgeries.src, hover_icon: Plastic_Surgeries_1.src },
-    { title: 'Spine Surgeries', img: Spine_Surgeries.src, hover_icon: Spine_Surgeries_1.src },
-    { title: 'Medical Check Up', img: Medical_Check.src, hover_icon: Medical_Check_1.src },
-    { title: 'Laser Eye Surgery', img: Laser_Eye_Surgery.src, hover_icon: Laser_Eye_Surgery_1.src },
-    { title: 'Dentistry', img: Dentistry.src, hover_icon: Dentistry_1.src },
-    { title: 'Tooth Implants', img: Tooth_Implants.src, hover_icon: Tooth_Implants_1.src },
-    { title: 'IVF (ICSI)', img: Ivf_ICSI.src, hover_icon: Ivf_ICSI_1.src },
-    { title: 'Knee Replacement', img: Knee.src, hover_icon: Knee_1.src },
-    { title: 'Weight Loss Treatments', img: Weight_Loss.src, hover_icon: Weight_Loss_1.src },
+
+    { title: 'Dental Implant', img: Tooth_Implants.src, hover_icon: Tooth_Implants_1.src },
+
+    { title: 'Eye Surgery', img: Laser_Eye_Surgery.src, hover_icon: Laser_Eye_Surgery_1.src },
+
     { title: 'Orthopedics', img: Orthopedics.src, hover_icon: Orthopedics_1.src },
-    { title: 'Rhinoplasty', img: Rhinoplasty.src, hover_icon: Rhinoplasty_1.src },
-    { title: 'Cardiology', img: Cardiology.src, hover_icon: Cardiology_1.src },
+
+    { title: 'Joint replacement', img: Knee.src, hover_icon: Knee_1.src },
+
+    { title: 'Spinal Surgeries', img: Spine_Surgeries.src, hover_icon: Spine_Surgeries_1.src },
+
+    { title: 'Weight Loss Surgery', img: Weight_Loss.src, hover_icon: Weight_Loss_1.src },
+
+    { title: 'Cancer Treatments', img: Weight_Loss.src, hover_icon: Weight_Loss_1.src },
+
+    { title: 'Fertility Treatments (IVF)', img: Ivf_ICSI.src, hover_icon: Ivf_ICSI_1.src },
+
+    { title: 'Cardiovascular Surgery', img: Cardiology.src, hover_icon: Cardiology_1.src },
+
     { title: 'Urology', img: Urology.src, hover_icon: Urology_1.src },
-    { title: 'Oncology', img: OncologySurgeries.src, hover_icon: Oncology_Surgeries_1.src },
-    { title: 'Pediatric', img: Pediatrics.src, hover_icon: Pediatrics_1.src },
-    { title: 'Bone Marrow Transplant', img: Bone_Marrow.src, hover_icon: Bone_Marrow_1.src },
-    { title: 'Lung Surgeries', img: Lung.src, hover_icon: Lung_1.src },
-    { title: 'Neurology', img: Neurology.src, hover_icon: Neurology_1.src },
-    { title: 'Alternative Medicine', img: Alternative.src, hover_icon: Alternative_1.src },
+
+    { title: 'Ear, Nose, and Throat Procedures', img: Plastic_Surgeries.src, hover_icon: Plastic_Surgeries_1.src },
+
+    { title: 'Veneers', img: Dentistry.src, hover_icon: Dentistry_1.src },
+
+    { title: 'Dentistry', img: Dentistry.src, hover_icon: Dentistry_1.src },
+
+    { title: 'General Check-up programs', img: Medical_Check.src, hover_icon: Medical_Check_1.src },
+
+
+    // { title: 'Plastic Surgeries', img: Plastic_Surgeries.src, hover_icon: Plastic_Surgeries_1.src },
+    // // { title: 'Tooth Implants', img: Tooth_Implants.src, hover_icon: Tooth_Implants_1.src },
+    // { title: 'Knee Replacement', img: Knee.src, hover_icon: Knee_1.src },
+    // { title: 'Rhinoplasty', img: Rhinoplasty.src, hover_icon: Rhinoplasty_1.src },
+    // { title: 'Cardiology', img: Cardiology.src, hover_icon: Cardiology_1.src },
+    // { title: 'Oncology', img: OncologySurgeries.src, hover_icon: Oncology_Surgeries_1.src },
+    // { title: 'Pediatric', img: Pediatrics.src, hover_icon: Pediatrics_1.src },
+    // { title: 'Bone Marrow Transplant', img: Bone_Marrow.src, hover_icon: Bone_Marrow_1.src },
+    // { title: 'Lung Surgeries', img: Lung.src, hover_icon: Lung_1.src },
+    // { title: 'Neurology', img: Neurology.src, hover_icon: Neurology_1.src },
+    // { title: 'Alternative Medicine', img: Alternative.src, hover_icon: Alternative_1.src },
     { title: "Don't See What You Need?", img: Dont_See_What.src, hover_icon: Dont_See_What_1.src },
 
 

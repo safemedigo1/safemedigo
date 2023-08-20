@@ -98,43 +98,43 @@ const Footer = () => {
         },
         {
           link: t('Footer:Get_Budget_Friendly_Operation'),
-          ref: "/Quote"
+          ref: "/quote"
         },
         {
           link: t('Footer:Personalized_Medical_Planning'),
-          ref: "/Quote"
+          ref: "/quote"
         },
         {
           link: t('Footer:Patient_Assistance_Program'),
-          ref: "/Quote"
+          ref: "/quote"
         },
         {
           link: t('Footer:Specialized_Treatment_Coordination'),
-          ref: "/Quote"
+          ref: "/quote"
         },
         {
           link: t('Footer:Get_a_Second_Opinion'),
-          ref: "/Quote"
+          ref: "/quote"
         },
         {
           link: t('Footer:Language_Interpretation_Services'),
-          ref: "/Quote"
+          ref: "/quote"
         },
         {
           link: t('Footer:Get_a_Post_Treatment_Care'),
-          ref: "/Quote"
+          ref: "/quote"
         },
         {
           link: t('Footer:Telemedicine_Consultations'),
-          ref: "/Quote"
+          ref: "/quote"
         },
         {
           link: t('Footer:Medical_Records_Management'),
-          ref: "/Quote"
+          ref: "/quote"
         },
         {
           link: t('Footer:Wellness_and_Preventive_Care'),
-          ref: "/Quote"
+          ref: "/quote"
         },
       ]
     },
