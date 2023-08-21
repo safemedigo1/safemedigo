@@ -20,7 +20,7 @@ const WhyTurkey = ({ blogSlugData }) => {
 
           <div className={styles.text_container}>
             <div className={styles.title}>
-              <Link href='/blogs/الدليل-الشامل-للسياحة-العلاجية-في-تركيا:-لماذا-السفر-للعلاج'>{t('why_turky_section:title')}</Link>
+              <Link href='/blogs/The-Comprehensive-Guide-to-Medical-Tourism-in-Turkey:-Why-Travel-for-Treatment'>{t('why_turky_section:title')}</Link>
             </div>
 
             <div className={styles.img_sec_container}>
