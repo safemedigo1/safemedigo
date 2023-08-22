@@ -131,10 +131,12 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
   useEffect(() => {
     getAllTreatments();
-  }, [TreatmentCountPage])
+  }, [TreatmentCountPage, dataTreatmentsHealthCase])
 
 
-
+  useEffect(() => {
+    console.log('USE EFFECT Fired')
+  }, [])
 
 
   return (
