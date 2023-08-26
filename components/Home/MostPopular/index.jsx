@@ -34,8 +34,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
       setPopularTreatmetsData(dataPopularTreatmentsMedical.dataPopularTreatmentsHome)
     }
   }, [])
-  console.log(dataPopularTreatmentsMedical.dataPopularTreatmentsHealth, "HEREZZZZZZ")
-  console.log(router.pathname, "PATHHHH")
+
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false, itemsToShow: 1.1 },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },

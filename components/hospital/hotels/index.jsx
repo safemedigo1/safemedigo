@@ -38,7 +38,6 @@ const Hotles = ({ hotels }) => {
     { name: 'Crowne Plaza Hotel - Floriya', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
   ]
 
-  console.log(hotels, "HOTELS")
 
   // Change Arrow in react-elastic-carousel Lirbrary
   function myArrow({ type, onClick, isEdge }) {

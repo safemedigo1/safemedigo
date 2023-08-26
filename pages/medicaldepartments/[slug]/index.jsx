@@ -111,6 +111,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
       });
     // setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data?.treatments)
     setTreatmentLoading(false)
+    console.log(resTreatmentsHealthCase)
 
     if (TreatmentCountPage > 1) {
       setDataTreatmentsHealthCase(prev => [...prev, ...resTreatmentsHealthCase?.data?.treatments])
@@ -124,19 +125,20 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
   }
 
 
-  const handleLoadMoreTreatments = () => {
-    setTreatmentLoading(true)
+
+  const handleLoadMoreTreatments = async () => {
+    setTreatmentLoading(true);
     setTreatmentCountPage((prev) => prev + 1)
+    await getAllTreatments();
+    setTreatmentLoading(false);
+
   }
 
   useEffect(() => {
     getAllTreatments();
-  }, [TreatmentCountPage, dataTreatmentsHealthCase])
+  }, [params.slug])
 
 
-  useEffect(() => {
-    console.log('USE EFFECT Fired')
-  }, [])
 
 
   return (
@@ -423,7 +425,8 @@ export async function getStaticProps({ params, locale }) {
   })
   const dataHealthCase = await resHealthCase.json()
 
-  console.log(dataHealthCase, "JSSSS");
+
+
 
   return {
     props: {
