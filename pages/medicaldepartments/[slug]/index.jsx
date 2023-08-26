@@ -125,7 +125,6 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
   }
 
 
-
   const handleLoadMoreTreatments = async () => {
     setTreatmentLoading(true);
     setTreatmentCountPage((prev) => prev + 1)
@@ -137,8 +136,6 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
   useEffect(() => {
     getAllTreatments();
   }, [params.slug])
-
-
 
 
   return (
