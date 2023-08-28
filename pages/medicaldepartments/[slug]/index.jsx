@@ -111,7 +111,6 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
       });
     // setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data?.treatments)
     setTreatmentLoading(false)
-    console.log(resTreatmentsHealthCase)
 
     if (TreatmentCountPage > 1) {
       setDataTreatmentsHealthCase(prev => [...prev, ...resTreatmentsHealthCase?.data?.treatments])
@@ -123,6 +122,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
     setTreatmentCount(resTreatmentsHealthCase?.data?.count)
 
   }
+  console.log(dataTreatmentsHealthCase, "COUNT")
 
 
   const handleLoadMoreTreatments = async () => {
@@ -162,8 +162,9 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
             transition={{ duration: 0.80, ease: "easeOut" }}
 
             className={styles.section_container}>
+            {console.log(dataHealthCase, "HEALTH CASE")}
 
-            {dataHealthCase?.length !== 0 &&
+            {dataTreatmentsHealthCase?.length !== 0 &&
               <div className={styles.filter_section}>
                 <div className={styles.card_title}>
                   <Typography sx={{ display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' } }} variant='h3'>
@@ -412,8 +413,6 @@ export async function getStaticProps({ params, locale }) {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-
-
     },
     body: JSON.stringify({
       "lang": locale,
