@@ -122,7 +122,6 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
     setTreatmentCount(resTreatmentsHealthCase?.data?.count)
 
   }
-  console.log(dataTreatmentsHealthCase, "COUNT")
 
 
   const handleLoadMoreTreatments = async () => {
@@ -162,7 +161,6 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
             transition={{ duration: 0.80, ease: "easeOut" }}
 
             className={styles.section_container}>
-            {console.log(dataHealthCase, "HEALTH CASE")}
 
             {dataTreatmentsHealthCase?.length !== 0 &&
               <div className={styles.filter_section}>

@@ -53,6 +53,9 @@ const quote = () => {
   function handleGoBack() {
     router.back()
   }
+  function handleGoBackHome() {
+    router.push('/');
+  }
 
   const treatments = [
     { title: 'Hair Transplant' },
@@ -271,10 +274,6 @@ const quote = () => {
       const data = await response.json();
       setOtp(data.otp);
 
-
-
-
-
     } catch (error) {
       console.error(error);
       setMessage('Failed to send OTP code');
@@ -324,7 +323,7 @@ const quote = () => {
 
           {step !== 7 &&
             <div className={styles.header}>
-              <button onClick={handleGoBack} className={styles.navbar__logo}>
+              <button onClick={handleGoBackHome} className={styles.navbar__logo}>
                 <Image
                   src={logo.src}
                   alt="Picture of the author"
