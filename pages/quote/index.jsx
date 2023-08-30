@@ -110,15 +110,15 @@ const quote = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    // if (step === 7) {
-    //   const timer = setTimeout(() => {
-    //     router.push('/');
-    //   }, 3000);
+    if (step === 7) {
+      const timer = setTimeout(() => {
+        router.push('/');
+      }, 3000);
 
-    //   return () => {
-    //     clearTimeout(timer);
-    //   };
-    // }
+      return () => {
+        clearTimeout(timer);
+      };
+    }
 
   }, [step, router,]);
 
