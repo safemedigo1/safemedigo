@@ -2,7 +2,6 @@ section#hero {
   background-color: var(--main-green-color);
   position: relative;
   @media screen and (max-width: 992px) {
-    // margin-top: 22px;
     padding-bottom: 117px;
   }
   .hero_container {
@@ -189,7 +188,7 @@ section#hero {
       position: relative;
       // flex: 1;
 
-      @media screen and (max-width: 750px) {
+      @media screen and (max-width: 900px) {
         position: absolute;
         // bottom: -150px;
         left: 50%;
@@ -212,6 +211,7 @@ section#hero {
         border-radius: 8px;
         padding: 24px;
         margin: 0 15px;
+        margin-bottom: 5px;
         // height: 281px;
         cursor: pointer;
 

@@ -20,10 +20,10 @@
     bottom: -150px;
   }
 
-  @media screen and (max-width: 992px) {
+  @media screen and (max-width: 1200px) {
     width: 100%;
     background-color: transparent;
-    bottom: 22%;
+    bottom: 17%;
     left: 0;
     transform: translateX(0);
     box-shadow: none;
@@ -154,15 +154,12 @@
     .tags {
       display: flex;
       flex-wrap: wrap;
-      @media screen and (max-width: 992px) {
+      @media screen and (max-width: 1200px) {
         display: none;
       }
       .title {
         margin-bottom: 24px;
         margin-right: 13px;
-        @media screen and (min-width: 992px) {
-          // text-align: center;
-        }
 
         p {
           // text-align: center;
@@ -236,12 +233,10 @@
 
   .tags_slider {
     width: 100%;
-    @media screen and (max-width: 992px) {
-      margin-bottom: -24px;
-    }
 
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: 1200px) {
       display: none;
+      margin-bottom: -24px;
     }
 
     .title {
@@ -292,9 +287,13 @@
 
 // AR
 #search[dir="rtl"] {
+  bottom: 22%;
+
   @media screen and (min-width: 992px) {
     bottom: -107px;
-    left: 48%;
+  }
+  @media screen and (max-width: 1200px) {
+    bottom: 22% !important;
   }
 
   .searc_card {
@@ -388,7 +387,7 @@
       margin-bottom: -24px;
     }
 
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: 1200px) {
       display: none;
     }
 
