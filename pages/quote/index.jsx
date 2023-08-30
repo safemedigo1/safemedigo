@@ -122,11 +122,7 @@ const quote = () => {
 
   }, [step, router,]);
 
-  // const handleAnyTime = () => {
-  //   setAnyTime(true)
-  //   setTimeValue(null)
-  //   // setStep(step + 1)
-  // }
+
 
 
   useEffect(() => {
@@ -359,20 +355,7 @@ const quote = () => {
             </div>
           }
 
-          {/*
-          {step < 6 &&
-            <div className={styles.steps}>
-              <div className={styles.step}>
-                <span>{step}</span>
-              </div>
-              {
-                step !== 6 &&
-                <div className={styles.step}>
-                  <span>{step + 1}</span>
-                </div>
-              }
-            </div>
-          } */}
+
 
           {step === 5 &&
             <motion.h4
@@ -540,7 +523,7 @@ const quote = () => {
               }
 
 
-              <div className={styles.date} dir='ltre'>
+              <div className={styles.date} dir='ltr'>
                 {
                   step === 3 &&
                   <motion.div
