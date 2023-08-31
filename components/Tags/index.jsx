@@ -4,29 +4,16 @@ import React from 'react'
 import styles from './index.module.scss'
 
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
 
 
 
 
 const Tags = ({ blog, allBlogsTagsData }) => {
   const { t } = useTranslation();
+  const router = useRouter();
 
-  const tags = [
-    { tag: "All" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
-    { tag: "Tag name" },
-  ];
+  console.log(router.query.slug)
   return (
     <section id={styles.tags}>
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -41,7 +28,7 @@ const Tags = ({ blog, allBlogsTagsData }) => {
             <>
               <div className={styles.tag} key={idx}>
                 <Link href={`/tags/${tag.slug}`}>
-                  <button>{tag.tagName}</button>
+                  <button className={`${tag.slug === router.query.slug ? styles.active : ''}`}>{tag.tagName}</button>
                 </Link>
               </div>
             </>

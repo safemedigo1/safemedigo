@@ -75,6 +75,11 @@
             color: var(--main-white-color);
           }
         }
+
+        button.active {
+          background-color: var(--main-green-color) !important;
+          color: var(--main-white-color) !important;
+        }
       }
     }
   }

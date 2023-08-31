@@ -39,7 +39,6 @@ const quote = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [timeValue, setTimeValue] = useState(null);
   const [phoneNum, setPhoneNum] = useState('');
-  // const [anyTime, setAnyTime] = useState(true)
   const [result, setResult] = useState();
 
   const [asp, setAsp] = useState(false);
@@ -99,12 +98,6 @@ const quote = () => {
     }
 
   };
-
-  // useEffect(() => {
-  //   if (timeValue) {
-  //     setAnyTime(false)
-  //   }
-  // }, [timeValue])
 
 
   useEffect(() => {
@@ -755,9 +748,11 @@ const quote = () => {
                 <Typography>
                   {t("quote_page:email_receive")}<button onClick={handleCodeSubmit}>{t("quote_page:resend")}</button>
                 </Typography>
-                <Typography>
-                  {message}
-                </Typography>
+                {message &&
+                  <Typography sx={{ textDecoration: 'underline', color: 'red !important' }}>
+                    {message}
+                  </Typography>
+                }
               </div>
             </motion.div>
           }

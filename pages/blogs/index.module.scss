@@ -113,7 +113,9 @@
           margin-right: 0px;
         }
         @media screen and (min-width: 992px) {
-          margin-right: auto;
+          &:not(:last-child) {
+            margin-right: 35px;
+          }
         }
 
         .img_container {

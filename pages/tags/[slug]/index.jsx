@@ -12,7 +12,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from "react-i18next";
 
 
-const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages }) => {
+const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPages, query }) => {
   const { t } = useTranslation();
 
   const handleMyChangePage = (event, value) => {
@@ -31,7 +31,7 @@ const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPag
   return (
     <div>
       <Head>
-        <title>Blogs</title>
+        <title>Blogs | Tags</title>
         <meta name="blogs" content="blogs for doctors" />
       </Head>
 
@@ -59,8 +59,8 @@ const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPag
               >
 
 
-                {blogCategory?.map((item) => (
-                  <MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} value={item.slug} >
+                {blogCategory?.map((item, idx) => (
+                  <MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} value={item.slug} key={idx}>
                     {item.categeryName}
                   </MenuItem>
                 ))}
@@ -156,7 +156,7 @@ const TagsBlog = ({ blogCategory, blogs, allBlogsTagsData, currentPage, totalPag
 
 
         {/* Tag Component */}
-        <Tags allBlogsTagsData={allBlogsTagsData} />
+        <Tags allBlogsTagsData={allBlogsTagsData} query={query} />
       </div>
 
     </div>

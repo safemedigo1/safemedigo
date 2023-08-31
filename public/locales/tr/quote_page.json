@@ -31,7 +31,6 @@
   "desc_conf": "Güvenliğinizi sağlamak için lütfen kayıtlı Email adresinize gönderilen doğrulama kodunu giriniz:",
   "email_receive": "Bir e-posta almadınız mı?",
   "resend": "Yeniden gönder?",
-  "selected_date": "Seçilen Tarih",
   "success": "İsteğiniz başarıyla alındı",
   "thank": "Onayınız için teşekkürler. Ekibimiz talebinizi değerlendirecek ve size zamanında yanıt verecektir.",
   "invalid_code": "Geçersiz kod",
@@ -40,5 +39,6 @@
   "continue": "Sonraki",
   "ASP": "En Kısa Zamanda İstiyorum",
   "done": "Tamamlandı",
-  "send": "İstek gönder"
+  "send": "İstek gönder",
+  "testmycontext": "Seçilen Tarih:"
 }
