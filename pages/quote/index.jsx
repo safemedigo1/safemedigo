@@ -131,20 +131,6 @@ const quote = () => {
     }
   }, [selectedDate])
 
-  useEffect(() => {
-    if (timeValue !== null) {
-      const timer = setTimeout(() => {
-        setStep(step + 1)
-      }, 1000);
-
-      return () => {
-        clearTimeout(timer);
-      };
-
-    }
-  }, [timeValue])
-
-  // Dagte Range
 
   const [selectedValues, setSelectedValues] = useState([]);
   const [forValues, setForValues] = useState([]);
@@ -577,6 +563,8 @@ const quote = () => {
                     skipDisabled
                     minTime={dayjs().set('hour', 9).set('minute', 30).second(0)}
                     maxTime={dayjs().set('hour', 18).set('minute', 0)}
+                    onClick={() => setStep((prev) => prev + 1)}
+
 
                     sx={{
                       '.css-1g2aoka-MuiButtonBase-root-MuiMenuItem-root-MuiDigitalClock-item.Mui-selected':
