@@ -762,7 +762,6 @@
         font-weight: var(--font-bold);
         font-family: "Quicksand";
         transition: all 0.3s ease;
-
         &:hover {
           @media screen and (min-width: 992px) {
             background-color: var(--main-cyan-color);
