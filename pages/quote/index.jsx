@@ -599,7 +599,7 @@ const quote = () => {
                     {timeValue === null &&
                       <Typography
                       >
-                        {t("quote_page:selected_date")} {selectedDate?.$d?.toLocaleDateString()}
+                        {t("quote_page:testmycontext")} {selectedDate?.$d?.toLocaleDateString()}
                       </Typography>
                     }
                   </motion.div >
@@ -613,7 +613,7 @@ const quote = () => {
                     className={styles.selctedDate}
                   >
                     <Typography >
-                      {t("quote_page:selected_date")} {selectedDate !== null && asp !== true && selectedDate?.$d?.toLocaleDateString()} {timeValue}
+                      {t("quote_page:testmycontext")} {selectedDate !== null && asp !== true && selectedDate?.$d?.toLocaleDateString()} {timeValue}
                     </Typography>
                   </motion.div >
                 }
