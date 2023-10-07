@@ -4,7 +4,7 @@ import { Container, Typography, Dialog, DialogContent, Accordion, AccordionDetai
 import Link from 'next/link';
 import styles from '../../hospitals/[slug]/index.module.scss';
 import Carousel from 'react-elastic-carousel';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaChevronRight, FaChevronLeft, FaUserAlt } from 'react-icons/fa'
 import imgs from "../../../assets/constants/imgs";
 import { consts } from 'react-elastic-carousel';
@@ -21,9 +21,10 @@ import { MdLocationOn } from 'react-icons/md'
 import { FaShieldAlt } from 'react-icons/fa'
 import BeforeAfter from '@/components/BeforeAfter'
 import ClinicCards from '@/components/ClinicCards/index'
+import axios from "axios";
 
 
-const DoctorName = () => {
+const DoctorName = ({ dataDoctorSlug }) => {
   const { certeficate, post1 } = imgs;
   const cards = [
     { title: 'Patient name', img: certeficate.src, id: '1', desc: ' Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Consetetur Sadipscing Elitr, Sed Diam Nonumy  ' },
@@ -59,7 +60,6 @@ const DoctorName = () => {
     { width: 1, itemsToShow: 1, showPagination: false },
   ])
   const [expanded, setExpanded] = useState(false);
-
   const [hospitalBreakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },
@@ -68,6 +68,7 @@ const DoctorName = () => {
     { width: 900, pagination: false, itemsToShow: 2.5, itemsToScroll: 1, transitionMs: 1000 },
 
   ])
+  const [similarDocs, setSimilarDocs] = useState([]);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -502,11 +503,31 @@ const DoctorName = () => {
     setSelectedImage(null);
   };
 
+  function createMarkup() {
+    return { __html: decodeURI(dataDoctorSlug.about) };
+  }
 
+  useEffect(() => {
+    getSimilarDocs();
+  }, [])
+
+  const getSimilarDocs = async () => {
+    const similarDocs = await axios.post("https://api2.safemedigo.com/api/v1/Doctor/ListSimilarDoctors", {
+      "lang": router.locale,
+      "mainSpecializationIds": [1]
+    }, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }).catch((error) => console.log(error))
+
+    setSimilarDocs(similarDocs)
+  }
   return (
     <>
       <SecNavbar />
-      <PageHeader />
+      <PageHeader dataDoctorSlug={dataDoctorSlug} />
 
       <Box
         sx={{
@@ -521,24 +542,33 @@ const DoctorName = () => {
           <Image
             width={300}
             height={218}
-            src={post1.src} alt={""} />
+            src={dataDoctorSlug.image} alt={""} />
         </div>
 
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-          <div className={styles.header}>
-            <div className={styles.icon_container}>
-              <FaShieldAlt />
+
+          {dataDoctorSlug.isVerifid &&
+
+            <div className={styles.header}>
+              <div className={styles.icon_container}>
+                <FaShieldAlt />
+              </div>
+              <div className={styles.text}>
+                <Typography>
+                  Safemedigo verified
+                </Typography>
+              </div>
             </div>
-            <div className={styles.text}>
-              <Typography>
-                Safemedigo verified
-              </Typography>
-            </div>
-          </div>
+          }
+
+
 
           <div className={styles.title}>
             <Typography variant="h3">
-              Acibadem Hospital Taksim
+              {dataDoctorSlug.doctorLevel}.
+              {dataDoctorSlug.firstName}
+              {dataDoctorSlug.fatherName}
+              {dataDoctorSlug.lastName}
             </Typography>
           </div>
 
@@ -547,27 +577,27 @@ const DoctorName = () => {
 
             <div className={styles.name}>
               <Typography >
-                Specializations Dermatologist
+                {dataDoctorSlug?.doctorMainSpecializations[0]?.name}
               </Typography>
             </div>
 
             <div className={styles.rating}>
-              <Rating name="read-only" defaultValue={4} size="small" />
-              <span className={styles.reviews_num}>90 Reviews</span>
+              <Rating defaultValue={dataDoctorSlug?.rating} size="small" readOnly />
+              <span className={styles.reviews_num}>{dataDoctorSlug?.totalReviews}Reviews</span>
             </div>
 
 
             <div className={styles.location}>
               <MdLocationOn />
               <Typography >
-                Acıbadem Mah. Çeçen Sok. Istanbul, Turkey
+                {dataDoctorSlug?.location}
               </Typography>
             </div>
 
             <div className={styles.boxes_container}>
               <div className={styles.box}>
                 <div className={styles.num}>
-                  <Typography>163</Typography>
+                  <Typography>{dataDoctorSlug.lastYearPatients}</Typography>
                 </div>
                 <div className={styles.yearly}>
                   <Typography>Yearly patient</Typography>
@@ -575,26 +605,28 @@ const DoctorName = () => {
               </div>
               <div className={styles.box}>
                 <div className={styles.num}>
-                  <Typography>2001</Typography>
+                  <Typography>{dataDoctorSlug.experienceYears}</Typography>
                 </div>
                 <div className={styles.yearly}>
-                  <Typography>Founded year</Typography>
+                  <Typography>Exp. Years</Typography>
                 </div>
               </div>
               <div className={styles.box}>
                 <div className={styles.num}>
-                  <Typography>1500</Typography>
+                  <Typography>{dataDoctorSlug.doctorTreatments.length}</Typography>
                 </div>
                 <div className={styles.yearly}>
-                  <Typography>Doctors & Employees</Typography>
+                  <Typography>Treatments Performed</Typography>
                 </div>
               </div>
 
             </div>
 
-            <div className={styles.button_container}>
-              <button>Book Appointment</button>
-            </div>
+            {dataDoctorSlug?.isOnline === true &&
+              <div className={styles.button_container}>
+                <button>Book Appointment</button>
+              </div>
+            }
 
           </div>
 
@@ -606,9 +638,12 @@ const DoctorName = () => {
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
         <section id='overview' className={styles.overview}>
           <div className={styles.text_inner}>
-            <Typography>
-              There Are Many Diseases And Disorders Of The Musculoskeletal System Under The Title Of Orthopedics And Traumatology. Treatment Of These Diseases Includes Medical And Surgical Methods. Medical Treatments Can Be Summarized As Drug Applications, Injections And Physiotherapy While Surgical Treatments Consist Of Many Methods Depending On The Severity And Urgency Of The Disease. Today, Specialization In Certain Subjects By Dividing Into Branches Among Orthopedic Surgeons Is Increasingly Common. The Aim Here Is That Patients Can Receive Service From A Specialist And Experienced Physician. Assoc. Dr. Mehmet Nuri Erdem Started His Orthopedic Career In Istanbul Florence Nightingale Hospital In 2003 And Has So Far Covered More Than 2000 Successful Surgeries And Many International And National Scientific Articles. For The Last 3 Years, He Has Been A Faculty Member At The University And Running His Own Clinic With His Team. This Team Consists Of Operating Room Nurses, Physiotherapists, Neuromonitorization Technicians And Polyclinic Assistants, All Of Whom Are Competent And Experienced Healthcare Professionals In Their Field. Our Clinic Provides Services In The Field Of Orthopedics, Especially Spine Surgery, Prosthetic Surgery And Sports Surgery. Spine Surgery Group Includes Deformities Such As Scoliosis, Kyphosis, Lumbar And Neck Hernias, Conditions Related To Spinal Calcification, Spine Fractures, Tumors And Infections. In Prosthetic Surgery, Especially The Knee And Hip Joint Prostheses And Their Revision, That Is Correction Operations, Can Be Considered. In Addition, We Provide Services In The Process Of Returning To Sports After Injuries And Physiotherapy Following, Especially Closed Surgeries Of The Knee Joint. In The Field Of Traumatology, We Treat All Bone Fractures In The Body Except Skull Bones. We, Accompanied By Our Expert Staff, Provide Services In All Stages Of Fracture Healing, Such As Conservative Or Surgical Treatment Of Fractures, Post-Treatment Bone Union And Physical Therapy To Restore The Joint Range Of Motion. Our Aim Is To Bring You Back To Your Health, By Taking All Innovative Approaches Into Consideration, To The Extent Of Our Experience And Skill, From The Moment You Apply To Us Until Your Treatment Ends.
-            </Typography>
+            <div
+              id={"apply"}
+              className="ck-content"
+              dangerouslySetInnerHTML={createMarkup()}
+              dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}
+            />
           </div>
 
           <div className={styles.info}>
@@ -628,23 +663,23 @@ const DoctorName = () => {
                     renderArrow={myArrow}
                     pagination={false}
                   >
-                    {cards.map((card, index) => (
+                    {dataDoctorSlug?.doctorCertificates.map((card, index) => (
                       <>
                         <div className={styles.box} key={index} onClick={handleClickOpen}>
                           <div className={styles.title}>
-                            <Typography variant="h6">Best Doctor Award - 2020</Typography>
+                            <Typography variant="h6">{card.name} - {card.certificateDate}</Typography>
                           </div>
                           <div className={styles.boxes_container}>
                             <div className={styles.box_header}>
                               <div className={styles.img_container}>
-                                <Image width={66.87} height={99.78} src={card.img} alt="" />
+                                <Image width={66.87} height={99.78} src={card?.image} alt="" />
                               </div>
 
                             </div>
 
                             <div className={styles.desc}>
                               <Typography>
-                                Joint Commission International Accreditation And Certification Is Recognized As A Global Leader For Health Care Quality Of Care And Patient Safety. Joint Commission... READ ALL International Accreditation And Certification Is Recognized As A Global Leader For Health Care Quality Of Care And Patient Safety.
+                                {card.description}
                               </Typography>
 
                               <button>READ ALL</button>
@@ -696,12 +731,9 @@ const DoctorName = () => {
                   </div>
 
                   <ul>
-                    <li>English,</li>
-                    <li>Turkish,</li>
-                    <li>English,</li>
-                    <li>English,</li>
-                    <li>Turkish,</li>
-                    <li>English,</li>
+                    {dataDoctorSlug.doctorLanguages.map((lang, idx) =>
+                      <li key={idx}>{lang?.languageName}</li>
+                    )}
                   </ul>
                 </div>
                 <div className={styles.box}>
@@ -711,7 +743,9 @@ const DoctorName = () => {
                     </Typography>
                   </div>
                   <ul>
-                    <li> Foot And Ankle Surgery Hip And Knee Surgery Trauma Surgery Spine Surgery</li>
+                    {dataDoctorSlug?.doctorMainSpecializations.map((special, idx) =>
+                      <li key={idx}>{special?.name}</li>
+                    )}
                   </ul>
                 </div>
 
@@ -752,9 +786,16 @@ const DoctorName = () => {
                     },
                   }}
                   >
-                    <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                      text text text text text text text text text text text text text text text text text text text text text text
-                    </ListItem  >
+
+
+                    {dataDoctorSlug?.doctorProcedure?.map((procedure) => (
+                      <>
+                        <Typography variant="h5">{procedure.title}</Typography>
+                        <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                          {procedure.name}
+                        </ListItem  >
+                      </>
+                    ))}
 
 
 
@@ -794,9 +835,14 @@ const DoctorName = () => {
                     },
                   }}
                   >
-                    <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                      text text text text text text text text text text text text text text text text text text text text text text
-                    </ListItem  >
+
+                    {dataDoctorSlug?.doctorMemberShip?.map((memberShip) => (
+                      <>
+                        <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                          <Typography variant="h5">{memberShip.memberShipName} ({memberShip.startdate} - {memberShip.endDate})</Typography>
+                        </ListItem  >
+                      </>
+                    ))}
 
 
 
@@ -836,10 +882,15 @@ const DoctorName = () => {
                     },
                   }}
                   >
-                    <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                      text text text text text text text text text text text text text text text text text text text text text text
-                    </ListItem  >
 
+                    {dataDoctorSlug?.doctorEducation?.map((education) => (
+                      <>
+                        <Typography variant="h5">{education.title} ({education.yearFrom} - {education.yearTo})</Typography>
+                        <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                          {education.description}
+                        </ListItem  >
+                      </>
+                    ))}
 
 
                   </List>
@@ -878,9 +929,15 @@ const DoctorName = () => {
                     },
                   }}
                   >
-                    <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                      text text text text text text text text text text text text text text text text text text text text text text
-                    </ListItem  >
+
+                    {dataDoctorSlug?.doctorCareer?.map((career) => (
+                      <>
+                        <Typography variant="h5">{career.title} ({career.yearFrom} - {career.yearTo})</Typography>
+                        <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                          {career.description}
+                        </ListItem  >
+                      </>
+                    ))}
 
 
 
@@ -931,10 +988,12 @@ const DoctorName = () => {
                 renderArrow={myArrow}
                 isRTL={router.locale === 'ar' ? true : false}
               >
-                {clinicData.map((clinic, index) => (
+
+
+                {dataDoctorSlug?.doctorMedias.map((clinic, index) => (
                   <div onClick={() => handleImageClick(clinic.img)} className={styles.box} key={index}>
                     <div className={styles.img_container}>
-                      <Image width={392} height={305} src={clinic.img} alt={clinic.title} />
+                      <Image width={392} height={305} src={clinic.path} alt={clinic.title} />
                     </div>
                   </div>
                 ))}
@@ -953,10 +1012,11 @@ const DoctorName = () => {
         </Container>
       </section>
 
+      {/* Still under destructuin !!! */}
       <BeforeAfter beforeCards={beforeCards} />
 
       <Box sx={{ paddingTop: '38px' }}>
-        <MostPopular />
+        <MostPopular similarDocs={similarDocs} doctorClinics={dataDoctorSlug} />
       </Box>
 
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -985,7 +1045,7 @@ const DoctorName = () => {
             </div>
 
           </Box>
-          <ClinicCards />
+          <ClinicCards similarDocs={similarDocs} />
         </Box>
       </Container >
 
@@ -995,10 +1055,64 @@ const DoctorName = () => {
 
 export default DoctorName
 
-export async function getServerSideProps({ locale }) {
+
+// export async function getStaticPaths() {
+//   const resDoctorsSlugs = await fetch("https://api2.safemedigo.com/api/v1/Doctor/ListAllDoctorSlugs");
+//   const dataDoctorsSlugs = await resDoctorsSlugs.json()
+
+//   const paths = dataDoctorsSlugs?.map((data) => {
+//     return {
+//       params: { slug: data }
+//     }
+//   })
+
+
+//   return {
+//     paths,
+//     fallback: 'blocking',
+//   };
+// }
+
+
+export async function getStaticPaths() {
+  const resDoctorsSlugs = await fetch("https://api2.safemedigo.com/api/v1/Doctor/ListAllDoctorSlugs");
+  const dataDoctorsSlugs = await resDoctorsSlugs.json();
+
+  const paths = dataDoctorsSlugs.map((slug) => {
+    return {
+      params: { slug: slug }
+    };
+  });
+
+  const validPaths = paths.map((path) => {
+    return {
+      ...path,
+    };
+  });
+
+  return {
+    paths: validPaths,
+    fallback: "blocking",
+  };
+}
+
+export async function getStaticProps({ locale, params }) {
+  const resDoctorSlug = await fetch("https://api2.safemedigo.com/api/v1/Doctor/GetDoctorBySlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "doctorSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataDoctorSlug = await resDoctorSlug.json()
 
   return {
     props: {
+      dataDoctorSlug,
       ...(await serverSideTranslations(locale, ["navbar", "proceduresSymptoms_single", 'Footer', 'most_popular'])),
     },
   };

@@ -870,6 +870,8 @@ export async function getStaticPaths() {
     fallback: 'blocking',
   };
 }
+
+
 export async function getStaticProps({ locale, params }) {
   const resHospitalSlug = await fetch("https://api2.safemedigo.com/api/v1/Hospital/GetHospitalBySlug", {
     method: 'POST',

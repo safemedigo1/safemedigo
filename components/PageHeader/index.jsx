@@ -10,13 +10,12 @@ import { FaShieldAlt } from 'react-icons/fa'
 import Link from "next/link";
 
 
-const PageHeader = ({ blog, treatment, dataHospitalSlug }) => {
+const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
   const router = useRouter();
 
   const { pathname } = router;
   const { design, designMobile, post1, userimg } = imgs;
   const { t } = useTranslation();
-
   return (
     <>
       {pathname !== '/' &&
@@ -141,40 +140,48 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug }) => {
                 <div className={styles.boxes_container}>
                   <div className={styles.hospital_box}>
                     <div className={styles.main_img}>
-                      <Image width={400} height={240} src={post1.src} alt={""} />
+                      <Image width={400} height={240} src={dataDoctorSlug.image} alt={""} />
                     </div>
 
                     <div className={styles.text_container}>
                       <div className={styles.header}>
-                        <div className={styles.icon_container}>
-                          <FaShieldAlt />
-                        </div>
-                        <div className={styles.text}>
-                          <Typography>
-                            Safemedigo verified
-                          </Typography>
-                        </div>
+                        {dataDoctorSlug.isVerifid &&
+                          <>
+                            <div className={styles.icon_container}>
+                              <FaShieldAlt />
+                            </div>
+                            <div className={styles.text}>
+                              <Typography>
+                                Safemedigo verified
+                              </Typography>
+                            </div>
+                          </>
+                        }
                       </div>
 
                       <div className={styles.name}>
                         <Typography variant="h3">
-                          Acibadem Hospital Taksim
+                          {dataDoctorSlug.doctorLevel}.
+                          {dataDoctorSlug.firstName}
+                          {dataDoctorSlug.fatherName}
+                          {dataDoctorSlug.lastName}
+
                         </Typography>
                       </div>
                       <div className={styles.location}>
                         <MdLocationOn />
                         <Typography >
-                          Acıbadem Mah. Çeçen Sok. Istanbul, Turkey
+                          {dataDoctorSlug?.location}
                         </Typography>
                       </div>
                       <div className={styles.rating}>
-                        <Rating name="read-only" defaultValue={4} size="small" />
-                        <span className={styles.reviews_num}>90 Reviews</span>
+                        <Rating name="read-only" defaultValue={dataDoctorSlug?.rating} size="small" readOnly />
+                        <span className={styles.reviews_num}>{dataDoctorSlug?.totalReviews} Reviews</span>
                       </div>
 
                       <div className={styles.category}>
                         <Typography>
-                          General Hospital
+                          {dataDoctorSlug?.doctorMainSpecializations[0]?.name}
                         </Typography>
                       </div>
 
@@ -183,12 +190,16 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug }) => {
 
                   <div className={styles.info}>
                     <div className={styles.header}>
-                      <Typography variant="h4">Online Appointments Available</Typography>
+                      {dataDoctorSlug?.isOnline === true ?
+                        <Typography variant="h4">Available Online</Typography>
+                        :
+                        <Typography variant="h4">Not Available Online</Typography>
+                      }
                     </div>
                     <div className={styles.boxes_container}>
                       <div className={styles.box}>
                         <div className={styles.num}>
-                          <Typography>163</Typography>
+                          <Typography>{dataDoctorSlug.lastYearPatients}</Typography>
                         </div>
                         <div className={styles.yearly}>
                           <Typography>Patients last year</Typography>
@@ -196,7 +207,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug }) => {
                       </div>
                       <div className={styles.box}>
                         <div className={styles.num}>
-                          <Typography>+15</Typography>
+                          <Typography>{dataDoctorSlug.experienceYears}</Typography>
                         </div>
                         <div className={styles.yearly}>
                           <Typography>Exp. Years</Typography>
@@ -204,7 +215,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug }) => {
                       </div>
                       <div className={styles.box}>
                         <div className={styles.num}>
-                          <Typography>+1500</Typography>
+                          <Typography>{dataDoctorSlug.doctorTreatments.length}</Typography>
                         </div>
                         <div className={styles.yearly}>
                           <Typography>Treatments Performed</Typography>
@@ -213,9 +224,12 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug }) => {
 
                     </div>
 
-                    <div className={styles.button_container}>
-                      <button>Book Appointment</button>
-                    </div>
+                    {dataDoctorSlug?.isOnline === true &&
+                      <div className={styles.button_container}>
+                        <button>Book Appointment</button>
+                      </div>
+                    }
+
                   </div>
                 </div>
               </Container>

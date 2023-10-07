@@ -40,7 +40,6 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
   function createMarkup() {
     return { __html: decodeURI(blog.extraContent) };
-
   }
 
 

@@ -12,6 +12,8 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import Image from 'next/image';
+import axios from 'axios';
+import { MedicalDepartments } from '..';
 
 const MostPopular = (dataPopularTreatmentsMedical) => {
   const router = useRouter();
@@ -20,7 +22,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
   const { post1, post2, post3, post4, post5, } = imgs;
   const [popularTreatmetsData, setPopularTreatmetsData] = useState([])
   const [popularHospitalsData, setPopularHospitalsData] = useState([])
-
+  const [doctorData, setDoctorData] = useState([]);
   useEffect(() => {
     setPopularHospitalsData(dataPopularTreatmentsMedical.dataMostPopularClincHome)
     if (router.pathname === '/medicaldepartments/[slug]/[healthcase]') {
@@ -32,8 +34,11 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
     }
     if (router.pathname === '/') {
       setPopularTreatmetsData(dataPopularTreatmentsMedical.dataPopularTreatmentsHome)
+      setDoctorData(dataPopularTreatmentsMedical.dataMostPopularDocsHome)
     }
   }, [])
+
+
 
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false, itemsToShow: 1.1 },
@@ -132,6 +137,9 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
 
 
 
+
+
+
   return (
     <Box sx={pathname !== '/procedures&symptoms' & pathname !== '/hospitals/[slug]' ? {
       backgroundColor: '#eef5f5'
@@ -191,7 +199,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
               }
               {pathname === '/doctor/[slug]' &&
                 <div className={styles.title}>
-                  <h1>Location</h1>
+                  <h1>Office Location</h1>
                 </div>
               }
 
@@ -374,6 +382,8 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                 </motion.div>
               }
 
+
+
               {pathname !== '/procedures&symptoms' &&
                 <>
                   {doctors &&
@@ -392,66 +402,67 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                         renderArrow={myArrow}
                         isRTL={router.locale === 'ar' ? true : false}
                       >
-                        {doctorsData.map((doc, index) => (
-                          <Link href={'/doctor/docName'} className={styles.box} key={index}>
+                        {doctorData.map((doc, index) => (
+                          <Link href={`/doctor/${doc.slug}`} className={styles.box} key={index}>
                             <div className={styles.img_container}>
-                              <Image width={344} height={191} src={doc.img} alt={doc.name} />
-                              <div className={styles.verified}>
-                                <FaShieldAlt />
-                                <Typography >
-                                  Safemedigo verified
-                                </Typography>
-                              </div>
+                              <Image width={344} height={191} src={doc.image} alt={doc.firstName} />
+                              {doc.isVerifid &&
+                                <div className={styles.verified}>
+                                  <FaShieldAlt />
+                                  <Typography >
+                                    Safemedigo verified
+                                  </Typography>
+                                </div>
+                              }
+
                             </div>
 
                             <div className={styles.box_text_container}>
 
                               <div className={styles.name}>
                                 <Typography variant='h5'>
-                                  {doc.name}
+                                  {doc.firstName} {doc.lastName}
                                 </Typography>
                               </div>
 
                               <div className={styles.job_title}>
                                 <Typography variant='h6'>
-                                  {doc.job_title}
+                                  {doc.mainSpecialization}
                                 </Typography>
                               </div>
 
                               <div className={styles.rating}>
-                                <Rating name="read-only" defaultValue={4} size="small" />
-                                <span className={styles.reviews_num}>90 Reviews</span>
+                                <Rating name="read-only" defaultValue={doc.rate} size="small" readOnly />
+                                <span className={styles.reviews_num}>{doc.totalReview} Reviews</span>
                               </div>
 
                               <div className={styles.location}>
                                 <MdLocationOn />
                                 <Typography >
-                                  Istanbul, Turkey
+                                  {doc.location}
                                 </Typography>
                               </div>
 
                               <div className={styles.patient_num}>
-                                <span>{doc.patients_num}</span>
+                                <span>{doc.lastYearPatients}</span>
                                 <Typography>Patients Treated Last Year</Typography>
                               </div>
 
                               <div className={styles.experience}>
-                                <span>{doc.experience}</span>
+                                <span>{doc.experienceYears}</span>
                                 <Typography> Years Of Experience</Typography>
                               </div>
 
                               <Box sx={{ marginTop: 'auto', width: '100%', display: 'flex', justifyContent: 'space-between', alignSelf: 'flex-end' }}>
                                 <div id={styles.price}>
-                                  <Typography>Knee Replacement Starting From </Typography>
-                                  <span>{doc.price}$</span>
+                                  <Typography>{doc.treatmentName} Starting From</Typography>
+                                  <span>{doc.treatmentPrice}$</span>
                                 </div>
 
                                 <div className={styles.btn_container}>
-                                  <Link href='/'>See Doctor Profile</Link>
+                                  <Link href={`/doctor/${doc.slug}`}>See Doctor Profile</Link>
                                 </div>
                               </Box>
-
-
                             </div>
                           </Link>
                         ))}
@@ -487,7 +498,6 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                             </div>
 
                             <div className={styles.box_text_container}>
-
                               <div className={styles.name}>
                                 <Typography variant='h5'>
                                   {clinic.name}
@@ -501,7 +511,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                               </div>
 
                               <div className={styles.rating}>
-                                <Rating name="read-only" defaultValue={clinic.totalReview} size="small" />
+                                <Rating name="read-only" defaultValue={clinic.rate} size="small" readOnly />
                                 <span className={styles.reviews_num}>{clinic.totalReview} Reviews</span>
                               </div>
 
@@ -556,61 +566,64 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                         renderArrow={myArrow}
                         isRTL={router.locale === 'ar' ? true : false}
                       >
-                        {clinicData.map((clinic, index) => (
-                          <Link href='/hospitals/acibadem-hospital-in-taksim' className={styles.box} key={index}>
+
+                        {dataPopularTreatmentsMedical?.doctorClinics?.doctorHospitalClinics?.map((cilinic, index) => (
+                          <Link href={`/hospital/${cilinic.slug}`} className={styles.box} key={index}>
                             <div className={styles.img_container}>
-                              <Image width={344} height={191} src={clinic.img} alt={clinic.title} />
-                              <div className={styles.verified}>
-                                <FaShieldAlt />
-                                <Typography >
-                                  Safemedigo verified
-                                </Typography>
-                              </div>
+                              <Image width={344} height={191} src={cilinic.img} alt={cilinic.name} />
+                              {cilinic.isVerifid &&
+                                <div className={styles.verified}>
+                                  <FaShieldAlt />
+                                  <Typography >
+                                    Safemedigo verified
+                                  </Typography>
+                                </div>
+                              }
                             </div>
 
                             <div className={styles.box_text_container}>
 
                               <div className={styles.name}>
                                 <Typography variant='h5'>
-                                  {clinic.title}
+                                  {cilinic.name}
                                 </Typography>
                               </div>
 
                               <div className={styles.type}>
                                 <Typography variant='h6'>
-                                  {clinic.type}
+                                  {doc.hospitalKindName}
                                 </Typography>
                               </div>
 
                               <div className={styles.rating}>
-                                <Rating name="read-only" defaultValue={4} size="small" />
-                                <span className={styles.reviews_num}>90 Reviews</span>
+                                <Rating name="read-only" defaultValue={cilinic.rate} size="small" readOnly />
+                                <span className={styles.reviews_num}>{cilinic.totalReviews} Reviews</span>
                               </div>
 
                               <div className={styles.location}>
                                 <MdLocationOn />
                                 <Typography >
-                                  Istanbul, Turkey
+                                  {cilinic.countryName}, {cilinic.cityName}
                                 </Typography>
                               </div>
 
                               <div className={styles.founded}>
-                                <span>{clinic.founded}</span>
+                                <span>{cilinic.foundedYear}</span>
                                 <Typography>Founded Year</Typography>
                               </div>
 
                               <div className={styles.employess}>
-                                <span>{clinic.employess}</span>
+                                <span>{cilinic.employeesCount}</span>
                                 <Typography> Doctors & Employees</Typography>
                               </div>
 
                               <div className={styles.yearly_patient}>
-                                <span>{clinic.yearly_patient}</span>
+                                <span>{cilinic.yearly_patient}</span>
                                 <Typography>Yearly Patient</Typography>
                               </div>
 
                               <div className={styles.btn_container}>
-                                <Link href='/'>See Hospital Profile</Link>
+                                <Link href={`/hospital/${cilinic.slug}`}>See Hospital Profile</Link>
                               </div>
 
                             </div>

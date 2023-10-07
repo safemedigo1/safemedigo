@@ -14,13 +14,12 @@ import { useTranslation } from "react-i18next";
 import Image from 'next/image';
 
 
-const ClinicCard = () => {
+const ClinicCard = ({ similarDocs }) => {
   const { certeficate, post1 } = imgs;
-
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false, itemsToShow: 1.1 },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },
-    { width: 400, pagination: true, itemsToShow: 1.1, itemsToScroll: 1, showArrows: false },
+    { width: 400, pagination: true, itemsToShow: 2.1, itemsToScroll: 1, showArrows: false },
     { width: 800, pagination: true, itemsToShow: 2.1, itemsToScroll: 1, showArrows: false },
     { width: 900, pagination: false, itemsToShow: 2.5, itemsToScroll: 1, },
 
@@ -76,62 +75,72 @@ const ClinicCard = () => {
         renderArrow={myArrow}
         isRTL={router.locale === 'ar' ? true : false}
       >
-        {clinicData.map((clinic, index) => (
-          <Link href='/hospitals/acibadem-hospital-in-taksim' className={styles.box} key={index}>
+        {console.log(similarDocs.data)}
+        {similarDocs?.data?.map((similarDoc, index) => (
+          <Link href={`/doctor/${similarDoc.slug}`} className={styles.box} key={index}>
             <div className={styles.img_container}>
-              <Image width={344} height={191} src={clinic.img} alt={clinic.title} />
-              <div className={styles.verified}>
-                <FaShieldAlt />
-                <Typography >
-                  Safemedigo verified
-                </Typography>
-              </div>
+              <Image width={344} height={191} src={similarDoc.image} alt={similarDoc.firstName} />
+              {similarDoc.isVerifid &&
+                <div className={styles.verified}>
+                  <FaShieldAlt color='#004747' />
+                  <Typography >
+                    Safemedigo verified
+                  </Typography>
+                </div>
+              }
             </div>
 
             <div className={styles.box_text_container}>
 
               <div className={styles.name}>
                 <Typography variant='h5'>
-                  {clinic.title}
+                  Dr. {similarDoc.firstName} {` `} {similarDoc.lastName}
                 </Typography>
               </div>
 
               <div className={styles.type}>
                 <Typography variant='h6'>
-                  {clinic.type}
+                  {similarDoc.mainSpecialization}
                 </Typography>
               </div>
 
               <div className={styles.rating}>
-                <Rating name="read-only" defaultValue={4} size="small" />
-                <span className={styles.reviews_num}>90 Reviews</span>
+                <Rating name="read-only" defaultValue={similarDoc.rate} size="small" readOnly />
+                <span className={styles.reviews_num}>{similarDoc.totalReview} Reviews</span>
               </div>
 
               <div className={styles.location}>
                 <MdLocationOn />
                 <Typography >
-                  Istanbul, Turkey
+                  {similarDoc.location}
                 </Typography>
               </div>
 
               <div className={styles.founded}>
-                <span>{clinic.founded}</span>
-                <Typography>Founded Year</Typography>
+                <span>{similarDoc.lastYearPatients}</span>
+                <Typography>Patients Treated Last Year</Typography>
               </div>
 
               <div className={styles.employess}>
-                <span>{clinic.employess}</span>
-                <Typography> Doctors & Employees</Typography>
+                <span>{similarDoc.experienceYears}</span>
+                <Typography>  Years Of Experience</Typography>
               </div>
 
-              <div className={styles.yearly_patient}>
-                <span>{clinic.yearly_patient}</span>
-                <Typography>Yearly Patient</Typography>
-              </div>
 
-              <div className={styles.btn_container}>
-                <Link href='/'>See Hospital Profile</Link>
-              </div>
+
+
+
+
+              <Box sx={{ marginTop: 'auto', width: '100%', display: 'flex', justifyContent: 'space-between', alignSelf: 'flex-end' }}>
+                <div id={styles.price}>
+                  <Typography>{similarDoc.treatmentName}</Typography>
+                  <span>{similarDoc.treatmentPrice}$</span>
+                </div>
+
+                <div className={styles.btn_container}>
+                  <Link href='/'>See Doctor Profile</Link>
+                </div>
+              </Box>
 
             </div>
 

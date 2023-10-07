@@ -71,7 +71,20 @@ export async function getStaticProps({ locale }) {
       "lang": locale
     })
   })
-  const dataMostPopularClinc = await resMostPopularClinc.json()
+  const dataMostPopularClinc = await resMostPopularClinc.json();
+
+  const resMostPopularDocs = await fetch("https://api2.safemedigo.com/api/v1/Doctor/ListPopularDoctors", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+
+    },
+    body: JSON.stringify({
+      "lang": locale
+    })
+  })
+  const dataMostPopularDocs = await resMostPopularDocs.json()
 
 
   return {
@@ -81,6 +94,7 @@ export async function getStaticProps({ locale }) {
       locale,
       blogSlugData,
       dataMostPopularClinc,
+      dataMostPopularDocs,
 
       ...(await serverSideTranslations(locale, ['home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'safety_standards_page', 'blogs_page', 'proceduresSymptoms', 'Footer'])),
     },
@@ -88,8 +102,10 @@ export async function getStaticProps({ locale }) {
   }
 }
 
+
 export default function Home({ dataPopularTreatments,
-  dataMedicalDepartments, blogSlugData, dataMostPopularClinc }) {
+  dataMedicalDepartments, blogSlugData, dataMostPopularClinc, dataMostPopularDocs }) {
+
   return (
     <>
       <Head>
@@ -113,7 +129,7 @@ export default function Home({ dataPopularTreatments,
       <Help />
       <WhySafemedigo />
       <TreatmentCategory dataMedicalDepartmentsHome={dataMedicalDepartments} />
-      <MostPopular dataPopularTreatmentsHome={dataPopularTreatments} dataMostPopularClincHome={dataMostPopularClinc} />
+      <MostPopular dataMostPopularDocsHome={dataMostPopularDocs} dataPopularTreatmentsHome={dataPopularTreatments} dataMostPopularClincHome={dataMostPopularClinc} />
       <PatientStories />
       <Safty />
       <WhyTurkey blogSlugData={blogSlugData} />
