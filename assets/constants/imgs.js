@@ -4,6 +4,15 @@ import post2 from "../imgs/post2.png";
 import post3 from "../imgs/post3.png";
 import post4 from "../imgs/post4.png";
 import post5 from "../imgs/post5.png";
+// Treatment Hero Section (card) images
+import bypassRashid from "../imgs/bypass-Rashid.jpg";
+import hairTransplantAbdulkareem from "../imgs/hairTransplant-Abdulkareem.jpg";
+import checkUp from "../imgs/checkUp.jpg";
+import ivf46 from "../imgs/ivf-46.jpg";
+import kneeReplacment from "../imgs/kneeReplacment.jpg";
+import teeth1Meshaal from "../imgs/teeth1-Meshaal.jpg";
+import teeth2Ali from "../imgs/teeth2-Ali.jpg";
+
 import test from "../imgs/test.png";
 import userimg from "../imgs/userimg.png";
 import certeficate from "../imgs/certeficate.png";
@@ -247,6 +256,14 @@ export default {
   Neurology,
   Spine_Surgeries,
   Spine_Surgeries_1,
+
+  bypassRashid,
+  hairTransplantAbdulkareem,
+  checkUp,
+  ivf46,
+  kneeReplacment,
+  teeth1Meshaal,
+  teeth2Ali,
 
   Neurosurgery,
   Nuclear_Medicine_And_Molecular_Imaging,

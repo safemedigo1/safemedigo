@@ -28,21 +28,31 @@ const Hero = () => {
   const [showCard, setShowCard] = useState(true)
 
   const router = useRouter();
-  const { author, } = imgs;
+  const { author, bypassRashid,
+    hairTransplantAbdulkareem,
+    checkUp,
+    ivf46,
+    kneeReplacment,
+    teeth1Meshaal,
+    teeth2Ali, } = imgs;
 
   const cards = [
-    { treatment: 'Knee Replacement', title: 'John, 60Y, USA', img: author.src, id: '1', desc: "Safemedigo played a crucial role in my outstanding knee replacement surgery. They facilitated top-notch treatment in Turkey, ensuring exceptional care and expertise. Grateful for Safemedigo's assistance in my pain-free, active lifestyle." },
+    { treatment: 'Knee Replacement', title: 'John Smith, Age 60,  USA', img: kneeReplacment.src, id: '1', desc: "Safemedigo played a crucial role in my outstanding knee replacement surgery. They facilitated top-notch treatment in Turkey, ensuring exceptional care and expertise. Grateful for Safemedigo's assistance in my pain-free, active lifestyle." },
     {
-      treatment: 'Hair Transplant', title: 'Emily, 40Y, UK', img: author.src, id: '2', desc: " With Safemedigo's assistance, my hair transplant in Turkey was a remarkable experience. They provided access to skilled staff, a comfortable environment, and ensured exceptional results. Grateful for Safemedigo's role in my transformation."
+      treatment: 'Hair Transplant', title: 'Abdulkareem, Age 40, UK', img: hairTransplantAbdulkareem.src, id: '2', desc: " With Safemedigo's assistance, my hair transplant in Turkey was a remarkable experience. They provided access to skilled staff, a comfortable environment, and ensured exceptional results. Grateful for Safemedigo's role in my transformation."
     },
     {
-      treatment: 'IVF', title: 'Sarah, 35Y, AU', img: author.src, id: '2', desc: "Safemedigo made my IVF journey smoother by guiding me through every step of the process in Turkey. Their compassionate support, along with access to reputable clinics, helped me fulfill my dream of having a baby."
+      treatment: 'IVF', title: 'Sarah Thompson, Age 42, Australia', img: ivf46.src, id: '3', desc: "Safemedigo made my IVF journey smoother by guiding me through every step of the process in Turkey. Their compassionate support, along with access to reputable clinics, helped me fulfill my dream of having a baby."
     },
     {
-      treatment: 'General Checkup', title: 'Michael Davis, 50Y, CA', img: author.src, id: '2', desc: "Safemedigo facilitated my outstanding general checkup experience in Turkey. They ensured thorough examinations, friendly staff, and a prompt report. Grateful for Safemedigo's assistance in prioritizing my well-being."
+      treatment: 'General Checkup', title: 'Michael Davis, Age 50, Canada', img: checkUp.src, id: '4', desc: "Safemedigo facilitated my outstanding general checkup experience in Turkey. They ensured thorough examinations, friendly staff, and a prompt report. Grateful for Safemedigo's assistance in prioritizing my well-being."
     },
     {
-      treatment: 'Bypass Operation', title: 'Anna Schmidt, 65Y, DE', img: author.src, id: '2', desc: "Safemedigo played a vital role in my bypass surgery in Turkey. Their assistance and expertise were invaluable, ensuring exceptional care and saving my life. Highly recommend Safemedigo for their exceptional support."
+      treatment: 'Bypass Operation', title: 'Rashid ,Age 65, Germany,', img: bypassRashid.src, id: '5, desc: "Safemedigo played a vital role in my bypass surgery in Turkey. Their assistance and expertise were invaluable, ensuring exceptional care and saving my life. Highly recommend Safemedigo for their exceptional support.',
+
+      treatment: 'Hollywood Smile', title: 'Meshaal, Age 45,  UAE,', img: teeth1Meshaal.src, id: '6, desc: "At SafeMediGo, I experienced exceptional dental care. Their expertise transformed my smile, making me more confident than ever. Highly recommend for any dental needs!',
+
+      treatment: 'Teeth Implant', title: 'Ali, Age 40,  Kenya, ', img: teeth2Ali.src, id: '6', desc: "Trusted SafeMediGo with my teeth job and couldn't be happier. The results are impeccable, and the care was top-notch. Truly a game-changer in dental services!"
     },
 
   ]
