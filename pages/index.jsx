@@ -87,6 +87,21 @@ export async function getStaticProps({ locale }) {
   const dataMostPopularDocs = await resMostPopularDocs.json()
 
 
+  const resPatientStoriesBlogs = await fetch("https://api2.safemedigo.com/api/v1/Blog/GetAllBlogWithPage", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": locale,
+      "blogCategoryId": 7,
+      "currentPage": 1,
+    })
+  })
+  const dataPatientStoriesBlogs = await resPatientStoriesBlogs.json()
+
+
   return {
     props: {
       dataPopularTreatments,
@@ -95,7 +110,7 @@ export async function getStaticProps({ locale }) {
       blogSlugData,
       dataMostPopularClinc,
       dataMostPopularDocs,
-
+      dataPatientStoriesBlogs,
       ...(await serverSideTranslations(locale, ['home', 'navbar', 'hero_section', 'search_section', 'help_section', 'why_safemedigo', 'treatments_section', 'most_popular', 'patient_stories', 'safety_standards_section', 'why_turky_section', 'contact_details', 'sec_navbar', 'page_header_comp', 'safety_standards_page', 'blogs_page', 'proceduresSymptoms', 'Footer'])),
     },
     revalidate: 10,
@@ -104,7 +119,7 @@ export async function getStaticProps({ locale }) {
 
 
 export default function Home({ dataPopularTreatments,
-  dataMedicalDepartments, blogSlugData, dataMostPopularClinc, dataMostPopularDocs }) {
+  dataMedicalDepartments, blogSlugData, dataMostPopularClinc, dataMostPopularDocs, dataPatientStoriesBlogs }) {
 
   return (
     <>
@@ -130,7 +145,7 @@ export default function Home({ dataPopularTreatments,
       <WhySafemedigo />
       <TreatmentCategory dataMedicalDepartmentsHome={dataMedicalDepartments} />
       <MostPopular dataMostPopularDocsHome={dataMostPopularDocs} dataPopularTreatmentsHome={dataPopularTreatments} dataMostPopularClincHome={dataMostPopularClinc} />
-      <PatientStories />
+      <PatientStories dataPatientStoriesBlogs={dataPatientStoriesBlogs} />
       <Safty />
       <WhyTurkey blogSlugData={blogSlugData} />
       <ContactDetails />

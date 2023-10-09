@@ -413,9 +413,11 @@ section#hero[dir="rtl"] {
           }
 
           .title {
+            text-align: right;
             h4,
             h1 {
               font-family: var(--arabic-font);
+              text-align: right;
             }
 
             h4 {
@@ -430,6 +432,9 @@ section#hero[dir="rtl"] {
               }
             }
           }
+        }
+        .desc {
+          text-align: right;
         }
       }
     }

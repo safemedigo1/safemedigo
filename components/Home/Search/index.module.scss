@@ -338,6 +338,10 @@
     }
 
     .tags {
+      .title {
+        margin-right: 0px;
+        margin-left: 13px;
+      }
       .tags_container {
         a {
           &:not(:last-child) {

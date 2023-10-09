@@ -15,7 +15,9 @@ export default function Layout({ children }) {
         <>
           <Navbar />
           <main>{children}</main>
-          <Footer />
+          {pathname != '/doctor/[slug]' &&
+            <Footer />
+          }
         </> : <>
           <Box sx={pathname === '/search' | pathname === '/quote' && { background: { lg: '#004747', xlg: '#004747' }, minHeight: '100vh' }}>
             {children.filter(str => str != ';')}

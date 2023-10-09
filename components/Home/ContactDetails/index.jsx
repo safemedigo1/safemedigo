@@ -33,10 +33,10 @@ const ContactDetails = () => {
 
               <div className={styles.buttons_container}>
                 <div className={styles.btn}>
-                  <Link href="tel:(+90) 552 502 6000">
+                  <Link href="tel:00905350770477">
                     <button>
                       <Phone />
-                      +90 552 502 6000
+                      00905350770477
                     </button>
                   </Link>
                 </div>

@@ -111,9 +111,10 @@
         .desc {
           p {
             font-size: 16px;
-            font-weight: var(--font-regular);
-            font-family: var(--open-sans-font);
-            letter-spacing: 0;
+
+            letter-spacing: 0px;
+            font-weight: var(--font-sem-bold);
+            font-family: var(--quickstand-font);
           }
         }
       }

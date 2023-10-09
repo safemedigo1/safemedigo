@@ -22,7 +22,7 @@ import { FaShieldAlt } from 'react-icons/fa'
 import BeforeAfter from '@/components/BeforeAfter'
 import ClinicCards from '@/components/ClinicCards/index'
 import axios from "axios";
-
+import Footer from '../../../components/Footer'
 
 const DoctorName = ({ dataDoctorSlug }) => {
   const { certeficate, post1 } = imgs;
@@ -1049,6 +1049,8 @@ const DoctorName = ({ dataDoctorSlug }) => {
         </Box>
       </Container >
 
+
+      <Footer dataDoctorSlug={dataDoctorSlug} />
     </>
   )
 }

@@ -12,11 +12,12 @@ import Image from 'next/image';
 
 
 
-const PatientStories = () => {
+const PatientStories = ({ dataPatientStoriesBlogs }) => {
   const { t } = useTranslation();
   const { post1, post2, post3, post4, post5, author } = imgs;
   const router = useRouter();
 
+  console.log(dataPatientStoriesBlogs, "BLOGSSSZZ")
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },
@@ -197,12 +198,12 @@ const PatientStories = () => {
               isRTL={router.locale === 'ar' ? true : false}
             >
 
-              {posts.map((post, index) => (
-                <Link href={`/blogs/${post.id}`} className={styles.box} key={index}>
+              {dataPatientStoriesBlogs?.data?.map((post, index) => (
+                <Link href={`/blogs/${post.slug}`} className={styles.box} key={index}>
                   <div className={styles.img_container}>
                     <Image
-                      src={post.img}
-                      alt="Picture of the author"
+                      src={post.image}
+                      alt={post.title}
                       width={344}
                       height={190}
                     />
@@ -212,26 +213,34 @@ const PatientStories = () => {
                   </div>
 
                   <div className={styles.desc}>
-                    <p>{post.desc}</p>
+                    <p>{post.briefContent}</p>
                   </div>
 
                   <div className={styles.author_container}>
                     <div className={styles.img_container}>
-                      <Image width={100} height={100} src={post.authorImg} alt="" />
+                      <Image width={100} height={100} src={post.publisherImage} alt={post.publisherName} />
                     </div>
 
                     <div className={styles.author_data}>
                       <div className={styles.user_name}>
-                        {post.authorName}
+                        {post.publisherName}
                       </div>
-                      <div className={styles.user_job}>{post.authorJob}</div>
+                      <div className={styles.user_job}>{post.jobTitle}</div>
                     </div>
                   </div>
 
                   <div className={styles.btns_container}>
-                    <div className={styles.trans_btn}>
-                      <button>Tag Name</button>
-                    </div>
+
+                    {post.tags.map((tag, index) =>
+                      <div className={styles.trans_btn} key={index}>
+                        <Link href={`tags/${tag.slug}`}>
+                          <button>
+                            {tag.tagName}
+                          </button>
+
+                        </Link>
+                      </div>
+                    )}
 
                   </div>
                 </Link>

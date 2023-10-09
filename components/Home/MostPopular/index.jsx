@@ -273,14 +273,11 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                   className={styles.treatment}>
 
                   <Box sx={
-                    pathname !== '/procedures&symptoms' ?
-                      {
-                        boxShadow: "inset -20px 0px 12px #eef5f5"
-                      } :
 
-                      {
-                        boxShadow: "inset -20px 0px 12px #ffffff"
-                      }
+
+                    {
+                      boxShadow: "inset -20px 0px 12px #ffffff"
+                    }
                   } className={styles.shadow_box} />
 
                   <Carousel
@@ -313,10 +310,10 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                                 </Typography>
                               </div>
 
-                              <div className={styles.rating}>
+                              {/* <div className={styles.rating}>
                                 <Rating name="read-only" defaultValue={card.totalReviewed} size="small" readOnly />
                                 <span className={styles.reviews_num}>{card.totalReviewed} Reviews</span>
-                              </div>
+                              </div> */}
 
                               <div className={styles.desc}>
                                 <Typography>{card.description}</Typography>
@@ -354,10 +351,10 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                                 </Typography>
                               </div>
 
-                              <div className={styles.rating}>
+                              {/* <div className={styles.rating}>
                                 <Rating name="read-only" defaultValue={4} size="small" />
                                 <span className={styles.reviews_num}>90 Reviews</span>
-                              </div>
+                              </div> */}
 
                               <div className={styles.desc}>
 
@@ -430,11 +427,11 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                                   {doc.mainSpecialization}
                                 </Typography>
                               </div>
-
+                              {/* 
                               <div className={styles.rating}>
                                 <Rating name="read-only" defaultValue={doc.rate} size="small" readOnly />
                                 <span className={styles.reviews_num}>{doc.totalReview} Reviews</span>
-                              </div>
+                              </div> */}
 
                               <div className={styles.location}>
                                 <MdLocationOn />
@@ -477,8 +474,13 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                       transition={{ duration: 1, }}
                       className={styles.clinic}>
 
-                      <Box sx={{ boxShadow: "inset -20px 0px 12px #eef5f5" }} />
+                      <Box sx={
 
+
+                        {
+                          boxShadow: "inset -20px 0px 12px #ffffff"
+                        }
+                      } className={styles.shadow_box} />
                       <Carousel
                         breakPoints={breakPoints}
                         itemsToScroll={1}
@@ -510,10 +512,10 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                                 </Typography>
                               </div>
 
-                              <div className={styles.rating}>
+                              {/* <div className={styles.rating}>
                                 <Rating name="read-only" defaultValue={clinic.rate} size="small" readOnly />
                                 <span className={styles.reviews_num}>{clinic.totalReview} Reviews</span>
-                              </div>
+                              </div> */}
 
                               <div className={styles.location}>
                                 <MdLocationOn />
@@ -594,11 +596,11 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                                   {doc.hospitalKindName}
                                 </Typography>
                               </div>
-
+                              {/* 
                               <div className={styles.rating}>
                                 <Rating name="read-only" defaultValue={cilinic.rate} size="small" readOnly />
                                 <span className={styles.reviews_num}>{cilinic.totalReviews} Reviews</span>
-                              </div>
+                              </div> */}
 
                               <div className={styles.location}>
                                 <MdLocationOn />
@@ -680,10 +682,10 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                               </Typography>
                             </div>
 
-                            <div className={styles.rating}>
+                            {/* <div className={styles.rating}>
                               <Rating name="read-only" defaultValue={4} size="small" />
                               <span className={styles.reviews_num}>90 Reviews</span>
-                            </div>
+                            </div> */}
 
                             <div className={styles.location}>
                               <MdLocationOn />

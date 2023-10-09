@@ -3,14 +3,15 @@ import Link from 'next/link'
 import React from 'react'
 import imgs from '../../assets/constants/imgs'
 import styles from './index.module.scss'
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Rating, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useTranslation } from "react-i18next";
 import { useRouter } from 'next/router'
+import { MdLocationOn } from 'react-icons/md'
 
 
 
-const Footer = () => {
+const Footer = ({ dataDoctorSlug }) => {
   const { t } = useTranslation();
   const router = useRouter();
   const { logoFooter,
@@ -18,9 +19,11 @@ const Footer = () => {
     instagram,
     youtube,
     twitter,
-    author
+    majd
   } = imgs
 
+
+  console.log(dataDoctorSlug, 'DOCTOR FOOTER DATA')
   const socialLinks = [
     { link: 'https://twitter.com/safemedigo', img: twitter },
     { link: 'https://www.facebook.com/Safemedigo', img: facebook },
@@ -271,40 +274,80 @@ const Footer = () => {
       </footer>
 
 
-      <Grid id={styles.footer_nav}>
+      <Grid id={styles.footer_nav} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
           <Box display='flex' alignItems='center' justifyContent='space-between'>
-            <Box display='flex' className={styles.patient}>
-              <div className={styles.img_container}>
-                <Image src={author.src} alt="" width={100}
-                  height={100} />
-              </div>
 
-              <div className={styles.doc_data}>
-                <div className={styles.doc_job}>
-                  <Link href='/'>
-                    <Typography variant='h6'>{t("Footer:patient_manager")}</Typography>
-                  </Link>
+
+
+            {router.pathname != '/doctor/[slug]' &&
+              <Box display='flex' className={styles.patient}>
+                <div className={styles.img_container}>
+                  <Image src={majd.src} alt="" width={100}
+                    height={100} />
+                </div>
+
+                <div className={styles.doc_data}>
+                  <div className={styles.doc_job}>
+                    <Link href='/'>
+                      <Typography variant='h6'>{t("Footer:patient_manager")}</Typography>
+                    </Link>
+
+                  </div>
+                  <div className={styles.doc_name}>
+                    <Link href='/'>
+                      <Typography variant='h6'>Majd</Typography>
+                    </Link>
+
+                  </div>
+                </div>
+              </Box>
+            }
+            {router.pathname === '/doctor/[slug]' &&
+              <Box display='flex' className={styles.patient}>
+                <div className={styles.img_container}>
+                  <Image src={dataDoctorSlug.image} alt={dataDoctorSlug.firstName} width={100}
+                    height={100} />
+                </div>
+                <div className={styles.doc_info}>
+                  <div className={styles.name}>
+                    <Typography variant='h6'>{`${dataDoctorSlug.doctorLevel}. ${dataDoctorSlug.firstName}${dataDoctorSlug.fatherName}`}</Typography></div>
+                  <div className={styles.location}>
+                    <MdLocationOn />
+                    <h6>{dataDoctorSlug.location}</h6>
+                  </div>
+
+                  {/* <div className={styles.rating}>
+                    <Rating defaultValue={1} size="small" readOnly />
+                    <span className={styles.reviews_num}>{dataDoctorSlug?.totalReviews}(90)</span>
+                  </div> */}
 
                 </div>
-                <div className={styles.doc_name}>
-                  <Link href='/'>
-                    <Typography variant='h6'>name</Typography>
-                  </Link>
 
-                </div>
-              </div>
-            </Box>
-
+              </Box>
+            }
 
             <Box display='flex'
               className={styles.btns_container}>
 
-              <div className={styles.contact}>
-                <Link href='/'>
-                  <button>Contact us</button>
-                </Link>
-              </div>
+
+              {router.pathname !== '/doctor/[slug]' &&
+
+                <div className={styles.contact}>
+                  <Link href='#contact-us'>
+                    <button>Contact us</button>
+                  </Link>
+                </div>
+              }
+
+              {router.pathname === '/doctor/[slug]' &&
+                <Typography>
+                  {dataDoctorSlug?.doctorTreatments[0]?.treatmentName}
+                  starting from {dataDoctorSlug?.doctorTreatments[0]?.price}$
+                </Typography>
+
+              }
+
 
               <div className={styles.quote}>
                 <Link href='/quote'>

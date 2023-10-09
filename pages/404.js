@@ -15,7 +15,7 @@ const ErrorPage = () => {
           minHeight: "100vh",
         }}
       >
-        <h1>Ooooops...</h1>
+        <h1>Ooops...</h1>
         <h2>That page cannot be found.</h2>
         <p>
           Go back to the {` `}

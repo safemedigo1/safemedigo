@@ -125,15 +125,17 @@ const Navbar = (props) => {
     { title: t("navbar:how_it_works"), link: "/how-it-works" },
 
     { title: t("navbar:blogs"), link: "/blogs", menuLink: null },
-    {
-      title: t("navbar:about_us"),
-      menuLink: [
-        { title: t("navbar:safety_standards"), link: "/safety-standards" },
-        { title: t("navbar:how_it_works"), link: "/how-it-works" },
-        { title: t("navbar:about_us"), link: "/about-us" },
-        { title: t("navbar:contact_us"), link: "#contact-us" },
-      ],
-    },
+    { title: t("navbar:about_us"), link: "/about-us", },
+
+    // {
+    //   title: t("navbar:about_us"),
+    //   menuLink: [
+    //     { title: t("navbar:safety_standards"), link: "/safety-standards" },
+    //     { title: t("navbar:how_it_works"), link: "/how-it-works" },
+    //     { title: t("navbar:about_us"), link: "/about-us" },
+    //     { title: t("navbar:contact_us"), link: "#contact-us" },
+    //   ],
+    // },
   ];
 
   const { logo, NavSearch, en, arrowDown, user, search, notificationsActive, burger, ar, tr } = imgs;
@@ -191,7 +193,7 @@ const Navbar = (props) => {
                         <ul>
                           {navbarLinks.map((link, index) => (
                             <li key={index} className={`${styles.link__item} ${styles.active}`}>
-                              <Link href={`${link.link}`}>{link.title}</Link>
+                              <Link href={`${link.link}`}>{link.title} </Link>
                               {/* {link.menuLink != null &&
                                 <div className={styles.menuLinks__container}>
                                   <ul>
@@ -260,7 +262,22 @@ const Navbar = (props) => {
                           </div>
 
                           <div className={styles.lang_type}>
-                            <span>{router.locale}</span>
+                            {router.locale === 'en' &&
+                              <span>
+                                EN
+                              </span>
+                            }
+
+                            {router.locale === 'ar' &&
+                              <span>
+                                ع
+                              </span>
+                            }
+                            {router.locale === 'tr' &&
+                              <span>
+                                TR
+                              </span>
+                            }
                           </div>
 
                           <div className={styles.icon_container}>
@@ -280,7 +297,9 @@ const Navbar = (props) => {
                                     router.locale !== lang &&
                                     < li >
                                       <a href={`/${lang}${router.asPath}`} key={idx}>
-                                        {lang}
+                                        {lang === 'en' && <>EN</>}
+                                        {lang === 'tr' && <>TR</>}
+                                        {lang === 'ar' && <>ع</>}
                                         <div className={styles.img_container}>
                                           <Image
                                             src={lang === 'ar' ? ar.src : lang === 'en' ? en.src : lang === 'tr' ? tr.src : ''}
