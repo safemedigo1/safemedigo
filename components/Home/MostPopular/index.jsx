@@ -306,7 +306,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
 
                               <div className={styles.price}>
                                 <Typography variant='h6'>
-                                  Cost Start From  {card.cost} &euro;
+                                  {t("proceduresSymptoms:cost")}  {card.cost}&#x24;
                                 </Typography>
                               </div>
 
@@ -347,7 +347,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
 
                               <div className={styles.price}>
                                 <Typography variant='h6'>
-                                  Cost Start From  {card.price} &euro;
+                                  {t("proceduresSymptoms:cost")}  {card.price}&#x24;
                                 </Typography>
                               </div>
 
@@ -452,12 +452,12 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
 
                               <Box sx={{ marginTop: 'auto', width: '100%', display: 'flex', justifyContent: 'space-between', alignSelf: 'flex-end' }}>
                                 <div id={styles.price}>
-                                  <Typography>{doc.treatmentName} Starting From</Typography>
+                                  <Typography>{doc.treatmentName} {t("proceduresSymptoms:cost")}:</Typography>
                                   <span>{doc.treatmentPrice}$</span>
                                 </div>
 
                                 <div className={styles.btn_container}>
-                                  <Link href={`/doctor/${doc.slug}`}>See Doctor Profile</Link>
+                                  <Link href={`/doctor/${doc.slug}`}>{t("proceduresSymptoms:doc_profile")}</Link>
                                 </div>
                               </Box>
                             </div>
@@ -711,7 +711,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                               </div>
 
                               <div className={styles.btn_container}>
-                                <Link href='/'>See Doctor Profile</Link>
+                                <Link href='/'>{t("proceduresSymptoms:doc_profile")}</Link>
                               </div>
                             </Box>
 

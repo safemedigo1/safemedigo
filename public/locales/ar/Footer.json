@@ -1,9 +1,10 @@
 {
-  "address": "Address",
-  "email": "Email",
-  "call": "Call Us",
-  "Whatsapp": "WhatsApp",
-
+  "address": "العنوان",
+  "email": "البريد الإلكتروني",
+  "call": "اتصل بنا  ",
+  "Whatsapp": "الواتساب",
+  "safemedigoAddress": "فوليا، أوزتورك Sk. سيما أبارتماني، رقم 4 ب، الطابق الثالث، مكتب رقم 10 34394 شيشلي/اسطنبول",
+  "facebook": "الفيسبوك",
   "WHO_WE_ARE": "من نحن",
   "Safety_Standards": "معايير السلامة",
   "How_It_Works": "كيف تعمل",

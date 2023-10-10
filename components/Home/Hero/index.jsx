@@ -280,7 +280,7 @@ const Hero = () => {
                       </div>
                     </div>
 
-                    <Box className={styles.desc} sx={showCard === false && {
+                    <Box dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} className={styles.desc} sx={showCard === false && {
                       overflow: 'hidden',
                       display: '-webkit-box',
                       '-webkit-box-orient': 'vertical',

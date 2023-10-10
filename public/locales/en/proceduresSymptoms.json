@@ -5,5 +5,6 @@
   "select": "Select medical symptoms",
   "all_procedures": "All Procedures",
   "success_rate": "success rate",
-  "cost": "cost starts"
+  "cost": "Cost starts from",
+  "doc_profile": "See Doctor Profile"
 }

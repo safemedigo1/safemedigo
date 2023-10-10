@@ -532,7 +532,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
       {
         dataTreatment?.treatmentImage.length !== 0 &&
-        <BeforeAfter treatments={dataTreatment?.treatmentImage} />
+        <BeforeAfter treatments={dataTreatment} />
 
 
       }
@@ -698,7 +698,16 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
             <div className={styles.title}>
               <Typography variant='h3'>
-                {t('proceduresSymptoms_single:all_in_video')}
+                {router.locale === 'ar' ?
+                  <>
+                    إجراء {dataTreatment.treatmentName} بالفيديو: دليل شامل يشرح كل ما يجب على المرضى معرفته
+                  </>
+                  :
+                  <>
+                    {dataTreatment.treatmentName} {t('proceduresSymptoms_single:all_in_video')}
+                  </>
+                }
+
               </Typography>
             </div>
             <div className={styles.video_container}>
@@ -713,7 +722,20 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.howToGetTreatment_container}>
             <div className={styles.sec_title}>
-              <Typography variant='h3' sx={sxTitle2}>{t('proceduresSymptoms_single:how_i_get_treatment')}</Typography>
+
+              {router.locale === 'ar' &&
+                <Typography variant='h3' sx={sxTitle2}>كيف يمكنني الحصول على إجراء {dataTreatment.treatmentName}  في تركيا بعيادات SafeMediGo؟
+                </Typography>
+              }
+              {router.locale === 'en' &&
+                <Typography variant='h3' sx={sxTitle2}>How Can I Get a {dataTreatment.treatmentName} Procedure in Turkey with SafeMediGo?</Typography>
+              }
+              {router.locale === 'tr' &&
+
+                <Typography variant='h3' sx={sxTitle2}>SafeMediGo ile Türkiye'de {dataTreatment.treatmentName} Prosedürüne nasıl ulaşabilirim?</Typography>
+              }
+
+
             </div>
 
             <div className={styles.menu_container}>
@@ -839,7 +861,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   <>
                     <div className={styles.steps_container} key={index}>
                       <div className={styles.step}>
-                        <span>{index + 1}</span>
+                        <span dir='rtl'>{index + 1}</span>
                       </div>
                     </div>
 
@@ -931,7 +953,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                       expandIcon={<ExpandMoreIcon sx={expanded !== `panel1${index}2` ? { color: '#000000', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
                       aria-controls={`panel1${index}2-content `} id={`panel1${index}2-header`}>
                       <Typography sx={paragrahp3}>
-
                         {q.question}
                       </Typography>
                     </AccordionSummary>
@@ -956,7 +977,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                     t("single_blog:load_more")
                     :
                     <>
-                      Loading {` `}
+
                       <ThreeDots
                         height="25"
                         width="25"

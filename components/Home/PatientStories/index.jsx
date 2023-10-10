@@ -197,7 +197,7 @@ const PatientStories = ({ dataPatientStoriesBlogs }) => {
               transition={{ duration: 0.95, ease: "easeOut" }}
               isRTL={router.locale === 'ar' ? true : false}
             >
-
+              {console.log(dataPatientStoriesBlogs)}
               {dataPatientStoriesBlogs?.data?.map((post, index) => (
                 <Link href={`/blogs/${post.slug}`} className={styles.box} key={index}>
                   <div className={styles.img_container}>

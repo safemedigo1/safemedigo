@@ -12,7 +12,7 @@ const BeforeAfter = ({ treatments, beforeCards }) => {
   const router = useRouter();
   const { t } = useTranslation();
   const [treatmentsBeforeAFter, setTreatmentsBeforeAFter] = useState()
-
+  console.log(treatments, "OVER")
   useEffect(() => {
     setTreatmentsBeforeAFter(treatments)
     router.pathname === '/doctor/[slug]' && setTreatmentsBeforeAFter(beforeCards)
@@ -46,14 +46,22 @@ const BeforeAfter = ({ treatments, beforeCards }) => {
       </button>
     );
   }
-
   return (
     <section id={styles.before_after} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
       <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: "1239px" }} maxWidth={false}>
         <div className={styles.title}>
-          <Typography variant='h3'>
-            {t('proceduresSymptoms_single:before_after')}
-          </Typography>
+
+          {router.locale === 'ar' ?
+            <Typography variant='h3'>
+              التحضير لإجراء {treatments.treatmentName}: ماذا تتوقع قبل الإجراء وأثنائها وبعدها
+            </Typography>
+            :
+            <Typography variant='h3'>
+              {treatments.treatmentName}: {t('proceduresSymptoms_single:before_after')}
+
+
+            </Typography>
+          }
         </div>
       </Container >
 
@@ -66,7 +74,7 @@ const BeforeAfter = ({ treatments, beforeCards }) => {
           >
 
             {
-              treatmentsBeforeAFter?.map((card, index) => (
+              treatmentsBeforeAFter?.treatmentImage?.map((card, index) => (
                 <div className={styles.box} key={index}>
                   <div className={styles.imgs_container}>
                     <Image width={388} height={200} src={card.imgBefore} alt="" />

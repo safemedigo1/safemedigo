@@ -710,6 +710,11 @@ section#PatientStories_patient_stories__oSemC,
               background-color: var(--main-green-color);
             }
           }
+          span[dir="rtl"] {
+            &::after {
+              right: 0% !important;
+            }
+          }
         }
       }
     }
@@ -729,6 +734,12 @@ section#PatientStories_patient_stories__oSemC,
               transform: translateY(-0%);
               z-index: -1;
               background-color: var(--main-green-color);
+            }
+          }
+
+          span[dir="rtl"] {
+            &::after {
+              right: 0% !important;
             }
           }
         }

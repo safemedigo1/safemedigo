@@ -42,15 +42,17 @@ const ContactDetails = () => {
                 </div>
                 <div className={styles.btn}>
                   <Link href="https://wa.me/message/JLFXRTHJEOH2H1" target="_blank">
-                    <button>Whatsapp</button>
+                    <button>
+                      {t('Footer:Whatsapp')}
+                    </button>
                   </Link>
                 </div>
                 <div className={styles.btn}>
-                  <Link href="https://www.facebook.com/Safemedigo" target="_blank"><button>Facebook</button></Link>
+                  <Link href="https://www.facebook.com/Safemedigo" target="_blank"><button>{t("Footer:facebook")}</button></Link>
                 </div>
                 <div className={styles.btn}>
                   <Link href="mailto:info@safemedigo.com" >
-                    <button>Email</button>
+                    <button>{t('Footer:email')}</button>
                   </Link>
                 </div>
               </div>
@@ -98,23 +100,34 @@ const ContactDetails = () => {
 
             <div className={styles.contacts}>
               <div className={styles.contact}>
-                <Typography>Whatsapp</Typography>
+                <Typography>
+                  {t('Footer:Whatsapp')}
+                </Typography>
                 <Typography>00905350770477</Typography>
               </div>
               <div className={styles.contact}>
-                <Typography>Call Us</Typography>
+                <Typography>{t('Footer:call')}</Typography>
                 <Typography>00905350770477</Typography>
               </div>
               <div className={styles.contact}>
-                <Typography>Email</Typography>
-                <Typography>info@safemedigo.com</Typography>
+                <Typography>{t('Footer:email')}</Typography>
+                <Typography >info@safemedigo.com</Typography>
               </div>
+
+
+
+
               <div className={styles.address}>
                 <Typography>Address</Typography>
 
-                <Typography>Fulya, Öztürk Sk.
+
+                <Typography>
+
+                  {t('Footer:safemedigoAddress')}
+                </Typography>
+                {/* <Typography>Fulya, Öztürk Sk.
                   Sima Apartmanı, No 4B, 3Rd Floor, Office N10
-                  34394 <br /> Şişli/İstanbul</Typography>
+                  34394 <br /> Şişli/İstanbul</Typography> */}
               </div>
             </div>
           </div>
