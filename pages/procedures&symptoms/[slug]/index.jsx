@@ -189,9 +189,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
     }
   };
 
-  const handleDetailExited = () => {
-    window.scrollTo(0, prevScrollPos);
-  };
+
 
   const style = {
     marginTop: '10px',

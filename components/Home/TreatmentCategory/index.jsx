@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './index.module.scss'
 import { Container, Link, Typography, } from '@mui/material';
 import imgs from "../../../assets/constants/imgs";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
 import Image from 'next/image';
-
+import { AppContext } from '@/components/AppContext';
 
 
 
 const TreatmentCategory = ({ dataMedicalDepartmentsHome }) => {
+  const context = useContext(AppContext);
+  const { treatmentSlugContexts } = context;
   const router = useRouter();
 
   const {
@@ -64,7 +66,7 @@ const TreatmentCategory = ({ dataMedicalDepartmentsHome }) => {
   const { t } = useTranslation();
 
   const cards = [
-    { link: '/procedures&symptoms/FUE-Hair-Transplant-', title: t("treatments_section:category1"), img: Hair_Transplant.src, hover_icon: Hair_Transplant_1.src },
+    { link: '/procedures&symptoms/Hair-Transplant-(FUE-)  ', title: t("treatments_section:category1"), img: Hair_Transplant.src, hover_icon: Hair_Transplant_1.src },
 
     { link: '/procedures&symptoms/Dental-Implants', title: t("treatments_section:category2"), img: Tooth_Implants.src, hover_icon: Tooth_Implants_1.src },
 
@@ -95,18 +97,6 @@ const TreatmentCategory = ({ dataMedicalDepartmentsHome }) => {
     { link: '/medicaldepartments/-Check-Up-Center-', title: t("treatments_section:category15"), img: Medical_Check.src, hover_icon: Medical_Check_1.src },
 
     { link: '/quote', title: t("treatments_section:category16"), img: Dont_See_What.src, hover_icon: Dont_See_What_1.src },
-    // { title: 'Plastic Surgeries', img: Plastic_Surgeries.src, hover_icon: Plastic_Surgeries_1.src },
-    // // { title: 'Tooth Implants', img: Tooth_Implants.src, hover_icon: Tooth_Implants_1.src },
-    // { title: 'Knee Replacement', img: Knee.src, hover_icon: Knee_1.src },
-    // { title: 'Rhinoplasty', img: Rhinoplasty.src, hover_icon: Rhinoplasty_1.src },
-    // { title: 'Cardiology', img: Cardiology.src, hover_icon: Cardiology_1.src },
-    // { title: 'Oncology', img: OncologySurgeries.src, hover_icon: Oncology_Surgeries_1.src },
-    // { title: 'Pediatric', img: Pediatrics.src, hover_icon: Pediatrics_1.src },
-    // { title: 'Bone Marrow Transplant', img: Bone_Marrow.src, hover_icon: Bone_Marrow_1.src },
-    // { title: 'Lung Surgeries', img: Lung.src, hover_icon: Lung_1.src },
-    // { title: 'Neurology', img: Neurology.src, hover_icon: Neurology_1.src },
-    // { title: 'Alternative Medicine', img: Alternative.src, hover_icon: Alternative_1.src },
-
 
   ]
 
@@ -120,17 +110,7 @@ const TreatmentCategory = ({ dataMedicalDepartmentsHome }) => {
           </div>
 
           <div className={styles.boxes_container}>
-            {/* {dataMedicalDepartmentsHome?.map((card, index) => (
-              <Link style={{ textDecoration: 'none' }} href={`/medicaldepartments/${card.slug}`} className={styles.box} key={index}>
-                <div className={styles.img_container}>
-                  <Image width={100} height={100} className={styles.default_icon} src={card.image} alt="" />
-                  <Image width={100} height={100} className={styles.hovered_icon} src={card.secondImage} alt="" />
-                </div>
-                <div className={styles.title}>
-                  <Typography variant='h6'>{card.departmentName}</Typography>
-                </div>
-              </Link>
-            ))} */}
+
             {cards?.map((card, index) => (
               <Link style={{ textDecoration: 'none' }} href={`${router.locale}/${card.link}`} className={styles.box} key={index}>
                 <div className={styles.img_container}>

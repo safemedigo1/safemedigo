@@ -11,6 +11,9 @@ export default function Layout({ children }) {
   // console.log(children.filter(str => str != ';'))
   return (
     <>
+
+
+
       {pathname !== '/search' & pathname !== '/quote' & pathname !== '/login' & pathname !== '/signup' & pathname != '/editor' ?
         <>
           <Navbar />

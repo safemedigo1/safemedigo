@@ -15,6 +15,8 @@ import { Toaster } from "react-hot-toast";
 import { Quicksand, Tajawal } from "@next/font/google";
 import theme from "../styles/theme";
 import { ThemeProvider } from "@mui/material/styles";
+import { useState } from "react";
+import { AppContext } from "../components/AppContext";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -31,56 +33,62 @@ Router.events.on("routeChangeComplete", nProgress.done);
 
 function App({ Component, pageProps }) {
   const router = useRouter();
+
+  const [treatmentSlugContexts, setTreatmentSlugContexts] = useState("default");
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <main
-          className={`${
-            router.locale === "ar" ? taiwal.className : quicksand.className
-          }`}
-        >
-          <NoSsr>
-            <CssBaseline />
-            <Layout>
-              <Head>
-                <meta name="description" content="Your description" />
-                <link rel="icon" href="/favicon.ico" />
-              </Head>
-              <Script id="google-tag-manager" strategy="afterInteractive">
-                {`
+      <AppContext.Provider
+        value={{ treatmentSlugContexts, setTreatmentSlugContexts }}
+      >
+        <ThemeProvider theme={theme}>
+          <main
+            className={`${
+              router.locale === "ar" ? taiwal.className : quicksand.className
+            }`}
+          >
+            <NoSsr>
+              <CssBaseline />
+              <Layout>
+                <Head>
+                  <meta name="description" content="Your description" />
+                  <link rel="icon" href="/favicon.ico" />
+                </Head>
+                <Script id="google-tag-manager" strategy="afterInteractive">
+                  {`
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-K26NKMK');
       `}
-              </Script>
-              <Toaster
-                toastOptions={{
-                  duration: 4000,
-                  success: {
-                    style: {
-                      color: "#004747",
-                      fontWeight: "bold",
+                </Script>
+                <Toaster
+                  toastOptions={{
+                    duration: 4000,
+                    success: {
+                      style: {
+                        color: "#004747",
+                        fontWeight: "bold",
+                      },
+                      iconTheme: {
+                        primary: "#004747",
+                        secondary: "#ffffff",
+                      },
                     },
-                    iconTheme: {
-                      primary: "#004747",
-                      secondary: "#ffffff",
+                    error: {
+                      style: {
+                        color: "red",
+                        fontWeight: "bold",
+                      },
                     },
-                  },
-                  error: {
-                    style: {
-                      color: "red",
-                      fontWeight: "bold",
-                    },
-                  },
-                }}
-              />
-              <Component {...pageProps} />;
-            </Layout>
-          </NoSsr>
-        </main>
-      </ThemeProvider>
+                  }}
+                />
+                <Component {...pageProps} />
+              </Layout>
+            </NoSsr>
+          </main>
+        </ThemeProvider>
+      </AppContext.Provider>
     </>
   );
 }
