@@ -76,7 +76,7 @@
 
             font-size: 16px;
             font-weight: var(--font-regular);
-            font-family: var(--open-sans-font);
+            font-family: var(--quickstand-font);
           }
         }
 
@@ -86,7 +86,7 @@
             p {
               font-size: 16px;
               font-weight: var(--font-regular);
-              font-family: var(--open-sans-font);
+              font-family: var(--quickstand-font);
               color: var(--main-dark-color);
             }
           }
@@ -97,7 +97,7 @@
 
               font-size: 16px;
               font-weight: var(--font-regular);
-              font-family: var(--open-sans-font);
+              font-family: var(--quickstand-font);
               color: var(--main-dark-color);
               position: relative;
               margin-bottom: 5px;
@@ -146,7 +146,7 @@
 
         .icon_container {
           position: absolute;
-          z-index: -1;
+          z-index: 0;
 
           @media screen and (max-width: 992px) {
             display: none;
@@ -168,6 +168,142 @@
       }
       .text_container {
         // margin-right: 65px;
+      }
+    }
+
+    .reviewedExperts {
+      .img_container {
+        .icon_container {
+          bottom: -215px;
+          left: -290px;
+        }
+      }
+    }
+
+    .modernHealthcare {
+      .img_container {
+        .icon_container {
+          bottom: -297px;
+          right: -385px;
+        }
+      }
+    }
+
+    .firstClassMedicalServices {
+      .img_container {
+        .icon_container {
+          bottom: -329px;
+          left: -371px;
+        }
+      }
+    }
+
+    .patientFeedback {
+      .img_container {
+        .icon_container {
+          bottom: -436px;
+          right: -371px;
+        }
+      }
+    }
+
+    .treatmentCharges {
+      .img_container {
+        .icon_container {
+          bottom: -297px;
+          left: -337px;
+        }
+      }
+    }
+  }
+}
+
+#safetyStandards[dir="rtl"] {
+  .boxes_container {
+    .reviewedExperts,
+    .modernHealthcare,
+    .firstClassMedicalServices,
+    .patientFeedback,
+    .treatmentCharges,
+    .clarityConcerning {
+      .text_container {
+        .title {
+          display: flex;
+
+          h3 {
+            font-family: var(--arabic-font);
+          }
+        }
+
+        .desc {
+          p {
+            font-family: var(--arabic-font);
+          }
+        }
+
+        .list {
+          .list_title {
+            p {
+              font-family: var(--arabic-font);
+            }
+          }
+          ul {
+            li {
+              font-family: var(--arabic-font);
+            }
+          }
+        }
+      }
+
+      .img_container {
+        position: relative;
+
+        @media screen and (max-width: 992px) {
+          margin-bottom: 16px;
+          width: 100%;
+          height: 210px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        img {
+          width: 100% !important;
+          height: 100% !important;
+
+          @media screen and (max-width: 992px) {
+            width: 270px !important;
+            height: 170px !important;
+          }
+
+          @media screen and (max-width: 350px) {
+            width: 100% !important;
+            height: 100% !important;
+          }
+        }
+
+        .icon_container {
+          position: absolute;
+          z-index: -20;
+
+          @media screen and (max-width: 992px) {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .modernHealthcare,
+    .patientFeedback,
+    .clarityConcerning {
+      flex-direction: row-reverse;
+
+      justify-content: space-between;
+      align-self: flex-end;
+
+      @media screen and (max-width: 992px) {
+        flex-direction: column-reverse;
       }
     }
 

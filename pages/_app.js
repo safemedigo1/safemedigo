@@ -45,6 +45,7 @@ function App({ Component, pageProps }) {
             className={`${
               router.locale === "ar" ? taiwal.className : quicksand.className
             }`}
+            dir={`${router.locale === "ar" ? "rtl" : "ltr"}`}
           >
             <NoSsr>
               <CssBaseline />

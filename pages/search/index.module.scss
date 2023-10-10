@@ -76,7 +76,7 @@ nav#navbar_search {
 
       color: var(--main-dark-color);
       font-size: 18px;
-      font-family: var(--open-sans-font);
+      font-family: var(--quickstand-font);
       font-weight: 600;
       caret-color: var(--main-green-color);
 
@@ -91,7 +91,7 @@ nav#navbar_search {
       &::placeholder {
         color: var(--main-dark-color);
         font-size: 18px;
-        font-family: var(--open-sans-font);
+        font-family: var(--quickstand-font);
         font-weight: 600;
 
         @media screen and (max-width: 992px) {
@@ -206,7 +206,7 @@ nav#navbar_search {
             h4 {
               color: var(--main-green-color);
               font-size: 20px;
-              font-family: var(--open-sans-font);
+              font-family: var(--quickstand-font);
               font-weight: bold;
               @media screen and (max-width: 992px) {
                 color: var(--main-cyan-color);
@@ -230,7 +230,7 @@ nav#navbar_search {
               p {
                 font-size: 18px;
                 color: var(--main-dark-color);
-                font-family: var(--open-sans-font);
+                font-family: var(--quickstand-font);
                 font-weight: 600;
               }
 
@@ -244,7 +244,7 @@ nav#navbar_search {
                 p {
                   font-size: 14px;
                   color: #a1a1a1;
-                  font-family: var(--open-sans-font);
+                  font-family: var(--quickstand-font);
                   font-weight: normal;
                 }
 

@@ -133,7 +133,7 @@
             margin: 0;
             color: var(--main-green-color);
             font-size: 18px;
-            font-family: var(--open-sans-font);
+            font-family: var(--quickstand-font);
             font-weight: var(--font-bold);
           }
         }
@@ -153,7 +153,7 @@
           p {
             margin: 0;
             color: var(--main-dark-color);
-            font-family: var(--open-sans-font);
+            font-family: var(--quickstand-font);
             font-weight: var(--font-regular);
             letter-spacing: 0px;
           }
@@ -182,7 +182,7 @@
               font-size: 18px;
               letter-spacing: 0px;
 
-              font-family: var(--open-sans-font);
+              font-family: var(--quickstand-font);
               font-weight: var(--font-bold);
 
               @media screen and (max-width: 992px) {
@@ -192,7 +192,7 @@
             .user_job {
               color: var(--main-gray-color);
               font-size: 16px;
-              font-family: var(--open-sans-font);
+              font-family: var(--quickstand-font);
               font-weight: var(--font-regular);
               letter-spacing: 0px;
 

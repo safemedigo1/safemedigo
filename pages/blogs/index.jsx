@@ -82,7 +82,9 @@ export default function Blogs({ blogCategory, blogs, allBlogsTagsData, currentPa
                 </MenuItem>
                 {blogCategory.map((item) => (
                   <MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} value={item.slug} >
-                    {item.categeryName}
+                    <span>
+                      {item.categeryName}
+                    </span>
                   </MenuItem>
                 ))}
 

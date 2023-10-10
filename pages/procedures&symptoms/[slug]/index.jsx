@@ -164,7 +164,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
   }
 
   function createMarkupGetTreatmentStepOne() {
-    return { __html: decodeURI(dataTreatment?.getTreatmentStepTwo) };
+    return { __html: decodeURI(dataTreatment?.getTreatmentStepOne) };
   }
 
   function createMarkupGetTreatmentStepTwo() {
@@ -888,7 +888,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
             <div className={styles.discover}>
               <Link href='/discover'>
-                Discover More
+                {t("single_blog:load_more")}
               </Link>
             </div>
           </div>

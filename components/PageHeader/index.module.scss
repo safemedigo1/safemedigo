@@ -95,7 +95,7 @@
               display: flex;
 
               font-weight: var(--font-regular);
-              font-family: var(--open-sans-font);
+              font-family: var(--quickstand-font);
 
               @media screen and (max-width: 992px) {
                 font-size: 14px;
@@ -273,7 +273,7 @@
             color: var(--main-dark-color);
             font-size: 16px;
             font-weight: var(--font-medium);
-            font-family: var(--open-sans-font);
+            font-family: var(--quickstand-font);
             font-family: "Quicksand";
           }
         }

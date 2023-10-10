@@ -288,10 +288,10 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                   <div className={styles.btn_container}>
                     <button onClick={handleLoadMoreTreatments}>
                       {treatmentLoading !== true ?
-                        "Load More"
+                        t('treatments_section:more')
                         :
                         <>
-                          Loading {` `}
+                          {` `}
                           <ThreeDots
                             height="25"
                             width="25"
@@ -429,7 +429,7 @@ export async function getStaticProps({ params, locale }) {
       dataMedicalDepartments,
       params,
       locale,
-      ...(await serverSideTranslations(locale, ['navbar', 'sec_navbar', "contact_details", 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", 'Footer'])),
+      ...(await serverSideTranslations(locale, ['navbar', 'treatments_section', 'sec_navbar', "contact_details", 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", 'Footer'])),
 
     },
     revalidate: 10,

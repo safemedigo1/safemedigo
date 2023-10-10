@@ -57,7 +57,7 @@ const SafetyStandards = () => {
       <SecNavbar />
       <PageHeader />
 
-      <section id={styles.safetyStandards}>
+      <section id={styles.safetyStandards} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.boxes_container}>
 

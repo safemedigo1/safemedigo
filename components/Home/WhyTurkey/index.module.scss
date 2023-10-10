@@ -71,7 +71,7 @@
           letter-spacing: 0;
 
           font-weight: var(--font-medium);
-          font-family: var(--open-sans-font);
+          font-family: var(--quickstand-font);
           @media screen and (max-width: 992px) {
             font-weight: var(--font-regular);
           }
@@ -118,7 +118,7 @@
               color: var(--main-dark-color);
 
               font-weight: var(--font-bold);
-              font-family: var(--open-sans-font);
+              font-family: var(--quickstand-font);
 
               @media screen and (max-width: 992px) {
                 font-size: 16px;
@@ -135,7 +135,7 @@
               color: var(--main-dark-color);
 
               font-weight: var(--font-regular);
-              font-family: var(--open-sans-font);
+              font-family: var(--quickstand-font);
 
               @media screen and (max-width: 992px) {
                 font-size: 16px;
@@ -230,6 +230,11 @@
     flex-direction: row-reverse;
 
     .text_container {
+      a,
+      p {
+        font-family: var(--arabic-font) !important;
+      }
+
       .writer {
         .img_container {
           margin-right: 0px;
@@ -255,7 +260,7 @@
               color: var(--main-dark-color);
 
               font-weight: var(--font-bold);
-              font-family: var(--open-sans-font);
+              font-family: var(--arabic-font);
 
               @media screen and (max-width: 992px) {
                 font-size: 16px;
@@ -272,7 +277,6 @@
               color: var(--main-dark-color);
 
               font-weight: var(--font-regular);
-              font-family: var(--open-sans-font);
 
               @media screen and (max-width: 992px) {
                 font-size: 16px;
@@ -302,7 +306,7 @@
               cursor: pointer;
               font-size: 16px;
               font-weight: var(--font-sem-bold);
-              font-family: var(--quickstand-font);
+              font-family: var(--arabic-font);
 
               transition: all 0.3s ease;
 

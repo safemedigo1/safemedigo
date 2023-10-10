@@ -84,3 +84,27 @@
     }
   }
 }
+#tags[dir="rtl"] {
+  margin-top: 53px;
+  margin-bottom: 104px;
+
+  .title {
+    h6 {
+      font-family: var(--arabic-font);
+    }
+  }
+
+  .tags_container {
+    .tag {
+      a {
+        text-decoration: none;
+
+        button {
+          font-family: var(--arabic-font);
+          transition: all 0.3s ease-in-out;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

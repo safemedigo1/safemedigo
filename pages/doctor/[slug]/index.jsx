@@ -973,7 +973,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
                   color: "var(--main-dark-color)",
                   fontSize: '18px',
                   fontWeight: "var(--font-sem-bold)",
-                  fontFamily: "var(--open-sans-font)",
+                  fontFamily: "var(--quickstand-font)",
                   letterSpacing: '0',
                   marginRight: '20px'
                 }}>
@@ -1038,7 +1038,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
                 color: "var(--main-dark-color)",
                 fontSize: '18px',
                 fontWeight: "var(--font-sem-bold)",
-                fontFamily: "var(--open-sans-font)",
+                fontFamily: "var(--quickstand-font)",
                 letterSpacing: '0'
 
               }}>We Are An Independent Organisation And Only Ever Provide Fully Honest And Unbiased Information About Doctors That Have Been Thoroughly And Professionally Vetted.</Typography>

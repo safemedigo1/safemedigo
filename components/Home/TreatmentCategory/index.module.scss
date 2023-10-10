@@ -211,6 +211,9 @@ section#treatment_category[dir="rtl"] {
 
     .sec_title {
       text-align: right;
+      h2 {
+        font-family: var(--arabic-font) !important;
+      }
 
       @media screen and (max-width: 992px) {
         margin-bottom: 30px;
@@ -219,6 +222,11 @@ section#treatment_category[dir="rtl"] {
 
     .boxes_container {
       .box {
+        .title {
+          h6 {
+            font-family: var(--arabic-font) !important;
+          }
+        }
         &:not(:last-child) {
           @media screen and (max-width: 992px) {
             margin-left: 0;

@@ -176,8 +176,18 @@ section#why_safemedigo {
 
 section#why_safemedigo[dir="rtl"] {
   .section_container {
+    .sec_title {
+      h2 {
+        font-family: var(--arabic-font);
+      }
+    }
     .boxes_container {
       .box {
+        .title {
+          h6 {
+            font-family: var(--arabic-font);
+          }
+        }
         .desc {
           p {
             font-family: var(--arabic-font) !important;

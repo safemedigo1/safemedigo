@@ -45,7 +45,7 @@
         letter-spacing: 0;
 
         font-weight: var(--font-sem-bold);
-        font-family: var(--open-sans-font);
+        font-family: var(--quickstand-font);
       }
     }
 
@@ -72,7 +72,7 @@
             transition: all 0.3s ease;
 
             font-weight: var(--font-sem-bold);
-            font-family: var(--open-sans-font);
+            font-family: var(--quickstand-font);
 
             @media screen and (max-width: 992px) {
               font-size: 14px;
@@ -222,7 +222,7 @@
             margin-bottom: 40px;
             transition: all 0.3s ease;
             font-weight: var(--font-sem-bold);
-            font-family: var(--open-sans-font);
+            font-family: var(--quickstand-font);
 
             @media screen and (max-width: 992px) {
               font-size: 14px;
@@ -253,7 +253,7 @@
           color: var(--main-dark-color);
           font-size: 16px;
           font-weight: var(--font-regular);
-          font-family: var(--open-sans-font);
+          font-family: var(--quickstand-font);
         }
 
         .list {
@@ -349,9 +349,14 @@
 
 #safty[dir="rtl"] {
   .section_container {
+    .title {
+      h2 {
+        font-family: var(--arabic-font);
+      }
+    }
     .sec_desc {
       p {
-        font-family: var(--arabic-font) !important;
+        font-family: var(--arabic-font);
       }
     }
     .content {
@@ -408,7 +413,7 @@
             margin-bottom: 40px;
             transition: all 0.3s ease;
             font-weight: var(--font-sem-bold);
-            font-family: var(--open-sans-font);
+            font-family: var(--quickstand-font);
 
             @media screen and (max-width: 992px) {
               font-size: 14px;
@@ -512,7 +517,7 @@
             font-weight: bold;
 
             font-weight: var(--font-bold);
-            font-family: var(--quickstand-font);
+            font-family: var(--arabic-font);
 
             border: 1px solid var(--main-green-color);
 

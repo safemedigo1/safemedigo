@@ -47,3 +47,13 @@ header#InnerPageNavbar {
     }
   }
 }
+
+header#InnerPageNavbar[dir="rtl"] {
+  ul {
+    li {
+      a {
+        font-family: var(--arabic-font) !important;
+      }
+    }
+  }
+}

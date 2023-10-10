@@ -345,7 +345,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
         <Tags allBlogsTagsData={allBlogsTagsData} />
       </div>
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-        <div id={styles.cards_container} >
+        <div id={styles.cards_container} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
           <div className={styles.comments_card}>
             <div className={styles.card}>
               <div className={styles.header}>
@@ -452,12 +452,12 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
                 <div className={styles.name}>
                   <label dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} htmlFor="">{t("single_blog:name")} <span>*</span></label>
-                  <input type="text" name="name" placeholder="Enter Your Name" required onFocus={handleFocus} onChange={handleInputChange} />
+                  <input type="text" name="name" placeholder={t("single_blog:name")} required onFocus={handleFocus} onChange={handleInputChange} />
                 </div>
 
                 <div className={styles.email} >
                   <label htmlFor="" dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>{t("single_blog:email")} <span>*</span></label>
-                  <input type="email" name="email" placeholder="Enter Your Email" required onFocus={handleFocus} onChange={handleInputChange} />
+                  <input type="email" name="email" placeholder={t("single_blog:email")} required onFocus={handleFocus} onChange={handleInputChange} />
                   {errorList !== false &&
                     <Typography sx={{ color: 'red', marginTop: '10px' }}>{errorList[0].message}</Typography >
                   }
@@ -468,7 +468,7 @@ export default function BolgDetailsID({ blog, allBlogsTagsData }) {
 
                 <div className={styles.comment}>
                   <label dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`} htmlFor="">{t("single_blog:comment")} <span>*</span></label>
-                  <textarea placeholder="Enter Your Comment" rows="4" cols="50" required name="comment" onFocus={handleFocus} onChange={handleInputChange}>
+                  <textarea placeholder={t("single_blog:comment")} rows="4" cols="50" required name="comment" onFocus={handleFocus} onChange={handleInputChange}>
 
                   </textarea>
                 </div>

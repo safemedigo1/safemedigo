@@ -88,17 +88,7 @@
 
             font-size: 16px;
             font-weight: var(--font-regular);
-            font-family: var(--open-sans-font);
-          }
-        }
-      }
-
-      // AR
-      .text_container[dir="rtl"] {
-        .title {
-          .num {
-            margin-right: 0px;
-            margin-left: 33px;
+            font-family: var(--quickstand-font);
           }
         }
       }
@@ -189,6 +179,8 @@
     .research {
       .img_container {
         position: relative;
+        z-index: 1;
+
         .icon_container {
           position: absolute;
           bottom: -211px;
@@ -201,6 +193,8 @@
     .GetInTouch {
       .img_container {
         position: relative;
+        z-index: 1;
+
         .icon_container {
           position: absolute;
           bottom: -246px;
@@ -214,6 +208,8 @@
     .ReadyToGo {
       .img_container {
         position: relative;
+        z-index: 1;
+
         .icon_container {
           position: absolute;
           bottom: -182px;
@@ -226,6 +222,8 @@
     .SafetyTreatment {
       .img_container {
         position: relative;
+        z-index: 1;
+
         .icon_container {
           transform: rotate(180deg);
           position: absolute;
@@ -240,12 +238,58 @@
     .CheckAfterTreatmen {
       .img_container {
         position: relative;
+        z-index: 1;
+
         .icon_container {
           transform: rotate(180deg);
           position: absolute;
           bottom: -231px;
           left: -324px;
           z-index: -1;
+        }
+      }
+    }
+  }
+}
+
+#how_it_works[dir="rtl"] {
+  .boxes_container {
+    .research,
+    .GetInTouch,
+    .ReadyToGo,
+    .SafetyTreatment,
+    .CheckAfterTreatmen,
+    .IDidIt {
+      .icon_container {
+        display: none;
+      }
+      .text_container {
+        .title {
+          .num {
+            span {
+              font-family: var(--arabic-font);
+            }
+          }
+
+          h3 {
+            font-family: var(--arabic-font);
+          }
+        }
+
+        .desc {
+          p {
+            font-family: var(--arabic-font);
+          }
+        }
+      }
+
+      // AR
+      .text_container[dir="rtl"] {
+        .title {
+          .num {
+            margin-right: 0px;
+            margin-left: 33px;
+          }
         }
       }
     }

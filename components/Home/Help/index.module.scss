@@ -103,7 +103,6 @@
             font-size: 18px;
             font-family: var(--quickstand-font);
             font-weight: var(--font-bold);
-
             color: var(--main-dark-color);
           }
         }
@@ -124,8 +123,19 @@
 
 #help[dir="rtl"] {
   .section_container {
+    .sec_title {
+      h2 {
+        font-family: var(--arabic-font) !important;
+      }
+    }
+
     .boxes_container {
       .box {
+        .title {
+          h6 {
+            font-family: var(--arabic-font) !important;
+          }
+        }
         .desc {
           p {
             font-family: var(--arabic-font) !important;

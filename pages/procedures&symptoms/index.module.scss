@@ -375,7 +375,39 @@ section.proceduresSymptoms {
 }
 
 section.proceduresSymptoms[dir="rtl"] {
+  .card_title {
+    h3 {
+      font-family: var(--arabic-font);
+    }
+  }
   .section_container {
+    p,
+    h3,
+    a,
+    button {
+      font-family: var(--arabic-font) !important;
+    }
+
+    .btn_container {
+      margin-top: 40px;
+      button {
+        font-family: var(--arabic-font);
+        svg {
+          margin-left: 0px;
+          margin-right: 10px;
+        }
+
+        @media screen and (max-width: 992px) {
+          width: 100%;
+        }
+
+        &:hover {
+          background-color: var(--main-green-color);
+          color: var(--main-white-color);
+          border-color: var(--main-green-color);
+        }
+      }
+    }
     .filter_section {
       margin-right: 0px;
       margin-left: 55px;

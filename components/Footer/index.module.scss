@@ -28,7 +28,6 @@ footer#footer {
       h4 {
         font-size: 28px;
         font-weight: var(--font-bold);
-        font-family: var(--open-sans-font);
         color: var(--sec-white-color);
         @media screen and (max-width: 992px) {
           display: none;
@@ -99,7 +98,7 @@ footer#footer {
                   font-size: 16px;
 
                   font-weight: var(--font-regular);
-                  font-family: var(--open-sans-font);
+                  font-family: var(--quickstand-font);
                 }
               }
             }
@@ -329,7 +328,7 @@ footer#footer[dir="rtl"] {
       }
       h4 {
         font-size: 28px;
-        font-family: var(--arabic-sans-font);
+        font-family: var(--arabic-font);
       }
     }
   }
@@ -361,7 +360,7 @@ footer#footer[dir="rtl"] {
 
           .box_title {
             h6 {
-              font-family: var(--arabic-font);
+              font-family: var(--arabic-font) !important;
             }
           }
 
@@ -378,7 +377,7 @@ footer#footer[dir="rtl"] {
                   font-size: 16px;
 
                   font-weight: var(--font-regular);
-                  font-family: var(--open-sans-font);
+                  font-family: var(--arabic-font);
                 }
               }
             }
@@ -412,7 +411,7 @@ footer#footer[dir="rtl"] {
         font-size: 18px;
 
         font-weight: var(--font-medium);
-        font-family: var(--quickstand-font);
+        font-family: var(--arabic-font);
       }
     }
 

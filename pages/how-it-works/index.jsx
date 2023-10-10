@@ -46,7 +46,7 @@ const HowItWorks = () => {
       <SecNavbar how_it_works={t('how_it_works:title')} />
       <PageHeader />
 
-      <section id={styles.how_it_works}>
+      <section id={styles.how_it_works} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.boxes_container}>
             <div className={styles.research}>

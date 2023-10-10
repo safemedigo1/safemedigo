@@ -15,7 +15,7 @@ const Tags = ({ blog, allBlogsTagsData }) => {
 
   console.log(router.query.slug)
   return (
-    <section id={styles.tags}>
+    <section id={styles.tags} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
         <div className={styles.title}>
           <Typography variant="h6">{t('blogs_page:tags_title')}</Typography>

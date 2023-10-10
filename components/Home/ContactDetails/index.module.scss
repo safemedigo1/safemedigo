@@ -108,7 +108,7 @@
               font-size: 16px;
 
               font-weight: var(--font-sem-bold);
-              font-family: var(--open-sans-font);
+              font-family: var(--quickstand-font);
 
               cursor: pointer;
 
@@ -248,7 +248,7 @@
         p {
           margin-top: 20px;
           font-weight: var(--font-medium);
-          font-family: var(--open-sans-font);
+          font-family: var(--quickstand-font);
           color: var(--main-dark-color);
           font-size: 16px;
 
@@ -273,6 +273,12 @@
   }
 }
 #contact_details[dir="rtl"] {
+  h3,
+  a,
+  p,
+  button {
+    font-family: var(--arabic-font) !important;
+  }
   .section_container {
     .talk {
       .buttons_container {

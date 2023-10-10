@@ -107,7 +107,7 @@
 
             color: var(--main-gray-color);
 
-            font-family: var(--open-sans-font);
+            font-family: var(--quickstand-font);
             font-weight: var(--font-regular);
             font-size: 18px;
 
@@ -315,6 +315,7 @@
         label {
           margin-right: 0px;
           margin-left: 17px;
+          font-family: var(--arabic-font);
         }
 
         .input_container {
@@ -341,6 +342,9 @@
       .title {
         margin-right: 0px;
         margin-left: 13px;
+        p {
+          font-family: var(--arabic-font);
+        }
       }
       .tags_container {
         a {
@@ -369,7 +373,7 @@
 
             text-align: center;
             color: var(--main-dark-color);
-            font-family: var(--quickstand-font);
+            font-family: var(--arabic-font);
             font-size: 16px;
             font-weight: var(--font-sem-bold);
             transition: all 0.3s ease-in-out;
@@ -398,7 +402,7 @@
     .title {
       h3 {
         color: var(--main-white-color);
-        font-family: var(--quickstand-font);
+        font-family: var(--arabic-font);
         font-size: 18px;
         @media screen and (max-width: 450px) {
           width: 84px;
@@ -428,7 +432,7 @@
 
         font-size: 16px;
         font-weight: var(--font-regular);
-        font-family: var(--quickstand-font);
+        font-family: var(--arabic-font);
 
         transition: all 0.3s ease-in-out;
         cursor: pointer;
