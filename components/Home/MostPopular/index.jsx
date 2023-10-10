@@ -276,7 +276,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
 
 
                     {
-                      boxShadow: "inset -20px 0px 12px #ffffff"
+                      boxShadow: "inset -20px 0px 12px #eef5f5"
                     }
                   } className={styles.shadow_box} />
 
@@ -478,7 +478,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
 
 
                         {
-                          boxShadow: "inset -20px 0px 12px #ffffff"
+                          boxShadow: "inset -20px 0px 12px #eef5f5"
                         }
                       } className={styles.shadow_box} />
                       <Carousel

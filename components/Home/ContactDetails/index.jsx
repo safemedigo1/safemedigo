@@ -99,11 +99,11 @@ const ContactDetails = () => {
             <div className={styles.contacts}>
               <div className={styles.contact}>
                 <Typography>Whatsapp</Typography>
-                <Typography>+90 552 502 6000</Typography>
+                <Typography>00905350770477</Typography>
               </div>
               <div className={styles.contact}>
                 <Typography>Call Us</Typography>
-                <Typography>+90 552 502 6000</Typography>
+                <Typography>00905350770477</Typography>
               </div>
               <div className={styles.contact}>
                 <Typography>Email</Typography>
