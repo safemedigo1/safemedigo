@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import Carousel from 'react-elastic-carousel';
 import { consts } from 'react-elastic-carousel';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Link from 'next/link';
 
 import { useTranslation } from "react-i18next";
@@ -62,6 +61,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
 
 
 
+
   const midpointIndex = Math.floor(departments?.length / 2);
 
   const isOdd = departments?.length % 2 !== 0;
@@ -70,15 +70,27 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
   const departmentsArray = isOdd ? departments?.slice(0, -1) : departments;
 
 
+  const [activeDepartmentSlug, setActiveDepartmentSlug] = useState('');
+  useEffect(() => {
+    // Extract the department slug from the URL
+    const slug = router.query.slug;
+
+    // Update the active department slug
+    setActiveDepartmentSlug(slug);
+  }, [router.query.slug]);
+  // Filter the carousel items to include only the active department
+
   // Split the original array into two dynamic arrays
-  const firstHalfArray = departmentsArray?.slice(0, midpointIndex);
-  const secondHalfArray = departmentsArray?.slice(midpointIndex);
+  const firstHalfArray = departmentsArray?.slice(0, midpointIndex).filter((card) => card.slug !== activeDepartmentSlug);
+  const secondHalfArray = departmentsArray?.slice(midpointIndex).filter((card) => card.slug !== activeDepartmentSlug);
 
   // If the length of the array was odd, add the last element to the second half
   if (isOdd) {
     secondHalfArray.push(departments[departments.length - 1]);
   }
 
+
+  const activeItem = departments.filter((card) => card.slug === activeDepartmentSlug);
 
   return (
     <>
@@ -139,23 +151,32 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
           </Container>
           <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.slider_container}>
-              <Box sx={
-                {
-                  // boxShadow: "inset -20px 0px 12px ",
-                  // backgroundImage: " linear-gradient(270deg, #000000A1, transparent, red, blue)"
-                }
-              } className={styles.shadow_box} />
+              <div className={styles.shadow_box} />
               {departments?.length > 2 ? <>
                 <Carousel
-                  enableSwipe={true}
                   breakPoints={breakPoints}
                   transitionMs={1000}
                   renderArrow={myArrow}
                   isRTL={router.locale === 'ar' ? true : false}
                 >
+
+
+                  <Link href={`/medicaldepartments/${activeItem[0].slug}`} className={`${styles.box} ${slug === `${activeItem[0].slug}` && styles.active}`} scroll={false}>
+                    <div className={styles.img_container}>
+                      <Image width={77.12} height={77.12} className={styles.main_img} src={activeItem[0].image} alt="" />
+                      <Image width={77.12} height={77.12} className={styles.sec_img} src={activeItem[0].secondImage} alt="" />
+                    </div>
+                    <div className={styles.box_title}>
+                      <Typography variant="h6">{activeItem[0].departmentName}</Typography>
+                    </div>
+                  </Link>
+
+
+
                   {firstHalfArray.map((card, index) => (
                     <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index}
                     >
+
                       <Link href={
                         router.pathname.includes('/medicaldepartments/[slug]') ?
                           `/medicaldepartments/${card.slug}` : `/hospitals/${card.slug}`} className={`${styles.box} ${slug === `${card.slug}` && styles.active}`} scroll={false}>
@@ -195,8 +216,8 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
                         `/medicaldepartments/${card?.slug}` : `/hospitals/${card?.slug}`} className={`${styles.box}  
                     ${slug === `${card.slug}` && styles.active}`} scroll={false}>
                       <div className={styles.img_container}>
-                        <Image width={77.12} height={77.12} className={styles.main_img} src={card.image} alt="" />
-                        <Image width={77.12} height={77.12} className={styles.sec_img} src={card.secondImage} alt="" />
+                        <Image width={77.12} height={77.12} className={styles.main_img} src={card.image} alt={card?.departmentName} />
+                        <Image width={77.12} height={77.12} className={styles.sec_img} src={card.secondImage} alt={card?.departmentName} />
                       </div>
 
                       <div className={styles.box_title}>
