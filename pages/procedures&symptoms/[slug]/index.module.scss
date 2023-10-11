@@ -65,7 +65,7 @@ article.overview {
     }
 
     .details {
-      width: 700px;
+      max-width: 695px;
       margin-right: 56px;
       overflow: hidden;
 
@@ -86,6 +86,25 @@ article.overview {
             font-size: 24px;
             font-weight: bold;
           }
+        }
+      }
+
+      .menu_container {
+        margin-top: 48px;
+        padding-top: 48px;
+        @media screen and (min-width: 992px) {
+          width: 660px;
+        }
+
+        @media screen and (max-width: 630px) {
+          display: none;
+        }
+
+        img {
+          max-width: 100%;
+          object-fit: contain;
+          margin-top: 16px;
+          margin-bottom: 16px;
         }
       }
 
@@ -148,6 +167,10 @@ article.overview {
         @media screen and (max-width: 992px) {
           margin-bottom: 38px;
         }
+
+        @media screen and (min-width: 1200px) {
+          gap: 60px;
+        }
         .boxes_container {
           &:last-child {
             @media screen and (min-width: 992px) {
@@ -168,27 +191,36 @@ article.overview {
               padding: 0;
               width: 100%;
 
-              li {
-                position: relative;
-                padding: 0;
-                color: var(--main-dark-color);
-                font-size: 18px;
-                font-weight: var(--font-bold);
-                font-family: var(--quickstand-font);
-                margin-bottom: 24px;
-                margin-left: 12px;
-                line-height: 16px;
+              max-width: 200px;
 
-                @media screen and (max-width: 992px) {
-                  font-size: 16px;
-                  margin-bottom: 16px;
+              li {
+                p {
+                  height: 30px;
+                  white-space: nowrap;
+                  overflow-x: hidden;
+                  text-overflow: ellipsis;
+
+                  position: relative;
+                  padding: 0;
+                  color: var(--main-dark-color);
+                  font-size: 18px;
+                  font-weight: var(--font-bold);
+                  font-family: var(--quickstand-font);
+                  margin-bottom: 24px;
+                  margin-left: 12px;
+                  line-height: 16px;
+                  @media screen and (max-width: 992px) {
+                    font-size: 16px;
+                    margin-bottom: 16px;
+                  }
                 }
 
-                &::after {
+                &::after,
+                .dot {
                   content: "";
                   position: absolute;
-                  top: 33%;
-                  left: -11px;
+                  top: 9%;
+                  left: 0px;
                   width: 6px;
                   height: 6px;
                   background-color: black;
@@ -202,16 +234,10 @@ article.overview {
     }
   }
 
-  .menu_container {
-    @media screen and (min-width: 992px) {
-      width: 700px;
-    }
-
-    img {
-      max-width: 100%;
-      object-fit: contain;
-      margin-top: 16px;
-      margin-bottom: 16px;
+  .menu_container_mobile {
+    @media screen and (min-width: 630px) {
+      display: none !important;
+      background-color: red;
     }
   }
 }
@@ -242,7 +268,7 @@ article.overview {
     justify-content: space-between;
 
     .menu {
-      width: 700px;
+      width: 695px;
     }
 
     .btn_container {
@@ -415,7 +441,6 @@ article.overview {
   justify-content: center;
 
   .title {
-    margin-right: 90px;
     margin-bottom: 24px;
 
     @media screen and (max-width: 992px) {
@@ -437,7 +462,7 @@ article.overview {
   }
 
   .menu_container {
-    width: 700px;
+    width: 695px;
 
     @media screen and (max-width: 992px) {
       width: 100%;
@@ -507,7 +532,7 @@ article.overview {
 
     .title {
       margin-bottom: 24px;
-      width: 700px;
+      width: 695px;
 
       @media screen and (max-width: 992px) {
         width: 100%;
@@ -527,7 +552,7 @@ article.overview {
     }
 
     .video_container {
-      width: 700px;
+      width: 695px;
 
       @media screen and (max-width: 992px) {
         width: 100%;
@@ -561,6 +586,7 @@ article.overview {
     justify-content: center;
     .sec_title {
       margin-bottom: 24px;
+      max-width: 695px;
       @media screen and (max-width: 450px) {
         width: 100%;
       }
@@ -571,18 +597,27 @@ article.overview {
         font-size: 28px;
         font-weight: var(--font-sem-bold);
         font-family: var(--quickstand-font);
+        margin-left: 0px;
 
         @media screen and (max-width: 992px) {
           font-size: 18px;
           font-weight: bold;
-          margin-left: 0px;
         }
       }
     }
 
     .menu_container {
-      width: 700px;
+      width: 695px;
 
+      .title {
+        margin-top: 16px;
+        margin-bottom: 16px;
+        h6 {
+          color: var(--main-dark-color);
+          font-size: 18px;
+          font-weight: var(--font-medium);
+        }
+      }
       @media screen and (max-width: 992px) {
         width: 100%;
       }
@@ -656,7 +691,6 @@ article.overview {
     .title {
       margin-bottom: 8px;
       max-height: 20px;
-
       h6 {
         color: var(--main-dark-color);
         font-size: 18px;
@@ -670,7 +704,7 @@ article.overview {
     .img_container {
       width: 100%;
       height: 169.25px;
-
+      margin-top: 24px;
       margin-bottom: 16px;
       img {
         width: 100%;
@@ -707,9 +741,15 @@ article.overview {
 }
 
 section.price {
-  position: relative;
   margin-top: 50px;
-  margin-bottom: 250px;
+  // margin-bottom: 250px;
+  margin-bottom: 50px;
+  // position: relative;
+  .price_wrap {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 
   @media screen and (max-width: 992px) {
     display: flex;
@@ -720,10 +760,10 @@ section.price {
   }
 
   .section_container {
-    position: absolute;
-    top: -90px;
-    left: 50%;
-    transform: translateX(-50%);
+    // position: absolute;
+    // top: -90px;
+    // left: 50%;
+    // transform: translateX(-50%);
     padding-top: 23px;
     padding-bottom: 23px;
     width: 100%;
@@ -835,6 +875,13 @@ section.QA {
     }
   }
 
+  .menu_container * {
+    font-size: 18px;
+  }
+
+  .menu_container p {
+    margin: 0;
+  }
   .menu_container {
     width: 699px;
 
@@ -883,6 +930,9 @@ section.QA {
 #steps {
   .sec_title {
     h3 {
+      font-size: 28px;
+      font-weight: var(--font-sem-bold);
+
       @media screen and (max-width: 992px) {
         font-size: 18px;
         font-weight: bold;
@@ -949,6 +999,12 @@ article.overview[dir="rtl"] {
           font-family: var(--arabic-font);
         }
       }
+
+      .menu_container {
+        p {
+          font-family: var(--arabic-font);
+        }
+      }
     }
 
     .quick_details {
@@ -961,7 +1017,8 @@ article.overview[dir="rtl"] {
         @media screen and (max-width: 992px) {
           gap: 0 !important;
         }
-        gap: 20px;
+        gap: 60px;
+
         .boxes_container {
           margin-right: 0px !important;
           margin-left: 16px;
@@ -978,12 +1035,15 @@ article.overview[dir="rtl"] {
 
               li {
                 margin-left: 0;
-                // margin-right: 12px;
-                font-family: var(--arabic-font) !important;
+                margin-right: 12px;
+                p {
+                  font-family: var(--arabic-font) !important;
+                }
 
                 &::after {
-                  top: 40%;
-                  left: 105%;
+                  // left: 105%;
+
+                  right: -9%;
                 }
               }
             }
@@ -992,24 +1052,20 @@ article.overview[dir="rtl"] {
       }
     }
   }
-
-  .menu_container {
-    p {
-      font-family: var(--arabic-font);
-    }
-  }
 }
 
 #what_you_need[dir="rtl"] {
   .title {
+    max-width: 695px;
+    margin-right: 0;
+
     h3 {
       font-family: var(--arabic-font);
+      text-align: right;
     }
   }
 
   .menu_container {
-    width: 700px;
-
     p {
       font-family: var(--arabic-font);
     }
@@ -1300,8 +1356,6 @@ article.overview[dir="rtl"] {
     .img_container {
       width: 100%;
       height: 169.25px;
-      margin-top: 24px;
-      margin-bottom: 16px;
       img {
         width: 100%;
         height: 100%;

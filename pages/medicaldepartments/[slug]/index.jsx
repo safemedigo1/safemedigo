@@ -186,7 +186,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                     }
                     expandIcon={<ExpandMoreIcon sx={expanded === false ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
                     aria-controls="panel1d-content" id="panel1d-header"                >
-                    <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                    <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', }}>
                       {t("proceduresSymptoms:select")}
                     </Typography>
                   </AccordionSummary>
@@ -235,11 +235,9 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
 
                 <Box sx={{ paddingLeft: '5px', paddingRight: '5px', marginTop: '10px', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+
                   <Typography sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    {t("proceduresSymptoms:all_procedures")}
-                  </Typography>
-                  <Typography sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    {TreatmentCount}  {t("proceduresSymptoms:procedures")}
+                    {dataTreatmentsHealthCase?.length} {` `}                    /  {TreatmentCount}  {t("proceduresSymptoms:procedures")}
                   </Typography>
                   <Typography sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
                     {t("proceduresSymptoms:medical_department_sort")}
@@ -323,7 +321,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
                 <div className={styles.info_header}>
                   <div className={styles.img_container}>
-                    <img src={description.image} alt="" />
+                    <img src={description.image} alt={description.departmentName} />
                   </div>
 
                   <div className={styles.title}>

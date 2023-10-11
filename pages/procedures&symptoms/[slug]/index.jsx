@@ -260,6 +260,128 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 className="ck-content"
                 dangerouslySetInnerHTML={createMarkupDescreption()}
               />
+
+              <div className={styles.menu_container}>
+                <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}
+                  sx={style}
+                  disableGutters elevation={0}
+                  square={false}
+                >
+                  <AccordionSummary
+                    sx={expanded !== 'panel1' ? accordionSummaryMainStyle
+                      : accordionSummarySecStyle
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ?
+                      expandMoreIconMainStyle
+                      : expandMoreIconSecStyle} />}
+                    aria-controls="panel1d-content" id="panel1d-header">
+                    <Typography sx={typographyStyle}>
+                      {t('proceduresSymptoms_single:benefits')}
+                    </Typography>
+                  </AccordionSummary>
+
+                  <AccordionDetails
+                    sx={accordionDetailsStyle}
+                  >
+                    <div
+                      id={"apply"}
+                      className="ck-content"
+                      dangerouslySetInnerHTML={createMarkup()} />
+                  </AccordionDetails>
+                </Accordion>
+
+                <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}
+                  sx={style}
+                  disableGutters elevation={0}
+                  square={false}
+                >
+                  <AccordionSummary
+
+                    sx={expanded !== 'panel2' ? accordionSummaryMainStyle
+                      : accordionSummarySecStyle
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel2' ?
+                      expandMoreIconMainStyle
+                      : expandMoreIconSecStyle} />}
+                    aria-controls="panel2d-content" id="panel2d-header">
+                    <Typography sx={typographyStyle}>
+                      {t('proceduresSymptoms_single:Side_Effects')}
+                    </Typography>
+                  </AccordionSummary>
+
+                  <AccordionDetails
+                    sx={accordionDetailsStyle}
+                  >
+                    <div
+                      id={"apply"}
+                      className="ck-content"
+                      dangerouslySetInnerHTML={createMarkupSideEffects()} />
+                  </AccordionDetails>
+                </Accordion>
+
+
+
+
+
+                <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}
+                  sx={style}
+                  disableGutters elevation={0}
+                  square={false}
+                >
+                  <AccordionSummary
+
+                    sx={expanded !== 'panel3' ? accordionSummaryMainStyle
+                      : accordionSummarySecStyle
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel3' ?
+                      expandMoreIconMainStyle
+                      : expandMoreIconSecStyle} />}
+                    aria-controls="panel3d-content" id="panel3d-header">
+                    <Typography sx={typographyStyle}>
+                      {t('proceduresSymptoms_single:Candidate')}
+                    </Typography>
+                  </AccordionSummary>
+
+                  <AccordionDetails
+                    sx={accordionDetailsStyle}
+                  >
+                    <div
+                      id={"apply"}
+                      className="ck-content"
+                      dangerouslySetInnerHTML={createMarkupCandidateOverview()} />
+                  </AccordionDetails>
+                </Accordion>
+
+
+                <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}
+                  sx={style}
+                  disableGutters elevation={0}
+                  square={false}
+                >
+                  <AccordionSummary
+
+                    sx={expanded !== 'panel4' ? accordionSummaryMainStyle
+                      : accordionSummarySecStyle
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel4' ?
+                      expandMoreIconMainStyle
+                      : expandMoreIconSecStyle} />}
+                    aria-controls="panel4d-content" id="panel4d-header">
+                    <Typography sx={typographyStyle}>
+                      {t('proceduresSymptoms_single:Hospitalization')}
+                    </Typography>
+                  </AccordionSummary>
+
+                  <AccordionDetails
+                    sx={accordionDetailsStyle}
+                  >
+                    <div
+                      id={"apply"}
+                      className="ck-content"
+                      dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
+                  </AccordionDetails>
+                </Accordion>
+              </div>
             </article>
 
             <article className={styles.quick_details}>
@@ -288,7 +410,15 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                           cursor: 'pointer'
                         },
                       }}>
-                        <ListItem>{dataTreatment?.operationDuration} </ListItem>
+                        <ListItem>
+                          <Typography>
+
+
+                            {dataTreatment?.operationDuration}
+                          </Typography>
+
+
+                        </ListItem>
                       </List>
                     </div>
                   }
@@ -308,7 +438,12 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                           cursor: 'pointer'
                         },
                       }}>
-                        <ListItem>{dataTreatment?.anesthesia}</ListItem>
+                        <ListItem>
+                          <Typography>
+                            {dataTreatment?.anesthesia}
+                          </Typography>
+                        </ListItem>
+
                       </List>
                     </div>
 
@@ -332,7 +467,13 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                           cursor: 'pointer'
                         },
                       }}>
-                        <ListItem>${dataTreatment?.startCost}</ListItem>
+                        <ListItem>
+                          <Typography>
+
+                            ${dataTreatment?.startCost}
+                          </Typography>
+
+                        </ListItem>
                       </List>
                     </div>
                   }
@@ -355,7 +496,12 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
                       },
                     }}>
-                      <ListItem>{dataTreatment?.successRate}%</ListItem>
+                      <ListItem>
+                        <Typography>
+                          {dataTreatment?.successRate}%
+                        </Typography>
+
+                      </ListItem>
                     </List>
                   </div>
 
@@ -375,7 +521,11 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                           cursor: 'pointer'
                         },
                       }}>
-                        <ListItem>{dataTreatment?.resultDuration}</ListItem>
+                        <ListItem>
+                          <Typography>
+                            {dataTreatment?.resultDuration}
+                          </Typography>
+                        </ListItem>
                       </List>
                     </div>
                   }
@@ -396,7 +546,12 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                         cursor: 'pointer'
                       },
                     }}>
-                      <ListItem> {dataTreatment?.procedureType}</ListItem>
+                      <ListItem>
+                        <Typography>
+                          {dataTreatment?.procedureType}
+                        </Typography>
+
+                      </ListItem>
                     </List>
                   </div>
                 </div>
@@ -405,7 +560,8 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
             </article>
           </div>
 
-          <div className={styles.menu_container}>
+
+          <div className={styles.menu_container_mobile}>
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}
               sx={style}
               disableGutters elevation={0}
@@ -526,12 +682,13 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
               </AccordionDetails>
             </Accordion>
           </div>
+
         </Container >
       </article>
 
 
       {
-        dataTreatment?.treatmentImage.length !== 0 &&
+        dataTreatment?.treatmentImage?.length !== 0 &&
         <BeforeAfter treatments={dataTreatment} />
 
 
@@ -544,6 +701,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
             <div className={styles.sec_title}>
               <Typography variant='h3'>
                 {t('proceduresSymptoms_single:surgery_steps')}
+
               </Typography>
             </div>
 
@@ -556,7 +714,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 isRTL={router.locale === 'ar' ? true : false}
               >
 
-                {dataTreatment?.treatmentStep.map((stepCard, index) => (
+                {dataTreatment?.treatmentStep?.map((stepCard, index) => (
                   <>
                     <div className={styles.counter_container} key={index + 1}>
                       <div className={styles.steps_container} >
@@ -700,153 +858,211 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
       </Container >
 
 
-      <article id={styles.video} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-        <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-          <div className={styles.video_container}>
+      {(dataTreatment?.videoLink == null || (typeof dataTreatment?.videoLink === "string" && dataTreatment?.videoLink.trim().length === 0) === false &&
 
-            <div className={styles.title}>
-              <Typography variant='h3'>
-                {router.locale === 'ar' ?
-                  <>
-                    إجراء {dataTreatment.treatmentName} بالفيديو: دليل شامل يشرح كل ما يجب على المرضى معرفته
-                  </>
-                  :
-                  <>
-                    {dataTreatment.treatmentName} {t('proceduresSymptoms_single:all_in_video')}
-                  </>
+        <article id={styles.video} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+          <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+            <div className={styles.video_container}>
+
+              <div className={styles.title}>
+                <Typography variant='h3'>
+                  {router.locale === 'ar' ?
+                    <>
+                      إجراء {dataTreatment.treatmentName} بالفيديو: دليل شامل يشرح كل ما يجب على المرضى معرفته
+                    </>
+                    :
+                    <>
+                      {dataTreatment.treatmentName} {t('proceduresSymptoms_single:all_in_video')}
+                    </>
+                  }
+
+                </Typography>
+              </div>
+              <div className={styles.video_container}>
+                <iframe width="560" height="315" src={dataTreatment?.videoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+            </div>
+            {console.log(typeof dataTreatment?.videoLink, "Video Link")}
+          </Container >
+        </article>
+      )}
+
+
+
+      {/* dataTreatment?.getTreatmentStepOne?.length !== 0 && dataTreatment?.getTreatmentStepTwo?.length !== 0 && dataTreatment?.getTreatmentStepThree?.length && */}
+
+      {
+        <section id={styles.howToGetTreatment} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+          <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+            <div className={styles.howToGetTreatment_container}>
+              <div className={styles.sec_title}>
+
+                {router.locale === 'ar' &&
+                  <Typography variant='h3' sx={sxTitle2}>كيف يمكنني الحصول على إجراء {dataTreatment.treatmentName}  في تركيا بعيادات SafeMediGo؟
+                  </Typography>
+                }
+                {router.locale === 'en' &&
+                  <Typography variant='h3' sx={sxTitle2}>How Can I Get a {dataTreatment.treatmentName} Procedure in Turkey with SafeMediGo?</Typography>
+                }
+                {router.locale === 'tr' &&
+
+                  <Typography variant='h3' sx={sxTitle2}>SafeMediGo ile Türkiye'de {dataTreatment.treatmentName} Prosedürüne nasıl ulaşabilirim?</Typography>
                 }
 
-              </Typography>
+
+              </div>
+
+              <div className={styles.menu_container}>
+                <Accordion disableGutters elevation={0}
+                  square={false} sx={style}
+
+                  expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
+
+
+                  <AccordionSummary
+                    sx={expanded !== 'panel9' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                      : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel9' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                    aria-controls="panel9d-content" id="panel9d-header">
+                    <Typography sx={paragrahp3}>
+
+                      <span>
+                        1
+                      </span>
+                      {t("proceduresSymptoms_single:Send_Your_Pictures")}
+                    </Typography>
+                  </AccordionSummary>
+
+
+                  <AccordionDetails sx={{
+                    background: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto',
+                  }} >
+                    <div className={styles.title}>
+                      <Typography variant='h6'>
+                        {router.locale === 'ar' &&
+                          `What Documents and Information are Required for a ${dataTreatment.treatmentName} Procedure in Turkey:`
+                        }
+                        {router.locale === 'en' &&
+                          `What Documents and Information are Required for a ${dataTreatment.treatmentName} Procedure in Turkey:`
+                        }
+                        {router.locale === 'tr' &&
+                          `What Documents and Information are Required for a ${dataTreatment.treatmentName} Procedure in Turkey:`
+                        }
+                      </Typography>
+                    </div>
+                    <div
+                      id={"apply"}
+                      className="ck-content"
+                      dangerouslySetInnerHTML={createMarkupGetTreatmentStepOne()} />
+                  </AccordionDetails>
+
+                </Accordion>
+
+
+                <Accordion disableGutters elevation={0}
+                  square={false} sx={style}
+
+                  expanded={expanded === 'panel10'} onChange={handleChange('panel10')}>
+
+
+                  <AccordionSummary
+                    sx={expanded !== 'panel10' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                      : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel10' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                    aria-controls="panel10d-content" id="panel10d-header">
+                    <Typography sx={paragrahp3}>
+
+                      <span>
+                        2
+                      </span>
+
+                      {t("proceduresSymptoms_single:Get_Your_Quote")}
+                    </Typography>
+                  </AccordionSummary>
+
+
+
+                  <AccordionDetails sx={{ backgroundColor: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto', }} >
+                    <div className={styles.title}>
+                      <Typography variant='h6'>
+                        {router.locale === 'ar' &&
+                          `How is the Cost of a [Procedure Name] Procedure Determined at SafeMediGo Clinics : `
+                        }
+                        {router.locale === 'en' &&
+                          `How is the Cost of a [Procedure Name] Procedure Determined at SafeMediGo Clinics :`
+                        }
+                        {router.locale === 'tr' &&
+                          `How is the Cost of a [Procedure Name] Procedure Determined at SafeMediGo Clinics : `
+                        }
+                      </Typography>
+                    </div>
+                    <div
+                      id={"apply"}
+                      className="ck-content"
+                      dangerouslySetInnerHTML={createMarkupGetTreatmentStepTwo()} />
+                  </AccordionDetails>
+
+                </Accordion>
+
+
+                <Accordion disableGutters elevation={0}
+                  square={false} sx={style}
+
+                  expanded={expanded === 'panel11'} onChange={handleChange('panel11')}>
+
+
+                  <AccordionSummary
+                    sx={expanded !== 'panel11' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF', }
+                      : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel11' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                    aria-controls="panel11d-content" id="panel11d-header">
+                    <Typography sx={paragrahp3}>
+
+                      <span>
+                        3
+                      </span>
+
+                      {t("proceduresSymptoms_single:Secure_Your_Appointment")}
+                    </Typography>
+                  </AccordionSummary>
+
+
+
+                  <AccordionDetails sx={{ backgroundColor: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto', }} >
+                    <div className={styles.title}>
+                      <Typography variant='h6'>
+                        {router.locale === 'ar' &&
+                          `How Do I Confirm My  ${dataTreatment.treatmentName} Procedure Appointment With Safemedigo? To Secure Your Spot For The  ${dataTreatment.treatmentName} Procedure With Safemedigo, A Booking Fee Of $145 Is Essential. This Fee Provides Multiple Benefits: Reservation: It Ensures Your Appointment Slot At One Of Our Esteemed Clinics. Commitment: It Reflects Your Dedication To The Procedure, Fostering Efficient Scheduling And Operations Within Our Medical Services. Cost Stability: This Fee Ensures The Price Remains Stable For A Specified Duration, Protecting You From Potential Price Fluctuations. Cost Deduction: This Fee Is Credited Toward The Overall Cost Of Your Procedure, Reducing The Final Amount You'd Need To Pay. It's Crucial To Note That The Booking Fee Becomes Non-Refundable 24 Hours After Confirmation. Once You've Finalized The Booking, Safemedigo Will Share Detailed Appointment Information And Assist With Logistical Considerations Such As Travel Arrangements, Accommodation, Transportation, Medical Coordination, Document Assistance, Local Support And Post-Treatment Care : `
+                        }
+                        {router.locale === 'en' &&
+                          `How Do I Confirm My  ${dataTreatment.treatmentName} Procedure Appointment With Safemedigo? To Secure Your Spot For The  ${dataTreatment.treatmentName} Procedure With Safemedigo, A Booking Fee Of $145 Is Essential. This Fee Provides Multiple Benefits: Reservation: It Ensures Your Appointment Slot At One Of Our Esteemed Clinics. Commitment: It Reflects Your Dedication To The Procedure, Fostering Efficient Scheduling And Operations Within Our Medical Services. Cost Stability: This Fee Ensures The Price Remains Stable For A Specified Duration, Protecting You From Potential Price Fluctuations. Cost Deduction: This Fee Is Credited Toward The Overall Cost Of Your Procedure, Reducing The Final Amount You'd Need To Pay. It's Crucial To Note That The Booking Fee Becomes Non-Refundable 24 Hours After Confirmation. Once You've Finalized The Booking, Safemedigo Will Share Detailed Appointment Information And Assist With Logistical Considerations Such As Travel Arrangements, Accommodation, Transportation, Medical Coordination, Document Assistance, Local Support And Post-Treatment Care : `
+                        }
+                        {router.locale === 'tr' &&
+                          `How Do I Confirm My  ${dataTreatment.treatmentName} Procedure Appointment With Safemedigo? To Secure Your Spot For The  ${dataTreatment.treatmentName} Procedure With Safemedigo, A Booking Fee Of $145 Is Essential. This Fee Provides Multiple Benefits: Reservation: It Ensures Your Appointment Slot At One Of Our Esteemed Clinics. Commitment: It Reflects Your Dedication To The Procedure, Fostering Efficient Scheduling And Operations Within Our Medical Services. Cost Stability: This Fee Ensures The Price Remains Stable For A Specified Duration, Protecting You From Potential Price Fluctuations. Cost Deduction: This Fee Is Credited Toward The Overall Cost Of Your Procedure, Reducing The Final Amount You'd Need To Pay. It's Crucial To Note That The Booking Fee Becomes Non-Refundable 24 Hours After Confirmation. Once You've Finalized The Booking, Safemedigo Will Share Detailed Appointment Information And Assist With Logistical Considerations Such As Travel Arrangements, Accommodation, Transportation, Medical Coordination, Document Assistance, Local Support And Post-Treatment Care :`
+                        }
+
+
+                      </Typography>
+                    </div>
+
+
+
+                    <div
+                      id={"apply"}
+                      className="ck-content"
+                      dangerouslySetInnerHTML={createMarkupGetTreatmentStepThree()} />
+
+
+                  </AccordionDetails>
+                </Accordion>
+              </div>
             </div>
-            <div className={styles.video_container}>
-              <iframe width="560" height="315" src={dataTreatment?.videoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-          </div>
-
-        </Container >
-      </article>
-
-      <section id={styles.howToGetTreatment} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-        <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-          <div className={styles.howToGetTreatment_container}>
-            <div className={styles.sec_title}>
-
-              {router.locale === 'ar' &&
-                <Typography variant='h3' sx={sxTitle2}>كيف يمكنني الحصول على إجراء {dataTreatment.treatmentName}  في تركيا بعيادات SafeMediGo؟
-                </Typography>
-              }
-              {router.locale === 'en' &&
-                <Typography variant='h3' sx={sxTitle2}>How Can I Get a {dataTreatment.treatmentName} Procedure in Turkey with SafeMediGo?</Typography>
-              }
-              {router.locale === 'tr' &&
-
-                <Typography variant='h3' sx={sxTitle2}>SafeMediGo ile Türkiye'de {dataTreatment.treatmentName} Prosedürüne nasıl ulaşabilirim?</Typography>
-              }
-
-
-            </div>
-
-            <div className={styles.menu_container}>
-              <Accordion disableGutters elevation={0}
-                square={false} sx={style}
-
-                expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
-
-
-                <AccordionSummary
-                  sx={expanded !== 'panel9' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
-                    : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
-                  }
-                  expandIcon={<ExpandMoreIcon sx={expanded !== 'panel9' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                  aria-controls="panel9d-content" id="panel9d-header">
-                  <Typography sx={paragrahp3}>
-
-                    <span>
-                      1
-                    </span>
-                    {t("proceduresSymptoms_single:Send_Your_Pictures")}
-                  </Typography>
-                </AccordionSummary>
-
-                <AccordionDetails sx={{
-                  background: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto',
-                }} >
-                  <div
-                    id={"apply"}
-                    className="ck-content"
-                    dangerouslySetInnerHTML={createMarkupGetTreatmentStepOne()} />
-                </AccordionDetails>
-
-              </Accordion>
-
-
-              <Accordion disableGutters elevation={0}
-                square={false} sx={style}
-
-                expanded={expanded === 'panel10'} onChange={handleChange('panel10')}>
-
-
-                <AccordionSummary
-                  sx={expanded !== 'panel10' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
-                    : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
-                  }
-                  expandIcon={<ExpandMoreIcon sx={expanded !== 'panel10' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                  aria-controls="panel10d-content" id="panel10d-header">
-                  <Typography sx={paragrahp3}>
-
-                    <span>
-                      2
-                    </span>
-
-                    {t("proceduresSymptoms_single:Get_Your_Quote")}
-                  </Typography>
-                </AccordionSummary>
-
-                <AccordionDetails sx={{
-                  background: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto',
-                }}>
-                  <div
-                    id={"apply"}
-                    className="ck-content"
-                    dangerouslySetInnerHTML={createMarkupGetTreatmentStepTwo()} />
-                </AccordionDetails>
-
-              </Accordion>
-
-
-              <Accordion disableGutters elevation={0}
-                square={false} sx={style}
-
-                expanded={expanded === 'panel11'} onChange={handleChange('panel11')}>
-
-
-                <AccordionSummary
-                  sx={expanded !== 'panel11' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF', }
-                    : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
-                  }
-                  expandIcon={<ExpandMoreIcon sx={expanded !== 'panel11' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                  aria-controls="panel11d-content" id="panel11d-header">
-                  <Typography sx={paragrahp3}>
-
-                    <span>
-                      3
-                    </span>
-
-                    {t("proceduresSymptoms_single:Secure_Your_Appointment")}
-                  </Typography>
-                </AccordionSummary>
-
-                <AccordionDetails sx={accordionDetailsStyle}>
-                  <div
-                    id={"apply"}
-                    className="ck-content"
-                    dangerouslySetInnerHTML={createMarkupGetTreatmentStepThree()} />
-                </AccordionDetails>
-              </Accordion>
-            </div>
-          </div>
-        </Container >
-      </section >
+          </Container >
+        </section >
+      }
 
       {
         dataTreatment?.treatmentProcedure != 0 &&
@@ -854,7 +1070,10 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
           <Container className='mycontainer' sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.sec_title}>
               <Typography variant='h3'>
-                {t("proceduresSymptoms_single:Steps")}
+                {router.locale === 'en' && `What Is The Itinerary For ${dataTreatment?.treatmentName} Procedure`}
+                {router.locale === 'ar' && `ما هي مراحل رحلة إجراء ${dataTreatment?.treatmentName} `}
+                {router.locale === 'tr' && `What Is The Itinerary For ${dataTreatment?.treatmentName} Procedure`}
+
               </Typography>
             </div>
 
@@ -865,11 +1084,11 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 isRTL={router.locale === 'ar' ? true : false}
 
               >
-                {dataTreatment?.treatmentProcedure.map((card, index) => (
+                {dataTreatment?.treatmentProcedure?.map((card, index) => (
                   <>
                     <div className={styles.steps_container} key={index}>
                       <div className={styles.step}>
-                        <span dir='rtl'>{index + 1}</span>
+                        <span dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>{index + 1}</span>
                       </div>
                     </div>
 
@@ -900,32 +1119,36 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
       }
 
       < section id={'price'} className={styles.price} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-        <div className={styles.section_container}>
-          <div className={styles.title}>
-            <Typography variant='h3'>
-              {t('proceduresSymptoms_single:cost')} ${dataTreatment?.cost}
-            </Typography>
-          </div>
-
-          <div className={styles.btn_container}>
-            <div className={styles.qoute}>
-              <Link href='/qoute'>
-                <button>
-                  {t('proceduresSymptoms_single:Get_Your_Quote')}
-                </button>
-              </Link>
+        <div className={styles.price_wrap}>
+          <div className={styles.section_container}>
+            <div className={styles.title}>
+              <Typography variant='h3'>
+                {t('proceduresSymptoms_single:cost')} ${dataTreatment?.cost}
+              </Typography>
             </div>
 
-            <div className={styles.discover}>
-              <Link href='/discover'>
-                {t("single_blog:load_more")}
-              </Link>
+            <div className={styles.btn_container}>
+              <div className={styles.qoute}>
+                <Link href='/qoute'>
+                  <button>
+                    {t('proceduresSymptoms_single:Get_Your_Quote')}
+                  </button>
+                </Link>
+              </div>
+
+              <div className={styles.discover}>
+                <Link href='/discover'>
+                  {t("single_blog:load_more")}
+                </Link>
+              </div>
             </div>
           </div>
         </div>
+
       </section >
 
-      {QACount > 0 &&
+      {
+        QACount > 0 &&
         <section id="q&a" className={styles.QA} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
           <Container sx={{ maxWidth: "1239px", overflow: 'hidden' }} maxWidth={false}>
             <div className={styles.title}>
@@ -940,7 +1163,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                       borderRadius: '0px !important',
                       marginBottom: '16px',
                       borderBottom: '1px solid #E4E4E4',
-                      padding: '0'
+                      padding: '0px !important'
                       ,
                       '&:before': {
                         display: 'none',
@@ -955,6 +1178,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                           height: '55px', backgroundColor: 'transparent', color: '#000000', marginTop: '10px', paddingLeft: '0 !important'
                           ,
                           marginBottom: '16px',
+                          padding: '0px !important'
 
                         }
                       }
@@ -965,7 +1189,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                       </Typography>
                     </AccordionSummary>
 
-                    <AccordionDetails sx={accordionDetailsStyle}>
+                    <AccordionDetails sx={{ padding: '0', paddingBottom: '16px' }}>
                       <div
                         id={"apply"}
                         className="ck-content"

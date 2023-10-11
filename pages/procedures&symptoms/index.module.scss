@@ -375,6 +375,9 @@ section.proceduresSymptoms {
 }
 
 section.proceduresSymptoms[dir="rtl"] {
+  .filter_section * {
+    font-family: var(--arabic-font);
+  }
   .card_title {
     h3 {
       font-family: var(--arabic-font);

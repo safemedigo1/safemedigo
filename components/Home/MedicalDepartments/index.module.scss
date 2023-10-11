@@ -74,7 +74,7 @@
       top: 0px;
       right: 3px;
       width: 36px;
-      height: 75%;
+      height: 91%;
       opacity: 0.36;
       z-index: 1;
       border-radius: 0px 5px 5px 0px;
@@ -233,6 +233,9 @@
 }
 
 #medical_department[dir="rtl"] {
+  .section_container * {
+    font-family: var(--arabic-font) !important;
+  }
   .section_container {
     .slider_container {
       position: relative;
@@ -258,8 +261,9 @@
       }
       .box {
         .img_container {
-          margin-left: 10px !important;
-          margin-right: 0px !important;
+          // margin-left: 10px !important;
+          margin-right: 8px !important;
+          margin-top: 5px;
         }
 
         .box_title {

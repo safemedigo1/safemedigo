@@ -82,6 +82,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
 
   // Split the original array into two dynamic arrays
   const firstHalfArray = departmentsArray?.slice(0, midpointIndex).filter((card) => card.slug !== activeDepartmentSlug);
+
   const secondHalfArray = departmentsArray?.slice(midpointIndex).filter((card) => card.slug !== activeDepartmentSlug);
 
   // If the length of the array was odd, add the last element to the second half
@@ -150,7 +151,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
             </div>
           </Container>
           <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: "1239px" }} maxWidth={false}>
-            <div className={styles.slider_container}>
+            <div className={styles.slider_container} >
               <div className={styles.shadow_box} />
               {departments?.length > 2 ? <>
                 <Carousel
@@ -161,7 +162,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
                 >
 
 
-                  <Link href={`/medicaldepartments/${activeItem[0].slug}`} className={`${styles.box} ${slug === `${activeItem[0].slug}` && styles.active}`} scroll={false}>
+                  <Link dir='ltr' href={`/medicaldepartments/${activeItem[0].slug}`} className={`${styles.box} ${slug === `${activeItem[0].slug}` && styles.active}`} scroll={false}>
                     <div className={styles.img_container}>
                       <Image width={77.12} height={77.12} className={styles.main_img} src={activeItem[0].image} alt="" />
                       <Image width={77.12} height={77.12} className={styles.sec_img} src={activeItem[0].secondImage} alt="" />
@@ -177,7 +178,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
                     <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index}
                     >
 
-                      <Link href={
+                      <Link dir='ltr' href={
                         router.pathname.includes('/medicaldepartments/[slug]') ?
                           `/medicaldepartments/${card.slug}` : `/hospitals/${card.slug}`} className={`${styles.box} ${slug === `${card.slug}` && styles.active}`} scroll={false}>
                         <div className={styles.img_container}>
@@ -189,7 +190,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
                         </div>
                       </Link>
                       {secondHalfArray[index + 1] && (
-                        <Link href={`/medicaldepartments/${secondHalfArray[index + 1]?.slug}`} className={`${styles.box} ${slug === `${secondHalfArray[index + 1]?.slug}` && styles.active}`} scroll={false}>
+                        <Link dir='ltr' href={`/medicaldepartments/${secondHalfArray[index + 1]?.slug}`} className={`${styles.box} ${slug === `${secondHalfArray[index + 1]?.slug}` && styles.active}`} scroll={false}>
                           <div className={styles.img_container}>
                             <Image width={77.12} height={77.12} className={styles.main_img} src={secondHalfArray[index + 1]?.image} alt="" />
                             <Image width={77.12} height={77.12} className={styles.sec_img} src={secondHalfArray[index + 1]?.secondImage} alt="" />

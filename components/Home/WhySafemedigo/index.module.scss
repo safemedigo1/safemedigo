@@ -132,7 +132,7 @@ section#why_safemedigo {
           margin-bottom: 6px;
 
           h6 {
-            font-size: 16px;
+            font-size: 18px;
             color: var(--main-dark-color);
 
             font-weight: var(--font-bold);
@@ -146,7 +146,6 @@ section#why_safemedigo {
             letter-spacing: 0.5px;
             color: var(--main-dark-color);
 
-            font-weight: var(--font-sem-bold);
             font-family: var(--quickstand-font);
           }
         }
@@ -192,6 +191,16 @@ section#why_safemedigo[dir="rtl"] {
         .desc {
           p {
             font-family: var(--arabic-font) !important;
+          }
+        }
+
+        &:not(:last-child) {
+          margin-right: 0px;
+          margin-left: 70px;
+          @media screen and (max-width: 992px) {
+            margin-right: 0;
+            margin-left: 0;
+            margin-bottom: 30px !important;
           }
         }
       }
