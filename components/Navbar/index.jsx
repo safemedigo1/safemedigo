@@ -451,7 +451,12 @@ const Navbar = (props) => {
                                     }
                                   </div>
                                   <div className={styles.lang_type}>
-                                    <span>{router.locale}</span>
+                                    <span>
+
+                                      {router.locale === "ar" && <>ع</>}
+                                      {router.locale === "en" && <>EN</>}
+                                      {router.locale === "tr" && <>TR</>}
+                                    </span>
                                   </div>
 
                                   <div className={`${styles.icon_container} ${showLangMenu && styles.active}`} >
@@ -474,7 +479,9 @@ const Navbar = (props) => {
                                           router.locale !== lang &&
                                           <li>
                                             <a href={`/${lang}${router.asPath}`} key={idx}>
-                                              {lang}
+                                              {lang === 'en' && <>EN</>}
+                                              {lang === 'tr' && <>TR</>}
+                                              {lang === 'ar' && <>ع</>}
                                               <div className={styles.img_container}>
                                                 <Image
                                                   src={lang === 'ar' ? ar.src : lang === 'en' ? en.src : lang === 'tr' ? tr.src : ''}
