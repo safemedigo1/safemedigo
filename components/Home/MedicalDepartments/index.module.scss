@@ -69,30 +69,30 @@
         }
       }
     }
+    .shadow_box {
+      position: absolute;
+      top: 0px;
+      right: 3px;
+      width: 36px;
+      height: 91%;
+      opacity: 0.36;
+      z-index: 1;
+      border-radius: 0px 5px 5px 0px;
+      background-image: linear-gradient(
+        to left,
+        rgba(255, 0, 0, 0),
+        #2a2a2a51,
+        #4b4b4b11,
+        rgba(0, 0, 0, 0)
+      );
+
+      @media screen and (max-width: 992px) {
+        display: none;
+      }
+    }
 
     .slider_container {
       position: relative;
-
-      @media screen and (min-width: 992px) {
-        &::after {
-          position: absolute;
-          content: "";
-          width: 40px;
-          height: 100%;
-          background: transparent
-            linear-gradient(
-              270deg,
-              #000000a1 0%,
-              #2a2a2a51 21%,
-              #4b4b4b11 66%,
-              #54545400 100%
-            )
-            0% 0% no-repeat padding-box;
-          opacity: 0.11;
-          top: 0;
-          right: 0px;
-        }
-      }
 
       .box {
         cursor: pointer;
@@ -235,6 +235,27 @@
 #medical_department[dir="rtl"] {
   .section_container {
     .slider_container {
+      position: relative;
+      .shadow_box {
+        top: 0px;
+        right: 97%;
+        // transform: rotate(180deg);
+        border-radius: 0px;
+        background-image: linear-gradient(
+          to right,
+          rgba(255, 0, 0, 0),
+          #2a2a2a51,
+          #4b4b4b11,
+          rgba(0, 0, 0, 0)
+        );
+
+        @media screen and (max-width: 992px) {
+          display: none;
+        }
+        @media screen and (max-width: 992px) {
+          display: none;
+        }
+      }
       .box {
         .img_container {
           margin-left: 10px !important;

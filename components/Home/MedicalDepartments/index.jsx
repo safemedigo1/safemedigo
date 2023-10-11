@@ -139,6 +139,12 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
           </Container>
           <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.slider_container}>
+              <Box sx={
+                {
+                  // boxShadow: "inset -20px 0px 12px ",
+                  // backgroundImage: " linear-gradient(270deg, #000000A1, transparent, red, blue)"
+                }
+              } className={styles.shadow_box} />
               {departments?.length > 2 ? <>
                 <Carousel
                   enableSwipe={true}
