@@ -1,14 +1,11 @@
 import styles from './index.module.scss';
 import { Container, Typography, Box, } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Carousel from 'react-elastic-carousel';
 import { consts } from 'react-elastic-carousel';
-import imgs from "../../../assets/constants/imgs";
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { PageHeader, SecNavbar } from '@/components';
 
 import { useTranslation } from "react-i18next";
 import { useRouter } from 'next/router';
@@ -29,6 +26,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
     { width: 1450, pagination: false, itemsToShow: 4.1, itemsToScroll: 4, },
     { width: 1750, pagination: false, itemsToShow: 4.1, itemsToScroll: 4, },
   ])
+
 
 
   useEffect(() => {
@@ -150,7 +148,8 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
                   isRTL={router.locale === 'ar' ? true : false}
                 >
                   {firstHalfArray.map((card, index) => (
-                    <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index} >
+                    <Box sx={{ display: 'flex', flexDirection: 'column', height: { xs: '100%', sm: '100%', md: '100%', lg: '100%', xlg: '100%' }, justifyContent: 'center' }} key={index}
+                    >
                       <Link href={
                         router.pathname.includes('/medicaldepartments/[slug]') ?
                           `/medicaldepartments/${card.slug}` : `/hospitals/${card.slug}`} className={`${styles.box} ${slug === `${card.slug}` && styles.active}`} scroll={false}>

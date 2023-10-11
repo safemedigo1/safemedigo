@@ -50,18 +50,9 @@ const BeforeAfter = ({ treatments, beforeCards }) => {
     <section id={styles.before_after} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
       <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: "1239px" }} maxWidth={false}>
         <div className={styles.title}>
-
-          {router.locale === 'ar' ?
-            <Typography variant='h3'>
-              التحضير لإجراء {treatments.treatmentName}: ماذا تتوقع قبل الإجراء وأثنائها وبعدها
-            </Typography>
-            :
-            <Typography variant='h3'>
-              {treatments.treatmentName}: {t('proceduresSymptoms_single:before_after')}
-
-
-            </Typography>
-          }
+          <Typography variant='h3'>
+            {t('proceduresSymptoms_single:before_after2')}
+          </Typography>
         </div>
       </Container >
 

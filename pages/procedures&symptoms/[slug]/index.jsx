@@ -590,7 +590,15 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
         <section id={styles.what_you_need} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
           <div className={styles.title}>
-            <Typography variant='h3'>{t('proceduresSymptoms_single:what_you_need_to_know')}</Typography>
+            {router.locale === 'ar' ?
+              <Typography variant='h3'>
+                التحضير لإجراء {dataTreatment.treatmentName}: ماذا تتوقع قبل الإجراء وأثنائها وبعدها
+              </Typography>
+              :
+              <Typography variant='h3'>
+                {dataTreatment.treatmentName}: {t('proceduresSymptoms_single:before_after')}
+              </Typography>
+            }
           </div>
           <div className={styles.menu_container}>
 

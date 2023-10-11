@@ -118,11 +118,10 @@ const ContactDetails = () => {
 
 
               <div className={styles.address}>
-                <Typography>Address</Typography>
+                <Typography>{t('Footer:address')}</Typography>
 
 
                 <Typography>
-
                   {t('Footer:safemedigoAddress')}
                 </Typography>
                 {/* <Typography>Fulya, Öztürk Sk.

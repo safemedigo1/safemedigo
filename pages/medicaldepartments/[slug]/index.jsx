@@ -3,7 +3,6 @@ import { ThreeDots } from 'react-loader-spinner'
 import { ContactDetails, MedicalDepartments, MostPopular } from '@/components/Home'
 import { Container, Typography, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import Carousel from 'react-elastic-carousel';
 import { consts } from 'react-elastic-carousel';
 import imgs from "../../../assets/constants/imgs";
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
@@ -27,6 +26,9 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
 
   const { t } = useTranslation();
   const router = useRouter();
+
+
+
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded((prev) => !prev);
