@@ -180,13 +180,20 @@ section#patient_stories {
           margin-top: 8px;
           margin-bottom: 16px;
 
-          flex: 1 0 auto;
-          max-height: 19%;
+          // flex: 1 0 auto;
+          // max-height: 19%;
+          // overflow: hidden;
+          // display: -webkit-box;
+          // -webkit-box-orient: vertical;
+          // -webkit-line-clamp: 3;
+          // white-space: pre-wrap;
+
           overflow: hidden;
           display: -webkit-box;
           -webkit-box-orient: vertical;
-          -webkit-line-clamp: 4;
+          -webkit-line-clamp: 3;
           white-space: pre-wrap;
+          -webkit-line-clamp: 3;
 
           @media screen and (max-width: 992px) {
             font-size: 16px;

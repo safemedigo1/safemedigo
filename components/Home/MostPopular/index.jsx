@@ -321,7 +321,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
 
                               <div className={styles.btn_container}>
                                 <Link href='/'>
-                                  More
+                                  {t("treatments_section:more")}
                                 </Link>
                               </div>
 
@@ -364,7 +364,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
 
                               <div className={styles.btn_container}>
                                 <Link href='/'>
-                                  More
+                                  {t("treatments_section:more")}
                                 </Link>
                               </div>
 
