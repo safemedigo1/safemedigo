@@ -3,11 +3,18 @@ import { useRouter } from 'next/router';
 import { Container, List, ListItem } from '@mui/material'
 import Link from 'next/link';
 import { useTranslation } from "react-i18next";
+import { useContext } from 'react';
+import { AppContext } from '@/components/AppContext';
 
 
 const InnerPageNavbar = () => {
   const router = useRouter();
   const { t } = useTranslation();
+
+  const context = useContext(AppContext);
+  const { isDoctorPageActive,
+    setIsDoctorPageActive } = context;
+
 
   return (
     <header id={styles.InnerPageNavbar} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
@@ -40,11 +47,11 @@ const InnerPageNavbar = () => {
                 </Link>
               </ListItem>
 
-              {/* <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                <Link href='#doctors'>
+              <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
+                <a onClick={() => setIsDoctorPageActive((prev) => !prev)}>
                   {t("proceduresSymptoms_single:nav_doctors")}
-                </Link>
-              </ListItem> */}
+                </a>
+              </ListItem>
 
 
             </List>

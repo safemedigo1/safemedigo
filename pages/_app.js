@@ -33,12 +33,15 @@ Router.events.on("routeChangeComplete", nProgress.done);
 
 function App({ Component, pageProps }) {
   const router = useRouter();
-
   const [treatmentSlugContexts, setTreatmentSlugContexts] = useState("default");
+
+  // Context Store
+  const [isDoctorPageActive, setIsDoctorPageActive] = useState(false);
+
   return (
     <>
       <AppContext.Provider
-        value={{ treatmentSlugContexts, setTreatmentSlugContexts }}
+        value={{ isDoctorPageActive, setIsDoctorPageActive }}
       >
         <ThemeProvider theme={theme}>
           <main
