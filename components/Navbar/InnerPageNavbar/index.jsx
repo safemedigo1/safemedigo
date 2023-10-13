@@ -42,7 +42,7 @@ const InnerPageNavbar = () => {
               }
 
               <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                <Link href='/'>
+                <Link href='#reviews' onClick={() => setIsDoctorPageActive(false)}>
                   {t("proceduresSymptoms_single:nav_reviews")}
                 </Link>
               </ListItem>

@@ -429,7 +429,8 @@ section#PatientStories_patient_stories__oSemC,
 #_slug__steps__dD3sT,
 #_slug__treatment_desc__VG0U3,
 #hotels,
-#visits {
+#visits,
+#packages {
   .rec {
     .rec-item-wrapper {
       // overflow-x: hidden !important;
@@ -516,6 +517,16 @@ section#PatientStories_patient_stories__oSemC,
 
   .rec .rec-slider-container {
     margin: 0 !important;
+  }
+}
+
+#packages {
+  .main_btn {
+    padding: 0 !important;
+  }
+  .rec-item-wrapper {
+    justify-content: flex-start;
+    // margin-left: 20px;
   }
 }
 

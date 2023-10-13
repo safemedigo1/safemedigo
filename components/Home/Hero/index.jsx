@@ -15,7 +15,7 @@ import Image from 'next/image';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { styled } from '@mui/material/styles';
-import { Puff, Rings } from 'react-loader-spinner';
+import { Puff } from 'react-loader-spinner';
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -64,13 +64,10 @@ const Hero = () => {
       <div className='left_arrow'>
         <HiChevronLeft />
       </div>
-
       :
       <div className='right_arrow'>
         <  HiChevronRight />
       </div>
-
-      ;
 
     return (
       <button className='main_btn' onClick={onClick} disabled={isEdge}>

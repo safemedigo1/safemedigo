@@ -1073,7 +1073,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 <Typography variant='h3'>
                   {router.locale === 'en' && `What Is The Itinerary For ${dataTreatment?.treatmentName} Procedure`}
                   {router.locale === 'ar' && `ما هي مراحل رحلة إجراء ${dataTreatment?.treatmentName} `}
-                  {router.locale === 'tr' && `What Is The Itinerary For ${dataTreatment?.treatmentName} Procedure`}
+                  {router.locale === 'tr' && `${dataTreatment?.treatmentName} Prosedürünün Yolculuğu Nedir?`}
 
                 </Typography>
               </div>
