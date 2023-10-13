@@ -93,6 +93,8 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
 
   const activeItem = departments.filter((card) => card.slug === activeDepartmentSlug);
 
+  console.log(activeItem)
+
   return (
     <>
       <section id={styles.medical_department} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
@@ -140,7 +142,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
                   <Typography>
                     {router.pathname.includes('/medicaldepartments/[slug]') ?
                       <>
-                        {departments.length} {t("proceduresSymptoms:procedures")}
+                        {departments.length} {t("proceduresSymptoms:medical_department_title2")}
                       </>
                       :
                       "120 Doctors"

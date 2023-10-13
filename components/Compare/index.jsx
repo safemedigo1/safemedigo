@@ -13,36 +13,50 @@ import { useTranslation } from 'react-i18next';
 
 const Compare = () => {
   const [priceValue, setPriceValue] = useState([0, 100]);
+  const [compareArr, setCompareArr] = useState();
 
-  const [compareArr, setCompareArr] = useState()
+  const [minNum, setMinNum] = useState(0);
+  const [maxNum, setMaxNum] = useState(1000);
+  const minmin = 0;
+  const maxmax = 1000;
+  const [priceRangeValue, setPriceRangeValue] = useState([0, 1000]);
+
+  const handlePriceRangeChange = (event, newValue) => {
+    setMinNum(newValue[0]);
+    setMaxNum(newValue[1]);
+    setPriceRangeValue(newValue);
+  };
+
+  console.log(priceRangeValue);
+
   const marks = [
     {
-      value: 3,
+      value: 25,
       label: '$25',
     },
 
     {
-      value: 13,
+      value: 500,
       label: '$500',
     },
     {
-      value: 28,
+      value: 1000,
       label: '$1k',
     },
     {
-      value: 43,
+      value: 4000,
       label: '$4k',
     },
     {
-      value: 58,
+      value: 6000,
       label: '$6k',
     },
     {
-      value: 73,
+      value: 10000,
       label: '$10k+',
     },
     {
-      value: 93,
+      value: 16000,
       label: '$10k+',
     },
   ];
@@ -83,14 +97,7 @@ const Compare = () => {
     { name: 'Dr Ahmet Nuri Erdem', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '10000' },
     { name: 'Dr John doe', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '5000' },
     { name: 'Dr Ibrahim Nuri Erdem', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '3000' },
-    { name: 'Dr Esmaiel Nuri Erdem', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '2000' },
-    { name: 'Dr Mahmoud Nuri Erdem', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '1000' },
-    { name: 'Dr Mehmet Nuri Erdem', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
-    { name: 'Dr Mehmet Nuri Erdem', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
-    { name: 'Dr Mehmet Nuri Erdem', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
-    { name: 'Dr Mehmet Nuri Erdem', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
-    { name: 'Dr Mehmet Nuri Erdem', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
-    { name: 'Dr Mehmet Nuri Erdem', job_title: 'Orthopedics And Traumatology', patients_num: '750', experience: '20', img: post3.src, price: '8000' },
+
   ]
 
 
@@ -175,12 +182,22 @@ const Compare = () => {
                       // aria-label="Always visible"
                       // onChange={handlePriceChange}
                       // defaultValue={80}
-                      getAriaLabel={() => 'Temperature range'}
-                      value={priceValue}
-                      onChange={handlePriceChange}
-                      valueLabelDisplay="auto"
-                      getAriaValueText={valuetext}
+                      // getAriaLabel={() => 'Temperature range'}
+                      // value={priceValue}
+                      // onChange={handlePriceChange}
+                      // valueLabelDisplay={"auto"}
+                      // getAriaValueText={valuetext}
                       marks={marks}
+                      // min={0}
+                      // max={30000}
+
+
+                      value={priceRangeValue}
+                      onChange={handlePriceRangeChange}
+                      valueLabelDisplay="auto"
+                      min={minmin}
+                      max={maxmax}
+
                     />
 
                   </div>

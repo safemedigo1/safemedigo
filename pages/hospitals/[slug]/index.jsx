@@ -19,6 +19,7 @@ import Hotles from "@/components/hospital/hotels";
 import Visits from "@/components/hospital/hotels/Visits";
 import { MdLocationOn } from 'react-icons/md'
 import { FaShieldAlt } from 'react-icons/fa'
+import Packages from "@/components/Packages";
 
 
 const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificatest, dataHospitalMedia, dataHospitalVisits, dataHospitalHotels }) => {
@@ -70,18 +71,7 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
     );
   }
 
-  const clinicData = [
-    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '1000' },
-    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '2000' },
-    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '3000' },
-    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
-    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
-    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
-    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
-    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
-    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
-    { title: 'Acibadem Hospital In Taksim', type: 'General Hospital', founded: '2020', doctors: '1000', yearly_patient: '1620', img: post1.src, employess: '8000' },
-  ]
+
   // Dialog MUI
   const [open, setOpen] = useState(false);
 
@@ -479,6 +469,8 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
     setSelectedImage(null);
   };
 
+
+  console.log(MedicalDepartments, '')
   return (
     <>
       <SecNavbar />
@@ -816,9 +808,9 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
         </Container>
       </section>
 
-      <section id='doctors'>
+      {/* <section id='doctors'>
         <MedicalDepartments hospiTalMedicalDepartment={hospiTalMedicalDepartment} />
-      </section>
+      </section> */}
 
       <section id='testimonials' className={styles.testimonials}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -846,6 +838,8 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
 
       <Hotles hotels={dataHospitalHotels} />
       <Visits vistis={dataHospitalVisits} />
+
+      <Packages />
 
     </>
   )

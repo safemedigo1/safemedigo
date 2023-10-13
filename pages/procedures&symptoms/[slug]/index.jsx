@@ -18,6 +18,7 @@ import Head from 'next/head';
 import BeforeAfter from '@/components/BeforeAfter'
 import { AppContext } from '@/components/AppContext';
 import Compare from '@/components/Compare';
+
 const TreatmentName = ({ dataTreatment, locale, params, }) => {
   const [expanded, setExpanded] = useState(false);
   const [currentPageCount, setCurrentPageCount] = useState(1)
@@ -27,10 +28,8 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
   const { t } = useTranslation();
   const router = useRouter();
 
-
   const context = useContext(AppContext);
-  const { isDoctorPageActive,
-    setIsDoctorPageActive } = context;
+  const { isDoctorPageActive, setIsDoctorPageActive } = context;
 
 
 
@@ -1233,6 +1232,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
           </section >
         }
+
 
         <ContactDetails />
 
