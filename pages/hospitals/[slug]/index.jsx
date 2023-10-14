@@ -470,7 +470,6 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
   };
 
 
-  console.log(MedicalDepartments, '')
   return (
     <>
       <SecNavbar />
@@ -854,7 +853,7 @@ export async function getStaticPaths() {
 
   const paths = dataHospitalsSlugs?.map((data) => {
     return {
-      params: { slug: data.toString() }
+      params: { slug: data }
     }
   })
 

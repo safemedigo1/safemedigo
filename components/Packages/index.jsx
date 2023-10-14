@@ -17,9 +17,9 @@ const Packages = () => {
 
   // Carousel
   const [breakPoints] = useState([
-    { width: 1, pagination: true, showArrows: false, itemsToShow: 1 },
-    { width: 300, pagination: true, showArrows: false, itemsToShow: 1, itemsToScroll: 1 },
-    { width: 400, pagination: true, itemsToShow: 1, itemsToScroll: 1, showArrows: false },
+    { width: 1, pagination: true, showArrows: false, itemsToShow: 1.1 },
+    { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },
+    { width: 400, pagination: true, itemsToShow: 1.1, itemsToScroll: 1, showArrows: false },
     { width: 800, pagination: true, itemsToShow: 2.1, itemsToScroll: 1, showArrows: false },
     { width: 900, pagination: false, itemsToShow: 2.8, itemsToScroll: 1, },
 
@@ -40,17 +40,20 @@ const Packages = () => {
       </button>
     );
   }
-  const accordionSummaryDefualt = { backgroundColor: '#004747', color: '#FFFFFF' };
-  const accordionSummaryHover = { backgroundColor: '#C5DFDC', color: '#004747', marginTop: '10px', minHeight: '10px' };
+  const accordionSummaryDefualt = { backgroundColor: '#004747', color: '#FFFFFF', margin: '0' };
+  const accordionSummaryHover = {
+    backgroundColor: '#C5DFDC', minHeight: "48px !important", color: '#004747', marginTop: '10px', marginBottom: '0px', '.Mui-expanded': { margin: '0' }
+  };
   const expandMoreIconDefault = { color: '#FFFFFF', width: '30px', height: "30px" }
   const expandMoreIconHover = { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', };
 
   const accordionDetails = {
-    background: '#FFFFFF', boxShadow: "0px 3px 10px #00000029", borderRadius: "0px 0px 5px 5px"
+    background: '#FFFFFF', boxShadow: "0px 3px 10px #00000029", borderRadius: "0px 0px 5px 5px",
 
   }
   const style = {
-    marginTop: '10px',
+    marginTop: '8px !important',
+    marginBottom: '0 !important',
     '&:before': {
       display: 'none',
     }
@@ -65,8 +68,9 @@ const Packages = () => {
   return (
     <>
       <section id='packages' className={styles.packages}>
-        <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-          <div className={styles.sec_container}>
+        <div className={styles.sec_container}>
+          <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+
             <div className={styles.sec_title}>
               <Typography variant='h3'>Packages</Typography>
             </div>
@@ -116,7 +120,9 @@ const Packages = () => {
               </FormControl>
 
             </div>
+          </Container >
 
+          <Container className="custom_container2" >
             <div className={styles.packages_sec}>
               <div className={styles.boxes_container}>
                 <Carousel
@@ -251,6 +257,7 @@ const Packages = () => {
                             </div>
                           </AccordionDetails>
                         </Accordion>
+
                         <Accordion disableGutters={false} elevation={0}
                           square={false} sx={style}
                           expanded={expanded === 'panel2'} onChange={handleChangeAccordion('panel2')}>
@@ -989,8 +996,9 @@ const Packages = () => {
 
               </div>
             </div>
-          </div>
-        </Container >
+          </Container >
+
+        </div>
       </section>
     </>
 

@@ -834,3 +834,10 @@ section#PatientStories_patient_stories__oSemC,
     padding-left: 0px !important;
   }
 }
+
+.custom_container2 {
+  @media screen and (max-width: 450px) {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+}
