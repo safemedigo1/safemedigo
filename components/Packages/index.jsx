@@ -17,9 +17,9 @@ const Packages = () => {
 
   // Carousel
   const [breakPoints] = useState([
-    { width: 1, pagination: true, showArrows: false, itemsToShow: 1.1 },
-    { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },
-    { width: 400, pagination: true, itemsToShow: 1.1, itemsToScroll: 1, showArrows: false },
+    { width: 1, pagination: true, showArrows: false, itemsToShow: 1 },
+    { width: 300, pagination: true, showArrows: false, itemsToShow: 1, itemsToScroll: 1 },
+    { width: 400, pagination: true, itemsToShow: 1, itemsToScroll: 1, showArrows: false },
     { width: 800, pagination: true, itemsToShow: 2.1, itemsToScroll: 1, showArrows: false },
     { width: 900, pagination: false, itemsToShow: 2.8, itemsToScroll: 1, },
 

@@ -1068,7 +1068,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
         {
           dataTreatment?.treatmentProcedure != 0 &&
           <section id={styles.treatment_desc} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-            <Container className='mycontainer' sx={{ maxWidth: "1239px" }} maxWidth={false}>
+            <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
               <div className={styles.sec_title}>
                 <Typography variant='h3'>
                   {router.locale === 'en' && `What Is The Itinerary For ${dataTreatment?.treatmentName} Procedure`}
