@@ -308,7 +308,14 @@ section.proceduresSymptoms {
       }
     }
 
+    .filter_section * {
+      font-family: var(--quickstand-font) !important;
+    }
+
     .info {
+      @media screen and (max-width: 992px) {
+        width: 100%;
+      }
       .info_inner {
         width: 452px;
         padding: 24px;
@@ -376,7 +383,7 @@ section.proceduresSymptoms {
 
 section.proceduresSymptoms[dir="rtl"] {
   .filter_section * {
-    font-family: var(--arabic-font);
+    font-family: var(--arabic-font) !important;
   }
   .card_title {
     h3 {

@@ -1,0 +1,124 @@
+.result_container_slider_mobile {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media screen and (min-width: 690px) {
+    display: none;
+  }
+
+  .filter_section {
+    background-color: #ffffff;
+    box-shadow: 0px 10px 20px #00000029;
+    border-radius: 5px;
+    width: 100%;
+    height: 134px;
+    margin-bottom: 40px;
+    padding: 24px;
+    .box {
+      text-align: center;
+      .title {
+        color: var(--main-dark-color);
+        font-size: 24px;
+        font-weight: var(--font-bold);
+      }
+    }
+
+    p {
+      color: #00f3bb;
+      font-weight: var(--font-bold);
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+
+  .results {
+    .boxes_container {
+      .box {
+        width: 333px;
+        height: 106px;
+        border-radius: 10px;
+        background-color: #ffffff;
+        box-shadow: 0px 10px 20px #00000029;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        .img_container {
+          width: 72px;
+          height: 100%;
+          img {
+            border-radius: 0px 0px 0px 9px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .doc_info {
+          margin-right: 16px;
+          margin-left: 14px;
+
+          .doc_name {
+            p {
+              font-size: 16px;
+              font-weight: var(--font-bold);
+              color: var(--main-dark-color);
+            }
+          }
+          .rating {
+            display: flex;
+            flex-direction: column;
+            .reviews_num {
+              color: #a1a1a1;
+              font-size: 14px;
+              font-weight: var(--font-medium);
+            }
+          }
+        }
+
+        .filterby {
+          background-color: #e7edec;
+          border-radius: 0px 5px 5px 0px;
+          // flex-grow: 2;
+          width: 91px;
+          height: 93%;
+          display: flex;
+          p {
+            margin: auto;
+            font-size: 21px;
+            font-weight: var(--font-medium);
+            color: var(--main-dark-color);
+          }
+        }
+
+        .delete_btn {
+          // display: none;
+          border-radius: 0px 5px 5px 0px;
+          width: 91px;
+          height: 93%;
+          background-color: #e7edec;
+          display: flex;
+
+          button {
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            border: none;
+            cursor: pointer;
+            border-radius: 0px 5px 5px 0px;
+            background-color: #f32669;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: var(--font-medium);
+          }
+        }
+      }
+    }
+  }
+}
+
+.result_container_slider_mobile * {
+  font-family: var(--quickstand-font);
+}

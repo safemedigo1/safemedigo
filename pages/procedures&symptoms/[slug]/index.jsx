@@ -29,9 +29,9 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
   const router = useRouter();
 
   const context = useContext(AppContext);
-  const { isDoctorPageActive, setIsDoctorPageActive } = context;
+  const { isDoctorPageActive, compareStep } = context;
 
-
+  console.log(isDoctorPageActive, "DOCTOR PAGE ACTIVE")
 
   const handleChange = (panel, id) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -243,8 +243,12 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
         <script async defer src="//www.instagram.com/embed.js"></script>
       </Head>
       <SecNavbar treatmentName={dataTreatment?.treatmentName} />
-      <PageHeader treatment={dataTreatment} />
+
+      {compareStep !== 2 &&
+        <PageHeader treatment={dataTreatment} />
+      }
       <InnerPageNavbar />
+
       {isDoctorPageActive === false ? <>
         <article id={'overview'} className={styles.overview} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
           <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>

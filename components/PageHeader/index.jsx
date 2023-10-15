@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./index.module.scss";
 import imgs from "../../assets/constants/imgs";
 import { Container, Typography, Box, Rating } from "@mui/material";
@@ -8,9 +8,12 @@ import Image from 'next/image';
 import { MdLocationOn } from 'react-icons/md'
 import { FaShieldAlt } from 'react-icons/fa'
 import Link from "next/link";
+import { AppContext } from '@/components/AppContext';
 
 
 const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
+  const context = useContext(AppContext);
+  const { compareStep } = context;
   const router = useRouter();
 
   const { pathname } = router;

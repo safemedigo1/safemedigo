@@ -456,4 +456,536 @@ section.compare {
       }
     }
   }
+
+  section.results * {
+    font-family: var(--quickstand-font);
+  }
+  section.results {
+    background-color: #fafafa;
+    .result_container,
+    .result_container_slider {
+      padding-top: 40px;
+      padding-bottom: 40px;
+      .boxes_container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+
+        .box {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          &:not(:last-child) {
+            margin-right: 8px;
+          }
+          .treatment_name {
+            background-color: #ffffff;
+            width: 296px;
+            height: 149px;
+            display: flex;
+            p {
+              margin: auto;
+              font-size: 26px;
+              font-weight: var(--font-sem-bold);
+              font-family: var(--quickstand-font);
+            }
+          }
+          .specialties {
+            background-color: #e7edec;
+            width: 296px;
+            height: 98px;
+            display: flex;
+            p {
+              margin: 8px auto;
+              font-size: 18px;
+            }
+          }
+          .exp,
+          .last_year,
+          .performed,
+          .langs,
+          .memberships,
+          .rank,
+          .verifi,
+          .fee {
+            background-color: #c5dfdc;
+            height: 50px;
+            display: flex;
+            width: 100%;
+            p {
+              font-size: 18px;
+              margin: auto;
+            }
+          }
+          .memberships {
+            width: 296px;
+            height: 146px;
+            display: flex;
+            p {
+              margin: 8px auto;
+            }
+          }
+          .last_year,
+          .rank,
+          .langs,
+          .fee {
+            background-color: #e7edec;
+          }
+          .box_container {
+            padding-right: 8px;
+            padding-left: 8px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            .icon_container {
+              display: flex;
+              background-color: #c5dfdc;
+              align-items: center;
+              height: 28.5px;
+              padding: 6px;
+              cursor: pointer;
+              svg {
+                position: relative;
+                border-radius: 50%;
+                background-color: var(--main-dark-color);
+
+                width: 20px;
+                height: 20px;
+                color: var(--main-white-color);
+                margin-right: 8px;
+                &:after {
+                  content: "";
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: red;
+                }
+              }
+              p {
+              }
+            }
+            .doc_info {
+              display: flex;
+              align-content: center;
+              margin-top: 6px;
+              margin-bottom: 6.5px;
+              .img_container {
+                margin-right: 16px;
+                width: 113px;
+                height: 107px;
+
+                img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                }
+              }
+              .text_container {
+                display: flex;
+                flex-direction: column;
+                .doc_name {
+                  p {
+                    font-size: 18px;
+                    font-weight: var(--font-bold);
+                  }
+                }
+
+                .rating {
+                  display: flex;
+                  flex-direction: column;
+                  .reviews_num {
+                    font-size: 14px;
+                    font-weight: var(--font-bold);
+                  }
+                }
+                .location {
+                  margin-top: 8px;
+                  display: flex;
+                  align-items: center;
+                  svg {
+                    margin-right: 4px;
+                    margin-left: -4px;
+                    width: 21px;
+                    height: 21px;
+                  }
+                  p {
+                  }
+                }
+              }
+            }
+
+            .specialties {
+              background-color: #e7edec;
+              width: 296px;
+              height: 98px;
+              display: flex;
+              p {
+                margin: 8px auto;
+                font-size: 18px;
+                padding-right: 16px;
+                padding-left: 16px;
+              }
+            }
+
+            .last_year,
+            .exp,
+            .performed,
+            .langs,
+            .memberships,
+            .verifi,
+            .rank,
+            .fee {
+              background-color: #c5dfdc;
+              height: 50px;
+              display: flex;
+              width: 100%;
+              p {
+                font-size: 18px;
+                margin: auto;
+              }
+            }
+
+            .memberships {
+              width: 296px;
+              height: 146px;
+              display: flex;
+              p {
+                margin: 16px;
+              }
+            }
+
+            .last_year,
+            .langs,
+            .fee,
+            .rank {
+              background-color: #e7edec;
+            }
+          }
+          .back_btn {
+            width: 296px;
+            height: 145px;
+            background-color: #c5dfdc;
+            button {
+              width: 100%;
+              height: 100%;
+              background-color: transparent;
+              border: none;
+              cursor: pointer;
+              text-align: center;
+
+              font-size: 34px;
+              font-weight: var(--font-sem-bold);
+              svg {
+                margin-right: 13px;
+                width: 18.18px;
+                height: 24.18px;
+              }
+            }
+          }
+
+          .consult_btn {
+            width: 296px;
+            height: 145px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: #c5dfdc;
+
+            button {
+              width: 163px;
+              height: 56px;
+              margin-bottom: 16px;
+              background-color: var(--main-green-color);
+              border: none;
+              color: var(--main-white-color);
+              font-family: var(--quickstand-font);
+              font-size: 18px;
+              font-weight: var(--font-bold);
+              cursor: pointer;
+              border-radius: 5px;
+            }
+            a {
+              text-decoration: underline;
+              color: var(--main-green-color);
+              font-family: var(--quickstand-font);
+              font-size: 18px;
+              font-weight: var(--font-sem-bold);
+            }
+          }
+        }
+      }
+    }
+
+    .result_container {
+      display: block;
+      @media screen and (max-width: 1200px) {
+        display: none;
+      }
+    }
+    .result_container_slider {
+      display: none;
+      @media screen and (max-width: 1200px) {
+        display: flex;
+      }
+      @media screen and (max-width: 690px) {
+        display: none;
+      }
+
+      .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &:not(:last-child) {
+          margin-right: 8px;
+        }
+        .treatment_name {
+          background-color: #ffffff;
+          width: 296px;
+          height: 149px;
+          display: flex;
+          p {
+            margin: auto;
+            font-size: 26px;
+            font-weight: var(--font-sem-bold);
+            font-family: var(--quickstand-font);
+          }
+        }
+        .specialties {
+          background-color: #e7edec;
+          width: 296px;
+          height: 98px;
+          display: flex;
+          p {
+            margin: 8px auto;
+            font-size: 18px;
+          }
+        }
+        .exp,
+        .last_year,
+        .performed,
+        .langs,
+        .memberships,
+        .rank,
+        .verifi,
+        .fee {
+          background-color: #c5dfdc;
+          height: 50px;
+          display: flex;
+          width: 100%;
+          p {
+            font-size: 18px;
+            margin: auto;
+          }
+        }
+        .memberships {
+          width: 296px;
+          height: 146px;
+          display: flex;
+          p {
+            margin: 8px auto;
+          }
+        }
+        .last_year,
+        .rank,
+        .langs,
+        .fee {
+          background-color: #e7edec;
+        }
+        .box_container {
+          padding-right: 8px;
+          padding-left: 8px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          .icon_container {
+            display: flex;
+            background-color: #c5dfdc;
+            align-items: center;
+            height: 28.5px;
+            padding: 6px;
+            cursor: pointer;
+            svg {
+              position: relative;
+              border-radius: 50%;
+              background-color: var(--main-dark-color);
+
+              width: 20px;
+              height: 20px;
+              color: var(--main-white-color);
+              margin-right: 8px;
+              &:after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                background-color: red;
+              }
+            }
+            p {
+            }
+          }
+          .doc_info {
+            display: flex;
+            align-content: center;
+            margin-top: 6px;
+            margin-bottom: 6.5px;
+            .img_container {
+              margin-right: 16px;
+              width: 113px;
+              height: 107px;
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+            .text_container {
+              display: flex;
+              flex-direction: column;
+              .doc_name {
+                p {
+                  font-size: 18px;
+                  font-weight: var(--font-bold);
+                }
+              }
+
+              .rating {
+                display: flex;
+                flex-direction: column;
+                .reviews_num {
+                  font-size: 14px;
+                  font-weight: var(--font-bold);
+                }
+              }
+              .location {
+                margin-top: 8px;
+                display: flex;
+                align-items: center;
+                svg {
+                  margin-right: 4px;
+                  margin-left: -4px;
+                  width: 21px;
+                  height: 21px;
+                }
+                p {
+                }
+              }
+            }
+          }
+
+          .specialties {
+            background-color: #e7edec;
+            width: 296px;
+            height: 98px;
+            display: flex;
+            p {
+              margin: 8px auto;
+              font-size: 18px;
+              padding-right: 16px;
+              padding-left: 16px;
+            }
+          }
+
+          .last_year,
+          .exp,
+          .performed,
+          .langs,
+          .memberships,
+          .verifi,
+          .rank,
+          .fee {
+            background-color: #c5dfdc;
+            height: 50px;
+            display: flex;
+            width: 100%;
+            p {
+              font-size: 18px;
+              margin: auto;
+            }
+          }
+
+          .memberships {
+            width: 296px;
+            height: 146px;
+            display: flex;
+            p {
+              margin: 16px;
+            }
+          }
+
+          .last_year,
+          .langs,
+          .fee,
+          .rank {
+            background-color: #e7edec;
+          }
+        }
+        .back_btn {
+          width: 296px;
+          height: 145px;
+          background-color: #c5dfdc;
+          button {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+
+            font-size: 34px;
+            font-weight: var(--font-sem-bold);
+            svg {
+              margin-right: 13px;
+              width: 18.18px;
+              height: 24.18px;
+            }
+          }
+        }
+
+        .consult_btn {
+          width: 296px;
+          height: 145px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          background-color: #c5dfdc;
+
+          button {
+            width: 163px;
+            height: 56px;
+            margin-bottom: 16px;
+            background-color: var(--main-green-color);
+            border: none;
+            color: var(--main-white-color);
+            font-family: var(--quickstand-font);
+            font-size: 18px;
+            font-weight: var(--font-bold);
+            cursor: pointer;
+            border-radius: 5px;
+          }
+          a {
+            text-decoration: underline;
+            color: var(--main-green-color);
+            font-family: var(--quickstand-font);
+            font-size: 18px;
+            font-weight: var(--font-sem-bold);
+          }
+        }
+      }
+
+      .boxes_container {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
 }

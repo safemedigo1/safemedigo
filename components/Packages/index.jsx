@@ -40,19 +40,19 @@ const Packages = () => {
       </button>
     );
   }
-  const accordionSummaryDefualt = { backgroundColor: '#004747', color: '#FFFFFF', margin: '0' };
+  const accordionSummaryDefualt = { backgroundColor: '#004747', color: '#FFFFFF', margin: '0', marginBottom: '8px' };
   const accordionSummaryHover = {
-    backgroundColor: '#C5DFDC', minHeight: "48px !important", color: '#004747', marginTop: '10px', marginBottom: '0px', '.Mui-expanded': { margin: '0' }
+    backgroundColor: '#004747', minHeight: "48px !important", height: '48px', color: '#FFFFFF', marginTop: '0px', marginBottom: '0px', '.Mui-expanded': { margin: '0' }
   };
   const expandMoreIconDefault = { color: '#FFFFFF', width: '30px', height: "30px" }
-  const expandMoreIconHover = { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', };
+  const expandMoreIconHover = { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', };
 
   const accordionDetails = {
-    background: '#FFFFFF', boxShadow: "0px 3px 10px #00000029", borderRadius: "0px 0px 5px 5px",
+    background: '#F5F5F5', boxShadow: "0px 3px 10px #00000029", borderRadius: "0px 0px 5px 5px",
 
   }
   const style = {
-    marginTop: '8px !important',
+    marginTop: '0px !important',
     marginBottom: '0 !important',
     '&:before': {
       display: 'none',
@@ -163,7 +163,7 @@ const Packages = () => {
                           </div>
 
                           <div className={styles.title}>
-                            <Typography variant='h6'>Hospital stay</Typography>
+                            <Typography variant='h6'>Hotel stay</Typography>
                           </div>
 
                           <div className={styles.rating}>
@@ -177,7 +177,7 @@ const Packages = () => {
                           </div>
 
                           <div className={styles.title}>
-                            <Typography variant='h6'>Hospital stay</Typography>
+                            <Typography variant='h6'>Transfer trip</Typography>
                           </div>
 
                           <div className={styles.icon_container}>
@@ -380,7 +380,7 @@ const Packages = () => {
                           </div>
 
                           <div className={styles.title}>
-                            <Typography variant='h6'>Hospital stay</Typography>
+                            <Typography variant='h6'>Hotel stay</Typography>
                           </div>
 
                           <div className={styles.rating}>
@@ -394,7 +394,7 @@ const Packages = () => {
                           </div>
 
                           <div className={styles.title}>
-                            <Typography variant='h6'>Hospital stay</Typography>
+                            <Typography variant='h6'>Transfer trip</Typography>
                           </div>
 
                           <div className={styles.icon_container}>
@@ -595,7 +595,7 @@ const Packages = () => {
                           </div>
 
                           <div className={styles.title}>
-                            <Typography variant='h6'>Hospital stay</Typography>
+                            <Typography variant='h6'>Hotel stay</Typography>
                           </div>
 
                           <div className={styles.rating}>
@@ -609,7 +609,7 @@ const Packages = () => {
                           </div>
 
                           <div className={styles.title}>
-                            <Typography variant='h6'>Hospital stay</Typography>
+                            <Typography variant='h6'>Transfer trip</Typography>
                           </div>
 
                           <div className={styles.icon_container}>
@@ -810,7 +810,7 @@ const Packages = () => {
                           </div>
 
                           <div className={styles.title}>
-                            <Typography variant='h6'>Hospital stay</Typography>
+                            <Typography variant='h6'>Hotel stay</Typography>
                           </div>
 
                           <div className={styles.rating}>
@@ -824,7 +824,7 @@ const Packages = () => {
                           </div>
 
                           <div className={styles.title}>
-                            <Typography variant='h6'>Hospital stay</Typography>
+                            <Typography variant='h6'>Transfer trip</Typography>
                           </div>
 
                           <div className={styles.icon_container}>

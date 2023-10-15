@@ -19,26 +19,29 @@ section.packages {
         width: 694px;
       }
     }
-    // [Prosedür adı] Prosedürünün Yolculuğu Nedir
     .packages_sec {
       .boxes_container {
         .box {
           background-color: #ffffff;
           margin: 5px;
           margin-right: 16px;
-          box-shadow: 0px 3px 10px #00000029;
+          box-shadow: 3px 10px 10px #00000029;
           padding: 21px;
           border-radius: 25px;
           width: 393px;
           margin-bottom: 10px;
+          padding-top: 0;
+          padding-left: 0;
+          padding-right: 0;
+          margin-left: 0;
 
           @media screen and (max-width: 450px) {
             // font-size: 18px;
             // width: 100%;
             margin-left: 0;
             margin-right: 5px;
-            padding-right: 16px;
-            padding-left: 16px;
+            // padding-right: 16px;
+            // padding-left: 16px;
           }
 
           @media screen and (max-width: 400px) {
@@ -47,7 +50,7 @@ section.packages {
           }
 
           .inner_box {
-            box-shadow: 0px -3px 10px #00000029;
+            // box-shadow: 0px -3px 10px #00000029;
             border-radius: 25px 25px 0px 0px;
 
             .value_type {
@@ -97,6 +100,13 @@ section.packages {
               align-items: center;
               justify-content: space-around;
               margin-bottom: 16px;
+              margin-right: 16px;
+              margin-left: 16px;
+              @media screen and (max-width: 450px) {
+                margin-right: 8px;
+                margin-left: 8px;
+              }
+
               @media screen and (max-width: 400px) {
                 flex-wrap: wrap;
               }
@@ -110,8 +120,15 @@ section.packages {
                 padding-bottom: 8px;
                 padding-right: 5px;
                 padding-left: 5px;
-                @media screen and (max-width: 400px) {
+                &:not(:last-child) {
+                  margin-right: 8px;
+                }
+                @media screen and (max-width: 450px) {
                   margin: 3px;
+
+                  &:not(:last-child) {
+                    margin-right: 4px;
+                  }
                 }
 
                 .num {
@@ -200,13 +217,14 @@ section.packages {
           .btns_container {
             margin-top: 16px;
             .book {
+              text-align: center;
               button {
                 background-color: #ffbc00 !important;
                 border-radius: 5px;
                 color: var(--main-green-color);
                 font-size: 18px;
                 font-weight: var(--font-bold);
-                width: 100%;
+                width: 321px;
                 text-align: center;
                 padding-top: 16px;
                 padding-bottom: 16px;

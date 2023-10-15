@@ -430,7 +430,8 @@ section#PatientStories_patient_stories__oSemC,
 #_slug__treatment_desc__VG0U3,
 #hotels,
 #visits,
-#packages {
+#packages,
+#results {
   .rec {
     .rec-item-wrapper {
       // overflow-x: hidden !important;
@@ -528,6 +529,19 @@ section#PatientStories_patient_stories__oSemC,
     justify-content: flex-start;
     // margin-left: 20px;
   }
+}
+
+#results .slick-next {
+  right: 0;
+  z-index: 100;
+}
+#results .slick-prev {
+  left: 0;
+  z-index: 100;
+}
+
+#results .slick-slider {
+  margin-top: 20px;
 }
 
 #overview {
@@ -836,8 +850,12 @@ section#PatientStories_patient_stories__oSemC,
 }
 
 .custom_container2 {
+  @media screen and (min-width: 992px) {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
   @media screen and (max-width: 450px) {
     padding-right: 0px !important;
-    padding-left: 0px !important;
   }
 }

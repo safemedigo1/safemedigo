@@ -1,6 +1,6 @@
 import { Container } from '@mui/system'
 import Link from 'next/link'
-import React from 'react'
+import React, { useContext } from 'react'
 import imgs from '../../assets/constants/imgs'
 import styles from './index.module.scss'
 import { Box, Grid, Rating, Typography } from '@mui/material';
@@ -8,10 +8,16 @@ import Image from 'next/image';
 import { useTranslation } from "react-i18next";
 import { useRouter } from 'next/router'
 import { MdLocationOn } from 'react-icons/md'
+import { AppContext } from '@/components/AppContext';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 
 const Footer = ({ dataDoctorSlug }) => {
+  const context = useContext(AppContext);
+  const { isDoctorPageActive, setIsDoctorPageActive, compareStep
+    , setCompareStep } = context;
+
   const { t } = useTranslation();
   const router = useRouter();
   const { logoFooter,
@@ -23,7 +29,6 @@ const Footer = ({ dataDoctorSlug }) => {
   } = imgs
 
 
-  console.log(dataDoctorSlug, 'DOCTOR FOOTER DATA')
   const socialLinks = [
     { link: 'https://twitter.com/safemedigo', img: twitter },
     { link: 'https://www.facebook.com/Safemedigo', img: facebook },
@@ -276,87 +281,168 @@ const Footer = ({ dataDoctorSlug }) => {
 
       <Grid id={styles.footer_nav} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
-          <Box display='flex' alignItems='center' justifyContent='space-between'>
 
 
+          {isDoctorPageActive === true ? <>
 
-            {router.pathname != '/doctor/[slug]' &&
-              <Box display='flex' className={styles.patient}>
-                <div className={styles.img_container}>
-                  <Image src={majd.src} alt="" width={100}
-                    height={100} />
-                </div>
 
-                <div className={styles.doc_data}>
-                  <div className={styles.doc_job}>
-                    <Link href='/'>
-                      <Typography variant='h6'>{t("Footer:patient_manager")}</Typography>
-                    </Link>
-
+            <Box display='flex' alignItems='center' justifyContent='space-between'>
+              <div className={styles.compare}>
+                <div className={styles.boxes_container_unselected}>
+                  <div className={styles.box}>
+                    <div className={styles.img_container}>
+                      <Image src={majd.src} alt="" width={100}
+                        height={100} />
+                    </div>
                   </div>
-                  <div className={styles.doc_name}>
-                    <Link href='/'>
-                      <Typography variant='h6'>Majd</Typography>
-                    </Link>
-
+                  <div className={styles.box}>
+                    <div className={styles.img_container}>
+                      <Image src={majd.src} alt="" width={100}
+                        height={100} />
+                    </div>
+                  </div>
+                  <div className={styles.box}>
+                    <div className={styles.img_container}>
+                      <Image src={majd.src} alt="" width={100}
+                        height={100} />
+                    </div>
                   </div>
                 </div>
-              </Box>
-            }
-            {router.pathname === '/doctor/[slug]' &&
-              <Box display='flex' className={styles.patient}>
-                <div className={styles.img_container}>
-                  <Image src={dataDoctorSlug.image} alt={dataDoctorSlug.firstName} width={100}
-                    height={100} />
-                </div>
-                <div className={styles.doc_info}>
-                  <div className={styles.name}>
-                    <Typography variant='h6'>{`${dataDoctorSlug.doctorLevel}. ${dataDoctorSlug.firstName}${dataDoctorSlug.fatherName}`}</Typography></div>
-                  <div className={styles.location}>
-                    <MdLocationOn />
-                    <h6>{dataDoctorSlug.location}</h6>
+                <Typography>Select "Compare" At The Bottom Of Any Doctor Listing.</Typography>
+
+
+                <div className={styles.boxes_container_selected}>
+                  <div className={styles.box}>
+
+                    <div className={styles.img_container}>
+                      <Image src={majd.src} alt="" width={100}
+                        height={100} />
+                    </div>
+                    <div className={styles.name}><Typography>Doctor Name</Typography></div>
+                    <div className={styles.icon_container}>
+                      <CloseIcon />
+                    </div>
                   </div>
+                  <div className={styles.box}>
 
-                  {/* <div className={styles.rating}>
-                    <Rating defaultValue={1} size="small" readOnly />
-                    <span className={styles.reviews_num}>{dataDoctorSlug?.totalReviews}(90)</span>
-                  </div> */}
+                    <div className={styles.img_container}>
+                      <Image src={majd.src} alt="" width={100}
+                        height={100} />
+                    </div>
+                    <div className={styles.name}><Typography>Doctor Name</Typography></div>
+                    <div className={styles.icon_container}>
+                      <CloseIcon />
+                    </div>
+                  </div>
+                  <div className={styles.box}>
 
+                    <div className={styles.img_container}>
+                      <Image src={majd.src} alt="" width={100}
+                        height={100} />
+                    </div>
+                    <div className={styles.name}><Typography>Doctor Name</Typography></div>
+                    <div className={styles.icon_container}>
+                      <CloseIcon />
+                    </div>
+                  </div>
                 </div>
-
-              </Box>
-            }
-
-            <Box display='flex'
-              className={styles.btns_container}>
-
-
-              {router.pathname !== '/doctor/[slug]' &&
-
-                <div className={styles.contact}>
-                  <Link href='#contact-us'>
-                    <button>Contact us</button>
-                  </Link>
-                </div>
-              }
-
-              {router.pathname === '/doctor/[slug]' &&
-                <Typography>
-                  {dataDoctorSlug?.doctorTreatments[0]?.treatmentName}
-                  starting from {dataDoctorSlug?.doctorTreatments[0]?.price}$
-                </Typography>
-
-              }
-
-
-              <div className={styles.quote}>
-                <Link href='/quote'>
-                  <button>Get A Quote</button>
-                </Link>
               </div>
 
+              <Box display='flex'
+                className={styles.btns_container}>
+                <div className={styles.quote}>
+                  <a onClick={() => setCompareStep(2)}>
+                    <button>Compare</button>
+                  </a>
+                </div>
+
+              </Box>
             </Box>
-          </Box>
+
+
+
+
+          </> : <>
+            <Box display='flex' alignItems='center' justifyContent='space-between'>
+
+              {router.pathname != '/doctor/[slug]' &&
+                <Box display='flex' className={styles.patient}>
+                  <div className={styles.img_container}>
+                    <Image src={majd.src} alt="" width={100}
+                      height={100} />
+                  </div>
+
+                  <div className={styles.doc_data}>
+                    <div className={styles.doc_job}>
+                      <Link href='/'>
+                        <Typography variant='h6'>{t("Footer:patient_manager")}</Typography>
+                      </Link>
+
+                    </div>
+                    <div className={styles.doc_name}>
+                      <Link href='/'>
+                        <Typography variant='h6'>Majd</Typography>
+                      </Link>
+
+                    </div>
+                  </div>
+                </Box>
+              }
+              {router.pathname === '/doctor/[slug]' &&
+                <Box display='flex' className={styles.patient}>
+                  <div className={styles.img_container}>
+                    <Image src={dataDoctorSlug.image} alt={dataDoctorSlug.firstName} width={100}
+                      height={100} />
+                  </div>
+                  <div className={styles.doc_info}>
+                    <div className={styles.name}>
+                      <Typography variant='h6'>{`${dataDoctorSlug.doctorLevel}. ${dataDoctorSlug.firstName}${dataDoctorSlug.fatherName}`}</Typography></div>
+                    <div className={styles.location}>
+                      <MdLocationOn />
+                      <h6>{dataDoctorSlug.location}</h6>
+                    </div>
+
+
+
+                  </div>
+
+                </Box>
+              }
+
+              <Box display='flex'
+                className={styles.btns_container}>
+
+
+                {router.pathname !== '/doctor/[slug]' &&
+
+                  <div className={styles.contact}>
+                    <Link href='#contact-us'>
+                      <button>Contact us</button>
+                    </Link>
+                  </div>
+                }
+
+                {router.pathname === '/doctor/[slug]' &&
+                  <Typography>
+                    {dataDoctorSlug?.doctorTreatments[0]?.treatmentName}
+                    starting from {dataDoctorSlug?.doctorTreatments[0]?.price}$
+                  </Typography>
+
+                }
+
+
+                <div className={styles.quote}>
+                  <Link href='/quote'>
+                    <button>Get A Quote</button>
+                  </Link>
+                </div>
+
+              </Box>
+            </Box>
+
+          </>}
+
+
         </Container>
       </Grid>
     </>

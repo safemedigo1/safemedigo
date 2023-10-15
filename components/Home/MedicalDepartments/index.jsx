@@ -130,7 +130,7 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
                   </Typography>
                 </div>
 
-                <div className={styles.procedures_num}>
+                <div className={`${router.locale === 'tr' ? styles.procedures_numtr : styles.procedures_num}`}>
                   <Typography sx={{
                     display: {
                       xs: 'block',

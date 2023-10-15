@@ -1,12 +1,19 @@
-import { Container } from '@mui/material'
-import React from 'react'
+import { Box, Container, Typography } from '@mui/material'
+import React, { useContext } from 'react'
 import styles from '../index.module.scss'
 import { useRouter } from "next/router";
 import Link from 'next/link';
 import { useTranslation } from "react-i18next";
+import { AppContext } from '@/components/AppContext';
+import { FaArrowLeft } from 'react-icons/fa';
+
 
 
 const SecNavbar = ({ categorySlug, slug, category, currentPage, blog, tag, how_it_works, treatmentName }) => {
+  const context = useContext(AppContext);
+  const { isDoctorPageActive, setIsDoctorPageActive, compareStep
+    , setCompareStep } = context;
+
   const router = useRouter();
   const { pathname } = router;
   const { t } = useTranslation();
@@ -56,8 +63,25 @@ const SecNavbar = ({ categorySlug, slug, category, currentPage, blog, tag, how_i
 
           {pathname === ('/procedures&symptoms/[slug]') ?
             <>
-              <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/medicaldepartments/All-medical-procedures' > /{t('sec_navbar:procedures&symptoms')}</Link>
-              <Link href={router.asPath} className={styles.active} > /{treatmentName}</Link>
+              {compareStep !== 2 &&
+                <>
+                  <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/medicaldepartments/All-medical-procedures' > /{t('sec_navbar:procedures&symptoms')}</Link>
+                  <Link href={router.asPath} className={styles.active} > /{treatmentName}</Link>
+                </>
+              }
+              {compareStep === 2 &&
+                <a onClick={() => setCompareStep(1)}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+                    <Box sx={{ marginRight: '10px', marginTop: '4px' }}>
+
+                      <FaArrowLeft />
+                    </Box>
+                    <Typography >
+                      {t("quote_page:back")}
+                    </Typography>
+                  </Box>
+                </a>
+              }
             </> : ""
           }
 
