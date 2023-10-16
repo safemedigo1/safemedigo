@@ -281,11 +281,7 @@ const Footer = ({ dataDoctorSlug }) => {
 
       <Grid id={styles.footer_nav} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
-
-
-          {isDoctorPageActive === true ? <>
-
-
+          {router.pathname === '/procedures&symptoms/[slug]' && isDoctorPageActive === true ? <>
             <Box display='flex' alignItems='center' justifyContent='space-between'>
               <div className={styles.compare}>
                 <div className={styles.boxes_container_unselected}>

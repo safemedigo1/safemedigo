@@ -15,7 +15,7 @@ import { Toaster } from "react-hot-toast";
 import { Quicksand, Tajawal } from "@next/font/google";
 import theme from "../styles/theme";
 import { ThemeProvider } from "@mui/material/styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AppContext } from "../components/AppContext";
 
 const quicksand = Quicksand({
@@ -39,6 +39,9 @@ function App({ Component, pageProps }) {
   const [isDoctorPageActive, setIsDoctorPageActive] = useState(false);
   const [compareStep, setCompareStep] = useState(1);
 
+  useEffect(() => {
+    isDoctorPageActive === false && setCompareStep(1);
+  }, [isDoctorPageActive]);
   return (
     <>
       <AppContext.Provider

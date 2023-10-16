@@ -18,7 +18,7 @@ import { consts } from 'react-elastic-carousel';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 
 
-const Compare = () => {
+const Compare = (props) => {
   const context = useContext(AppContext);
   const { isDoctorPageActive, setIsDoctorPageActive, compareStep
     , setCompareStep } = context;
@@ -138,6 +138,7 @@ const Compare = () => {
 
   ]
 
+  console.log(props, "PROPS")
   return (
     < >
 

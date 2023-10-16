@@ -23,19 +23,19 @@ const InnerPageNavbar = () => {
           <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <List sx={{ display: 'flex', justifyContent: 'space-between', paddingTop: '20px', width: { sx: '100%', sm: '100%', md: '100%', lg: '700px' } }}>
               <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                <Link href='#overview'>
+                <Link href='#overview' onClick={() => setIsDoctorPageActive(false)}>
                   {t("proceduresSymptoms_single:nav_overview")}
                 </Link>
               </ListItem>
 
               <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                <Link href='#price'>
+                <Link href='#price' onClick={() => setIsDoctorPageActive(false)}>
                   {t("proceduresSymptoms_single:nav_prices")}
                 </Link>
               </ListItem>
               {router.pathname !== '/hospitals/[slug]' &&
                 <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                  <Link href='#q&a'>
+                  <Link href='#q&a' onClick={() => setIsDoctorPageActive(false)}>
                     {t("proceduresSymptoms_single:nav_q&a")}
                   </Link>
                 </ListItem>

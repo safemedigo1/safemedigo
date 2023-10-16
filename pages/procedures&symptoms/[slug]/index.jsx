@@ -31,7 +31,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
   const context = useContext(AppContext);
   const { isDoctorPageActive, compareStep } = context;
 
-  console.log(isDoctorPageActive, "DOCTOR PAGE ACTIVE")
 
   const handleChange = (panel, id) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -249,1001 +248,1002 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
       }
       <InnerPageNavbar />
 
-      {isDoctorPageActive === false ? <>
-        <article id={'overview'} className={styles.overview} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-          <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-            <div className={styles.details_container}>
-              <article className={styles.details}>
-                <div className={styles.title}>
+      {isDoctorPageActive === false ?
+        <>
+          <article id={'overview'} className={styles.overview} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+            <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+              <div className={styles.details_container}>
+                <article className={styles.details}>
+                  <div className={styles.title}>
+                    <Typography variant='h3'>
+                      {dataTreatment?.title}
+                    </Typography>
+                  </div>
+
+                  <div
+                    id={"apply"}
+                    className="ck-content"
+                    dangerouslySetInnerHTML={createMarkupDescreption()}
+                  />
+
+                  <div className={styles.menu_container}>
+                    <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}
+                      sx={style}
+                      disableGutters elevation={0}
+                      square={false}
+                    >
+                      <AccordionSummary
+                        sx={expanded !== 'panel1' ? accordionSummaryMainStyle
+                          : accordionSummarySecStyle
+                        }
+                        expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ?
+                          expandMoreIconMainStyle
+                          : expandMoreIconSecStyle} />}
+                        aria-controls="panel1d-content" id="panel1d-header">
+                        <Typography sx={typographyStyle}>
+                          {t('proceduresSymptoms_single:benefits')}
+                        </Typography>
+                      </AccordionSummary>
+
+                      <AccordionDetails
+                        sx={accordionDetailsStyle}
+                      >
+                        <div
+                          id={"apply"}
+                          className="ck-content"
+                          dangerouslySetInnerHTML={createMarkup()} />
+                      </AccordionDetails>
+                    </Accordion>
+
+                    <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}
+                      sx={style}
+                      disableGutters elevation={0}
+                      square={false}
+                    >
+                      <AccordionSummary
+
+                        sx={expanded !== 'panel2' ? accordionSummaryMainStyle
+                          : accordionSummarySecStyle
+                        }
+                        expandIcon={<ExpandMoreIcon sx={expanded !== 'panel2' ?
+                          expandMoreIconMainStyle
+                          : expandMoreIconSecStyle} />}
+                        aria-controls="panel2d-content" id="panel2d-header">
+                        <Typography sx={typographyStyle}>
+                          {t('proceduresSymptoms_single:Side_Effects')}
+                        </Typography>
+                      </AccordionSummary>
+
+                      <AccordionDetails
+                        sx={accordionDetailsStyle}
+                      >
+                        <div
+                          id={"apply"}
+                          className="ck-content"
+                          dangerouslySetInnerHTML={createMarkupSideEffects()} />
+                      </AccordionDetails>
+                    </Accordion>
+
+
+
+
+
+                    <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}
+                      sx={style}
+                      disableGutters elevation={0}
+                      square={false}
+                    >
+                      <AccordionSummary
+
+                        sx={expanded !== 'panel3' ? accordionSummaryMainStyle
+                          : accordionSummarySecStyle
+                        }
+                        expandIcon={<ExpandMoreIcon sx={expanded !== 'panel3' ?
+                          expandMoreIconMainStyle
+                          : expandMoreIconSecStyle} />}
+                        aria-controls="panel3d-content" id="panel3d-header">
+                        <Typography sx={typographyStyle}>
+                          {t('proceduresSymptoms_single:Candidate')}
+                        </Typography>
+                      </AccordionSummary>
+
+                      <AccordionDetails
+                        sx={accordionDetailsStyle}
+                      >
+                        <div
+                          id={"apply"}
+                          className="ck-content"
+                          dangerouslySetInnerHTML={createMarkupCandidateOverview()} />
+                      </AccordionDetails>
+                    </Accordion>
+
+
+                    <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}
+                      sx={style}
+                      disableGutters elevation={0}
+                      square={false}
+                    >
+                      <AccordionSummary
+
+                        sx={expanded !== 'panel4' ? accordionSummaryMainStyle
+                          : accordionSummarySecStyle
+                        }
+                        expandIcon={<ExpandMoreIcon sx={expanded !== 'panel4' ?
+                          expandMoreIconMainStyle
+                          : expandMoreIconSecStyle} />}
+                        aria-controls="panel4d-content" id="panel4d-header">
+                        <Typography sx={typographyStyle}>
+                          {t('proceduresSymptoms_single:Hospitalization')}
+                        </Typography>
+                      </AccordionSummary>
+
+                      <AccordionDetails
+                        sx={accordionDetailsStyle}
+                      >
+                        <div
+                          id={"apply"}
+                          className="ck-content"
+                          dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+                </article>
+
+                <article className={styles.quick_details}>
+                  <div className={styles.title}>
+                    <Typography variant='h3'>{t("proceduresSymptoms_single:quick_details_title")}</Typography>
+                  </div>
+
+                  <div className={styles.details_container}>
+                    <div className={styles.boxes_container} style={{
+                      flexWrap: 'wrap',
+                      display: 'flex',
+                      flexDirection: 'column-reverse',
+                      marginRight: '16px',
+                    }}>
+                      {dataTreatment?.operationDuration !== "" &&
+                        <div className={styles.box}>
+                          <div className={styles.title}>
+                            <Typography variant='h6'>{t("proceduresSymptoms_single:operation_duration")}:</Typography>
+                          </div>
+                          <List sx={{
+                            listStyleType: 'disc',
+                            padding: '0px',
+                            '& .MuiListItem-root': {
+                              listStylePosition: 'inside',
+                              padding: '0px',
+                              cursor: 'pointer'
+                            },
+                          }}>
+                            <ListItem>
+                              <Typography>
+
+
+                                {dataTreatment?.operationDuration}
+                              </Typography>
+
+
+                            </ListItem>
+                          </List>
+                        </div>
+                      }
+                      {dataTreatment?.anesthesia !== "" &&
+                        <div className={styles.box} >
+                          <div className={styles.title}>
+                            <Typography variant='h6'>{t("proceduresSymptoms_single:type_of_anesthesia")}:</Typography>
+                          </div>
+                          <List sx={{
+                            listStyleType: 'disc',
+                            padding: '0px',
+
+                            '& .MuiListItem-root': {
+
+                              listStylePosition: 'inside',
+                              padding: '0px',
+                              cursor: 'pointer'
+                            },
+                          }}>
+                            <ListItem>
+                              <Typography>
+                                {dataTreatment?.anesthesia}
+                              </Typography>
+                            </ListItem>
+
+                          </List>
+                        </div>
+
+                      }
+
+
+
+                      {dataTreatment?.startCost !== "" &&
+                        <div className={styles.box}>
+                          <div className={styles.title}>
+                            <Typography variant='h6'>{t("proceduresSymptoms_single:cost")}:</Typography>
+                          </div>
+                          <List sx={{
+                            listStyleType: 'disc',
+                            padding: '0px',
+
+                            '& .MuiListItem-root': {
+
+                              listStylePosition: 'inside',
+                              padding: '0px',
+                              cursor: 'pointer'
+                            },
+                          }}>
+                            <ListItem>
+                              <Typography>
+
+                                ${dataTreatment?.startCost}
+                              </Typography>
+
+                            </ListItem>
+                          </List>
+                        </div>
+                      }
+                    </div>
+
+
+                    <div className={styles.boxes_container} >
+                      <div className={styles.box}>
+                        <div className={styles.title}>
+                          <Typography variant='h6'>{t("proceduresSymptoms_single:success_rate")}:</Typography>
+                        </div>
+                        <List sx={{
+                          listStyleType: 'disc',
+                          padding: '0px',
+                          '& .MuiListItem-root': {
+
+                            listStylePosition: 'inside',
+                            padding: '0px',
+                            cursor: 'pointer'
+
+                          },
+                        }}>
+                          <ListItem>
+                            <Typography>
+                              {dataTreatment?.successRate}%
+                            </Typography>
+
+                          </ListItem>
+                        </List>
+                      </div>
+
+                      {dataTreatment?.resultDuration !== "" &&
+                        <div className={styles.box}>
+                          <div className={styles.title}>
+                            <Typography variant='h6'>{t("proceduresSymptoms_single:duration_results")}:</Typography>
+                          </div>
+                          <List sx={{
+                            listStyleType: 'disc',
+                            padding: '0px',
+
+                            '& .MuiListItem-root': {
+
+                              listStylePosition: 'inside',
+                              padding: '0px',
+                              cursor: 'pointer'
+                            },
+                          }}>
+                            <ListItem>
+                              <Typography>
+                                {dataTreatment?.resultDuration}
+                              </Typography>
+                            </ListItem>
+                          </List>
+                        </div>
+                      }
+
+                      <div className={styles.box} style={{ order: '-1' }}>
+                        <div className={styles.title}>
+                          <Typography variant='h6'>{t("proceduresSymptoms_single:procedure_type")}:</Typography>
+                        </div>
+                        <List sx={{
+                          listStyleType: 'disc',
+                          padding: '0px',
+                          width: '70%',
+
+                          '& .MuiListItem-root': {
+
+                            listStylePosition: 'inside',
+                            padding: '0px',
+                            cursor: 'pointer'
+                          },
+                        }}>
+                          <ListItem>
+                            <Typography>
+                              {dataTreatment?.procedureType}
+                            </Typography>
+
+                          </ListItem>
+                        </List>
+                      </div>
+                    </div>
+
+                  </div>
+                </article>
+              </div>
+
+
+              <div className={styles.menu_container_mobile}>
+                <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}
+                  sx={style}
+                  disableGutters elevation={0}
+                  square={false}
+                >
+                  <AccordionSummary
+                    sx={expanded !== 'panel1' ? accordionSummaryMainStyle
+                      : accordionSummarySecStyle
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ?
+                      expandMoreIconMainStyle
+                      : expandMoreIconSecStyle} />}
+                    aria-controls="panel1d-content" id="panel1d-header">
+                    <Typography sx={typographyStyle}>
+                      {t('proceduresSymptoms_single:benefits')}
+                    </Typography>
+                  </AccordionSummary>
+
+                  <AccordionDetails
+                    sx={accordionDetailsStyle}
+                  >
+                    <div
+                      id={"apply"}
+                      className="ck-content"
+                      dangerouslySetInnerHTML={createMarkup()} />
+                  </AccordionDetails>
+                </Accordion>
+
+                <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}
+                  sx={style}
+                  disableGutters elevation={0}
+                  square={false}
+                >
+                  <AccordionSummary
+
+                    sx={expanded !== 'panel2' ? accordionSummaryMainStyle
+                      : accordionSummarySecStyle
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel2' ?
+                      expandMoreIconMainStyle
+                      : expandMoreIconSecStyle} />}
+                    aria-controls="panel2d-content" id="panel2d-header">
+                    <Typography sx={typographyStyle}>
+                      {t('proceduresSymptoms_single:Side_Effects')}
+                    </Typography>
+                  </AccordionSummary>
+
+                  <AccordionDetails
+                    sx={accordionDetailsStyle}
+                  >
+                    <div
+                      id={"apply"}
+                      className="ck-content"
+                      dangerouslySetInnerHTML={createMarkupSideEffects()} />
+                  </AccordionDetails>
+                </Accordion>
+
+
+
+
+
+                <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}
+                  sx={style}
+                  disableGutters elevation={0}
+                  square={false}
+                >
+                  <AccordionSummary
+
+                    sx={expanded !== 'panel3' ? accordionSummaryMainStyle
+                      : accordionSummarySecStyle
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel3' ?
+                      expandMoreIconMainStyle
+                      : expandMoreIconSecStyle} />}
+                    aria-controls="panel3d-content" id="panel3d-header">
+                    <Typography sx={typographyStyle}>
+                      {t('proceduresSymptoms_single:Candidate')}
+                    </Typography>
+                  </AccordionSummary>
+
+                  <AccordionDetails
+                    sx={accordionDetailsStyle}
+                  >
+                    <div
+                      id={"apply"}
+                      className="ck-content"
+                      dangerouslySetInnerHTML={createMarkupCandidateOverview()} />
+                  </AccordionDetails>
+                </Accordion>
+
+
+                <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}
+                  sx={style}
+                  disableGutters elevation={0}
+                  square={false}
+                >
+                  <AccordionSummary
+
+                    sx={expanded !== 'panel4' ? accordionSummaryMainStyle
+                      : accordionSummarySecStyle
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel4' ?
+                      expandMoreIconMainStyle
+                      : expandMoreIconSecStyle} />}
+                    aria-controls="panel4d-content" id="panel4d-header">
+                    <Typography sx={typographyStyle}>
+                      {t('proceduresSymptoms_single:Hospitalization')}
+                    </Typography>
+                  </AccordionSummary>
+
+                  <AccordionDetails
+                    sx={accordionDetailsStyle}
+                  >
+                    <div
+                      id={"apply"}
+                      className="ck-content"
+                      dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+
+            </Container >
+          </article>
+
+
+          {
+            dataTreatment?.treatmentImage?.length !== 0 &&
+            <BeforeAfter treatments={dataTreatment} />
+
+
+          }
+
+          {
+            dataTreatment?.treatmentStep?.length !== 0 &&
+            <section id={styles.steps} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+              <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: "1239px" }} maxWidth={false}>
+                <div className={styles.sec_title}>
                   <Typography variant='h3'>
-                    {dataTreatment?.title}
+                    {t('proceduresSymptoms_single:surgery_steps')}
+
                   </Typography>
                 </div>
 
                 <div
-                  id={"apply"}
-                  className="ck-content"
-                  dangerouslySetInnerHTML={createMarkupDescreption()}
-                />
+                  className={styles.slider_container}>
+                  <Carousel
+                    breakPoints={breakPointsOperation}
+                    renderArrow={myArrow}
 
-                <div className={styles.menu_container}>
-                  <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}
-                    sx={style}
-                    disableGutters elevation={0}
-                    square={false}
+                    isRTL={router.locale === 'ar' ? true : false}
                   >
-                    <AccordionSummary
-                      sx={expanded !== 'panel1' ? accordionSummaryMainStyle
-                        : accordionSummarySecStyle
-                      }
-                      expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ?
-                        expandMoreIconMainStyle
-                        : expandMoreIconSecStyle} />}
-                      aria-controls="panel1d-content" id="panel1d-header">
-                      <Typography sx={typographyStyle}>
-                        {t('proceduresSymptoms_single:benefits')}
-                      </Typography>
-                    </AccordionSummary>
 
-                    <AccordionDetails
-                      sx={accordionDetailsStyle}
-                    >
-                      <div
-                        id={"apply"}
-                        className="ck-content"
-                        dangerouslySetInnerHTML={createMarkup()} />
-                    </AccordionDetails>
-                  </Accordion>
-
-                  <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}
-                    sx={style}
-                    disableGutters elevation={0}
-                    square={false}
-                  >
-                    <AccordionSummary
-
-                      sx={expanded !== 'panel2' ? accordionSummaryMainStyle
-                        : accordionSummarySecStyle
-                      }
-                      expandIcon={<ExpandMoreIcon sx={expanded !== 'panel2' ?
-                        expandMoreIconMainStyle
-                        : expandMoreIconSecStyle} />}
-                      aria-controls="panel2d-content" id="panel2d-header">
-                      <Typography sx={typographyStyle}>
-                        {t('proceduresSymptoms_single:Side_Effects')}
-                      </Typography>
-                    </AccordionSummary>
-
-                    <AccordionDetails
-                      sx={accordionDetailsStyle}
-                    >
-                      <div
-                        id={"apply"}
-                        className="ck-content"
-                        dangerouslySetInnerHTML={createMarkupSideEffects()} />
-                    </AccordionDetails>
-                  </Accordion>
-
-
-
-
-
-                  <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}
-                    sx={style}
-                    disableGutters elevation={0}
-                    square={false}
-                  >
-                    <AccordionSummary
-
-                      sx={expanded !== 'panel3' ? accordionSummaryMainStyle
-                        : accordionSummarySecStyle
-                      }
-                      expandIcon={<ExpandMoreIcon sx={expanded !== 'panel3' ?
-                        expandMoreIconMainStyle
-                        : expandMoreIconSecStyle} />}
-                      aria-controls="panel3d-content" id="panel3d-header">
-                      <Typography sx={typographyStyle}>
-                        {t('proceduresSymptoms_single:Candidate')}
-                      </Typography>
-                    </AccordionSummary>
-
-                    <AccordionDetails
-                      sx={accordionDetailsStyle}
-                    >
-                      <div
-                        id={"apply"}
-                        className="ck-content"
-                        dangerouslySetInnerHTML={createMarkupCandidateOverview()} />
-                    </AccordionDetails>
-                  </Accordion>
-
-
-                  <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}
-                    sx={style}
-                    disableGutters elevation={0}
-                    square={false}
-                  >
-                    <AccordionSummary
-
-                      sx={expanded !== 'panel4' ? accordionSummaryMainStyle
-                        : accordionSummarySecStyle
-                      }
-                      expandIcon={<ExpandMoreIcon sx={expanded !== 'panel4' ?
-                        expandMoreIconMainStyle
-                        : expandMoreIconSecStyle} />}
-                      aria-controls="panel4d-content" id="panel4d-header">
-                      <Typography sx={typographyStyle}>
-                        {t('proceduresSymptoms_single:Hospitalization')}
-                      </Typography>
-                    </AccordionSummary>
-
-                    <AccordionDetails
-                      sx={accordionDetailsStyle}
-                    >
-                      <div
-                        id={"apply"}
-                        className="ck-content"
-                        dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
-                    </AccordionDetails>
-                  </Accordion>
-                </div>
-              </article>
-
-              <article className={styles.quick_details}>
-                <div className={styles.title}>
-                  <Typography variant='h3'>{t("proceduresSymptoms_single:quick_details_title")}</Typography>
-                </div>
-
-                <div className={styles.details_container}>
-                  <div className={styles.boxes_container} style={{
-                    flexWrap: 'wrap',
-                    display: 'flex',
-                    flexDirection: 'column-reverse',
-                    marginRight: '16px',
-                  }}>
-                    {dataTreatment?.operationDuration !== "" &&
-                      <div className={styles.box}>
-                        <div className={styles.title}>
-                          <Typography variant='h6'>{t("proceduresSymptoms_single:operation_duration")}:</Typography>
-                        </div>
-                        <List sx={{
-                          listStyleType: 'disc',
-                          padding: '0px',
-                          '& .MuiListItem-root': {
-                            listStylePosition: 'inside',
-                            padding: '0px',
-                            cursor: 'pointer'
-                          },
-                        }}>
-                          <ListItem>
-                            <Typography>
-
-
-                              {dataTreatment?.operationDuration}
-                            </Typography>
-
-
-                          </ListItem>
-                        </List>
-                      </div>
-                    }
-                    {dataTreatment?.anesthesia !== "" &&
-                      <div className={styles.box} >
-                        <div className={styles.title}>
-                          <Typography variant='h6'>{t("proceduresSymptoms_single:type_of_anesthesia")}:</Typography>
-                        </div>
-                        <List sx={{
-                          listStyleType: 'disc',
-                          padding: '0px',
-
-                          '& .MuiListItem-root': {
-
-                            listStylePosition: 'inside',
-                            padding: '0px',
-                            cursor: 'pointer'
-                          },
-                        }}>
-                          <ListItem>
-                            <Typography>
-                              {dataTreatment?.anesthesia}
-                            </Typography>
-                          </ListItem>
-
-                        </List>
-                      </div>
-
-                    }
-
-
-
-                    {dataTreatment?.startCost !== "" &&
-                      <div className={styles.box}>
-                        <div className={styles.title}>
-                          <Typography variant='h6'>{t("proceduresSymptoms_single:cost")}:</Typography>
-                        </div>
-                        <List sx={{
-                          listStyleType: 'disc',
-                          padding: '0px',
-
-                          '& .MuiListItem-root': {
-
-                            listStylePosition: 'inside',
-                            padding: '0px',
-                            cursor: 'pointer'
-                          },
-                        }}>
-                          <ListItem>
-                            <Typography>
-
-                              ${dataTreatment?.startCost}
-                            </Typography>
-
-                          </ListItem>
-                        </List>
-                      </div>
-                    }
-                  </div>
-
-
-                  <div className={styles.boxes_container} >
-                    <div className={styles.box}>
-                      <div className={styles.title}>
-                        <Typography variant='h6'>{t("proceduresSymptoms_single:success_rate")}:</Typography>
-                      </div>
-                      <List sx={{
-                        listStyleType: 'disc',
-                        padding: '0px',
-                        '& .MuiListItem-root': {
-
-                          listStylePosition: 'inside',
-                          padding: '0px',
-                          cursor: 'pointer'
-
-                        },
-                      }}>
-                        <ListItem>
-                          <Typography>
-                            {dataTreatment?.successRate}%
-                          </Typography>
-
-                        </ListItem>
-                      </List>
-                    </div>
-
-                    {dataTreatment?.resultDuration !== "" &&
-                      <div className={styles.box}>
-                        <div className={styles.title}>
-                          <Typography variant='h6'>{t("proceduresSymptoms_single:duration_results")}:</Typography>
-                        </div>
-                        <List sx={{
-                          listStyleType: 'disc',
-                          padding: '0px',
-
-                          '& .MuiListItem-root': {
-
-                            listStylePosition: 'inside',
-                            padding: '0px',
-                            cursor: 'pointer'
-                          },
-                        }}>
-                          <ListItem>
-                            <Typography>
-                              {dataTreatment?.resultDuration}
-                            </Typography>
-                          </ListItem>
-                        </List>
-                      </div>
-                    }
-
-                    <div className={styles.box} style={{ order: '-1' }}>
-                      <div className={styles.title}>
-                        <Typography variant='h6'>{t("proceduresSymptoms_single:procedure_type")}:</Typography>
-                      </div>
-                      <List sx={{
-                        listStyleType: 'disc',
-                        padding: '0px',
-                        width: '70%',
-
-                        '& .MuiListItem-root': {
-
-                          listStylePosition: 'inside',
-                          padding: '0px',
-                          cursor: 'pointer'
-                        },
-                      }}>
-                        <ListItem>
-                          <Typography>
-                            {dataTreatment?.procedureType}
-                          </Typography>
-
-                        </ListItem>
-                      </List>
-                    </div>
-                  </div>
-
-                </div>
-              </article>
-            </div>
-
-
-            <div className={styles.menu_container_mobile}>
-              <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}
-                sx={style}
-                disableGutters elevation={0}
-                square={false}
-              >
-                <AccordionSummary
-                  sx={expanded !== 'panel1' ? accordionSummaryMainStyle
-                    : accordionSummarySecStyle
-                  }
-                  expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ?
-                    expandMoreIconMainStyle
-                    : expandMoreIconSecStyle} />}
-                  aria-controls="panel1d-content" id="panel1d-header">
-                  <Typography sx={typographyStyle}>
-                    {t('proceduresSymptoms_single:benefits')}
-                  </Typography>
-                </AccordionSummary>
-
-                <AccordionDetails
-                  sx={accordionDetailsStyle}
-                >
-                  <div
-                    id={"apply"}
-                    className="ck-content"
-                    dangerouslySetInnerHTML={createMarkup()} />
-                </AccordionDetails>
-              </Accordion>
-
-              <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}
-                sx={style}
-                disableGutters elevation={0}
-                square={false}
-              >
-                <AccordionSummary
-
-                  sx={expanded !== 'panel2' ? accordionSummaryMainStyle
-                    : accordionSummarySecStyle
-                  }
-                  expandIcon={<ExpandMoreIcon sx={expanded !== 'panel2' ?
-                    expandMoreIconMainStyle
-                    : expandMoreIconSecStyle} />}
-                  aria-controls="panel2d-content" id="panel2d-header">
-                  <Typography sx={typographyStyle}>
-                    {t('proceduresSymptoms_single:Side_Effects')}
-                  </Typography>
-                </AccordionSummary>
-
-                <AccordionDetails
-                  sx={accordionDetailsStyle}
-                >
-                  <div
-                    id={"apply"}
-                    className="ck-content"
-                    dangerouslySetInnerHTML={createMarkupSideEffects()} />
-                </AccordionDetails>
-              </Accordion>
-
-
-
-
-
-              <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}
-                sx={style}
-                disableGutters elevation={0}
-                square={false}
-              >
-                <AccordionSummary
-
-                  sx={expanded !== 'panel3' ? accordionSummaryMainStyle
-                    : accordionSummarySecStyle
-                  }
-                  expandIcon={<ExpandMoreIcon sx={expanded !== 'panel3' ?
-                    expandMoreIconMainStyle
-                    : expandMoreIconSecStyle} />}
-                  aria-controls="panel3d-content" id="panel3d-header">
-                  <Typography sx={typographyStyle}>
-                    {t('proceduresSymptoms_single:Candidate')}
-                  </Typography>
-                </AccordionSummary>
-
-                <AccordionDetails
-                  sx={accordionDetailsStyle}
-                >
-                  <div
-                    id={"apply"}
-                    className="ck-content"
-                    dangerouslySetInnerHTML={createMarkupCandidateOverview()} />
-                </AccordionDetails>
-              </Accordion>
-
-
-              <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}
-                sx={style}
-                disableGutters elevation={0}
-                square={false}
-              >
-                <AccordionSummary
-
-                  sx={expanded !== 'panel4' ? accordionSummaryMainStyle
-                    : accordionSummarySecStyle
-                  }
-                  expandIcon={<ExpandMoreIcon sx={expanded !== 'panel4' ?
-                    expandMoreIconMainStyle
-                    : expandMoreIconSecStyle} />}
-                  aria-controls="panel4d-content" id="panel4d-header">
-                  <Typography sx={typographyStyle}>
-                    {t('proceduresSymptoms_single:Hospitalization')}
-                  </Typography>
-                </AccordionSummary>
-
-                <AccordionDetails
-                  sx={accordionDetailsStyle}
-                >
-                  <div
-                    id={"apply"}
-                    className="ck-content"
-                    dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
-                </AccordionDetails>
-              </Accordion>
-            </div>
-
-          </Container >
-        </article>
-
-
-        {
-          dataTreatment?.treatmentImage?.length !== 0 &&
-          <BeforeAfter treatments={dataTreatment} />
-
-
-        }
-
-        {
-          dataTreatment?.treatmentStep?.length !== 0 &&
-          <section id={styles.steps} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-            <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: "1239px" }} maxWidth={false}>
-              <div className={styles.sec_title}>
-                <Typography variant='h3'>
-                  {t('proceduresSymptoms_single:surgery_steps')}
-
-                </Typography>
-              </div>
-
-              <div
-                className={styles.slider_container}>
-                <Carousel
-                  breakPoints={breakPointsOperation}
-                  renderArrow={myArrow}
-
-                  isRTL={router.locale === 'ar' ? true : false}
-                >
-
-                  {dataTreatment?.treatmentStep?.map((stepCard, index) => (
-                    <>
-                      <div className={styles.counter_container} key={index + 1}>
-                        <div className={styles.steps_container} >
-                          <div className={styles.step}>
-                            <span>{index + 1}</span>
+                    {dataTreatment?.treatmentStep?.map((stepCard, index) => (
+                      <>
+                        <div className={styles.counter_container} key={index + 1}>
+                          <div className={styles.steps_container} >
+                            <div className={styles.step}>
+                              <span>{index + 1}</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div className={styles.box} key={index}>
-                        <div className={styles.box_title}>
-                          <Typography variant="h6"> {stepCard.stepDescription}</Typography>
+                        <div className={styles.box} key={index}>
+                          <div className={styles.box_title}>
+                            <Typography variant="h6"> {stepCard.stepDescription}</Typography>
+                          </div>
+                          <div className={styles.img_container}>
+                            <Image width={230} height={281} src={stepCard.stepImage} alt="" />
+                          </div>
                         </div>
-                        <div className={styles.img_container}>
-                          <Image width={230} height={281} src={stepCard.stepImage} alt="" />
-                        </div>
-                      </div>
 
-                    </>
-                  ))}
+                      </>
+                    ))}
 
 
 
-                </Carousel>
-              </div>
-            </Container >
+                  </Carousel>
+                </div>
+              </Container >
 
-          </section>
-        }
+            </section>
+          }
 
-        <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-          <section id={styles.what_you_need} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-            <div className={styles.title}>
-              {router.locale === 'ar' ?
-                <Typography variant='h3'>
-                  التحضير لإجراء {dataTreatment.treatmentName}: ماذا تتوقع قبل الإجراء وأثنائها وبعدها
-                </Typography>
-                :
-                <Typography variant='h3'>
-                  {dataTreatment.treatmentName}: {t('proceduresSymptoms_single:before_after')}
-                </Typography>
-              }
-            </div>
-            <div className={styles.menu_container}>
-
-
-              <Accordion disableGutters={false} elevation={0}
-                square={false} sx={style}
-                expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
-                <AccordionSummary
-
-                  sx={expanded !== 'panel5' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
-                    : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
-                  }
-                  expandIcon={<ExpandMoreIcon sx={expanded !== 'panel5' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                  aria-controls="panel3a-content"
-                  id="panel3a-header"
-                >
-                  <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                    1 - {t('proceduresSymptoms_single:preoperation')}
-
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails sx={{ background: '#F4F9F8', overflowX: 'auto', maxHeight: '50vh', }}>
-                  <div
-                    id={"apply"}
-                    className={` ck-content ${styles.content}`}
-                    dangerouslySetInnerHTML={createMarkupPreOperationOverview()}
-                  />
-                </AccordionDetails>
-              </Accordion>
-
-              <Accordion disableGutters={false} elevation={0}
-                square={false} sx={style}
-
-                expanded={expanded === 'panel77'} onChange={handleChange('panel77')}
-
-              >
-                <AccordionSummary
-
-                  sx={expanded !== 'panel77' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
-                    : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
-                  }
-                  expandIcon={<ExpandMoreIcon sx={expanded !== 'panel77' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-
-                >
-                  <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                    2 - {t('proceduresSymptoms_single:during_operation')}
-                  </Typography>
-                </AccordionSummary>
-
-
-                <AccordionDetails sx={{
-                  background: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto',
-                }}>
-
-                  <div
-                    id={"apply"}
-                    className="ck-content"
-
-                    dangerouslySetInnerHTML={createMarkupDuringOperationOverview()} />
-                </AccordionDetails>
-
-              </Accordion>
-
-              <Accordion disableGutters={false} elevation={0}
-                square={false} sx={style}
-
-                onChange={handleChange('panel6')}
-                expanded={expanded === 'panel6'}
-              >
-                <AccordionSummary
-
-                  sx={expanded !== 'panel6' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
-                    : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
-                  }
-                  expandIcon={<ExpandMoreIcon sx={expanded !== 'panel6' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                  aria-controls="panel6a-content"
-                  id="panel6a-header"
-                >
-                  <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                    3 - {t('proceduresSymptoms_single:after_operation')}
-
-                  </Typography>
-                </AccordionSummary>
-
-
-                <AccordionDetails sx={{
-                  background: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto',
-                }}>
-                  <div
-                    id={"apply"}
-                    className="ck-content"
-                    dangerouslySetInnerHTML={createMarkupAfterOperationOverview()} />
-                </AccordionDetails>
-
-              </Accordion>
-
-            </div>
-          </section>
-        </Container >
-
-
-        {(dataTreatment?.videoLink == null || (typeof dataTreatment?.videoLink === "string" && dataTreatment?.videoLink.trim().length === 0) === false &&
-
-          <article id={styles.video} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-            <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-              <div className={styles.video_container}>
-
-                <div className={styles.title}>
+          <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+            <section id={styles.what_you_need} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+              <div className={styles.title}>
+                {router.locale === 'ar' ?
                   <Typography variant='h3'>
-                    {router.locale === 'ar' ?
-                      <>
-                        إجراء {dataTreatment.treatmentName} بالفيديو: دليل شامل يشرح كل ما يجب على المرضى معرفته
-                      </>
-                      :
-                      <>
-                        {dataTreatment.treatmentName} {t('proceduresSymptoms_single:all_in_video')}
-                      </>
+                    التحضير لإجراء {dataTreatment.treatmentName}: ماذا تتوقع قبل الإجراء وأثنائها وبعدها
+                  </Typography>
+                  :
+                  <Typography variant='h3'>
+                    {dataTreatment.treatmentName}: {t('proceduresSymptoms_single:before_after')}
+                  </Typography>
+                }
+              </div>
+              <div className={styles.menu_container}>
+
+
+                <Accordion disableGutters={false} elevation={0}
+                  square={false} sx={style}
+                  expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
+                  <AccordionSummary
+
+                    sx={expanded !== 'panel5' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                      : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel5' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                    aria-controls="panel3a-content"
+                    id="panel3a-header"
+                  >
+                    <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                      1 - {t('proceduresSymptoms_single:preoperation')}
+
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails sx={{ background: '#F4F9F8', overflowX: 'auto', maxHeight: '50vh', }}>
+                    <div
+                      id={"apply"}
+                      className={` ck-content ${styles.content}`}
+                      dangerouslySetInnerHTML={createMarkupPreOperationOverview()}
+                    />
+                  </AccordionDetails>
+                </Accordion>
+
+                <Accordion disableGutters={false} elevation={0}
+                  square={false} sx={style}
+
+                  expanded={expanded === 'panel77'} onChange={handleChange('panel77')}
+
+                >
+                  <AccordionSummary
+
+                    sx={expanded !== 'panel77' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                      : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel77' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+
+                  >
+                    <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                      2 - {t('proceduresSymptoms_single:during_operation')}
+                    </Typography>
+                  </AccordionSummary>
+
+
+                  <AccordionDetails sx={{
+                    background: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto',
+                  }}>
+
+                    <div
+                      id={"apply"}
+                      className="ck-content"
+
+                      dangerouslySetInnerHTML={createMarkupDuringOperationOverview()} />
+                  </AccordionDetails>
+
+                </Accordion>
+
+                <Accordion disableGutters={false} elevation={0}
+                  square={false} sx={style}
+
+                  onChange={handleChange('panel6')}
+                  expanded={expanded === 'panel6'}
+                >
+                  <AccordionSummary
+
+                    sx={expanded !== 'panel6' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                      : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel6' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                    aria-controls="panel6a-content"
+                    id="panel6a-header"
+                  >
+                    <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
+                      3 - {t('proceduresSymptoms_single:after_operation')}
+
+                    </Typography>
+                  </AccordionSummary>
+
+
+                  <AccordionDetails sx={{
+                    background: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto',
+                  }}>
+                    <div
+                      id={"apply"}
+                      className="ck-content"
+                      dangerouslySetInnerHTML={createMarkupAfterOperationOverview()} />
+                  </AccordionDetails>
+
+                </Accordion>
+
+              </div>
+            </section>
+          </Container >
+
+
+          {(dataTreatment?.videoLink == null || (typeof dataTreatment?.videoLink === "string" && dataTreatment?.videoLink.trim().length === 0) === false &&
+
+            <article id={styles.video} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+              <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+                <div className={styles.video_container}>
+
+                  <div className={styles.title}>
+                    <Typography variant='h3'>
+                      {router.locale === 'ar' ?
+                        <>
+                          إجراء {dataTreatment.treatmentName} بالفيديو: دليل شامل يشرح كل ما يجب على المرضى معرفته
+                        </>
+                        :
+                        <>
+                          {dataTreatment.treatmentName} {t('proceduresSymptoms_single:all_in_video')}
+                        </>
+                      }
+
+                    </Typography>
+                  </div>
+                  <div className={styles.video_container}>
+                    <iframe width="560" height="315" src={dataTreatment?.videoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                  </div>
+                </div>
+                {console.log(typeof dataTreatment?.videoLink, "Video Link")}
+              </Container >
+            </article>
+          )}
+
+
+
+          {/* dataTreatment?.getTreatmentStepOne?.length !== 0 && dataTreatment?.getTreatmentStepTwo?.length !== 0 && dataTreatment?.getTreatmentStepThree?.length && */}
+
+          {
+            <section id={styles.howToGetTreatment} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+              <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+                <div className={styles.howToGetTreatment_container}>
+                  <div className={styles.sec_title}>
+
+                    {router.locale === 'ar' &&
+                      <Typography variant='h3' sx={sxTitle2}>كيف يمكنني الحصول على إجراء {dataTreatment.treatmentName}  في تركيا بعيادات SafeMediGo؟
+                      </Typography>
+                    }
+                    {router.locale === 'en' &&
+                      <Typography variant='h3' sx={sxTitle2}>How Can I Get a {dataTreatment.treatmentName} Procedure in Turkey with SafeMediGo?</Typography>
+                    }
+                    {router.locale === 'tr' &&
+
+                      <Typography variant='h3' sx={sxTitle2}>SafeMediGo ile Türkiye'de {dataTreatment.treatmentName} Prosedürüne nasıl ulaşabilirim?</Typography>
                     }
 
-                  </Typography>
-                </div>
-                <div className={styles.video_container}>
-                  <iframe width="560" height="315" src={dataTreatment?.videoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-              </div>
-              {console.log(typeof dataTreatment?.videoLink, "Video Link")}
-            </Container >
-          </article>
-        )}
 
+                  </div>
 
-
-        {/* dataTreatment?.getTreatmentStepOne?.length !== 0 && dataTreatment?.getTreatmentStepTwo?.length !== 0 && dataTreatment?.getTreatmentStepThree?.length && */}
-
-        {
-          <section id={styles.howToGetTreatment} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-            <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-              <div className={styles.howToGetTreatment_container}>
-                <div className={styles.sec_title}>
-
-                  {router.locale === 'ar' &&
-                    <Typography variant='h3' sx={sxTitle2}>كيف يمكنني الحصول على إجراء {dataTreatment.treatmentName}  في تركيا بعيادات SafeMediGo؟
-                    </Typography>
-                  }
-                  {router.locale === 'en' &&
-                    <Typography variant='h3' sx={sxTitle2}>How Can I Get a {dataTreatment.treatmentName} Procedure in Turkey with SafeMediGo?</Typography>
-                  }
-                  {router.locale === 'tr' &&
-
-                    <Typography variant='h3' sx={sxTitle2}>SafeMediGo ile Türkiye'de {dataTreatment.treatmentName} Prosedürüne nasıl ulaşabilirim?</Typography>
-                  }
-
-
-                </div>
-
-                <div className={styles.menu_container}>
-                  <Accordion disableGutters elevation={0}
-                    square={false} sx={style}
-
-                    expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
-
-
-                    <AccordionSummary
-                      sx={expanded !== 'panel9' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
-                        : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
-                      }
-                      expandIcon={<ExpandMoreIcon sx={expanded !== 'panel9' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                      aria-controls="panel9d-content" id="panel9d-header">
-                      <Typography sx={paragrahp3}>
-
-                        <span>
-                          1
-                        </span>
-                        {t("proceduresSymptoms_single:Send_Your_Pictures")}
-                      </Typography>
-                    </AccordionSummary>
-
-
-                    <AccordionDetails sx={{
-                      background: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto',
-                    }} >
-                      <div className={styles.title}>
-                        <Typography variant='h6'>
-                          {router.locale === 'ar' &&
-                            `What Documents and Information are Required for a ${dataTreatment.treatmentName} Procedure in Turkey:`
-                          }
-                          {router.locale === 'en' &&
-                            `What Documents and Information are Required for a ${dataTreatment.treatmentName} Procedure in Turkey:`
-                          }
-                          {router.locale === 'tr' &&
-                            `What Documents and Information are Required for a ${dataTreatment.treatmentName} Procedure in Turkey:`
-                          }
-                        </Typography>
-                      </div>
-                      <div
-                        id={"apply"}
-                        className="ck-content"
-                        dangerouslySetInnerHTML={createMarkupGetTreatmentStepOne()} />
-                    </AccordionDetails>
-
-                  </Accordion>
-
-
-                  <Accordion disableGutters elevation={0}
-                    square={false} sx={style}
-
-                    expanded={expanded === 'panel10'} onChange={handleChange('panel10')}>
-
-
-                    <AccordionSummary
-                      sx={expanded !== 'panel10' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
-                        : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
-                      }
-                      expandIcon={<ExpandMoreIcon sx={expanded !== 'panel10' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                      aria-controls="panel10d-content" id="panel10d-header">
-                      <Typography sx={paragrahp3}>
-
-                        <span>
-                          2
-                        </span>
-
-                        {t("proceduresSymptoms_single:Get_Your_Quote")}
-                      </Typography>
-                    </AccordionSummary>
-
-
-
-                    <AccordionDetails sx={{ backgroundColor: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto', }} >
-                      <div className={styles.title}>
-                        <Typography variant='h6'>
-                          {router.locale === 'ar' &&
-                            `How is the Cost of a [Procedure Name] Procedure Determined at SafeMediGo Clinics : `
-                          }
-                          {router.locale === 'en' &&
-                            `How is the Cost of a [Procedure Name] Procedure Determined at SafeMediGo Clinics :`
-                          }
-                          {router.locale === 'tr' &&
-                            `How is the Cost of a [Procedure Name] Procedure Determined at SafeMediGo Clinics : `
-                          }
-                        </Typography>
-                      </div>
-                      <div
-                        id={"apply"}
-                        className="ck-content"
-                        dangerouslySetInnerHTML={createMarkupGetTreatmentStepTwo()} />
-                    </AccordionDetails>
-
-                  </Accordion>
-
-
-                  <Accordion disableGutters elevation={0}
-                    square={false} sx={style}
-
-                    expanded={expanded === 'panel11'} onChange={handleChange('panel11')}>
-
-
-                    <AccordionSummary
-                      sx={expanded !== 'panel11' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF', }
-                        : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
-                      }
-                      expandIcon={<ExpandMoreIcon sx={expanded !== 'panel11' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                      aria-controls="panel11d-content" id="panel11d-header">
-                      <Typography sx={paragrahp3}>
-
-                        <span>
-                          3
-                        </span>
-
-                        {t("proceduresSymptoms_single:Secure_Your_Appointment")}
-                      </Typography>
-                    </AccordionSummary>
-
-
-
-                    <AccordionDetails sx={{ backgroundColor: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto', }} >
-                      <div className={styles.title}>
-                        <Typography variant='h6'>
-                          {router.locale === 'ar' &&
-                            `How Do I Confirm My  ${dataTreatment.treatmentName} Procedure Appointment With Safemedigo? To Secure Your Spot For The  ${dataTreatment.treatmentName} Procedure With Safemedigo, A Booking Fee Of $145 Is Essential. This Fee Provides Multiple Benefits: Reservation: It Ensures Your Appointment Slot At One Of Our Esteemed Clinics. Commitment: It Reflects Your Dedication To The Procedure, Fostering Efficient Scheduling And Operations Within Our Medical Services. Cost Stability: This Fee Ensures The Price Remains Stable For A Specified Duration, Protecting You From Potential Price Fluctuations. Cost Deduction: This Fee Is Credited Toward The Overall Cost Of Your Procedure, Reducing The Final Amount You'd Need To Pay. It's Crucial To Note That The Booking Fee Becomes Non-Refundable 24 Hours After Confirmation. Once You've Finalized The Booking, Safemedigo Will Share Detailed Appointment Information And Assist With Logistical Considerations Such As Travel Arrangements, Accommodation, Transportation, Medical Coordination, Document Assistance, Local Support And Post-Treatment Care : `
-                          }
-                          {router.locale === 'en' &&
-                            `How Do I Confirm My  ${dataTreatment.treatmentName} Procedure Appointment With Safemedigo? To Secure Your Spot For The  ${dataTreatment.treatmentName} Procedure With Safemedigo, A Booking Fee Of $145 Is Essential. This Fee Provides Multiple Benefits: Reservation: It Ensures Your Appointment Slot At One Of Our Esteemed Clinics. Commitment: It Reflects Your Dedication To The Procedure, Fostering Efficient Scheduling And Operations Within Our Medical Services. Cost Stability: This Fee Ensures The Price Remains Stable For A Specified Duration, Protecting You From Potential Price Fluctuations. Cost Deduction: This Fee Is Credited Toward The Overall Cost Of Your Procedure, Reducing The Final Amount You'd Need To Pay. It's Crucial To Note That The Booking Fee Becomes Non-Refundable 24 Hours After Confirmation. Once You've Finalized The Booking, Safemedigo Will Share Detailed Appointment Information And Assist With Logistical Considerations Such As Travel Arrangements, Accommodation, Transportation, Medical Coordination, Document Assistance, Local Support And Post-Treatment Care : `
-                          }
-                          {router.locale === 'tr' &&
-                            `How Do I Confirm My  ${dataTreatment.treatmentName} Procedure Appointment With Safemedigo? To Secure Your Spot For The  ${dataTreatment.treatmentName} Procedure With Safemedigo, A Booking Fee Of $145 Is Essential. This Fee Provides Multiple Benefits: Reservation: It Ensures Your Appointment Slot At One Of Our Esteemed Clinics. Commitment: It Reflects Your Dedication To The Procedure, Fostering Efficient Scheduling And Operations Within Our Medical Services. Cost Stability: This Fee Ensures The Price Remains Stable For A Specified Duration, Protecting You From Potential Price Fluctuations. Cost Deduction: This Fee Is Credited Toward The Overall Cost Of Your Procedure, Reducing The Final Amount You'd Need To Pay. It's Crucial To Note That The Booking Fee Becomes Non-Refundable 24 Hours After Confirmation. Once You've Finalized The Booking, Safemedigo Will Share Detailed Appointment Information And Assist With Logistical Considerations Such As Travel Arrangements, Accommodation, Transportation, Medical Coordination, Document Assistance, Local Support And Post-Treatment Care :`
-                          }
-
-
-                        </Typography>
-                      </div>
-
-
-
-                      <div
-                        id={"apply"}
-                        className="ck-content"
-                        dangerouslySetInnerHTML={createMarkupGetTreatmentStepThree()} />
-
-
-                    </AccordionDetails>
-                  </Accordion>
-                </div>
-              </div>
-            </Container >
-          </section >
-        }
-
-        {
-          dataTreatment?.treatmentProcedure != 0 &&
-          <section id={styles.treatment_desc} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-            <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-              <div className={styles.sec_title}>
-                <Typography variant='h3'>
-                  {router.locale === 'en' && `What Is The Itinerary For ${dataTreatment?.treatmentName} Procedure`}
-                  {router.locale === 'ar' && `ما هي مراحل رحلة إجراء ${dataTreatment?.treatmentName} `}
-                  {router.locale === 'tr' && `${dataTreatment?.treatmentName} Prosedürünün Yolculuğu Nedir?`}
-
-                </Typography>
-              </div>
-
-              <div className={styles.slider_container}>
-                <Carousel
-                  breakPoints={breakPointsSteps}
-                  renderArrow={myArrow}
-                  isRTL={router.locale === 'ar' ? true : false}
-
-                >
-                  {dataTreatment?.treatmentProcedure?.map((card, index) => (
-                    <>
-                      <div className={styles.steps_container} key={index}>
-                        <div className={styles.step}>
-                          <span dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>{index + 1}</span>
-                        </div>
-                      </div>
-
-                      <div className={styles.box} key={index + 2}>
-                        <div className={styles.title}>
-                          <Typography variant='h6'>
-                            {card.procedureName}
-                          </Typography>
-                        </div>
-                        <div className={styles.img_container}>
-                          <Image width={257} height={169.25} src={card.procedureImage} alt={card.procedureName} />
-                        </div>
-
-                        <div className={styles.list}>
-                          <p>
-                            {card.procedureDescription}
-                          </p>
-                        </div>
-                      </div>
-
-                    </>
-                  ))}
-
-                </Carousel>
-              </div>
-            </Container >
-          </section>
-        }
-
-        < section id={'price'} className={styles.price} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-          <div className={styles.price_wrap}>
-            <div className={styles.section_container}>
-              <div className={styles.title}>
-                <Typography variant='h3'>
-                  {t('proceduresSymptoms_single:cost')} ${dataTreatment?.cost}
-                </Typography>
-              </div>
-
-              <div className={styles.btn_container}>
-                <div className={styles.qoute}>
-                  <Link href='/qoute'>
-                    <button>
-                      {t('proceduresSymptoms_single:Get_Your_Quote')}
-                    </button>
-                  </Link>
-                </div>
-
-                <div className={styles.discover}>
-                  <Link href='/discover'>
-                    {t("single_blog:load_more")}
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </section >
-
-        {
-          QACount > 0 &&
-          <section id="q&a" className={styles.QA} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-            <Container sx={{ maxWidth: "1239px", overflow: 'hidden' }} maxWidth={false}>
-              <div className={styles.title}>
-                <Typography variant='h3'>{t('proceduresSymptoms_single:Guides_And_Common_Questions')}</Typography>
-              </div>
-
-              <div className={styles.menu_container}>
-                {qADetails?.map((q, index) => (
-                  <div className={styles.QA_menu} key={index}>
+                  <div className={styles.menu_container}>
                     <Accordion disableGutters elevation={0}
-                      square={false} sx={{
-                        borderRadius: '0px !important',
-                        marginBottom: '16px',
-                        borderBottom: '1px solid #E4E4E4',
-                        padding: '0px !important'
-                        ,
-                        '&:before': {
-                          display: 'none',
-                        }
-                      }}
-                      expanded={expanded === `panel1${index}2`} onChange={handleChange(`panel1${index}2`)}>
+                      square={false} sx={style}
+
+                      expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
 
 
                       <AccordionSummary
-                        sx={
-                          {
-                            height: '55px', backgroundColor: 'transparent', color: '#000000', marginTop: '10px', paddingLeft: '0 !important'
-                            ,
-                            marginBottom: '16px',
-                            padding: '0px !important'
-
-                          }
+                        sx={expanded !== 'panel9' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                          : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
                         }
-                        expandIcon={<ExpandMoreIcon sx={expanded !== `panel1${index}2` ? { color: '#000000', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                        aria-controls={`panel1${index}2-content `} id={`panel1${index}2-header`}>
+                        expandIcon={<ExpandMoreIcon sx={expanded !== 'panel9' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                        aria-controls="panel9d-content" id="panel9d-header">
                         <Typography sx={paragrahp3}>
-                          {q.question}
+
+                          <span>
+                            1
+                          </span>
+                          {t("proceduresSymptoms_single:Send_Your_Pictures")}
                         </Typography>
                       </AccordionSummary>
 
-                      <AccordionDetails sx={{ padding: '0', paddingBottom: '16px' }}>
+
+                      <AccordionDetails sx={{
+                        background: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto',
+                      }} >
+                        <div className={styles.title}>
+                          <Typography variant='h6'>
+                            {router.locale === 'ar' &&
+                              `What Documents and Information are Required for a ${dataTreatment.treatmentName} Procedure in Turkey:`
+                            }
+                            {router.locale === 'en' &&
+                              `What Documents and Information are Required for a ${dataTreatment.treatmentName} Procedure in Turkey:`
+                            }
+                            {router.locale === 'tr' &&
+                              `What Documents and Information are Required for a ${dataTreatment.treatmentName} Procedure in Turkey:`
+                            }
+                          </Typography>
+                        </div>
                         <div
                           id={"apply"}
                           className="ck-content"
-                          dangerouslySetInnerHTML={createMarkupGetQA(q.answer)} />
+                          dangerouslySetInnerHTML={createMarkupGetTreatmentStepOne()} />
                       </AccordionDetails>
 
                     </Accordion>
 
+
+                    <Accordion disableGutters elevation={0}
+                      square={false} sx={style}
+
+                      expanded={expanded === 'panel10'} onChange={handleChange('panel10')}>
+
+
+                      <AccordionSummary
+                        sx={expanded !== 'panel10' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                          : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+                        }
+                        expandIcon={<ExpandMoreIcon sx={expanded !== 'panel10' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                        aria-controls="panel10d-content" id="panel10d-header">
+                        <Typography sx={paragrahp3}>
+
+                          <span>
+                            2
+                          </span>
+
+                          {t("proceduresSymptoms_single:Get_Your_Quote")}
+                        </Typography>
+                      </AccordionSummary>
+
+
+
+                      <AccordionDetails sx={{ backgroundColor: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto', }} >
+                        <div className={styles.title}>
+                          <Typography variant='h6'>
+                            {router.locale === 'ar' &&
+                              `How is the Cost of a [Procedure Name] Procedure Determined at SafeMediGo Clinics : `
+                            }
+                            {router.locale === 'en' &&
+                              `How is the Cost of a [Procedure Name] Procedure Determined at SafeMediGo Clinics :`
+                            }
+                            {router.locale === 'tr' &&
+                              `How is the Cost of a [Procedure Name] Procedure Determined at SafeMediGo Clinics : `
+                            }
+                          </Typography>
+                        </div>
+                        <div
+                          id={"apply"}
+                          className="ck-content"
+                          dangerouslySetInnerHTML={createMarkupGetTreatmentStepTwo()} />
+                      </AccordionDetails>
+
+                    </Accordion>
+
+
+                    <Accordion disableGutters elevation={0}
+                      square={false} sx={style}
+
+                      expanded={expanded === 'panel11'} onChange={handleChange('panel11')}>
+
+
+                      <AccordionSummary
+                        sx={expanded !== 'panel11' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF', }
+                          : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+                        }
+                        expandIcon={<ExpandMoreIcon sx={expanded !== 'panel11' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                        aria-controls="panel11d-content" id="panel11d-header">
+                        <Typography sx={paragrahp3}>
+
+                          <span>
+                            3
+                          </span>
+
+                          {t("proceduresSymptoms_single:Secure_Your_Appointment")}
+                        </Typography>
+                      </AccordionSummary>
+
+
+
+                      <AccordionDetails sx={{ backgroundColor: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto', }} >
+                        <div className={styles.title}>
+                          <Typography variant='h6'>
+                            {router.locale === 'ar' &&
+                              `How Do I Confirm My  ${dataTreatment.treatmentName} Procedure Appointment With Safemedigo? To Secure Your Spot For The  ${dataTreatment.treatmentName} Procedure With Safemedigo, A Booking Fee Of $145 Is Essential. This Fee Provides Multiple Benefits: Reservation: It Ensures Your Appointment Slot At One Of Our Esteemed Clinics. Commitment: It Reflects Your Dedication To The Procedure, Fostering Efficient Scheduling And Operations Within Our Medical Services. Cost Stability: This Fee Ensures The Price Remains Stable For A Specified Duration, Protecting You From Potential Price Fluctuations. Cost Deduction: This Fee Is Credited Toward The Overall Cost Of Your Procedure, Reducing The Final Amount You'd Need To Pay. It's Crucial To Note That The Booking Fee Becomes Non-Refundable 24 Hours After Confirmation. Once You've Finalized The Booking, Safemedigo Will Share Detailed Appointment Information And Assist With Logistical Considerations Such As Travel Arrangements, Accommodation, Transportation, Medical Coordination, Document Assistance, Local Support And Post-Treatment Care : `
+                            }
+                            {router.locale === 'en' &&
+                              `How Do I Confirm My  ${dataTreatment.treatmentName} Procedure Appointment With Safemedigo? To Secure Your Spot For The  ${dataTreatment.treatmentName} Procedure With Safemedigo, A Booking Fee Of $145 Is Essential. This Fee Provides Multiple Benefits: Reservation: It Ensures Your Appointment Slot At One Of Our Esteemed Clinics. Commitment: It Reflects Your Dedication To The Procedure, Fostering Efficient Scheduling And Operations Within Our Medical Services. Cost Stability: This Fee Ensures The Price Remains Stable For A Specified Duration, Protecting You From Potential Price Fluctuations. Cost Deduction: This Fee Is Credited Toward The Overall Cost Of Your Procedure, Reducing The Final Amount You'd Need To Pay. It's Crucial To Note That The Booking Fee Becomes Non-Refundable 24 Hours After Confirmation. Once You've Finalized The Booking, Safemedigo Will Share Detailed Appointment Information And Assist With Logistical Considerations Such As Travel Arrangements, Accommodation, Transportation, Medical Coordination, Document Assistance, Local Support And Post-Treatment Care : `
+                            }
+                            {router.locale === 'tr' &&
+                              `How Do I Confirm My  ${dataTreatment.treatmentName} Procedure Appointment With Safemedigo? To Secure Your Spot For The  ${dataTreatment.treatmentName} Procedure With Safemedigo, A Booking Fee Of $145 Is Essential. This Fee Provides Multiple Benefits: Reservation: It Ensures Your Appointment Slot At One Of Our Esteemed Clinics. Commitment: It Reflects Your Dedication To The Procedure, Fostering Efficient Scheduling And Operations Within Our Medical Services. Cost Stability: This Fee Ensures The Price Remains Stable For A Specified Duration, Protecting You From Potential Price Fluctuations. Cost Deduction: This Fee Is Credited Toward The Overall Cost Of Your Procedure, Reducing The Final Amount You'd Need To Pay. It's Crucial To Note That The Booking Fee Becomes Non-Refundable 24 Hours After Confirmation. Once You've Finalized The Booking, Safemedigo Will Share Detailed Appointment Information And Assist With Logistical Considerations Such As Travel Arrangements, Accommodation, Transportation, Medical Coordination, Document Assistance, Local Support And Post-Treatment Care :`
+                            }
+
+
+                          </Typography>
+                        </div>
+
+
+
+                        <div
+                          id={"apply"}
+                          className="ck-content"
+                          dangerouslySetInnerHTML={createMarkupGetTreatmentStepThree()} />
+
+
+                      </AccordionDetails>
+                    </Accordion>
                   </div>
-                ))}
-              </div>
-              {
-                QACount !== qADetails.length &&
-                <div className={styles.btn_container}>
-                  <button className={styles.load_more_btn} onClick={handleLoadMoreComments}>
-                    {isLoadingQA !== true ?
-                      t("single_blog:load_more")
-                      :
-                      <>
-
-                        <ThreeDots
-                          height="25"
-                          width="25"
-                          radius="9"
-                          color="#00ccb5"
-                          ariaLabel="three-dots-loading"
-                          wrapperStyle={{}}
-                          wrapperClassName="load_more_btn"
-                          visible={true}
-                        />
-                      </>
-
-                    }
-                  </button>
                 </div>
-              }
+              </Container >
+            </section >
+          }
 
-            </Container >
+          {
+            dataTreatment?.treatmentProcedure != 0 &&
+            <section id={styles.treatment_desc} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+              <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+                <div className={styles.sec_title}>
+                  <Typography variant='h3'>
+                    {router.locale === 'en' && `What Is The Itinerary For ${dataTreatment?.treatmentName} Procedure`}
+                    {router.locale === 'ar' && `ما هي مراحل رحلة إجراء ${dataTreatment?.treatmentName} `}
+                    {router.locale === 'tr' && `${dataTreatment?.treatmentName} Prosedürünün Yolculuğu Nedir?`}
+
+                  </Typography>
+                </div>
+
+                <div className={styles.slider_container}>
+                  <Carousel
+                    breakPoints={breakPointsSteps}
+                    renderArrow={myArrow}
+                    isRTL={router.locale === 'ar' ? true : false}
+
+                  >
+                    {dataTreatment?.treatmentProcedure?.map((card, index) => (
+                      <>
+                        <div className={styles.steps_container} key={index}>
+                          <div className={styles.step}>
+                            <span dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>{index + 1}</span>
+                          </div>
+                        </div>
+
+                        <div className={styles.box} key={index + 2}>
+                          <div className={styles.title}>
+                            <Typography variant='h6'>
+                              {card.procedureName}
+                            </Typography>
+                          </div>
+                          <div className={styles.img_container}>
+                            <Image width={257} height={169.25} src={card.procedureImage} alt={card.procedureName} />
+                          </div>
+
+                          <div className={styles.list}>
+                            <p>
+                              {card.procedureDescription}
+                            </p>
+                          </div>
+                        </div>
+
+                      </>
+                    ))}
+
+                  </Carousel>
+                </div>
+              </Container >
+            </section>
+          }
+
+          < section id={'price'} className={styles.price} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+            <div className={styles.price_wrap}>
+              <div className={styles.section_container}>
+                <div className={styles.title}>
+                  <Typography variant='h3'>
+                    {t('proceduresSymptoms_single:cost')} ${dataTreatment?.cost}
+                  </Typography>
+                </div>
+
+                <div className={styles.btn_container}>
+                  <div className={styles.qoute}>
+                    <Link href='/qoute'>
+                      <button>
+                        {t('proceduresSymptoms_single:Get_Your_Quote')}
+                      </button>
+                    </Link>
+                  </div>
+
+                  <div className={styles.discover}>
+                    <Link href='/discover'>
+                      {t("single_blog:load_more")}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
 
           </section >
-        }
+
+          {
+            QACount > 0 &&
+            <section id="q&a" className={styles.QA} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+              <Container sx={{ maxWidth: "1239px", overflow: 'hidden' }} maxWidth={false}>
+                <div className={styles.title}>
+                  <Typography variant='h3'>{t('proceduresSymptoms_single:Guides_And_Common_Questions')}</Typography>
+                </div>
+
+                <div className={styles.menu_container}>
+                  {qADetails?.map((q, index) => (
+                    <div className={styles.QA_menu} key={index}>
+                      <Accordion disableGutters elevation={0}
+                        square={false} sx={{
+                          borderRadius: '0px !important',
+                          marginBottom: '16px',
+                          borderBottom: '1px solid #E4E4E4',
+                          padding: '0px !important'
+                          ,
+                          '&:before': {
+                            display: 'none',
+                          }
+                        }}
+                        expanded={expanded === `panel1${index}2`} onChange={handleChange(`panel1${index}2`)}>
 
 
-        <ContactDetails />
+                        <AccordionSummary
+                          sx={
+                            {
+                              height: '55px', backgroundColor: 'transparent', color: '#000000', marginTop: '10px', paddingLeft: '0 !important'
+                              ,
+                              marginBottom: '16px',
+                              padding: '0px !important'
+
+                            }
+                          }
+                          expandIcon={<ExpandMoreIcon sx={expanded !== `panel1${index}2` ? { color: '#000000', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                          aria-controls={`panel1${index}2-content `} id={`panel1${index}2-header`}>
+                          <Typography sx={paragrahp3}>
+                            {q.question}
+                          </Typography>
+                        </AccordionSummary>
+
+                        <AccordionDetails sx={{ padding: '0', paddingBottom: '16px' }}>
+                          <div
+                            id={"apply"}
+                            className="ck-content"
+                            dangerouslySetInnerHTML={createMarkupGetQA(q.answer)} />
+                        </AccordionDetails>
+
+                      </Accordion>
+
+                    </div>
+                  ))}
+                </div>
+                {
+                  QACount !== qADetails.length &&
+                  <div className={styles.btn_container}>
+                    <button className={styles.load_more_btn} onClick={handleLoadMoreComments}>
+                      {isLoadingQA !== true ?
+                        t("single_blog:load_more")
+                        :
+                        <>
+
+                          <ThreeDots
+                            height="25"
+                            width="25"
+                            radius="9"
+                            color="#00ccb5"
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{}}
+                            wrapperClassName="load_more_btn"
+                            visible={true}
+                          />
+                        </>
+
+                      }
+                    </button>
+                  </div>
+                }
+
+              </Container >
+
+            </section >
+          }
 
 
-      </> : <>
-        <Compare />
-      </>}
+          <ContactDetails />
+
+
+        </> : <>
+          <Compare />
+        </>}
 
     </>
   )
