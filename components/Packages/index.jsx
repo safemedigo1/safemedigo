@@ -48,7 +48,7 @@ const Packages = () => {
   const expandMoreIconHover = { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', };
 
   const accordionDetails = {
-    background: '#F5F5F5', boxShadow: "0px 3px 10px #00000029", borderRadius: "0px 0px 5px 5px",
+    background: '#F5F5F5', borderRadius: "0px 0px 5px 5px",
 
   }
   const style = {

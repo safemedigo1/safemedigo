@@ -42,11 +42,17 @@ section.packages {
             margin-right: 5px;
             // padding-right: 16px;
             // padding-left: 16px;
+            width: 403.443px;
           }
 
           @media screen and (max-width: 400px) {
             padding-right: 0;
             padding-left: 0;
+            width: 393px;
+          }
+
+          @media screen and (max-width: 370px) {
+            width: 100%;
           }
 
           .inner_box {
@@ -125,6 +131,7 @@ section.packages {
                 }
                 @media screen and (max-width: 450px) {
                   margin: 3px;
+                  margin-right: 0;
 
                   &:not(:last-child) {
                     margin-right: 4px;
