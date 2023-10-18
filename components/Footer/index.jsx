@@ -413,7 +413,9 @@ const Footer = ({ dataDoctorSlug }) => {
 
                   <div className={styles.contact}>
                     <Link href='#contact-us'>
-                      <button>Contact us</button>
+                      <button>
+                        {t("Footer:Contact_Us")}
+                      </button>
                     </Link>
                   </div>
                 }
@@ -429,7 +431,9 @@ const Footer = ({ dataDoctorSlug }) => {
 
                 <div className={styles.quote}>
                   <Link href='/quote'>
-                    <button>Get A Quote</button>
+                    <button>
+                      {t("Footer:getquote")}
+                    </button>
                   </Link>
                 </div>
 

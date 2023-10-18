@@ -53,7 +53,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
                           </div>
                           <div className={styles.text}>
                             <Typography>
-                              Safemedigo verified
+                              {t("most_popular:verified")}
                             </Typography>
                           </div>
 
@@ -155,7 +155,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
                             </div>
                             <div className={styles.text}>
                               <Typography>
-                                Safemedigo verified
+                                {t("most_popular:verified")}
                               </Typography>
                             </div>
                           </>

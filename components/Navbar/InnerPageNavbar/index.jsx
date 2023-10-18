@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import { AppContext } from '@/components/AppContext';
 
 
-const InnerPageNavbar = () => {
+const InnerPageNavbar = ({ dataTreatment, QACount }) => {
   const router = useRouter();
   const { t } = useTranslation();
 
@@ -15,6 +15,7 @@ const InnerPageNavbar = () => {
   const { isDoctorPageActive,
     setIsDoctorPageActive } = context;
 
+  console.log(QACount, "From TRETMENT PAGE")
 
   return (
     <header id={styles.InnerPageNavbar} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
@@ -28,12 +29,21 @@ const InnerPageNavbar = () => {
                 </Link>
               </ListItem>
 
-              <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                <Link href='#price' onClick={() => setIsDoctorPageActive(false)}>
-                  {t("proceduresSymptoms_single:nav_prices")}
-                </Link>
-              </ListItem>
+              {
+                router.pathname === 'procedures&symptoms/[slug]' &&
+                dataTreatment.cost !== "" &&
+                <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
+                  <Link href='#price' onClick={() => setIsDoctorPageActive(false)}>
+                    {t("proceduresSymptoms_single:nav_prices")}
+                  </Link>
+                </ListItem>
+
+              }
+
+
               {router.pathname !== '/hospitals/[slug]' &&
+
+                QACount > 0 &&
                 <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
                   <Link href='#q&a' onClick={() => setIsDoctorPageActive(false)}>
                     {t("proceduresSymptoms_single:nav_q&a")}
@@ -47,7 +57,7 @@ const InnerPageNavbar = () => {
                 </Link>
               </ListItem>
 
-              <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
+              <ListItem sx={{ width: 'fit-content', paddingLeft: '0px', cursor: 'pointer' }} >
                 <a onClick={() => setIsDoctorPageActive((prev) => !prev)}>
                   {t("proceduresSymptoms_single:nav_doctors")}
                 </a>

@@ -858,6 +858,10 @@ section.price {
   }
 }
 
+section.price.custom {
+  margin-top: 120px !important;
+}
+
 section.QA {
   margin-bottom: 40px;
   .title {
@@ -1266,6 +1270,10 @@ article.overview[dir="rtl"] {
       }
     }
   }
+}
+
+#howToGetTreatment[dir="rtl"] * {
+  font-family: var(--arabic-font) !important;
 }
 
 #treatment_desc[dir="rtl"] {

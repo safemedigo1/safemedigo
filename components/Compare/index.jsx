@@ -172,7 +172,7 @@ const Compare = (props) => {
                       '.MuiIconButton-root': {
                         color: '#004747 !important',
                       },
-                    }} />} label="Safemedigo Verified" />
+                    }} />} label={t("most_popular:verified")} />
 
 
                     <FormControlLabel
@@ -187,7 +187,7 @@ const Compare = (props) => {
                         '.MuiIconButton-root': {
                           color: '#004747 !important',
                         },
-                      }} />} label="Safemedigo Verified" />
+                      }} />} label={t("most_popular:verified")} />
 
 
 
@@ -356,7 +356,7 @@ const Compare = (props) => {
                         <div className={styles.verified}>
                           <FaShieldAlt />
                           <Typography >
-                            Safemedigo verified
+                            {t("most_popular:verified")}
                           </Typography>
                         </div>
 

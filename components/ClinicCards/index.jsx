@@ -84,7 +84,7 @@ const ClinicCard = ({ similarDocs }) => {
                 <div className={styles.verified}>
                   <FaShieldAlt color='#004747' />
                   <Typography >
-                    Safemedigo verified
+                    {t("most_popular:verified")}
                   </Typography>
                 </div>
               }

@@ -20,10 +20,12 @@ import Visits from "@/components/hospital/hotels/Visits";
 import { MdLocationOn } from 'react-icons/md'
 import { FaShieldAlt } from 'react-icons/fa'
 import Packages from "@/components/Packages";
+import { useTranslation } from "react-i18next";
 
 
 const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificatest, dataHospitalMedia, dataHospitalVisits, dataHospitalHotels }) => {
   const { certeficate, post1 } = imgs;
+  const { t } = useTranslation();
   const router = useRouter();
   const cards = [
     { title: 'Patient name', img: certeficate.src, id: '1', desc: ' Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Consetetur Sadipscing Elitr, Sed Diam Nonumy  ' },
@@ -498,7 +500,7 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
               </div>
               <div className={styles.text}>
                 <Typography>
-                  Safemedigo verified
+                  {t("most_popular:verified")}
                 </Typography>
               </div>
             </div>
@@ -958,7 +960,7 @@ export async function getStaticProps({ locale, params }) {
       dataHospitalMedia,
       dataHospitalVisits,
       dataHospitalHotels,
-      ...(await serverSideTranslations(locale, ["navbar", "proceduresSymptoms_single", 'Footer'])),
+      ...(await serverSideTranslations(locale, ["navbar", "proceduresSymptoms_single", 'Footer', 'most_popular'])),
     },
   };
 }

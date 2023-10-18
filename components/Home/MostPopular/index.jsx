@@ -407,7 +407,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                                 <div className={styles.verified}>
                                   <FaShieldAlt />
                                   <Typography >
-                                    Safemedigo verified
+                                    {t("most_popular:verified")}
                                   </Typography>
                                 </div>
                               }
@@ -494,7 +494,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                               <div className={styles.verified}>
                                 <FaShieldAlt />
                                 <Typography >
-                                  Safemedigo verified
+                                  {t("most_popular:verified")}
                                 </Typography>
                               </div>
                             </div>
@@ -577,7 +577,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                                 <div className={styles.verified}>
                                   <FaShieldAlt />
                                   <Typography >
-                                    Safemedigo verified
+                                    {t("most_popular:verified")}
                                   </Typography>
                                 </div>
                               }
@@ -663,7 +663,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                             <div className={styles.verified}>
                               <FaShieldAlt />
                               <Typography >
-                                Safemedigo verified
+                                {t("most_popular:verified")}
                               </Typography>
                             </div>
                           </div>
