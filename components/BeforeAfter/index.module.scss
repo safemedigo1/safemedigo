@@ -1,6 +1,7 @@
 #before_after {
   padding-top: 48px;
   padding-bottom: 48px;
+  background-color: #f4f9f8;
 
   @media screen and (max-width: 992px) {
     padding-top: 38px;
@@ -8,6 +9,10 @@
   }
   .title {
     margin-bottom: 40px;
+    @media screen and (max-width: 992px) {
+      margin-bottom: 16px;
+    }
+
     h3 {
       font-size: 28px;
       font-weight: var(--font-sem-bold);
@@ -17,6 +22,7 @@
         font-size: 18px;
         font-weight: bold;
         letter-spacing: 0;
+        margin-bottom: 0 !important;
       }
     }
   }
@@ -75,7 +81,7 @@
     }
 
     @media screen and (max-width: 992px) {
-      margin-top: 38px;
+      margin-top: 0 !important;
     }
 
     .box {
@@ -95,7 +101,8 @@
 
         @media screen and (max-width: 992px) {
           width: 100%;
-          height: 188px;
+          // height: 188px;
+          height: 230px;
         }
 
         img {
@@ -146,7 +153,6 @@
 
 #before_after[dir="rtl"] {
   .title {
-    margin-bottom: 40px;
     h3 {
       font-size: 28px;
       font-weight: var(--font-sem-bold);
@@ -190,7 +196,6 @@
   }
 
   .slider_container {
-    margin-top: 48px;
     position: relative;
 
     @media screen and (min-width: 992px) {
@@ -211,10 +216,6 @@
         top: 0;
         right: 0px;
       }
-    }
-
-    @media screen and (max-width: 992px) {
-      margin-top: 38px;
     }
 
     .box {

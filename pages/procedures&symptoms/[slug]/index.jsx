@@ -246,7 +246,11 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
       {compareStep !== 2 &&
         <PageHeader treatment={dataTreatment} />
       }
-      <InnerPageNavbar dataTreatment={dataTreatment} QACount={QACount} />
+      {
+        compareStep !== 2 &&
+        <InnerPageNavbar dataTreatment={dataTreatment} QACount={QACount} />
+
+      }
 
       {isDoctorPageActive === false ?
         <>
@@ -772,7 +776,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   <AccordionSummary
 
                     sx={expanded !== 'panel5' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
-                      : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+                      : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', minHeight: '55px !important' }
                     }
                     expandIcon={<ExpandMoreIcon sx={expanded !== 'panel5' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
                     aria-controls="panel3a-content"
@@ -783,6 +787,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
                     </Typography>
                   </AccordionSummary>
+
                   <AccordionDetails sx={{ background: '#F4F9F8', overflowX: 'auto', maxHeight: '50vh', }}>
                     <div
                       id={"apply"}
@@ -801,9 +806,9 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   <AccordionSummary
 
                     sx={expanded !== 'panel77' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
-                      : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+                      : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', minHeight: '55px !important' }
                     }
-                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel77' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel77' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', minHeight: '55px !important' }} />}
 
                   >
                     <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
@@ -834,7 +839,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   <AccordionSummary
 
                     sx={expanded !== 'panel6' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
-                      : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+                      : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', minHeight: '55px !important' }
                     }
                     expandIcon={<ExpandMoreIcon sx={expanded !== 'panel6' ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
                     aria-controls="panel6a-content"
@@ -1311,7 +1316,8 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
         </> : <>
           <Compare />
-        </>}
+        </>
+      }
 
     </>
   )

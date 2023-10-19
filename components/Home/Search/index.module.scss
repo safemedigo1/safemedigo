@@ -28,6 +28,7 @@
     transform: translateX(0);
     box-shadow: none;
     z-index: 0;
+    margin-bottom: 16px;
   }
 
   .searc_card {
@@ -285,6 +286,7 @@
 // AR
 #search[dir="rtl"] {
   bottom: 22%;
+  margin-bottom: 0 !important;
 
   @media screen and (min-width: 992px) {
     bottom: -107px;

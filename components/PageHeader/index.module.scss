@@ -94,11 +94,11 @@
               margin: 0;
               display: flex;
 
-              font-weight: var(--font-regular);
+              font-weight: 500;
               font-family: var(--quickstand-font);
 
               @media screen and (max-width: 992px) {
-                font-size: 14px;
+                font-size: 16px;
               }
             }
 

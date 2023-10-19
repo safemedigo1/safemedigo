@@ -56,7 +56,7 @@ const BeforeAfter = ({ treatments, beforeCards }) => {
         </div>
       </Container >
 
-      <Container className="custom_container">
+      <Container>
         <div className={styles.slider_container}>
           <Carousel
             breakPoints={BeforeAfterbreakPoints}

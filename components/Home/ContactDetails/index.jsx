@@ -87,7 +87,7 @@ const ContactDetails = () => {
                   </div>
 
                   <div className={styles.btn}>
-                    <Link href='/q&a'>
+                    <Link href='/quote'>
                       <button> {t('contact_details:ask')}</button>
                     </Link>
                   </div>

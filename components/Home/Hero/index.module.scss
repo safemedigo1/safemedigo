@@ -189,6 +189,7 @@ section#hero {
       @media screen and (max-width: 900px) {
         position: absolute;
         // bottom: -150px;
+        margin-top: 16px;
         left: 50%;
         transform: translateX(-50%);
         width: 378px;

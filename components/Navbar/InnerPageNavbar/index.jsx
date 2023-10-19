@@ -13,9 +13,9 @@ const InnerPageNavbar = ({ dataTreatment, QACount }) => {
 
   const context = useContext(AppContext);
   const { isDoctorPageActive,
-    setIsDoctorPageActive } = context;
+    setIsDoctorPageActive, compareStep } = context;
 
-  console.log(QACount, "From TRETMENT PAGE")
+
 
   return (
     <header id={styles.InnerPageNavbar} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
