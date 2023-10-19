@@ -72,7 +72,7 @@ const AboutUs = (props) => {
       <SecNavbar />
       <PageHeader />
 
-      <section id={styles.about_us} >
+      <section id={styles.about_us} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
           <div className={styles.boxes_container}>
 

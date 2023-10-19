@@ -310,7 +310,7 @@
 }
 
 #patient_mangers,
-#team {
+.team {
   .section_container {
     .title {
       margin-bottom: 52px;
@@ -366,4 +366,77 @@
       }
     }
   }
+}
+
+// AR
+#about_us[dir="rtl"] * {
+  font-family: var(--arabic-font) !important;
+}
+
+#about_us[dir="rtl"] {
+  .boxes_container {
+    .YouComeFirst,
+    .AllInclusiveCare {
+      .text_container {
+        margin-left: 0px;
+        margin-right: 90px;
+        @media screen and (max-width: 992px) {
+          margin-right: 0px;
+        }
+      }
+    }
+
+    .SafeHealthcare,
+    .StressFreeTreatment {
+      .text_container {
+        margin-right: 0px;
+        margin-left: 90px;
+
+        @media screen and (max-width: 992px) {
+          margin-left: 0;
+        }
+      }
+    }
+
+    .SafeHealthcare {
+      .img_container {
+        .icon_container {
+        }
+      }
+    }
+
+    .YouComeFirst {
+      .img_container {
+        .icon_container {
+        }
+      }
+    }
+
+    .StressFreeTreatment {
+      .img_container {
+        .icon_container {
+        }
+      }
+    }
+  }
+}
+
+#who_is_safemedigo[dir="rtl"] * {
+  font-family: var(--arabic-font) !important;
+}
+#founders[dir="rtl"] * {
+  font-family: var(--arabic-font) !important;
+}
+#medical_councilors[dir="rtl"] * {
+  font-family: var(--arabic-font) !important;
+}
+
+section.team[dir="rtl"] * {
+  font-family: var(--arabic-font) !important;
+}
+section.team[dir="rtl"] * {
+  font-family: var(--arabic-font) !important;
+}
+#patient_mangers[dir="rtl"] * {
+  font-family: var(--arabic-font) !important;
 }
