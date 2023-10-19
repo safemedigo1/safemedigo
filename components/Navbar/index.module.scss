@@ -305,13 +305,12 @@
 
             .lang_type {
               margin-right: 4px;
-
               span {
                 font-size: 16px;
                 text-decoration: none;
                 color: var(--main-dark-color);
                 transition: all 0.4 ease;
-                font-family: var(--quickstand-font);
+                font-family: var(--arabic-font);
                 font-weight: var(--font-sem-bold);
               }
             }
@@ -616,7 +615,7 @@
                   font-size: 16px;
                   text-decoration: none;
                   color: var(--main-dark-color);
-                  font-family: var(--quickstand-font);
+                  font-family: var(--arabic-font);
                   font-weight: var(--font-sem-bold);
                 }
               }
@@ -697,6 +696,9 @@
 }
 
 // AR
+.navbar[dir="rtl"] * {
+  font-family: var(--arabic-font);
+}
 .navbar[dir="rtl"] {
   .navbar__logo {
     img {
@@ -860,4 +862,7 @@
   a {
     font-family: var(--arabic-font);
   }
+}
+#sec_nav[dir="rtl"] * {
+  font-family: var(--arabic-font);
 }

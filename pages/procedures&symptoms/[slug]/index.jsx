@@ -920,10 +920,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   <div className={styles.menu_container}>
                     <Accordion disableGutters elevation={0}
                       square={false} sx={style}
-
                       expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
-
-
                       <AccordionSummary
                         sx={expanded !== 'panel9' ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
                           : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
@@ -946,7 +943,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                         <div className={styles.title}>
                           <Typography variant='h6'>
                             {router.locale === 'ar' &&
-                              <Typography variant='h6'>
+                              <Typography variant='h6' >
                                 ما هي البيانات والمعلومات المطلوبة لإجراء {dataTreatment.treatmentName} في تركيا؟
 
                               </Typography>
@@ -960,7 +957,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
                             }
                             {router.locale === 'tr' &&
-                              <Typography variant='h6'>
+                              <Typography variant='h6' sx={{ fontWeight: 'bold' }}>
                                 Türkiye'de Bir {dataTreatment.treatmentName}  İşlemi İçin Hangi Belge ve Bilgiler Gereklidir?
 
                               </Typography>}
@@ -1054,88 +1051,81 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
                       <AccordionDetails sx={{ backgroundColor: '#F4F9F8', maxHeight: '50vh', overflowX: 'auto', }} >
                         <div className={styles.title}>
-                          <Typography variant='h6'>
-                            {router.locale === 'ar' &&
+                          {router.locale === 'ar' &&
+                            <>
+                              <Typography variant='h6'>
+                                كيف يمكنني تأكيد موعد إجراء {dataTreatment.treatmentName} الخاص بي مع Safemedigo؟
 
-                              <>
+                              </Typography>
+                              <Typography variant='h5'>
+                                لضمان تأكيد حجزك لإجراء {dataTreatment.treatmentName} مع Safemedigo، من الضروري دفع رسوم حجز قدرها 145 دولارًا بدايةً. حيث توفر هذه الرسوم المزايا التالية:
+                              </Typography>
+                            </>
 
-                                <Typography variant='h6'>
-                                  كيف يمكنني تأكيد موعد إجراء {dataTreatment.treatmentName} الخاص بي مع Safemedigo؟
-
-                                </Typography>
-                                <Typography variant='h6'>
-                                  لضمان تأكيد حجزك لإجراء {dataTreatment.treatmentName} مع Safemedigo، من الضروري دفع رسوم حجز قدرها 145 دولارًا بدايةً. حيث توفر هذه الرسوم المزايا التالية:
-                                </Typography>
-                                <Typography variant='h6'>
-                                  الحجز: يضمن لك موعدًا في إحدى عياداتنا المتميزة.
-                                  الالتزام: يعكس إلتزامك بالقدوم إلى موعد الإجراء، مما يعزز الجدولة والعمليات الفعالة ضمن خدماتنا الطبية ويبقى نظام الخدمات الصحية بمستواه المطلوب.
-                                  استقرار التكلفة: تضمن هذه الرسوم بقاء السعر مستقرًا لمدة محددة، مما يحميك من تقلبات الأسعار المحتملة.
-                                  خصم التكلفة: يتم إضافة هذه الرسوم إلى التكلفة الإجمالية لإجراءاتك، مما يقلل المبلغ النهائي الذي يتعين عليك دفعه.
-
-                                </Typography>
-                                <Typography variant='h6'>
-                                  من المهم ملاحظة أن رسوم الحجز تصبح غير قابلة للاسترداد بعد 24 ساعة من التأكيد. بمجرد الانتهاء من الحجز، ستقوم Safemedigo بمشاركة معلومات الموعد التفصيلية والمساعدة في الاعتبارات اللوجستية مثل ترتيبات السفر والإقامة والنقل والتنسيق الطبي والمساعدة في المستندات والدعم المحلي ورعاية ما بعد العلاج.
-                                </Typography>
-
-                              </>
-                            }
-                            {router.locale === 'en' &&
-                              <>
-                                <Typography variant='h6'>
-                                  How Do I Confirm My {dataTreatment.treatmentName}  Procedure Appointment With Safemedigo?
-
-                                </Typography>
-                                <Typography variant='h6'>
-                                  To Secure Your Spot For The {dataTreatment.treatmentName}  Procedure With Safemedigo, A Booking Fee Of $145 Is Essential. This Fee Provides Multiple Benefits:
-
-                                </Typography>
-                                <Typography variant='h6'>
-                                  Reservation: It Ensures Your Appointment Slot At One Of Our Esteemed Clinics.
-                                  Commitment: It Reflects Your Dedication To The Procedure, Fostering Efficient Scheduling And Operations Within Our Medical Services.
-                                  Cost Stability: This Fee Ensures The Price Remains Stable For A Specified Duration, Protecting You From Potential Price Fluctuations.
-                                  Cost Deduction: This Fee Is Credited Toward The Overall Cost Of Your Procedure, Reducing The Final Amount You'd Need To Pay.
-
-                                </Typography>
-                                <Typography variant='h6'>
-                                  It's Crucial To Note That The Booking Fee Becomes Non-Refundable 24 Hours After Confirmation. Once You've Finalized The Booking, Safemedigo Will Share Detailed Appointment Information And Assist With Logistical Considerations Such As Travel Arrangements, Accommodation, Transportation, Medical Coordination, Document Assistance, Local Support And Post-Treatment Care.
-                                </Typography>
-
-                              </>
-                            }
-                            {router.locale === 'tr' &&
-                              <>
-                                <Typography variant='h6'>
-                                  {dataTreatment.treatmentName} Prosedür Randevumu Safemedigo'dan Nasıl Onaylarım?
-
-                                </Typography>
-                                <Typography variant='h6'>
-                                  Safemedigo ile {dataTreatment.treatmentName}  Prosedüründe Yerinizi Güvenceye Almak İçin 145 Dolarlık Rezervasyon Ücreti Esastır. Bu Ücret Birçok Avantaj Sağlar:
-
-                                </Typography>
-                                <Typography variant='h6'>
-                                  Rezervasyon: Saygın Kliniklerimizden Birinde Randevu Yerinizi Sağlar.
-                                  Taahhüt: Prosedüre olan bağlılığınızı yansıtır, Tıbbi Hizmetlerimizde Verimli Planlamayı ve Operasyonları Geliştirir.
-                                  Maliyet İstikrarı: Bu Ücret, Fiyatın Belirli Bir Süre Sabit Kalmasını Sağlayarak Sizi Olası Fiyat Dalgalanmalarından Korur. Maliyet Kesintisi: Bu Ücret, İşleminizin Genel Maliyetine Eklenerek Ödemeniz Gereken Nihai Tutar Azaltılır.
-
-                                </Typography>
-                                <Typography variant='h6'>
-                                  Rezervasyon Ücretinin Onaydan 24 Saat Sonra İade Edilemez Hale Geleceğini Dikkate Almak Çok Önemlidir. Rezervasyonu Tamamladığınızda, Safemedigo Detaylı Randevu Bilgilerini Paylaşacak ve Seyahat Düzenlemeleri, Konaklama, Ulaşım, Tıbbi Koordinasyon, Belge Yardımı, Yerel Destek ve Tedavi Sonrası Bakım Gibi Lojistik Konularda Yardımcı Olacaktır.
-                                </Typography>
-
-                              </>
-                            }
+                          }
 
 
+                          {router.locale === 'en' &&
+                            <>
+                              <Typography variant='h6'>
+                                How Do I Confirm My {dataTreatment.treatmentName}  Procedure Appointment With Safemedigo?
+
+                              </Typography>
+                              <Typography variant='h5'>
+                                To Secure Your Spot For The {dataTreatment.treatmentName}  Procedure With Safemedigo, A Booking Fee Of $145 Is Essential. This Fee Provides Multiple Benefits:
+
+                              </Typography>
+
+                            </>
+                          }
+
+                          {router.locale === 'tr' &&
+                            <>
+                              <Typography variant='h6'>
+                                {dataTreatment.treatmentName} Prosedür Randevumu Safemedigo'dan Nasıl Onaylarım?
+                              </Typography>
+                              <Typography variant='h5'>
+                                Safemedigo ile {dataTreatment.treatmentName}  Prosedüründe Yerinizi Güvenceye Almak İçin 145 Dolarlık Rezervasyon Ücreti Esastır. Bu Ücret Birçok Avantaj Sağlar:
+
+                              </Typography>
+                            </>
+                          }
+
+
+
+                        </div>
+
+                        <div className={styles.desc}>
+                          <Typography>
+                            <span>{t('proceduresSymptoms_single:step3_Reservation')}:</span> {` `}
+                            {t('proceduresSymptoms_single:step3_ReservationDesc')}
                           </Typography>
                         </div>
 
+                        <div className={styles.desc}>
+                          <Typography>
+                            <span>{t('proceduresSymptoms_single:step3_Commitment')}:</span>{` `}
+                            {t('proceduresSymptoms_single:step3_CommitmentDesc')}
+                          </Typography>
+                        </div>
 
-
-                        <div
-                          id={"apply"}
-                          className="ck-content"
-                          dangerouslySetInnerHTML={createMarkupGetTreatmentStepThree()} />
-
+                        <div className={styles.desc}>
+                          <Typography>
+                            <span>{t('proceduresSymptoms_single:step3_Cost_Stability')}:</span>{` `}
+                            {t('proceduresSymptoms_single:step3_Cost_StabilityDesc')}
+                          </Typography>
+                        </div>
+                        <div className={styles.desc}>
+                          <Typography>
+                            <span>{t('proceduresSymptoms_single:step3_Cost_Deduction')}:</span>{` `}
+                            {t('proceduresSymptoms_single:step3_Cost_DeductionDesc')}
+                          </Typography>
+                        </div>
+                        <div className={styles.desc}>
+                          <Typography>
+                            {t('proceduresSymptoms_single:note')}
+                          </Typography>
+                        </div>
 
                       </AccordionDetails>
                     </Accordion>

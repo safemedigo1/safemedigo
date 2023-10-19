@@ -169,6 +169,7 @@
         font-weight: var(--font-bold);
         font-family: "Quicksand";
         margin: 0;
+        background-color: kred;
       }
     }
 
@@ -740,4 +741,7 @@
       margin-left: 16px;
     }
   }
+}
+.card_wrapper[dir="rtl"] * {
+  font-family: var(--arabic-font) !important;
 }

@@ -442,6 +442,7 @@ article.overview {
 
   .title {
     margin-bottom: 24px;
+    max-width: 695px;
 
     @media screen and (max-width: 992px) {
       margin-right: 0px;
@@ -612,10 +613,44 @@ article.overview {
       .title {
         margin-top: 16px;
         margin-bottom: 16px;
-        h6 {
+        h6,
+        h5,
+        span {
           color: var(--main-dark-color);
           font-size: 18px;
+          font-weight: var(--font-bold);
+          font-family: var(--quickstand-font);
+        }
+
+        h5 {
           font-weight: var(--font-medium);
+          font-size: 16px;
+          margin-top: 16px;
+        }
+
+        span {
+          font-weight: var(--font-bold);
+        }
+
+        p {
+          color: var(--main-dark-color);
+          font-size: var(--font-sem-bold);
+        }
+      }
+      .desc {
+        margin-bottom: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        span {
+          font-weight: var(--font-bold);
+          font-family: var(--quickstand-font);
+          margin: 0 !important;
+        }
+        p {
+          font-weight: var(--font-regular);
+          font-family: var(--quickstand-font);
+
+          font-size: 16px;
         }
       }
       @media screen and (max-width: 992px) {
@@ -859,7 +894,10 @@ section.price {
 }
 
 section.price.custom {
-  margin-top: 120px !important;
+  margin-top: 40px !important;
+  @media screen and (max-width: 992px) {
+    margin-top: 0 !important;
+  }
 }
 
 section.QA {
@@ -1396,6 +1434,13 @@ article.overview[dir="rtl"] {
         margin: 0px !important;
       }
     }
+  }
+}
+
+section.price.custom[dir="rtl"] {
+  margin-top: 120px !important;
+  @media screen and (max-width: 992px) {
+    margin-top: 0 !important;
   }
 }
 

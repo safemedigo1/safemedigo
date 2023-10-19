@@ -33,5 +33,15 @@
   "benefits": "Benefits",
   "Side_Effects": "Possible Side Effects",
   "Candidate": "What Makes A Good Candidate",
-  "Hospitalization": "Procedure Duration & Hospitalization"
+  "Hospitalization": "Procedure Duration & Hospitalization",
+
+  "step3_Reservation": "Rezervasyon",
+  "step3_ReservationDesc": "Saygın Kliniklerimizden Birinde Randevu Yerinizi Sağlar.",
+  "step3_Commitment": "Taahhüt",
+  "step3_CommitmentDesc": "Prosedüre olan bağlılığınızı yansıtır, Tıbbi Hizmetlerimizde Verimli Planlamayı ve Operasyonları Geliştirir.",
+  "step3_Cost_Stability": "Maliyet İstikrarı",
+  "step3_Cost_StabilityDesc": "Bu Ücret, Fiyatın Belirli Bir Süre Sabit Kalmasını Sağlayarak Sizi Olası Fiyat Dalgalanmalarından Korur.",
+  "step3_Cost_Deduction": "Maliyet Kesintisi",
+  "step3_Cost_DeductionDesc": "Bu Ücret, İşleminizin Genel Maliyetine Eklenerek Ödemeniz Gereken Nihai Tutar Azaltılır.",
+  "note": "Rezervasyon Ücretinin Onaydan 24 Saat Sonra İade Edilemez Hale Geleceğini Dikkate Almak Çok Önemlidir. Rezervasyonu Tamamladığınızda, Safemedigo Detaylı Randevu Bilgilerini Paylaşacak ve Seyahat Düzenlemeleri, Konaklama, Ulaşım, Tıbbi Koordinasyon, Belge Yardımı, Yerel Destek ve Tedavi Sonrası Bakım Gibi Lojistik Konularda Yardımcı Olacaktır."
 }

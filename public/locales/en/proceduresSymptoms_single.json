@@ -32,5 +32,15 @@
   "benefits": "Benefits",
   "Side_Effects": "Possible Side Effects",
   "Candidate": "What Makes A Good Candidate",
-  "Hospitalization": "Procedure Duration & Hospitalization"
+  "Hospitalization": "Procedure Duration & Hospitalization",
+
+  "step3_Reservation": "Reservation",
+  "step3_ReservationDesc": "It Ensures Your Appointment Slot At One Of Our Esteemed Clinics.",
+  "step3_Commitment": "Commitment",
+  "step3_CommitmentDesc": "It Reflects Your Dedication To The Procedure, Fostering Efficient Scheduling And Operations Within Our Medical Services.",
+  "step3_Cost_Stability": "Cost Stability",
+  "step3_Cost_StabilityDesc": "This Fee Ensures The Price Remains Stable For A Specified Duration, Protecting You From Potential Price Fluctuations.",
+  "step3_Cost_Deduction": "Cost Deduction",
+  "step3_Cost_DeductionDesc": "This Fee Is Credited Toward The Overall Cost Of Your Procedure, Reducing The Final Amount You'd Need To Pay.",
+  "note": " It's Crucial To Note That The Booking Fee Becomes Non-Refundable 24 Hours After Confirmation. Once You've Finalized The Booking, Safemedigo Will Share Detailed Appointment Information And Assist With Logistical Considerations Such As Travel Arrangements, Accommodation, Transportation, Medical Coordination, Document Assistance, Local Support And Post-Treatment Care."
 }

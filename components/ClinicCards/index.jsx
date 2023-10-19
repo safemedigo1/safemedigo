@@ -13,9 +13,10 @@ import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import Image from 'next/image';
 
-
 const ClinicCard = ({ similarDocs }) => {
   const { certeficate, post1 } = imgs;
+  const { t } = useTranslation();
+
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false, itemsToShow: 1.1 },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },
