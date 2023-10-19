@@ -90,8 +90,8 @@ article.overview {
       }
 
       .menu_container {
-        margin-top: 48px;
-        padding-top: 48px;
+        margin-top: 24px;
+        // padding-top: 48px;
         @media screen and (min-width: 992px) {
           width: 660px;
         }
@@ -165,7 +165,7 @@ article.overview {
           grid-column-gap: inherit;
         }
         @media screen and (max-width: 992px) {
-          margin-bottom: 38px;
+          // margin-bottom: 38px;
         }
 
         @media screen and (min-width: 1200px) {
