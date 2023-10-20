@@ -259,7 +259,7 @@ const Hero = () => {
                   <div className={styles.box} key={index} onClick={() => setShowCard((prev) => !prev)}>
                     <div className={styles.box_header}>
                       <div className={styles.img_container}>
-                        <Image width={80} height={80} src={card.img} alt="" />
+                        <Image width={80} height={80} src={card.img} alt={card.treatment} />
                       </div>
                       <div className={styles.title}>
                         <Typography variant="h6">{card.title}</Typography>

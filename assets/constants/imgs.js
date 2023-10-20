@@ -44,7 +44,7 @@ import burger from "../svgs/burger.svg";
 import notifications from "../svgs/notifications.svg";
 import user from "../svgs/user.svg";
 import blog_detail from "../imgs/blog_detail.png";
-import majd from "../imgs/majd.png";
+import majd from "../imgs/majd.webp";
 import howItIworks_search from "../imgs/howItIworks_search.png";
 
 import logoFooter from "../svgs/logo-footer.svg";
