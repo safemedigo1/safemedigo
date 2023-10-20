@@ -28,6 +28,14 @@ const nextConfig = {
     ],
   },
 
+  source: "https://api2.safemedigo.com/api/v1/(.*)",
+  headers: [
+    {
+      key: "Content-Type",
+      value: "image/webp",
+    },
+  ],
+
   typescript: {
     ignoreBuildErrors: true,
   },

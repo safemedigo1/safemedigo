@@ -282,11 +282,12 @@ section.proceduresSymptoms {
           display: flex;
           align-items: center;
           justify-content: center;
-          background-color: transparent;
-          color: var(--main-dark-color);
+          color: var(--main-white-color);
           border-radius: 5px;
           border: 2px solid var(--main-dark-color);
           transition: all 0.3s ease;
+          background-color: var(--main-green-color);
+          border-color: var(--main-green-color);
 
           font-size: 18px;
           font-weight: var(--font-bold);
@@ -300,9 +301,8 @@ section.proceduresSymptoms {
           }
 
           &:hover {
-            background-color: var(--main-green-color);
-            color: var(--main-white-color);
-            border-color: var(--main-green-color);
+            color: var(--main-dark-color) !important;
+            background-color: transparent !important;
           }
         }
       }
