@@ -344,7 +344,7 @@ const Footer = ({ dataDoctorSlug }) => {
                 </div>
               </div>
 
-              <Box display='flex'
+              <Box display='flex' sx={{ justifyContent: 'flex-end' }}
                 className={styles.btns_container}>
                 <div className={styles.quote}>
                   <a onClick={() => setCompareStep(2)}>

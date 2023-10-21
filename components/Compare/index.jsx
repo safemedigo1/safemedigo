@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import styles from './index.module.scss'
-import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, Container, FormControlLabel, FormGroup, Rating, Slider, Switch, Typography } from '@mui/material'
+import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, Container, FormControl, FormControlLabel, FormGroup, MenuItem, Rating, Select, Slider, Switch, Typography } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Switcher from '../Switcher';
 import Link from 'next/link';
@@ -16,16 +16,20 @@ import CloseIcon from '@mui/icons-material/Close';
 import Carousel from 'react-elastic-carousel';
 import { consts } from 'react-elastic-carousel';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
-
+import { motion } from 'framer-motion';
+import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
+import { useRouter } from 'next/router';
+import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 
 const Compare = (props) => {
   const context = useContext(AppContext);
   const { isDoctorPageActive, setIsDoctorPageActive, compareStep
     , setCompareStep } = context;
-
+  const router = useRouter()
 
   const [priceValue, setPriceValue] = useState([0, 100]);
   const [compareArr, setCompareArr] = useState();
+  const [showMenu, setShowMenu] = useState(false);
 
   const [minNum, setMinNum] = useState(0);
   const [maxNum, setMaxNum] = useState(1000);
@@ -138,14 +142,79 @@ const Compare = (props) => {
 
   ]
 
-  console.log(props, "PROPS")
+
+  const SelecetStyleEn = {
+    backgroundColor: "#004747",
+    color: "#FFFFFF",
+    fontSize: "18px",
+    fontWeight: "bold",
+    fontFamily: 'Quicksand',
+    borderRadius: '5px',
+  }
+  const SelecetStyleAr = {
+    backgroundColor: "#004747",
+    color: "#FFFFFF",
+    fontSize: "18px",
+    fontWeight: "bold",
+    fontFamily: 'Tajawal',
+    borderRadius: '5px',
+  }
   return (
     < >
-
       <section id='compare' className={styles.compare}>
         {compareStep === 1 &&
           <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.sec_container}>
+              <div className={styles.mobile_filter}>
+                <div className={styles.title}>
+                  <Typography variant='h3'>10 Doctor found</Typography>
+                  <div className={styles.icon_container} onClick={() => setShowMenu(true)}>
+                    <TuneOutlinedIcon /> Filters
+                  </div>
+                </div>
+
+                <div className={styles.filter_sec}>
+                  <FormControl fullWidth  >
+                    {/* <InputLabel id="demo-simple-select-autowidth-label">{t('blogs_page:filter_title')}</InputLabel> */}
+                    <Select
+                      displayEmpty
+                      inputProps={{ 'aria-label': 'Without label' }}
+                      IconComponent={ExpandMoreOutlinedIcon}
+                      // onChange={handleFilterChanges}
+
+                      MenuProps={{
+                        anchorOrigin: { horizontal: 'right', vertical: 'bottom' },
+                        transformOrigin: { horizontal: 'right', vertical: 'top' },
+                      }}
+                      style={router.loacle === 'ar' ? SelecetStyleAr : SelecetStyleEn}
+                      sx={{
+                        '.MuiSelect-icon': {
+                          color: '#FFFFFF !important',
+                          width: '25px',
+                          height: '25px'
+                        },
+                        '.MuiSelect-select ': { padding: '11px 18px 0px 18px !important', height: '40px!important' }
+                      }}
+                    >
+
+                      <MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}  >
+                        Low Price
+                      </MenuItem>
+                      <MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}  >
+                        Low Price
+                      </MenuItem>
+                      <MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}  >
+                        Low Price
+                      </MenuItem>
+
+
+                    </Select>
+                  </FormControl>
+
+                </div>
+
+              </div>
+
 
               <div className={styles.filter_container}>
                 <div className={styles.sec_title}>
@@ -326,8 +395,6 @@ const Compare = (props) => {
 
               </div>
 
-
-
               <div className={styles.results_container}>
                 <div className={styles.sec_title}>
                   <Typography variant='h3'>16 DOCTORS FOUND</Typography>
@@ -433,6 +500,209 @@ const Compare = (props) => {
 
                 </div>
               </div>
+
+              {showMenu && (
+                <motion.div
+                  animate={router.locale === 'ar' ? { x: [-300, 0] } : { x: [300, 0] }}
+                  transition={{ duration: 0.85, ease: "easeOut" }}
+                  className={styles.side_bar_mobile}
+                >
+                  <div className={styles.inner_container}>
+
+                    <div className={styles.back_container} onClick={() => setShowMenu(false)}>
+                      <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+                        <div className={styles.back}>
+                          <div className={styles.icon_container}>
+                            <FaArrowLeft />
+                          </div>
+                          <Typography>Back</Typography>
+
+                        </div>
+                      </Container >
+                    </div>
+                    <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
+                      <div className={styles.filter_box}>
+                        <div className={styles.title}>
+                          <Typography variant='h6'>Show me</Typography>
+                        </div>
+
+                        <div className={styles.check_box}>
+                          {/* <FormControlLabel
+                    control={
+                    } label="Accept Virtual Consultations" /> */}
+
+                          <FormControlLabel control={<Checkbox sx={{
+                            color: '#004747 !important',
+                            marginTop: '8px',
+                            marginBottom: '8px',
+                            '.Mui-checked': {
+                              color: '#004747 !important',
+                            },
+
+                            '.MuiIconButton-root': {
+                              color: '#004747 !important',
+                            },
+                          }} />} label={t("most_popular:verified")} />
+
+
+                          <FormControlLabel
+                            control={<Checkbox sx={{
+                              color: '#004747 !important',
+                              marginTop: '8px',
+                              marginBottom: '8px',
+                              '.Mui-checked': {
+                                color: '#004747 !important',
+                              },
+
+                              '.MuiIconButton-root': {
+                                color: '#004747 !important',
+                              },
+                            }} />} label={t("most_popular:verified")} />
+
+
+
+                          <FormControlLabel
+
+                            control={<Checkbox sx={{
+                              color: '#004747 !important',
+                              marginTop: '8px',
+                              marginBottom: '8px',
+                              '.Mui-checked': {
+                                color: '#004747 !important',
+                              },
+
+                              '.MuiIconButton-root': {
+                                color: '#004747 !important',
+                              },
+                            }} />} label="Flexible Price" />
+
+                        </div>
+
+
+                        <div className={styles.price}>
+                          <div className={styles.title}>
+                            <Typography variant='h6'>Prices</Typography>
+                          </div>
+                          <div className={styles.price_num}>
+                            <Typography>3000 $</Typography>
+                          </div>
+
+                          <div className={styles.price_range}>
+                            <Slider
+                              // aria-label="Always visible"
+                              // onChange={handlePriceChange}
+                              // defaultValue={80}
+                              // getAriaLabel={() => 'Temperature range'}
+                              // value={priceValue}
+                              // onChange={handlePriceChange}
+                              // valueLabelDisplay={"auto"}
+                              // getAriaValueText={valuetext}
+                              marks={marks}
+                              // min={0}
+                              // max={30000}
+
+
+                              value={priceRangeValue}
+                              onChange={handlePriceRangeChange}
+                              valueLabelDisplay="auto"
+                              min={minmin}
+                              max={maxmax}
+
+                            />
+
+                          </div>
+                        </div>
+
+
+                        <div className={styles.treatment_fee}>
+                          <div className={styles.check_box}>
+
+                            <FormControlLabel
+
+                              control={<Checkbox sx={{
+                                color: '#004747 !important',
+                                marginTop: '8px',
+                                marginBottom: '8px',
+                                '.Mui-checked': {
+                                  color: '#004747 !important',
+                                },
+
+                                '.MuiIconButton-root': {
+                                  color: '#004747 !important',
+                                },
+                              }} />} label="Treatment Price" />
+
+
+                          </div>
+                          <div className="switcher">
+                            <Switcher />
+                          </div>
+                        </div>
+
+
+
+
+
+                        <div className={styles.accordion_container}>
+                          <div className={styles.filter_sec}>
+                            <FormControl fullWidth  >
+                              {/* <InputLabel id="demo-simple-select-autowidth-label">{t('blogs_page:filter_title')}</InputLabel> */}
+                              <Select
+                                displayEmpty
+                                inputProps={{ 'aria-label': 'Without label' }}
+                                IconComponent={ExpandMoreOutlinedIcon}
+                                // onChange={handleFilterChanges}
+
+                                MenuProps={{
+                                  anchorOrigin: { horizontal: 'right', vertical: 'bottom' },
+                                  transformOrigin: { horizontal: 'right', vertical: 'top' },
+                                }}
+                                style={router.locale === 'ar' ? SelecetStyleAr : SelecetStyleEn}
+                                sx={{
+                                  '.MuiSelect-icon': {
+                                    color: '#FFFFFF !important',
+                                    width: '25px',
+                                    height: '25px'
+                                  },
+                                  '.MuiSelect-select ': { padding: '11px 18px 0px 18px !important', height: '40px!important' }
+                                }}
+                              >
+
+                                <MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}  >
+                                  Low Price
+                                </MenuItem>
+                                <MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}  >
+                                  Low Price
+                                </MenuItem>
+                                <MenuItem dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}  >
+                                  Low Price
+                                </MenuItem>
+
+
+                              </Select>
+                            </FormControl>
+
+                          </div>
+
+
+
+                        </div>
+
+
+                        <div className={styles.reset_btn}>
+                          <button>Reset All</button>
+                        </div>
+
+                        <div className={styles.found_btn} onClick={() => setShowMenu(false)}>
+                          <button>Found</button>
+                        </div>
+
+                      </div>
+                    </Container >
+                  </div>
+                </motion.div>
+              )}
+
             </div>
           </Container>
         }

@@ -299,6 +299,11 @@ footer#footer {
           width: 60px;
           height: 60px;
           margin-right: 8px;
+
+          @media screen and (max-width: 570px) {
+            width: 35px;
+            height: 35px;
+          }
           img {
             border-radius: 5px;
           }
@@ -313,7 +318,10 @@ footer#footer {
           height: 23.51px;
           display: flex;
           cursor: pointer;
-
+          @media screen and (max-width: 570px) {
+            top: -10px;
+            left: -10px;
+          }
           svg {
             margin: auto;
             color: var(--main-white-color);
@@ -324,6 +332,9 @@ footer#footer {
       }
 
       .name {
+        @media screen and (max-width: 570px) {
+          display: none;
+        }
         p {
           display: block;
           font-size: 16px;
