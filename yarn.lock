@@ -2089,7 +2089,7 @@ prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@*, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -2154,6 +2154,11 @@ react-elastic-carousel@^0.11.5:
     react-swipeable "^5.5.1"
     resize-observer-polyfill "1.5.0"
 
+react-fast-marquee@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.npmjs.org/react-fast-marquee/-/react-fast-marquee-1.6.2.tgz"
+  integrity sha512-bXUuW1r+Yzd8ZjsPmMDy8WJMubHAZd/7n0W/IzUQHtd0iBfxWohP6hzCFnEHWMCOtC9wxSAq/BiEnig4kdI2Vw==
+
 react-hot-toast@^2.4.0:
   version "2.4.0"
   resolved "https://registry.npmjs.org/react-hot-toast/-/react-hot-toast-2.4.0.tgz"
@@ -2202,6 +2207,13 @@ react-loader-spinner@^5.3.4:
     react-is "^18.2.0"
     styled-components "^5.3.5"
     styled-tools "^1.7.2"
+
+react-marquee@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/react-marquee/-/react-marquee-1.0.0.tgz"
+  integrity sha512-AXHGGWdK+BBhKln/ysXD1CLV6pdv9LDm0beoyQ+RYI8FO2PzqwGqDYrS6ssH3TvYytiLCxY0pIxUGGXNn1f/gg==
+  dependencies:
+    prop-types "*"
 
 react-only-when@^1.0.2:
   version "1.0.2"

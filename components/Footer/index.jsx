@@ -10,6 +10,7 @@ import { useRouter } from 'next/router'
 import { MdLocationOn } from 'react-icons/md'
 import { AppContext } from '@/components/AppContext';
 import CloseIcon from '@mui/icons-material/Close';
+import Marquee from "react-fast-marquee";
 
 
 
@@ -421,10 +422,22 @@ const Footer = ({ dataDoctorSlug }) => {
                 }
 
                 {router.pathname === '/doctor/[slug]' &&
-                  <Typography>
-                    {dataDoctorSlug?.doctorTreatments[0]?.treatmentName}
-                    starting from {dataDoctorSlug?.doctorTreatments[0]?.price}$
-                  </Typography>
+                  <>
+
+                    <Typography sx={{ minWidth: "50%", display: { xs: "block", sm: 'block', md: "none", lg: 'none', xlg: 'none' } }}>
+                      <Marquee speed={20}>
+                        {dataDoctorSlug?.doctorTreatments[0]?.treatmentName}
+                        &nbsp;
+                        Starting from
+                        &nbsp;
+                        {dataDoctorSlug?.doctorTreatments[0]?.price}$   &nbsp;
+                      </Marquee>
+                    </Typography>
+
+                    <Typography sx={{ minWidth: "50%", display: { xs: "none", sm: 'none', md: "block", lg: 'block', xlg: 'block' } }} >
+                      {dataDoctorSlug?.doctorTreatments[0]?.treatmentName} {`  `} Starting from {dataDoctorSlug?.doctorTreatments[0]?.price} {` `} $ {` `}
+                    </Typography>
+                  </>
 
                 }
 
@@ -444,7 +457,7 @@ const Footer = ({ dataDoctorSlug }) => {
 
 
         </Container>
-      </Grid>
+      </Grid >
     </>
 
   )
