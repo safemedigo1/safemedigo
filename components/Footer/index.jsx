@@ -421,22 +421,39 @@ const Footer = ({ dataDoctorSlug }) => {
                   </div>
                 }
 
+
                 {router.pathname === '/doctor/[slug]' &&
                   <>
+                    {
+                      dataDoctorSlug?.doctorTreatments[0]?.treatmentName.split(' ').length >= 4 ?
 
-                    <Typography sx={{ minWidth: "50%", display: { xs: "block", sm: 'block', md: "none", lg: 'none', xlg: 'none' } }}>
-                      <Marquee speed={20}>
-                        {dataDoctorSlug?.doctorTreatments[0]?.treatmentName}
-                        &nbsp;
-                        Starting from
-                        &nbsp;
-                        {dataDoctorSlug?.doctorTreatments[0]?.price}$   &nbsp;
-                      </Marquee>
-                    </Typography>
+                        < Typography sx={{ minWidth: "50%", display: { xs: "block", sm: 'block', md: "none", lg: 'none', xlg: 'none' } }}>
+                          <Marquee speed={40}>
+                            {dataDoctorSlug?.doctorTreatments[0]?.treatmentName}
+                            &nbsp;
+                          </Marquee>
+                          Starting from
+                          &nbsp;
+                          {dataDoctorSlug?.doctorTreatments[0]?.price}$   &nbsp;
+                        </Typography>
+                        :
 
-                    <Typography sx={{ minWidth: "50%", display: { xs: "none", sm: 'none', md: "block", lg: 'block', xlg: 'block' } }} >
-                      {dataDoctorSlug?.doctorTreatments[0]?.treatmentName} {`  `} Starting from {dataDoctorSlug?.doctorTreatments[0]?.price} {` `} $ {` `}
-                    </Typography>
+                        <>
+                          <Typography sx={{ minWidth: "50%", display: { xs: "none", sm: 'none', md: "block", lg: 'block', xlg: 'block' } }} >
+                            {dataDoctorSlug?.doctorTreatments[0]?.treatmentName} {`  `}
+                            Starting from {dataDoctorSlug?.doctorTreatments[0]?.price} {` `} $ {` `}
+                          </Typography>
+
+                          <Typography sx={{ display: { xs: "block", sm: 'block', md: "none", lg: 'none', xlg: 'none' } }}>
+                            {dataDoctorSlug?.doctorTreatments[0]?.treatmentName}
+                            <br />
+                            Starting from
+                            &nbsp;
+                            {dataDoctorSlug?.doctorTreatments[0]?.price}$   &nbsp;
+                          </Typography>
+
+                        </>
+                    }
                   </>
 
                 }
