@@ -17,7 +17,6 @@ const PatientStories = ({ dataPatientStoriesBlogs }) => {
   const { post1, post2, post3, post4, post5, author } = imgs;
   const router = useRouter();
 
-  console.log(dataPatientStoriesBlogs, "BLOGSSSZZ")
   const [breakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1.1, itemsToScroll: 1 },
@@ -197,7 +196,6 @@ const PatientStories = ({ dataPatientStoriesBlogs }) => {
               transition={{ duration: 0.95, ease: "easeOut" }}
               isRTL={router.locale === 'ar' ? true : false}
             >
-              {console.log(dataPatientStoriesBlogs)}
               {dataPatientStoriesBlogs?.data?.map((post, index) => (
                 <Link href={`/blogs/${post.slug}`} className={styles.box} key={index}>
                   <div className={styles.img_container}>

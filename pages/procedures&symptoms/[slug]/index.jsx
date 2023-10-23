@@ -892,7 +892,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                     <iframe width="560" height="315" src={dataTreatment?.videoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                   </div>
                 </div>
-                {console.log(typeof dataTreatment?.videoLink, "Video Link")}
               </Container >
             </article>
           )}

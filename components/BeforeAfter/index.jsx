@@ -12,7 +12,6 @@ const BeforeAfter = ({ treatments, beforeCards }) => {
   const router = useRouter();
   const { t } = useTranslation();
   const [treatmentsBeforeAFter, setTreatmentsBeforeAFter] = useState()
-  console.log(treatments, "OVER")
   useEffect(() => {
     setTreatmentsBeforeAFter(treatments)
     router.pathname === '/doctor/[slug]' && setTreatmentsBeforeAFter(beforeCards)

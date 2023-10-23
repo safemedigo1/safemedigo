@@ -13,7 +13,6 @@ const Tags = ({ blog, allBlogsTagsData }) => {
   const { t } = useTranslation();
   const router = useRouter();
 
-  console.log(router.query.slug)
   return (
     <section id={styles.tags} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>

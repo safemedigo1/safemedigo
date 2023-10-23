@@ -211,7 +211,6 @@ export async function getServerSideProps({ query, locale }) {
 
   const myCategoryId = data2.filter((c) => c.slug === query.slug)
 
-  console.log(myCategoryId), 'categoryID'
 
   const res = await fetch("https://api2.safemedigo.com/api/v1/Blog/GetAllBlogWithPage", {
     method: 'POST',

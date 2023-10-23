@@ -93,7 +93,6 @@ const MedicalDepartments = ({ dataMedicalDepartments, hospiTalMedicalDepartment 
 
   const activeItem = departments.filter((card) => card.slug === activeDepartmentSlug);
 
-  console.log(activeItem)
 
   return (
     <>

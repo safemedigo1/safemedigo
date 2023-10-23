@@ -76,7 +76,6 @@ const ClinicCard = ({ similarDocs }) => {
         renderArrow={myArrow}
         isRTL={router.locale === 'ar' ? true : false}
       >
-        {console.log(similarDocs.data)}
         {similarDocs?.data?.map((similarDoc, index) => (
           <Link href={`/doctor/${similarDoc.slug}`} className={styles.box} key={index}>
             <div className={styles.img_container}>
