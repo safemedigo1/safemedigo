@@ -20,7 +20,6 @@ const medicaldepartments = ({ dataTreatmentsHealthCase, dataPopularTreatments, d
   const [result, setResult] = useState(null)
   const [expanded, setExpanded] = useState(false);
   // const [dataTreatmentsHealthCase, setDataTreatmentsHealthCase] = useState(null);
-  const [TreatmentCountPage, setTreatmentCountPage] = useState(1)
   const [TreatmentCount, setTreatmentCount] = useState(dataTreatmentsHealthCase?.count)
   const [treatmentLoading, setTreatmentLoading] = useState(false)
 
@@ -69,35 +68,12 @@ const medicaldepartments = ({ dataTreatmentsHealthCase, dataPopularTreatments, d
     { title: 'Dermatology', img: Dermatology.src, sec_img: Dermatology_1.src, id: 20 },
   ]
 
-  function myArrow({ type, onClick, isEdge }) {
-    const pointer = type === consts.PREV ?
-      <div className='left_arrow'>
-        <HiChevronLeft />
-      </div>
-      :
-      <div className='right_arrow'>
-        <  HiChevronRight />
-      </div>
-
-    return (
-      <button className='main_btn' onClick={onClick} disabled={isEdge}>
-        {pointer}
-      </button>
-    );
-  }
-
-  const handleResult = (card) => {
-    const filterResult = cards.find((item) => item.id === card.id)
-    if (filterResult) {
-      setResult(filterResult)
-    }
-  }
 
   const description = dataMedicalDepartments?.find((e) => params.slug === e.slug)
 
 
 
-  const [visibleTreatments, setVisibleTreatments] = useState(dataTreatmentsHealthCase?.treatments.slice(0, 6));
+  const [visibleTreatments, setVisibleTreatments] = useState();
 
 
 
@@ -118,7 +94,10 @@ const medicaldepartments = ({ dataTreatmentsHealthCase, dataPopularTreatments, d
   };
 
 
-
+  useEffect(() => {
+    console.log("changed")
+    setVisibleTreatments(dataTreatmentsHealthCase?.treatments.slice(0, 6))
+  }, [params.slug])
 
 
 
