@@ -20,7 +20,7 @@ const medicaldepartments = ({ dataTreatmentsHealthCase, dataPopularTreatments, d
   const [result, setResult] = useState(null)
   const [expanded, setExpanded] = useState(false);
   // const [dataTreatmentsHealthCase, setDataTreatmentsHealthCase] = useState(null);
-  const [TreatmentCount, setTreatmentCount] = useState(dataTreatmentsHealthCase?.count)
+  const [TreatmentCount, setTreatmentCount] = useState()
   const [treatmentLoading, setTreatmentLoading] = useState(false)
 
   const { t } = useTranslation();
@@ -95,8 +95,8 @@ const medicaldepartments = ({ dataTreatmentsHealthCase, dataPopularTreatments, d
 
 
   useEffect(() => {
-    console.log("changed")
     setVisibleTreatments(dataTreatmentsHealthCase?.treatments.slice(0, 6))
+    setTreatmentCount(dataTreatmentsHealthCase?.count)
   }, [params.slug])
 
 
