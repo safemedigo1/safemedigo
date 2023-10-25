@@ -126,7 +126,8 @@ const medicaldepartments = ({ dataTreatmentsHealthCase, dataPopularTreatments, d
 
             className={styles.section_container}>
 
-            {dataTreatmentsHealthCase?.length !== 0 &&
+            {TreatmentCount !== 0 &&
+
               <div className={styles.filter_section}>
                 <div className={styles.card_title}>
                   <Typography sx={{ display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' } }} variant='h3'>
@@ -244,8 +245,8 @@ const medicaldepartments = ({ dataTreatmentsHealthCase, dataPopularTreatments, d
                       </AccordionSummary>
                     </Accordion>
                   ))}
-
-                {TreatmentCount !== visibleTreatments?.length &&
+                {
+                  TreatmentCount !== visibleTreatments?.length &&
                   <div className={styles.btn_container}>
                     <button onClick={handleLoadMoreTreatments}>
                       {treatmentLoading !== true ?
