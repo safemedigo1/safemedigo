@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './index.module.scss';
-import { Accordion, AccordionDetails, AccordionSummary, Container, FormControl, MenuItem, Rating, Select, Typography } from '@mui/material'
+import { Accordion, AccordionDetails, AccordionSummary, Box, Container, FormControl, MenuItem, Rating, Select, Typography } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import { useRouter } from 'next/router';
@@ -125,6 +125,12 @@ const Packages = () => {
           <Container className="custom_container2" >
             <div className={styles.packages_sec}>
               <div className={styles.boxes_container}>
+                <Box sx={
+                  {
+                    boxShadow: "inset -20px 0px 12px #ffff"
+                  }
+                } className={styles.shadow_box} />
+
                 <Carousel
                   breakPoints={breakPoints}
                   itemsToScroll={1}

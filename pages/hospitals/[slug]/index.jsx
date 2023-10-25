@@ -1,7 +1,7 @@
 import { PageHeader, SecNavbar } from "@/components";
 import InnerPageNavbar from "@/components/Navbar/InnerPageNavbar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Container, Typography, Dialog, DialogContent, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem, DialogTitle, Rating } from '@mui/material';
+import { Container, Typography, Dialog, DialogContent, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem, DialogTitle, Rating, } from '@mui/material';
 import styles from './index.module.scss';
 import Carousel from 'react-elastic-carousel';
 import { useState } from "react";
@@ -21,7 +21,7 @@ import { MdLocationOn } from 'react-icons/md'
 import { FaShieldAlt } from 'react-icons/fa'
 import Packages from "@/components/Packages";
 import { useTranslation } from "react-i18next";
-
+import Link from "next/link";
 
 const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificatest, dataHospitalMedia, dataHospitalVisits, dataHospitalHotels }) => {
   const { certeficate, post1 } = imgs;
@@ -81,6 +81,7 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
     setOpen(true);
     setSelectedCard(card)
   };
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -471,10 +472,9 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
     setSelectedImage(null);
   };
 
-
   return (
     <>
-      <SecNavbar />
+      <SecNavbar dataHospitalSlug={dataHospitalSlug} />
       <PageHeader dataHospitalSlug={dataHospitalSlug} />
       <Box
         sx={{
@@ -516,14 +516,13 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
 
             <div className={styles.name}>
               <Typography >
-                Specializations        {dataHospitalSlug.hospitalKindName}
-
+                {dataHospitalSlug.hospitalKindName}
               </Typography>
             </div>
 
             <div className={styles.rating}>
               <Rating name="read-only" defaultValue={dataHospitalSlug.rate} size="small" />
-              <span className={styles.reviews_num}>{dataHospitalSlug.totalReviews} Reviews</span>
+              <span className={styles.reviews_num}>{dataHospitalSlug.totalReviews}  {t("hospital:Reviews")}</span>
             </div>
 
 
@@ -540,7 +539,7 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
                   <Typography>{dataHospitalSlug.yearlyPatient}</Typography>
                 </div>
                 <div className={styles.yearly}>
-                  <Typography>Yearly patient</Typography>
+                  <Typography>{t("hospital:patient")}</Typography>
                 </div>
               </div>
               <div className={styles.box}>
@@ -548,7 +547,7 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
                   <Typography>{dataHospitalSlug.foundedYear}</Typography>
                 </div>
                 <div className={styles.yearly}>
-                  <Typography>Founded year</Typography>
+                  <Typography>{t("hospital:year")}</Typography>
                 </div>
               </div>
               <div className={styles.box}>
@@ -556,14 +555,17 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
                   <Typography>{dataHospitalSlug.employeesCount}</Typography>
                 </div>
                 <div className={styles.yearly}>
-                  <Typography>Doctors & Employees</Typography>
+                  <Typography>{t("hospital:Doctors_and_employees")}</Typography>
                 </div>
               </div>
 
             </div>
 
             <div className={styles.button_container}>
-              <button>Book Appointment</button>
+              <Link href={'/quote'}>
+                <button>{t("hospital:Book")}</button>
+              </Link>
+
             </div>
 
           </div>
@@ -577,7 +579,7 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
       <InnerPageNavbar />
 
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
-        <section id='overview' className={styles.overview}>
+        <section id='overview' className={styles.overview} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
           <div className={styles.text_inner}>
             <Typography>
               {dataHospitalSlug.breif}
@@ -758,7 +760,7 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
         </section>
       </Container>
 
-      <section id='reviews' className={styles.reviews}>
+      <section id='reviews' className={styles.reviews} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false} >
           <div className={styles.title_mob}>
             <Typography variant={'h4'}>
@@ -781,6 +783,13 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
               </div>
             </div>
             <div className={styles.slider_container}>
+              <Box sx={
+
+
+                {
+                  boxShadow: "inset -20px 0px 12px #eef5f5"
+                }
+              } className={styles.shadow_box} />
               <Carousel
                 breakPoints={hospitalBreakPoints}
                 itemsToScroll={1}
@@ -813,7 +822,7 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
         <MedicalDepartments hospiTalMedicalDepartment={hospiTalMedicalDepartment} />
       </section> */}
 
-      <section id='testimonials' className={styles.testimonials}>
+      <section id='testimonials' className={styles.testimonials} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
 
           <div className={styles.section_container}>
@@ -960,7 +969,7 @@ export async function getStaticProps({ locale, params }) {
       dataHospitalMedia,
       dataHospitalVisits,
       dataHospitalHotels,
-      ...(await serverSideTranslations(locale, ["navbar", "proceduresSymptoms_single", 'Footer', 'most_popular'])),
+      ...(await serverSideTranslations(locale, ["navbar", "hospital", "proceduresSymptoms", "sec_navbar", "proceduresSymptoms_single", 'Footer', 'most_popular'])),
     },
   };
 }

@@ -9,7 +9,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 
 
 
-const SecNavbar = ({ categorySlug, slug, category, currentPage, blog, tag, how_it_works, treatmentName }) => {
+const SecNavbar = ({ categorySlug, slug, dataHospitalSlug, currentPage, blog, tag, dataDoctorSlug, treatmentName }) => {
   const context = useContext(AppContext);
   const { isDoctorPageActive, setIsDoctorPageActive, compareStep
     , setCompareStep } = context;
@@ -65,7 +65,7 @@ const SecNavbar = ({ categorySlug, slug, category, currentPage, blog, tag, how_i
             <>
               {compareStep !== 2 &&
                 <>
-                  <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/medicaldepartments/All-medical-procedures' > /{t('sec_navbar:procedures&symptoms')}</Link>
+                  <Link href='/'> {t('sec_navbar:home')}</Link>  <Link href='/medicaldepartments/All-medical-procedures' > /{t('sec_navbar:procedures&symptoms')}</Link>
                   <Link href={router.asPath} className={styles.active} > /{treatmentName}</Link>
                 </>
               }
@@ -99,12 +99,16 @@ const SecNavbar = ({ categorySlug, slug, category, currentPage, blog, tag, how_i
 
           {pathname === ('/hospitals/[slug]') &&
             <>
-              <Link href='/'> {t('sec_navbar:home')}  </Link> <Link href='/' >/ Acibadem Hospital In Taksim</Link>
+              <Link href='/'>  {t('sec_navbar:home')} </Link> <Link href={`/hospitals/${dataHospitalSlug?.slug}`} >/{dataHospitalSlug?.name}</Link>
             </>
           }
           {pathname === ('/doctor/[slug]') &&
             <>
-              <Link href='/'> {t('sec_navbar:home')}  </Link> <Link href='/' >/ Profile</Link>
+              <Link href='/'> {t('sec_navbar:home')}  </Link> <Link href={`/doctor/${dataDoctorSlug?.slug}`} >/Profile /              {dataDoctorSlug.doctorLevel}.
+                {dataDoctorSlug.firstName}
+                {dataDoctorSlug.fatherName}
+                {dataDoctorSlug.lastName}
+              </Link>
             </>
           }
         </Container>

@@ -346,19 +346,21 @@
       }
 
       .button_container {
-        width: 100%;
-        button {
-          width: 100%;
-          background-color: var(--main-green-color);
-          color: var(--main-white-color);
-          border-radius: 5px;
-          height: 56px;
-          font-size: 18px;
-          font-weight: var(--font-bold);
-          font-family: "Quicksand";
-          cursor: pointer;
-          border: none;
+        a {
+          button {
+            width: 100%;
+            background-color: var(--main-green-color);
+            color: var(--main-white-color);
+            border-radius: 5px;
+            height: 56px;
+            font-size: 18px;
+            font-weight: var(--font-bold);
+            font-family: "Quicksand";
+            cursor: pointer;
+            border: none;
+          }
         }
+        width: 100%;
       }
     }
   }
@@ -508,6 +510,118 @@
     .author_img {
       margin-right: 0px !important;
       margin-left: 20px;
+    }
+  }
+}
+
+#blogs[dir="rtl"] * {
+  font-family: var(--arabic-font);
+}
+.author_info[dir="rtl"] * {
+  font-family: var(--arabic-font);
+}
+
+#hospital[dir="rtl"] {
+  font-family: var(--arabic-font);
+
+  .boxes_container {
+    display: flex;
+    justify-content: space-between;
+    .hospital_box {
+      margin-right: 0px;
+      margin-left: 0px;
+
+      .main_img {
+        margin-right: 0px;
+        margin-left: 26px;
+        img {
+        }
+      }
+
+      .text_container {
+        .header {
+          .icon_container {
+            margin-right: 0px;
+            margin-left: 8px;
+            svg {
+            }
+          }
+
+          .text {
+            p {
+              font-family: var(--arabic-font);
+            }
+          }
+        }
+        .name {
+          h3 {
+            font-family: var(--arabic-font);
+          }
+        }
+
+        .rating {
+          .reviews_num {
+            margin-left: 0px;
+            margin-right: 11.4px;
+            font-family: var(--arabic-font);
+          }
+        }
+        .location {
+          svg {
+            margin-right: 0px;
+            margin-left: 4.96px;
+          }
+          p {
+            font-family: var(--arabic-font);
+          }
+        }
+
+        .category {
+          p {
+            font-family: var(--arabic-font);
+          }
+        }
+      }
+    }
+
+    .info {
+      .header {
+        h4 {
+          font-family: var(--arabic-font);
+        }
+      }
+
+      .boxes_container {
+        display: flex;
+        align-items: flex-start;
+        .box {
+          &:not(:last-child) {
+            margin-right: 0px;
+            margin-left: 13px;
+          }
+        }
+
+        .num {
+          p {
+            font-size: 28px;
+            font-family: var(--arabic-font);
+          }
+        }
+
+        .yearly {
+          p {
+            font-family: var(--arabic-font);
+          }
+        }
+      }
+
+      .button_container {
+        a {
+          button {
+            font-family: var(--arabic-font);
+          }
+        }
+      }
     }
   }
 }

@@ -13,11 +13,12 @@ import Image from 'next/image';
 import axios from 'axios';
 
 
-const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, params }) => {
+const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, params, dataTreatmentsHealthCase }) => {
   const [expanded, setExpanded] = useState(false);
-  const [dataTreatmentsHealthCase, setDataTreatmentsHealthCase] = useState(null);
-  const [TreatmentCountPage, setTreatmentCountPage] = useState(1)
-  const [TreatmentCount, setTreatmentCount] = useState(0)
+
+  const [visibleTreatments, setVisibleTreatments] = useState(dataTreatmentsHealthCase?.treatments.slice(0, 6));
+
+  const [TreatmentCount, setTreatmentCount] = useState(dataTreatmentsHealthCase?.count)
   const [treatmentLoading, setTreatmentLoading] = useState(false)
 
 
@@ -33,45 +34,21 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
   };
 
 
-  const getAllTreatments = async () => {
-    setTreatmentLoading(true)
-
-    const resTreatmentsHealthCase = await
-      axios.post("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
-        "lang": router.locale,
-        "healthCaseSlug": params.healthcase,
-        "currentPage": TreatmentCountPage,
-        "departmentSlug": params.slug
-      }, {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      });
-    setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data)
-    setTreatmentLoading(false)
-
-
-
-    if (TreatmentCountPage > 1) {
-      setDataTreatmentsHealthCase(prev => [...prev, ...resTreatmentsHealthCase?.data?.treatments])
-
-    }
-
-    setTreatmentCount(resTreatmentsHealthCase?.data?.count)
-
-  }
-
-
-
   const handleLoadMoreTreatments = () => {
-    setTreatmentLoading(true)
-    setTreatmentCountPage((prev) => prev + 1)
-  }
+    setTreatmentLoading(true);
+    // Calculate the index range for the next batch of treatments
+    const startIndex = visibleTreatments.length;
+    const endIndex = startIndex + 6;
 
-  useEffect(() => {
-    getAllTreatments()
-  }, [TreatmentCountPage])
+    // Get the next batch of treatments from the full treatments array
+    const nextTreatments = dataTreatmentsHealthCase?.treatments?.slice(startIndex, endIndex);
+
+    // Add the next treatments to the visible treatments array
+    setVisibleTreatments(prevTreatments => [...prevTreatments, ...nextTreatments]);
+
+    setTreatmentLoading(false);
+  };
+
 
 
 
@@ -96,156 +73,157 @@ const HealthCase = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthC
 
           <div className={styles.section_container}>
 
-            <div className={styles.filter_section}>
-              <div className={styles.card_title}>
-                <Typography sx={{ display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' } }} variant='h3'>
-                  Procedures
-                </Typography>
-              </div>
-              <Accordion disableGutters elevation={0}
-                square={false} sx={{
-                  backgroundColor: 'var(--main-white-color)',
-                  borderRadius: '5px',
-                  '&:before': {
-                    display: 'none',
-                  }
-                }}
-                expanded={expanded} onChange={handleChange()}>
-                <AccordionSummary
-                  sx={expanded === false ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
-                    : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
-                  }
-                  expandIcon={<ExpandMoreIcon sx={expanded === false ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
-                  aria-controls="panel1d-content" id="panel1d-header"                >
-                  <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                    {t("proceduresSymptoms:select")}
+            {dataTreatmentsHealthCase?.length !== 0 &&
+              <div className={styles.filter_section}>
+                <div className={styles.card_title}>
+                  <Typography sx={{ display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' } }} variant='h3'>
+                    Procedures
                   </Typography>
-                </AccordionSummary>
+                </div>
 
-                <AccordionDetails >
-                  <List sx={{
-                    padding: '0px',
-                    '& .MuiListItem-root': {
-                      width: '100%',
-                      listStylePosition: 'inside',
-                      padding: '0px',
-                      cursor: 'pointer',
-                      padding: '2px',
-                      marginTop: '10px',
-                      transition: 'all 0.3s ease'
-                    },
-                    '& .MuiListItem-root:hover': {
-                      background: 'rgba(0, 243, 187, 0.1)',
-                      borderRadius: '5px',
-                      paddingLeft: '20px',
+                <Accordion disableGutters elevation={0}
+                  square={false} sx={{
+                    backgroundColor: 'var(--main-white-color)',
+                    '&:before': {
+                      display: 'none',
                     }
-                  }
-                  }
-                  >
+                  }}
+                  expanded={expanded} onChange={handleChange()}>
+                  <AccordionSummary
+                    sx={expanded === false ? { height: '55px', backgroundColor: '#004747', color: '#FFFFFF' }
+                      : { backgroundColor: '#C5DFDC', color: '#004747', height: '55px', }
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded === false ? { color: '#FFFFFF', width: '30px', height: "30px" } : { color: '#004747', width: '30px', height: "30px", marginBottom: '5px', }} />}
+                    aria-controls="panel1d-content" id="panel1d-header"                >
+                    <Typography sx={{ fontSize: { sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', }}>
+                      {t("proceduresSymptoms:select")}
+                    </Typography>
+                  </AccordionSummary>
 
-                    <Link href={`/medicaldepartments/All-medical-procedures`} scroll={false}>
-                      <ListItem variant='li' sx={{
-                        cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)'
-                      }}>
-                        All Health Cases
-                      </ListItem>
-                    </Link>
-
-                    {dataHealthCase?.map((healthCase) => (
-                      <Link href={`/medicaldepartments/${router.query.slug}/${healthCase.slug}`} scroll={false} key={healthCase.id}>
+                  <AccordionDetails >
+                    <List sx={{
+                      padding: '0px',
+                      '& .MuiListItem-root': {
+                        width: '100%',
+                        listStylePosition: 'inside',
+                        padding: '0px',
+                        cursor: 'pointer',
+                        padding: '2px',
+                        marginTop: '10px',
+                        transition: 'all 0.3s ease'
+                      },
+                      '& .MuiListItem-root:hover': {
+                        background: 'rgba(0, 243, 187, 0.1)',
+                        borderRadius: '5px',
+                        paddingLeft: '20px',
+                      }
+                    }
+                    }
+                    >
+                      {/* 
+                      <Link href={`/medicaldepartments/Obstetrics-and-gynecology`} scroll={false}>
                         <ListItem variant='li' sx={{
                           cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)'
                         }}>
-                          {healthCase?.name}
+                          All Health Cases
                         </ListItem>
-                      </Link>
-                    ))}
+                      </Link> */}
+
+                      {dataHealthCase?.map((healthCase) => (
+                        <Link href={`/medicaldepartments/${params.slug}/${healthCase?.slug}`} scroll={false} key={healthCase?.id} >
+                          <ListItem variant='li' sx={{ cursor: 'pointer', color: 'var(--main-dark-color)', fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                            {healthCase?.name}
+                          </ListItem>
+                        </Link>
+                      ))}
+
+                    </List>
+                  </AccordionDetails>
+                </Accordion>
 
 
-                  </List>
-                </AccordionDetails>
-              </Accordion>
 
-              <Box sx={{ paddingLeft: '5px', paddingRight: '5px', marginTop: '10px', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <Typography sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                  {t("proceduresSymptoms:all_procedures")}
-                </Typography>
-                <Typography sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                  {dataTreatmentsHealthCase?.count}  {t("proceduresSymptoms:procedures")}
-                </Typography>
-                <Typography sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                  {t("proceduresSymptoms:medical_department_sort")}
-                </Typography>
-              </Box>
+                <Box sx={{ paddingLeft: '5px', paddingRight: '5px', marginTop: '10px', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 
-              {
-                dataTreatmentsHealthCase?.count !== 0 &&
-                dataTreatmentsHealthCase?.treatments?.map((treatmentCase, index) => (
-                  <Accordion
-                    key={index}
-                    elevation={0}
-                    expanded={true}
-                    square={false} sx={{
-                      backgroundColor: 'var(--main-white-color)',
-                      '&:before': {
-                        display: 'none',
-                      },
-                      marginTop: "20px"
-                    }}
-                  >
+                  <Typography sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                    {visibleTreatments?.length} {` `}    /  {TreatmentCount}  {t("proceduresSymptoms:procedures")}
+                  </Typography>
+                  <Typography sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                    {t("proceduresSymptoms:medical_department_sort")}
+                  </Typography>
+                </Box>
 
-                    <AccordionSummary
-                      sx={
-                        {
-                          backgroundColor: '#E7EDEC', color: '#000000', borderRadius: '5px', height: '55px', transition: 'all 0.3s ease-in-out', '&:hover': {
-                            backgroundColor: '#c5dfdc',
-                            transform: 'scale: 1.2',
-                            'svg': { marginLeft: '-10px' }
-                          }
-                          ,
-                          'a': { fontSize: { sm: '16px', md: '16px', lg: '18px', }, fontWeight: 'bold', color: '#000000', fontFamily: 'var(--quickstand-font)' }
-                        }
-                      }
-                      expandIcon={<ExpandMoreIcon sx={{
-                        color: '#000000', width: '30px', height: "30px", transform: `${router.locale === 'ar' ? "rotate(-90deg)" : "rotate(90deg)"}`, transition: 'all 0.3s ease-in-out',
-                      }} />}
+                {
+                  visibleTreatments?.map((treatmentCase, index) => (
+                    <Accordion
+                      key={index}
+                      elevation={0}
+                      expanded={true}
+                      square={false} sx={{
+                        backgroundColor: 'var(--main-white-color)',
+                        '&:before': {
+                          display: 'none',
+                        },
+                        marginTop: "20px"
+                      }}
                     >
-                      <Link href={`/procedures&symptoms/${treatmentCase.slug}`} style={{ width: '100%' }}>
-                        {treatmentCase.treatmentName}
-                        <Typography sx={{ fontSize: '14px' }}>{treatmentCase.successRate}% {t("proceduresSymptoms:success_rate")} • {t("proceduresSymptoms:cost")}: ${treatmentCase.cost}</Typography>
-                      </Link>
-                    </AccordionSummary>
-                  </Accordion>
-                ))}
 
-              {dataTreatmentsHealthCase?.count > 6 &&
-                <div className={styles.btn_container}>
-                  <button onClick={handleLoadMoreTreatments}>
-                    {treatmentLoading !== true ?
-                      "Load More"
-                      :
-                      <>
-                        Loading {` `}
-                        <ThreeDots
-                          height="25"
-                          width="25"
-                          radius="9"
-                          color="#00ccb5"
-                          ariaLabel="three-dots-loading"
-                          wrapperStyle={{}}
-                          wrapperClassName="load_more_btn"
-                          visible={true}
-                        />
+                      <AccordionSummary
+                        sx={
+                          {
+                            backgroundColor: '#E7EDEC', color: '#000000', borderRadius: '5px', height: '55px', transition: 'all 0.3s ease-in-out', '&:hover': {
+                              backgroundColor: '#c5dfdc',
+                              transform: 'scale: 1.2',
+                              'svg': { marginLeft: '-10px' }
+                            }
+                            ,
+                            'a': { fontSize: { sm: '16px', md: '16px', lg: '18px', }, fontWeight: 'bold', color: '#000000', fontFamily: 'var(--quickstand-font)' }
+                          }
+                        }
+                        expandIcon={<ExpandMoreIcon sx={{
+                          color: '#000000', width: '30px', height: "30px", transform: `${router.locale === 'ar' ? "rotate(-90deg)" : "rotate(90deg)"}`, transition: 'all 0.3s ease-in-out',
+                        }} />}
+                      >
+                        <Link href={`/procedures&symptoms/${treatmentCase.slug}`} style={{ width: '100%' }}>
+                          {treatmentCase.treatmentName}
+                          <Typography sx={{ fontSize: '14px' }}>{treatmentCase.successRate}% {t("proceduresSymptoms:success_rate")} • {t("proceduresSymptoms:cost")}: ${treatmentCase.cost}</Typography>
+                        </Link>
+                      </AccordionSummary>
+                    </Accordion>
+                  ))}
 
-                      </>
+                {TreatmentCount !== visibleTreatments?.length &&
+                  <div className={styles.btn_container}>
+                    <button onClick={handleLoadMoreTreatments}>
+                      {treatmentLoading !== true ?
+                        t('treatments_section:more')
+                        :
+                        <>
+                          {` `}
+                          <ThreeDots
+                            height="25"
+                            width="25"
+                            radius="9"
+                            color="#00ccb5"
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{}}
+                            wrapperClassName="load_more_btn"
+                            visible={true}
+                          />
 
-                    }
+                        </>
+
+                      }
 
 
-                  </button>
-                </div>
-              }
-            </div >
+                    </button>
+                  </div>
+                }
+
+
+              </div >
+            }
+
             <div className={styles.info}>
               <div className={styles.info_inner}>
                 <div className={styles.info_header}>
@@ -367,7 +345,6 @@ export async function getStaticProps({ locale, params }) {
     body: JSON.stringify({
       "lang": locale,
       "healthCaseSlug": params.healthcase,
-      "currentPage": 1,
       "departmentSlug": params.slug
     })
   })

@@ -16,12 +16,12 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
-const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dataHealthCase, params, locale }) => {
+const medicaldepartments = ({ dataTreatmentsHealthCase, dataPopularTreatments, dataMedicalDepartments, dataHealthCase, params, locale }) => {
   const [result, setResult] = useState(null)
   const [expanded, setExpanded] = useState(false);
-  const [dataTreatmentsHealthCase, setDataTreatmentsHealthCase] = useState(null);
+  // const [dataTreatmentsHealthCase, setDataTreatmentsHealthCase] = useState(null);
   const [TreatmentCountPage, setTreatmentCountPage] = useState(1)
-  const [TreatmentCount, setTreatmentCount] = useState(0)
+  const [TreatmentCount, setTreatmentCount] = useState(dataTreatmentsHealthCase?.count)
   const [treatmentLoading, setTreatmentLoading] = useState(false)
 
   const { t } = useTranslation();
@@ -96,47 +96,30 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
   const description = dataMedicalDepartments?.find((e) => params.slug === e.slug)
 
 
-  const getAllTreatments = async () => {
-    setTreatmentLoading(true)
 
-    const resTreatmentsHealthCase = await
-      axios.post("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
-        "lang": locale,
-        "healthCaseSlug": "",
-        "currentPage": TreatmentCountPage,
-        "departmentSlug": params.slug
-      }, {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      });
-    // setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data?.treatments)
-    setTreatmentLoading(false)
-
-    if (TreatmentCountPage > 1) {
-      setDataTreatmentsHealthCase(prev => [...prev, ...resTreatmentsHealthCase?.data?.treatments])
-
-    } else {
-      setDataTreatmentsHealthCase(resTreatmentsHealthCase?.data?.treatments)
-    }
-
-    setTreatmentCount(resTreatmentsHealthCase?.data?.count)
-
-  }
+  const [visibleTreatments, setVisibleTreatments] = useState(dataTreatmentsHealthCase?.treatments.slice(0, 6));
 
 
-  const handleLoadMoreTreatments = async () => {
+
+
+  const handleLoadMoreTreatments = () => {
     setTreatmentLoading(true);
-    setTreatmentCountPage((prev) => prev + 1)
-    await getAllTreatments();
+    // Calculate the index range for the next batch of treatments
+    const startIndex = visibleTreatments.length;
+    const endIndex = startIndex + 6;
+
+    // Get the next batch of treatments from the full treatments array
+    const nextTreatments = dataTreatmentsHealthCase?.treatments?.slice(startIndex, endIndex);
+
+    // Add the next treatments to the visible treatments array
+    setVisibleTreatments(prevTreatments => [...prevTreatments, ...nextTreatments]);
+
     setTreatmentLoading(false);
+  };
 
-  }
 
-  useEffect(() => {
-    getAllTreatments();
-  }, [params.slug])
+
+
 
 
   return (
@@ -237,7 +220,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                 <Box sx={{ paddingLeft: '5px', paddingRight: '5px', marginTop: '10px', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 
                   <Typography sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                    {dataTreatmentsHealthCase?.length} {` `}                    /  {TreatmentCount}  {t("proceduresSymptoms:procedures")}
+                    {visibleTreatments?.length} {` `}    /  {TreatmentCount}  {t("proceduresSymptoms:procedures")}
                   </Typography>
                   <Typography sx={{ fontSize: { xs: '13px', sm: '13px', md: '13px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
                     {t("proceduresSymptoms:medical_department_sort")}
@@ -245,8 +228,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                 </Box>
 
                 {
-                  TreatmentCount !== 0 &&
-                  dataTreatmentsHealthCase?.map((treatmentCase, index) => (
+                  visibleTreatments?.map((treatmentCase, index) => (
                     <Accordion
                       key={index}
                       elevation={0}
@@ -284,7 +266,7 @@ const medicaldepartments = ({ dataPopularTreatments, dataMedicalDepartments, dat
                     </Accordion>
                   ))}
 
-                {TreatmentCount !== dataTreatmentsHealthCase?.length &&
+                {TreatmentCount !== visibleTreatments?.length &&
                   <div className={styles.btn_container}>
                     <button onClick={handleLoadMoreTreatments}>
                       {treatmentLoading !== true ?
@@ -422,6 +404,22 @@ export async function getStaticProps({ params, locale }) {
 
 
 
+
+  const resTreatmentsHealthCase = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsHealthCaseSlug", {
+    method: 'POST',
+
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      "lang": locale,
+      "healthCaseSlug": "",
+      "departmentSlug": params.slug,
+
+    })
+  })
+  const dataTreatmentsHealthCase = await resTreatmentsHealthCase.json()
   return {
     props: {
       dataPopularTreatments,
@@ -429,6 +427,7 @@ export async function getStaticProps({ params, locale }) {
       dataMedicalDepartments,
       params,
       locale,
+      dataTreatmentsHealthCase,
       ...(await serverSideTranslations(locale, ['navbar', 'treatments_section', 'sec_navbar', "contact_details", 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", 'Footer'])),
 
     },

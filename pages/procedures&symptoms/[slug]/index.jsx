@@ -19,12 +19,12 @@ import BeforeAfter from '@/components/BeforeAfter'
 import { AppContext } from '@/components/AppContext';
 import Compare from '@/components/Compare';
 
-const TreatmentName = ({ dataTreatment, locale, params, }) => {
+const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
   const [expanded, setExpanded] = useState(false);
-  const [currentPageCount, setCurrentPageCount] = useState(1)
-  const [qADetails, setQADetails] = useState(null);
+
   const [isLoadingQA, setIsLoadingQA] = useState(false);
-  const [QACount, setQACount] = useState()
+
+  const [QACount, setQACount] = useState(dataTreatmentsQA?.count)
   const { t } = useTranslation();
   const router = useRouter();
 
@@ -78,44 +78,26 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
   }
 
 
-  const getQA = async () => {
-    const getQARes = await axios.post("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsQuestionAnswersBySlug", {
-      "lang": locale,
-      "treatmentSlug": params.slug,
-      "currentPage": currentPageCount
-
-    }, {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    }).catch((error) => console.log(error, "Error hanlder!!"))
-
-    if (currentPageCount > 1) {
-      setQADetails(prev => [...prev, ...getQARes?.data?.questionsAnswers])
-    } else {
-      setQADetails(getQARes?.data?.questionsAnswers)
-    }
-
-    if (getQARes.status === 200) {
-      setIsLoadingQA(false)
-      setQACount(getQARes?.data?.count)
-
-    } else {
-      setIsLoadingQA(false)
-    }
-  }
 
 
-  const handleLoadMoreComments = () => {
-    setIsLoadingQA(true)
-    setCurrentPageCount((prev) => prev + 1)
-  }
 
-  useEffect(() => {
-    getQA();
-  }, [currentPageCount])
 
+  const [visibleQA, setVisibleQA] = useState(dataTreatmentsQA?.questionsAnswers.slice(0, 6));
+
+  const handleLoadMoreQA = () => {
+    setIsLoadingQA(true);
+    // Calculate the index range for the next batch of treatments
+    const startIndex = visibleQA.length;
+    const endIndex = startIndex + 6;
+
+    // Get the next batch of treatments from the full treatments array
+    const nextTreatments = dataTreatmentsHealthCase?.treatments?.slice(startIndex, endIndex);
+
+    // Add the next treatments to the visible treatments array
+    setVisibleQA(prevTreatments => [...prevTreatments, ...nextTreatments]);
+
+    setIsLoadingQA(false);
+  };
 
 
   // Styling
@@ -1223,7 +1205,6 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
 
             </section >
           }
-
           {
             QACount > 0 &&
             <section id="q&a" className={styles.QA} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
@@ -1233,7 +1214,7 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                 </div>
 
                 <div className={styles.menu_container}>
-                  {qADetails?.map((q, index) => (
+                  {visibleQA?.map((q, index) => (
                     <div className={styles.QA_menu} key={index}>
                       <Accordion disableGutters elevation={0}
                         square={false} sx={{
@@ -1279,9 +1260,9 @@ const TreatmentName = ({ dataTreatment, locale, params, }) => {
                   ))}
                 </div>
                 {
-                  QACount !== qADetails.length &&
+                  QACount !== visibleQA.length &&
                   <div className={styles.btn_container}>
-                    <button className={styles.load_more_btn} onClick={handleLoadMoreComments}>
+                    <button className={styles.load_more_btn} onClick={handleLoadMoreQA}>
                       {isLoadingQA !== true ?
                         t("single_blog:load_more")
                         :
@@ -1353,11 +1334,30 @@ export async function getStaticProps({ locale, params }) {
   })
   const dataTreatment = await resTreatment.json()
 
+
+
+
+
+
+
+  const resTreatmentsQA = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsQuestionAnswersBySlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": locale,
+      "treatmentSlug": params.slug,
+    })
+  })
+  const dataTreatmentsQA = await resTreatmentsQA.json()
   return {
     props: {
       dataTreatment,
       locale,
       params,
+      dataTreatmentsQA,
       ...(await serverSideTranslations(locale, ['navbar', 'single_blog', "contact_details", 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", "proceduresSymptoms_single", 'Footer'])),
 
     },

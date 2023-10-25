@@ -21,6 +21,21 @@ section.packages {
     }
     .packages_sec {
       .boxes_container {
+        position: relative;
+        .shadow_box {
+          position: absolute;
+          top: 0px;
+          right: 0px;
+          width: 36px;
+          height: calc(100% - 24px);
+          opacity: 1;
+          z-index: 1;
+          border-radius: 0px 5px 5px 0px;
+          @media screen and (max-width: 992px) {
+            display: none;
+          }
+        }
+
         .box {
           background-color: #ffffff;
           margin: 5px;

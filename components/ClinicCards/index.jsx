@@ -68,7 +68,7 @@ const ClinicCard = ({ similarDocs }) => {
       id='clinic'
     >
 
-      <Box sx={{ boxShadow: "inset -20px 0px 12px #eef5f5" }} />
+      <Box sx={{ boxShadow: "inset -20px 0px 12px #ffffff" }} className={styles.shadow_box} />
 
       <Carousel
         breakPoints={breakPoints}

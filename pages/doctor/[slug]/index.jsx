@@ -113,8 +113,12 @@ const DoctorName = ({ dataDoctorSlug }) => {
   // Dialog MUI
   const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
+  const [selectedCard, setSelectedCard] = useState(null)
+
+
+  const handleClickOpen = (card) => {
     setOpen(true);
+    setSelectedCard(card)
   };
   const handleClose = () => {
     setOpen(false);
@@ -527,9 +531,11 @@ const DoctorName = ({ dataDoctorSlug }) => {
 
     setSimilarDocs(similarDocs)
   }
+
+  console.log(dataDoctorSlug.isOnline, "DOCTORAA ")
   return (
     <>
-      <SecNavbar />
+      <SecNavbar dataDoctorSlug={dataDoctorSlug} />
       <PageHeader dataDoctorSlug={dataDoctorSlug} />
 
       <Box
@@ -586,7 +592,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
 
             <div className={styles.rating}>
               <Rating defaultValue={dataDoctorSlug?.rating} size="small" readOnly />
-              <span className={styles.reviews_num}>{dataDoctorSlug?.totalReviews}Reviews</span>
+              <span className={styles.reviews_num}>{dataDoctorSlug?.totalReviews} {t("hospital:Reviews")}</span>
             </div>
 
 
@@ -627,7 +633,9 @@ const DoctorName = ({ dataDoctorSlug }) => {
 
             {dataDoctorSlug?.isOnline === true &&
               <div className={styles.button_container}>
-                <button>Book Appointment</button>
+                <Link href={'/quote'}>
+                  <button>{t("hospital:Book")}</button>
+                </Link>
               </div>
             }
 
@@ -668,7 +676,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
                   >
                     {dataDoctorSlug?.doctorCertificates.map((card, index) => (
                       <>
-                        <div className={styles.box} key={index} onClick={handleClickOpen}>
+                        <div className={styles.box} key={index} onClick={() => handleClickOpen(card)}>
                           <div className={styles.title}>
                             <Typography variant="h6">{card.name} - {card.certificateDate}</Typography>
                           </div>
@@ -690,33 +698,39 @@ const DoctorName = ({ dataDoctorSlug }) => {
                           </div>
 
                         </div>
-                        <BootstrapDialog
-                          onClose={handleClose}
-                          aria-labelledby="customized-dialog-title"
-                          open={open}
-                        >
-                          <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                            Best Doctor Award - 2020
-                          </BootstrapDialogTitle>
-                          <DialogContent dividers sx={{ display: 'flex', flexDirection: 'column' }}>
-                            <Box sx={{
-                              width: '100%', height: '200px', margin: 'auto',
-                              marginTop: '10px',
-                              marginBottom: '20px',
 
-                              '& img': {
-                                objectFit: 'contain', width: '100%', height: '100%',
-                              }
-                            }}>
-                              <Image width={66.87} height={99.78} src={card.img} alt="" />
-                            </Box>
 
-                            <Typography gutterBottom>
-                              Joint Commission International Accreditation And Certification Is Recognized As A Global Leader For Health Care Quality Of Care And Patient Safety. Joint Commission... READ ALL International Accreditation And Certification Is Recognized As A Global Leader For Health Care Quality Of Care And Patient Safety.
-                            </Typography>
 
-                          </DialogContent>
-                        </BootstrapDialog>
+
+                        {selectedCard != null &&
+                          <BootstrapDialog
+                            onClose={handleClose}
+                            aria-labelledby="customized-dialog-title"
+                            open={open}
+                          >
+                            <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+                              {selectedCard.name}
+                            </BootstrapDialogTitle>
+                            <DialogContent dividers sx={{ display: 'flex', flexDirection: 'column', minWidth: { sm: '100%', md: '600px', lg: '600px' } }}>
+                              <Box sx={{
+                                height: '200px', margin: 'auto',
+                                marginTop: '10px',
+                                marginBottom: '20px',
+
+                                '& img': {
+                                  objectFit: 'contain', width: '100%', height: '100%',
+                                }
+                              }}>
+                                <Image width={66.87} height={99.78} src={selectedCard.image} alt={selectedCard.name} />
+                              </Box>
+
+                              <Typography gutterBottom>
+                                {selectedCard.description}
+                              </Typography>
+
+                            </DialogContent>
+                          </BootstrapDialog >
+                        }
                       </>
                     ))}
 
@@ -953,7 +967,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
           </div>
 
         </section>
-      </Container>
+      </Container >
 
       <section id='reviews' className={styles.reviews}>
         <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false} >
@@ -1019,7 +1033,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
       <BeforeAfter beforeCards={beforeCards} />
 
       <Box sx={{ paddingTop: '38px' }}>
-        <MostPopular similarDocs={similarDocs} doctorClinics={dataDoctorSlug} />
+        <MostPopular doctorClinics={dataDoctorSlug} />
       </Box>
 
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -1118,7 +1132,7 @@ export async function getStaticProps({ locale, params }) {
   return {
     props: {
       dataDoctorSlug,
-      ...(await serverSideTranslations(locale, ["navbar", "proceduresSymptoms_single", 'Footer', 'most_popular'])),
+      ...(await serverSideTranslations(locale, ["navbar", "hospital", "proceduresSymptoms", "sec_navbar", "proceduresSymptoms_single", 'Footer', 'most_popular'])),
     },
   };
 }

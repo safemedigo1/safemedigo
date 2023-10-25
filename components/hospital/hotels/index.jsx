@@ -60,7 +60,7 @@ const Hotles = ({ hotels }) => {
   }
   return (
     <>
-      <div id="hotels" className={styles.hotels}>
+      <div id="hotels" className={styles.hotels} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
         <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false}>
 
           <div className={styles.title_mob}>
@@ -89,8 +89,13 @@ const Hotles = ({ hotels }) => {
                 transition={{ duration: 1, }}
                 className={styles.hotels}
               >
-                <Box sx={{ boxShadow: "inset -20px 0px 12px #eef5f5" }} className={styles.shadow_box} />
+                <Box sx={
 
+
+                  {
+                    boxShadow: "inset -20px 0px 12px #eef5f5"
+                  }
+                } className={styles.shadow_box} />
                 <Carousel
                   breakPoints={breakPoints}
                   itemsToScroll={1}

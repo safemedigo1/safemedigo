@@ -30,8 +30,9 @@ const InnerPageNavbar = ({ dataTreatment, QACount }) => {
               </ListItem>
 
               {
-                router.pathname === 'procedures&symptoms/[slug]' &&
+                router.pathname === '/procedures&symptoms/[slug]' &&
                 dataTreatment.cost !== "" &&
+
                 <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
                   <Link href='#price' onClick={() => setIsDoctorPageActive(false)}>
                     {t("proceduresSymptoms_single:nav_prices")}

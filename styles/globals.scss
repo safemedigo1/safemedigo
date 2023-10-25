@@ -567,6 +567,9 @@ section#PatientStories_patient_stories__oSemC,
       visibility: hidden;
     }
 
+    .main_btn {
+      padding: 0 !important;
+    }
     .rec-carousel {
       // height: 600px !important;
       position: relative;
@@ -592,10 +595,10 @@ section#PatientStories_patient_stories__oSemC,
       }
 
       .right_arrow {
-        right: -31px;
+        right: -10px;
       }
       .left_arrow {
-        left: -31px;
+        left: -10px;
       }
     }
   }

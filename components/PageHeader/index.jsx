@@ -19,6 +19,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
   const { pathname } = router;
   const { design, designMobile, post1, userimg } = imgs;
   const { t } = useTranslation();
+
   return (
     <>
       {pathname !== '/' &&
@@ -32,7 +33,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
                 lg: "block"
               }
 
-            }} id={styles.hospital}>
+            }} id={styles.hospital} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
               <Container className={styles.sec_container}
                 sx={{ maxWidth: "1239px" }}
                 maxWidth={false}>
@@ -73,7 +74,8 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
                       </div>
                       <div className={styles.rating}>
                         <Rating name="read-only" defaultValue={dataHospitalSlug.totalReviews} size="small" readOnly />
-                        <span className={styles.reviews_num}>{dataHospitalSlug.totalReviews} Reviews</span>
+                        <span className={styles.reviews_num}>{dataHospitalSlug.totalReviews} {t("hospital:Reviews")}
+                        </span>
                       </div>
 
                       <div className={styles.category}>
@@ -89,15 +91,18 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
 
                   <div className={styles.info}>
                     <div className={styles.header}>
-                      <Typography variant="h4">Online Appointments Available</Typography>
+
+                      <Typography variant="h4">
+                        {dataHospitalSlug.isActive === true ? t("hospital:online_appointment_available") : t("hospital:offline_appointment_available")}
+                      </Typography>
                     </div>
                     <div className={styles.boxes_container}>
                       <div className={styles.box}>
                         <div className={styles.num}>
-                          <Typography>163</Typography>
+                          <Typography>{dataHospitalSlug?.yearlyPatient}</Typography>
                         </div>
                         <div className={styles.yearly}>
-                          <Typography>Yearly patient</Typography>
+                          <Typography>{t("hospital:patient")}</Typography>
                         </div>
                       </div>
                       <div className={styles.box}>
@@ -105,7 +110,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
                           <Typography>{dataHospitalSlug.foundedYear}</Typography>
                         </div>
                         <div className={styles.yearly}>
-                          <Typography>Founded year</Typography>
+                          <Typography>{t("hospital:year")}</Typography>
                         </div>
                       </div>
                       <div className={styles.box}>
@@ -113,14 +118,16 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
                           <Typography>{dataHospitalSlug.employeesCount}</Typography>
                         </div>
                         <div className={styles.yearly}>
-                          <Typography>Doctors & Employees</Typography>
+                          <Typography>{t("hospital:Doctors_and_employees")}</Typography>
                         </div>
                       </div>
 
                     </div>
 
                     <div className={styles.button_container}>
-                      <button>Book Appointment</button>
+                      <Link href={'/quote'}>
+                        <button>{t("hospital:Book")}</button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -136,7 +143,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
                 lg: "block"
               }
 
-            }} id={styles.hospital}>
+            }} id={styles.hospital} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
               <Container className={styles.sec_container}
                 sx={{ maxWidth: "1239px" }}
                 maxWidth={false}>
@@ -193,11 +200,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
 
                   <div className={styles.info}>
                     <div className={styles.header}>
-                      {dataDoctorSlug?.isOnline === true ?
-                        <Typography variant="h4">Available Online</Typography>
-                        :
-                        <Typography variant="h4">Not Available Online</Typography>
-                      }
+                      {dataDoctorSlug.isOnline === true ? t("hospital:online_appointment_available") : t("hospital:offline_appointment_available")}
                     </div>
                     <div className={styles.boxes_container}>
                       <div className={styles.box}>
@@ -205,7 +208,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
                           <Typography>{dataDoctorSlug.lastYearPatients}</Typography>
                         </div>
                         <div className={styles.yearly}>
-                          <Typography>Patients last year</Typography>
+                          <Typography>{t("hospital:patient")}</Typography>
                         </div>
                       </div>
                       <div className={styles.box}>
@@ -229,7 +232,9 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
 
                     {dataDoctorSlug?.isOnline === true &&
                       <div className={styles.button_container}>
-                        <button>Book Appointment</button>
+                        <Link href={'/quote'}>
+                          <button>{t("hospital:Book")}</button>
+                        </Link>
                       </div>
                     }
 
