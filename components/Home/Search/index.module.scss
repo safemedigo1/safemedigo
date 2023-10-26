@@ -438,6 +438,12 @@
         cursor: pointer;
         margin-right: 10px;
 
+        @media screen and (max-width: 400px) {
+          width: 124px;
+          height: 40px;
+          line-height: 14.5px;
+        }
+
         &:hover {
           background-color: var(--sec-green-color);
           color: var(--main-dark-color);

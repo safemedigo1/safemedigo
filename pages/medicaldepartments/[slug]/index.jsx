@@ -231,7 +231,7 @@ const medicaldepartments = ({ dataTreatmentsHealthCase, dataPopularTreatments, d
                               'svg': { marginLeft: '-10px' }
                             }
                             ,
-                            'a': { fontSize: { sm: '16px', md: '16px', lg: '18px', }, fontWeight: 'bold', color: '#000000', fontFamily: 'var(--quickstand-font)' }
+                            'a': { fontSize: { sm: '16px', md: '16px', lg: '18px', }, lineHeight: "16px", fontWeight: 'bold', color: '#000000', fontFamily: 'var(--quickstand-font)' }
                           }
                         }
                         expandIcon={<ExpandMoreIcon sx={{
