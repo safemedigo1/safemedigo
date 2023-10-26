@@ -250,7 +250,7 @@ export async function getStaticProps({ locale }) {
   })
   const data = await getAllBlogs.json()
 
-  const getAllTreatments = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetAllTreatments", {
+  const getAllTreatments = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetAllTreatmentSlugs", {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
