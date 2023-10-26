@@ -18,13 +18,14 @@ import Head from 'next/head';
 import BeforeAfter from '@/components/BeforeAfter'
 import { AppContext } from '@/components/AppContext';
 import Compare from '@/components/Compare';
+import Marquee from "react-fast-marquee";
 
-const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
+const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmentProcedures, dataTreatmentsQA, dataAboutProcedures, dataProcedures }) => {
   const [expanded, setExpanded] = useState(false);
 
   const [isLoadingQA, setIsLoadingQA] = useState(false);
 
-  const [QACount, setQACount] = useState(dataTreatmentsQA?.count)
+  const [QACount, setQACount] = useState()
   const { t } = useTranslation();
   const router = useRouter();
 
@@ -82,7 +83,12 @@ const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
 
 
 
-  const [visibleQA, setVisibleQA] = useState(dataTreatmentsQA?.questionsAnswers.slice(0, 6));
+  const [visibleQA, setVisibleQA] = useState();
+
+  useEffect(() => {
+    setVisibleQA(dataTreatmentsQA?.slice(0, 6))
+    setQACount(dataTreatmentsQA?.length)
+  }, [])
 
   const handleLoadMoreQA = () => {
     setIsLoadingQA(true);
@@ -138,29 +144,28 @@ const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
   }
 
   function createMarkupPreOperationOverview() {
-    return { __html: decodeURI(dataTreatment?.preOperationOverview) };
+    return { __html: decodeURI(dataAboutProcedures?.preOperationOverview) };
   }
 
   function createMarkupDuringOperationOverview() {
-    return { __html: decodeURI(dataTreatment?.duringOperationOverview) };
+    return { __html: decodeURI(dataAboutProcedures?.duringOperationOverview) };
   }
 
   function createMarkupAfterOperationOverview() {
-    return { __html: decodeURI(dataTreatment?.afterOperationOverview) };
+    return { __html: decodeURI(dataAboutProcedures?.afterOperationOverview) };
   }
 
   function createMarkupGetTreatmentStepOne() {
-    return { __html: decodeURI(dataTreatment?.getTreatmentStepOne) };
+    return { __html: decodeURI(dataProcedures?.getTreatmentStepOne) };
   }
 
   function createMarkupGetTreatmentStepTwo() {
-    return { __html: decodeURI(dataTreatment?.getTreatmentStepTwo) };
+    return { __html: decodeURI(dataProcedures?.getTreatmentStepTwo) };
   }
 
   function createMarkupGetTreatmentStepThree() {
-    return { __html: decodeURI(dataTreatment?.getTreatmentStepThree) };
+    return { __html: decodeURI(dataProcedures?.getTreatmentStepThree) };
   }
-
   function createMarkupGetQA(q) {
     return { __html: decodeURI(q) };
   }
@@ -212,6 +217,7 @@ const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
   const typographyStyle = {
     fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)'
   }
+
 
 
   return (
@@ -404,8 +410,17 @@ const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
                             <ListItem>
                               <Typography>
 
+                                {
+                                  dataTreatment?.operationDuration?.split(' ').length >= 4 ?
 
-                                {dataTreatment?.operationDuration}
+                                    <Marquee style={{ overflow: 'hidden', }} speed={40}>
+                                      {dataTreatment?.operationDuration}
+                                    </Marquee>
+                                    :
+                                    <>
+                                      {dataTreatment?.operationDuration}
+                                    </>
+                                }
                               </Typography>
 
 
@@ -431,7 +446,17 @@ const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
                           }}>
                             <ListItem>
                               <Typography>
-                                {dataTreatment?.anesthesia}
+                                {
+                                  dataTreatment?.anesthesia?.split(' ').length >= 4 ?
+
+                                    <Marquee style={{ overflow: 'hidden', }} speed={40}>
+                                      {dataTreatment?.anesthesia}
+                                    </Marquee>
+                                    :
+                                    <>
+                                      {dataTreatment?.anesthesia}
+                                    </>
+                                }
                               </Typography>
                             </ListItem>
 
@@ -460,8 +485,17 @@ const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
                           }}>
                             <ListItem>
                               <Typography>
+                                {
+                                  dataTreatment?.startCost?.split(' ').length >= 3 ?
 
-                                ${dataTreatment?.startCost}
+                                    <Marquee style={{ overflow: 'hidden', }} speed={40}>
+                                      ${dataTreatment?.startCost}
+                                    </Marquee>
+                                    :
+                                    <>
+                                      ${dataTreatment?.startCost}
+                                    </>
+                                }
                               </Typography>
 
                             </ListItem>
@@ -489,7 +523,17 @@ const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
                         }}>
                           <ListItem>
                             <Typography>
-                              {dataTreatment?.successRate}%
+                              {
+                                dataTreatment?.successRate?.split(' ').length >= 4 ?
+
+                                  <Marquee style={{ overflow: 'hidden', }} speed={40}>
+                                    %{dataTreatment?.successRate}
+                                  </Marquee>
+                                  :
+                                  <>
+                                    %{dataTreatment?.successRate}
+                                  </>
+                              }
                             </Typography>
 
                           </ListItem>
@@ -514,37 +558,59 @@ const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
                           }}>
                             <ListItem>
                               <Typography>
-                                {dataTreatment?.resultDuration}
+                                {
+                                  dataTreatment?.resultDuration?.split(' ').length >= 4 ?
+
+                                    <Marquee style={{ overflow: 'hidden', }} speed={40}>
+                                      {dataTreatment?.resultDuration}
+                                    </Marquee>
+                                    :
+                                    <>
+                                      {dataTreatment?.resultDuration}
+                                    </>
+                                }
                               </Typography>
                             </ListItem>
                           </List>
                         </div>
                       }
-
-                      <div className={styles.box} style={{ order: '-1' }}>
-                        <div className={styles.title}>
-                          <Typography variant='h6'>{t("proceduresSymptoms_single:procedure_type")}:</Typography>
-                        </div>
-                        <List sx={{
-                          listStyleType: 'disc',
-                          padding: '0px',
-                          width: '70%',
-
-                          '& .MuiListItem-root': {
-
-                            listStylePosition: 'inside',
+                      {dataTreatment?.procedureType !== "" &&
+                        <div className={styles.box} style={{ order: '-1' }}>
+                          <div className={styles.title}>
+                            <Typography variant='h6'>{t("proceduresSymptoms_single:procedure_type")}:</Typography>
+                          </div>
+                          <List sx={{
+                            listStyleType: 'disc',
                             padding: '0px',
-                            cursor: 'pointer'
-                          },
-                        }}>
-                          <ListItem>
-                            <Typography>
-                              {dataTreatment?.procedureType}
-                            </Typography>
+                            width: '70%',
 
-                          </ListItem>
-                        </List>
-                      </div>
+                            '& .MuiListItem-root': {
+
+                              listStylePosition: 'inside',
+                              padding: '0px',
+                              cursor: 'pointer'
+                            },
+                          }}>
+                            <ListItem>
+                              <Typography>
+                                {
+                                  dataTreatment?.procedureType?.split(' ').length >= 3 ?
+
+                                    <Marquee style={{ overflow: 'hidden', }} speed={40}>
+                                      {dataTreatment?.procedureType}
+                                    </Marquee>
+                                    :
+                                    <>
+                                      {dataTreatment?.procedureType}
+                                    </>
+                                }
+                              </Typography>
+
+                            </ListItem>
+                          </List>
+
+                        </div>
+                      }
                     </div>
 
                   </div>
@@ -680,13 +746,12 @@ const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
 
           {
             dataTreatment?.treatmentImage?.length !== 0 &&
-            <BeforeAfter treatments={dataTreatment} />
-
+            <BeforeAfter treatments={dataBeforeAfter} />
 
           }
 
           {
-            dataTreatment?.treatmentStep?.length !== 0 &&
+            dataSteps?.length !== 0 &&
             <section id={styles.steps} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
               <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: "1239px" }} maxWidth={false}>
                 <div className={styles.sec_title}>
@@ -705,7 +770,7 @@ const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
                     isRTL={router.locale === 'ar' ? true : false}
                   >
 
-                    {dataTreatment?.treatmentStep?.map((stepCard, index) => (
+                    {dataSteps?.map((stepCard, index) => (
                       <>
                         <div className={styles.counter_container} key={index + 1}>
                           <div className={styles.steps_container} >
@@ -1112,7 +1177,10 @@ const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
                             {t('proceduresSymptoms_single:note')}
                           </Typography>
                         </div>
-
+                        <div
+                          id={"apply"}
+                          className="ck-content"
+                          dangerouslySetInnerHTML={createMarkupGetTreatmentStepThree()} />
                       </AccordionDetails>
                     </Accordion>
                   </div>
@@ -1122,7 +1190,7 @@ const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
           }
 
           {
-            dataTreatment?.treatmentProcedure != 0 &&
+            dataTreatmentProcedures?.length != 0 &&
             <section id={styles.treatment_desc} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
               <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
                 <div className={styles.sec_title}>
@@ -1141,11 +1209,13 @@ const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
                     isRTL={router.locale === 'ar' ? true : false}
 
                   >
-                    {dataTreatment?.treatmentProcedure?.map((card, index) => (
+                    {dataTreatmentProcedures?.map((card, index) => (
                       <>
-                        <div className={styles.steps_container} key={index}>
+                        <div className={styles.steps_container} key={card?.treatmentID}>
                           <div className={styles.step}>
-                            <span dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>{index + 1}</span>
+                            <span dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+                              {card.procedureCode}
+                            </span>
                           </div>
                         </div>
 
@@ -1176,7 +1246,7 @@ const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
           }
 
           {dataTreatment.cost !== "" &&
-            < section id={'price'} className={`${styles.price} ${dataTreatment?.treatmentProcedure.length === 0 ? styles.custom : ''}`} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
+            < section id={'price'} className={`${styles.price} ${dataTreatmentProcedures?.length === 0 ? styles.custom : ''}`} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
               <div className={styles.price_wrap}>
                 <div className={styles.section_container}>
                   <div className={styles.title}>
@@ -1206,7 +1276,7 @@ const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
             </section >
           }
           {
-            QACount > 0 &&
+            QACount != 0 &&
             <section id="q&a" className={styles.QA} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
               <Container sx={{ maxWidth: "1239px", overflow: 'hidden' }} maxWidth={false}>
                 <div className={styles.title}>
@@ -1260,7 +1330,7 @@ const TreatmentName = ({ dataTreatment, locale, params, dataTreatmentsQA }) => {
                   ))}
                 </div>
                 {
-                  QACount !== visibleQA.length &&
+                  QACount !== visibleQA?.length &&
                   <div className={styles.btn_container}>
                     <button className={styles.load_more_btn} onClick={handleLoadMoreQA}>
                       {isLoadingQA !== true ?
@@ -1321,7 +1391,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ locale, params }) {
-  const resTreatment = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentBySlug", {
+  // Treatment Basic Info
+  const resTreatment = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetBasicInfoBySlug", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -1329,18 +1400,13 @@ export async function getStaticProps({ locale, params }) {
     },
     body: JSON.stringify({
       "lang": locale,
-      "treatmentSlug": params.slug,
+      "slug": params.slug,
     })
   })
   const dataTreatment = await resTreatment.json()
 
-
-
-
-
-
-
-  const resTreatmentsQA = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentsQuestionAnswersBySlug", {
+  //Treatment Procedures
+  const resTreatmentProcedures = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetTreatmentProceduresBySlug", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -1348,16 +1414,101 @@ export async function getStaticProps({ locale, params }) {
     },
     body: JSON.stringify({
       "lang": locale,
-      "treatmentSlug": params.slug,
+      "slug": params.slug,
+    })
+  })
+  const dataTreatmentProcedures = await resTreatmentProcedures.json()
+
+
+
+
+  // Before & After 
+  const resBeforeAfter = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetImageAfterBeforeBySlug  ", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": locale,
+      "slug": params.slug,
+    })
+  })
+  const dataBeforeAfter = await resBeforeAfter.json()
+
+
+
+
+  // Steps
+  const resSteps = await fetch("https://api2.safemedigo.com/api/v1/Treatments/TreatmentStepsBySlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": locale,
+      "slug": params.slug,
+    })
+  })
+  const dataSteps = await resSteps.json()
+
+  // AboutProcedures
+  const resAboutProcedures = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetAllAboutProceduresBySlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": locale,
+      "slug": params.slug,
+    })
+  })
+  const dataAboutProcedures = await resAboutProcedures.json()
+
+
+
+  // Procedures
+  const resProcedures = await fetch("https://api2.safemedigo.com/api/v1/Treatments/GetProcedureBySlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": locale,
+      "slug": params.slug,
+    })
+  })
+  const dataProcedures = await resProcedures.json()
+
+
+
+  // QA
+  const resTreatmentsQA = await fetch("https://api2.safemedigo.com/api/v1/Treatments/TreatmentQuetionsSlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "lang": locale,
+      "slug": params.slug,
     })
   })
   const dataTreatmentsQA = await resTreatmentsQA.json()
   return {
     props: {
-      dataTreatment,
       locale,
       params,
+      dataTreatment,
+      dataTreatmentProcedures,
+      dataBeforeAfter,
+      dataSteps,
+      dataAboutProcedures,
       dataTreatmentsQA,
+      dataProcedures,
       ...(await serverSideTranslations(locale, ['navbar', 'single_blog', "contact_details", 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", "proceduresSymptoms_single", 'Footer'])),
 
     },

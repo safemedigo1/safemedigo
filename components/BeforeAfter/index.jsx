@@ -17,6 +17,7 @@ const BeforeAfter = ({ treatments, beforeCards }) => {
     router.pathname === '/doctor/[slug]' && setTreatmentsBeforeAFter(beforeCards)
   }, [])
 
+
   const [BeforeAfterbreakPoints] = useState([
     { width: 1, pagination: true, showArrows: false },
     { width: 300, pagination: true, showArrows: false, itemsToShow: 1, itemsToScroll: 1 },
@@ -64,7 +65,7 @@ const BeforeAfter = ({ treatments, beforeCards }) => {
           >
 
             {
-              treatmentsBeforeAFter?.treatmentImage?.map((card, index) => (
+              treatmentsBeforeAFter?.map((card, index) => (
                 <div className={styles.box} key={index}>
                   <div className={styles.imgs_container}>
                     <Image width={388} height={200} src={card.imgBefore} alt="" />

@@ -532,7 +532,6 @@ const DoctorName = ({ dataDoctorSlug }) => {
     setSimilarDocs(similarDocs)
   }
 
-  console.log(dataDoctorSlug.isOnline, "DOCTORAA ")
   return (
     <>
       <SecNavbar dataDoctorSlug={dataDoctorSlug} />
