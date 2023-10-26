@@ -142,6 +142,9 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
   function createMarkupHospitalizationOverview() {
     return { __html: decodeURI(dataTreatment?.hospitalizationOverview) };
   }
+  function createMarkupHospitalizationPeriodOverview() {
+    return { __html: decodeURI(dataTreatment?.hospitalizationPeriodOverview) };
+  }
 
   function createMarkupPreOperationOverview() {
     return { __html: decodeURI(dataAboutProcedures?.preOperationOverview) };
@@ -218,7 +221,12 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
     fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)'
   }
 
-
+  const operationDuration = dataTreatment?.operationDuration.split('@').map(item => item.trim()).filter(item => item !== '');
+  const anesthesia = dataTreatment?.anesthesia?.split('@').map(item => item.trim()).filter(item => item !== '');
+  const startCost = dataTreatment?.startCost?.split('@').map(item => item.trim()).filter(item => item !== '');
+  const successRate = dataTreatment?.successRate?.split('@').map(item => item.trim()).filter(item => item !== '');
+  const resultDuration = dataTreatment?.resultDuration.split('@').map(item => item.trim()).filter(item => item !== '');
+  const procedureType = dataTreatment?.procedureType?.split('@').map(item => item.trim()).filter(item => item !== '');
 
   return (
     <>
@@ -375,9 +383,41 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                         <div
                           id={"apply"}
                           className="ck-content"
+                          dangerouslySetInnerHTML={createMarkupHospitalizationPeriodOverview()} />
+                      </AccordionDetails>
+                    </Accordion>
+
+                    <Accordion expanded={expanded === 'panel455'} onChange={handleChange('panel455')}
+                      sx={style}
+                      disableGutters elevation={0}
+                      square={false}
+                    >
+                      <AccordionSummary
+
+                        sx={expanded !== 'panel455' ? accordionSummaryMainStyle
+                          : accordionSummarySecStyle
+                        }
+                        expandIcon={<ExpandMoreIcon sx={expanded !== 'panel455' ?
+                          expandMoreIconMainStyle
+                          : expandMoreIconSecStyle} />}
+                        aria-controls="panel455d-content" id="panel455d-header">
+                        <Typography sx={typographyStyle}>
+                          {t('proceduresSymptoms_single:Hospitalization_Duration')}
+                        </Typography>
+                      </AccordionSummary>
+
+                      <AccordionDetails
+                        sx={accordionDetailsStyle}
+                      >
+                        <div
+                          id={"apply"}
+                          className="ck-content"
                           dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
                       </AccordionDetails>
                     </Accordion>
+
+
+
                   </div>
                 </article>
 
@@ -398,108 +438,121 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                           <div className={styles.title}>
                             <Typography variant='h6'>{t("proceduresSymptoms_single:operation_duration")}:</Typography>
                           </div>
-                          <List sx={{
-                            listStyleType: 'disc',
-                            padding: '0px',
-                            '& .MuiListItem-root': {
-                              listStylePosition: 'inside',
-                              padding: '0px',
-                              cursor: 'pointer'
-                            },
-                          }}>
-                            <ListItem>
-                              <Typography>
 
-                                {
-                                  dataTreatment?.operationDuration?.split(' ').length >= 4 ?
+                          {operationDuration.map((operation, index) =>
+                            <>
 
-                                    <Marquee style={{ overflow: 'hidden', }} speed={40}>
-                                      {dataTreatment?.operationDuration}
-                                    </Marquee>
-                                    :
-                                    <>
-                                      {dataTreatment?.operationDuration}
-                                    </>
-                                }
-                              </Typography>
+                              <List key={index} sx={{
+                                listStyleType: 'disc',
+                                padding: '0px',
+                                '& .MuiListItem-root': {
+                                  listStylePosition: 'inside',
+                                  padding: '0px',
+                                  cursor: 'pointer'
+                                },
+
+                              }}>
 
 
-                            </ListItem>
-                          </List>
+                                <ListItem>
+                                  <Typography>
+
+                                    {
+                                      dataTreatment?.operationDuration?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
+
+                                        <Marquee style={{ overflow: 'hidden', }} speed={40}>
+                                          {operation}
+                                        </Marquee>
+                                        :
+                                        <>
+                                          {operation}
+                                        </>
+                                    }
+                                  </Typography>
+
+
+                                </ListItem>
+                              </List>
+                            </>
+                          )}
                         </div>
                       }
+
                       {dataTreatment?.anesthesia !== "" &&
                         <div className={styles.box} >
                           <div className={styles.title}>
                             <Typography variant='h6'>{t("proceduresSymptoms_single:type_of_anesthesia")}:</Typography>
                           </div>
-                          <List sx={{
-                            listStyleType: 'disc',
-                            padding: '0px',
-
-                            '& .MuiListItem-root': {
-
-                              listStylePosition: 'inside',
+                          {anesthesia.map((an, idx) =>
+                            <List key={idx} sx={{
+                              listStyleType: 'disc',
                               padding: '0px',
-                              cursor: 'pointer'
-                            },
-                          }}>
-                            <ListItem>
-                              <Typography>
-                                {
-                                  dataTreatment?.anesthesia?.split(' ').length >= 4 ?
 
-                                    <Marquee style={{ overflow: 'hidden', }} speed={40}>
-                                      {dataTreatment?.anesthesia}
-                                    </Marquee>
-                                    :
-                                    <>
-                                      {dataTreatment?.anesthesia}
-                                    </>
-                                }
-                              </Typography>
-                            </ListItem>
+                              '& .MuiListItem-root': {
 
-                          </List>
+                                listStylePosition: 'inside',
+                                padding: '0px',
+                                cursor: 'pointer'
+                              },
+                            }}>
+                              <ListItem>
+                                <Typography>
+                                  {
+                                    dataTreatment?.anesthesia?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
+
+                                      <Marquee style={{ overflow: 'hidden', }} speed={40}>
+                                        {an}
+                                      </Marquee>
+                                      :
+                                      <>
+                                        {an}
+                                      </>
+                                  }
+                                </Typography>
+                              </ListItem>
+
+                            </List>
+
+                          )}
                         </div>
-
                       }
-
-
 
                       {dataTreatment?.startCost !== "" &&
                         <div className={styles.box}>
                           <div className={styles.title}>
                             <Typography variant='h6'>{t("proceduresSymptoms_single:cost")}:</Typography>
                           </div>
-                          <List sx={{
-                            listStyleType: 'disc',
-                            padding: '0px',
+                          {startCost.map((cost, idx) =>
 
-                            '& .MuiListItem-root': {
-
-                              listStylePosition: 'inside',
+                            <List key={idx} sx={{
+                              listStyleType: 'disc',
                               padding: '0px',
-                              cursor: 'pointer'
-                            },
-                          }}>
-                            <ListItem>
-                              <Typography>
-                                {
-                                  dataTreatment?.startCost?.split(' ').length >= 3 ?
 
-                                    <Marquee style={{ overflow: 'hidden', }} speed={40}>
-                                      ${dataTreatment?.startCost}
-                                    </Marquee>
-                                    :
-                                    <>
-                                      ${dataTreatment?.startCost}
-                                    </>
-                                }
-                              </Typography>
+                              '& .MuiListItem-root': {
 
-                            </ListItem>
-                          </List>
+                                listStylePosition: 'inside',
+                                padding: '0px',
+                                cursor: 'pointer'
+                              },
+                            }}>
+                              <ListItem>
+                                <Typography>
+                                  {
+                                    dataTreatment?.startCost?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 3 ?
+
+                                      <Marquee style={{ overflow: 'hidden', }} speed={40}>
+                                        ${cost}
+                                      </Marquee>
+                                      :
+                                      <>
+                                        ${cost}
+                                      </>
+                                  }
+                                </Typography>
+
+                              </ListItem>
+                            </List>
+                          )}
                         </div>
                       }
                     </div>
@@ -510,34 +563,37 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                         <div className={styles.title}>
                           <Typography variant='h6'>{t("proceduresSymptoms_single:success_rate")}:</Typography>
                         </div>
-                        <List sx={{
-                          listStyleType: 'disc',
-                          padding: '0px',
-                          '& .MuiListItem-root': {
-
-                            listStylePosition: 'inside',
+                        {successRate?.map((rate, idx) =>
+                          <List key={idx} sx={{
+                            listStyleType: 'disc',
                             padding: '0px',
-                            cursor: 'pointer'
+                            '& .MuiListItem-root': {
 
-                          },
-                        }}>
-                          <ListItem>
-                            <Typography>
-                              {
-                                dataTreatment?.successRate?.split(' ').length >= 4 ?
+                              listStylePosition: 'inside',
+                              padding: '0px',
+                              cursor: 'pointer'
 
-                                  <Marquee style={{ overflow: 'hidden', }} speed={40}>
-                                    %{dataTreatment?.successRate}
-                                  </Marquee>
-                                  :
-                                  <>
-                                    %{dataTreatment?.successRate}
-                                  </>
-                              }
-                            </Typography>
+                            },
+                          }}>
+                            <ListItem>
+                              <Typography>
+                                {
+                                  dataTreatment?.successRate?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
 
-                          </ListItem>
-                        </List>
+                                    <Marquee style={{ overflow: 'hidden', }} speed={40}>
+                                      %{rate}
+                                    </Marquee>
+                                    :
+                                    <>
+                                      %{rate}
+                                    </>
+                                }
+                              </Typography>
+
+                            </ListItem>
+                          </List>
+
+                        )}
                       </div>
 
                       {dataTreatment?.resultDuration !== "" &&
@@ -545,33 +601,36 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                           <div className={styles.title}>
                             <Typography variant='h6'>{t("proceduresSymptoms_single:duration_results")}:</Typography>
                           </div>
-                          <List sx={{
-                            listStyleType: 'disc',
-                            padding: '0px',
-
-                            '& .MuiListItem-root': {
-
-                              listStylePosition: 'inside',
+                          {resultDuration.map((duration, idx) =>
+                            <List key={idx} sx={{
+                              listStyleType: 'disc',
                               padding: '0px',
-                              cursor: 'pointer'
-                            },
-                          }}>
-                            <ListItem>
-                              <Typography>
-                                {
-                                  dataTreatment?.resultDuration?.split(' ').length >= 4 ?
 
-                                    <Marquee style={{ overflow: 'hidden', }} speed={40}>
-                                      {dataTreatment?.resultDuration}
-                                    </Marquee>
-                                    :
-                                    <>
-                                      {dataTreatment?.resultDuration}
-                                    </>
-                                }
-                              </Typography>
-                            </ListItem>
-                          </List>
+                              '& .MuiListItem-root': {
+
+                                listStylePosition: 'inside',
+                                padding: '0px',
+                                cursor: 'pointer'
+                              },
+                            }}>
+                              <ListItem>
+                                <Typography>
+                                  {
+                                    dataTreatment?.resultDuration?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
+
+                                      <Marquee style={{ overflow: 'hidden', }} speed={40}>
+                                        {duration}
+                                      </Marquee>
+                                      :
+                                      <>
+                                        {duration}
+                                      </>
+                                  }
+                                </Typography>
+                              </ListItem>
+                            </List>
+
+                          )}
                         </div>
                       }
                       {dataTreatment?.procedureType !== "" &&
@@ -579,35 +638,40 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                           <div className={styles.title}>
                             <Typography variant='h6'>{t("proceduresSymptoms_single:procedure_type")}:</Typography>
                           </div>
-                          <List sx={{
-                            listStyleType: 'disc',
-                            padding: '0px',
-                            width: '70%',
 
-                            '& .MuiListItem-root': {
+                          {procedureType.map((type, idx) =>
 
-                              listStylePosition: 'inside',
+                            <List key={idx} sx={{
+                              listStyleType: 'disc',
                               padding: '0px',
-                              cursor: 'pointer'
-                            },
-                          }}>
-                            <ListItem>
-                              <Typography>
-                                {
-                                  dataTreatment?.procedureType?.split(' ').length >= 3 ?
+                              width: '70%',
 
-                                    <Marquee style={{ overflow: 'hidden', }} speed={40}>
-                                      {dataTreatment?.procedureType}
-                                    </Marquee>
-                                    :
-                                    <>
-                                      {dataTreatment?.procedureType}
-                                    </>
-                                }
-                              </Typography>
+                              '& .MuiListItem-root': {
 
-                            </ListItem>
-                          </List>
+                                listStylePosition: 'inside',
+                                padding: '0px',
+                                cursor: 'pointer'
+                              },
+                            }}>
+                              <ListItem>
+                                <Typography>
+                                  {
+                                    dataTreatment?.procedureType?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
+
+                                      <Marquee style={{ overflow: 'hidden', }} speed={40}>
+                                        {type}
+                                      </Marquee>
+                                      :
+                                      <>
+                                        {type}
+                                      </>
+                                  }
+                                </Typography>
+
+                              </ListItem>
+                            </List>
+
+                          )}
 
                         </div>
                       }
@@ -676,10 +740,6 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                   </AccordionDetails>
                 </Accordion>
 
-
-
-
-
                 <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}
                   sx={style}
                   disableGutters elevation={0}
@@ -735,7 +795,7 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                     <div
                       id={"apply"}
                       className="ck-content"
-                      dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
+                      dangerouslySetInnerHTML={createMarkupHospitalizationPeriodOverview()} />
                   </AccordionDetails>
                 </Accordion>
               </div>

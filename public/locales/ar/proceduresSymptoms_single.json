@@ -29,10 +29,12 @@
   "Secure_Your_Appointment": "اضمن حجز موعدك",
   "Steps": "خطوات",
   "Guides_And_Common_Questions": "الأسئلة  الشائعة",
+
   "benefits": "فوائد",
   "Side_Effects": "الآثار الجانبية المحتملة",
   "Candidate": "ما الذي يجعل المرشح الجيد",
-  "Hospitalization": "مدة الإجراء والمكوث في المستشفى",
+  "Hospitalization": " مدة الرحلة العلاجية",
+  "Hospitalization_Duration": "مدة الإقامة في المستشفى",
 
   "step3_Reservation": "الحجز",
   "step3_ReservationDesc": "يضمن لك موعدًا في إحدى عياداتنا المتميزة.",

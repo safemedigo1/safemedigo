@@ -32,7 +32,8 @@
   "benefits": "Benefits",
   "Side_Effects": "Possible Side Effects",
   "Candidate": "What Makes A Good Candidate",
-  "Hospitalization": "Procedure Duration & Hospitalization",
+  "Hospitalization": "Medical Trip Duration",
+  "Hospitalization_Duration": "Hospitalization Duration",
 
   "step3_Reservation": "Reservation",
   "step3_ReservationDesc": "It Ensures Your Appointment Slot At One Of Our Esteemed Clinics.",

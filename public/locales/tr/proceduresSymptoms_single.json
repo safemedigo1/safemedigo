@@ -33,7 +33,8 @@
   "benefits": "Yararlar",
   "Side_Effects": "Olası Yan Etkiler",
   "Candidate": "Kim iyi bir adaydır",
-  "Hospitalization": "İşlem süresi ve hastane yatış süresi",
+  "Hospitalization": "Tıbbi Seyahat Süresi",
+  "Hospitalization_Duration": "Yatış Süresi",
 
   "step3_Reservation": "Rezervasyon",
   "step3_ReservationDesc": "Saygın Kliniklerimizden Birinde Randevu Yerinizi Sağlar.",
