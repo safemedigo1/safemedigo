@@ -253,6 +253,23 @@ article.overview {
       display: none !important;
       background-color: red;
     }
+    ul {
+      padding: 0;
+      margin: 0;
+      li {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        font-size: 18px;
+        &:not(:last-child) {
+          margin-bottom: 16px;
+        }
+
+        &:first-child {
+          margin-top: 16px;
+        }
+      }
+    }
   }
 }
 
@@ -922,6 +939,12 @@ article.overview[dir="rtl"] {
       .menu_container {
         p {
           font-family: var(--arabic-font);
+        }
+      }
+
+      ul {
+        li {
+          font-family: var(--arabic-font) !important;
         }
       }
     }

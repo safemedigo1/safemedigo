@@ -367,19 +367,23 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                       <AccordionDetails
                         sx={accordionDetailsStyle}
                       >
-                        {candidateOverview.map((item, index) => {
-                          const colonIndex = item.indexOf(':');
-                          if (colonIndex !== -1) {
-                            const title = item.substring(0, colonIndex);
-                            const description = item.substring(colonIndex + 1).trim();
-                            return (
-                              <li key={index}>
-                                <strong>{title}</strong>: {description}
-                              </li>
-                            );
-                          }
-                          return null;
-                        })}
+                        <ul>
+
+                          {candidateOverview.map((item, index) => {
+                            const colonIndex = item.indexOf(':');
+                            if (colonIndex !== -1) {
+                              const title = item.substring(0, colonIndex);
+                              const description = item.substring(colonIndex + 1).trim();
+                              return (
+                                <li key={index}>
+                                  <strong>{title}</strong>: {description}
+                                </li>
+                              );
+                            }
+                            return null;
+                          })}
+                        </ul>
+
 
 
                       </AccordionDetails>
@@ -408,19 +412,23 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                       <AccordionDetails
                         sx={accordionDetailsStyle}
                       >
-                        {hospitalizationOverview.map((item, index) => {
-                          const colonIndex = item.indexOf(':');
-                          if (colonIndex !== -1) {
-                            const title = item.substring(0, colonIndex);
-                            const description = item.substring(colonIndex + 1).trim();
-                            return (
-                              <li key={index}>
-                                <strong>{title}</strong>: {description}
-                              </li>
-                            );
-                          }
-                          return null;
-                        })}
+                        <ul>
+
+                          {hospitalizationOverview.map((item, index) => {
+                            const colonIndex = item.indexOf(':');
+                            if (colonIndex !== -1) {
+                              const title = item.substring(0, colonIndex);
+                              const description = item.substring(colonIndex + 1).trim();
+                              return (
+                                <li key={index}>
+                                  <strong>{title}</strong>: {description}
+                                </li>
+                              );
+                            }
+                            return null;
+                          })}
+                        </ul>
+
                       </AccordionDetails>
                     </Accordion>
 
@@ -446,19 +454,23 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                       <AccordionDetails
                         sx={accordionDetailsStyle}
                       >
-                        {hospitalizationOverview.map((item, index) => {
-                          const colonIndex = item.indexOf(':');
-                          if (colonIndex !== -1) {
-                            const title = item.substring(0, colonIndex);
-                            const description = item.substring(colonIndex + 1).trim();
-                            return (
-                              <li key={index}>
-                                <strong>{title}</strong>: {description}
-                              </li>
-                            );
-                          }
-                          return null;
-                        })}
+                        <ul>
+
+                          {hospitalizationOverview.map((item, index) => {
+                            const colonIndex = item.indexOf(':');
+                            if (colonIndex !== -1) {
+                              const title = item.substring(0, colonIndex);
+                              const description = item.substring(colonIndex + 1).trim();
+                              return (
+                                <li key={index}>
+                                  <strong>{title}</strong>: {description}
+                                </li>
+                              );
+                            }
+                            return null;
+                          })}
+                        </ul>
+
                       </AccordionDetails>
                     </Accordion>
 
@@ -760,19 +772,23 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                   <AccordionDetails
                     sx={accordionDetailsStyle}
                   >
-                    {benifitsOverview.map((item, index) => {
-                      const colonIndex = item.indexOf(':');
-                      if (colonIndex !== -1) {
-                        const title = item.substring(0, colonIndex);
-                        const description = item.substring(colonIndex + 1).trim();
-                        return (
-                          <li key={index}>
-                            <strong>{title}</strong>: {description}
-                          </li>
-                        );
-                      }
-                      return null;
-                    })}
+                    <ul>
+
+                      {benifitsOverview.map((item, index) => {
+                        const colonIndex = item.indexOf(':');
+                        if (colonIndex !== -1) {
+                          const title = item.substring(0, colonIndex);
+                          const description = item.substring(colonIndex + 1).trim();
+                          return (
+                            <li key={index}>
+                              <strong>{title}</strong>: {description}
+                            </li>
+                          );
+                        }
+                        return null;
+                      })}
+                    </ul>
+
                   </AccordionDetails>
                 </Accordion>
 
@@ -798,19 +814,22 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                   <AccordionDetails
                     sx={accordionDetailsStyle}
                   >
-                    {sideEffectsOverview.map((item, index) => {
-                      const colonIndex = item.indexOf(':');
-                      if (colonIndex !== -1) {
-                        const title = item.substring(0, colonIndex);
-                        const description = item.substring(colonIndex + 1).trim();
-                        return (
-                          <li key={index}>
-                            <strong>{title}</strong>: {description}
-                          </li>
-                        );
-                      }
-                      return null;
-                    })}
+
+                    <ul>
+                      {sideEffectsOverview.map((item, index) => {
+                        const colonIndex = item.indexOf(':');
+                        if (colonIndex !== -1) {
+                          const title = item.substring(0, colonIndex);
+                          const description = item.substring(colonIndex + 1).trim();
+                          return (
+                            <li key={index}>
+                              <strong>{title}</strong>: {description}
+                            </li>
+                          );
+                        }
+                        return null;
+                      })}
+                    </ul>
                   </AccordionDetails>
                 </Accordion>
 
@@ -836,19 +855,23 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                   <AccordionDetails
                     sx={accordionDetailsStyle}
                   >
-                    {candidateOverview.map((item, index) => {
-                      const colonIndex = item.indexOf(':');
-                      if (colonIndex !== -1) {
-                        const title = item.substring(0, colonIndex);
-                        const description = item.substring(colonIndex + 1).trim();
-                        return (
-                          <li key={index}>
-                            <strong>{title}</strong>: {description}
-                          </li>
-                        );
-                      }
-                      return null;
-                    })}
+                    <ul>
+
+                      {candidateOverview.map((item, index) => {
+                        const colonIndex = item.indexOf(':');
+                        if (colonIndex !== -1) {
+                          const title = item.substring(0, colonIndex);
+                          const description = item.substring(colonIndex + 1).trim();
+                          return (
+                            <li key={index}>
+                              <strong>{title}</strong>: {description}
+                            </li>
+                          );
+                        }
+                        return null;
+                      })}
+                    </ul>
+
                   </AccordionDetails>
                 </Accordion>
 
@@ -875,19 +898,23 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                   <AccordionDetails
                     sx={accordionDetailsStyle}
                   >
-                    {hospitalizationPeriodOverview.map((item, index) => {
-                      const colonIndex = item.indexOf(':');
-                      if (colonIndex !== -1) {
-                        const title = item.substring(0, colonIndex);
-                        const description = item.substring(colonIndex + 1).trim();
-                        return (
-                          <li key={index}>
-                            <strong>{title}</strong>: {description}
-                          </li>
-                        );
-                      }
-                      return null;
-                    })}
+                    <ul>
+
+                      {hospitalizationPeriodOverview.map((item, index) => {
+                        const colonIndex = item.indexOf(':');
+                        if (colonIndex !== -1) {
+                          const title = item.substring(0, colonIndex);
+                          const description = item.substring(colonIndex + 1).trim();
+                          return (
+                            <li key={index}>
+                              <strong>{title}</strong>: {description}
+                            </li>
+                          );
+                        }
+                        return null;
+                      })}
+                    </ul>
+
                   </AccordionDetails>
                 </Accordion>
 
@@ -914,19 +941,23 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                   <AccordionDetails
                     sx={accordionDetailsStyle}
                   >
-                    {hospitalizationOverview.map((item, index) => {
-                      const colonIndex = item.indexOf(':');
-                      if (colonIndex !== -1) {
-                        const title = item.substring(0, colonIndex);
-                        const description = item.substring(colonIndex + 1).trim();
-                        return (
-                          <li key={index}>
-                            <strong>{title}</strong>: {description}
-                          </li>
-                        );
-                      }
-                      return null;
-                    })}
+                    <ul>
+
+                      {hospitalizationOverview.map((item, index) => {
+                        const colonIndex = item.indexOf(':');
+                        if (colonIndex !== -1) {
+                          const title = item.substring(0, colonIndex);
+                          const description = item.substring(colonIndex + 1).trim();
+                          return (
+                            <li key={index}>
+                              <strong>{title}</strong>: {description}
+                            </li>
+                          );
+                        }
+                        return null;
+                      })}
+                    </ul>
+
                   </AccordionDetails>
                 </Accordion>
               </div>
