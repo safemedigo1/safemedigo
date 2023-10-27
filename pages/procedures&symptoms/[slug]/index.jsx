@@ -448,7 +448,7 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                         <ul>
 
 
-                          {hospitalizationOverview.map((item, index) => (
+                          {hospitalizationPeriodOverview.map((item, index) => (
                             <li key={index}>
                               {item.includes(':') ? (
                                 <>
@@ -863,7 +863,7 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                   >
                     <ul>
 
-                      {hospitalizationPeriodOverview.map((item, index) => (
+                      {hospitalizationOverview.map((item, index) => (
                         <li key={index}>
                           {item.includes(':') ? (
                             <>
@@ -907,7 +907,7 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
 
 
 
-                      {hospitalizationOverview.map((item, index) => (
+                      {hospitalizationPeriodOverview.map((item, index) => (
                         <li key={index}>
                           {item.includes(':') ? (
                             <>
