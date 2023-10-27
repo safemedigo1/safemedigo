@@ -10,7 +10,6 @@ import { useTranslation } from "react-i18next";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 import { ContactDetails } from '@/components/Home';
-import axios from 'axios';
 import { ThreeDots } from 'react-loader-spinner'
 import Image from 'next/image';
 import InnerPageNavbar from '@/components/Navbar/InnerPageNavbar';
@@ -106,6 +105,18 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
   };
 
 
+
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+
   // Styling
 
   const paragrahp3 =
@@ -127,24 +138,7 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
     fontFamily: 'Open Sans, sans-serif'
   }
 
-  function createMarkup() {
-    return { __html: decodeURI(dataTreatment?.benifitsOverview) };
-  }
 
-  function createMarkupSideEffects() {
-    return { __html: decodeURI(dataTreatment?.sideEffectsOverview) };
-  }
-
-  function createMarkupCandidateOverview() {
-    return { __html: decodeURI(dataTreatment?.candidateOverview) };
-  }
-
-  function createMarkupHospitalizationOverview() {
-    return { __html: decodeURI(dataTreatment?.hospitalizationOverview) };
-  }
-  function createMarkupHospitalizationPeriodOverview() {
-    return { __html: decodeURI(dataTreatment?.hospitalizationPeriodOverview) };
-  }
 
   function createMarkupPreOperationOverview() {
     return { __html: decodeURI(dataAboutProcedures?.preOperationOverview) };
@@ -221,12 +215,12 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
     fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)'
   }
 
-  const operationDuration = dataTreatment?.operationDuration.split('@').map(item => item.trim()).filter(item => item !== '');
-  const anesthesia = dataTreatment?.anesthesia?.split('@').map(item => item.trim()).filter(item => item !== '');
-  const startCost = dataTreatment?.startCost?.split('@').map(item => item.trim()).filter(item => item !== '');
-  const successRate = dataTreatment?.successRate?.split('@').map(item => item.trim()).filter(item => item !== '');
-  const resultDuration = dataTreatment?.resultDuration.split('@').map(item => item.trim()).filter(item => item !== '');
-  const procedureType = dataTreatment?.procedureType?.split('@').map(item => item.trim()).filter(item => item !== '');
+  const benifitsOverview = dataTreatment?.benifitsOverview?.split('@')
+  const sideEffectsOverview = dataTreatment?.sideEffectsOverview?.split('@')
+  const candidateOverview = dataTreatment?.candidateOverview?.split('@')
+
+  const hospitalizationOverview = dataTreatment?.hospitalizationOverview?.split('@')
+  const hospitalizationPeriodOverview = dataTreatment?.hospitalizationPeriodOverview?.split('@')
 
   return (
     <>
@@ -288,10 +282,22 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                       <AccordionDetails
                         sx={accordionDetailsStyle}
                       >
-                        <div
-                          id={"apply"}
-                          className="ck-content"
-                          dangerouslySetInnerHTML={createMarkup()} />
+
+                        <ul>
+                          {benifitsOverview.map((item, index) => {
+                            const colonIndex = item.indexOf(':');
+                            if (colonIndex !== -1) {
+                              const title = item.substring(0, colonIndex);
+                              const description = item.substring(colonIndex + 1).trim();
+                              return (
+                                <li key={index}>
+                                  <strong>{title}</strong>: {description}
+                                </li>
+                              );
+                            }
+                            return null;
+                          })}
+                        </ul>
                       </AccordionDetails>
                     </Accordion>
 
@@ -317,10 +323,21 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                       <AccordionDetails
                         sx={accordionDetailsStyle}
                       >
-                        <div
-                          id={"apply"}
-                          className="ck-content"
-                          dangerouslySetInnerHTML={createMarkupSideEffects()} />
+                        <ul>
+                          {sideEffectsOverview.map((item, index) => {
+                            const colonIndex = item.indexOf(':');
+                            if (colonIndex !== -1) {
+                              const title = item.substring(0, colonIndex);
+                              const description = item.substring(colonIndex + 1).trim();
+                              return (
+                                <li key={index}>
+                                  <strong>{title}</strong>: {description}
+                                </li>
+                              );
+                            }
+                            return null;
+                          })}
+                        </ul>
                       </AccordionDetails>
                     </Accordion>
 
@@ -350,10 +367,21 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                       <AccordionDetails
                         sx={accordionDetailsStyle}
                       >
-                        <div
-                          id={"apply"}
-                          className="ck-content"
-                          dangerouslySetInnerHTML={createMarkupCandidateOverview()} />
+                        {candidateOverview.map((item, index) => {
+                          const colonIndex = item.indexOf(':');
+                          if (colonIndex !== -1) {
+                            const title = item.substring(0, colonIndex);
+                            const description = item.substring(colonIndex + 1).trim();
+                            return (
+                              <li key={index}>
+                                <strong>{title}</strong>: {description}
+                              </li>
+                            );
+                          }
+                          return null;
+                        })}
+
+
                       </AccordionDetails>
                     </Accordion>
 
@@ -380,10 +408,19 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                       <AccordionDetails
                         sx={accordionDetailsStyle}
                       >
-                        <div
-                          id={"apply"}
-                          className="ck-content"
-                          dangerouslySetInnerHTML={createMarkupHospitalizationPeriodOverview()} />
+                        {hospitalizationOverview.map((item, index) => {
+                          const colonIndex = item.indexOf(':');
+                          if (colonIndex !== -1) {
+                            const title = item.substring(0, colonIndex);
+                            const description = item.substring(colonIndex + 1).trim();
+                            return (
+                              <li key={index}>
+                                <strong>{title}</strong>: {description}
+                              </li>
+                            );
+                          }
+                          return null;
+                        })}
                       </AccordionDetails>
                     </Accordion>
 
@@ -409,10 +446,19 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                       <AccordionDetails
                         sx={accordionDetailsStyle}
                       >
-                        <div
-                          id={"apply"}
-                          className="ck-content"
-                          dangerouslySetInnerHTML={createMarkupHospitalizationOverview()} />
+                        {hospitalizationOverview.map((item, index) => {
+                          const colonIndex = item.indexOf(':');
+                          if (colonIndex !== -1) {
+                            const title = item.substring(0, colonIndex);
+                            const description = item.substring(colonIndex + 1).trim();
+                            return (
+                              <li key={index}>
+                                <strong>{title}</strong>: {description}
+                              </li>
+                            );
+                          }
+                          return null;
+                        })}
                       </AccordionDetails>
                     </Accordion>
 
@@ -439,42 +485,42 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                             <Typography variant='h6'>{t("proceduresSymptoms_single:operation_duration")}:</Typography>
                           </div>
 
-                          {operationDuration.map((operation, index) =>
-                            <>
-
-                              <List key={index} sx={{
-                                listStyleType: 'disc',
+                          <>
+                            <List sx={{
+                              listStyleType: 'disc',
+                              padding: '0px',
+                              '& .MuiListItem-root': {
+                                listStylePosition: 'inside',
                                 padding: '0px',
-                                '& .MuiListItem-root': {
-                                  listStylePosition: 'inside',
-                                  padding: '0px',
-                                  cursor: 'pointer'
-                                },
-
-                              }}>
+                                cursor: 'pointer'
+                              },
+                            }}>
 
 
-                                <ListItem>
-                                  <Typography>
+                              <ListItem>
+                                <Typography
+                                  onMouseEnter={handleMouseEnter}
+                                  onMouseLeave={handleMouseLeave}
+                                >
 
-                                    {
-                                      dataTreatment?.operationDuration?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
-
-                                        <Marquee style={{ overflow: 'hidden', }} speed={40}>
-                                          {operation}
-                                        </Marquee>
-                                        :
-                                        <>
-                                          {operation}
-                                        </>
-                                    }
-                                  </Typography>
+                                  {
+                                    dataTreatment?.operationDuration?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
 
 
-                                </ListItem>
-                              </List>
-                            </>
-                          )}
+                                      <Marquee style={{ overflow: 'hidden', }} speed={40} play={isHovered}>
+                                        {dataTreatment?.operationDuration}
+                                      </Marquee>
+                                      :
+                                      <>
+                                        {dataTreatment?.operationDuration}
+                                      </>
+                                  }
+                                </Typography>
+
+
+                              </ListItem>
+                            </List>
+                          </>
                         </div>
                       }
 
@@ -483,37 +529,39 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                           <div className={styles.title}>
                             <Typography variant='h6'>{t("proceduresSymptoms_single:type_of_anesthesia")}:</Typography>
                           </div>
-                          {anesthesia.map((an, idx) =>
-                            <List key={idx} sx={{
-                              listStyleType: 'disc',
+                          <List sx={{
+                            listStyleType: 'disc',
+                            padding: '0px',
+
+                            '& .MuiListItem-root': {
+
+                              listStylePosition: 'inside',
                               padding: '0px',
+                              cursor: 'pointer'
+                            },
+                          }}>
+                            <ListItem>
+                              <Typography
+                                onMouseEnter={handleMouseEnter}
+                                onMouseLeave={handleMouseLeave}>
+                                {
 
-                              '& .MuiListItem-root': {
 
-                                listStylePosition: 'inside',
-                                padding: '0px',
-                                cursor: 'pointer'
-                              },
-                            }}>
-                              <ListItem>
-                                <Typography>
-                                  {
-                                    dataTreatment?.anesthesia?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
+                                  dataTreatment?.anesthesia?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
 
-                                      <Marquee style={{ overflow: 'hidden', }} speed={40}>
-                                        {an}
-                                      </Marquee>
-                                      :
-                                      <>
-                                        {an}
-                                      </>
-                                  }
-                                </Typography>
-                              </ListItem>
+                                    <Marquee style={{ overflow: 'hidden', }} speed={40} play={isHovered}>
+                                      {dataTreatment?.anesthesia}
+                                    </Marquee>
+                                    :
+                                    <>
+                                      {dataTreatment?.anesthesia}
+                                    </>
+                                }
+                              </Typography>
+                            </ListItem>
 
-                            </List>
+                          </List>
 
-                          )}
                         </div>
                       }
 
@@ -522,37 +570,41 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                           <div className={styles.title}>
                             <Typography variant='h6'>{t("proceduresSymptoms_single:cost")}:</Typography>
                           </div>
-                          {startCost.map((cost, idx) =>
 
-                            <List key={idx} sx={{
-                              listStyleType: 'disc',
+                          <List sx={{
+                            listStyleType: 'disc',
+                            padding: '0px',
+
+                            '& .MuiListItem-root': {
+
+                              listStylePosition: 'inside',
                               padding: '0px',
+                              cursor: 'pointer'
+                            },
+                          }}>
+                            <ListItem>
+                              <Typography
 
-                              '& .MuiListItem-root': {
+                                onMouseEnter={handleMouseEnter}
+                                onMouseLeave={handleMouseLeave}
+                              >
+                                {
+                                  dataTreatment?.startCost?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 3 ?
 
-                                listStylePosition: 'inside',
-                                padding: '0px',
-                                cursor: 'pointer'
-                              },
-                            }}>
-                              <ListItem>
-                                <Typography>
-                                  {
-                                    dataTreatment?.startCost?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 3 ?
+                                    <Marquee style={{ overflow: 'hidden', }} speed={40}
+                                      play={isHovered}
+                                    >
+                                      ${dataTreatment?.startCost}
+                                    </Marquee>
+                                    :
+                                    <>
+                                      ${dataTreatment?.startCost}
+                                    </>
+                                }
+                              </Typography>
 
-                                      <Marquee style={{ overflow: 'hidden', }} speed={40}>
-                                        ${cost}
-                                      </Marquee>
-                                      :
-                                      <>
-                                        ${cost}
-                                      </>
-                                  }
-                                </Typography>
-
-                              </ListItem>
-                            </List>
-                          )}
+                            </ListItem>
+                          </List>
                         </div>
                       }
                     </div>
@@ -563,37 +615,40 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                         <div className={styles.title}>
                           <Typography variant='h6'>{t("proceduresSymptoms_single:success_rate")}:</Typography>
                         </div>
-                        {successRate?.map((rate, idx) =>
-                          <List key={idx} sx={{
-                            listStyleType: 'disc',
+                        <List sx={{
+                          listStyleType: 'disc',
+                          padding: '0px',
+                          '& .MuiListItem-root': {
+
+                            listStylePosition: 'inside',
                             padding: '0px',
-                            '& .MuiListItem-root': {
+                            cursor: 'pointer'
 
-                              listStylePosition: 'inside',
-                              padding: '0px',
-                              cursor: 'pointer'
+                          },
+                        }}>
+                          <ListItem>
+                            <Typography onMouseEnter={handleMouseEnter}
+                              onMouseLeave={handleMouseLeave}>
+                              {
+                                dataTreatment?.successRate?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
 
-                            },
-                          }}>
-                            <ListItem>
-                              <Typography>
-                                {
-                                  dataTreatment?.successRate?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
 
-                                    <Marquee style={{ overflow: 'hidden', }} speed={40}>
-                                      %{rate}
-                                    </Marquee>
-                                    :
-                                    <>
-                                      %{rate}
-                                    </>
-                                }
-                              </Typography>
 
-                            </ListItem>
-                          </List>
 
-                        )}
+
+                                  <Marquee style={{ overflow: 'hidden', }} speed={40} play={isHovered}>
+                                    %{dataTreatment?.successRate}
+                                  </Marquee>
+                                  :
+                                  <>
+                                    %{dataTreatment?.successRate}
+                                  </>
+                              }
+                            </Typography>
+
+                          </ListItem>
+                        </List>
+
                       </div>
 
                       {dataTreatment?.resultDuration !== "" &&
@@ -601,36 +656,36 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                           <div className={styles.title}>
                             <Typography variant='h6'>{t("proceduresSymptoms_single:duration_results")}:</Typography>
                           </div>
-                          {resultDuration.map((duration, idx) =>
-                            <List key={idx} sx={{
-                              listStyleType: 'disc',
+                          <List sx={{
+                            listStyleType: 'disc',
+                            padding: '0px',
+
+                            '& .MuiListItem-root': {
+
+                              listStylePosition: 'inside',
                               padding: '0px',
+                              cursor: 'pointer'
+                            },
+                          }}>
+                            <ListItem>
+                              <Typography onMouseEnter={handleMouseEnter}
+                                onMouseLeave={handleMouseLeave}>
+                                {
+                                  dataTreatment?.resultDuration?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
 
-                              '& .MuiListItem-root': {
 
-                                listStylePosition: 'inside',
-                                padding: '0px',
-                                cursor: 'pointer'
-                              },
-                            }}>
-                              <ListItem>
-                                <Typography>
-                                  {
-                                    dataTreatment?.resultDuration?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
+                                    <Marquee style={{ overflow: 'hidden', }} speed={40} play={isHovered}>
+                                      {dataTreatment?.resultDuration}
+                                    </Marquee>
+                                    :
+                                    <>
+                                      {dataTreatment?.resultDuration}
+                                    </>
+                                }
+                              </Typography>
+                            </ListItem>
+                          </List>
 
-                                      <Marquee style={{ overflow: 'hidden', }} speed={40}>
-                                        {duration}
-                                      </Marquee>
-                                      :
-                                      <>
-                                        {duration}
-                                      </>
-                                  }
-                                </Typography>
-                              </ListItem>
-                            </List>
-
-                          )}
                         </div>
                       }
                       {dataTreatment?.procedureType !== "" &&
@@ -639,39 +694,40 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                             <Typography variant='h6'>{t("proceduresSymptoms_single:procedure_type")}:</Typography>
                           </div>
 
-                          {procedureType.map((type, idx) =>
 
-                            <List key={idx} sx={{
-                              listStyleType: 'disc',
+                          <List sx={{
+                            listStyleType: 'disc',
+                            padding: '0px',
+                            width: '70%',
+
+                            '& .MuiListItem-root': {
+
+                              listStylePosition: 'inside',
                               padding: '0px',
-                              width: '70%',
+                              cursor: 'pointer'
+                            },
+                          }}>
+                            <ListItem>
+                              <Typography
+                                onMouseEnter={handleMouseEnter}
+                                onMouseLeave={handleMouseLeave}
+                              >
+                                {
+                                  dataTreatment?.procedureType?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 1 ?
 
-                              '& .MuiListItem-root': {
+                                    <Marquee style={{ overflow: 'hidden', }} speed={40} play={isHovered}>
+                                      {dataTreatment?.procedureType}
+                                    </Marquee>
+                                    :
+                                    <>
+                                      {dataTreatment?.procedureType}
+                                    </>
+                                }
+                              </Typography>
 
-                                listStylePosition: 'inside',
-                                padding: '0px',
-                                cursor: 'pointer'
-                              },
-                            }}>
-                              <ListItem>
-                                <Typography>
-                                  {
-                                    dataTreatment?.procedureType?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
+                            </ListItem>
+                          </List>
 
-                                      <Marquee style={{ overflow: 'hidden', }} speed={40}>
-                                        {type}
-                                      </Marquee>
-                                      :
-                                      <>
-                                        {type}
-                                      </>
-                                  }
-                                </Typography>
-
-                              </ListItem>
-                            </List>
-
-                          )}
 
                         </div>
                       }
@@ -704,10 +760,19 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                   <AccordionDetails
                     sx={accordionDetailsStyle}
                   >
-                    <div
-                      id={"apply"}
-                      className="ck-content"
-                      dangerouslySetInnerHTML={createMarkup()} />
+                    {benifitsOverview.map((item, index) => {
+                      const colonIndex = item.indexOf(':');
+                      if (colonIndex !== -1) {
+                        const title = item.substring(0, colonIndex);
+                        const description = item.substring(colonIndex + 1).trim();
+                        return (
+                          <li key={index}>
+                            <strong>{title}</strong>: {description}
+                          </li>
+                        );
+                      }
+                      return null;
+                    })}
                   </AccordionDetails>
                 </Accordion>
 
@@ -733,10 +798,19 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                   <AccordionDetails
                     sx={accordionDetailsStyle}
                   >
-                    <div
-                      id={"apply"}
-                      className="ck-content"
-                      dangerouslySetInnerHTML={createMarkupSideEffects()} />
+                    {sideEffectsOverview.map((item, index) => {
+                      const colonIndex = item.indexOf(':');
+                      if (colonIndex !== -1) {
+                        const title = item.substring(0, colonIndex);
+                        const description = item.substring(colonIndex + 1).trim();
+                        return (
+                          <li key={index}>
+                            <strong>{title}</strong>: {description}
+                          </li>
+                        );
+                      }
+                      return null;
+                    })}
                   </AccordionDetails>
                 </Accordion>
 
@@ -762,10 +836,19 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                   <AccordionDetails
                     sx={accordionDetailsStyle}
                   >
-                    <div
-                      id={"apply"}
-                      className="ck-content"
-                      dangerouslySetInnerHTML={createMarkupCandidateOverview()} />
+                    {candidateOverview.map((item, index) => {
+                      const colonIndex = item.indexOf(':');
+                      if (colonIndex !== -1) {
+                        const title = item.substring(0, colonIndex);
+                        const description = item.substring(colonIndex + 1).trim();
+                        return (
+                          <li key={index}>
+                            <strong>{title}</strong>: {description}
+                          </li>
+                        );
+                      }
+                      return null;
+                    })}
                   </AccordionDetails>
                 </Accordion>
 
@@ -792,10 +875,58 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                   <AccordionDetails
                     sx={accordionDetailsStyle}
                   >
-                    <div
-                      id={"apply"}
-                      className="ck-content"
-                      dangerouslySetInnerHTML={createMarkupHospitalizationPeriodOverview()} />
+                    {hospitalizationPeriodOverview.map((item, index) => {
+                      const colonIndex = item.indexOf(':');
+                      if (colonIndex !== -1) {
+                        const title = item.substring(0, colonIndex);
+                        const description = item.substring(colonIndex + 1).trim();
+                        return (
+                          <li key={index}>
+                            <strong>{title}</strong>: {description}
+                          </li>
+                        );
+                      }
+                      return null;
+                    })}
+                  </AccordionDetails>
+                </Accordion>
+
+
+                <Accordion expanded={expanded === 'panel455'} onChange={handleChange('panel455')}
+                  sx={style}
+                  disableGutters elevation={0}
+                  square={false}
+                >
+                  <AccordionSummary
+
+                    sx={expanded !== 'panel455' ? accordionSummaryMainStyle
+                      : accordionSummarySecStyle
+                    }
+                    expandIcon={<ExpandMoreIcon sx={expanded !== 'panel455' ?
+                      expandMoreIconMainStyle
+                      : expandMoreIconSecStyle} />}
+                    aria-controls="panel455d-content" id="panel455d-header">
+                    <Typography sx={typographyStyle}>
+                      {t('proceduresSymptoms_single:Hospitalization_Duration')}
+                    </Typography>
+                  </AccordionSummary>
+
+                  <AccordionDetails
+                    sx={accordionDetailsStyle}
+                  >
+                    {hospitalizationOverview.map((item, index) => {
+                      const colonIndex = item.indexOf(':');
+                      if (colonIndex !== -1) {
+                        const title = item.substring(0, colonIndex);
+                        const description = item.substring(colonIndex + 1).trim();
+                        return (
+                          <li key={index}>
+                            <strong>{title}</strong>: {description}
+                          </li>
+                        );
+                      }
+                      return null;
+                    })}
                   </AccordionDetails>
                 </Accordion>
               </div>
