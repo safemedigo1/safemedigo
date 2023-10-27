@@ -381,8 +381,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
                               <Link href={'/about-us'} style={{ cursor: 'pointer' }}>
 
                                 <p>{treatment?.reviewer}, {treatment?.reviewerJobTitle}</p>
-                                <p className={styles.date}>{t('page_header_comp:posted')}  {treatment?.reviewDateStr}
-
+                                <p className={styles.date}>{t('page_header_comp:posted')}  {treatment?.reviewerDateStr}
                                 </p>
                               </Link>
                             </div>
@@ -390,11 +389,11 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
 
                           <Box sx={{ display: 'flex', alignItmes: 'center' }} className={styles.review_by}>
                             <div className={styles.author_img}>
-                              {treatment?.publisherImage === null ? <Image width={100} height={100} src={userimg.src} alt="" /> : <img s width={100} height={100} src={treatment?.publisherImage} alt="" />}
+                              {treatment?.publisherImage === null ? <Image width={100} height={100} src={userimg.src} alt={treatment?.publisherName} /> : <img s width={100} height={100} src={treatment?.publisherImage} alt="" />}
                             </div>
                             <div className={styles.info}>
                               <Link href={'/about-us'} style={{ cursor: 'pointer' }}>
-                                <p>{treatment?.publisher} , {treatment?.publisherJobTitle}</p>
+                                <p>{treatment?.publisherName} , {treatment?.publisherJobTitle}</p>
                               </Link>
                             </div>
                           </Box>

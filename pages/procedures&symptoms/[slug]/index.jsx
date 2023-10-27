@@ -106,15 +106,7 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
 
 
 
-  const [isHovered, setIsHovered] = useState(false);
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
 
 
   // Styling
@@ -221,7 +213,6 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
 
   const hospitalizationOverview = dataTreatment?.hospitalizationOverview?.split('@')
   const hospitalizationPeriodOverview = dataTreatment?.hospitalizationPeriodOverview?.split('@')
-
   return (
     <>
       <Head>
@@ -284,19 +275,20 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                       >
 
                         <ul>
-                          {benifitsOverview.map((item, index) => {
-                            const colonIndex = item.indexOf(':');
-                            if (colonIndex !== -1) {
-                              const title = item.substring(0, colonIndex);
-                              const description = item.substring(colonIndex + 1).trim();
-                              return (
-                                <li key={index}>
-                                  <strong>{title}</strong>: {description}
-                                </li>
-                              );
-                            }
-                            return null;
-                          })}
+
+                          {benifitsOverview.map((item, index) => (
+                            <li key={index}>
+                              {item.includes(':') ? (
+                                <>
+                                  <strong>{item.substring(0, item.indexOf(':'))}</strong>:{' '}
+                                  {item.substring(item.indexOf(':') + 1).trim()}
+                                </>
+                              ) : (
+                                item
+                              )}
+                            </li>
+                          ))}
+
                         </ul>
                       </AccordionDetails>
                     </Accordion>
@@ -324,19 +316,19 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                         sx={accordionDetailsStyle}
                       >
                         <ul>
-                          {sideEffectsOverview.map((item, index) => {
-                            const colonIndex = item.indexOf(':');
-                            if (colonIndex !== -1) {
-                              const title = item.substring(0, colonIndex);
-                              const description = item.substring(colonIndex + 1).trim();
-                              return (
-                                <li key={index}>
-                                  <strong>{title}</strong>: {description}
-                                </li>
-                              );
-                            }
-                            return null;
-                          })}
+
+                          {sideEffectsOverview.map((item, index) => (
+                            <li key={index}>
+                              {item.includes(':') ? (
+                                <>
+                                  <strong>{item.substring(0, item.indexOf(':'))}</strong>:{' '}
+                                  {item.substring(item.indexOf(':') + 1).trim()}
+                                </>
+                              ) : (
+                                item
+                              )}
+                            </li>
+                          ))}
                         </ul>
                       </AccordionDetails>
                     </Accordion>
@@ -369,19 +361,18 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                       >
                         <ul>
 
-                          {candidateOverview.map((item, index) => {
-                            const colonIndex = item.indexOf(':');
-                            if (colonIndex !== -1) {
-                              const title = item.substring(0, colonIndex);
-                              const description = item.substring(colonIndex + 1).trim();
-                              return (
-                                <li key={index}>
-                                  <strong>{title}</strong>: {description}
-                                </li>
-                              );
-                            }
-                            return null;
-                          })}
+                          {candidateOverview.map((item, index) => (
+                            <li key={index}>
+                              {item.includes(':') ? (
+                                <>
+                                  <strong>{item.substring(0, item.indexOf(':'))}</strong>:{' '}
+                                  {item.substring(item.indexOf(':') + 1).trim()}
+                                </>
+                              ) : (
+                                item
+                              )}
+                            </li>
+                          ))}
                         </ul>
 
 
@@ -414,19 +405,19 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                       >
                         <ul>
 
-                          {hospitalizationOverview.map((item, index) => {
-                            const colonIndex = item.indexOf(':');
-                            if (colonIndex !== -1) {
-                              const title = item.substring(0, colonIndex);
-                              const description = item.substring(colonIndex + 1).trim();
-                              return (
-                                <li key={index}>
-                                  <strong>{title}</strong>: {description}
-                                </li>
-                              );
-                            }
-                            return null;
-                          })}
+
+                          {hospitalizationOverview.map((item, index) => (
+                            <li key={index}>
+                              {item.includes(':') ? (
+                                <>
+                                  <strong>{item.substring(0, item.indexOf(':'))}</strong>:{' '}
+                                  {item.substring(item.indexOf(':') + 1).trim()}
+                                </>
+                              ) : (
+                                item
+                              )}
+                            </li>
+                          ))}
                         </ul>
 
                       </AccordionDetails>
@@ -456,19 +447,19 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                       >
                         <ul>
 
-                          {hospitalizationOverview.map((item, index) => {
-                            const colonIndex = item.indexOf(':');
-                            if (colonIndex !== -1) {
-                              const title = item.substring(0, colonIndex);
-                              const description = item.substring(colonIndex + 1).trim();
-                              return (
-                                <li key={index}>
-                                  <strong>{title}</strong>: {description}
-                                </li>
-                              );
-                            }
-                            return null;
-                          })}
+
+                          {hospitalizationOverview.map((item, index) => (
+                            <li key={index}>
+                              {item.includes(':') ? (
+                                <>
+                                  <strong>{item.substring(0, item.indexOf(':'))}</strong>:{' '}
+                                  {item.substring(item.indexOf(':') + 1).trim()}
+                                </>
+                              ) : (
+                                item
+                              )}
+                            </li>
+                          ))}
                         </ul>
 
                       </AccordionDetails>
@@ -511,17 +502,10 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
 
                               <ListItem>
                                 <Typography
-                                  onMouseEnter={handleMouseEnter}
-                                  onMouseLeave={handleMouseLeave}
                                 >
 
                                   {
-                                    dataTreatment?.operationDuration?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
-
-
-                                      <Marquee style={{ overflow: 'hidden', }} speed={40} play={isHovered}>
-                                        {dataTreatment?.operationDuration}
-                                      </Marquee>
+                                    dataTreatment?.operationDuration?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ? dataTreatment?.operationDuration
                                       :
                                       <>
                                         {dataTreatment?.operationDuration}
@@ -554,16 +538,13 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                           }}>
                             <ListItem>
                               <Typography
-                                onMouseEnter={handleMouseEnter}
-                                onMouseLeave={handleMouseLeave}>
+                              >
                                 {
 
 
                                   dataTreatment?.anesthesia?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
 
-                                    <Marquee style={{ overflow: 'hidden', }} speed={40} play={isHovered}>
-                                      {dataTreatment?.anesthesia}
-                                    </Marquee>
+                                    dataTreatment?.anesthesia
                                     :
                                     <>
                                       {dataTreatment?.anesthesia}
@@ -597,17 +578,12 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                             <ListItem>
                               <Typography
 
-                                onMouseEnter={handleMouseEnter}
-                                onMouseLeave={handleMouseLeave}
                               >
                                 {
                                   dataTreatment?.startCost?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 3 ?
 
-                                    <Marquee style={{ overflow: 'hidden', }} speed={40}
-                                      play={isHovered}
-                                    >
-                                      ${dataTreatment?.startCost}
-                                    </Marquee>
+
+                                    `$${dataTreatment?.startCost}`
                                     :
                                     <>
                                       ${dataTreatment?.startCost}
@@ -639,8 +615,7 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                           },
                         }}>
                           <ListItem>
-                            <Typography onMouseEnter={handleMouseEnter}
-                              onMouseLeave={handleMouseLeave}>
+                            <Typography >
                               {
                                 dataTreatment?.successRate?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
 
@@ -648,9 +623,8 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
 
 
 
-                                  <Marquee style={{ overflow: 'hidden', }} speed={40} play={isHovered}>
-                                    %{dataTreatment?.successRate}
-                                  </Marquee>
+                                  `%${dataTreatment?.successRate}`
+
                                   :
                                   <>
                                     %{dataTreatment?.successRate}
@@ -680,15 +654,12 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                             },
                           }}>
                             <ListItem>
-                              <Typography onMouseEnter={handleMouseEnter}
-                                onMouseLeave={handleMouseLeave}>
+                              <Typography>
                                 {
                                   dataTreatment?.resultDuration?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 4 ?
 
 
-                                    <Marquee style={{ overflow: 'hidden', }} speed={40} play={isHovered}>
-                                      {dataTreatment?.resultDuration}
-                                    </Marquee>
+                                    dataTreatment?.resultDuration
                                     :
                                     <>
                                       {dataTreatment?.resultDuration}
@@ -721,15 +692,11 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                           }}>
                             <ListItem>
                               <Typography
-                                onMouseEnter={handleMouseEnter}
-                                onMouseLeave={handleMouseLeave}
                               >
                                 {
                                   dataTreatment?.procedureType?.split(' ').filter(word => /^[a-zA-Z]+$/.test(word)).length >= 1 ?
 
-                                    <Marquee style={{ overflow: 'hidden', }} speed={40} play={isHovered}>
-                                      {dataTreatment?.procedureType}
-                                    </Marquee>
+                                    dataTreatment?.procedureType
                                     :
                                     <>
                                       {dataTreatment?.procedureType}
@@ -773,20 +740,18 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                     sx={accordionDetailsStyle}
                   >
                     <ul>
-
-                      {benifitsOverview.map((item, index) => {
-                        const colonIndex = item.indexOf(':');
-                        if (colonIndex !== -1) {
-                          const title = item.substring(0, colonIndex);
-                          const description = item.substring(colonIndex + 1).trim();
-                          return (
-                            <li key={index}>
-                              <strong>{title}</strong>: {description}
-                            </li>
-                          );
-                        }
-                        return null;
-                      })}
+                      {benifitsOverview.map((item, index) => (
+                        <li key={index}>
+                          {item.includes(':') ? (
+                            <>
+                              <strong>{item.substring(0, item.indexOf(':'))}</strong>:{' '}
+                              {item.substring(item.indexOf(':') + 1).trim()}
+                            </>
+                          ) : (
+                            item
+                          )}
+                        </li>
+                      ))}
                     </ul>
 
                   </AccordionDetails>
@@ -816,19 +781,18 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                   >
 
                     <ul>
-                      {sideEffectsOverview.map((item, index) => {
-                        const colonIndex = item.indexOf(':');
-                        if (colonIndex !== -1) {
-                          const title = item.substring(0, colonIndex);
-                          const description = item.substring(colonIndex + 1).trim();
-                          return (
-                            <li key={index}>
-                              <strong>{title}</strong>: {description}
-                            </li>
-                          );
-                        }
-                        return null;
-                      })}
+                      {sideEffectsOverview.map((item, index) => (
+                        <li key={index}>
+                          {item.includes(':') ? (
+                            <>
+                              <strong>{item.substring(0, item.indexOf(':'))}</strong>:{' '}
+                              {item.substring(item.indexOf(':') + 1).trim()}
+                            </>
+                          ) : (
+                            item
+                          )}
+                        </li>
+                      ))}
                     </ul>
                   </AccordionDetails>
                 </Accordion>
@@ -857,19 +821,18 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                   >
                     <ul>
 
-                      {candidateOverview.map((item, index) => {
-                        const colonIndex = item.indexOf(':');
-                        if (colonIndex !== -1) {
-                          const title = item.substring(0, colonIndex);
-                          const description = item.substring(colonIndex + 1).trim();
-                          return (
-                            <li key={index}>
-                              <strong>{title}</strong>: {description}
-                            </li>
-                          );
-                        }
-                        return null;
-                      })}
+                      {candidateOverview.map((item, index) => (
+                        <li key={index}>
+                          {item.includes(':') ? (
+                            <>
+                              <strong>{item.substring(0, item.indexOf(':'))}</strong>:{' '}
+                              {item.substring(item.indexOf(':') + 1).trim()}
+                            </>
+                          ) : (
+                            item
+                          )}
+                        </li>
+                      ))}
                     </ul>
 
                   </AccordionDetails>
@@ -900,19 +863,18 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                   >
                     <ul>
 
-                      {hospitalizationPeriodOverview.map((item, index) => {
-                        const colonIndex = item.indexOf(':');
-                        if (colonIndex !== -1) {
-                          const title = item.substring(0, colonIndex);
-                          const description = item.substring(colonIndex + 1).trim();
-                          return (
-                            <li key={index}>
-                              <strong>{title}</strong>: {description}
-                            </li>
-                          );
-                        }
-                        return null;
-                      })}
+                      {hospitalizationPeriodOverview.map((item, index) => (
+                        <li key={index}>
+                          {item.includes(':') ? (
+                            <>
+                              <strong>{item.substring(0, item.indexOf(':'))}</strong>:{' '}
+                              {item.substring(item.indexOf(':') + 1).trim()}
+                            </>
+                          ) : (
+                            item
+                          )}
+                        </li>
+                      ))}
                     </ul>
 
                   </AccordionDetails>
@@ -943,19 +905,20 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
                   >
                     <ul>
 
-                      {hospitalizationOverview.map((item, index) => {
-                        const colonIndex = item.indexOf(':');
-                        if (colonIndex !== -1) {
-                          const title = item.substring(0, colonIndex);
-                          const description = item.substring(colonIndex + 1).trim();
-                          return (
-                            <li key={index}>
-                              <strong>{title}</strong>: {description}
-                            </li>
-                          );
-                        }
-                        return null;
-                      })}
+
+
+                      {hospitalizationOverview.map((item, index) => (
+                        <li key={index}>
+                          {item.includes(':') ? (
+                            <>
+                              <strong>{item.substring(0, item.indexOf(':'))}</strong>:{' '}
+                              {item.substring(item.indexOf(':') + 1).trim()}
+                            </>
+                          ) : (
+                            item
+                          )}
+                        </li>
+                      ))}
                     </ul>
 
                   </AccordionDetails>
