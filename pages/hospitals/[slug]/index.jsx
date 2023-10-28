@@ -859,7 +859,7 @@ export default Hospital
 
 
 export async function getStaticPaths() {
-  const resHospitalsSlugs = await fetch("https://api2.safemedigo.com/api/v1/Blog/GetAllBlogSlugs");
+  const resHospitalsSlugs = await fetch("https://api2.safemedigo.com/api/v1/Hospital/ListAllHospitalSlugs");
   const dataHospitalsSlugs = await resHospitalsSlugs.json()
 
   const paths = dataHospitalsSlugs?.map((data) => {
@@ -903,7 +903,6 @@ export async function getStaticProps({ locale, params }) {
   })
   const dataHospitalLang = await resHospitalLang.json()
 
-
   const resHospitalCertificatest = await fetch("https://api2.safemedigo.com/api/v1/Hospital/GetHospitalCertificatestBySlug", {
     method: 'POST',
     headers: {
@@ -930,8 +929,6 @@ export async function getStaticProps({ locale, params }) {
   })
   const dataHospitalMedia = await resHospitalMedia.json()
 
-
-
   const resHospitalVisits = await fetch("https://api2.safemedigo.com/api/v1/Hospital/GetHospitalHotspotsBySlug", {
     method: 'POST',
     headers: {
@@ -944,7 +941,6 @@ export async function getStaticProps({ locale, params }) {
     })
   })
   const dataHospitalVisits = await resHospitalVisits.json()
-
 
   const resHospitalHotels = await fetch("https://api2.safemedigo.com/api/v1/Hospital/GetHospitalHotelsBySlug", {
     method: 'POST',
