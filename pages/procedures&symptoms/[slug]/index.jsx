@@ -928,9 +928,8 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
             </Container >
           </article>
 
-
           {
-            dataTreatment?.treatmentImage?.length !== 0 &&
+            dataBeforeAfter?.length !== 0 &&
             <BeforeAfter treatments={dataBeforeAfter} />
 
           }
