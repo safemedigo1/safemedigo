@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './index.module.scss';
 import { Accordion, AccordionDetails, AccordionSummary, Box, Container, FormControl, MenuItem, Rating, Select, Typography } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -10,10 +10,20 @@ import Carousel from 'react-elastic-carousel';
 import { consts } from 'react-elastic-carousel';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 
-const Packages = () => {
+const Packages = ({ dataDoctorPackage }) => {
   const router = useRouter();
   // SX styles & Accrodion styles
   const [expanded, setExpanded] = useState('panel2');
+  const [packages, setPackages] = useState([]);
+  useEffect(() => {
+
+    if (router.pathname === '/doctor/[slug]') {
+      setPackages(dataDoctorPackage)
+    } else {
+      setPackages(dataDoctorPackage)
+
+    }
+  }, [])
 
   // Carousel
   const [breakPoints] = useState([
@@ -137,7 +147,12 @@ const Packages = () => {
                   renderArrow={myArrow}
                 >
                   <div className={styles.box}>
+                    <div className={styles.discount}>
+                      <Typography>10% Less than clinic</Typography>
+                    </div>
                     <div className={styles.inner_box}>
+
+
                       <div className={styles.value_type}>
                         <Typography>Best Value Package</Typography>
                         <span>200 $</span>
@@ -353,8 +368,14 @@ const Packages = () => {
                     </div>
 
                   </div>
+
                   <div className={styles.box}>
+                    <div className={styles.discount}>
+                      <Typography>10% Less than clinic</Typography>
+                    </div>
                     <div className={styles.inner_box}>
+
+
                       <div className={styles.value_type}>
                         <Typography>Best Value Package</Typography>
                         <span>200 $</span>
@@ -416,6 +437,7 @@ const Packages = () => {
                       <div className={styles.includeed}>
                         <Accordion disableGutters={false} elevation={0}
                           square={false} sx={style}
+                          defaultExpanded
                           expanded={expanded === 'panel2'} onChange={handleChangeAccordion('panel2')}>
                           <AccordionSummary
                             sx={expanded !== 'panel2' ? accordionSummaryDefualt
@@ -479,6 +501,7 @@ const Packages = () => {
                             </div>
                           </AccordionDetails>
                         </Accordion>
+
                         <Accordion disableGutters={false} elevation={0}
                           square={false} sx={style}
                           expanded={expanded === 'panel2'} onChange={handleChangeAccordion('panel2')}>
@@ -568,8 +591,14 @@ const Packages = () => {
                     </div>
 
                   </div>
+
                   <div className={styles.box}>
+                    <div className={styles.discount}>
+                      <Typography>10% Less than clinic</Typography>
+                    </div>
                     <div className={styles.inner_box}>
+
+
                       <div className={styles.value_type}>
                         <Typography>Best Value Package</Typography>
                         <span>200 $</span>
@@ -631,6 +660,7 @@ const Packages = () => {
                       <div className={styles.includeed}>
                         <Accordion disableGutters={false} elevation={0}
                           square={false} sx={style}
+                          defaultExpanded
                           expanded={expanded === 'panel2'} onChange={handleChangeAccordion('panel2')}>
                           <AccordionSummary
                             sx={expanded !== 'panel2' ? accordionSummaryDefualt
@@ -694,6 +724,7 @@ const Packages = () => {
                             </div>
                           </AccordionDetails>
                         </Accordion>
+
                         <Accordion disableGutters={false} elevation={0}
                           square={false} sx={style}
                           expanded={expanded === 'panel2'} onChange={handleChangeAccordion('panel2')}>
@@ -783,8 +814,14 @@ const Packages = () => {
                     </div>
 
                   </div>
+
                   <div className={styles.box}>
+                    <div className={styles.discount}>
+                      <Typography>10% Less than clinic</Typography>
+                    </div>
                     <div className={styles.inner_box}>
+
+
                       <div className={styles.value_type}>
                         <Typography>Best Value Package</Typography>
                         <span>200 $</span>
@@ -846,6 +883,7 @@ const Packages = () => {
                       <div className={styles.includeed}>
                         <Accordion disableGutters={false} elevation={0}
                           square={false} sx={style}
+                          defaultExpanded
                           expanded={expanded === 'panel2'} onChange={handleChangeAccordion('panel2')}>
                           <AccordionSummary
                             sx={expanded !== 'panel2' ? accordionSummaryDefualt
@@ -909,6 +947,7 @@ const Packages = () => {
                             </div>
                           </AccordionDetails>
                         </Accordion>
+
                         <Accordion disableGutters={false} elevation={0}
                           square={false} sx={style}
                           expanded={expanded === 'panel2'} onChange={handleChangeAccordion('panel2')}>
@@ -998,6 +1037,454 @@ const Packages = () => {
                     </div>
 
                   </div>
+
+                  <div className={styles.box}>
+                    <div className={styles.discount}>
+                      <Typography>10% Less than clinic</Typography>
+                    </div>
+                    <div className={styles.inner_box}>
+
+
+                      <div className={styles.value_type}>
+                        <Typography>Best Value Package</Typography>
+                        <span>200 $</span>
+                      </div>
+
+                      <div className={styles.treatment_name}>
+                        <Typography variant='h5'>Coronary artery bypass graft (Traditional/Open CABG)</Typography>
+                      </div>
+
+                      <div className={styles.info_boxes}>
+
+                        <div className={styles.info_box}>
+                          <div className={styles.num}>
+                            <span>6</span>
+                          </div>
+
+                          <div className={styles.title}>
+                            <Typography variant='h6'>Hospital stay</Typography>
+                          </div>
+
+                          <div className={styles.icon_container}>
+                            <FaBed />
+                          </div>
+
+                        </div>
+                        <div className={styles.info_box}>
+                          <div className={styles.num}>
+                            <span>10</span>
+                          </div>
+
+                          <div className={styles.title}>
+                            <Typography variant='h6'>Hotel stay</Typography>
+                          </div>
+
+                          <div className={styles.rating}>
+                            <Rating name="read-only" defaultValue={4} size="small" readOnly />
+                          </div>
+
+                        </div>
+                        <div className={styles.info_box}>
+                          <div className={styles.num}>
+                            <span>6</span>
+                          </div>
+
+                          <div className={styles.title}>
+                            <Typography variant='h6'>Transfer trip</Typography>
+                          </div>
+
+                          <div className={styles.icon_container}>
+                            <FaCarSide />
+                          </div>
+
+                        </div>
+
+                      </div>
+
+
+
+                      <div className={styles.includeed}>
+                        <Accordion disableGutters={false} elevation={0}
+                          square={false} sx={style}
+                          defaultExpanded
+                          expanded={expanded === 'panel2'} onChange={handleChangeAccordion('panel2')}>
+                          <AccordionSummary
+                            sx={expanded !== 'panel2' ? accordionSummaryDefualt
+                              : accordionSummaryHover
+                            }
+                            expandIcon={<ExpandMoreIcon sx={expanded !== 'panel2' ? expandMoreIconDefault : expandMoreIconHover} />}
+                            aria-controls="panel2a-content"
+                            id="panel2a-header"
+                          >
+                            <Typography >
+                              What Is Included?
+                            </Typography>
+                          </AccordionSummary>
+
+                          <AccordionDetails sx={accordionDetails}>
+                            <ul>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Initial Examination
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Anesthesia Examination
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Medical History Review
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Tests Related To The Surgery (Routine Bloodwork & Lab Studies, X-Ray, Etc.)
+                              </li>
+                            </ul>
+
+                            <div className={styles.technique}>
+                              <p>Additional Approach/Technique:</p>
+                              <ul>
+                                <li className={styles.active}>
+                                  <div className={styles.icon_container}>
+                                    <BsCheckLg />
+                                  </div>
+
+                                  Endoscopic Vein Harvesting
+                                  <span>18000$</span>
+                                </li>
+                                <li>
+                                  <div className={styles.icon_container}>
+                                    <BsCheckLg />
+                                  </div>
+                                  Coronary Angiography
+                                </li>
+                              </ul>
+                            </div>
+                          </AccordionDetails>
+                        </Accordion>
+
+                        <Accordion disableGutters={false} elevation={0}
+                          square={false} sx={style}
+                          expanded={expanded === 'panel2'} onChange={handleChangeAccordion('panel2')}>
+                          <AccordionSummary
+                            sx={expanded !== 'panel2' ? accordionSummaryDefualt
+                              : accordionSummaryHover
+                            }
+                            expandIcon={<ExpandMoreIcon sx={expanded !== 'panel2' ? expandMoreIconDefault : expandMoreIconHover} />}
+                            aria-controls="panel2a-content"
+                            id="panel2a-header"
+                          >
+                            <Typography >
+                              For Safemedigo Patients
+                            </Typography>
+                          </AccordionSummary>
+
+                          <AccordionDetails sx={accordionDetails}>
+                            <ul>
+                              <li>
+
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Priority Scheduling
+                              </li>
+
+
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Airport Transfers
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Hotel-Clinic Transfers
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                24/7 Support & Translation
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Flexible Refundable Cancellation
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Phone line with Internet
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Post-Procedure Medications, Recovery
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Plan and Report Translations
+                              </li>
+                            </ul>
+
+
+                          </AccordionDetails>
+                        </Accordion>
+                      </div>
+
+
+                    </div>
+                    <div className={styles.btns_container}>
+                      <div className={styles.book}>
+                        <button>Book Package</button>
+                      </div>
+
+                      <div className={styles.details}>
+                        <button>Package Details & Customization</button>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div className={styles.box}>
+                    <div className={styles.discount}>
+                      <Typography>10% Less than clinic</Typography>
+                    </div>
+                    <div className={styles.inner_box}>
+
+
+                      <div className={styles.value_type}>
+                        <Typography>Best Value Package</Typography>
+                        <span>200 $</span>
+                      </div>
+
+                      <div className={styles.treatment_name}>
+                        <Typography variant='h5'>Coronary artery bypass graft (Traditional/Open CABG)</Typography>
+                      </div>
+
+                      <div className={styles.info_boxes}>
+
+                        <div className={styles.info_box}>
+                          <div className={styles.num}>
+                            <span>6</span>
+                          </div>
+
+                          <div className={styles.title}>
+                            <Typography variant='h6'>Hospital stay</Typography>
+                          </div>
+
+                          <div className={styles.icon_container}>
+                            <FaBed />
+                          </div>
+
+                        </div>
+                        <div className={styles.info_box}>
+                          <div className={styles.num}>
+                            <span>10</span>
+                          </div>
+
+                          <div className={styles.title}>
+                            <Typography variant='h6'>Hotel stay</Typography>
+                          </div>
+
+                          <div className={styles.rating}>
+                            <Rating name="read-only" defaultValue={4} size="small" readOnly />
+                          </div>
+
+                        </div>
+                        <div className={styles.info_box}>
+                          <div className={styles.num}>
+                            <span>6</span>
+                          </div>
+
+                          <div className={styles.title}>
+                            <Typography variant='h6'>Transfer trip</Typography>
+                          </div>
+
+                          <div className={styles.icon_container}>
+                            <FaCarSide />
+                          </div>
+
+                        </div>
+
+                      </div>
+
+
+
+                      <div className={styles.includeed}>
+                        <Accordion disableGutters={false} elevation={0}
+                          square={false} sx={style}
+                          defaultExpanded
+                          expanded={expanded === 'panel2'} onChange={handleChangeAccordion('panel2')}>
+                          <AccordionSummary
+                            sx={expanded !== 'panel2' ? accordionSummaryDefualt
+                              : accordionSummaryHover
+                            }
+                            expandIcon={<ExpandMoreIcon sx={expanded !== 'panel2' ? expandMoreIconDefault : expandMoreIconHover} />}
+                            aria-controls="panel2a-content"
+                            id="panel2a-header"
+                          >
+                            <Typography >
+                              What Is Included?
+                            </Typography>
+                          </AccordionSummary>
+
+                          <AccordionDetails sx={accordionDetails}>
+                            <ul>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Initial Examination
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Anesthesia Examination
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Medical History Review
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Tests Related To The Surgery (Routine Bloodwork & Lab Studies, X-Ray, Etc.)
+                              </li>
+                            </ul>
+
+                            <div className={styles.technique}>
+                              <p>Additional Approach/Technique:</p>
+                              <ul>
+                                <li className={styles.active}>
+                                  <div className={styles.icon_container}>
+                                    <BsCheckLg />
+                                  </div>
+
+                                  Endoscopic Vein Harvesting
+                                  <span>18000$</span>
+                                </li>
+                                <li>
+                                  <div className={styles.icon_container}>
+                                    <BsCheckLg />
+                                  </div>
+                                  Coronary Angiography
+                                </li>
+                              </ul>
+                            </div>
+                          </AccordionDetails>
+                        </Accordion>
+
+                        <Accordion disableGutters={false} elevation={0}
+                          square={false} sx={style}
+                          expanded={expanded === 'panel2'} onChange={handleChangeAccordion('panel2')}>
+                          <AccordionSummary
+                            sx={expanded !== 'panel2' ? accordionSummaryDefualt
+                              : accordionSummaryHover
+                            }
+                            expandIcon={<ExpandMoreIcon sx={expanded !== 'panel2' ? expandMoreIconDefault : expandMoreIconHover} />}
+                            aria-controls="panel2a-content"
+                            id="panel2a-header"
+                          >
+                            <Typography >
+                              For Safemedigo Patients
+                            </Typography>
+                          </AccordionSummary>
+
+                          <AccordionDetails sx={accordionDetails}>
+                            <ul>
+                              <li>
+
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Priority Scheduling
+                              </li>
+
+
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Airport Transfers
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Hotel-Clinic Transfers
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                24/7 Support & Translation
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Flexible Refundable Cancellation
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Phone line with Internet
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Post-Procedure Medications, Recovery
+                              </li>
+                              <li>
+                                <div className={styles.icon_container}>
+                                  <BsCheckLg />
+                                </div>
+                                Plan and Report Translations
+                              </li>
+                            </ul>
+
+
+                          </AccordionDetails>
+                        </Accordion>
+                      </div>
+
+
+                    </div>
+                    <div className={styles.btns_container}>
+                      <div className={styles.book}>
+                        <button>Book Package</button>
+                      </div>
+
+                      <div className={styles.details}>
+                        <button>Package Details & Customization</button>
+                      </div>
+                    </div>
+
+                  </div>
+
+
                 </Carousel>
 
               </div>

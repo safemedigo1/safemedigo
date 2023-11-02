@@ -15,7 +15,7 @@ import Image from 'next/image';
 import axios from 'axios';
 import { MedicalDepartments } from '..';
 
-const MostPopular = (dataPopularTreatmentsMedical) => {
+const MostPopular = (dataPopularTreatmentsMedical, hospitals) => {
   const router = useRouter();
   const { pathname } = router;
   const { t } = useTranslation();
@@ -37,6 +37,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
       setDoctorData(dataPopularTreatmentsMedical.dataMostPopularDocsHome)
     }
   }, [])
+
 
 
 
@@ -568,11 +569,11 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                         renderArrow={myArrow}
                         isRTL={router.locale === 'ar' ? true : false}
                       >
-
-                        {dataPopularTreatmentsMedical?.doctorClinics?.doctorHospitalClinics?.map((cilinic, index) => (
-                          <Link href={`/hospital/${cilinic.slug}`} className={styles.box} key={index}>
+                        {/* Cilincs */}
+                        {dataPopularTreatmentsMedical?.doctorClinics?.map((cilinic, index) => (
+                          <Link href={`/hospitals/${cilinic.slug}`} className={styles.box} key={index}>
                             <div className={styles.img_container}>
-                              <Image width={344} height={191} src={cilinic.img} alt={cilinic.name} />
+                              <Image width={344} height={191} src={cilinic.logo} alt={cilinic.name} />
                               {cilinic.isVerifid &&
                                 <div className={styles.verified}>
                                   <FaShieldAlt />
@@ -593,7 +594,7 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
 
                               <div className={styles.type}>
                                 <Typography variant='h6'>
-                                  {doc.hospitalKindName}
+                                  {cilinic.hospitalKindName}
                                 </Typography>
                               </div>
                               {/* 
@@ -633,6 +634,70 @@ const MostPopular = (dataPopularTreatmentsMedical) => {
                           </Link>
                         ))}
 
+                        {/* Hospitals */}
+                        {dataPopularTreatmentsMedical?.doctorHospitals?.map((cilinic, index) => (
+                          <Link href={`/hospitals/${cilinic.slug}`} className={styles.box} key={index}>
+                            <div className={styles.img_container}>
+                              <Image width={344} height={191} src={cilinic.logo} alt={cilinic.name} />
+                              {cilinic.isVerifid &&
+                                <div className={styles.verified}>
+                                  <FaShieldAlt />
+                                  <Typography >
+                                    {t("most_popular:verified")}
+                                  </Typography>
+                                </div>
+                              }
+                            </div>
+
+                            <div className={styles.box_text_container}>
+
+                              <div className={styles.name}>
+                                <Typography variant='h5'>
+                                  {cilinic.name}
+                                </Typography>
+                              </div>
+
+                              <div className={styles.type}>
+                                <Typography variant='h6'>
+                                  {cilinic.hospitalKindName}
+                                </Typography>
+                              </div>
+                              {/* 
+                              <div className={styles.rating}>
+                                <Rating name="read-only" defaultValue={cilinic.rate} size="small" readOnly />
+                                <span className={styles.reviews_num}>{cilinic.totalReviews} Reviews</span>
+                              </div> */}
+
+                              <div className={styles.location}>
+                                <MdLocationOn />
+                                <Typography >
+                                  {cilinic.countryName}, {cilinic.cityName}
+                                </Typography>
+                              </div>
+
+                              <div className={styles.founded}>
+                                <span>{cilinic.foundedYear}</span>
+                                <Typography>Founded Year</Typography>
+                              </div>
+
+                              <div className={styles.employess}>
+                                <span>{cilinic.employeesCount}</span>
+                                <Typography> Doctors & Employees</Typography>
+                              </div>
+
+                              <div className={styles.yearly_patient}>
+                                <span>{cilinic.yearly_patient}</span>
+                                <Typography>Yearly Patient</Typography>
+                              </div>
+
+                              <div className={styles.btn_container}>
+                                <Link href={`/hospital/${cilinic.slug}`}>See Hospital Profile</Link>
+                              </div>
+
+                            </div>
+
+                          </Link>
+                        ))}
 
                       </Carousel>
                     </motion.div>

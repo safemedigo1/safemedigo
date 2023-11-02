@@ -424,7 +424,6 @@ section#Hero_hero__M5nJ2 {
 .ClinicCards_clinic__Ls06Q,
 #reviews,
 section#PatientStories_patient_stories__oSemC,
-#MedicalDepartments_medical_department__CT08h,
 #BeforeAfter_before_after__PiVd3,
 #_slug__steps__dD3sT,
 #_slug__treatment_desc__VG0U3,
@@ -524,6 +523,7 @@ section#PatientStories_patient_stories__oSemC,
 #packages {
   .main_btn {
     padding: 0 !important;
+    z-index: 3;
   }
   .rec-item-wrapper {
     justify-content: flex-start;
@@ -616,23 +616,18 @@ section#PatientStories_patient_stories__oSemC,
 
 #MedicalDepartments_medical_department__CT08h,
 #medical_department {
-  .rec-carousel {
-    .right_arrow {
-      right: -13px !important;
-    }
-    .left_arrow {
-      left: -36px !important;
-    }
+  position: relative;
 
-    .left_arrow,
-    .right_arrow {
-      top: 30% !important;
-    }
+  .btn-right {
+    right: -13px !important;
+  }
+  .btn-left {
+    left: -36px !important;
   }
 
-  .rec .rec-slider-container {
+  .slick-list {
     @media screen and (min-width: 992px) {
-      overflow-x: scroll;
+      // overflow-x: scroll;
     }
     &::-webkit-scrollbar {
       height: 7px;
@@ -642,6 +637,119 @@ section#PatientStories_patient_stories__oSemC,
       background-color: #8d8d8d;
       display: block !important;
     }
+  }
+  //
+
+  .slick-disabled {
+    visibility: hidden;
+  }
+
+  // height: 600px !important;
+  .slick-arrow {
+    position: absolute;
+
+    background-color: var(--main-white-color);
+    box-shadow: 0px 3px 6px #00000029;
+
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+
+    z-index: 1;
+    top: 44%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:before {
+      content: none;
+    }
+    &:hover {
+      svg {
+        color: black !important;
+      }
+    }
+    svg {
+      color: var(--main-gray-color);
+      font-size: 25px;
+      &:hover {
+        color: black !important;
+      }
+    }
+  }
+
+  .right_arrow {
+    right: -23px;
+  }
+  .left_arrow {
+    left: -23px;
+  }
+
+  .rec-pagination {
+    margin-top: 32px;
+
+    @media screen and (max-width: 992px) {
+      margin-top: 15px;
+    }
+    .rec-dot {
+      background-color: rgba(30, 30, 30, 0.42);
+      width: 8px;
+      height: 8px;
+      margin-right: 8px;
+      box-shadow: none !important;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .rec-dot_active {
+      opacity: 1;
+      background-color: var(--main-green-color) !important;
+      box-shadow: none;
+      margin-top: 0;
+      margin-bottom: 0;
+
+      &:hover {
+        box-sizing: none !important;
+      }
+    }
+  }
+
+  // .rec .rec-slider-container {
+  //   @media screen and (min-width: 992px) {
+  //     overflow-x: scroll;
+  //   }
+  //   &::-webkit-scrollbar {
+  //     height: 7px;
+  //   }
+
+  //   &::-webkit-scrollbar-thumb {
+  //     background-color: #8d8d8d;
+  //     display: block !important;
+  //   }
+  // }
+
+  .slick-dots li.slick-active button:before {
+    color: var(--main-green-color) !important;
+    opacity: 1 !important;
+  }
+}
+
+#MedicalDepartments_medical_department__CT08h[dir="rtl"] {
+  .slick-arrow {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  .slick-prev {
+    right: 4px;
+  } // .slick-slider[dir="rtl"] {
+  //   float: left !important;
+  // }
+
+  .react-slick {
+    overflow-x: scroll;
+    margin: 0 10px; /* Adjust the margin as needed */
+    padding: 0; /* Remove padding */
   }
 }
 

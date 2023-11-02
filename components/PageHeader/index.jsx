@@ -11,7 +11,7 @@ import Link from "next/link";
 import { AppContext } from '@/components/AppContext';
 
 
-const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
+const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorTreatments }) => {
   const context = useContext(AppContext);
   const { compareStep } = context;
   const router = useRouter();
@@ -191,7 +191,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
 
                       <div className={styles.category}>
                         <Typography>
-                          {dataDoctorSlug?.doctorMainSpecializations[0]?.name}
+                          {dataDoctorMainSpecializations[0]?.name}
                         </Typography>
                       </div>
 
@@ -221,7 +221,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug }) => {
                       </div>
                       <div className={styles.box}>
                         <div className={styles.num}>
-                          <Typography>{dataDoctorSlug.doctorTreatments.length}</Typography>
+                          <Typography>{dataDoctorTreatments?.length}</Typography>
                         </div>
                         <div className={styles.yearly}>
                           <Typography>Treatments Performed</Typography>

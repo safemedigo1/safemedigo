@@ -1,5 +1,7 @@
 import "@/styles/globals.scss";
 import "@/styles/content-styles.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import NoSsr from "@mui/base/NoSsr";
 import CssBaseline from "@mui/material/CssBaseline";

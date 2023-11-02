@@ -23,7 +23,7 @@ import Packages from "@/components/Packages";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
 
-const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificatest, dataHospitalMedia, dataHospitalVisits, dataHospitalHotels }) => {
+const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificatest, dataHospitalMedia, dataHospitalVisits, dataHospitalHotels, dataHospitalService }) => {
   const { certeficate, post1 } = imgs;
   const { t } = useTranslation();
   const router = useRouter();
@@ -47,6 +47,8 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
     { width: 900, pagination: false, itemsToShow: 2.5, itemsToScroll: 1, transitionMs: 1000 },
 
   ])
+
+  console.log(dataHospitalService, "dataHospitalService")
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -726,7 +728,7 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
                   expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
                   aria-controls="panel1d-content" id="panel1d-header">
                   <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                    Benefits
+                    Services
 
                   </Typography>
                 </AccordionSummary>
@@ -743,9 +745,12 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
                     },
                   }}
                   >
-                    <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                      text text text text text text text text text text text text text text text text text text text text text text
-                    </ListItem  >
+                    {dataHospitalService.map((service, idx) =>
+                      <ListItem variant='li' key={idx} sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                        {service.name}
+
+                      </ListItem  >
+                    )}
 
 
 
@@ -838,7 +843,7 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
 
             <div className={styles.content}>
               <div className={styles.video_container}>
-                <img src={post1.src} alt="" />
+                <iframe width="560" height="315" src={dataHospitalSlug?.videoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
               </div>
             </div>
           </div>
@@ -955,12 +960,26 @@ export async function getStaticProps({ locale, params }) {
   })
   const dataHospitalHotels = await resHospitalHotels.json()
 
+  const resHospitalService = await fetch("https://api2.safemedigo.com/api/v1/Hospital/GetHospitalServiceBySlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "hospitalSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataHospitalService = await resHospitalService.json()
+
 
 
   return {
     props: {
       dataHospitalSlug,
       dataHospitalLang,
+      dataHospitalService,
       dataHospitalCertificatest,
       dataHospitalMedia,
       dataHospitalVisits,

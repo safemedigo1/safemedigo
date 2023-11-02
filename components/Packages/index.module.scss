@@ -49,6 +49,26 @@ section.packages {
           padding-left: 0;
           padding-right: 0;
           margin-left: 0;
+          position: relative;
+          z-index: 1;
+          margin-top: 30px;
+          .discount {
+            position: absolute;
+            top: -30px;
+            right: 0;
+            width: 189.5px;
+            height: 77.32px;
+            background-color: #f32669;
+            border-radius: 25px 25px 0px 0px;
+            text-align: center;
+            z-index: -1;
+            p {
+              color: var(--main-white-color);
+              font-size: 16px;
+              font-weight: var(--font-sem-bold);
+              font-family: var(--quickstand-font);
+            }
+          }
 
           @media screen and (max-width: 450px) {
             // font-size: 18px;
@@ -67,7 +87,6 @@ section.packages {
           }
 
           .inner_box {
-            // box-shadow: 0px -3px 10px #00000029;
             border-radius: 25px 25px 0px 0px;
 
             .value_type {

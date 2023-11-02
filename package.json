@@ -54,6 +54,7 @@
     "react-phone-input-2": "^2.15.1",
     "react-slick": "^0.29.0",
     "sharp": "^0.32.4",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {

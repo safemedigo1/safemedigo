@@ -26,7 +26,19 @@ import Footer from '../../../components/Footer'
 import Packages from "@/components/Packages";
 import { useTranslation } from "react-i18next";
 
-const DoctorName = ({ dataDoctorSlug }) => {
+const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorTreatments, dataDoctorCertificatest, dataDoctorLanguagesBySlug, dataDoctorMedias, dataDoctorCareer, dataDoctorEducation, dataDoctorMemberShip, dataDoctorProcedure, dataDoctorHospitalClinics, dataDoctorPackage }) => {
+
+  const [cilincs, setCilincs] = useState([])
+  const [hospitals, setHospitals] = useState([])
+
+
+  useEffect(() => {
+    const cilincsFilter = dataDoctorHospitalClinics?.filter((cilinc) => cilinc.isClinic === true)
+    setCilincs(cilincsFilter)
+    const hospitalsFilter = dataDoctorHospitalClinics?.filter((cilinc) => cilinc.isClinic === false)
+    setHospitals(hospitalsFilter)
+  }, [])
+
   const { certeficate, post1 } = imgs;
   const { t } = useTranslation();
   const cards = [
@@ -535,7 +547,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
   return (
     <>
       <SecNavbar dataDoctorSlug={dataDoctorSlug} />
-      <PageHeader dataDoctorSlug={dataDoctorSlug} />
+      <PageHeader dataDoctorSlug={dataDoctorSlug} dataDoctorMainSpecializations={dataDoctorMainSpecializations} dataDoctorTreatments={dataDoctorTreatments} />
 
       <Box
         sx={{
@@ -582,10 +594,9 @@ const DoctorName = ({ dataDoctorSlug }) => {
 
           <div className={styles.text_container}>
 
-
             <div className={styles.name}>
               <Typography >
-                {dataDoctorSlug?.doctorMainSpecializations[0]?.name}
+                {dataDoctorMainSpecializations[0]?.name}
               </Typography>
             </div>
 
@@ -621,7 +632,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
               </div>
               <div className={styles.box}>
                 <div className={styles.num}>
-                  <Typography>{dataDoctorSlug.doctorTreatments.length}</Typography>
+                  <Typography>{dataDoctorTreatments?.length}</Typography>
                 </div>
                 <div className={styles.yearly}>
                   <Typography>Treatments Performed</Typography>
@@ -673,7 +684,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
                     renderArrow={myArrow}
                     pagination={false}
                   >
-                    {dataDoctorSlug?.doctorCertificates.map((card, index) => (
+                    {dataDoctorCertificatest?.map((card, index) => (
                       <>
                         <div className={styles.box} key={index} onClick={() => handleClickOpen(card)}>
                           <div className={styles.title}>
@@ -747,7 +758,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
                   </div>
 
                   <ul>
-                    {dataDoctorSlug.doctorLanguages.map((lang, idx) =>
+                    {dataDoctorLanguagesBySlug?.map((lang, idx) =>
                       <li key={idx}>{lang?.languageName}</li>
                     )}
                   </ul>
@@ -759,7 +770,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
                     </Typography>
                   </div>
                   <ul>
-                    {dataDoctorSlug?.doctorMainSpecializations.map((special, idx) =>
+                    {dataDoctorMainSpecializations?.map((special, idx) =>
                       <li key={idx}>{special?.name}</li>
                     )}
                   </ul>
@@ -780,7 +791,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
                 expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary
                   sx={expanded !== 'panel1' ? { '&:hover': { backgroundColor: '#C5DFDC' }, transition: 'all 0.3s ease', height: '55px', borderRadius: '5px', backgroundColor: '#E7EDEC', color: '#000000' }
-                    : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', borderRadius: '5px' }
+                    : { backgroundColor: '#004747', color: '#FFFFFF', height: '55px', minHeight: '55px !important', borderRadius: '5px' }
                   }
                   expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
                   aria-controls="panel1d-content" id="panel1d-header">
@@ -790,7 +801,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
                   </Typography>
                 </AccordionSummary>
 
-                <AccordionDetails >
+                <AccordionDetails sx={{ background: '#F4F9F8', overflowX: 'auto', maxHeight: '50vh', }}>
 
                   <List sx={{
                     listStyleType: 'disc',
@@ -804,7 +815,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
                   >
 
 
-                    {dataDoctorSlug?.doctorProcedure?.map((procedure) => (
+                    {dataDoctorProcedure?.map((procedure) => (
                       <>
                         <Typography variant="h5">{procedure.title}</Typography>
                         <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
@@ -839,7 +850,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
                   </Typography>
                 </AccordionSummary>
 
-                <AccordionDetails >
+                <AccordionDetails sx={{ background: '#F4F9F8', overflowX: 'auto', maxHeight: '50vh', }}>
 
                   <List sx={{
                     listStyleType: 'disc',
@@ -852,10 +863,12 @@ const DoctorName = ({ dataDoctorSlug }) => {
                   }}
                   >
 
-                    {dataDoctorSlug?.doctorMemberShip?.map((memberShip) => (
+                    {dataDoctorMemberShip?.map((memberShip) => (
                       <>
                         <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
-                          <Typography variant="h5">{memberShip.memberShipName} ({memberShip.startdate} - {memberShip.endDate})</Typography>
+                          {memberShip.startdate !== null && memberShip.startdate !== null &&
+                            <Typography variant="h5">{memberShip.memberShipName} ({memberShip.startdate} - {memberShip.endDate})</Typography>
+                          }
                         </ListItem  >
                       </>
                     ))}
@@ -886,7 +899,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
                   </Typography>
                 </AccordionSummary>
 
-                <AccordionDetails >
+                <AccordionDetails sx={{ background: '#F4F9F8', overflowX: 'auto', maxHeight: '50vh', }}>
 
                   <List sx={{
                     listStyleType: 'disc',
@@ -899,7 +912,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
                   }}
                   >
 
-                    {dataDoctorSlug?.doctorEducation?.map((education) => (
+                    {dataDoctorEducation?.map((education) => (
                       <>
                         <Typography variant="h5">{education.title} ({education.yearFrom} - {education.yearTo})</Typography>
                         <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
@@ -933,7 +946,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
                   </Typography>
                 </AccordionSummary>
 
-                <AccordionDetails >
+                <AccordionDetails sx={{ background: '#F4F9F8', overflowX: 'auto', maxHeight: '50vh', }}>
 
                   <List sx={{
                     listStyleType: 'disc',
@@ -946,7 +959,7 @@ const DoctorName = ({ dataDoctorSlug }) => {
                   }}
                   >
 
-                    {dataDoctorSlug?.doctorCareer?.map((career) => (
+                    {dataDoctorCareer?.map((career) => (
                       <>
                         <Typography variant="h5">{career.title} ({career.yearFrom} - {career.yearTo})</Typography>
                         <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
@@ -1006,10 +1019,10 @@ const DoctorName = ({ dataDoctorSlug }) => {
               >
 
 
-                {dataDoctorSlug?.doctorMedias.map((clinic, index) => (
+                {dataDoctorMedias?.map((clinic, index) => (
                   <div onClick={() => handleImageClick(clinic.img)} className={styles.box} key={index}>
                     <div className={styles.img_container}>
-                      <Image width={392} height={305} src={clinic.path} alt={clinic.title} />
+                      <img src={clinic.path} alt={clinic.title} />
                     </div>
                   </div>
                 ))}
@@ -1028,11 +1041,14 @@ const DoctorName = ({ dataDoctorSlug }) => {
         </Container>
       </section>
 
-      {/* Still under destructuin !!! */}
-      <BeforeAfter beforeCards={beforeCards} />
+      <BeforeAfter dataDoctorTreatments={dataDoctorTreatments} />
 
-      <Box sx={{ paddingTop: '38px' }}>
-        <MostPopular doctorClinics={dataDoctorSlug} />
+      <Box >
+        <MostPopular doctorClinics={cilincs} />
+      </Box>
+
+      <Box >
+        <MostPopular doctorHospitals={hospitals} />
       </Box>
 
       <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -1065,31 +1081,15 @@ const DoctorName = ({ dataDoctorSlug }) => {
         </Box>
       </Container >
 
-      <Packages />
-      <Footer dataDoctorSlug={dataDoctorSlug} />
+      <Packages dataDoctorPackage={dataDoctorPackage} />
+
+      <Footer dataDoctorSlug={dataDoctorSlug} dataDoctorTreatments={dataDoctorTreatments} />
     </>
   )
 }
 
 export default DoctorName
 
-
-// export async function getStaticPaths() {
-//   const resDoctorsSlugs = await fetch("https://api2.safemedigo.com/api/v1/Doctor/ListAllDoctorSlugs");
-//   const dataDoctorsSlugs = await resDoctorsSlugs.json()
-
-//   const paths = dataDoctorsSlugs?.map((data) => {
-//     return {
-//       params: { slug: data }
-//     }
-//   })
-
-
-//   return {
-//     paths,
-//     fallback: 'blocking',
-//   };
-// }
 
 
 export async function getStaticPaths() {
@@ -1128,9 +1128,171 @@ export async function getStaticProps({ locale, params }) {
   })
   const dataDoctorSlug = await resDoctorSlug.json()
 
+
+  const resDoctorMainSpecializations = await fetch("https://api2.safemedigo.com/api/v1/Doctor/GetDoctorMainSpecializationsBySlug  ", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "doctorSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataDoctorMainSpecializations = await resDoctorMainSpecializations.json()
+
+  const resDoctorTreatments = await fetch("https://api2.safemedigo.com/api/v1/Doctor/GetDoctorTreatmentsBySlug  ", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "doctorSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataDoctorTreatments = await resDoctorTreatments.json()
+
+
+  const resDoctorCertificatest = await fetch("https://api2.safemedigo.com/api/v1/Doctor/GetDoctorCertificatestBySlug  ", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "doctorSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataDoctorCertificatest = await resDoctorCertificatest.json()
+
+
+  const resDoctorLanguagesBySlug = await fetch("https://api2.safemedigo.com/api/v1/Doctor/GetDoctorLanguagesBySlug  ", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "doctorSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataDoctorLanguagesBySlug = await resDoctorLanguagesBySlug.json()
+
+
+  const resDoctorMedias = await fetch("https://api2.safemedigo.com/api/v1/Doctor/GetDoctorMediasBySlug  ", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "doctorSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataDoctorMedias = await resDoctorMedias.json()
+
+
+  const resDoctorCareer = await fetch("https://api2.safemedigo.com/api/v1/Doctor/GetDoctorCareerBySlug  ", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "doctorSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataDoctorCareer = await resDoctorCareer.json()
+
+
+
+  const resDoctorEducation = await fetch("https://api2.safemedigo.com/api/v1/Doctor/GetDoctorEducationBySlug  ", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "doctorSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataDoctorEducation = await resDoctorEducation.json()
+
+
+
+  const resDoctorMemberShip = await fetch("https://api2.safemedigo.com/api/v1/Doctor/GetDoctorMemberShipBySlug  ", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "doctorSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataDoctorMemberShip = await resDoctorMemberShip.json()
+
+
+
+
+  const resDoctorProcedure = await fetch("https://api2.safemedigo.com/api/v1/Doctor/GetDoctorProcedureBySlug  ", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "doctorSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataDoctorProcedure = await resDoctorProcedure.json()
+
+
+
+
+  const resDoctorHospitalClinics = await fetch("https://api2.safemedigo.com/api/v1/Doctor/GetDoctorHospitalClinicsBySlug  ", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "doctorSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataDoctorHospitalClinics = await resDoctorHospitalClinics.json()
+
+
+
+  const resDoctorPackage = await fetch("https://api2.safemedigo.com/api/v1/Doctor/GetDoctorPackageBySlug  ", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "doctorSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataDoctorPackage = await resDoctorPackage.json()
+
+
+
   return {
     props: {
-      dataDoctorSlug,
+      dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorTreatments, dataDoctorCertificatest, dataDoctorLanguagesBySlug, dataDoctorMedias, dataDoctorCareer, dataDoctorEducation, dataDoctorMemberShip, dataDoctorProcedure, dataDoctorHospitalClinics, dataDoctorPackage,
       ...(await serverSideTranslations(locale, ["navbar", "hospital", "proceduresSymptoms", "sec_navbar", "proceduresSymptoms_single", 'Footer', 'most_popular'])),
     },
   };
