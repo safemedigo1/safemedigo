@@ -1019,6 +1019,7 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
               >
 
 
+
                 {dataDoctorMedias?.map((clinic, index) => (
                   <div onClick={() => handleImageClick(clinic.img)} className={styles.box} key={index}>
                     <div className={styles.img_container}>

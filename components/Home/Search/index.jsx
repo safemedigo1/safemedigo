@@ -38,10 +38,7 @@ const Search = () => {
     { tag: t('Footer:Prostate_surgeries'), link: '/procedures&symptoms/FUE-Hair-Transplant-' },
     { tag: t('Footer:Penile_prosthesis'), link: '/procedures&symptoms/FUE-Hair-Transplant-' },
 
-
-
   ];
-
 
 
 
@@ -79,8 +76,7 @@ const Search = () => {
       </Container>
 
       <div className={styles.tags_slider}>
-        <Container sx={{ maxWidth: '1239px' }} maxWidth={false} >
-        </Container>
+
 
         <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: '1239px', display: 'flex', alignItems: 'center' }} maxWidth={false} >
           <div className={styles.title}>

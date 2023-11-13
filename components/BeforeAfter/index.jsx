@@ -76,15 +76,17 @@ const BeforeAfter = ({ treatments, beforeCards, dataDoctorTreatments }) => {
 
   // Filter Logic
   const [treatmentImages, setTreatmentImages] = useState([]);
-  const [treatmentSlug, setTreatmentSlug] = useState(dataDoctorTreatments.length > 0 ? dataDoctorTreatments[0].treatmentSlug : null);
+  const [value, setValue] = useState();
+  const [treatmentSlug, setTreatmentSlug] = useState(dataDoctorTreatments[0]?.treatmentSlug);
   const handleFilterChanges = (event, value) => {
     setTreatmentSlug(value.props.children)
+    setValue(value.props.children)
   }
 
   const getTreatmentImages = async () => {
     const resTreatmentData = await axios.post("https://api2.safemedigo.com/api/v1/Doctor/GetDoctorTreatmentsImages", {
       "doctorSlug": router.query.slug,
-      "treatmentSlug": treatmentSlug,
+      "treatmentSlug": dataDoctorTreatments[0]?.treatmentSlug,
       "lang": router.locale
     }, {
       headers: {
@@ -103,7 +105,8 @@ const BeforeAfter = ({ treatments, beforeCards, dataDoctorTreatments }) => {
     getTreatmentImages()
   }, [treatmentSlug])
 
-  console.log(dataDoctorTreatments[0].treatmentName, "dataDoctorTreatments[0].treatmentName")
+  console.log(dataDoctorTreatments[0]?.treatmentSlug, "treatmentSlug")
+
   return (
     <>
       {
@@ -116,7 +119,7 @@ const BeforeAfter = ({ treatments, beforeCards, dataDoctorTreatments }) => {
                   {/* <InputLabel id="demo-simple-select-autowidth-label">{t('blogs_page:filter_title')}</InputLabel> */}
                   <Select
                     displayEmpty
-                    value={treatmentSlug}
+                    value={value}
                     inputProps={{ 'aria-label': 'Without label' }}
                     IconComponent={ExpandMoreOutlinedIcon}
                     onChange={handleFilterChanges}

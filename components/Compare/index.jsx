@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from './index.module.scss'
 import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, Container, FormControl, FormControlLabel, FormGroup, MenuItem, Rating, Select, Slider, Switch, Typography } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -21,11 +21,12 @@ import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import { useRouter } from 'next/router';
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 
-const Compare = (props) => {
+const Compare = ({ dataDoctorCompare }) => {
   const context = useContext(AppContext);
   const { isDoctorPageActive, setIsDoctorPageActive, compareStep
     , setCompareStep } = context;
   const router = useRouter()
+
 
   const [priceValue, setPriceValue] = useState([0, 100]);
   const [compareArr, setCompareArr] = useState();
@@ -159,6 +160,29 @@ const Compare = (props) => {
     fontFamily: 'Tajawal',
     borderRadius: '5px',
   }
+
+
+  // Filter Logic
+
+  const [verifiedFilter, setVerifiedFilter] = useState(false);
+  const [resultArr, setResultArr] = useState([])
+
+  const handleCheckboxChange = (event) => {
+    const checked = event.target.checked;
+    setVerifiedFilter(checked)
+
+
+  };
+
+  useEffect(() => {
+    if (verifiedFilter === true) {
+      setResultArr(dataDoctorCompare.filter((doctor) => doctor.isVerifid === true))
+    } else {
+      setResultArr(dataDoctorCompare)
+    }
+  }, [verifiedFilter])
+
+  console.log(resultArr, "resultArr")
   return (
     < >
       <section id='compare' className={styles.compare}>
@@ -212,7 +236,6 @@ const Compare = (props) => {
                   </FormControl>
 
                 </div>
-
               </div>
 
 
@@ -226,26 +249,13 @@ const Compare = (props) => {
                   </div>
 
                   <div className={styles.check_box}>
-                    {/* <FormControlLabel
-                    control={
-                    } label="Accept Virtual Consultations" /> */}
 
-                    <FormControlLabel control={<Checkbox sx={{
-                      color: '#004747 !important',
-                      marginTop: '8px',
-                      marginBottom: '8px',
-                      '.Mui-checked': {
-                        color: '#004747 !important',
-                      },
-
-                      '.MuiIconButton-root': {
-                        color: '#004747 !important',
-                      },
-                    }} />} label={t("most_popular:verified")} />
+                    <FormControlLabel control={<Checkbox
+                      onChange={handleCheckboxChange}
 
 
-                    <FormControlLabel
-                      control={<Checkbox sx={{
+
+                      sx={{
                         color: '#004747 !important',
                         marginTop: '8px',
                         marginBottom: '8px',
@@ -259,21 +269,6 @@ const Compare = (props) => {
                       }} />} label={t("most_popular:verified")} />
 
 
-
-                    <FormControlLabel
-
-                      control={<Checkbox sx={{
-                        color: '#004747 !important',
-                        marginTop: '8px',
-                        marginBottom: '8px',
-                        '.Mui-checked': {
-                          color: '#004747 !important',
-                        },
-
-                        '.MuiIconButton-root': {
-                          color: '#004747 !important',
-                        },
-                      }} />} label="Flexible Price" />
 
                   </div>
 
@@ -318,18 +313,21 @@ const Compare = (props) => {
 
                       <FormControlLabel
 
-                        control={<Checkbox sx={{
-                          color: '#004747 !important',
-                          marginTop: '8px',
-                          marginBottom: '8px',
-                          '.Mui-checked': {
-                            color: '#004747 !important',
-                          },
+                        control={<Checkbox
 
-                          '.MuiIconButton-root': {
+
+                          sx={{
                             color: '#004747 !important',
-                          },
-                        }} />} label="Treatment Price" />
+                            marginTop: '8px',
+                            marginBottom: '8px',
+                            '.Mui-checked': {
+                              color: '#004747 !important',
+                            },
+
+                            '.MuiIconButton-root': {
+                              color: '#004747 !important',
+                            },
+                          }} />} label="Treatment Price" />
 
 
                     </div>
@@ -416,16 +414,25 @@ const Compare = (props) => {
 
                 <div className={styles.results_boxes_container}>
 
-                  {doctorsData.map((doc, index) => (
-                    <div className={styles.box} key={index}>
+                  {resultArr?.map((doc, index) => (
+                    < motion.div className={styles.box} key={index}
+
+                      animate={{ opacity: 1 }}
+                      initial={{ opacity: 0 }}
+                      transition={{ duration: 1, }}
+
+                    >
                       <div className={styles.img_container}>
-                        <Image width={344} height={191} src={doc.img} alt={doc.name} />
-                        <div className={styles.verified}>
-                          <FaShieldAlt />
-                          <Typography >
-                            {t("most_popular:verified")}
-                          </Typography>
-                        </div>
+                        <Image width={344} height={191} src={doc.image} alt={doc.firstName} />
+
+                        {doc.isVerifid &&
+                          <div className={styles.verified}>
+                            <FaShieldAlt />
+                            <Typography >
+                              {t("most_popular:verified")}
+                            </Typography>
+                          </div>
+                        }
 
                         <div className={styles.check_box}>
                           <FormControlLabel
@@ -449,13 +456,13 @@ const Compare = (props) => {
 
                         <div className={styles.name}>
                           <Typography variant='h5'>
-                            {doc.name}
+                            {doc.firstName} {doc.lastName}
                           </Typography>
                         </div>
 
                         <div className={styles.job_title}>
                           <Typography variant='h6'>
-                            {doc.job_title}
+                            {doc.treatmentName}
                           </Typography>
                         </div>
 
@@ -467,35 +474,34 @@ const Compare = (props) => {
                         <div className={styles.location}>
                           <MdLocationOn />
                           <Typography >
-                            Istanbul, Turkey
+                            {doc.location}
                           </Typography>
                         </div>
 
                         <div className={styles.patient_num}>
-                          <span>{doc.patients_num}</span>
+                          <span>{doc.lastYearPatients}</span>
                           <Typography>Patients Treated Last Year</Typography>
                         </div>
 
                         <div className={styles.experience}>
-                          <span>{doc.experience}</span>
+                          <span>{doc.experienceYears}</span>
                           <Typography> Years Of Experience</Typography>
                         </div>
 
                         <Box sx={{ marginTop: 'auto', width: '100%', display: 'flex', justifyContent: 'space-between', alignSelf: 'flex-end' }}>
                           <div id={styles.price}>
-                            <Typography>Knee Replacement Starting From </Typography>
-                            <span>{doc.price}$</span>
+                            <Typography>{doc.treatmentName} {t("proceduresSymptoms:cost")}: </Typography>
+                            <span>{doc.treatmentPrice}$</span>
                           </div>
 
                           <div className={styles.btn_container}>
-                            <Link href='/'>{t("proceduresSymptoms:doc_profile")}</Link>
+                            <Link href={`/doctor/${doc.slug}`}>{t("proceduresSymptoms:doc_profile")}</Link>
                           </div>
                         </Box>
 
 
                       </div>
-                    </div>
-
+                    </ motion.div>
                   ))}
 
                 </div>

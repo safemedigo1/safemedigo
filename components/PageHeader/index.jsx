@@ -171,9 +171,8 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug, dataDoc
 
                       <div className={styles.name}>
                         <Typography variant="h3">
-                          {dataDoctorSlug.doctorLevel}.
-                          {dataDoctorSlug.firstName}
-                          {dataDoctorSlug.fatherName}
+                          {dataDoctorSlug.firstName} {` `}
+                          {dataDoctorSlug.fatherName} {` `}
                           {dataDoctorSlug.lastName}
 
                         </Typography>

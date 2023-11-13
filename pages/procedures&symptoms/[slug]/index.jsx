@@ -19,10 +19,10 @@ import { AppContext } from '@/components/AppContext';
 import Compare from '@/components/Compare';
 import Marquee from "react-fast-marquee";
 
-const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmentProcedures, dataTreatmentsQA, dataAboutProcedures, dataProcedures }) => {
+const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmentProcedures, dataTreatmentsQA, dataAboutProcedures, dataProcedures, dataDoctorCompare }) => {
   const [expanded, setExpanded] = useState(false);
-
   const [isLoadingQA, setIsLoadingQA] = useState(false);
+  console.log(dataDoctorCompare, "ZZZZZZZ")
 
   const [QACount, setQACount] = useState()
   const { t } = useTranslation();
@@ -233,7 +233,7 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
 
       }
 
-      {isDoctorPageActive === false ?
+      {isDoctorPageActive === true ?
         <>
           <article id={'overview'} className={styles.overview} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
             <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
@@ -1549,7 +1549,7 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
 
 
         </> : <>
-          <Compare />
+          <Compare dataDoctorCompare={dataDoctorCompare} />
         </>
       }
 
@@ -1682,6 +1682,22 @@ export async function getStaticProps({ locale, params }) {
     })
   })
   const dataTreatmentsQA = await resTreatmentsQA.json()
+
+  // Compare
+
+  const resDoctorCompare = await fetch("https://api2.safemedigo.com/api/v1/Doctor/GetDoctorCompareByTreatmentSlug", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "treatmentSlug": params.slug,
+      "lang": locale,
+    })
+  })
+  const dataDoctorCompare = await resDoctorCompare.json()
+
   return {
     props: {
       locale,
@@ -1693,6 +1709,7 @@ export async function getStaticProps({ locale, params }) {
       dataAboutProcedures,
       dataTreatmentsQA,
       dataProcedures,
+      dataDoctorCompare,
       ...(await serverSideTranslations(locale, ['navbar', 'single_blog', "contact_details", 'sec_navbar', 'blogs_page', 'page_header_comp', "most_popular", "proceduresSymptoms", "proceduresSymptoms_single", 'Footer'])),
 
     },

@@ -166,7 +166,7 @@ const Navbar = (props) => {
     <>
       <CssBaseline />
       <HideOnScroll {...props} >
-        <AppBar style={{ background: 'transparent' }} >
+        <AppBar style={{ background: '#F6F8FC' }} >
           <div className={styles.navbar} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
             <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
               <Grid container
