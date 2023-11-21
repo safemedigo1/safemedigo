@@ -38,7 +38,7 @@ function App({ Component, pageProps }) {
   const [treatmentSlugContexts, setTreatmentSlugContexts] = useState("default");
 
   // Context Store
-  const [isDoctorPageActive, setIsDoctorPageActive] = useState(false);
+  const [isDoctorPageActive, setIsDoctorPageActive] = useState(true);
   const [compareStep, setCompareStep] = useState(1);
 
   useEffect(() => {

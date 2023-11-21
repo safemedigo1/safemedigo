@@ -22,7 +22,6 @@ import Marquee from "react-fast-marquee";
 const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmentProcedures, dataTreatmentsQA, dataAboutProcedures, dataProcedures, dataDoctorCompare }) => {
   const [expanded, setExpanded] = useState(false);
   const [isLoadingQA, setIsLoadingQA] = useState(false);
-  console.log(dataDoctorCompare, "ZZZZZZZ")
 
   const [QACount, setQACount] = useState()
   const { t } = useTranslation();

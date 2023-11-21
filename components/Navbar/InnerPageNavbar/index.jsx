@@ -24,7 +24,7 @@ const InnerPageNavbar = ({ dataTreatment, QACount }) => {
           <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <List sx={{ display: 'flex', justifyContent: 'space-between', paddingTop: '20px', width: { sx: '100%', sm: '100%', md: '100%', lg: '700px' } }}>
               <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                <Link href='#overview' onClick={() => setIsDoctorPageActive(false)}>
+                <Link href='#overview' onClick={() => setIsDoctorPageActive(true)}>
                   {t("proceduresSymptoms_single:nav_overview")}
                 </Link>
               </ListItem>
@@ -34,7 +34,7 @@ const InnerPageNavbar = ({ dataTreatment, QACount }) => {
                 dataTreatment.cost !== "" &&
 
                 <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                  <Link href='#price' onClick={() => setIsDoctorPageActive(false)}>
+                  <Link href='#price' onClick={() => setIsDoctorPageActive(true)}>
                     {t("proceduresSymptoms_single:nav_prices")}
                   </Link>
                 </ListItem>
@@ -46,14 +46,14 @@ const InnerPageNavbar = ({ dataTreatment, QACount }) => {
 
                 QACount > 0 &&
                 <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                  <Link href='#q&a' onClick={() => setIsDoctorPageActive(false)}>
+                  <Link href='#q&a' onClick={() => setIsDoctorPageActive(true)}>
                     {t("proceduresSymptoms_single:nav_q&a")}
                   </Link>
                 </ListItem>
               }
 
               <ListItem sx={{ width: 'fit-content', paddingLeft: '0px' }}>
-                <Link href='#reviews' onClick={() => setIsDoctorPageActive(false)}>
+                <Link href='#reviews' onClick={() => setIsDoctorPageActive(true)}>
                   {t("proceduresSymptoms_single:nav_reviews")}
                 </Link>
               </ListItem>

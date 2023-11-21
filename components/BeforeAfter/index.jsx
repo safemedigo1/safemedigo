@@ -105,7 +105,6 @@ const BeforeAfter = ({ treatments, beforeCards, dataDoctorTreatments }) => {
     getTreatmentImages()
   }, [treatmentSlug])
 
-  console.log(dataDoctorTreatments[0]?.treatmentSlug, "treatmentSlug")
 
   return (
     <>
