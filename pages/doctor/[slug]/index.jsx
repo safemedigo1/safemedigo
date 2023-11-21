@@ -26,7 +26,7 @@ import Footer from '../../../components/Footer'
 import Packages from "@/components/Packages";
 import { useTranslation } from "react-i18next";
 
-const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorTreatments, dataDoctorCertificatest, dataDoctorLanguagesBySlug, dataDoctorMedias, dataDoctorCareer, dataDoctorEducation, dataDoctorMemberShip, dataDoctorProcedure, dataDoctorHospitalClinics, dataDoctorPackage }) => {
+const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorTreatments, dataDoctorCertificatest, dataDoctorLanguagesBySlug, dataDoctorMedias, dataDoctorCareer, dataDoctorEducation, dataDoctorMemberShip, dataDoctorProcedure, dataDoctorHospitalClinics, dataDoctorPackage, dataSubSpecializations }) => {
 
   const [cilincs, setCilincs] = useState([])
   const [hospitals, setHospitals] = useState([])
@@ -770,7 +770,7 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
                     </Typography>
                   </div>
                   <ul>
-                    {dataDoctorMainSpecializations?.map((special, idx) =>
+                    {dataSubSpecializations?.map((special, idx) =>
                       <li key={idx}>{special?.name}</li>
                     )}
                   </ul>
@@ -1142,6 +1142,18 @@ export async function getStaticProps({ locale, params }) {
     })
   })
   const dataDoctorMainSpecializations = await resDoctorMainSpecializations.json()
+  const resSubSpecializations = await fetch("https://api2.safemedigo.com/api/v1/Doctor/GetDoctorSubSpecializationsBySlug  ", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "doctorSlug": params.slug,
+      "lang": locale
+    })
+  })
+  const dataSubSpecializations = await resSubSpecializations.json()
 
   const resDoctorTreatments = await fetch("https://api2.safemedigo.com/api/v1/Doctor/GetDoctorTreatmentsBySlug  ", {
     method: 'POST',
@@ -1293,7 +1305,7 @@ export async function getStaticProps({ locale, params }) {
 
   return {
     props: {
-      dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorTreatments, dataDoctorCertificatest, dataDoctorLanguagesBySlug, dataDoctorMedias, dataDoctorCareer, dataDoctorEducation, dataDoctorMemberShip, dataDoctorProcedure, dataDoctorHospitalClinics, dataDoctorPackage,
+      dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorTreatments, dataDoctorCertificatest, dataDoctorLanguagesBySlug, dataDoctorMedias, dataDoctorCareer, dataDoctorEducation, dataDoctorMemberShip, dataDoctorProcedure, dataDoctorHospitalClinics, dataDoctorPackage, dataSubSpecializations,
       ...(await serverSideTranslations(locale, ["navbar", "hospital", "proceduresSymptoms", "sec_navbar", "proceduresSymptoms_single", 'Footer', 'most_popular'])),
     },
   };
