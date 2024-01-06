@@ -182,7 +182,6 @@ const Compare = ({ dataDoctorCompare }) => {
     }
   }, [verifiedFilter])
 
-  console.log(resultArr, "resultArr")
   return (
     < >
       <section id='compare' className={styles.compare}>

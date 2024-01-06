@@ -1042,6 +1042,7 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
         </Container>
       </section>
 
+      {console.log(dataDoctorTreatments, "dataDoctorTreatments2")}
       <BeforeAfter dataDoctorTreatments={dataDoctorTreatments} />
 
       <Box >

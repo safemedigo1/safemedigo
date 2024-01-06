@@ -14,10 +14,9 @@ import { ThreeDots } from 'react-loader-spinner'
 import Image from 'next/image';
 import InnerPageNavbar from '@/components/Navbar/InnerPageNavbar';
 import Head from 'next/head';
-import BeforeAfter from '@/components/BeforeAfter'
+import BeforeAfterProcedures from '@/components/BeforeAfterProcedures'
 import { AppContext } from '@/components/AppContext';
 import Compare from '@/components/Compare';
-import Marquee from "react-fast-marquee";
 
 const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmentProcedures, dataTreatmentsQA, dataAboutProcedures, dataProcedures, dataDoctorCompare }) => {
   const [expanded, setExpanded] = useState(false);
@@ -929,7 +928,7 @@ const TreatmentName = ({ dataTreatment, dataBeforeAfter, dataSteps, dataTreatmen
 
           {
             dataBeforeAfter?.length !== 0 &&
-            <BeforeAfter treatments={dataBeforeAfter} />
+            <BeforeAfterProcedures dataBeforeAfter={dataBeforeAfter} />
 
           }
 

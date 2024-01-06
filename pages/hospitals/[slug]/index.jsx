@@ -48,7 +48,6 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
 
   ])
 
-  console.log(dataHospitalService, "dataHospitalService")
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
