@@ -40,7 +40,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug, dataDoc
                 <div className={styles.boxes_container}>
                   <div className={styles.hospital_box}>
                     <div className={styles.main_img}>
-                      <Image width={400} height={240} src={dataHospitalSlug.logo} alt={""} />
+                      <Image width={400} height={260} src={dataHospitalSlug.logo} alt={dataHospitalSlug.name} />
                     </div>
 
                     <div className={styles.text_container}>

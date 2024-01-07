@@ -490,7 +490,7 @@ const Hospital = ({ dataHospitalSlug, dataHospitalLang, dataHospitalCertificates
           <Image
             width={300}
             height={218}
-            src={dataHospitalSlug.logo} alt={""} />
+            src={dataHospitalSlug.logo} alt={dataHospitalSlug.name} />
         </div>
 
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
