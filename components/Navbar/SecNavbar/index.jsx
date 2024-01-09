@@ -33,7 +33,7 @@ const SecNavbar = ({ categorySlug, slug, dataHospitalSlug, currentPage, blog, ta
           {pathname === '/category/[slug]/page/[id]' &&
             <>
               <Link href='/'> {t('sec_navbar:home')} </Link>  <Link href='/blogs' > /{t('sec_navbar:blogs')}</Link>
-              <Link href={`/category/${categorySlug}/page/${currentPage}`} className={styles.active} > /{slug}</Link>
+              <Link href={`/category/${categorySlug}/page/${currentPage}`} className={styles.active}> /{slug}</Link>
             </>
           }
 
@@ -104,7 +104,9 @@ const SecNavbar = ({ categorySlug, slug, dataHospitalSlug, currentPage, blog, ta
           }
           {pathname === ('/doctor/[slug]') &&
             <>
-              <Link href='/'> {t('sec_navbar:home')}  </Link> <Link href={`/doctor/${dataDoctorSlug?.slug}`} >/Profile /              {dataDoctorSlug.doctorLevel}.
+              <Link href='/'> {t('sec_navbar:home')} /Profile </Link>
+
+              <Link href={`/doctor/${dataDoctorSlug?.slug}`} className={styles.active}>  /                  {dataDoctorSlug.doctorLevel}
                 {dataDoctorSlug.firstName}
                 {dataDoctorSlug.fatherName}
                 {dataDoctorSlug.lastName}
