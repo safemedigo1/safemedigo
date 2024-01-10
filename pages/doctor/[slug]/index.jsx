@@ -551,7 +551,7 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
           <Image
             width={300}
             height={218}
-            src={dataDoctorSlug.image} alt={""} />
+            src={dataDoctorSlug.image} alt={dataDoctorSlug.firstName} />
         </div>
 
         <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>

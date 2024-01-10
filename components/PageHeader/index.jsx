@@ -172,9 +172,8 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug, dataDoc
                       <div className={styles.name}>
                         <Typography variant="h3">
                           {dataDoctorSlug.firstName} {` `}
-                          {dataDoctorSlug.fatherName} {` `}
-                          {dataDoctorSlug.lastName}
-
+                          {` `}   {dataDoctorSlug.fatherName} {` `}
+                          {dataDoctorSlug.lastName}{` `}
                         </Typography>
                       </div>
                       <div className={styles.location}>
