@@ -29,14 +29,14 @@ export default async function sendEmail(req, res) {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "majd.khaled87@gmail.com",
-      pass: "uylpdgemqncigqez",
+      user: "nonreply.mensaje@gmail.com",
+      pass: "iwbf pika bhtx zgpg",
     },
   });
 
   const mailOptions = {
-    from: "majd.khaled87@gmail.com",
-    to: "majd.khaled87@gmail.com",
+    from: "nonreply.mensaje@gmail.com",
+    to: "nonreply.mensaje@gmail.com",
     subject: "New message from (Safemedigo) website",
     text: `(Safemedigo)First name:${fname}\nLast name${lname}\nEmail: ${email}\nPhone Number: ${phone}\nI like to do : ${selectedForm_1}\nFor:${selectedForm_2}\nDate:${selectedDate}\nTime:${selectedTime}\nI Want As Soon As Possible:${asp}`,
   };
@@ -45,7 +45,7 @@ export default async function sendEmail(req, res) {
     await transporter.sendMail(mailOptions);
     return res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
-    console.error(error);
+    console.error("Error sending email:", error);
     return res.status(500).json({ error: "Something went wrong" });
   }
 }
