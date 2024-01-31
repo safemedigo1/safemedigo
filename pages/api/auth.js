@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     service: "gmail",
     auth: {
       user: "nonreply.mensaje@gmail.com",
-      pass: "iwbf pika bhtx zgpg",
+      pass: "jmpy jkpy sryv vrdf",
     },
   });
 
