@@ -111,12 +111,12 @@ const BeforeAfter = ({ treatments, beforeCards, dataDoctorTreatments }) => {
       {
         // dataDoctorTreatments.length > 0 &&
         <section id={styles.before_after} dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}>
-          <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'} `} sx={{ maxWidth: "1239px" }} maxWidth={false}>
+          <Container sx={{ maxWidth: "1239px" }} maxWidth={false}>
             <div className={styles.sec_contianer}>
               <div className={styles.filter_sec}>
                 <FormControl fullWidth  >
                   {/* <InputLabel id="demo-simple-select-autowidth-label">{t('blogs_page:filter_title')}</InputLabel> */}
-                  <Select
+                  {/* <Select
                     displayEmpty
                     value={value}
                     inputProps={{ 'aria-label': 'Without label' }}
@@ -150,7 +150,51 @@ const BeforeAfter = ({ treatments, beforeCards, dataDoctorTreatments }) => {
 
 
 
+                  </Select> */}
+
+
+                  <Select
+                    displayEmpty
+                    value={dataDoctorTreatments.length > 0 ? dataDoctorTreatments[0].treatmentSlug : ''}
+                    inputProps={{ 'aria-label': 'Without label' }}
+                    IconComponent={ExpandMoreOutlinedIcon}
+                    onChange={handleFilterChanges}
+                    MenuProps={{
+                      anchorOrigin: { horizontal: 'right', vertical: 'bottom' },
+                      transformOrigin: { horizontal: 'right', vertical: 'top' },
+                    }}
+                    style={router.locale === 'ar' ? SelecetStyleAr : SelecetStyleEn}
+                    sx={{
+                      '.MuiSelect-icon': {
+                        color: '#FFFFFF !important',
+                        width: '25px',
+                        height: '25px',
+
+                      },
+                      '.MuiSelect-iconOpen': {
+                        color: 'rgb(0, 71, 71) !important',
+                      },
+                      '.MuiSelect-select ': {
+                        padding: '11px 18px 0px 18px !important',
+                        height: '40px!important',
+                      },
+                    }}
+                  >
+                    {dataDoctorTreatments.length > 0 &&
+                      dataDoctorTreatments.map((treatment, idx) => (
+                        <MenuItem
+                          dir={`${router.locale === 'ar' ? 'rtl' : 'ltr'}`}
+                          key={idx}
+                          value={treatment.treatmentSlug}
+                          sx={{
+                            fontFamily: router.locale === 'ar' ? 'var(--arabic-font)' : 'var(--quickstand-font)'
+                          }}
+                        >
+                          {treatment.treatmentName}
+                        </MenuItem>
+                      ))}
                   </Select>
+
                 </FormControl>
 
               </div>

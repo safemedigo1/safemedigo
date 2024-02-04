@@ -104,12 +104,10 @@ const SecNavbar = ({ categorySlug, slug, dataHospitalSlug, currentPage, blog, ta
           }
           {pathname === ('/doctor/[slug]') &&
             <>
-              <Link href='/'> {t('sec_navbar:home')} /Profile </Link>
+              <Link href='/'> {t('sec_navbar:home')} </Link>
 
-              <Link href={`/doctor/${dataDoctorSlug?.slug}`} className={styles.active}>  /                  {dataDoctorSlug.doctorLevel}
-                {dataDoctorSlug.firstName}
-                {dataDoctorSlug.fatherName}
-                {dataDoctorSlug.lastName}
+              <Link href={`/doctor/${dataDoctorSlug?.slug}`} className={styles.active}>  /
+                {`${dataDoctorSlug.doctorLevel === null ? '' : dataDoctorSlug.doctorLevel} ${dataDoctorSlug.firstName} ${dataDoctorSlug.fatherName} ${dataDoctorSlug.lastName}`}
               </Link>
             </>
           }

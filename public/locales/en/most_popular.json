@@ -6,5 +6,8 @@
   "title": "Most Popular",
   "treatment": "Treatment",
   "get_started": "Get Started",
-  "verified": "Safemedigo verified"
+  "verified": "Safemedigo verified",
+  "PatientsTreatedLastYear": "Patients Treated Last Year",
+  "yearsOfExp": "Years Of Experience",
+  "treatmentsCount": "Treatments Performed"
 }

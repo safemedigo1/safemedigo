@@ -103,27 +103,34 @@ const ClinicCard = ({ similarDocs }) => {
                   {similarDoc.mainSpecialization}
                 </Typography>
               </div>
-
+              {/* 
               <div className={styles.rating}>
                 <Rating name="read-only" defaultValue={similarDoc.rate} size="small" readOnly />
                 <span className={styles.reviews_num}>{similarDoc.totalReview} Reviews</span>
-              </div>
+              </div> */}
 
-              <div className={styles.location}>
-                <MdLocationOn />
-                <Typography >
-                  {similarDoc.location}
-                </Typography>
-              </div>
+              {similarDoc.location &&
+                <div className={styles.location}>
+                  <div className="icon_container">
+                    <MdLocationOn />
+                  </div>
+                  <Typography >
+                    {similarDoc.location}
+                  </Typography>
+                </div>
+
+              }
 
               <div className={styles.founded}>
                 <span>{similarDoc.lastYearPatients}</span>
-                <Typography>Patients Treated Last Year</Typography>
+
+                {t("most_popular:PatientsTreatedLastYear")}
               </div>
 
               <div className={styles.employess}>
                 <span>{similarDoc.experienceYears}</span>
-                <Typography>  Years Of Experience</Typography>
+                {t("most_popular:yearsOfExp")}
+
               </div>
 
 

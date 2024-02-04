@@ -6,5 +6,8 @@
   "title": "الأكثر شهرة",
   "treatment": "الإجراءات",
   "get_started": "إبداء الأن",
-  "verified": "موثق من قبل Safemedigo"
+  "verified": "موثق من قبل Safemedigo",
+  "PatientsTreatedLastYear": "عدد المرضى السنة الفائتة",
+  "yearsOfExp": "سنوات الخبرة",
+  "treatmentsCount": "عدد العمليات"
 }

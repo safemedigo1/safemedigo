@@ -1,22 +1,19 @@
 import { PageHeader, SecNavbar } from "@/components";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Container, Typography, Dialog, DialogContent, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem, DialogTitle, Rating } from '@mui/material';
+import { Container, Typography, Dialog, DialogContent, Accordion, AccordionDetails, AccordionSummary, Box, List, ListItem, DialogTitle } from '@mui/material';
 import Link from 'next/link';
 import styles from '../../hospitals/[slug]/index.module.scss';
 import Carousel from 'react-elastic-carousel';
 import { useEffect, useState } from "react";
-import { FaChevronRight, FaChevronLeft, FaUserAlt } from 'react-icons/fa'
-import imgs from "../../../assets/constants/imgs";
+import { FaChevronRight, FaChevronLeft, } from 'react-icons/fa'
 import { consts } from 'react-elastic-carousel';
 import Image from "next/image";
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { MedicalDepartments, MostPopular } from "@/components/Home";
+import { MostPopular } from "@/components/Home";
 import { useRouter } from "next/router";
-import Hotles from "@/components/hospital/hotels";
-import Visits from "@/components/hospital/hotels/Visits";
 import { MdLocationOn } from 'react-icons/md'
 import { FaShieldAlt } from 'react-icons/fa'
 import BeforeAfter from '@/components/BeforeAfter'
@@ -32,6 +29,7 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
   const [hospitals, setHospitals] = useState([])
 
 
+  console.log(dataDoctorSlug, "dataDoctorSlug")
   useEffect(() => {
     const cilincsFilter = dataDoctorHospitalClinics?.filter((cilinc) => cilinc.isClinic === true)
     setCilincs(cilincsFilter)
@@ -39,35 +37,9 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
     setHospitals(hospitalsFilter)
   }, [])
 
-  const { certeficate, post1 } = imgs;
   const { t } = useTranslation();
-  const cards = [
-    { title: 'Patient name', img: certeficate.src, id: '1', desc: ' Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Consetetur Sadipscing Elitr, Sed Diam Nonumy  ' },
-    { title: 'Patient name', img: certeficate.src, id: '2', desc: ' Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua. At Vero Eos Et Accusam Et Justo Duo Dolores Et Ea Rebum. Stet Clita Kasd Gubergren, No Sea Takimata Sanctus Est Lorem Ipsum Dolor Sit Amet. Lorem Ipsum Consetetur Sadipscing Elitr, Sed Diam Nonumy  ' },
-  ]
 
-  const beforeCards = [
-    {
-      description: "Title", imgBefore: certeficate.src, imgAfter: certeficate.src
 
-    },
-    {
-      description: "Title", imgBefore: certeficate.src, imgAfter: certeficate.src
-
-    },
-    {
-      description: "Title", imgBefore: certeficate.src, imgAfter: certeficate.src
-
-    },
-    {
-      description: "Title", imgBefore: certeficate.src, imgAfter: certeficate.src
-
-    },
-    {
-      description: "Title", imgBefore: certeficate.src, imgAfter: certeficate.src
-
-    },
-  ]
   const router = useRouter();
 
   // BreakPoints
@@ -158,348 +130,7 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
     );
   }
 
-  const hospiTalMedicalDepartment = [
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns.\r\n\r\n\r\n\r\n\r\n"
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-    {
-      departmentName
-        :
-        "Obstetrics and gynecology",
-      description
-        :
-        "OB/GYN specializes in women's health, encompassing reproductive organs, pregnancy, childbirth, and fertility treatments. They provide comprehensive care, including exams, diagnoses, treatments, deliveries, and fertility interventions. The goal is to support reproductive health, ensure safe pregnancies, promote wellness, and assist with fertility concerns."
-      , id
-        :
-        1
-      , image
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &.svg"
-      , secondImage
-        :
-        "https://cp1.safemedigo.com//Images/DepartmentImages/Gynecology &-1.svg"
-      , slug
-        :
-        "Obstetrics-and-gynecology"
-    },
-  ]
+
 
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -574,10 +205,11 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
 
           <div className={styles.title}>
             <Typography variant="h3">
-              {dataDoctorSlug.doctorLevel}.
-              {dataDoctorSlug.firstName}
-              {dataDoctorSlug.fatherName}
-              {dataDoctorSlug.lastName}
+              {`${dataDoctorSlug.doctorLevel === null ? '' : dataDoctorSlug.doctorLevel} ${dataDoctorSlug.firstName} ${dataDoctorSlug.fatherName} ${dataDoctorSlug.lastName} `}
+
+
+
+
             </Typography>
           </div>
 
@@ -589,10 +221,10 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
               </Typography>
             </div>
 
-            <div className={styles.rating}>
+            {/* <div className={styles.rating}>
               <Rating defaultValue={dataDoctorSlug?.rating} size="small" readOnly />
               <span className={styles.reviews_num}>{dataDoctorSlug?.totalReviews} {t("hospital:Reviews")}</span>
-            </div>
+            </div> */}
 
 
             <div className={styles.location}>
@@ -608,7 +240,7 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
                   <Typography>{dataDoctorSlug.lastYearPatients}</Typography>
                 </div>
                 <div className={styles.yearly}>
-                  <Typography>Yearly patient</Typography>
+                  <Typography>{t("most_popular:PatientsTreatedLastYear")}</Typography>
                 </div>
               </div>
               <div className={styles.box}>
@@ -616,7 +248,7 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
                   <Typography>{dataDoctorSlug.experienceYears}</Typography>
                 </div>
                 <div className={styles.yearly}>
-                  <Typography>Exp. Years</Typography>
+                  <Typography>{t("most_popular:yearsOfExp")}</Typography>
                 </div>
               </div>
               <div className={styles.box}>
@@ -624,7 +256,7 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
                   <Typography>{dataDoctorTreatments?.length}</Typography>
                 </div>
                 <div className={styles.yearly}>
-                  <Typography>Treatments Performed</Typography>
+                  <Typography>{t("most_popular:treatmentsCount")}</Typography>
                 </div>
               </div>
 
@@ -661,7 +293,8 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
               <div className={styles.certificates_boxes}>
                 <div className={styles.title}>
                   <Typography variant={'h3'}>
-                    Certificates & Awards
+
+                    {t("hospital:certificates")}
                   </Typography>
                 </div>
 
@@ -673,6 +306,7 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
                     renderArrow={myArrow}
                     pagination={false}
                   >
+                    {console.log(dataDoctorCertificatest, "dataDoctorCertificatest")}
                     {dataDoctorCertificatest?.map((card, index) => (
                       <>
                         <div className={styles.box} key={index} onClick={() => handleClickOpen(card)}>
@@ -692,7 +326,7 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
                                 {card.description}
                               </Typography>
 
-                              <button>READ ALL</button>
+                              <button>{t("hospital:ReadAll")}</button>
                             </div>
                           </div>
 
@@ -742,7 +376,7 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
                 <div className={styles.box}>
                   <div className={styles.title}>
                     <Typography variant={'h3'}>
-                      Languages
+                      {t("hospital:languages")}
                     </Typography>
                   </div>
 
@@ -755,7 +389,9 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
                 <div className={styles.box}>
                   <div className={styles.title}>
                     <Typography variant={'h3'}>
-                      Specialties
+
+                      {t("hospital:specialties")}
+
                     </Typography>
                   </div>
                   <ul>
@@ -784,9 +420,8 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
                   }
                   expandIcon={<ExpandMoreIcon sx={expanded !== 'panel1' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
                   aria-controls="panel1d-content" id="panel1d-header">
-                  <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                    Procedures & Clinical Interest
-
+                  <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: router.locale === 'ar' ? 'var(--arabic-font)' : 'var(--quickstand-font)' }}>
+                    {t("hospital:procedures")}
                   </Typography>
                 </AccordionSummary>
 
@@ -833,8 +468,8 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
                   }
                   expandIcon={<ExpandMoreIcon sx={expanded !== 'panel2' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
                   aria-controls="panel2d-content" id="panel2d-header">
-                  <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                    Memberships
+                  <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: router.locale === 'ar' ? 'var(--arabic-font)' : 'var(--quickstand-font)' }}>
+                    {t("hospital:memberships")}
 
                   </Typography>
                 </AccordionSummary>
@@ -854,9 +489,13 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
 
                     {dataDoctorMemberShip?.map((memberShip) => (
                       <>
-                        <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                        <ListItem variant='li' sx={{
+                          fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: router.locale === 'ar' ? 'var(--arabic-font)' : 'var(--quickstand-font)'
+                        }}>
                           {memberShip.startdate !== null && memberShip.startdate !== null &&
-                            <Typography variant="h5">{memberShip.memberShipName} ({memberShip.startdate} - {memberShip.endDate})</Typography>
+                            <Typography variant="h5" sx={{
+                              fontFamily: router.locale === 'ar' ? 'var(--arabic-font)' : 'var(--quickstand-font)'
+                            }}>{memberShip.memberShipName} ({memberShip.startdate} - {memberShip.endDate})</Typography>
                           }
                         </ListItem  >
                       </>
@@ -882,8 +521,9 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
                   }
                   expandIcon={<ExpandMoreIcon sx={expanded !== 'panel3' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
                   aria-controls="panel3d-content" id="panel3d-header">
-                  <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                    Education
+                  <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: router.locale === 'ar' ? 'var(--arabic-font)' : 'var(--quickstand-font)' }}>
+
+                    {t("hospital:education")}
 
                   </Typography>
                 </AccordionSummary>
@@ -898,13 +538,21 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
                       listStylePosition: 'inside',
                       padding: '0px',
                     },
+
                   }}
                   >
 
                     {dataDoctorEducation?.map((education) => (
                       <>
-                        <Typography variant="h5">{education.title} ({education.yearFrom} - {education.yearTo})</Typography>
-                        <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                        <Typography variant="h5" sx={{
+                          fontFamily: router.locale === 'ar' ? 'var(--arabic-font)' : 'var(--quickstand-font)'
+
+                        }}>{education.title} ({education.yearFrom} - {education.yearTo})</Typography>
+                        <ListItem variant='li' sx={{
+                          fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)',
+                          fontFamily: router.locale === 'ar' ? 'var(--arabic-font)' : 'var(--quickstand-font)'
+
+                        }}>
                           {education.description}
                         </ListItem  >
                       </>
@@ -929,9 +577,11 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
                   }
                   expandIcon={<ExpandMoreIcon sx={expanded !== 'panel5' ? { color: ' #000000', width: '30px', height: "30px" } : { color: '#FFFFFF', width: '30px', height: "30px", marginBottom: '5px', }} />}
                   aria-controls="panel5d-content" id="panel5d-header">
-                  <Typography sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily: 'var(--quickstand-font)' }}>
-                    Career
-
+                  <Typography sx={{
+                    fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'bold', fontFamily:
+                      router.locale === 'ar' ? 'var(--arabic-font)' : 'var(--quickstand-font)'
+                  }}>
+                    {t("hospital:career")}
                   </Typography>
                 </AccordionSummary>
 
@@ -950,8 +600,14 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
 
                     {dataDoctorCareer?.map((career) => (
                       <>
-                        <Typography variant="h5">{career.title} ({career.yearFrom} - {career.yearTo})</Typography>
-                        <ListItem variant='li' sx={{ fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)' }}>
+                        <Typography variant="h5" sx={{
+                          fontFamily: router.locale === 'ar' ? 'var(--arabic-font)' : 'var(--quickstand-font)'
+
+                        }}>{career.title} ({career.yearFrom} - {career.yearTo})</Typography>
+                        <ListItem variant='li' sx={{
+                          fontSize: { xs: '16px', sm: '16px', md: '16px', lg: '18px' }, fontWeight: 'var(--font-medium)', fontFamily: 'var(--quickstand-font)',
+                          fontFamily: router.locale === 'ar' ? 'var(--arabic-font)' : 'var(--quickstand-font)'
+                        }}>
                           {career.description}
                         </ListItem  >
                       </>
@@ -970,11 +626,11 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
         </section>
       </Container >
 
-      <section id='reviews' className={styles.reviews}>
+      <section id='reviews' className={styles.reviews} dir={router.locale === 'ar' ? 'rtl' : 'ltr'}>
         <Container className={`${router.locale === 'ar' ? 'mycontainer_ar' : 'mycontainer'}`} sx={{ maxWidth: '1239px', paddingLeft: { sm: "0px", md: "0px" }, }} maxWidth={false} >
           <div className={styles.title_mob}>
             <Typography variant={'h4'}>
-              Media
+              {t('hospital:media')}
             </Typography>
           </div>
 
@@ -982,7 +638,7 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
             <div className={styles.text_container}>
               <div className={styles.title}>
                 <Typography variant={'h4'}>
-                  Media
+                  {t('hospital:media')}
                 </Typography>
               </div>
 
@@ -991,11 +647,11 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
                   color: "var(--main-dark-color)",
                   fontSize: '18px',
                   fontWeight: "var(--font-sem-bold)",
-                  fontFamily: "var(--quickstand-font)",
+                  fontFamily: router.locale === 'ar' ? 'var(--arabic-font)' : 'var(--quickstand-font)',
                   letterSpacing: '0',
                   marginRight: '20px'
                 }}>
-                  Here Some Of Media Materials Might Give You An Imagination Helps You To Get Closer By Your Feelings To What Is Doctor Offering And What He Is Into...
+                  {t("hospital:mediaDesc")}
                 </Typography>
               </div>
             </div>
@@ -1031,7 +687,6 @@ const DoctorName = ({ dataDoctorSlug, dataDoctorMainSpecializations, dataDoctorT
         </Container>
       </section>
 
-      {console.log(dataDoctorTreatments, "dataDoctorTreatments2")}
       <BeforeAfter dataDoctorTreatments={dataDoctorTreatments} />
 
       <Box >

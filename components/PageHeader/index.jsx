@@ -72,11 +72,11 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug, dataDoc
                           {dataHospitalSlug.address}
                         </Typography>
                       </div>
-                      <div className={styles.rating}>
+                      {/* <div className={styles.rating}>
                         <Rating name="read-only" defaultValue={dataHospitalSlug.totalReviews} size="small" readOnly />
                         <span className={styles.reviews_num}>{dataHospitalSlug.totalReviews} {t("hospital:Reviews")}
                         </span>
-                      </div>
+                      </div> */}
 
                       <div className={styles.category}>
                         <Typography>
@@ -171,9 +171,8 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug, dataDoc
 
                       <div className={styles.name}>
                         <Typography variant="h3">
-                          {dataDoctorSlug.firstName} {` `}
-                          {` `}   {dataDoctorSlug.fatherName} {` `}
-                          {dataDoctorSlug.lastName}{` `}
+                          {`${dataDoctorSlug.firstName} ${dataDoctorSlug.fatherName} ${dataDoctorSlug.lastName}`}
+
                         </Typography>
                       </div>
                       <div className={styles.location}>
@@ -182,10 +181,10 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug, dataDoc
                           {dataDoctorSlug?.location}
                         </Typography>
                       </div>
-                      <div className={styles.rating}>
+                      {/* <div className={styles.rating}>
                         <Rating name="read-only" defaultValue={dataDoctorSlug?.rating} size="small" readOnly />
                         <span className={styles.reviews_num}>{dataDoctorSlug?.totalReviews} Reviews</span>
-                      </div>
+                      </div> */}
 
                       <div className={styles.category}>
                         <Typography>
@@ -206,7 +205,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug, dataDoc
                           <Typography>{dataDoctorSlug.lastYearPatients}</Typography>
                         </div>
                         <div className={styles.yearly}>
-                          <Typography>{t("hospital:patient")}</Typography>
+                          <Typography>{t("most_popular:PatientsTreatedLastYear")}</Typography>
                         </div>
                       </div>
                       <div className={styles.box}>
@@ -214,7 +213,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug, dataDoc
                           <Typography>{dataDoctorSlug.experienceYears}</Typography>
                         </div>
                         <div className={styles.yearly}>
-                          <Typography>Exp. Years</Typography>
+                          <Typography>{t("most_popular:yearsOfExp")}</Typography>
                         </div>
                       </div>
                       <div className={styles.box}>
@@ -222,7 +221,7 @@ const PageHeader = ({ blog, treatment, dataHospitalSlug, dataDoctorSlug, dataDoc
                           <Typography>{dataDoctorTreatments?.length}</Typography>
                         </div>
                         <div className={styles.yearly}>
-                          <Typography>Treatments Performed</Typography>
+                          <Typography>{t("most_popular:treatmentsCount")}</Typography>
                         </div>
                       </div>
 

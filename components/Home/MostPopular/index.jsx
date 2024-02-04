@@ -434,21 +434,26 @@ const MostPopular = (dataPopularTreatmentsMedical, hospitals) => {
                                 <span className={styles.reviews_num}>{doc.totalReview} Reviews</span>
                               </div> */}
 
-                              <div className={styles.location}>
-                                <MdLocationOn />
-                                <Typography >
-                                  {doc.location}
-                                </Typography>
-                              </div>
+                              {doc.location &&
+                                <div className={styles.location}>
+                                  <div className="icon_container">
+                                    <MdLocationOn />
+                                  </div>
+                                  <Typography >
+                                    {doc.location}
+                                  </Typography>
+                                </div>
+
+                              }
 
                               <div className={styles.patient_num}>
                                 <span>{doc.lastYearPatients}</span>
-                                <Typography>Patients Treated Last Year</Typography>
+                                <Typography>{t("most_popular:PatientsTreatedLastYear")}</Typography>
                               </div>
 
                               <div className={styles.experience}>
-                                <span>{doc.experienceYears}</span>
-                                <Typography> Years Of Experience</Typography>
+                                {` `} <span>{doc.experienceYears}</span>{` `}
+                                <Typography> {t("most_popular:yearsOfExp")}</Typography>
                               </div>
 
                               <Box sx={{ marginTop: 'auto', width: '100%', display: 'flex', justifyContent: 'space-between', alignSelf: 'flex-end' }}>
@@ -766,7 +771,7 @@ const MostPopular = (dataPopularTreatmentsMedical, hospitals) => {
 
                             <div className={styles.experience}>
                               <span>{doc.experience}</span>
-                              <Typography> Years Of Experience</Typography>
+                              <Typography> {t("most_popular:yearsOfExp")}</Typography>
                             </div>
 
                             <Box sx={{ marginTop: 'auto', width: '100%', display: 'flex', justifyContent: 'space-between', alignSelf: 'flex-end' }}>

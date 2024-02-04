@@ -392,8 +392,9 @@ const Footer = ({ dataDoctorSlug, dataDoctorTreatments }) => {
                       height={100} />
                   </div>
                   <div className={styles.doc_info}>
+                    {console.log(dataDoctorSlug.doctorLevel, "doctorLevel")}
                     <div className={styles.name}>
-                      <Typography variant='h6'>{`${dataDoctorSlug.doctorLevel}. ${dataDoctorSlug.firstName}${dataDoctorSlug.fatherName}`}</Typography></div>
+                      <Typography variant='h6'>{`${dataDoctorSlug.firstName} ${dataDoctorSlug.fatherName}`}</Typography></div>
                     <div className={styles.location}>
                       <MdLocationOn />
                       <h6>{dataDoctorSlug.location}</h6>

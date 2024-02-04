@@ -180,12 +180,20 @@
         display: flex;
         align-items: center;
         margin-top: 6px;
+
         svg {
           margin-right: 4.96px;
           font-size: 25px;
           color: var(--main-dark-color);
         }
         p {
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 4;
+          white-space: pre-wrap;
+          -webkit-line-clamp: 4;
+
           color: var(--main-dark-color);
           font-size: 16px;
           font-weight: var(--font-medium);

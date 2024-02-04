@@ -163,6 +163,13 @@ section#patient_stories {
           margin-top: 16px;
           padding-right: 22px;
           padding-left: 15px;
+
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          white-space: pre-wrap;
+          -webkit-line-clamp: 1;
           h5 {
             margin: 0;
             color: var(--main-green-color);
